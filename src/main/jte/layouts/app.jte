@@ -62,15 +62,32 @@
                     <span>Local backflow requirements</span>
                 </span>
             </a>
-            <nav class="site-nav" aria-label="Primary">
-                <a href="/">Home</a>
-                <a href="/states">States</a>
-                <a href="/metros">Metros</a>
-                <a href="/guides">Guides</a>
-            </nav>
-            <div class="site-header__actions">
-                <a class="button button--primary button--compact" href="/leads/new">Request help</a>
+            <div class="site-header__desktop">
+                <nav class="site-nav" aria-label="Primary">
+                    <a href="/">Home</a>
+                    <a href="/states">States</a>
+                    <a href="/metros">Metros</a>
+                    <a href="/guides">Guides</a>
+                </nav>
+                <div class="site-header__actions">
+                    <a class="button button--primary button--compact" href="/leads/new">Request help</a>
+                </div>
             </div>
+            <details class="site-menu">
+                <summary class="site-menu__toggle" aria-label="Open navigation menu">
+                    <span>Menu</span>
+                    <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+                </summary>
+                <div class="site-menu__panel">
+                    <nav class="site-menu__nav" aria-label="Mobile">
+                        <a href="/">Home</a>
+                        <a href="/states">States</a>
+                        <a href="/metros">Metros</a>
+                        <a href="/guides">Guides</a>
+                    </nav>
+                    <a class="button button--primary button--compact site-menu__cta" href="/leads/new">Request help</a>
+                </div>
+            </details>
         </div>
     </header>
 
