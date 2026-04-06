@@ -4,5 +4,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 
 @ConfigurationProperties("app.leads")
-public record AppLeadsProperties(@DefaultValue("./build/leads") String root) {
+public record AppLeadsProperties(
+        @DefaultValue("./build/leads") String root,
+        @DefaultValue("600") int submissionRateLimitWindowSeconds,
+        @DefaultValue("3") int submissionRateLimitMaxAttempts
+) {
 }

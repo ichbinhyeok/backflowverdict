@@ -1171,6 +1171,41 @@ p {
     resize: vertical;
 }
 
+.field--checkbox {
+    gap: 0.7rem;
+}
+
+.checkbox-field {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.9rem;
+    align-items: start;
+    padding: 1rem;
+    border: 1px solid rgba(193, 200, 196, 0.7);
+    border-radius: 0.8rem;
+    background: rgba(242, 244, 246, 0.92);
+}
+
+.checkbox-field input[type="checkbox"] {
+    width: 1.15rem;
+    height: 1.15rem;
+    margin-top: 0.18rem;
+}
+
+.checkbox-field p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.field--honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
 .form-error {
     margin: 0 0 1rem;
     color: var(--error);

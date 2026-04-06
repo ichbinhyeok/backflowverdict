@@ -1,9 +1,9 @@
 package owner.backflow.web;
 
 import jakarta.servlet.http.HttpServletRequest;
-import java.net.URI;
 import java.time.LocalDateTime;
 import owner.backflow.service.CtaClickRecord;
+import owner.backflow.service.CtaDestinationPolicyService;
 import owner.backflow.service.CtaClickRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +13,14 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 public class CtaRedirectController {
     private final CtaClickRepository ctaClickRepository;
+    private final CtaDestinationPolicyService ctaDestinationPolicyService;
 
-    public CtaRedirectController(CtaClickRepository ctaClickRepository) {
+    public CtaRedirectController(
+            CtaClickRepository ctaClickRepository,
+            CtaDestinationPolicyService ctaDestinationPolicyService
+    ) {
         this.ctaClickRepository = ctaClickRepository;
+        this.ctaDestinationPolicyService = ctaDestinationPolicyService;
     }
 
     @GetMapping("/r/cta")
@@ -28,7 +33,7 @@ public class CtaRedirectController {
             @RequestParam(required = false) String source,
             HttpServletRequest request
     ) {
-        String destination = validateDestination(next);
+        String destination = ctaDestinationPolicyService.validateDestination(next);
         ctaClickRepository.save(new CtaClickRecord(
                 null,
                 LocalDateTime.now(),
@@ -43,24 +48,5 @@ public class CtaRedirectController {
         RedirectView redirectView = new RedirectView(destination);
         redirectView.setExposeModelAttributes(false);
         return redirectView;
-    }
-
-    private String validateDestination(String destination) {
-        if (destination == null || destination.isBlank()) {
-            throw new NotFoundException("CTA destination is required.");
-        }
-        if (destination.startsWith("/")) {
-            return destination;
-        }
-        try {
-            URI uri = URI.create(destination);
-            String scheme = uri.getScheme();
-            if ("http".equalsIgnoreCase(scheme) || "https".equalsIgnoreCase(scheme)) {
-                return destination;
-            }
-        } catch (IllegalArgumentException ignored) {
-            // fall through
-        }
-        throw new NotFoundException("Unsupported CTA destination.");
     }
 }

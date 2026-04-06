@@ -26,7 +26,8 @@
                 <div class="hero__stats">
                     <span>Testing cadence: ${utility.testingFrequency()}</span>
                     <span>Last verified: ${utility.lastVerified().toString()}</span>
-                    <span>Reviewer: ${utility.reviewerInitials()}</span>
+                    <span>Verification code: <a href="/methodology#verification-code-${utility.reviewerInitials().toLowerCase()}">${utility.reviewerInitials()}</a></span>
+                    <span>Freshness window: ${utility.staleAfterDays()} days</span>
                 </div>
                 <div class="hero__actions">
                     <a class="button button--primary" href="${utility.utilityUrl()}">Official program page</a>
@@ -113,6 +114,44 @@
                         @endfor
                     </ol>
                 </article>
+
+                <div class="content-grid">
+                    <article class="detail-card detail-card--quiet">
+                        <span class="eyebrow">Source block</span>
+                        <h2>Source block</h2>
+                        <p>${utility.sourceExcerpt()}</p>
+                        <ul class="detail-list">
+                            <li>Last verified: ${utility.lastVerified().toString()}</li>
+                            <li>Verification code: <a href="/methodology#verification-code-${utility.reviewerInitials().toLowerCase()}">${utility.reviewerInitials()}</a></li>
+                            <li>Freshness window: ${utility.staleAfterDays()} days</li>
+                            <li><a href="/corrections">Report a correction or stale source</a></li>
+                        </ul>
+                        <ul class="detail-list">
+                            @for (var source : utility.sources())
+                                <li><a href="${source.url()}">${source.label()}</a> <span class="detail-type">${source.kind()}</span></li>
+                            @endfor
+                        </ul>
+                    </article>
+
+                    <article class="detail-card">
+                        <span class="eyebrow">Submission path</span>
+                        <h2>Submission methods and utility contact</h2>
+                        <div class="resource-list">
+                            @for (var submissionMethod : utility.submissionMethods())
+                                <a class="resource-item" href="${submissionMethod.url()}">
+                                    <div>
+                                        <strong>${submissionMethod.label()}</strong>
+                                        <span>${submissionMethod.kind()}</span>
+                                    </div>
+                                    <span class="material-symbols-outlined">arrow_forward</span>
+                                </a>
+                            @endfor
+                        </div>
+                        <p class="detail-meta"><strong>Official program page:</strong> <a href="${utility.utilityUrl()}">${utility.utilityUrl()}</a></p>
+                        <p class="detail-meta"><strong>Program phone:</strong> ${utility.phone()}</p>
+                        <p class="detail-meta"><a href="/methodology">See review methodology</a> and <a href="/editorial-standards">editorial standards</a>.</p>
+                    </article>
+                </div>
 
                 <div class="card-grid">
                     <article class="detail-card">
@@ -240,37 +279,9 @@
                         @endfor
                     </div>
                 </section>
-
-                <article class="detail-card detail-card--quiet">
-                    <span class="eyebrow">Source block</span>
-                    <h2>Source block</h2>
-                    <p>${utility.sourceExcerpt()}</p>
-                    <ul class="detail-list">
-                        @for (var source : utility.sources())
-                            <li><a href="${source.url()}">${source.label()}</a> <span class="detail-type">${source.kind()}</span></li>
-                        @endfor
-                    </ul>
-                </article>
             </div>
 
             <aside class="side-stack">
-                <article class="detail-card">
-                    <span class="eyebrow">Submission portals</span>
-                    <h2>Submission methods</h2>
-                    <div class="resource-list">
-                        @for (var submissionMethod : utility.submissionMethods())
-                            <a class="resource-item" href="${submissionMethod.url()}">
-                                <div>
-                                    <strong>${submissionMethod.label()}</strong>
-                                    <span>${submissionMethod.kind()}</span>
-                                </div>
-                                <span class="material-symbols-outlined">arrow_forward</span>
-                            </a>
-                        @endfor
-                    </div>
-                    <p class="detail-meta"><strong>Program phone:</strong> ${utility.phone()}</p>
-                </article>
-
                 <article class="detail-card">
                     <span class="eyebrow">State compliance layer</span>
                     <h2>State compliance layer</h2>

@@ -208,7 +208,7 @@
                     <p>Utility rules, due dates, report portals, source excerpts, and official tester lists stay public and auditable. That public guidance is the foundation of the product.</p>
                     <ul class="detail-list">
                         <li>Official program links and submission portals</li>
-                        <li>Freshness windows and reviewer initials</li>
+                        <li>Freshness windows and verification codes</li>
                         <li>Approved tester pages only when the list is real</li>
                     </ul>
                 </article>

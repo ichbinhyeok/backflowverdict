@@ -19,7 +19,7 @@
                 <p class="lede">${guide.intro()}</p>
                 <div class="hero__stats">
                     <span>Last reviewed: ${guide.lastReviewed().toString()}</span>
-                    <span>Reviewer: ${guide.reviewerInitials()}</span>
+                    <span>Verification code: <a href="/methodology#verification-code-${guide.reviewerInitials().toLowerCase()}">${guide.reviewerInitials()}</a></span>
                     <span>Freshness window: ${guide.staleAfterDays()} days</span>
                 </div>
                 <div class="hero__actions">
@@ -163,9 +163,16 @@
             </article>
 
             <article class="detail-card">
-                <span class="eyebrow">Guide snapshot</span>
-                <h2>What this guide carries forward</h2>
+                <span class="eyebrow">Review record</span>
+                <h2>How this guide is kept trustworthy</h2>
                 <p>${guide.sourceExcerpt()}</p>
+                <ul class="detail-list">
+                    <li>Last reviewed: ${guide.lastReviewed().toString()}</li>
+                    <li>Verification code: <a href="/methodology#verification-code-${guide.reviewerInitials().toLowerCase()}">${guide.reviewerInitials()}</a></li>
+                    <li>Freshness window: ${guide.staleAfterDays()} days</li>
+                    <li><a href="/editorial-standards">Editorial standards</a></li>
+                    <li><a href="/corrections">Report a correction</a></li>
+                </ul>
                 <p class="detail-meta">This page exists to make a repeated question legible without pretending to replace utility-specific authority language.</p>
             </article>
         </div>

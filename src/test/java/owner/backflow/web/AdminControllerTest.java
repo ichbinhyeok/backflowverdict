@@ -1,6 +1,7 @@
 package owner.backflow.web;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.not;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -22,6 +23,7 @@ import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.web.servlet.MockMvc;
 import owner.backflow.files.BackflowRegistryService;
 import owner.backflow.service.LeadAdminService;
+import owner.backflow.service.LeadSubmissionGuardService;
 
 @SpringBootTest(properties = {
         "app.leads.root=build/test-data/admin-ui/leads",
@@ -43,8 +45,12 @@ class AdminControllerTest {
     @Autowired
     private BackflowRegistryService registryService;
 
+    @Autowired
+    private LeadSubmissionGuardService leadSubmissionGuardService;
+
     @BeforeEach
     void resetLeadsRoot() throws IOException {
+        leadSubmissionGuardService.clear();
         if (!Files.exists(LEADS_ROOT)) {
             registryService.reload();
             return;
@@ -113,7 +119,8 @@ class AdminControllerTest {
                         .param("pageFamily", "utility"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Lead form")))
-                .andExpect(content().string(containsString("Dallas Water Utilities")));
+                .andExpect(content().string(containsString("Dallas Water Utilities")))
+                .andExpect(content().string(containsString("privacy and lead routing notice")));
 
         mockMvc.perform(post("/leads")
                         .param("fullName", "=Jordan Lee")
@@ -127,6 +134,7 @@ class AdminControllerTest {
                         .param("pageFamily", "utility")
                         .param("notes", "@Need a quote this week.")
                         .param("sourcePage", "/utilities/texas/dallas-water-utilities/")
+                        .param("consentToRouting", "yes")
                         .header("Referer", "https://example.com/source-page"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/leads/thanks"));
@@ -181,7 +189,8 @@ class AdminControllerTest {
                         .param("issueType", "failed-test")
                         .param("pageFamily", "failed-test")
                         .param("notes", "Need a same-week retest.")
-                        .param("sourcePage", "/utilities/texas/garland-water-utilities/failed-test"))
+                        .param("sourcePage", "/utilities/texas/garland-water-utilities/failed-test")
+                        .param("consentToRouting", "yes"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/leads/thanks"));
 
@@ -227,7 +236,8 @@ class AdminControllerTest {
                         .param("issueType", "annual-testing")
                         .param("pageFamily", "utility")
                         .param("notes", "Route only to active sponsors.")
-                        .param("sourcePage", "/utilities/texas/garland-water-utilities/"))
+                        .param("sourcePage", "/utilities/texas/garland-water-utilities/")
+                        .param("consentToRouting", "yes"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/leads/thanks"));
 
@@ -272,7 +282,8 @@ class AdminControllerTest {
                         .param("issueType", "general-testing")
                         .param("pageFamily", "metro")
                         .param("notes", "Activated sponsor should be assignable.")
-                        .param("sourcePage", "/metros/texas/dallas-fort-worth-metroplex/backflow-testing"))
+                        .param("sourcePage", "/metros/texas/dallas-fort-worth-metroplex/backflow-testing")
+                        .param("consentToRouting", "yes"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/leads/thanks"));
 
@@ -297,5 +308,120 @@ class AdminControllerTest {
                 .andExpect(content().string(containsString("Latest sponsor email delivery records")))
                 .andExpect(content().string(containsString("Route to active sponsor")))
                 .andExpect(content().string(containsString("Next Day Backflow Testing")));
+    }
+
+    @Test
+    void leadCaptureDoesNotExposeSponsorEmailsAndShowsConsentCopy() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/admin/login")
+                        .session(session)
+                        .param("username", "admin")
+                        .param("password", "tlsgur3108"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/admin"));
+
+        mockMvc.perform(post("/admin/providers/{providerId}/sponsor-status", "next-day-backflow-texas")
+                        .session(session)
+                        .param("sponsorStatus", "ACTIVE")
+                        .param("note", "Contract signed"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/admin"));
+
+        mockMvc.perform(get("/leads/new")
+                        .param("utilityId", "dallas-water")
+                        .param("source", "/utilities/texas/dallas-water-utilities/")
+                        .param("issueType", "general-testing")
+                        .param("pageFamily", "utility"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("1 active sponsor route(s)")))
+                .andExpect(content().string(containsString("What you are consenting to")))
+                .andExpect(content().string(not(containsString("Active sponsor emails"))))
+                .andExpect(content().string(not(containsString("Israel@nextdaybackflowtesting.com"))));
+    }
+
+    @Test
+    void leadCaptureRequiresConsentSilentlyDropsHoneypotAndRateLimitsBurstTraffic() throws Exception {
+        mockMvc.perform(post("/leads")
+                        .param("fullName", "No Consent")
+                        .param("phone", "555-000-1111")
+                        .param("utilityId", "dallas-water")
+                        .param("issueType", "general-testing")
+                        .param("pageFamily", "utility")
+                        .param("sourcePage", "/utilities/texas/dallas-water-utilities/"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/leads/new?utilityId=dallas-water&source=/utilities/texas/dallas-water-utilities/&issueType=general-testing&pageFamily=utility&error=consent"));
+
+        org.junit.jupiter.api.Assertions.assertEquals(0, leadAdminService.leadCount());
+
+        mockMvc.perform(post("/leads")
+                        .param("fullName", "Bot Submission")
+                        .param("phone", "555-000-2222")
+                        .param("utilityId", "dallas-water")
+                        .param("issueType", "general-testing")
+                        .param("pageFamily", "utility")
+                        .param("sourcePage", "/utilities/texas/dallas-water-utilities/")
+                        .param("consentToRouting", "yes")
+                        .param("companyWebsite", "https://spam.example"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/leads/thanks"));
+
+        org.junit.jupiter.api.Assertions.assertEquals(0, leadAdminService.leadCount());
+
+        for (int attempt = 0; attempt < 3; attempt++) {
+            mockMvc.perform(post("/leads")
+                            .with(request -> {
+                                request.setRemoteAddr("203.0.113.20");
+                                return request;
+                            })
+                            .param("fullName", "Rate Limited User " + attempt)
+                            .param("phone", "555-000-333" + attempt)
+                            .param("utilityId", "dallas-water")
+                            .param("issueType", "general-testing")
+                            .param("pageFamily", "utility")
+                            .param("sourcePage", "/utilities/texas/dallas-water-utilities/")
+                            .param("consentToRouting", "yes"))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(redirectedUrl("/leads/thanks"));
+        }
+
+        mockMvc.perform(post("/leads")
+                        .with(request -> {
+                            request.setRemoteAddr("203.0.113.20");
+                            return request;
+                        })
+                        .param("fullName", "Rate Limited User 4")
+                        .param("phone", "555-000-4444")
+                        .param("utilityId", "dallas-water")
+                        .param("issueType", "general-testing")
+                        .param("pageFamily", "utility")
+                        .param("sourcePage", "/utilities/texas/dallas-water-utilities/")
+                        .param("consentToRouting", "yes"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/leads/new?utilityId=dallas-water&source=/utilities/texas/dallas-water-utilities/&issueType=general-testing&pageFamily=utility&error=rate-limit"));
+
+        org.junit.jupiter.api.Assertions.assertEquals(3, leadAdminService.leadCount());
+    }
+
+    @Test
+    void ctaRedirectOnlyAllowsKnownHosts() throws Exception {
+        mockMvc.perform(get("/r/cta")
+                        .param("next", "https://www.anaheim.net/769/Cross-Connection-Control")
+                        .param("pageFamily", "provider-profile")
+                        .param("providerId", "anaheim-accurate-backflow")
+                        .param("ctaType", "authority-source")
+                        .param("source", "/providers/anaheim-accurate-backflow/"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("https://www.anaheim.net/769/Cross-Connection-Control"));
+
+        mockMvc.perform(get("/r/cta")
+                        .param("next", "https://evil.example.com/phish")
+                        .param("pageFamily", "provider-profile")
+                        .param("providerId", "anaheim-accurate-backflow")
+                        .param("ctaType", "authority-source")
+                        .param("source", "/providers/anaheim-accurate-backflow/"))
+                .andExpect(status().isNotFound());
+
+        org.junit.jupiter.api.Assertions.assertTrue(Files.exists(LEADS_ROOT.resolve("cta-clicks.jsonl")));
+        org.junit.jupiter.api.Assertions.assertFalse(Files.readString(LEADS_ROOT.resolve("cta-clicks.jsonl")).contains("evil.example.com"));
     }
 }

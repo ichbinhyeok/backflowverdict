@@ -1,12 +1,15 @@
 package owner.backflow.web;
 
+import jakarta.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 import owner.backflow.config.AppSiteProperties;
 import owner.backflow.data.model.AliasMode;
@@ -32,10 +35,16 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class SiteController {
     private final BackflowRegistryService registryService;
     private final AppSiteProperties siteProperties;
+    private final SiteVisibilityService siteVisibilityService;
 
-    public SiteController(BackflowRegistryService registryService, AppSiteProperties siteProperties) {
+    public SiteController(
+            BackflowRegistryService registryService,
+            AppSiteProperties siteProperties,
+            SiteVisibilityService siteVisibilityService
+    ) {
         this.registryService = registryService;
         this.siteProperties = siteProperties;
+        this.siteVisibilityService = siteVisibilityService;
     }
 
     @GetMapping("/")
@@ -156,6 +165,87 @@ public class SiteController {
         return "pages/guides-index";
     }
 
+    @GetMapping("/privacy")
+    public String privacyPage(Model model) {
+        model.addAttribute("page", new PageMeta(
+                "Privacy and lead routing | BackflowPath",
+                "How BackflowPath stores lead requests, routes sponsor coverage, and handles follow-up.",
+                canonical("/privacy"),
+                true
+        ));
+        return "pages/privacy";
+    }
+
+    @GetMapping("/about")
+    public String aboutPage(Model model) {
+        model.addAttribute("page", page(
+                "About BackflowPath | BackflowPath",
+                "How BackflowPath organizes utility-specific backflow compliance guidance without mixing authority rules and provider routing.",
+                "/about",
+                breadcrumbStructuredData(List.of(
+                        new BreadcrumbItem("Home", canonical("/")),
+                        new BreadcrumbItem("About", canonical("/about"))
+                ))
+        ));
+        return "pages/about";
+    }
+
+    @GetMapping("/methodology")
+    public String methodologyPage(Model model) {
+        model.addAttribute("page", page(
+                "Methodology | BackflowPath",
+                "How BackflowPath verifies utility rules, freshness windows, reviewer codes, and source-backed updates.",
+                "/methodology",
+                breadcrumbStructuredData(List.of(
+                        new BreadcrumbItem("Home", canonical("/")),
+                        new BreadcrumbItem("Methodology", canonical("/methodology"))
+                ))
+        ));
+        return "pages/methodology";
+    }
+
+    @GetMapping("/editorial-standards")
+    public String editorialStandardsPage(Model model) {
+        model.addAttribute("page", page(
+                "Editorial standards | BackflowPath",
+                "Editorial rules for separating official guidance, support content, and sponsored provider routing on BackflowPath.",
+                "/editorial-standards",
+                breadcrumbStructuredData(List.of(
+                        new BreadcrumbItem("Home", canonical("/")),
+                        new BreadcrumbItem("Editorial standards", canonical("/editorial-standards"))
+                ))
+        ));
+        return "pages/editorial-standards";
+    }
+
+    @GetMapping("/corrections")
+    public String correctionsPage(Model model) {
+        model.addAttribute("page", page(
+                "Corrections policy | BackflowPath",
+                "How BackflowPath handles reported errors, stale utility rules, broken source links, and public updates.",
+                "/corrections",
+                breadcrumbStructuredData(List.of(
+                        new BreadcrumbItem("Home", canonical("/")),
+                        new BreadcrumbItem("Corrections", canonical("/corrections"))
+                ))
+        ));
+        return "pages/corrections";
+    }
+
+    @GetMapping("/contact")
+    public String contactPage(Model model) {
+        model.addAttribute("page", page(
+                "Contact BackflowPath | BackflowPath",
+                "Contact BackflowPath for corrections, source updates, and utility-specific routing questions.",
+                "/contact",
+                breadcrumbStructuredData(List.of(
+                        new BreadcrumbItem("Home", canonical("/")),
+                        new BreadcrumbItem("Contact", canonical("/contact"))
+                ))
+        ));
+        return "pages/contact";
+    }
+
     @GetMapping("/states/{state}/backflow-testing")
     public String stateGuidePage(@PathVariable String state, Model model) {
         StateGuideRecord stateGuide = registryService.findPublishedStateGuide(state)
@@ -237,19 +327,36 @@ public class SiteController {
         List<MetroRecord> metros = registryService.listPublishedMetros().stream()
                 .filter(metro -> utilities.stream().anyMatch(utility -> metro.utilityIds().contains(utility.utilityId())))
                 .toList();
+        List<String> coverageStates = providerCoverageStates(utilities);
+        List<String> coverageCities = providerCoverageCities(utilities);
+        List<String> coverageCounties = providerCoverageCounties(utilities);
+        int providerOfficialRouteCount = providerOfficialRouteCount(utilities);
+        int providerDirectoryRouteCount = providerDirectoryRouteCount(utilities);
+        int providerSubmissionWorkflowCount = providerSubmissionWorkflowCount(utilities);
         model.addAttribute("page", page(
                 provider.providerName() + " | BackflowPath",
                 provider.pageLabel(),
                 providerPath(provider),
-                breadcrumbStructuredData(List.of(
-                        new BreadcrumbItem("Home", canonical("/")),
-                        new BreadcrumbItem("Providers", canonical("/")),
-                        new BreadcrumbItem(provider.providerName(), canonical(providerPath(provider)))
-                ))
+                combineStructuredData(
+                        breadcrumbStructuredData(List.of(
+                                new BreadcrumbItem("Home", canonical("/")),
+                                new BreadcrumbItem("Providers", canonical("/")),
+                                new BreadcrumbItem(provider.providerName(), canonical(providerPath(provider)))
+                        )),
+                        providerStructuredData(provider, utilities, coverageStates, coverageCities, coverageCounties)
+                )
         ));
         model.addAttribute("provider", provider);
         model.addAttribute("utilities", utilities);
         model.addAttribute("metros", metros);
+        model.addAttribute("coverageStates", coverageStates);
+        model.addAttribute("coverageCities", coverageCities);
+        model.addAttribute("coverageCounties", coverageCounties);
+        model.addAttribute("providerServiceTypes", providerServiceTypes(utilities));
+        model.addAttribute("providerOfficialRouteCount", providerOfficialRouteCount);
+        model.addAttribute("providerDirectoryRouteCount", providerDirectoryRouteCount);
+        model.addAttribute("providerSubmissionWorkflowCount", providerSubmissionWorkflowCount);
+        model.addAttribute("latestUtilityVerification", providerLatestUtilityVerification(utilities));
         model.addAttribute("relatedGuides", providerSupportGuides(utilities));
         model.addAttribute("primaryUtility", utilities.isEmpty() ? null : utilities.getFirst());
         return "pages/provider-page";
@@ -477,9 +584,17 @@ public class SiteController {
 
     @GetMapping(value = "/sitemap.xml", produces = MediaType.APPLICATION_XML_VALUE)
     @ResponseBody
-    public String sitemap() {
+    public String sitemap(HttpServletRequest request) {
+        if (siteVisibilityService.shouldForceNoindex(request)) {
+            return emptySitemap();
+        }
         List<SitemapEntry> urls = new ArrayList<>();
         urls.add(new SitemapEntry(canonical("/"), homeLastModified()));
+        urls.add(new SitemapEntry(canonical("/about"), homeLastModified()));
+        urls.add(new SitemapEntry(canonical("/methodology"), homeLastModified()));
+        urls.add(new SitemapEntry(canonical("/editorial-standards"), homeLastModified()));
+        urls.add(new SitemapEntry(canonical("/corrections"), homeLastModified()));
+        urls.add(new SitemapEntry(canonical("/contact"), homeLastModified()));
         registryService.listPublishedStateGuides()
                 .forEach(guide -> urls.add(new SitemapEntry(
                         canonical("/states/" + guide.state() + "/backflow-testing"),
@@ -533,10 +648,18 @@ public class SiteController {
 
     @GetMapping(value = "/robots.txt", produces = MediaType.TEXT_PLAIN_VALUE)
     @ResponseBody
-    public String robots() {
+    public String robots(HttpServletRequest request) {
+        if (siteVisibilityService.shouldForceNoindex(request)) {
+            return siteVisibilityService.stagingRobotsTxt();
+        }
         return "User-agent: *\n"
                 + "Allow: /\n\n"
                 + "Sitemap: " + canonical("/sitemap.xml") + "\n";
+    }
+
+    private String emptySitemap() {
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+                + "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"></urlset>";
     }
 
     private PageMeta page(String title, String description, String path) {
@@ -657,6 +780,165 @@ public class SiteController {
         }
         preferred.add("backflow-test-cost");
         return guidesByPreferredSlugs(preferred, 5, null);
+    }
+
+    private List<String> providerCoverageStates(List<UtilityRecord> utilities) {
+        return utilities.stream()
+                .map(UtilityRecord::state)
+                .map(this::stateLabel)
+                .distinct()
+                .toList();
+    }
+
+    private List<String> providerCoverageCities(List<UtilityRecord> utilities) {
+        return utilities.stream()
+                .flatMap(utility -> utility.serviceAreaCities().stream())
+                .filter(city -> city != null && !city.isBlank())
+                .distinct()
+                .limit(10)
+                .toList();
+    }
+
+    private List<String> providerCoverageCounties(List<UtilityRecord> utilities) {
+        return utilities.stream()
+                .flatMap(utility -> utility.serviceAreaCounties().stream())
+                .filter(county -> county != null && !county.isBlank())
+                .distinct()
+                .limit(10)
+                .toList();
+    }
+
+    private List<String> providerServiceTypes(List<UtilityRecord> utilities) {
+        LinkedHashSet<String> serviceTypes = new LinkedHashSet<>(List.of(
+                "Backflow testing",
+                "Backflow compliance support",
+                "Annual testing coordination",
+                "Failed test follow-up"
+        ));
+        if (utilities.stream().anyMatch(UtilityRecord::supportsIrrigationPage)) {
+            serviceTypes.add("Irrigation backflow testing");
+        }
+        if (utilities.stream().anyMatch(UtilityRecord::supportsFireLinePage)) {
+            serviceTypes.add("Fire line backflow testing");
+        }
+        return List.copyOf(serviceTypes);
+    }
+
+    private int providerOfficialRouteCount(List<UtilityRecord> utilities) {
+        return (int) utilities.stream()
+                .filter(UtilityRecord::supportsApprovedTestersPage)
+                .count();
+    }
+
+    private int providerDirectoryRouteCount(List<UtilityRecord> utilities) {
+        return (int) utilities.stream()
+                .filter(utility -> utility.supportsFindATesterPage() && !utility.supportsApprovedTestersPage())
+                .count();
+    }
+
+    private int providerSubmissionWorkflowCount(List<UtilityRecord> utilities) {
+        return (int) utilities.stream()
+                .filter(utility -> !utility.submissionMethods().isEmpty())
+                .count();
+    }
+
+    private LocalDate providerLatestUtilityVerification(List<UtilityRecord> utilities) {
+        return utilities.stream()
+                .map(UtilityRecord::lastVerified)
+                .filter(java.util.Objects::nonNull)
+                .max(LocalDate::compareTo)
+                .orElse(null);
+    }
+
+    private String providerStructuredData(
+            ProviderRecord provider,
+            List<UtilityRecord> utilities,
+            List<String> coverageStates,
+            List<String> coverageCities,
+            List<String> coverageCounties
+    ) {
+        String canonicalProviderUrl = canonical(providerPath(provider));
+        StringBuilder json = new StringBuilder();
+        json.append("{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\"")
+                .append(",\"@id\":\"").append(jsonEscape(canonicalProviderUrl)).append("#provider\"")
+                .append(",\"name\":\"").append(jsonEscape(provider.providerName())).append("\"")
+                .append(",\"description\":\"").append(jsonEscape(provider.pageLabel())).append("\"")
+                .append(",\"url\":\"").append(jsonEscape(canonicalProviderUrl)).append("\"")
+                .append(",\"image\":\"").append(jsonEscape(canonical("/images/design/provider-map.jpg"))).append("\"")
+                .append(",\"keywords\":\"").append(jsonEscape(String.join(", ", providerServiceTypes(utilities)))).append("\"")
+                .append(",\"disambiguatingDescription\":\"")
+                .append(jsonEscape(provider.isSponsored()
+                        ? "Sponsored provider profile routed from mapped utility pages."
+                        : "Public provider profile grounded in utility or authority sources."))
+                .append("\"")
+                .append(",\"serviceType\":").append(jsonStringArray(providerServiceTypes(utilities)))
+                .append(",\"knowsAbout\":").append(jsonStringArray(List.of(
+                        "Backflow testing",
+                        "Cross-connection control",
+                        "Utility compliance",
+                        "Failed test workflow"
+                )));
+
+        if (provider.lastReviewed() != null) {
+            json.append(",\"dateModified\":\"").append(provider.lastReviewed()).append("\"");
+        }
+        if (provider.phone() != null && !provider.phone().isBlank()) {
+            json.append(",\"telephone\":\"").append(jsonEscape(provider.phone())).append("\"");
+        }
+        if (provider.email() != null && !provider.email().isBlank()) {
+            json.append(",\"email\":\"").append(jsonEscape(provider.email())).append("\"");
+        }
+
+        List<String> sameAs = new ArrayList<>();
+        if (provider.siteUrl() != null && !provider.siteUrl().isBlank()) {
+            sameAs.add(provider.siteUrl());
+        }
+        if (provider.officialApprovalSourceUrl() != null && !provider.officialApprovalSourceUrl().isBlank()) {
+            sameAs.add(provider.officialApprovalSourceUrl());
+        }
+        if (!sameAs.isEmpty()) {
+            json.append(",\"sameAs\":").append(jsonStringArray(sameAs));
+        }
+
+        String areaServed = providerAreaServedJson(coverageStates, coverageCities, coverageCounties);
+        if (areaServed != null) {
+            json.append(",\"areaServed\":").append(areaServed);
+        }
+        if (provider.officialApprovalSourceUrl() != null && !provider.officialApprovalSourceUrl().isBlank()) {
+            json.append(",\"subjectOf\":{\"@type\":\"WebPage\",\"url\":\"")
+                    .append(jsonEscape(provider.officialApprovalSourceUrl()))
+                    .append("\"}");
+        }
+        json.append("}");
+        return json.toString();
+    }
+
+    private String providerAreaServedJson(
+            List<String> coverageStates,
+            List<String> coverageCities,
+            List<String> coverageCounties
+    ) {
+        List<String> entries = new ArrayList<>();
+        for (String state : coverageStates) {
+            entries.add("{\"@type\":\"AdministrativeArea\",\"name\":\"" + jsonEscape(state) + "\"}");
+        }
+        for (String city : coverageCities) {
+            entries.add("{\"@type\":\"City\",\"name\":\"" + jsonEscape(city) + "\"}");
+        }
+        for (String county : coverageCounties) {
+            entries.add("{\"@type\":\"AdministrativeArea\",\"name\":\"" + jsonEscape(county) + "\"}");
+        }
+        if (entries.isEmpty()) {
+            return null;
+        }
+        return "[" + String.join(",", entries) + "]";
+    }
+
+    private String jsonStringArray(List<String> values) {
+        return values.stream()
+                .filter(value -> value != null && !value.isBlank())
+                .map(value -> "\"" + jsonEscape(value) + "\"")
+                .collect(Collectors.joining(",", "[", "]"));
     }
 
     private List<GuideRecord> metroGuides(MetroRecord metro) {

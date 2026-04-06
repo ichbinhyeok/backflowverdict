@@ -6,7 +6,7 @@
 @param String selectedIssueType = ""
 @param String pageFamily = ""
 @param int activeSponsorCount = 0
-@param java.util.List<String> activeSponsorEmails = java.util.List.of()
+@param String formError = ""
 
 @template.layouts.app(page = page, content = @`
     <section class="page-hero">
@@ -63,6 +63,17 @@
                         </div>
                     </div>
                 </article>
+
+                <article class="detail-card">
+                    <span class="eyebrow">Routing notice</span>
+                    <h2>What you are consenting to</h2>
+                    <p>BackflowPath stores your request details so the team can review the utility context, triage the issue, and route follow-up when sponsor coverage exists.</p>
+                    <ul class="detail-list">
+                        <li>The request is stored with utility context and referrer details for internal review.</li>
+                        <li>BackflowPath does not resell the same request to multiple providers without your consent.</li>
+                        <li>Read the full <a href="/privacy">privacy and lead routing notice</a> before submitting.</li>
+                    </ul>
+                </article>
             </div>
 
             <article class="detail-card">
@@ -76,11 +87,20 @@
                     @endif
                 </div>
 
+                @if (formError != null && !formError.isBlank())
+                    <p class="form-error">${formError}</p>
+                @endif
+
                 <form method="post" action="/leads" class="stack-form">
                     <input type="hidden" name="utilityId" value="${utilityId}">
                     <input type="hidden" name="utilityName" value="${utilityName}">
                     <input type="hidden" name="sourcePage" value="${sourcePage}">
                     <input type="hidden" name="pageFamily" value="${pageFamily}">
+
+                    <div class="field field--honeypot" aria-hidden="true">
+                        <span>Company website</span>
+                        <input name="companyWebsite" type="text" tabindex="-1" autocomplete="off">
+                    </div>
 
                     <label class="field">
                         <span>Full name</span>
@@ -131,22 +151,19 @@
                         <textarea name="notes" rows="5" placeholder="Add the notice, deadline, assembly type, or failed-test context."></textarea>
                     </label>
 
+                    <label class="field field--checkbox">
+                        <span>Consent</span>
+                        <div class="checkbox-field">
+                            <input name="consentToRouting" type="checkbox" value="yes" required>
+                            <p>I agree that BackflowPath may store this request, review the utility context, and contact me about routing or follow-up. I understand the request is handled under the <a href="/privacy">privacy and lead routing notice</a>.</p>
+                        </div>
+                    </label>
+
                     <div class="hero__actions">
                         <button class="button button--primary" type="submit">Save lead request</button>
                         <a class="button button--secondary" href="/">Back to site</a>
                     </div>
                 </form>
-
-                @if (!activeSponsorEmails.isEmpty())
-                    <article class="detail-card" style="margin-top: 1.2rem; padding: 1rem;">
-                        <span class="eyebrow">Active sponsor emails</span>
-                        <ul class="detail-list">
-                            @for (var emailAddress : activeSponsorEmails)
-                                <li>${emailAddress}</li>
-                            @endfor
-                        </ul>
-                    </article>
-                @endif
             </article>
         </div>
     </section>

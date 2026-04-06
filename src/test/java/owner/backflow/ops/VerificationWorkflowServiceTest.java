@@ -37,7 +37,7 @@ class VerificationWorkflowServiceTest {
         opsIssueService.reload();
         SourceEvidenceService sourceEvidenceService = new SourceEvidenceService(dataProperties);
         ProviderCommercialStateRepository providerCommercialStateRepository = new ProviderCommercialStateRepository(
-                new AppLeadsProperties(tempWorkspaceRoot.resolve("storage").resolve("leads").toString())
+                new AppLeadsProperties(tempWorkspaceRoot.resolve("storage").resolve("leads").toString(), 600, 3)
         );
 
         BackflowRegistryService registryService = new BackflowRegistryService(

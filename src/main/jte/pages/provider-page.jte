@@ -9,6 +9,14 @@
 @param java.util.List<MetroRecord> metros = java.util.List.of()
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 @param UtilityRecord primaryUtility = null
+@param java.util.List<String> coverageStates = java.util.List.of()
+@param java.util.List<String> coverageCities = java.util.List.of()
+@param java.util.List<String> coverageCounties = java.util.List.of()
+@param java.util.List<String> providerServiceTypes = java.util.List.of()
+@param int providerOfficialRouteCount = 0
+@param int providerDirectoryRouteCount = 0
+@param int providerSubmissionWorkflowCount = 0
+@param java.time.LocalDate latestUtilityVerification = null
 
 @template.layouts.app(page = page, content = @`
     <section class="page-hero">
@@ -96,6 +104,67 @@
                         <li><a href="${provider.officialApprovalSourceUrl()}">Authority source</a></li>
                     @endif
                     <li>Last reviewed ${provider.lastReviewed().toString()}</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <section class="section section--tight">
+        <div class="container split-panels">
+            <article class="detail-card">
+                <span class="eyebrow">Entity signals</span>
+                <h2>Contact and public web signals</h2>
+                <ul class="detail-list">
+                    @if (provider.phone() != null && !provider.phone().isBlank())
+                        <li><strong>Phone:</strong> ${provider.phone()}</li>
+                    @endif
+                    @if (provider.email() != null && !provider.email().isBlank())
+                        <li><strong>Email:</strong> ${provider.email()}</li>
+                    @endif
+                    @if (provider.siteUrl() != null && !provider.siteUrl().isBlank())
+                        <li><strong>Website:</strong> <a href="${provider.siteUrl()}">${provider.siteUrl()}</a></li>
+                    @else
+                        <li><strong>Website:</strong> No public website is stored for this provider profile yet.</li>
+                    @endif
+                    @if (provider.officialApprovalSourceUrl() != null && !provider.officialApprovalSourceUrl().isBlank())
+                        <li><strong>Authority source:</strong> <a href="${provider.officialApprovalSourceUrl()}">${provider.officialApprovalSourceUrl()}</a></li>
+                    @endif
+                </ul>
+            </article>
+
+            <article class="detail-card">
+                <span class="eyebrow">Service area</span>
+                <h2>Area served across mapped utility pages</h2>
+                <div class="stat-grid">
+                    <div class="metadata-block">
+                        <strong>States</strong>
+                        <span>${coverageStates.isEmpty() ? "Not mapped" : String.join(", ", coverageStates)}</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Cities</strong>
+                        <span>${coverageCities.isEmpty() ? "Not mapped" : String.join(", ", coverageCities)}</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Counties</strong>
+                        <span>${coverageCounties.isEmpty() ? "Not mapped" : String.join(", ", coverageCounties)}</span>
+                    </div>
+                </div>
+                @if (!providerServiceTypes.isEmpty())
+                    <ul class="detail-list">
+                        @for (var serviceType : providerServiceTypes)
+                            <li>${serviceType}</li>
+                        @endfor
+                    </ul>
+                @endif
+                <h3>Verification basis</h3>
+                <ul class="detail-list">
+                    <li>${utilities.size()} mapped utility pages</li>
+                    <li>${providerOfficialRouteCount} mapped utilities with an official tester route</li>
+                    <li>${providerDirectoryRouteCount} mapped utilities using a directory route</li>
+                    <li>${providerSubmissionWorkflowCount} mapped utilities with structured submission steps</li>
+                    @if (latestUtilityVerification != null)
+                        <li>Latest mapped utility verification: ${latestUtilityVerification.toString()}</li>
+                    @endif
                 </ul>
             </article>
         </div>

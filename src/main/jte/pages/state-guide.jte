@@ -28,7 +28,7 @@
                         <span>${stateGuide.state()}</span>
                     </div>
                     <div class="metadata-block">
-                        <strong>Reviewer</strong>
+                        <strong>Verification code</strong>
                         <span>${stateGuide.reviewerInitials()}</span>
                     </div>
                     <div class="metadata-block">

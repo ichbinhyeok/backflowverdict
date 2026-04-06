@@ -64,7 +64,7 @@
                         <ul class="detail-list">
                             <li>${utilityCounts.getOrDefault(stateGuide.state(), 0)} live utility pages</li>
                             <li>Last verified ${stateGuide.lastVerified().toString()}</li>
-                            <li>${stateGuide.reviewerInitials()} reviewer initials</li>
+                            <li>${stateGuide.reviewerInitials()} verification code</li>
                         </ul>
                         <div class="card-actions">
                             <a class="button button--secondary" href="/states/${stateGuide.state()}/backflow-testing">Open state guide</a>

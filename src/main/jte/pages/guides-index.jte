@@ -64,7 +64,7 @@
                         <p>${guide.description()}</p>
                         <ul class="detail-list">
                             <li>Last reviewed ${guide.lastReviewed().toString()}</li>
-                            <li>${guide.reviewerInitials()} reviewer initials</li>
+                            <li>${guide.reviewerInitials()} verification code</li>
                         </ul>
                         <div class="card-actions">
                             <a class="button button--secondary" href="/guides/${guide.slug()}">Open guide</a>
