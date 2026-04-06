@@ -101,13 +101,27 @@ jobs:
               if curl -fsS "http://127.0.0.1:8093/healthz"; then
                 echo
                 echo "BackflowPath health check passed on attempt $attempt."
-                exit 0
+                break
               fi
 
               echo "Health check not ready yet, attempt $attempt/24."
               sleep 5
             done
 
-            echo "BackflowPath health check failed after deploy."
-            docker compose logs --tail=200 app
-            exit 1
+            if ! curl -fsS "http://127.0.0.1:8093/healthz" >/dev/null; then
+              echo "BackflowPath health check failed after deploy."
+              docker compose logs --tail=200 app
+              exit 1
+            fi
+
+            if curl -fsSL -H "Host: backflowpath.com" "http://127.0.0.1/" > /tmp/backflowpath-public-check.html; then
+              if ! grep -qi "BackflowPath" /tmp/backflowpath-public-check.html; then
+                echo "Host-routed public check did not return BackflowPath content."
+                echo "This usually means nginx or another reverse proxy is still pointing backflowpath.com at a different app."
+                sed -n '1,120p' /tmp/backflowpath-public-check.html
+                exit 1
+              fi
+              echo "Host-routed public check returned BackflowPath content."
+            else
+              echo "Skipped host-routed public check because http://127.0.0.1/ was not reachable on the OCI host."
+            fi

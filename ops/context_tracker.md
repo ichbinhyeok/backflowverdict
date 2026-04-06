@@ -62,6 +62,8 @@
 - Agents may expand into additional representative states when those utilities meet the same sourcing, verification, and stale-page gates.
 - Public brand and default hostname are now `BackflowPath` and `backflowpath.com`; package root remains `owner.backflow`.
 - Added an nginx reference config under `ops/nginx/` and clarified deployment docs because the app is healthy on host port `8093`, but the public `backflowpath.com` hostname is still serving another app through the edge routing layer.
+- Hardened the GitHub Actions deploy workflow to verify not just `127.0.0.1:8093/healthz` but also a host-routed `Host: backflowpath.com` request on the OCI host, so a wrong nginx upstream now fails deploy visibly.
+- Direct OCI inspection confirmed the root cause: `/etc/nginx/conf.d/backflow-verdict.conf` was still using `server_name backflowverdict.com`, so `backflowpath.com` fell through to the first default vhost and rendered AutoMoneyPit. The server-side nginx config now points `backflowpath.com` and `www.backflowpath.com` to `127.0.0.1:8093`.
 - Java stays on 21 for this project because Spring Boot 4 requires it; the new Docker and OCI deploy path follows that runtime.
 
 ## What changed this session

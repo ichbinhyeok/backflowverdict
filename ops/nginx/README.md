@@ -1,6 +1,6 @@
 # BackflowPath nginx notes
 
-Use `backflowpath.conf` when the OCI box runs the Docker container on host port `8093` and nginx fronts the public hostname.
+Use `backflowpath.conf` when the OCI box runs the Docker container on host port `8093` and nginx fronts the public hostname on port `80` behind Cloudflare.
 
 ## What this fixes
 - Routes `backflowpath.com` and `www.backflowpath.com` to `127.0.0.1:8093`
@@ -12,9 +12,8 @@ If `https://backflowpath.com/` returns another site, but GitHub Actions shows th
 
 ## Install
 1. Copy `backflowpath.conf` to `/etc/nginx/conf.d/backflowpath.conf` or your distro's sites-available path.
-2. Replace the certificate paths with the real cert or Cloudflare origin cert paths.
-3. Run `sudo nginx -t`.
-4. Reload nginx with `sudo systemctl reload nginx`.
+2. Run `sudo nginx -t`.
+3. Reload nginx with `sudo systemctl reload nginx`.
 
 ## Verify on the OCI host
 ```bash

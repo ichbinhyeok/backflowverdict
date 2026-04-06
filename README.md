@@ -51,4 +51,5 @@ A utility-first compliance site that helps owners and managers answer whether ba
 - Runtime memory cap: `mem_limit: 512m` in `docker-compose.yml`
 - This project stays on Java 21 because Spring Boot 4 requires it.
 - Public hostname routing is a separate layer from the container deploy. The app can be healthy on `127.0.0.1:8093` while `https://backflowpath.com/` still serves another site if nginx or Cloudflare is pointing at the wrong upstream.
+- The deploy workflow now checks both the container health endpoint and a host-routed `Host: backflowpath.com` request on the OCI host so a wrong public upstream fails the deploy instead of looking healthy.
 - nginx reference config: `ops/nginx/backflowpath.conf`
