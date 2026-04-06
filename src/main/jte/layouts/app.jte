@@ -44,13 +44,13 @@
         </script>
     @endif
     @if (SiteRuntimeConfig.organizationStructuredData() != null)
-        <script type="application/ld+json">${SiteRuntimeConfig.organizationStructuredData()}</script>
+        <script type="application/ld+json">$unsafe{SiteRuntimeConfig.organizationStructuredData()}</script>
     @endif
     @if (SiteRuntimeConfig.websiteStructuredData() != null)
-        <script type="application/ld+json">${SiteRuntimeConfig.websiteStructuredData()}</script>
+        <script type="application/ld+json">$unsafe{SiteRuntimeConfig.websiteStructuredData()}</script>
     @endif
     @if (page.structuredDataJson() != null)
-        <script type="application/ld+json">${page.structuredDataJson()}</script>
+        <script type="application/ld+json">$unsafe{page.structuredDataJson()}</script>
     @endif
 </head>
 <body class="site-body">
