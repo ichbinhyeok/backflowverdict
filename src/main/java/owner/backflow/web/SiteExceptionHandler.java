@@ -14,8 +14,8 @@ public class SiteExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handleNotFound(NotFoundException exception, HttpServletRequest request, Model model) {
         model.addAttribute("page", new PageMeta(
-                "Page not found | BackflowVerdict",
-                "The requested BackflowVerdict page could not be found.",
+                "Page not found | BackflowPath",
+                "The requested BackflowPath page could not be found.",
                 request.getRequestURL().toString(),
                 true
         ));

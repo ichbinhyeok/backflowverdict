@@ -1,0 +1,21 @@
+[Unit]
+Description=BackflowPath Spring Boot application
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=backflow
+Group=backflow
+WorkingDirectory=/opt/backflowpath
+EnvironmentFile=/etc/backflowpath/backflowpath.env
+ExecStart=/bin/bash -lc 'exec /usr/bin/java ${JAVA_OPTS:-} -jar /opt/backflowpath/backflowpath.jar'
+SuccessExitStatus=143
+Restart=always
+RestartSec=5
+TimeoutStopSec=20
+StandardOutput=append:/opt/backflowpath/logs/app.log
+StandardError=append:/opt/backflowpath/logs/app-error.log
+
+[Install]
+WantedBy=multi-user.target

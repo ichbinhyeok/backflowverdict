@@ -1,0 +1,10 @@
+.git
+.github
+.gradle
+build
+output
+.playwright-cli
+storage/leads
+storage/logs
+*.log
+bootrun_*.log

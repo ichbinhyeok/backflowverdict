@@ -1,0 +1,94 @@
+name: Deploy BackflowPath to OCI
+
+on:
+  push:
+    branches: ["main"]
+
+concurrency:
+  group: backflowpath-production
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push ARM64 image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/arm64
+          push: true
+          tags: |
+            shinhyeok22/backflow:latest
+            shinhyeok22/backflow:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Upload deploy assets to OCI
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.OCI_HOST }}
+          username: ${{ secrets.OCI_USERNAME }}
+          key: ${{ secrets.OCI_KEY }}
+          source: "docker-compose.yml,data,storage/snapshots"
+          target: "~/deploy/backflowpath/release"
+          overwrite: true
+
+      - name: Deploy on OCI host
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.OCI_HOST }}
+          username: ${{ secrets.OCI_USERNAME }}
+          key: ${{ secrets.OCI_KEY }}
+          script: |
+            set -euo pipefail
+
+            APP_DIR="$HOME/deploy/backflowpath"
+            RELEASE_DIR="$APP_DIR/release"
+
+            mkdir -p "$APP_DIR/data" "$APP_DIR/storage/snapshots" "$APP_DIR/leads" "$APP_DIR/ops" "$APP_DIR/logs"
+
+            if command -v rsync >/dev/null 2>&1; then
+              rsync -a --delete "$RELEASE_DIR/data/" "$APP_DIR/data/"
+              rsync -a --delete "$RELEASE_DIR/storage/snapshots/" "$APP_DIR/storage/snapshots/"
+            else
+              cp -R "$RELEASE_DIR/data/." "$APP_DIR/data/"
+              cp -R "$RELEASE_DIR/storage/snapshots/." "$APP_DIR/storage/snapshots/"
+            fi
+
+            cp "$RELEASE_DIR/docker-compose.yml" "$APP_DIR/docker-compose.yml"
+
+            cat > "$APP_DIR/.env" <<EOF
+            IMAGE_NAME=shinhyeok22/backflow:latest
+            SPRING_PROFILES_ACTIVE=prod
+            APP_SITE_BASE_URL=https://backflowpath.com
+            APP_ADMIN_USERNAME=${{ secrets.APP_ADMIN_USERNAME }}
+            APP_ADMIN_PASSWORD=${{ secrets.APP_ADMIN_PASSWORD }}
+            APP_OPS_VERIFICATION_TOKEN=${{ secrets.APP_OPS_VERIFICATION_TOKEN }}
+            APP_DELIVERY_EMAIL_ENABLED=${{ secrets.APP_DELIVERY_EMAIL_ENABLED != '' && secrets.APP_DELIVERY_EMAIL_ENABLED || 'false' }}
+            APP_DELIVERY_FROM_EMAIL=${{ secrets.APP_DELIVERY_FROM_EMAIL }}
+            APP_DELIVERY_FROM_NAME=BackflowPath
+            APP_DELIVERY_REPLY_TO=${{ secrets.APP_DELIVERY_REPLY_TO }}
+            JAVA_OPTS=-XX:+UseG1GC -Xms256m -Xmx384m -Xss512k -Djava.security.egd=file:/dev/./urandom
+            EOF
+
+            cd "$APP_DIR"
+            docker compose pull
+            docker compose up -d --remove-orphans
+            docker compose ps

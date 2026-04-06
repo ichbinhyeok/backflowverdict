@@ -1,4 +1,4 @@
-# BackflowVerdict
+# BackflowPath
 
 **Date:** 2026-04-04 (Asia/Seoul)  
 **Purpose:** This folder is a self-contained design packet for building a US-focused **backflow testing and compliance decision site** with local-rule SEO and direct sponsor monetization.
@@ -43,3 +43,10 @@ A utility-first compliance site that helps owners and managers answer whether ba
 - No database is required for launch.
 - Texas is the current seeded baseline because the codebase already has the deepest utility coverage there, but the product strategy is representative multi-state expansion, not Texas-only depth forever.
 - Agents may add new states when those utilities satisfy the same official-source, verification, and stale-page rules used for Texas.
+
+## Deployment
+- Container image: `shinhyeok22/backflow`
+- Runtime port mapping: external `8093` to internal `8080`
+- Deploy path: GitHub Actions workflow at `.github/workflows/deploy.yml`
+- Runtime memory cap: `mem_limit: 512m` in `docker-compose.yml`
+- This project stays on Java 21 because Spring Boot 4 requires it.

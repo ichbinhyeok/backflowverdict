@@ -61,15 +61,16 @@ class SiteControllerTest {
     }
 
     @Test
-    void sitemapAndCanonicalUseRequestHostWhenBaseUrlIsUnset() throws Exception {
+    void sitemapAndCanonicalUseConfiguredBackflowPathBaseUrl() throws Exception {
         mockMvc.perform(get("/sitemap.xml").header("Host", "review.backflow.test"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("http://review.backflow.test/")))
+                .andExpect(content().string(containsString("https://backflowpath.com/")))
+                .andExpect(content().string(org.hamcrest.Matchers.not(containsString("http://review.backflow.test/"))))
                 .andExpect(content().string(org.hamcrest.Matchers.not(containsString("http://localhost:8080/"))));
 
         mockMvc.perform(get("/utilities/texas/dallas-water-utilities/").header("Host", "review.backflow.test"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("<link rel=\"canonical\" href=\"http://review.backflow.test/utilities/texas/dallas-water-utilities/\">")));
+                .andExpect(content().string(containsString("<link rel=\"canonical\" href=\"https://backflowpath.com/utilities/texas/dallas-water-utilities/\">")));
     }
 
     @Test
@@ -936,7 +937,7 @@ class SiteControllerTest {
 
         mockMvc.perform(get("/robots.txt"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Sitemap: http://localhost/sitemap.xml")));
+                .andExpect(content().string(containsString("Sitemap: https://backflowpath.com/sitemap.xml")));
     }
 
     @Test

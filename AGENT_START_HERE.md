@@ -1,7 +1,7 @@
 # Agent Start Here
 
 ## Project
-BackflowVerdict
+BackflowPath
 
 ## Package root
 `owner.backflow`

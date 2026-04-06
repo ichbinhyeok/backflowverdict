@@ -58,7 +58,7 @@ public class SiteController {
             }
         }
         model.addAttribute("page", page(
-                "BackflowVerdict | Find local backflow testing requirements",
+                "BackflowPath | Find local backflow testing requirements",
                 "Find utility-specific backflow testing requirements, annual testing steps, failed-test guidance, and clearly labeled tester routes.",
                 "/",
                 breadcrumbStructuredData(List.of(new BreadcrumbItem("Home", canonical("/"))))
@@ -93,7 +93,7 @@ public class SiteController {
                 .mapToInt(Integer::intValue)
                 .sum();
         model.addAttribute("page", page(
-                "State backflow guides | BackflowVerdict",
+                "State backflow guides | BackflowPath",
                 "Browse source-backed state backflow guides that route into utility-specific testing requirements and next-step pages.",
                 "/states",
                 breadcrumbStructuredData(List.of(
@@ -122,7 +122,7 @@ public class SiteController {
                 .mapToInt(Integer::intValue)
                 .sum();
         model.addAttribute("page", page(
-                "Metro backflow coverage | BackflowVerdict",
+                "Metro backflow coverage | BackflowPath",
                 "Browse metro backflow pages that group nearby utility rules, public provider profiles, and local support guides.",
                 "/metros",
                 breadcrumbStructuredData(List.of(
@@ -141,7 +141,7 @@ public class SiteController {
     public String guidesIndex(Model model) {
         List<GuideRecord> guides = registryService.listPublishedGuides();
         model.addAttribute("page", page(
-                "Backflow guides | BackflowVerdict",
+                "Backflow guides | BackflowPath",
                 "Browse practical backflow guides that explain recurring rule patterns without replacing utility-specific authority pages.",
                 "/guides",
                 breadcrumbStructuredData(List.of(
@@ -162,7 +162,7 @@ public class SiteController {
                 .orElseThrow(() -> new NotFoundException("State guide not found."));
         List<UtilityRecord> utilities = registryService.listPublishedUtilitiesForState(state);
         model.addAttribute("page", page(
-                stateGuide.title() + " | BackflowVerdict",
+                stateGuide.title() + " | BackflowPath",
                 stateGuide.description(),
                 "/states/" + state + "/backflow-testing",
                 breadcrumbStructuredData(List.of(
@@ -185,7 +185,7 @@ public class SiteController {
         List<MetroRecord> relatedMetros = relatedMetrosForUtilities(relatedUtilities);
         List<StateGuideRecord> stateGuides = relatedStateGuidesForUtilities(relatedUtilities);
         model.addAttribute("page", page(
-                guide.title() + " | BackflowVerdict",
+                guide.title() + " | BackflowPath",
                 guide.description(),
                 "/guides/" + guide.slug(),
                 breadcrumbStructuredData(List.of(
@@ -212,7 +212,7 @@ public class SiteController {
                 .orElseThrow(() -> new NotFoundException("Metro page not found."));
         List<ProviderRecord> providers = registryService.findProvidersForMetro(metro);
         model.addAttribute("page", page(
-                metro.title() + " | BackflowVerdict",
+                metro.title() + " | BackflowPath",
                 metro.description(),
                 metroPath(metro),
                 breadcrumbStructuredData(List.of(
@@ -238,7 +238,7 @@ public class SiteController {
                 .filter(metro -> utilities.stream().anyMatch(utility -> metro.utilityIds().contains(utility.utilityId())))
                 .toList();
         model.addAttribute("page", page(
-                provider.providerName() + " | BackflowVerdict",
+                provider.providerName() + " | BackflowPath",
                 provider.pageLabel(),
                 providerPath(provider),
                 breadcrumbStructuredData(List.of(
@@ -265,7 +265,7 @@ public class SiteController {
                 .orElseThrow(() -> new NotFoundException("Utility page not found."));
         List<FaqItem> faqItems = utilityFaqItems(utility);
         model.addAttribute("page", page(
-                utility.utilityName() + " backflow testing requirements | BackflowVerdict",
+                utility.utilityName() + " backflow testing requirements | BackflowPath",
                 utility.verdictSummary(),
                 utilityPath(utility),
                 combineStructuredData(
@@ -320,7 +320,7 @@ public class SiteController {
         UtilityRecord utility = registryService.findPublishedUtility(state, utilitySlug)
                 .orElseThrow(() -> new NotFoundException("Failed-test page not found."));
         model.addAttribute("page", page(
-                utility.utilityName() + " failed backflow test | BackflowVerdict",
+                utility.utilityName() + " failed backflow test | BackflowPath",
                 "Repair, retest, and submission next steps for a failed backflow test in " + utility.utilityName() + ".",
                 utilityPath(utility) + "failed-test",
                 breadcrumbStructuredData(List.of(
@@ -354,7 +354,7 @@ public class SiteController {
                 .orElseThrow(() -> new NotFoundException("Approved tester page not available for this utility."));
         List<ProviderRecord> providers = registryService.findProvidersForUtility(utility.utilityId());
         model.addAttribute("page", page(
-                utility.utilityName() + " approved testers | BackflowVerdict",
+                utility.utilityName() + " approved testers | BackflowPath",
                 "Official tester list and clearly labeled sponsor directory for " + utility.utilityName() + ".",
                 utilityPath(utility) + "approved-testers",
                 breadcrumbStructuredData(List.of(
@@ -385,7 +385,7 @@ public class SiteController {
             throw new NotFoundException("Find-a-tester page not available for this utility.");
         }
         model.addAttribute("page", page(
-                utility.utilityName() + " find a tester | BackflowVerdict",
+                utility.utilityName() + " find a tester | BackflowPath",
                 "Non-official provider directory for " + utility.utilityName() + ", kept separate from authority guidance.",
                 utilityPath(utility) + "find-a-tester",
                 breadcrumbStructuredData(List.of(
@@ -461,7 +461,7 @@ public class SiteController {
         }
 
         model.addAttribute("page", new PageMeta(
-                alias.city() + " backflow testing | BackflowVerdict",
+                alias.city() + " backflow testing | BackflowPath",
                 "City alias bridge page routing " + alias.city() + " searches to the governing utility.",
                 canonical("/cities/" + state + "/" + citySlug + "/backflow-testing"),
                 alias.aliasMode() == AliasMode.NOINDEX_BRIDGE,
@@ -589,7 +589,7 @@ public class SiteController {
             String path
     ) {
         model.addAttribute("page", page(
-                titleStem + " | BackflowVerdict",
+                titleStem + " | BackflowPath",
                 description,
                 path,
                 combineStructuredData(

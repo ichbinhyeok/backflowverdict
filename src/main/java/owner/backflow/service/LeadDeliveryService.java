@@ -135,7 +135,7 @@ public class LeadDeliveryService {
 
     private String buildEmailBody(LeadRecord lead, ProviderRecord provider) {
         return """
-                A new BackflowVerdict lead is ready for review.
+                A new BackflowPath lead is ready for review.
 
                 Provider: %s
                 Utility: %s

@@ -149,13 +149,13 @@ class AdminControllerTest {
 
         mockMvc.perform(get("/admin/export.json").session(session))
                 .andExpect(status().isOk())
-                .andExpect(header().string("Content-Disposition", containsString("backflowverdict-leads.json")))
+                .andExpect(header().string("Content-Disposition", containsString("backflowpath-leads.json")))
                 .andExpect(content().string(containsString("=Jordan Lee")))
                 .andExpect(content().string(containsString("\"pageFamily\"")));
 
         mockMvc.perform(get("/admin/export.csv").session(session))
                 .andExpect(status().isOk())
-                .andExpect(header().string("Content-Disposition", containsString("backflowverdict-leads.csv")))
+                .andExpect(header().string("Content-Disposition", containsString("backflowpath-leads.csv")))
                 .andExpect(content().string(containsString("'=Jordan Lee")))
                 .andExpect(content().string(containsString("'@Need a quote this week.")))
                 .andExpect(content().string(containsString("general-testing")));

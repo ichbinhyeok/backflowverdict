@@ -4,13 +4,13 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 
-APP_NAME="${APP_NAME:-backflowverdict}"
+APP_NAME="${APP_NAME:-backflowpath}"
 APP_USER="${APP_USER:-backflow}"
 APP_GROUP="${APP_GROUP:-backflow}"
-APP_HOME="${APP_HOME:-/opt/backflowverdict}"
+APP_HOME="${APP_HOME:-/opt/backflowpath}"
 APP_JAR_PATH="${APP_JAR_PATH:-}"
-ENV_FILE_PATH="${ENV_FILE_PATH:-/etc/backflowverdict/backflowverdict.env}"
-SERVICE_NAME="${SERVICE_NAME:-backflowverdict}"
+ENV_FILE_PATH="${ENV_FILE_PATH:-/etc/backflowpath/backflowpath.env}"
+SERVICE_NAME="${SERVICE_NAME:-backflowpath}"
 SYSTEMD_UNIT_PATH="/etc/systemd/system/${SERVICE_NAME}.service"
 
 if [[ -z "${APP_JAR_PATH}" ]]; then

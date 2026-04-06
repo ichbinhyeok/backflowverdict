@@ -1,7 +1,7 @@
 # 00 Strategy and Product Architecture
 
 ## 1) One-line thesis
-BackflowVerdict should be a utility-first compliance site for people who already have a backflow problem: they need to know whether testing is required, when it is due, what happens if the device fails, what it will cost, and who can handle it.
+BackflowPath should be a utility-first compliance site for people who already have a backflow problem: they need to know whether testing is required, when it is due, what happens if the device fails, what it will cost, and who can handle it.
 
 ## 2) Why this vertical works
 - EPA treats cross-connection control and backflow prevention as a core drinking-water protection function, but obligations are enforced locally by cities, utilities, and water districts.

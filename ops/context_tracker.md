@@ -43,6 +43,8 @@
 - Provider profile and tester-directory pages have now been rebalanced after a broader desktop QA sweep, so those routes no longer read like sparse add-on surfaces beside the stronger draft-led core pages.
 - The provider CSV now includes real website-backed sponsor prospect inventory across Texas, Arizona, California, Colorado, and Florida metros, and `/admin` now reports sponsor prospect coverage by metro.
 - Sponsor activation is now file-backed through a private commercial-state ledger under the persistent leads root, so contract state survives redeploys without mutating the source CSV.
+- Public product branding, default site base URL, export filenames, delivery defaults, and Oracle deploy assets are now aligned to `BackflowPath` and `https://backflowpath.com`.
+- Docker deployment is now wired for OCI through a checked-in `Dockerfile`, `docker-compose.yml`, and GitHub Actions workflow targeting `shinhyeok22/backflow` on external port `8093` with `mem_limit: 512m`.
 
 ## Latest decisions
 - Package root is `owner.backflow`.
@@ -58,6 +60,8 @@
 - This is an execution-hardening stage, not a pivot.
 - Texas is the seeded baseline state, not a permanent scope boundary.
 - Agents may expand into additional representative states when those utilities meet the same sourcing, verification, and stale-page gates.
+- Public brand and default hostname are now `BackflowPath` and `backflowpath.com`; package root remains `owner.backflow`.
+- Java stays on 21 for this project because Spring Boot 4 requires it; the new Docker and OCI deploy path follows that runtime.
 
 ## What changed this session
 - Merged project-local docs with the independent spec set.
@@ -122,6 +126,8 @@
 - Re-ran packaged-runtime QA on port `8091` using Playwright CLI sessions after the polish pass, and the latest `layout-sweep-mobile-8091.json` now reports zero overflow offenders, zero tiny-text warnings, and zero small tap targets across the representative iPhone SE surface.
 - Ran a second design-polish pass across the public desktop surface, adding stronger card hierarchy, softer key/warm/quiet card variants, refined section-heading rails, and a cleaner guide hero panel that no longer uses the raw slug as the main visual headline.
 - Revalidated the polished surface with a fresh packaged runtime on port `8092`; the current representative desktop screenshots for home, Texas state, Austin utility, and the verification guide are stored under `.playwright-cli/` and reflect the updated hierarchy.
+- Renamed the public product surface to `BackflowPath`, updated the default base URL to `https://backflowpath.com`, switched admin export filenames and delivery defaults to the new brand, and renamed Oracle deploy files plus paths to `backflowpath`.
+- Added a Docker build, persistent-volume compose runtime, and OCI GitHub Actions deploy workflow modeled after the CarMoneyPit deployment pattern but adapted for `BackflowPath`, external port `8093`, internal port `8080`, and persistent `data/storage/leads/ops/logs` mounts.
 
 ## Next recommended tasks
 1. Keep hardening trust and ops defaults, especially admin or ops exposure and freshness or verification discipline.

@@ -37,7 +37,7 @@ public class AdminController {
     ) {
         if (!adminAuthService.isConfigured()) {
             model.addAttribute("page", new PageMeta(
-                    "Admin disabled | BackflowVerdict",
+                    "Admin disabled | BackflowPath",
                     "Admin access is disabled until credentials are configured.",
                     "/admin",
                     true
@@ -49,7 +49,7 @@ public class AdminController {
 
         if (!isAuthenticated(session)) {
             model.addAttribute("page", new PageMeta(
-                    "Admin login | BackflowVerdict",
+                    "Admin login | BackflowPath",
                     "Authenticate to view captured leads.",
                     "/admin",
                     true
@@ -63,7 +63,7 @@ public class AdminController {
 
         java.util.List<LeadInboxItem> inbox = leadAdminService.listInbox();
         model.addAttribute("page", new PageMeta(
-                "Admin leads | BackflowVerdict",
+                "Admin leads | BackflowPath",
                 "View captured leads and lead sources.",
                 "/admin",
                 true
@@ -158,7 +158,7 @@ public class AdminController {
             return redirectToLogin();
         }
         return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"backflowverdict-leads.json\"")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"backflowpath-leads.json\"")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(leadAdminService.exportJson());
     }
@@ -171,7 +171,7 @@ public class AdminController {
         }
         MediaType csvMediaType = new MediaType("text", "csv", StandardCharsets.UTF_8);
         return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"backflowverdict-leads.csv\"")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"backflowpath-leads.csv\"")
                 .contentType(csvMediaType)
                 .body(leadAdminService.exportCsv());
     }

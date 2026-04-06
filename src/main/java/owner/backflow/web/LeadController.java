@@ -39,7 +39,7 @@ public class LeadController {
                 .orElse(normalize(utilityName));
         List<ProviderRecord> activeSponsors = registryService.findActiveSponsorsForUtility(normalizedUtilityId);
         model.addAttribute("page", new PageMeta(
-                "Request backflow help | BackflowVerdict",
+                "Request backflow help | BackflowPath",
                 "Send a lead request for backflow testing, repair, or retest work.",
                 "/leads/new",
                 true
@@ -94,7 +94,7 @@ public class LeadController {
     @GetMapping("/leads/thanks")
     public String thanks(Model model) {
         model.addAttribute("page", new PageMeta(
-                "Request received | BackflowVerdict",
+                "Request received | BackflowPath",
                 "We received your request and stored it for review.",
                 "/leads/thanks",
                 true

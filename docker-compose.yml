@@ -1,0 +1,35 @@
+name: backflowpath
+
+services:
+  app:
+    image: ${IMAGE_NAME:-shinhyeok22/backflow:latest}
+    container_name: backflowpath
+    restart: unless-stopped
+    ports:
+      - "8093:8080"
+    mem_limit: 512m
+    environment:
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-prod}
+      SERVER_PORT: 8080
+      APP_SITE_BASE_URL: ${APP_SITE_BASE_URL:-https://backflowpath.com}
+      APP_DATA_ROOT: /app/data
+      APP_LEADS_ROOT: /app/leads
+      APP_OPS_FRESHNESS_REPORT_PATH: /app/ops/freshness_report.json
+      APP_OPS_VERIFICATION_REPORT_PATH: /app/ops/verification_report.json
+      APP_OPS_ALLOW_LOCAL_REQUESTS: "false"
+      APP_OPS_VERIFICATION_TOKEN: ${APP_OPS_VERIFICATION_TOKEN:-}
+      APP_ADMIN_USERNAME: ${APP_ADMIN_USERNAME:-}
+      APP_ADMIN_PASSWORD: ${APP_ADMIN_PASSWORD:-}
+      APP_DELIVERY_EMAIL_ENABLED: ${APP_DELIVERY_EMAIL_ENABLED:-false}
+      APP_DELIVERY_FROM_EMAIL: ${APP_DELIVERY_FROM_EMAIL:-}
+      APP_DELIVERY_FROM_NAME: ${APP_DELIVERY_FROM_NAME:-BackflowPath}
+      APP_DELIVERY_REPLY_TO: ${APP_DELIVERY_REPLY_TO:-}
+      GG_JTE_DEVELOPMENT_MODE: "false"
+      GG_JTE_USE_PRECOMPILED_TEMPLATES: "true"
+      JAVA_OPTS: ${JAVA_OPTS:--XX:+UseG1GC -Xms256m -Xmx384m -Xss512k -Djava.security.egd=file:/dev/./urandom}
+    volumes:
+      - ./data:/app/data
+      - ./storage:/app/storage
+      - ./leads:/app/leads
+      - ./ops:/app/ops
+      - ./logs:/app/logs

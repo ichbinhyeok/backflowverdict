@@ -24,7 +24,7 @@
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Find local backflow requirements</span>
                 <h1>Know your utility's backflow testing rules before you schedule the work.</h1>
-                <p class="lede">BackflowVerdict organizes backflow requirements by utility so you can see who needs testing, how reports are filed, what happens after a failed test, and whether an official tester list exists. State, metro, and guide pages help you narrow down the right local path without mixing public guidance and provider options.</p>
+                <p class="lede">BackflowPath organizes backflow requirements by utility so you can see who needs testing, how reports are filed, what happens after a failed test, and whether an official tester list exists. State, metro, and guide pages help you narrow down the right local path without mixing public guidance and provider options.</p>
                 <div class="hero__actions">
                     <a class="button button--primary" href="/states">Browse state guides</a>
                     <a class="button button--secondary" href="/metros">Browse metro coverage</a>

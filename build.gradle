@@ -7,7 +7,7 @@ plugins {
 
 group = 'owner.backflow'
 version = '0.0.1-SNAPSHOT'
-description = 'BackflowVerdict utility-first compliance site'
+description = 'BackflowPath utility-first compliance site'
 
 java {
     toolchain {

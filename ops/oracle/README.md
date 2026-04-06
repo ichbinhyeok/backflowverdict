@@ -2,21 +2,21 @@
 
 ## Preconditions
 - Java 21 installed at `/usr/bin/java`
-- `backflowverdict.jar` built with `./gradlew bootJar`
-- app data copied to `/opt/backflowverdict/data`
-- runtime writable paths live under `/opt/backflowverdict/{data,ops,storage,leads,logs}` and should be owned by the `backflow` user
+- `backflowpath.jar` built with `./gradlew bootJar`
+- app data copied to `/opt/backflowpath/data`
+- runtime writable paths live under `/opt/backflowpath/{data,ops,storage,leads,logs}` and should be owned by the `backflow` user
 
 ## Files
 - `install-or-update.sh`: installs the jar, unit file, and env file
-- `backflowverdict.service`: `systemd` unit
-- `backflowverdict.env.example`: production env template
+- `backflowpath.service`: `systemd` unit
+- `backflowpath.env.example`: production env template
 
 ## Typical deploy
 1. Build the jar with `./gradlew bootJar`.
 2. Copy the repo or at least `build/libs`, `data`, and `ops/oracle` to the server.
-3. Review `/etc/backflowverdict/backflowverdict.env`.
+3. Review `/etc/backflowpath/backflowpath.env`.
 4. Run `sudo bash ops/oracle/install-or-update.sh`.
-5. Verify `systemctl status backflowverdict` and `curl http://127.0.0.1:8080/healthz`.
+5. Verify `systemctl status backflowpath` and `curl http://127.0.0.1:8080/healthz`.
 
 ## Notes
 - `/ops/**` should stay private. Use a strong `APP_OPS_VERIFICATION_TOKEN`.
