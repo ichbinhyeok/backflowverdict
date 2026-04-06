@@ -103,6 +103,7 @@ p {
 .brand {
     display: inline-flex;
     align-items: center;
+    min-height: 2.5rem;
     text-decoration: none;
 }
 
@@ -982,6 +983,11 @@ p {
     margin-top: 0.8rem;
 }
 
+.detail-meta a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
 .sidebar-links,
 .support-links,
 .resource-list {
@@ -1265,12 +1271,14 @@ p {
     border: 1px solid rgba(193, 200, 196, 0.7);
     border-radius: 0.8rem;
     background: rgba(242, 244, 246, 0.92);
+    cursor: pointer;
 }
 
 .checkbox-field input[type="checkbox"] {
-    width: 1.15rem;
-    height: 1.15rem;
-    margin-top: 0.18rem;
+    width: 1.35rem;
+    height: 1.35rem;
+    margin-top: 0.08rem;
+    accent-color: var(--primary);
 }
 
 .checkbox-field p {
