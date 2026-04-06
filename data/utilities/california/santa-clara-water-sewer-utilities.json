@@ -1,0 +1,149 @@
+{
+  "utilityId": "santa-clara-water",
+  "utilityName": "City of Santa Clara Water & Sewer Utilities Cross-Connection Control",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "santa-clara-water-sewer-utilities",
+  "state": "california",
+  "serviceAreaCities": [
+    "Santa Clara"
+  ],
+  "serviceAreaCounties": [
+    "Santa Clara County"
+  ],
+  "searchAliases": [
+    "santa clara backflow testing",
+    "santa clara cross connection control",
+    "santa clara fire sprinkler backflow"
+  ],
+  "utilityUrl": "https://www.santaclaraca.gov/our-city/departments-g-z/water-sewer-utilities/cross-connection-control-policy-handbook",
+  "officialProgramUrls": [
+    "https://www.santaclaraca.gov/our-city/departments-g-z/water-sewer-utilities/cross-connection-control-policy-handbook",
+    "https://www.santaclaraca.gov/home/showpublisheddocument/53096/636365952410470000",
+    "https://www.santaclaraca.gov/our-city/departments-g-z/water-sewer-utilities/development-construction-requirements"
+  ],
+  "testingFrequency": "Annually after the assembly is required by the city program",
+  "dueBasis": "Santa Clara says compliance is mandatory under the Cross-Connection Control Policy Handbook and that annual testing and maintenance ensure proper operation. The city flags irrigation, residential fire sprinklers, booster pumps, and buildings three or more stories as common triggers.",
+  "coveredPropertyTypes": [
+    "Irrigation systems",
+    "Residential fire sprinkler systems",
+    "Buildings of three or more stories",
+    "Buildings with booster pumps",
+    "Hazardous or toxic-use premises"
+  ],
+  "coveredDeviceTypes": [
+    "Approved backflow prevention devices",
+    "Service-connection backflow devices",
+    "Portable water meter backflow assemblies",
+    "Annual-test assemblies in the city compliance program"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Santa Clara cross-connection control policy handbook",
+      "url": "https://www.santaclaraca.gov/our-city/departments-g-z/water-sewer-utilities/cross-connection-control-policy-handbook",
+      "kind": "policy handbook"
+    },
+    {
+      "label": "Santa Clara water service and use rules",
+      "url": "https://www.santaclaraca.gov/home/showpublisheddocument/53096/636365952410470000",
+      "kind": "water service rules"
+    },
+    {
+      "label": "Santa Clara development and construction requirements",
+      "url": "https://www.santaclaraca.gov/our-city/departments-g-z/water-sewer-utilities/development-construction-requirements",
+      "kind": "development requirements"
+    }
+  ],
+  "phone": "408-615-2000",
+  "penalties": "Santa Clara frames compliance as mandatory and ties backflow assemblies to mandatory annual testing and maintenance. Portable water meters must return with the backflow assembly for inspection and repair.",
+  "sourceExcerpt": "Santa Clara is a high-quality California utility because the city has already translated the 2024 policy handbook into local triggers, annual-testing language, and development-side backflow requirements.",
+  "sourceSnapshotPath": "storage/snapshots/santa-clara-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Santa Clara is a strong California city because it maps the new statewide policy handbook to concrete local triggers like irrigation, residential fire sprinklers, booster pumps, and taller buildings.",
+  "whoIsAffected": "Santa Clara properties with a potential cross-connection or local hazard trigger, including irrigation, fire sprinkler, booster-pump, and taller-building services.",
+  "residentialNotes": [
+    "Santa Clara is unusually good for residential intent because the city explicitly includes residential fire sprinkler systems and some irrigation hazards.",
+    "Residential users should not assume small domestic service escapes the policy if a listed hazard is present."
+  ],
+  "commercialNotes": [
+    "Commercial and mixed-use buildings are strong targets because Santa Clara names multi-story buildings, toxic material use, and booster pumps.",
+    "Portable water meter rules also help with project and contractor demand."
+  ],
+  "annualTesting": {
+    "summary": "Santa Clara says annual testing and maintenance ensure proper operation once a backflow assembly is required by the city program.",
+    "highlights": [
+      "Compliance is mandatory under the city's policy handbook implementation.",
+      "Annual testing language is explicit on the public page.",
+      "The city names common trigger categories instead of leaving users to guess."
+    ],
+    "workflowSteps": [
+      "Check whether the property matches one of Santa Clara's hazard triggers.",
+      "Install or maintain the required assembly.",
+      "Keep the annual testing current so the property remains compliant."
+    ]
+  },
+  "irrigation": {
+    "summary": "Irrigation is a real Santa Clara angle because the city explicitly lists irrigation supplied by a separate service or without adequate protection as a trigger.",
+    "highlights": [
+      "Irrigation appears on the city's trigger list.",
+      "Portable water meter rules also require backflow protection.",
+      "Annual testing follows once the assembly is in the city program."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation setup is on a separate service or otherwise triggers protection.",
+      "Use the right approved assembly at the service connection.",
+      "Keep annual testing active under the city program."
+    ]
+  },
+  "fireLine": {
+    "summary": "Santa Clara is useful for fire-line intent because the city explicitly lists residential fire sprinkler systems among the trigger conditions.",
+    "highlights": [
+      "Residential fire sprinkler systems are named on the public policy page.",
+      "Buildings with booster pumps and taller buildings are also public trigger categories.",
+      "Portable and project-side water uses stay inside the same utility compliance lens."
+    ],
+    "workflowSteps": [
+      "Confirm whether the building's sprinkler or fire-service setup triggers protection.",
+      "Coordinate the assembly choice with city requirements.",
+      "Maintain annual testing once the device is required."
+    ]
+  },
+  "workflowSteps": [
+    "Match the property to Santa Clara's published trigger list.",
+    "Install the required assembly or confirm the existing one is acceptable.",
+    "Complete annual testing and maintenance.",
+    "Follow the city's development or compliance path for any meter or project-specific work."
+  ],
+  "failureHighlights": [
+    "Santa Clara has already operationalized California's new handbook locally.",
+    "Annual testing is explicit, not implied.",
+    "Residential fire sprinklers and irrigation are clearly listed as trigger scenarios."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Santa Clara makes the trigger analysis much easier than many California utilities.",
+    "repairRetestRange": "Repair and retest costs rise on booster-pump, fire-sprinkler, or taller-building assemblies.",
+    "pricingNotes": "The main local value is clear hazard mapping and annual-testing certainty, not a posted city fee."
+  },
+  "sources": [
+    {
+      "label": "Santa Clara cross-connection control policy handbook",
+      "url": "https://www.santaclaraca.gov/our-city/departments-g-z/water-sewer-utilities/cross-connection-control-policy-handbook",
+      "kind": "official policy page"
+    },
+    {
+      "label": "Santa Clara water service and use rules",
+      "url": "https://www.santaclaraca.gov/home/showpublisheddocument/53096/636365952410470000",
+      "kind": "official water service rules pdf"
+    },
+    {
+      "label": "Santa Clara development and construction requirements",
+      "url": "https://www.santaclaraca.gov/our-city/departments-g-z/water-sewer-utilities/development-construction-requirements",
+      "kind": "official development requirements"
+    }
+  ]
+}

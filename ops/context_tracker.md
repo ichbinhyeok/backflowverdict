@@ -1,0 +1,137 @@
+# Context Tracker
+
+## Current status
+- Product docs are merged and agent-readable.
+- Initial Spring Boot plus jte implementation is now scaffolded.
+- This is the fastest direct-monetization candidate in the portfolio.
+- Launch architecture is now locked to file-backed JSON and CSV, not a database.
+- Texas pilot content now includes 16 live utility records, 10 guides, annual-testing plus irrigation plus fire-line routes, failed-test routes, and sitemap plus robots endpoints.
+- The registry now includes 5 representative state hubs: Texas, Arizona, California, Colorado, and Florida.
+- Multi-state expansion now includes 64 non-Texas utilities, bringing the publishable utility surface to 80 file-backed utilities across the five-state set.
+- Texas remains the deepest current anchor, but the product is no longer surfaced as a Texas-only pilot.
+- Public directory routes are now gated behind explicit public provider inventory instead of placeholder CSV rows.
+- Round Rock and College Station approved-tester pages now include real official-list provider entries loaded from authority PDFs.
+- Freshness audit is now active through a scheduled ops service that writes a machine-readable report under `build/ops/`.
+- Publish eligibility now respects unresolved ops issues from `data/ops/broken_links.csv` and `data/ops/conflicts.csv`, not just `last_verified`.
+- Backend status endpoints now expose health and readiness at `/healthz` and `/readyz`.
+- A repeatable verification workflow now runs through `/ops/verification/run`, writes `build/ops/verification_report.json`, and records reviewer context in `data/ops/change_log.jsonl`.
+- Utility snapshot artifacts now exist under `storage/snapshots/`, so the latest verification workflow returns `status=ok` with zero findings.
+- Guide and state hub records now carry reviewer initials plus file-backed source evidence, and the same evidence contract is enforced across all published page families.
+- `/ops/**` endpoints are now protected by a local-or-token access rule, so verification routes are no longer world-open by default.
+- All 13 Texas pilot utilities now carry structured annual-testing, irrigation, and-or fire-line content blocks plus residential versus commercial notes where the official sources support them.
+- Utility and focus pages now include tester-routing CTA blocks, visible FAQ sections, and FAQPage schema output so the page hierarchy aligns more closely with the site-architecture spec.
+- Freshness audits now append a deduplicated summary event into `data/ops/change_log.jsonl` using ISO date strings.
+- Deployment now externalizes persistent file-backed roots for `data`, `ops` reports, `storage` snapshots, and `leads`, so deploys and restarts on Oracle Linux should not wipe source data or lead storage.
+- The Oracle install script now re-owns writable runtime directories for the app user after seeding so file writes keep working after redeploys.
+- Lead capture is now live through `/leads/new`, stored under the external leads root as JSONL plus CSV, and visible through the authenticated `/admin` inbox.
+- `/admin` now stays disabled until explicit credentials are set in env, then uses a session gate and supports JSON or CSV lead export for pre-deploy operations review.
+- State, guide, utility, focus, failed-test, and tester pages now emit breadcrumb structured data and carry denser internal links between the support layer and utility-first local pages.
+- Admin lead operations now include file-backed single-provider assignment records, utility-demand summaries, and provider-coverage gap reporting so sponsor routing can be operated without a database and without multi-buyer lead resale.
+- Metro support pages and public provider profile routes are now live, so the site can aggregate commercial surfaces without changing the canonical entity away from the utility.
+- Every representative state now sits at 16 utilities, so the five-state surface is no longer Texas-heavy by count even though Texas remains the most mature trust baseline.
+- Metro support coverage now includes 13 file-backed metro pages, including Northern Arizona and Southwest Florida clusters.
+- Evergreen support now includes portal-workflow, due-date, tester-authority, and residential-versus-commercial guides so the 80-utility surface has a thicker support layer.
+- Metro and provider pages now surface richer commercial routing context, including provider utility-coverage counts, cross-utility provider profiles, and guide links matched to each provider mix.
+- Provider inventory now has a backend-safe separation between public listings, sponsor-only assignable inventory, and hold-state drafts, so `/admin` can route leads without forcing sponsor rows onto public pages.
+- Official-list utilities no longer have cached-provider gaps; every `OFFICIAL_LIST` utility now has at least one public authority-backed provider row in the CSV registry.
+- Sponsor-only inventory now distinguishes ACTIVE routing rows from PROSPECT outreach rows, so private commercial prospects can be staged without accidentally entering public pages or lead assignment.
+- The public design system has been rebuilt around the new industrial-editorial draft direction: dark glass header, precision-ledger typography, local static photography assets, and asymmetrical utility-first page layouts.
+- Home, utility, state hub, approved-testers, provider profile, lead capture, and failed-test pages now visually track the Stitch drafts at near-copy level while preserving the current data and routing model.
+- Local draft imagery is now pinned under `src/main/resources/static/images/design/` instead of hotlinking the remote concept URLs.
+- Packaged runtime review now includes fresh desktop screenshots under `build/shots/` for the key public page families.
+- Guide, metro, and utility-focus pages now match the same industrial-editorial fidelity as the redesigned home, utility, provider, approved-testers, lead, and failed-test pages.
+- Provider profile and tester-directory pages have now been rebalanced after a broader desktop QA sweep, so those routes no longer read like sparse add-on surfaces beside the stronger draft-led core pages.
+- The provider CSV now includes real website-backed sponsor prospect inventory across Texas, Arizona, California, Colorado, and Florida metros, and `/admin` now reports sponsor prospect coverage by metro.
+- Sponsor activation is now file-backed through a private commercial-state ledger under the persistent leads root, so contract state survives redeploys without mutating the source CSV.
+
+## Latest decisions
+- Package root is `owner.backflow`.
+- Canonical entity is the utility or water authority, not the city.
+- This is a local compliance plus next-action product, not a generic plumbing SEO site.
+- District or utility rule pages are canonical.
+- Official guidance and sponsor or provider directory content must never be blended.
+- Approved-tester pages require an official authority list; otherwise the route must stay on find-a-tester or stay hidden.
+- City pages are alias handling only. Clean mappings should redirect; weaker mappings can stay as noindex bridges.
+- Tester routing is the main commercial path.
+- Freshness checks and stale suppression are required for launch.
+- File-backed JSON and CSV stay as the source of truth through launch; do not switch to a database for launch.
+- This is an execution-hardening stage, not a pivot.
+- Texas is the seeded baseline state, not a permanent scope boundary.
+- Agents may expand into additional representative states when those utilities meet the same sourcing, verification, and stale-page gates.
+
+## What changed this session
+- Merged project-local docs with the independent spec set.
+- Added agent read order, context tracker, and missing spec files.
+- Locked the spec around file-backed storage, city alias behavior, approved-tester eligibility, and stale-page policy.
+- Scaffolded a runnable Gradle project with Spring Boot, jte, JSON and CSV data loading, seeded routes, and passing smoke tests.
+- Expanded the pilot-state content layer with additional Texas utility files, a stronger state hub, extra trust guides, and safer tester-route gating rules.
+- Replaced part of the placeholder provider layer with real public entries sourced from official Round Rock and College Station tester lists.
+- Extended the utility JSON contract to support annual-testing, irrigation, fire-line, and residential versus commercial notes.
+- Added a reusable utility subpage template, wired new routes into sitemap generation, and completed structured subpage content across the full 13-utility Texas pilot set.
+- Added a source freshness audit service and scheduled report writer with test coverage.
+- Tightened utility routing semantics so cities with registration details but no public authority list no longer pretend to have an official approved-tester page.
+- Reworked utility and focus templates to restore the missing provider CTA plus FAQ layer and reduced hero-heading overflow for long utility names after gstack visual review.
+- Wired ops broken-link and conflict logs into the actual publishability path, added backend health endpoints, and started writing deduplicated audit summaries into the versioned change log.
+- Added a verification workflow service, source-evidence audit, and verification report persistence so backend operations can reload files, rerun audits, and log reviewer-tagged verification runs without a database.
+- Backfilled all 13 utility snapshot artifacts and normalized Grand Prairie's snapshot path so verification no longer reports missing snapshot files.
+- Promoted missing source snapshot evidence to a real publish gate and extended that gate to evergreen guides and the Texas state hub after backfilling their evidence files.
+- Added Oracle Linux deployment assets under `ops/oracle/` with an install script, `systemd` unit, env template, and deploy notes.
+- Externalized runtime storage roots through `APP_DATA_ROOT`, `APP_LEADS_ROOT`, and ops report path overrides, plus a bootstrap config that creates the persistent directories on startup.
+- Added a file-backed lead pipeline, admin login page, inbox export endpoints, CTA links from public utility and tester pages into the lead capture flow, and removed source-level fallback admin credentials.
+- Added breadcrumb schema plus support-layer internal linking so evergreen guides, the Texas state hub, and local utility pages reinforce each other without shifting the canonical entity away from the utility.
+- Added Garland, Mesquite, and Talty SUD as new Texas pilot utilities with official source-backed annual-testing and-or irrigation and-or fire-line content, snapshot artifacts, city aliases, and official-list provider entries.
+- Added a file-backed lead assignment ledger under the external leads root, wired `/admin` to show assignable providers per utility, and enforced one active provider assignment per lead in the internal workflow.
+- Clarified the docs so future agents do not interpret the current Texas-heavy seed set as a Texas-only product boundary.
+- Generalized the home page, sitemap, guide layer, and state-guide template away from Texas-only assumptions so published state hubs render as a five-state surface.
+- Added representative-state selection notes under `ops/representative_states.md` and a reusable seeding script under `scripts/seed_representative_states.py`.
+- Seeded Arizona, California, Colorado, and Florida with state guides, utility JSON files, snapshot evidence files, city-alias rows, and initial official-list provider rows where public lists were available.
+- Deepened the five-state surface to a broader cluster shape by bringing Arizona, California, Colorado, and Florida up to twelve utilities each while Texas remains at sixteen.
+- Added Chandler, Scottsdale, Gilbert, Tempe, Glendale, Avondale, Buckeye, Marana, Queen Creek, Riverside, Roseville, San Jose, Sacramento, Santa Clara, Fresno, Modesto, Sacramento Suburban Water District, San Francisco Public Utilities Commission, Fort Collins, Greeley, Westminster, Longmont, Thornton, Grand Junction, Castle Rock, Englewood, Arvada, Fort Lauderdale, West Palm Beach, Palm Beach County, Tallahassee, Orange County Utilities, Orlando Utilities Commission, JEA, Sarasota County Public Utilities, and Manatee County Utilities utility pages with source-backed snapshots and route coverage.
+- Added official-list provider rows for Chandler, Tempe, Glendale, Avondale, Marana, Riverside, Sacramento, San Francisco, Castle Rock, Arvada, West Palm Beach, JEA, and Sarasota County so the approved-testers layer is no longer concentrated in Texas plus a few outliers.
+- Repointed the Fort Lauderdale city alias from the Broward county bridge to the new city utility page now that a direct city utility route exists.
+- Raised the regression suite to cover the five-state surface, including metro pages, provider profiles, new approved-tester pages, new focus pages, expanded city-alias redirects, and expanded sitemap expectations.
+- Added Anaheim, Patterson, Aspen, Durango, Hillsborough County, and Seminole County as new source-backed utility pages with snapshots, state coverage, and tester-routing support where official lists were available.
+- Added 11 metro support pages spanning Texas, Arizona, California, Colorado, and Florida so multi-utility commercial surfaces can exist without displacing utility-first canonicals.
+- Added new official-list provider rows for Anaheim, Patterson, Aspen, and Seminole County so the new approved-testers routes are not empty shells.
+- Added Prescott, Prescott Valley, Pasadena, Santa Rosa, Parker, Lafayette, Lee County, and Jupiter as new source-backed utility pages with snapshot evidence and city-alias coverage.
+- Added Northern Arizona and Southwest Florida metro pages, and widened Southern California, Northern California, Front Range, and South Florida metro clusters to absorb the new utility surface.
+- Added official or directory-safe provider inventory for Prescott, Prescott Valley, Pasadena, and Santa Rosa so approved-testers and find-a-tester routes stay populated where the source quality supports them.
+- Added four new evergreen guides covering reporting portals, anniversary versus calendar deadlines, county-certified versus utility-approved tester lists, and residential versus commercial rule splits.
+- Upgraded guide routing so guide pages now link into representative utilities, metros, and state hubs instead of stopping at a generic support layer.
+- Consolidated several duplicated provider rows into cross-utility metro-friendly profiles and added official-list provider inventory for Scottsdale, IRWD, and San Diego.
+- Expanded provider and metro templates with utility-coverage counts and support-guide links, and raised the regression suite to cover the 10-guide surface plus the richer provider inventory.
+- Added official-list provider rows for Austin, Fort Collins, Greeley, Modesto, and Manatee County so previously thin approved-tester routes now render real authority-backed entries.
+- Reworked admin lead routing to consume assignable inventory instead of public-only inventory, while keeping sponsor-only and hold-state provider rows off public routes.
+- Tightened sponsor-only assignability so only ACTIVE sponsor rows enter the inbox assignment queue, then seeded private sponsor prospect rows for DFW, Central Texas, Phoenix, Tucson, Sacramento, Riverside, Front Range, Greater Orlando, South Florida, and Southwest Florida commercial clusters.
+- Added a private sponsor inventory section to `/admin` with activation and demotion actions, and persisted those status flips into `provider-commercial-state.json` plus `.csv` under the leads root.
+- Switched jte runtime defaults to precompiled templates so packaged `bootJar` instances render pages instead of failing on first request.
+- Removed quote-style global CTA copy, shifted the home surface further toward link-first routing, and added favicon handling after gstack review of the packaged runtime.
+- Added request-host fallback for canonical URLs, `robots.txt`, and sitemap generation so a missing `APP_SITE_BASE_URL` no longer leaks `localhost:8080` into indexable output.
+- Replaced the earlier beige editorial theme with a new industrial green design system, rewrote the shared layout shell, and rebuilt the home, utility, state, approved-testers, provider, lead, and failed-test templates around the supplied Stitch mockups.
+- Downloaded and localized the draft imagery into `src/main/resources/static/images/design/` so the new hero, provider, state, approved, lead, and failed-test compositions do not depend on remote third-party image URLs at runtime.
+- Revalidated the public surface with `./gradlew.bat test`, rebuilt the packaged jar, and captured desktop screenshots for the redesigned home, Austin utility, Austin approved-testers, Pasadena provider, Texas state hub, Fort Worth failed-test, and Austin lead pages under `build/shots/`.
+- Removed `/admin` from the public shell, added a public metro nav path, and rebuilt the guide, utility-focus, and metro templates so the remaining public surfaces no longer feel like add-on pages beside the draft-driven core routes.
+- Ran a second packaged-runtime desktop sweep across state, guide, approved-testers, directory, provider, failed-test, and lead routes, then tightened the provider and tester templates where the page weight still felt too thin.
+- Recovered real browser QA after the earlier MCP permission failure by switching to local Playwright CLI with an installed Chromium binary, then re-ran desktop checks on the packaged runtime instead of relying on static screenshots alone.
+- Simplified the home landing page so it behaves like a true top-level SEO and routing surface rather than dumping the entire utility registry; the homepage now shows a six-utility featured set and routes the rest through state and metro hubs.
+- Tightened the home landing density again by capping the visible homepage guide set and reducing the featured utility count so the top-level SEO surface reads like a landing page instead of a registry dump, especially on iPhone SE-sized screens.
+- Added repeatable deep Playwright QA scripts under `output/playwright/qa/` and ran them sequentially against the packaged app on port 8090 across desktop and iPhone SE viewports, covering home, state, guide, utility, annual focus, approved testers, directory routes, failed-test, city aliases, metro flows, provider profiles, lead forms, and the admin gate.
+- Verified the final deep QA pass with no internal console errors, no internal page errors, no internal response errors, and full scenario passes on both desktop and iPhone SE; any synthetic QA lead created during testing was scrubbed from `storage/leads`.
+- Tightened mobile hit areas and readability after a layout sweep exposed small header and footer tap targets, dense inline guide links, narrow provider title links, and a horizontally scrolling approved-testers table.
+- Converted the official tester table into a responsive stacked layout on small screens, promoted lingering text links in guide, metro, and failed-test surfaces into real button CTAs, and added wrapping safeguards for source, metadata, and detail text.
+- Re-ran packaged-runtime QA on port `8091` using Playwright CLI sessions after the polish pass, and the latest `layout-sweep-mobile-8091.json` now reports zero overflow offenders, zero tiny-text warnings, and zero small tap targets across the representative iPhone SE surface.
+- Ran a second design-polish pass across the public desktop surface, adding stronger card hierarchy, softer key/warm/quiet card variants, refined section-heading rails, and a cleaner guide hero panel that no longer uses the raw slug as the main visual headline.
+- Revalidated the polished surface with a fresh packaged runtime on port `8092`; the current representative desktop screenshots for home, Texas state, Austin utility, and the verification guide are stored under `.playwright-cli/` and reflect the updated hierarchy.
+
+## Next recommended tasks
+1. Keep hardening trust and ops defaults, especially admin or ops exposure and freshness or verification discipline.
+2. Keep widening official-list-backed provider inventory in metros where approved routes still render with no cached entries.
+3. Replace placeholder provider inventory with an operable sponsor model before expanding directory routes further.
+4. Decide where directory-only pages should become real monetized provider surfaces instead of public-list-derived directory support.
+5. Run one server-like deploy rehearsal with `./gradlew bootJar` plus `ops/oracle/install-or-update.sh` on a staging box or VM.
+
+## Open questions
+- How much of launch should target residential versus commercial.
+- How to handle stale or incomplete approved-tester lists.
+- How thick the sponsor or provider operations layer needs to be before broader rollout.
+- When metro or provider aggregation should start, given that it is not the current implementation priority.

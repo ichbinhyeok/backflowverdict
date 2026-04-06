@@ -1,0 +1,149 @@
+{
+  "utilityId": "grand-junction-water",
+  "utilityName": "City of Grand Junction Backflow Prevention Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "grand-junction-water-services",
+  "state": "colorado",
+  "serviceAreaCities": [
+    "Grand Junction"
+  ],
+  "serviceAreaCounties": [
+    "Mesa County"
+  ],
+  "searchAliases": [
+    "grand junction backflow testing",
+    "grand junction sprinkler backflow",
+    "grand junction pvba"
+  ],
+  "utilityUrl": "https://www.gjcity.org/279/Backflow-Prevention-Program",
+  "officialProgramUrls": [
+    "https://www.gjcity.org/279/Backflow-Prevention-Program",
+    "https://www.gjcity.org/281/Pressure-Vacuum-Breaker-Assembly-PVBA",
+    "https://www.gjcity.org/faq.aspx?TID=17"
+  ],
+  "testingFrequency": "At installation, annually, and when moved or repaired",
+  "dueBasis": "Grand Junction says backflow preventers are required under Colorado drinking-water regulations and city resolution, and that PVBAs must be tested at installation, annually, and when moved or repaired.",
+  "coveredPropertyTypes": [
+    "Home sprinkler systems tied to domestic water",
+    "Business sprinkler systems",
+    "Fire sprinkler systems",
+    "Commercial facilities using chemicals",
+    "Other protected city water customers"
+  ],
+  "coveredDeviceTypes": [
+    "Pressure vacuum breaker assemblies",
+    "Reduced pressure backflow assemblies",
+    "Fire sprinkler backflow devices",
+    "Home and business sprinkler backflow preventers"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Grand Junction backflow prevention program",
+      "url": "https://www.gjcity.org/279/Backflow-Prevention-Program",
+      "kind": "program page"
+    },
+    {
+      "label": "Grand Junction PVBA design requirements",
+      "url": "https://www.gjcity.org/281/Pressure-Vacuum-Breaker-Assembly-PVBA",
+      "kind": "design requirements"
+    },
+    {
+      "label": "Grand Junction backflow FAQ",
+      "url": "https://www.gjcity.org/faq.aspx?TID=17",
+      "kind": "faq"
+    }
+  ],
+  "phone": "970-256-4101",
+  "penalties": "Grand Junction frames the program as mandatory under state regulations and city resolution. The practical risk is leaving home, business, irrigation, or fire-sprinkler systems without required backflow protection.",
+  "sourceExcerpt": "Grand Junction is a useful Colorado city because it publishes clear hazard examples, explicit sprinkler and fire-sprinkler triggers, and annual-plus-moved-or-repaired testing rules on the device pages.",
+  "sourceSnapshotPath": "storage/snapshots/grand-junction-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Grand Junction is a useful Colorado city because it turns sprinkler, fire-sprinkler, and chemical-use backflow rules into straightforward local guidance.",
+  "whoIsAffected": "Grand Junction homes, businesses, sprinkler systems, fire-sprinkler systems, and other services that could contaminate the public water supply if backflow protection is missing.",
+  "residentialNotes": [
+    "Grand Junction is unusually good for residential pages because the city specifically calls out home sprinkler systems tied into domestic water.",
+    "Winterization and homeowner safety language give the page useful non-commercial depth."
+  ],
+  "commercialNotes": [
+    "Commercial value is solid because the city names business sprinklers, fire sprinklers, and chemical-use facilities directly.",
+    "This is a good city for irrigation and sprinkler-intent landing pages."
+  ],
+  "annualTesting": {
+    "summary": "Grand Junction says PVBAs must be tested at installation, annually, and when moved or repaired.",
+    "highlights": [
+      "Annual testing is explicit on the design-requirements page.",
+      "The city ties the rule to Colorado drinking-water regulations and a city resolution.",
+      "Home and business sprinkler systems are both named publicly."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly type and whether it serves home, business, or irrigation use.",
+      "Complete the annual or post-repair test.",
+      "Keep the device in working condition so contaminated water cannot re-enter the potable system."
+    ]
+  },
+  "irrigation": {
+    "summary": "Grand Junction is especially useful for irrigation because the city publishes a dedicated PVBA page for sprinkler systems tied into the domestic water supply.",
+    "highlights": [
+      "Only one PVB is required to serve the whole system when installed correctly.",
+      "PVBAs must sit at least 12 inches above the highest point they serve.",
+      "No chemicals or fertilizers may be introduced into a system equipped with a PVBA."
+    ],
+    "workflowSteps": [
+      "Confirm the sprinkler or irrigation system is tied into domestic water.",
+      "Install the PVBA at the required height and layout.",
+      "Keep annual, moved, and repaired-device tests current."
+    ]
+  },
+  "fireLine": {
+    "summary": "Grand Junction openly says fire sprinkler systems need backflow preventers, which makes fire-side compliance a real local page.",
+    "highlights": [
+      "Fire sprinkler systems are named directly in the FAQ.",
+      "Annual testing still applies once the device is in service.",
+      "The city treats fire protection as part of the same drinking-water safety problem."
+    ],
+    "workflowSteps": [
+      "Confirm the device is serving a fire sprinkler system.",
+      "Use the correct backflow assembly class for the protected service.",
+      "Keep the annual and post-repair testing current."
+    ]
+  },
+  "workflowSteps": [
+    "Identify whether the system is sprinkler, irrigation, fire sprinkler, or another protected service.",
+    "Install or verify the correct backflow device.",
+    "Test the device at installation and annually.",
+    "Retest after moves or repairs so the record stays current."
+  ],
+  "failureHighlights": [
+    "Grand Junction names sprinkler and fire-sprinkler systems directly.",
+    "The device pages include specific installation and chemical-use rules.",
+    "Annual and post-repair testing are both explicit."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Grand Junction adds very clear sprinkler-specific rules that narrow the work scope.",
+    "repairRetestRange": "Repair and retest costs rise where sprinkler layouts, height clearances, or chemical-injection risks complicate the job.",
+    "pricingNotes": "The main local value is clear device-specific rules for sprinkler-heavy properties."
+  },
+  "sources": [
+    {
+      "label": "Grand Junction backflow prevention program",
+      "url": "https://www.gjcity.org/279/Backflow-Prevention-Program",
+      "kind": "official program page"
+    },
+    {
+      "label": "Grand Junction PVBA design requirements",
+      "url": "https://www.gjcity.org/281/Pressure-Vacuum-Breaker-Assembly-PVBA",
+      "kind": "official design requirements"
+    },
+    {
+      "label": "Grand Junction backflow FAQ",
+      "url": "https://www.gjcity.org/faq.aspx?TID=17",
+      "kind": "official faq"
+    }
+  ]
+}

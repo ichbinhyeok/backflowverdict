@@ -1,0 +1,133 @@
+{
+  "utilityId": "jupiter-water",
+  "utilityName": "Town of Jupiter Backflow Prevention and Cross-Connection Control",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "jupiter-backflow-prevention-details",
+  "state": "florida",
+  "serviceAreaCities": [
+    "Jupiter"
+  ],
+  "serviceAreaCounties": [
+    "Palm Beach County"
+  ],
+  "searchAliases": [
+    "jupiter backflow testing",
+    "jupiter annual backflow test",
+    "jupiter irrigation backflow"
+  ],
+  "utilityUrl": "https://www.jupiter.fl.us/243/Backflow-Prevention-Details",
+  "officialProgramUrls": [
+    "https://www.jupiter.fl.us/243/Backflow-Prevention-Details",
+    "https://www.jupiter.fl.us/DocumentCenter/View/16396/Backflow_Brochure",
+    "https://www.jupiter.fl.us/DocumentCenter/View/19405/Backflow-DIY-Test-Kit-Verification-Form"
+  ],
+  "testingFrequency": "Annual",
+  "dueBasis": "Jupiter says backflow devices are tested every year by a certified backflow tester approved by Palm Beach County. The town says results are due within 30 days of the due date, sends up to three reminder notices, and can disconnect water service for continued noncompliance.",
+  "coveredPropertyTypes": [
+    "Irrigation systems",
+    "Commercial services",
+    "Other properties where Jupiter requires a backflow device"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention devices",
+    "Irrigation assemblies",
+    "Town-monitored containment devices"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Town of Jupiter backflow prevention details",
+      "url": "https://www.jupiter.fl.us/243/Backflow-Prevention-Details",
+      "kind": "program page"
+    },
+    {
+      "label": "Town of Jupiter backflow brochure",
+      "url": "https://www.jupiter.fl.us/DocumentCenter/View/16396/Backflow_Brochure",
+      "kind": "program brochure"
+    },
+    {
+      "label": "Town of Jupiter DIY test kit verification form",
+      "url": "https://www.jupiter.fl.us/DocumentCenter/View/19405/Backflow-DIY-Test-Kit-Verification-Form",
+      "kind": "supporting form"
+    }
+  ],
+  "phone": "561-741-2558",
+  "penalties": "Jupiter sends up to three notices and can disconnect water service when the annual test is not completed and returned on time. The town also says repairs remain the property owner's responsibility.",
+  "sourceExcerpt": "Jupiter is a strong Palm Beach utility because the town publishes annual testing, a 30-day report window, repeated reminder notices, and shutoff risk without pretending there is a town-approved contractor list.",
+  "sourceSnapshotPath": "storage/snapshots/jupiter-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Jupiter is a strong South Florida utility because it couples annual testing with a 30-day report window, repeated notices, and shutoff risk on a clean town utility page.",
+  "whoIsAffected": "Town of Jupiter utility customers with required backflow devices, especially irrigation and other protected service connections.",
+  "residentialNotes": [
+    "Residential demand is strong because irrigation devices are a real local trigger and the town says repairs are the owner's responsibility.",
+    "Jupiter is useful even without a public town-approved list because the town publishes the actual annual-testing workflow."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because the town combines annual testing, notice timing, and shutoff risk.",
+    "This is a guidance-first utility page rather than an official tester-list page."
+  ],
+  "annualTesting": {
+    "summary": "Jupiter says required devices are tested every year and the result is due within 30 days of the due date.",
+    "highlights": [
+      "Annual testing is explicit.",
+      "The result is due within 30 days of the due date.",
+      "The town sends up to three notices before moving toward shutoff."
+    ],
+    "workflowSteps": [
+      "Check the device due date in the Jupiter workflow.",
+      "Complete the annual test with a qualified Palm Beach County approved tester.",
+      "Return the result within 30 days and avoid the notice sequence."
+    ]
+  },
+  "irrigation": {
+    "summary": "Jupiter is a strong irrigation page because the town treats irrigation devices as a normal local reason a backflow assembly stays on the annual test cycle.",
+    "highlights": [
+      "Irrigation demand is a real local trigger rather than filler content.",
+      "The owner stays responsible for repairs.",
+      "The same 30-day submission window still applies."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation assembly is still active in Jupiter's annual program.",
+      "Complete the annual test through a qualified tester.",
+      "Return the result within 30 days so the notice sequence never starts."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the assembly is in Jupiter's annual program.",
+    "Complete the annual test.",
+    "Return the result within 30 days of the due date.",
+    "Do not let the notice sequence move toward shutoff."
+  ],
+  "failureHighlights": [
+    "Jupiter uses a 30-day result window after the due date.",
+    "The town sends up to three reminder notices.",
+    "Continued noncompliance can lead to water-service disconnection."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Jupiter's notice timing and shutoff risk matter more than any public countywide rate.",
+    "repairRetestRange": "Repair and retest cost depends on the assembly and the owner's responsibility for corrective work.",
+    "pricingNotes": "The strongest local pressure is avoiding the town's notice sequence and shutoff risk."
+  },
+  "sources": [
+    {
+      "label": "Town of Jupiter backflow prevention details",
+      "url": "https://www.jupiter.fl.us/243/Backflow-Prevention-Details",
+      "kind": "official program page"
+    },
+    {
+      "label": "Town of Jupiter backflow brochure",
+      "url": "https://www.jupiter.fl.us/DocumentCenter/View/16396/Backflow_Brochure",
+      "kind": "official brochure"
+    },
+    {
+      "label": "Town of Jupiter DIY test kit verification form",
+      "url": "https://www.jupiter.fl.us/DocumentCenter/View/19405/Backflow-DIY-Test-Kit-Verification-Form",
+      "kind": "official supporting form"
+    }
+  ]
+}

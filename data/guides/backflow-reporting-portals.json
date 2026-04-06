@@ -1,0 +1,60 @@
+{
+  "slug": "backflow-reporting-portals",
+  "title": "Backflow reporting portals",
+  "description": "How BSI, SwiftComply, and utility customer portals change the real testing workflow after the field work is done.",
+  "intro": "A passed test is not the same thing as a completed compliance cycle. Many utilities now care as much about the portal workflow as they do about the field result.",
+  "callout": "Use the local utility page to confirm the exact portal and timing. This guide exists to make those portal patterns easier to recognize before you act.",
+  "sourceExcerpt": "Many utilities now route compliance through BSI, SwiftComply, or utility-managed customer portals. The practical mistake is assuming the field test alone closes the loop.",
+  "sourceSnapshotPath": "storage/snapshots/guides/backflow-reporting-portals.html",
+  "reviewerInitials": "TL",
+  "lastReviewed": "2026-04-05",
+  "published": true,
+  "sections": [
+    {
+      "heading": "A portal changes the real next action",
+      "body": "Utilities that use BSI, SwiftComply, or county customer portals shift risk from the wrench work to the reporting sequence. Owners and testers can still fall out of compliance even when the assembly passes if the result is not entered correctly.",
+      "bullets": [
+        "Dallas and Colorado Springs push testers into portal-first result submission workflows.",
+        "Lee County and Tampa show how customer or contractor portals become part of the actual compliance path."
+      ]
+    },
+    {
+      "heading": "Portal workflows are not interchangeable",
+      "body": "A BSI route, a SwiftComply route, and a utility customer portal each imply different registration, fee, and tester-enrollment assumptions. Treating them as one generic online submission step is how people lose time.",
+      "bullets": [
+        "Some programs want the tester enrolled before the report can be accepted.",
+        "Some county and utility portals tie the record to an existing account or hazard ID."
+      ]
+    },
+    {
+      "heading": "Quote pages should reflect the reporting burden",
+      "body": "For lead and sponsor pages, the marketable angle is not just test price. It is whether the tester can handle the reporting system the utility actually uses.",
+      "bullets": [
+        "Portal-driven utilities often justify stronger commercial messaging than a simple annual reminder page.",
+        "This is one reason metro and provider profiles need to point back down into the exact utility workflow."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "Dallas Water Utilities backflow test reports and SwiftComply workflow",
+      "url": "https://dallas.gov/departments/waterutilities/Pages/Backflow-Test-Reports.aspx",
+      "kind": "utility workflow"
+    },
+    {
+      "label": "Tampa SwiftComply portal",
+      "url": "https://tampafl.c3swift.com/",
+      "kind": "official portal"
+    },
+    {
+      "label": "Colorado Springs Utilities backflow professionals",
+      "url": "https://www.csu.org/safety/backflow-prevention-professionals",
+      "kind": "utility workflow"
+    },
+    {
+      "label": "Lee County customer portal",
+      "url": "https://ccclink.floridawaterstar.com/",
+      "kind": "official portal"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "utilityId": "pasadena-water",
+  "utilityName": "Pasadena Water and Power Cross-Connection Control Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "pasadena-water-and-power",
+  "state": "california",
+  "serviceAreaCities": [
+    "Pasadena"
+  ],
+  "serviceAreaCounties": [
+    "Los Angeles County"
+  ],
+  "searchAliases": [
+    "pasadena backflow testing",
+    "pasadena certified backflow tester",
+    "pasadena irrigation backflow"
+  ],
+  "utilityUrl": "https://pwp.cityofpasadena.net/backflow/",
+  "officialProgramUrls": [
+    "https://pwp.cityofpasadena.net/backflow/",
+    "https://publichealth.lacounty.gov/eh/docs/permit/certified-backflow-prevention-device-testers.pdf",
+    "https://publichealth.lacounty.gov/eh/docs/permit/certified-backflow-prevention-device-testers_contact.pdf"
+  ],
+  "testingFrequency": "Annually and whenever the assembly fails or is replaced",
+  "dueBasis": "Pasadena Water and Power says each backflow prevention assembly is tested at least once a year by the due date on the PWP notice. The utility tells customers to use a Los Angeles County certified backflow prevention testing business and to send the passing report plus any repair documentation back to PWP.",
+  "coveredPropertyTypes": [
+    "Irrigation services",
+    "Fire services",
+    "Commercial and industrial premises",
+    "Hospitals and medical offices",
+    "Food facilities",
+    "Hotels and motels",
+    "Multi-family and high-rise buildings"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Irrigation devices",
+    "Fire-service devices",
+    "Containment assemblies required by PWP"
+  ],
+  "approvedTesterMode": "DIRECTORY_ONLY",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Pasadena Water and Power backflow program",
+      "url": "https://pwp.cityofpasadena.net/backflow/",
+      "kind": "program page"
+    },
+    {
+      "label": "Los Angeles County certified tester list",
+      "url": "https://publichealth.lacounty.gov/eh/docs/permit/certified-backflow-prevention-device-testers.pdf",
+      "kind": "county certified tester list"
+    }
+  ],
+  "phone": "626-744-7311",
+  "penalties": "Pasadena says late reports can trigger follow-up notices and extra fees. Failed assemblies must be repaired by a C36 plumbing contractor and the passing retest sent back to PWP before the matter is treated as closed.",
+  "sourceExcerpt": "Pasadena is a strong California utility because it publishes annual due-date testing, failed-test repair workflow, explicit high-hazard property examples, and directs customers to the Los Angeles County certified tester directory rather than pretending there is a Pasadena-only approved list.",
+  "sourceSnapshotPath": "storage/snapshots/pasadena-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Pasadena is a strong Los Angeles-area page because the utility publishes real annual-testing and failed-test workflow, but the tester route is county-certified rather than city-approved.",
+  "whoIsAffected": "Pasadena Water and Power customers where the utility requires a backflow assembly, including irrigation, fire-service, commercial, industrial, medical, hospitality, and multifamily properties.",
+  "residentialNotes": [
+    "Residential intent is strongest when the property has irrigation, a fire service, or another utility-triggered hazard.",
+    "Pasadena still routes customers through the utility notice and county-certified tester directory instead of a city-approved list."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because Pasadena names the hazard-heavy property types directly on the program page.",
+    "The city also publishes failed-test repair and resubmission rules instead of stopping at generic education."
+  ],
+  "annualTesting": {
+    "summary": "Pasadena requires annual testing by the due date shown on the PWP notice and wants the report returned through the utility workflow.",
+    "highlights": [
+      "Each assembly is tested at least once a year.",
+      "PWP points users to Los Angeles County certified testing businesses instead of a Pasadena-only approved list.",
+      "Failed tests require repair and a passing retest before the record is closed."
+    ],
+    "workflowSteps": [
+      "Check the due date on the Pasadena notice.",
+      "Choose a Los Angeles County certified tester.",
+      "Send the passing report and any repair paperwork back to PWP."
+    ]
+  },
+  "irrigation": {
+    "summary": "Pasadena is useful for irrigation demand because the utility explicitly lists irrigation services as one of the local trigger categories for containment devices.",
+    "highlights": [
+      "Irrigation is named directly on the program page, not implied.",
+      "The same annual due-date logic still applies.",
+      "Customers still need county-certified testing businesses for the work."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation service is one of Pasadena's protected connections.",
+      "Use a county-certified tester familiar with Pasadena reporting.",
+      "Return the passing test to PWP by the due date."
+    ]
+  },
+  "fireLine": {
+    "summary": "Pasadena explicitly calls out fire services as part of the cross-connection control program, so fire-line demand belongs on the utility page rather than a generic plumbing page.",
+    "highlights": [
+      "Fire services are named directly on Pasadena's program page.",
+      "Failed fire-service assemblies still need repair and a passing retest.",
+      "County-certified testers are the practical routing layer, not a Pasadena-approved list."
+    ],
+    "workflowSteps": [
+      "Confirm the fire-service assembly is in Pasadena's program.",
+      "Use a county-certified tester who can handle the assembly class.",
+      "Return the passing report to PWP and clear any failed-test follow-up."
+    ]
+  },
+  "workflowSteps": [
+    "Check the due date and assembly details on the Pasadena notice.",
+    "Choose a Los Angeles County certified tester.",
+    "Complete the annual test or failed-test retest.",
+    "Send the passing paperwork back to Pasadena Water and Power."
+  ],
+  "failureHighlights": [
+    "Pasadena expects annual testing by the due date on the utility notice.",
+    "Failed assemblies must be repaired and the passing retest sent back to PWP.",
+    "The tester route is county-certified and should not be presented as a Pasadena approved list."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, and Pasadena's main local friction is staying inside the due-date and county-certified tester workflow.",
+    "repairRetestRange": "Repair and retest cost depends on the device and whether a C36 plumbing contractor is needed for the repair.",
+    "pricingNotes": "This utility is a good directory-only market because the utility publishes the rules while county certification supplies the tester layer."
+  },
+  "sources": [
+    {
+      "label": "Pasadena Water and Power backflow program",
+      "url": "https://pwp.cityofpasadena.net/backflow/",
+      "kind": "official program page"
+    },
+    {
+      "label": "Los Angeles County certified backflow prevention device testers",
+      "url": "https://publichealth.lacounty.gov/eh/docs/permit/certified-backflow-prevention-device-testers.pdf",
+      "kind": "county certified tester list"
+    },
+    {
+      "label": "Los Angeles County certified tester contact list",
+      "url": "https://publichealth.lacounty.gov/eh/docs/permit/certified-backflow-prevention-device-testers_contact.pdf",
+      "kind": "county contact list"
+    }
+  ]
+}

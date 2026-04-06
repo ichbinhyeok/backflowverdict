@@ -1,0 +1,45 @@
+{
+  "state": "colorado",
+  "title": "Colorado backflow testing requirements",
+  "description": "Representative state guide for Colorado utility backflow programs, annual testing reminders, and portal-driven compliance reporting.",
+  "summary": "Colorado is a strong representative state because the utilities publish concrete compliance workflows: annual reminder notices, tester certification expectations, irrigation season rules, and online reporting requirements. Denver, Aurora, and Colorado Springs all support utility-first buildout.",
+  "authoritySummary": "Colorado programs repeatedly point back to the Colorado Primary Drinking Water Regulations and then apply those rules through utility-owned cross-connection programs. The customer still has to satisfy the local water provider, not just the statewide rule text.",
+  "sourceExcerpt": "Colorado is expansion-worthy because the rule floor is visible and the utility layer is operationally rich enough to support annual-testing, irrigation, and failure-flow content.",
+  "sourceSnapshotPath": "storage/snapshots/states/colorado-backflow-testing.html",
+  "reviewerInitials": "TL",
+  "lastVerified": "2026-04-05",
+  "published": true,
+  "statewideHighlights": [
+    "Annual testing is heavily emphasized by the major utilities.",
+    "Irrigation backflows often have season-specific reminders and protection rules.",
+    "Utilities rely on online portals and certification checks rather than generic phone-only workflows.",
+    "Regulation 11 creates a visible state floor, but local enforcement still happens utility by utility."
+  ],
+  "featuredUtilityIds": [
+    "denver-water",
+    "parker-water",
+    "lafayette-water"
+  ],
+  "sources": [
+    {
+      "label": "Colorado Department of Public Health and Environment Regulation No. 11",
+      "url": "https://cdphe.colorado.gov/sites/cdphe/files/51_2015%2809%29hdr.pdf",
+      "kind": "state regulation context"
+    },
+    {
+      "label": "Denver Water cross-connection control and backflow prevention program",
+      "url": "https://www.denverwater.org/contractors/construction-information/backflow-prevention-program",
+      "kind": "utility example"
+    },
+    {
+      "label": "Aurora Water backflow prevention",
+      "url": "https://www.auroragov.org/residents/water/pay_my_water_bill/backflow_prevention",
+      "kind": "utility example"
+    },
+    {
+      "label": "Colorado Springs Utilities backflow prevention professionals",
+      "url": "https://www.csu.org/safety/backflow-prevention-professionals",
+      "kind": "utility example"
+    }
+  ]
+}

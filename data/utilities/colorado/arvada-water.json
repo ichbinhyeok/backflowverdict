@@ -1,0 +1,136 @@
+{
+  "utilityId": "arvada-water",
+  "utilityName": "City of Arvada Backflow and Cross-Connection Control Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "arvada-water",
+  "state": "colorado",
+  "serviceAreaCities": [
+    "Arvada"
+  ],
+  "serviceAreaCounties": [
+    "Jefferson County"
+  ],
+  "searchAliases": [
+    "arvada backflow testing",
+    "arvada certified backflow testers",
+    "arvada cross connection control"
+  ],
+  "utilityUrl": "https://www.arvadaco.gov/450/Backflow-Cross-Connection-Control-Progra",
+  "officialProgramUrls": [
+    "https://www.arvadaco.gov/450/Backflow-Cross-Connection-Control-Progra",
+    "https://www.arvadaco.gov/DocumentCenter/View/494/Backflow-Testing-Companies-PDF"
+  ],
+  "testingFrequency": "Annually by July 31",
+  "dueBasis": "Arvada says all assemblies must be tested annually, moved every assembly to a July 31 deadline, and added a non-compliance fee schedule.",
+  "coveredPropertyTypes": [
+    "Commercial properties",
+    "Residential irrigation properties",
+    "Properties with potential health hazards",
+    "Protected services under the city program"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Cross-connection control devices",
+    "Certified testable assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.arvadaco.gov/DocumentCenter/View/494/Backflow-Testing-Companies-PDF",
+  "officialListLabel": "Open the Arvada certified backflow testing companies PDF",
+  "submissionMethods": [
+    {
+      "label": "Arvada backflow program",
+      "url": "https://www.arvadaco.gov/450/Backflow-Cross-Connection-Control-Progra",
+      "kind": "program page"
+    },
+    {
+      "label": "Arvada certified testers PDF",
+      "url": "https://www.arvadaco.gov/DocumentCenter/View/494/Backflow-Testing-Companies-PDF",
+      "kind": "official tester list"
+    }
+  ],
+  "phone": "720-898-7793",
+  "penalties": "Missing the city deadline leaves the customer on a real non-compliance track.",
+  "sourceExcerpt": "Arvada is one of the strongest Colorado city utilities because it combines a July 31 deadline, non-compliance fees, and a public certified tester PDF.",
+  "sourceSnapshotPath": "storage/snapshots/arvada-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Arvada is a high-intent Colorado utility because the city program is deadline-driven, fee-backed, and tied to a visible tester list.",
+  "whoIsAffected": "Arvada customers with any assembly in the city's cross-connection program, especially irrigation and other hazard-based services that must hit the July 31 deadline.",
+  "residentialNotes": [
+    "Residential demand is strong where irrigation or another protected assembly exists because the city deadline is explicit.",
+    "The public tester list reduces friction for homeowners who already received a city letter."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because Arvada added a fee schedule for non-compliant customers.",
+    "The July 31 annual deadline creates clear seasonality and urgency."
+  ],
+  "annualTesting": {
+    "summary": "Arvada requires annual testing for all assemblies, uses a July 31 deadline, and added a fee schedule for non-compliance.",
+    "highlights": [
+      "All assemblies must be tested annually.",
+      "The annual deadline is July 31.",
+      "A public certified tester list is available from the city."
+    ],
+    "workflowSteps": [
+      "Find the device information from the city's annual notice.",
+      "Choose a certified tester from the city PDF.",
+      "Complete the test before July 31 and keep the city record current."
+    ]
+  },
+  "irrigation": {
+    "summary": "Arvada is especially strong for irrigation because the annual July 31 deadline fits the real sprinkler-service season.",
+    "highlights": [
+      "Irrigation owners can act before peak summer non-compliance pressure.",
+      "The city tester list is public and broad.",
+      "Backflow questions route directly to the Arvada program team."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation assembly is in the city database.",
+      "Use a certified testing company from the city PDF.",
+      "Submit the annual test before July 31."
+    ]
+  },
+  "fireLine": {
+    "summary": "The city program is built around annual certification and visible testing companies.",
+    "highlights": [
+      "The city uses a broad list of certified testing companies.",
+      "Annual certification is explicit.",
+      "Non-compliance fees add urgency for larger protected services too."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly type and annual deadline.",
+      "Use a certified tester from the city list.",
+      "Keep the city file current before non-compliance fees escalate."
+    ]
+  },
+  "workflowSteps": [
+    "Check the city notice and device information.",
+    "Choose a certified testing company from the Arvada PDF.",
+    "Complete testing before July 31.",
+    "Avoid slipping into the city's non-compliance fee path."
+  ],
+  "failureHighlights": [
+    "Arvada gives a hard annual deadline.",
+    "The city added a non-compliance fee schedule.",
+    "A public certified testing companies PDF supports an official approved page."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but the city adds urgency through its annual deadline and non-compliance fee schedule.",
+    "repairRetestRange": "Repair and retest cost depends on assembly type and how late the case is in the city cycle.",
+    "pricingNotes": "The biggest local pressure is the deadline plus fee-backed non-compliance, not a flat city testing rate."
+  },
+  "sources": [
+    {
+      "label": "Arvada backflow and cross-connection control program",
+      "url": "https://www.arvadaco.gov/450/Backflow-Cross-Connection-Control-Progra",
+      "kind": "official utility page"
+    },
+    {
+      "label": "Arvada certified testers PDF",
+      "url": "https://www.arvadaco.gov/DocumentCenter/View/494/Backflow-Testing-Companies-PDF",
+      "kind": "official tester list pdf"
+    }
+  ]
+}

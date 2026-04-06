@@ -1,0 +1,140 @@
+{
+  "utilityId": "dallas-water",
+  "utilityName": "Dallas Water Utilities Backflow Prevention Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "dallas-water-utilities",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Dallas"
+  ],
+  "serviceAreaCounties": [
+    "Dallas County"
+  ],
+  "searchAliases": [
+    "dallas backflow testing",
+    "dallas water utilities backflow test reports"
+  ],
+  "utilityUrl": "https://dallas.gov/departments/waterutilities/Pages/Backflow-Test-Reports.aspx",
+  "officialProgramUrls": [
+    "https://dallas.gov/departments/waterutilities/Pages/Backflow-Test-Reports.aspx",
+    "https://dallascityhall.com/departments/sustainabledevelopment/DCH%20documents/pdf/building/BackflowTestReport.pdf"
+  ],
+  "testingFrequency": "Annual for high-hazard assemblies; irrigation only on install, repair, or replacement",
+  "dueBasis": "Dallas Water Utilities says high-hazard assemblies require annual testing by a licensed tester registered with the City of Dallas, while lawn irrigation devices are tested when newly installed, repaired, or replaced. Failed devices get a 30-day repair and retest window and submissions run through SwiftComply.",
+  "coveredPropertyTypes": [
+    "High-hazard properties and assemblies tracked by Dallas Water Utilities",
+    "Locations receiving annual notice letters for high-hazard devices",
+    "Irrigation systems only when a device is newly installed, repaired, or replaced"
+  ],
+  "coveredDeviceTypes": [
+    "High-hazard backflow prevention assemblies",
+    "Irrigation backflow devices",
+    "Permitted new or replacement assemblies submitted to Building Inspections"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Dallas Water Utilities backflow test reports page",
+      "url": "https://dallas.gov/departments/waterutilities/Pages/Backflow-Test-Reports.aspx",
+      "kind": "program page"
+    },
+    {
+      "label": "Dallas printable backflow report form",
+      "url": "https://dallascityhall.com/departments/sustainabledevelopment/DCH%20documents/pdf/building/BackflowTestReport.pdf",
+      "kind": "official pdf"
+    }
+  ],
+  "phone": "214-670-0910",
+  "penalties": "Dallas says failed devices must be repaired and retested within 30 days. Annual reporting through SwiftComply is mandatory for covered assemblies, and permitted installations have to be routed through Building Inspections.",
+  "sourceExcerpt": "Dallas Water Utilities runs a high-hazard annual testing program, moved report submission into SwiftComply in November 2022, and explicitly exempts routine annual irrigation testing outside install, repair, or replacement cases.",
+  "sourceSnapshotPath": "storage/snapshots/dallas-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Dallas is a useful edge case because it is not simply annual-for-everything: high-hazard assemblies are annual, irrigation is event-driven, and SwiftComply is mandatory for covered test reports.",
+  "whoIsAffected": "Properties with high-hazard assemblies tracked by Dallas Water Utilities and irrigation systems when a new, repaired, or replaced device must be reported.",
+  "residentialNotes": [
+    "Residential users most often touch Dallas rules through irrigation devices, and those are event-driven rather than annual by default.",
+    "A homeowner should not assume a general annual notice applies just because the property has a sprinkler system."
+  ],
+  "commercialNotes": [
+    "Dallas is more commercial-heavy because the annual program centers on high-hazard assemblies tracked by the utility.",
+    "Permitted new or replacement assemblies can involve both Building Inspections and Dallas Water Utilities."
+  ],
+  "annualTesting": {
+    "summary": "Dallas annual testing applies to the high-hazard program, not to every assembly in the city.",
+    "highlights": [
+      "High-hazard assemblies are annual.",
+      "SwiftComply is mandatory for the covered reporting flow.",
+      "Failed covered devices get a 30-day repair and retest window."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is in Dallas's high-hazard annual program.",
+      "Use a tester registered with the City of Dallas.",
+      "Submit annual covered tests through SwiftComply.",
+      "Repair and retest within 30 days if the device fails."
+    ]
+  },
+  "irrigation": {
+    "summary": "Dallas irrigation is the clearest example of why this site cannot flatten every city into the same annual rule: irrigation devices are tested when newly installed, repaired, or replaced.",
+    "highlights": [
+      "Routine annual irrigation testing is not the default Dallas rule.",
+      "The trigger is installation, repair, or replacement.",
+      "Users who copy a generic Texas annual answer onto Dallas irrigation will be wrong."
+    ],
+    "workflowSteps": [
+      "Confirm whether the irrigation device is new, repaired, or replaced.",
+      "Use the Dallas form and portal path that applies to irrigation-related reporting.",
+      "Do not treat the high-hazard annual notice program as the same thing."
+    ]
+  },
+  "fireLine": {
+    "summary": "Dallas fire and other permitted assemblies can pull Building Inspections into the workflow before inspection closeout.",
+    "highlights": [
+      "Permitted new or replacement assemblies must be routed to Building Inspections before inspection.",
+      "Fire and other higher-risk assemblies are more likely to sit inside the high-hazard annual program.",
+      "The compliance path is split between annual tracking and permitted installation handling."
+    ],
+    "workflowSteps": [
+      "Determine whether the fire-related assembly is a permitted new or replacement installation.",
+      "Send the required report to Building Inspections when the permit path applies.",
+      "Use the Dallas utility workflow and SwiftComply when the assembly is also part of the annual high-hazard program."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm whether the assembly is in Dallas's high-hazard annual program or only falls under the irrigation install or repair rule.",
+    "Use a licensed tester registered with the City of Dallas.",
+    "Submit annual covered tests through the Dallas SwiftComply workflow and route permitted installs to Building Inspections when required.",
+    "If the device fails, repair and retest within 30 days."
+  ],
+  "failureHighlights": [
+    "Do not assume all Dallas assemblies are annual; irrigation has a narrower trigger.",
+    "SwiftComply participation is mandatory for the covered reporting flow.",
+    "A failed device starts a 30-day repair and retest clock."
+  ],
+  "costBand": {
+    "testingRange": "Dallas does not publish retail test pricing, but passed SwiftComply submissions carry a $10 filing fee in addition to the tester's market rate.",
+    "repairRetestRange": "Repair and retest pricing depends on device type and whether the follow-up touches permitting or irrigation replacement work.",
+    "pricingNotes": "Dallas is clearer on compliance workflow and portal fees than on consumer-facing quote ranges."
+  },
+  "sources": [
+    {
+      "label": "Dallas Water Utilities backflow test reports page",
+      "url": "https://dallas.gov/departments/waterutilities/Pages/Backflow-Test-Reports.aspx",
+      "kind": "official program page"
+    },
+    {
+      "label": "Dallas printable backflow test report form",
+      "url": "https://dallascityhall.com/departments/sustainabledevelopment/DCH%20documents/pdf/building/BackflowTestReport.pdf",
+      "kind": "official pdf"
+    },
+    {
+      "label": "Dallas audit of backflow prevention program",
+      "url": "https://dallas.gov/departments/auditor/DCH%20Documents/Final%20Report%20Audit%20of%20Backflow%20Prevention%20Program.pdf",
+      "kind": "official city audit"
+    }
+  ]
+}

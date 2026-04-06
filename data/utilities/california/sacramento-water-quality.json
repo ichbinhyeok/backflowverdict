@@ -1,0 +1,148 @@
+{
+  "utilityId": "sacramento-water",
+  "utilityName": "City of Sacramento Department of Utilities Cross-Connection Control",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "sacramento-water-quality",
+  "state": "california",
+  "serviceAreaCities": [
+    "Sacramento"
+  ],
+  "serviceAreaCounties": [
+    "Sacramento County"
+  ],
+  "searchAliases": [
+    "sacramento backflow testing",
+    "sacramento approved backflow tester list",
+    "sacramento cross connection control"
+  ],
+  "utilityUrl": "https://www.cityofsacramento.gov/utilities/water-quality",
+  "officialProgramUrls": [
+    "https://www.cityofsacramento.gov/utilities/water-quality",
+    "https://www.cityofsacramento.gov/content/dam/portal/dou/utilities/water/documents/Backflow%20Tester%20List.pdf",
+    "https://emd.saccounty.gov/EC/Documents/testers-list.pdf"
+  ],
+  "testingFrequency": "At installation and on the local recurring certification cycle",
+  "dueBasis": "Sacramento's city and county cross-connection workflow uses approved tester lists and a county portal for registered testers and electronic test entry. The city's water certification language applies up to the property line, backflow preventer, or water meter.",
+  "coveredPropertyTypes": [
+    "City water customers",
+    "Commercial properties",
+    "Irrigation systems",
+    "Protected services in Sacramento's water service area"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Approved tester-tagged assemblies",
+    "Cross-connection control devices",
+    "Protected service-connection assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.cityofsacramento.gov/content/dam/portal/dou/utilities/water/documents/Backflow%20Tester%20List.pdf",
+  "officialListLabel": "Open the Sacramento approved backflow tester list",
+  "submissionMethods": [
+    {
+      "label": "Sacramento drinking water quality",
+      "url": "https://www.cityofsacramento.gov/utilities/water-quality",
+      "kind": "program page"
+    },
+    {
+      "label": "Sacramento approved tester list",
+      "url": "https://www.cityofsacramento.gov/content/dam/portal/dou/utilities/water/documents/Backflow%20Tester%20List.pdf",
+      "kind": "official tester list"
+    },
+    {
+      "label": "Sacramento County cross connection tester registry",
+      "url": "https://emd.saccounty.gov/EC/Documents/testers-list.pdf",
+      "kind": "county tester registry"
+    }
+  ],
+  "phone": "916-808-5454",
+  "penalties": "Sacramento keeps cross-connection control inside the regulated drinking-water boundary and relies on approved or registered testers for accepted submissions. Missing the recognized workflow can leave the assembly outside the accepted local compliance path.",
+  "sourceExcerpt": "Sacramento is a strong California city because the Department of Utilities exposes a real tester list and the county portal maintains registered testers and electronic test-entry operations for local compliance.",
+  "sourceSnapshotPath": "storage/snapshots/sacramento-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Sacramento is a useful California utility because city drinking-water pages and county cross-connection operations meet in an actual approved-tester workflow.",
+  "whoIsAffected": "City of Sacramento water customers and protected services that must stay inside Sacramento's cross-connection control and registered tester workflow.",
+  "residentialNotes": [
+    "Residential demand is strongest when tied to irrigation or another protected service rather than generic city-water questions.",
+    "The approved tester list gives homeowners with protected devices a concrete next action."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because Sacramento publishes an approved tester list and relies on the county's active tester-registration system.",
+    "This is the kind of utility/county split users struggle with, which makes the page commercially useful."
+  ],
+  "annualTesting": {
+    "summary": "Sacramento uses approved or registered testers and county-run electronic data-entry operations to keep local backflow certifications current.",
+    "highlights": [
+      "The city publishes a local approved tester list.",
+      "Sacramento County maintains registered testers and electronic test-result entry.",
+      "Drinking-water certification language explicitly references the backflow preventer boundary."
+    ],
+    "workflowSteps": [
+      "Confirm the device is inside Sacramento's protected service workflow.",
+      "Use an approved or registered local tester.",
+      "Keep the city-county reporting chain current so the certification is accepted locally."
+    ]
+  },
+  "irrigation": {
+    "summary": "Sacramento irrigation demand fits because the city and county keep cross-connection control tied to real service boundaries and registered testers.",
+    "highlights": [
+      "Irrigation is a common trigger for protected service-connection testing.",
+      "Approved testers are publicly listed.",
+      "County registration and test entry make the process more operational than generic city copy."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation assembly needs local certification.",
+      "Choose a tester from the approved list.",
+      "Make sure the result gets into the local reporting workflow."
+    ]
+  },
+  "fireLine": {
+    "summary": "Sacramento is less explicit about fire-line rules than some Texas cities, but the approved-tester and protected-boundary workflow still supports larger protected services.",
+    "highlights": [
+      "The city's protected-water boundary runs to the backflow preventer or meter.",
+      "Approved local testers are public.",
+      "The county registry is built for recurring compliance, not one-off plumbing work."
+    ],
+    "workflowSteps": [
+      "Confirm the service connection class and local requirement.",
+      "Use an approved tester familiar with the assembly type.",
+      "Keep the local city-county filing path complete."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the service falls under Sacramento's cross-connection workflow.",
+    "Use a tester from the city-approved list.",
+    "Complete the required certification or retest.",
+    "Keep the tester registry and local filing path current so the report is accepted."
+  ],
+  "failureHighlights": [
+    "Sacramento publishes a real approved tester list.",
+    "County registration and test entry create a live operations layer behind the city page.",
+    "The city's water-quality pages explicitly mention the backflow preventer boundary."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Sacramento narrows the path through an approved tester list.",
+    "repairRetestRange": "Repair and retest cost depends on assembly class and how much follow-up is needed in the county portal workflow.",
+    "pricingNotes": "The main local value is clarity around the city-county compliance chain, not a posted retail fee."
+  },
+  "sources": [
+    {
+      "label": "Sacramento drinking water quality",
+      "url": "https://www.cityofsacramento.gov/utilities/water-quality",
+      "kind": "official city utility page"
+    },
+    {
+      "label": "Sacramento approved tester list",
+      "url": "https://www.cityofsacramento.gov/content/dam/portal/dou/utilities/water/documents/Backflow%20Tester%20List.pdf",
+      "kind": "official tester list pdf"
+    },
+    {
+      "label": "Sacramento County tester registry",
+      "url": "https://emd.saccounty.gov/EC/Documents/testers-list.pdf",
+      "kind": "official county tester list pdf"
+    }
+  ]
+}

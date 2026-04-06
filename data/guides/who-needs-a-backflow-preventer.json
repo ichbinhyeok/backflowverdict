@@ -1,0 +1,42 @@
+{
+  "slug": "who-needs-a-backflow-preventer",
+  "title": "Who needs a backflow preventer",
+  "description": "A practical guide to the property types, hazard classes, and devices that usually trigger backflow assembly requirements.",
+  "intro": "The answer is rarely just 'commercial' or 'residential.' Utilities care about whether a connection can contaminate the public water system and whether the hazard is low or high.",
+  "callout": "Use this page to frame the risk. Then switch back to the utility page because the governing utility decides how the rule is enforced locally.",
+  "sourceExcerpt": "Backflow device requirements follow hazard and contamination exposure, not just a simple residential-versus-commercial label, so the local utility must stay canonical.",
+  "sourceSnapshotPath": "storage/snapshots/guides/who-needs-a-backflow-preventer.html",
+  "reviewerInitials": "TL",
+  "lastReviewed": "2026-04-04",
+  "published": true,
+  "sections": [
+    {
+      "heading": "High-hazard situations show up first",
+      "body": "Hospitals, restaurants, industrial facilities, commercial laundries, reclaimed water users, and other contamination-risk premises are common triggers for annual testing.",
+      "bullets": [
+        "Many utilities treat pools with auto-fill and some irrigation setups as higher hazard than homeowners expect.",
+        "Restricted-inspection sites and premises with auxiliary water sources often get stronger isolation requirements."
+      ]
+    },
+    {
+      "heading": "Residential does not mean exempt",
+      "body": "Residential irrigation, pools, fire protection, wells, and some internal plumbing arrangements can still create a device requirement depending on local rules.",
+      "bullets": [
+        "Some utilities split testing cadence between residential low-hazard irrigation and higher-hazard assemblies.",
+        "New construction and service activation can add customer service inspection or permit steps."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "EPA cross-connection control manual",
+      "url": "https://19january2021snapshot.epa.gov/sites/static/files/2015-09/documents/epa816r03002_0.pdf",
+      "kind": "federal guidance"
+    },
+    {
+      "label": "Fort Worth backflow hazard examples",
+      "url": "https://www.fortworthtexas.gov/departments/water/backflow",
+      "kind": "utility example"
+    }
+  ]
+}

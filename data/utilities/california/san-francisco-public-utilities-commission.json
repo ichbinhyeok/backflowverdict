@@ -1,0 +1,137 @@
+{
+  "utilityId": "sfpuc-water",
+  "utilityName": "San Francisco Public Utilities Commission Backflow Prevention Program",
+  "governingEntityType": "public utilities commission",
+  "canonicalSlug": "san-francisco-public-utilities-commission",
+  "state": "california",
+  "serviceAreaCities": [
+    "San Francisco"
+  ],
+  "serviceAreaCounties": [
+    "San Francisco County"
+  ],
+  "searchAliases": [
+    "san francisco backflow testing",
+    "san francisco certified backflow tester",
+    "sfpuc backflow"
+  ],
+  "utilityUrl": "https://www.sf.gov/reports--november-2023--find-certified-tester-your-backflow-assembly",
+  "officialProgramUrls": [
+    "https://www.sf.gov/reports--november-2023--find-certified-tester-your-backflow-assembly",
+    "https://myaccount-power.sfwater.org/portal/contact-us-connect-me_template.aspx"
+  ],
+  "testingFrequency": "On the local certification cycle for protected assemblies",
+  "dueBasis": "San Francisco pushes users to a certified tester list through SF.gov and keeps the utility contact path inside SFPUC channels.",
+  "coveredPropertyTypes": [
+    "Commercial buildings",
+    "Multifamily buildings",
+    "Irrigation and protected services",
+    "Other SFPUC accounts with backflow assemblies"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow assemblies",
+    "Certified testable devices",
+    "Protected service assemblies",
+    "Fire and larger commercial assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.sf.gov/reports--november-2023--find-certified-tester-your-backflow-assembly",
+  "officialListLabel": "Open the SF.gov certified tester list for San Francisco backflow assemblies",
+  "submissionMethods": [
+    {
+      "label": "San Francisco certified tester list",
+      "url": "https://www.sf.gov/reports--november-2023--find-certified-tester-your-backflow-assembly",
+      "kind": "official tester list"
+    },
+    {
+      "label": "SFPUC customer service contact",
+      "url": "https://myaccount-power.sfwater.org/portal/contact-us-connect-me_template.aspx",
+      "kind": "utility contact"
+    }
+  ],
+  "phone": "415-551-4720",
+  "penalties": "Missing the certified-tester workflow makes the property owner more likely to stay in a vague, non-compliant state instead of an accepted SFPUC path.",
+  "sourceExcerpt": "San Francisco is commercially useful because SF.gov exposes a certified tester list with real companies instead of making users guess.",
+  "sourceSnapshotPath": "storage/snapshots/sfpuc-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "San Francisco is a strong approved-tester utility because SF.gov publishes a genuine certified tester list with contact details.",
+  "whoIsAffected": "SFPUC customers and protected San Francisco properties whose assemblies need a certified tester from the city's accepted list.",
+  "residentialNotes": [
+    "Residential demand is strongest where an irrigation or other protected assembly already exists.",
+    "The city value is not generic homeowner education but clear tester routing."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because the SF.gov list behaves like a real utility-approved next step.",
+    "This is a good example of official guidance and directory content staying separate while still monetizable."
+  ],
+  "annualTesting": {
+    "summary": "San Francisco's strongest public signal is the certified tester list itself.",
+    "highlights": [
+      "The official list includes company names and contact details.",
+      "The route is an authority-first list, not a sponsor directory.",
+      "SFPUC contact remains the support layer behind the tester routing."
+    ],
+    "workflowSteps": [
+      "Confirm the property has a backflow assembly inside the SFPUC program.",
+      "Choose a certified tester from the SF.gov list.",
+      "Coordinate the accepted report through the city utility workflow."
+    ]
+  },
+  "irrigation": {
+    "summary": "San Francisco is useful for irrigation only when a real protected assembly exists and the owner needs a certified tester.",
+    "highlights": [
+      "The official tester list is the strongest public asset.",
+      "This page captures high-intent routing better than generic irrigation advice.",
+      "The city utility contact remains available when details are unclear."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation assembly needs certification.",
+      "Use a certified tester from the official list.",
+      "Keep the report within the SFPUC process."
+    ]
+  },
+  "fireLine": {
+    "summary": "The official list is already geared toward certified testers rather than generic plumbers.",
+    "highlights": [
+      "The certified tester list is public and specific.",
+      "Commercial and larger protected services are a natural fit for this route.",
+      "Official routing stays separate from sponsor inventory."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly type and compliance requirement.",
+      "Use a certified tester from the official list.",
+      "Follow SFPUC utility instructions for accepted reporting."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the property needs a certified backflow test.",
+    "Use the official SF.gov tester list.",
+    "Schedule the inspection or test with a certified company.",
+    "Stay inside the utility's accepted reporting path."
+  ],
+  "failureHighlights": [
+    "San Francisco publishes a real certified tester list.",
+    "The list includes direct vendor contact information.",
+    "This route is stronger as a high-intent approved-tester page than as a generic city explainer."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but the local advantage is the public certified tester list.",
+    "repairRetestRange": "Repair and retest cost depends on device class and scope of follow-up work.",
+    "pricingNotes": "The strongest local signal is accepted tester routing, not a published city fee."
+  },
+  "sources": [
+    {
+      "label": "SF.gov certified tester list",
+      "url": "https://www.sf.gov/reports--november-2023--find-certified-tester-your-backflow-assembly",
+      "kind": "official tester list"
+    },
+    {
+      "label": "SFPUC customer service contact",
+      "url": "https://myaccount-power.sfwater.org/portal/contact-us-connect-me_template.aspx",
+      "kind": "official utility contact"
+    }
+  ]
+}

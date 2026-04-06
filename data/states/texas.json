@@ -1,0 +1,60 @@
+{
+  "state": "texas",
+  "title": "Texas backflow testing requirements",
+  "description": "Texas pilot state guide for utility-specific backflow testing programs, TCEQ reporting expectations, and recurring annual testing workflows.",
+  "summary": "Texas sets a statewide floor through TCEQ forms and public drinking water rules, but real enforcement still happens utility by utility. This pilot state guide ties the Texas baseline to live municipal utility pages that publish the actual notice, tester, and submission workflow.",
+  "authoritySummary": "TCEQ's backflow test and maintenance reporting instructions say annual testing of health-hazard assemblies must occur no more than 12 months from the last test date and that testing completed by a licensed tester must be documented and submitted to the water system.",
+  "sourceExcerpt": "Texas sets the statewide floor through TCEQ backflow reporting instructions, but local utilities still control notices, portals, enforcement timing, and public tester workflows.",
+  "sourceSnapshotPath": "storage/snapshots/states/texas-backflow-testing.html",
+  "reviewerInitials": "TL",
+  "lastVerified": "2026-04-04",
+  "published": true,
+  "statewideHighlights": [
+    "Texas utilities commonly require licensed BPATs and annually calibrated gauges.",
+    "Annual testing is the common rule for health-hazard assemblies, but some cities split cadence by hazard class.",
+    "Submission is increasingly handled through utility vendors such as BSI or VEPO rather than paper-only workflows.",
+    "Local enforcement, due dates, and tester registration still differ by utility."
+  ],
+  "featuredUtilityIds": [
+    "gptx-water",
+    "round-rock-water",
+    "fort-worth-water",
+    "saws-backflow",
+    "austin-water",
+    "lewisville-water",
+    "dallas-water",
+    "college-station-water"
+  ],
+  "sources": [
+    {
+      "label": "TCEQ backflow prevention assembly test and maintenance report instructions",
+      "url": "https://www.tceq.texas.gov/downloads/drinking-water/plan-technical-review/prevention/tceq-20700.pdf",
+      "kind": "state form instructions"
+    },
+    {
+      "label": "Round Rock backflow prevention program",
+      "url": "https://www.roundrocktexas.gov/city-departments/utilities-and-environmental-services/water/backflow/",
+      "kind": "utility example"
+    },
+    {
+      "label": "Fort Worth backflow program",
+      "url": "https://www.fortworthtexas.gov/departments/water/backflow",
+      "kind": "utility example"
+    },
+    {
+      "label": "SAWS backflow prevention program",
+      "url": "https://www.saws.org/backflow-prevention/",
+      "kind": "utility example"
+    },
+    {
+      "label": "Lewisville backflow testing page",
+      "url": "https://www.cityoflewisville.com/city-hall/city-departments/public-services/meter-services/backflow-testing",
+      "kind": "utility example"
+    },
+    {
+      "label": "Dallas Water Utilities backflow test reports",
+      "url": "https://dallas.gov/departments/waterutilities/Pages/Backflow-Test-Reports.aspx",
+      "kind": "utility example"
+    }
+  ]
+}

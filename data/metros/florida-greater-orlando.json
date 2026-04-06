@@ -1,0 +1,35 @@
+{
+  "metroId": "greater-orlando",
+  "title": "Greater Orlando backflow testing",
+  "state": "florida",
+  "metroSlug": "greater-orlando",
+  "cityNames": [
+    "Orlando",
+    "Sanford",
+    "Lake Mary",
+    "Longwood",
+    "Altamonte Springs"
+  ],
+  "countyNames": [
+    "Orange County",
+    "Seminole County"
+  ],
+  "utilityIds": [
+    "orange-county-utilities",
+    "ouc-water",
+    "seminole-county-water"
+  ],
+  "guideSlugs": [
+    "approved-testers-vs-find-a-tester",
+    "backflow-reporting-portals",
+    "residential-vs-commercial-backflow-rules",
+    "backflow-test-cost",
+    "failed-backflow-test-next-steps"
+  ],
+  "description": "Greater Orlando support page for utility-first backflow routes across Orange County, OUC, and Seminole County.",
+  "summary": "Central Florida is commercially strong because adjacent utilities share similar customer demand but use different authority lists, reporting platforms, and irrigation workflows. This metro page groups them without treating the metro as the legal authority.",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 60,
+  "pageStatus": "PUBLISH",
+  "lastReviewed": "2026-04-05"
+}

@@ -1,0 +1,149 @@
+{
+  "utilityId": "parker-water",
+  "utilityName": "Parker Water and Sanitation District Backflow and Cross-Connection Control",
+  "governingEntityType": "water district",
+  "canonicalSlug": "parker-water-and-sanitation-district",
+  "state": "colorado",
+  "serviceAreaCities": [
+    "Parker"
+  ],
+  "serviceAreaCounties": [
+    "Douglas County"
+  ],
+  "searchAliases": [
+    "parker backflow testing",
+    "parker water backflow",
+    "parker irrigation backflow"
+  ],
+  "utilityUrl": "https://www.pwsd.org/3405/Backflow-Cross-Connection-Control",
+  "officialProgramUrls": [
+    "https://www.pwsd.org/3405/Backflow-Cross-Connection-Control",
+    "https://www.pwsd.org/DocumentCenter/View/4393/Backflow-Cross-Connection-Control-Guide-7-2-25-Update-ADA",
+    "https://backflowtest.pwsd.org/"
+  ],
+  "testingFrequency": "Annually and after installation, repair, or replacement when required",
+  "dueBasis": "Parker Water and Sanitation District says all backflow prevention devices are tested annually and also when a device is installed, repaired, or replaced. The district requires test reports through its backflow portal, expects failed devices to be repaired within 10 days, and tells customers to stay current to avoid enforcement.",
+  "coveredPropertyTypes": [
+    "Commercial services",
+    "Industrial services",
+    "Irrigation systems",
+    "Fire service connections",
+    "Other hazard-based service connections"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Irrigation assemblies",
+    "Fire protection assemblies",
+    "Containment devices in the district program"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Parker Water and Sanitation District backflow program",
+      "url": "https://www.pwsd.org/3405/Backflow-Cross-Connection-Control",
+      "kind": "program page"
+    },
+    {
+      "label": "Parker backflow guide",
+      "url": "https://www.pwsd.org/DocumentCenter/View/4393/Backflow-Cross-Connection-Control-Guide-7-2-25-Update-ADA",
+      "kind": "program guide"
+    },
+    {
+      "label": "Parker backflow portal",
+      "url": "https://backflowtest.pwsd.org/",
+      "kind": "reporting portal"
+    }
+  ],
+  "phone": "303-841-4627",
+  "penalties": "Parker Water says failed devices must be repaired within 10 days and keeps enforcement leverage through the district compliance workflow if assemblies are not tested and reported on time.",
+  "sourceExcerpt": "Parker is a strong Front Range utility because the district publishes annual testing, installation and repair triggers, a 10-day failed-device repair rule, and a dedicated backflow reporting portal.",
+  "sourceSnapshotPath": "storage/snapshots/parker-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Parker is a strong Colorado utility because annual testing, repair deadlines, and reporting all live on district-run pages instead of a vague contractor handoff.",
+  "whoIsAffected": "Parker Water and Sanitation District customers with assemblies on irrigation, fire service, commercial, industrial, and other hazard-based connections.",
+  "residentialNotes": [
+    "Residential demand is most likely to show up around irrigation and other property-specific hazard conditions.",
+    "The district pushes users toward its own portal and guide instead of leaving the workflow generic."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because Parker publishes both the annual cadence and the failed-device repair clock.",
+    "The district portal gives this utility stronger next-action value than a static informational page."
+  ],
+  "annualTesting": {
+    "summary": "Parker Water says backflow devices are tested annually and also after installation, repair, or replacement when required.",
+    "highlights": [
+      "Annual testing is explicit.",
+      "The district uses a dedicated backflow portal for reporting.",
+      "Failed devices are repaired within 10 days."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is in the Parker district program.",
+      "Complete the annual or post-repair test.",
+      "Post the result through the Parker backflow portal."
+    ]
+  },
+  "irrigation": {
+    "summary": "Parker is useful for irrigation because the district's annual testing and portal workflow applies cleanly to irrigation assemblies and seasonal service questions.",
+    "highlights": [
+      "Irrigation assemblies remain inside the same annual-testing rule set.",
+      "The district expects reporting through its portal, not by loose email chains.",
+      "Repair timing still matters when an irrigation assembly fails."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation device is still in Parker's annual program.",
+      "Complete the required annual or post-repair test.",
+      "Upload the result to the district portal and clear any failed-test items quickly."
+    ]
+  },
+  "fireLine": {
+    "summary": "Fire service is part of the district's cross-connection program, so the fire-line workflow belongs on the utility page rather than generic plumbing content.",
+    "highlights": [
+      "Fire assemblies sit inside the same district-run compliance logic.",
+      "Repairs still trigger fast follow-up if the assembly fails.",
+      "Portal-based reporting keeps the district in control of the workflow."
+    ],
+    "workflowSteps": [
+      "Confirm the fire assembly class with Parker Water.",
+      "Complete the annual or corrective test after any repair or replacement.",
+      "Use the district reporting workflow rather than assuming fire work is handled separately."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the assembly is under Parker Water's backflow program.",
+    "Complete the annual, installation, or repair-triggered test.",
+    "Repair failed devices within 10 days.",
+    "Post the final result to the district portal."
+  ],
+  "failureHighlights": [
+    "Parker Water says devices are tested annually.",
+    "Installed, repaired, and replaced devices trigger additional testing.",
+    "Failed devices are repaired within 10 days and reported through the district portal."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Parker's portal and failed-device deadlines matter more than a published retail number.",
+    "repairRetestRange": "Repair and retest cost depends on assembly type, fire-service complexity, and how quickly the failed-device clock starts running.",
+    "pricingNotes": "The real Parker constraint is district workflow discipline, not a generic statewide average."
+  },
+  "sources": [
+    {
+      "label": "Parker Water and Sanitation District backflow and cross-connection control",
+      "url": "https://www.pwsd.org/3405/Backflow-Cross-Connection-Control",
+      "kind": "official program page"
+    },
+    {
+      "label": "Parker backflow and cross-connection guide",
+      "url": "https://www.pwsd.org/DocumentCenter/View/4393/Backflow-Cross-Connection-Control-Guide-7-2-25-Update-ADA",
+      "kind": "official guide"
+    },
+    {
+      "label": "Parker backflow reporting portal",
+      "url": "https://backflowtest.pwsd.org/",
+      "kind": "official reporting portal"
+    }
+  ]
+}

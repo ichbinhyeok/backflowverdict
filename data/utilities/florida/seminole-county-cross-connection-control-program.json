@@ -1,0 +1,136 @@
+{
+  "utilityId": "seminole-county-water",
+  "utilityName": "Seminole County Cross Connection Control Program",
+  "governingEntityType": "county utility",
+  "canonicalSlug": "seminole-county-cross-connection-control-program",
+  "state": "florida",
+  "serviceAreaCities": [
+    "Sanford",
+    "Lake Mary",
+    "Longwood",
+    "Altamonte Springs"
+  ],
+  "serviceAreaCounties": [
+    "Seminole County"
+  ],
+  "searchAliases": [
+    "seminole county backflow testing",
+    "seminole county approved backflow testers",
+    "seminole county irrigation backflow"
+  ],
+  "utilityUrl": "https://www.seminolecountyfl.gov/departments-services/utilities/water/ccc-program",
+  "officialProgramUrls": [
+    "https://www.seminolecountyfl.gov/departments-services/utilities/water/ccc-program",
+    "https://www.seminolecountyfl.gov/docs/default-source/pdf/ccc-vendors-0424.pdf?sfvrsn=5f15c059_1",
+    "https://www.seminolecountyfl.gov/docs/default-source/pdf/what-is-a-residential-irr-water-meter-ada.pdf?sfvrsn=b3e5eda0_3"
+  ],
+  "testingFrequency": "Annual",
+  "dueBasis": "Seminole County says assemblies are required on all service connections downstream of the meter where a cross connection may exist and that devices are tested annually by county-approved testers. Failed devices must be repaired and retested within 20 days, and the final repair or replacement report is typically due within 24 to 48 hours of completion.",
+  "coveredPropertyTypes": [
+    "Properties where the county requires protection on the service connection",
+    "Residential irrigation meter installations",
+    "Commercial and domestic services with cross-connection hazards"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention devices at the service connection",
+    "Residential irrigation meter assemblies",
+    "Approved domestic and fire-capable assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.seminolecountyfl.gov/docs/default-source/pdf/ccc-vendors-0424.pdf?sfvrsn=5f15c059_1",
+  "officialListLabel": "Open Seminole County's certified tester list",
+  "submissionMethods": [
+    {
+      "label": "Seminole County cross connection control program",
+      "url": "https://www.seminolecountyfl.gov/departments-services/utilities/water/ccc-program",
+      "kind": "program page"
+    },
+    {
+      "label": "Seminole County certified tester list",
+      "url": "https://www.seminolecountyfl.gov/docs/default-source/pdf/ccc-vendors-0424.pdf?sfvrsn=5f15c059_1",
+      "kind": "official tester list"
+    },
+    {
+      "label": "Seminole County residential irrigation meter guide",
+      "url": "https://www.seminolecountyfl.gov/docs/default-source/pdf/what-is-a-residential-irr-water-meter-ada.pdf?sfvrsn=b3e5eda0_3",
+      "kind": "irrigation guidance"
+    }
+  ],
+  "phone": "407-665-2095",
+  "penalties": "Seminole County warns that failure to install, repair, retest, and maintain required assemblies can result in water service disconnection. The county also expects repairs within 20 days and quick submission of the final repair report.",
+  "sourceExcerpt": "Seminole County publishes its certified tester list, annual testing requirement, 20-day failed-device repair clock, and a separate residential irrigation meter workflow that still uses approved testers.",
+  "sourceSnapshotPath": "storage/snapshots/seminole-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Seminole County is an unusually actionable Florida county utility because it pairs annual testing with an official tester list, a 20-day repair rule, and a distinct residential irrigation meter workflow.",
+  "whoIsAffected": "Service connections where Seminole County requires backflow protection, including residential irrigation meter setups and other domestic or commercial cross-connection hazards.",
+  "residentialNotes": [
+    "Seminole County's residential irrigation meter guide makes this a real residential utility, not just a commercial page wearing a county name.",
+    "Residential irrigation users still need a county-approved tester for the initial and annual testing cycle."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because the county publishes both the tester list and a hard repair clock after failed tests.",
+    "The county also maintains domestic-versus-fire capability markers on the tester list, which helps routing."
+  ],
+  "annualTesting": {
+    "summary": "Seminole County requires annual testing by county-approved testers and expects failed devices to be repaired and retested within 20 days.",
+    "highlights": [
+      "Annual testing is explicit in the county materials.",
+      "Only county-approved testers are accepted.",
+      "Failure-to-repair language includes a 20-day correction window and service-disconnection risk."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is in Seminole County's annual program.",
+      "Choose a tester from the county list.",
+      "Complete the test and move quickly on repair and retest if the device fails."
+    ]
+  },
+  "irrigation": {
+    "summary": "Seminole County's residential irrigation meter guide makes irrigation one of the clearest public subpages in this Florida set.",
+    "highlights": [
+      "A residential irrigation meter requires the initial test by a Seminole County approved tester.",
+      "The same device stays on annual testing afterward.",
+      "The irrigation guide keeps the user in the county-approved tester workflow rather than a generic plumbing path."
+    ],
+    "workflowSteps": [
+      "Confirm whether the property is installing or already operating a residential irrigation meter.",
+      "Use a Seminole County approved tester for the initial test.",
+      "Keep the irrigation assembly on the county's annual testing cycle after installation."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the assembly falls under Seminole County's cross-connection control rules.",
+    "Choose an approved tester from the county list.",
+    "Complete the annual or initial irrigation-related test.",
+    "If the device fails, repair and retest within 20 days and submit the final result promptly."
+  ],
+  "failureHighlights": [
+    "Seminole County uses a 20-day repair and retest clock for failed devices.",
+    "The county publishes a certified tester list with domestic and fire capability markers.",
+    "Water service disconnection is part of the county's enforcement path."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Seminole County's official list and repair clock add real next-action pressure.",
+    "repairRetestRange": "Repair and retest cost varies by device and whether the job is a residential irrigation install or a broader commercial assembly.",
+    "pricingNotes": "The county's value as a lead surface comes from the official list and the explicit enforcement timeline, not a public price chart."
+  },
+  "sources": [
+    {
+      "label": "Seminole County cross connection control program",
+      "url": "https://www.seminolecountyfl.gov/departments-services/utilities/water/ccc-program",
+      "kind": "official program page"
+    },
+    {
+      "label": "Seminole County certified tester list",
+      "url": "https://www.seminolecountyfl.gov/docs/default-source/pdf/ccc-vendors-0424.pdf?sfvrsn=5f15c059_1",
+      "kind": "official tester list pdf"
+    },
+    {
+      "label": "Seminole County residential irrigation meter guide",
+      "url": "https://www.seminolecountyfl.gov/docs/default-source/pdf/what-is-a-residential-irr-water-meter-ada.pdf?sfvrsn=b3e5eda0_3",
+      "kind": "official irrigation guide"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "metroId": "southwest-florida-water-utilities",
+  "title": "Southwest Florida backflow testing",
+  "state": "florida",
+  "metroSlug": "southwest-florida-water-utilities",
+  "cityNames": [
+    "Fort Myers",
+    "Cape Coral",
+    "Sarasota",
+    "Bradenton"
+  ],
+  "countyNames": [
+    "Lee County",
+    "Sarasota County",
+    "Manatee County"
+  ],
+  "utilityIds": [
+    "lee-county-utilities",
+    "sarasota-county-utilities",
+    "manatee-county-utilities"
+  ],
+  "guideSlugs": [
+    "backflow-test-cost",
+    "failed-backflow-test-next-steps",
+    "approved-testers-vs-find-a-tester"
+  ],
+  "description": "Southwest Florida support page for county-led and Gulf Coast utility routes across Lee, Sarasota, and Manatee County.",
+  "summary": "Southwest Florida works as a metro support layer because adjacent county utilities use different portal, approved-list, and annual-testing workflows while serving the same demand region. This page groups those surfaces without flattening them into a fake single authority.",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 60,
+  "pageStatus": "PUBLISH",
+  "lastReviewed": "2026-04-05"
+}

@@ -1,0 +1,123 @@
+{
+  "utilityId": "tampa-water",
+  "utilityName": "City of Tampa Water Department Backflow Prevention",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "tampa-water-department",
+  "state": "florida",
+  "serviceAreaCities": [
+    "Tampa"
+  ],
+  "serviceAreaCounties": [
+    "Hillsborough County"
+  ],
+  "searchAliases": [
+    "tampa backflow testing",
+    "tampa swiftcomply backflow",
+    "tampa irrigation backflow"
+  ],
+  "utilityUrl": "https://www.tampa.gov/water/builders-and-homeowners/backflow-prevention",
+  "officialProgramUrls": [
+    "https://www.tampa.gov/water/builders-and-homeowners/backflow-prevention"
+  ],
+  "testingFrequency": "Commercial annually; residential every two years",
+  "dueBasis": "Tampa requires certified test results to reach the Water Department within seven calendar days after testing. Commercial properties are annual and residential properties are biannual.",
+  "coveredPropertyTypes": [
+    "Commercial properties",
+    "Residential properties with required assemblies",
+    "Facilities usually requiring service-connection protection under the municipal code",
+    "Sites using SwiftComply tester enrollment"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention devices",
+    "Commercial assemblies",
+    "Residential irrigation or protected-service assemblies",
+    "Approved Tampa installation devices"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Tampa backflow prevention program",
+      "url": "https://www.tampa.gov/water/builders-and-homeowners/backflow-prevention",
+      "kind": "program page"
+    },
+    {
+      "label": "Tampa SwiftComply portal",
+      "url": "https://tampafl.c3swift.com/",
+      "kind": "online reporting portal"
+    }
+  ],
+  "phone": "813-231-5266",
+  "penalties": "Tampa does not frame the program as casual. Test results must reach the Water Department within seven days, and the city uses SwiftComply enrollment to control who can submit results.",
+  "sourceExcerpt": "Tampa is a very strong Florida utility because it publishes a split residential-versus-commercial cadence, a seven-day reporting deadline, and a SwiftComply tester-enrollment flow.",
+  "sourceSnapshotPath": "storage/snapshots/tampa-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Tampa is one of the best Florida fits because it publishes a clear cadence split, a seven-day reporting deadline, and a real tester-enrollment workflow instead of generic educational content.",
+  "whoIsAffected": "Commercial properties, residential properties with required devices, and other facilities listed in Tampa's municipal code as usually requiring service-connection protection.",
+  "residentialNotes": [
+    "Tampa is unusually useful for residential pages because it publishes a separate biannual cadence for residential properties.",
+    "Residential irrigation and outdoor water use can still carry the same seven-day report-delivery requirement once testing is completed."
+  ],
+  "commercialNotes": [
+    "Commercial properties stay on an annual cycle, which creates strong recurring-intent content.",
+    "SwiftComply enrollment gives Tampa a concrete tester-routing workflow even without a public approved list."
+  ],
+  "annualTesting": {
+    "summary": "Tampa keeps commercial properties on an annual cycle and expects certified test results within seven calendar days of testing.",
+    "highlights": [
+      "Commercial cadence is annual.",
+      "Results must be received within seven calendar days.",
+      "Tester onboarding runs through SwiftComply."
+    ],
+    "workflowSteps": [
+      "Confirm whether the property is commercial or residential.",
+      "Use a certified tester enrolled through the Tampa workflow.",
+      "Get the result into the city's system within seven days of testing."
+    ]
+  },
+  "irrigation": {
+    "summary": "Tampa's utility pages pair backflow compliance with real irrigation-heavy residential and commercial conditions, which makes irrigation a strong lead page.",
+    "highlights": [
+      "Residential properties remain on a two-year cadence while commercial stays annual.",
+      "Test results still have a seven-day submission window.",
+      "Irrigation-heavy sites are part of the real Florida risk profile even when the city page is broad."
+    ],
+    "workflowSteps": [
+      "Confirm whether the assembly is on a residential or commercial irrigation path.",
+      "Use the city's certified tester workflow.",
+      "Submit the result to the Water Department within seven days of the test."
+    ]
+  },
+  "workflowSteps": [
+    "Determine whether the property is residential or commercial for cadence purposes.",
+    "Use a certified tester and make sure the tester is enrolled through Tampa's workflow.",
+    "Complete the test on the correct cadence.",
+    "Submit the certified result within seven calendar days."
+  ],
+  "failureHighlights": [
+    "Tampa uses different cadences for commercial and residential properties.",
+    "The city requires delivery of certified results within seven days.",
+    "Tester enrollment is portal-driven rather than ad hoc."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Tampa's split cadence changes how often the property pays for service.",
+    "repairRetestRange": "Repair and retest cost depends on assembly type and whether the site is residential or commercial.",
+    "pricingNotes": "The strongest local cost signal is the recurring cadence plus the seven-day reporting discipline."
+  },
+  "sources": [
+    {
+      "label": "Tampa backflow prevention program",
+      "url": "https://www.tampa.gov/water/builders-and-homeowners/backflow-prevention",
+      "kind": "official program page"
+    },
+    {
+      "label": "Tampa SwiftComply portal",
+      "url": "https://tampafl.c3swift.com/",
+      "kind": "official portal"
+    }
+  ]
+}

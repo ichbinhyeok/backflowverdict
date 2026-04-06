@@ -1,0 +1,134 @@
+{
+  "utilityId": "lafayette-water",
+  "utilityName": "City of Lafayette Backflow Compliance Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "lafayette-backflow-compliance",
+  "state": "colorado",
+  "serviceAreaCities": [
+    "Lafayette"
+  ],
+  "serviceAreaCounties": [
+    "Boulder County"
+  ],
+  "searchAliases": [
+    "lafayette backflow testing",
+    "lafayette backflow compliance",
+    "lafayette irrigation backflow"
+  ],
+  "utilityUrl": "https://www.lafayetteco.gov/directory.aspx?did=6",
+  "officialProgramUrls": [
+    "https://www.lafayetteco.gov/directory.aspx?did=6",
+    "https://www.backflowtest.com/customer/BF/BSI/LafayetteCO",
+    "https://codelibrary.amlegal.com/codes/lafayette/latest/lafayette_co/0-0-0-21431"
+  ],
+  "testingFrequency": "Annually",
+  "dueBasis": "Lafayette runs backflow compliance through the city utility and BSI Online. The city says annual backflow tests are due by May 31 for irrigation systems and by August 31 for all other backflow devices, with late fees and possible water shutoff if the device stays out of compliance.",
+  "coveredPropertyTypes": [
+    "Irrigation systems",
+    "Commercial services",
+    "Other city-required backflow devices",
+    "Properties with cross-connection hazards"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention devices",
+    "Irrigation assemblies",
+    "City-monitored testable assemblies"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Lafayette backflow compliance support",
+      "url": "https://www.lafayetteco.gov/directory.aspx?did=6",
+      "kind": "utility contact page"
+    },
+    {
+      "label": "Lafayette BSI customer portal",
+      "url": "https://www.backflowtest.com/customer/BF/BSI/LafayetteCO",
+      "kind": "reporting portal"
+    },
+    {
+      "label": "Lafayette code library",
+      "url": "https://codelibrary.amlegal.com/codes/lafayette/latest/lafayette_co/0-0-0-21431",
+      "kind": "city code"
+    }
+  ],
+  "phone": "303-661-1272",
+  "penalties": "Lafayette says late tests and failed devices can trigger fines, late fees, and eventual water shutoff if the assembly is not returned to compliance.",
+  "sourceExcerpt": "Lafayette is a useful Colorado utility because the city publishes separate annual due dates for irrigation and non-irrigation devices, runs the workflow through BSI, and keeps enforcement language visible.",
+  "sourceSnapshotPath": "storage/snapshots/lafayette-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Lafayette is a strong Front Range utility because it publishes clear annual due dates by device type, a BSI workflow, and enforcement language with fees and shutoff risk.",
+  "whoIsAffected": "Lafayette utility customers with irrigation systems or any other city-required backflow devices.",
+  "residentialNotes": [
+    "Residential demand is strongest for irrigation assemblies because Lafayette gives irrigation its own due date.",
+    "The BSI workflow makes this more actionable than a general educational page."
+  ],
+  "commercialNotes": [
+    "Commercial value comes from the separate due-date rules, late fees, and shutoff risk.",
+    "Users need the city utility and BSI workflow, not just a contractor recommendation."
+  ],
+  "annualTesting": {
+    "summary": "Lafayette gives annual due dates by assembly type: May 31 for irrigation systems and August 31 for other backflow devices.",
+    "highlights": [
+      "Irrigation systems are due by May 31.",
+      "Other backflow devices are due by August 31.",
+      "Late fees and shutoff risk are part of the city workflow."
+    ],
+    "workflowSteps": [
+      "Confirm whether the assembly is irrigation or another device class.",
+      "Meet the correct annual due date in the Lafayette workflow.",
+      "Keep the BSI-side record current before enforcement escalates."
+    ]
+  },
+  "irrigation": {
+    "summary": "Lafayette is a good irrigation page because the city publishes a separate irrigation due date rather than flattening everything into one generic annual deadline.",
+    "highlights": [
+      "Irrigation assemblies come due earlier than the rest of the city's devices.",
+      "The BSI workflow still controls the reporting path.",
+      "Late fees and shutoff risk apply if the irrigation device stays out of compliance."
+    ],
+    "workflowSteps": [
+      "Treat irrigation assemblies as a separate May 31 deadline.",
+      "Complete the annual test through Lafayette's utility workflow.",
+      "Keep the BSI record current before late fees start to pile up."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the device type and its annual due date.",
+    "Complete the annual test through Lafayette's utility workflow.",
+    "Post the result through the BSI-side process.",
+    "Do not let late fees or shutoff escalation start."
+  ],
+  "failureHighlights": [
+    "Lafayette separates irrigation and non-irrigation annual due dates.",
+    "Late fees and water shutoff are part of the city's enforcement path.",
+    "The workflow is utility-plus-BSI, not generic contractor routing."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Lafayette's date-specific enforcement matters more than a generic Colorado average.",
+    "repairRetestRange": "Repair and retest cost depends on assembly type and whether the device is already running into late fees.",
+    "pricingNotes": "The strongest local pressure is meeting the right due date and avoiding late-fee or shutoff escalation."
+  },
+  "sources": [
+    {
+      "label": "Lafayette backflow compliance support",
+      "url": "https://www.lafayetteco.gov/directory.aspx?did=6",
+      "kind": "utility contact page"
+    },
+    {
+      "label": "Lafayette BSI customer portal",
+      "url": "https://www.backflowtest.com/customer/BF/BSI/LafayetteCO",
+      "kind": "official reporting portal"
+    },
+    {
+      "label": "Lafayette code library",
+      "url": "https://codelibrary.amlegal.com/codes/lafayette/latest/lafayette_co/0-0-0-21431",
+      "kind": "city code context"
+    }
+  ]
+}

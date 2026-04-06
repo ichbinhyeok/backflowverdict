@@ -1,0 +1,60 @@
+{
+  "slug": "anniversary-date-vs-calendar-deadline",
+  "title": "Anniversary date vs calendar deadline",
+  "description": "Why some utilities track backflow tests by anniversary date, while others push owners into a calendar-season or hard-date deadline.",
+  "intro": "The backflow testing cadence is often described as annual, but the real due logic is more specific. The site needs to explain whether a utility uses an anniversary cycle, a seasonal window, or a fixed date.",
+  "callout": "Annual does not tell the whole story. The exact due basis is what drives reminder content, local page wording, and lead timing.",
+  "sourceExcerpt": "Annual backflow testing can still mean very different things in practice. Utilities split between anniversary-date programs, fixed deadlines, and reminder-driven seasonal windows.",
+  "sourceSnapshotPath": "storage/snapshots/guides/anniversary-date-vs-calendar-deadline.html",
+  "reviewerInitials": "TL",
+  "lastReviewed": "2026-04-05",
+  "published": true,
+  "sections": [
+    {
+      "heading": "Anniversary-date programs create rolling intent",
+      "body": "Utilities such as Tempe show a classic anniversary-date pattern. That means the content and lead timing should follow the specific device due cycle rather than a blanket seasonal push.",
+      "bullets": [
+        "Anniversary-date utilities are good fits for reminder-style content and quote capture.",
+        "These pages often perform differently from January-to-March calendar deadline pages."
+      ]
+    },
+    {
+      "heading": "Calendar or hard-date utilities behave differently",
+      "body": "Some utilities attach testing to a published annual window or a fixed date such as July 31 or a seasonal inspection period. That creates a more synchronized demand pattern.",
+      "bullets": [
+        "Arvada and Patterson are good examples of utilities where the deadline wording matters as much as the annual-testing claim.",
+        "Fixed-date pages are often stronger fits for deadline, notice, and penalty support content."
+      ]
+    },
+    {
+      "heading": "Reminder logic should match the due basis",
+      "body": "A lead site loses trust if it talks about annual testing without distinguishing anniversary cycles from hard dates. The copy, internal links, and sponsor timing should follow the actual local due logic.",
+      "bullets": [
+        "This guide exists to support annual-testing pages without flattening all local timing into one generic statement.",
+        "Utilities with notice ladders and 30-day or 60-day reminders deserve different CTA timing from rolling anniversary programs."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "Tempe backflow prevention program",
+      "url": "https://www.tempe.gov/government/public-works/water/backflow-prevention-program",
+      "kind": "utility example"
+    },
+    {
+      "label": "Patterson annual test program",
+      "url": "https://www.pattersonca.gov/681/Backflow-Prevention-Device-Annual-Test-P",
+      "kind": "utility example"
+    },
+    {
+      "label": "Arvada cross-connection and backflow program",
+      "url": "https://www.arvadaco.gov/706/Cross-Connection-Control-Backflow",
+      "kind": "utility example"
+    },
+    {
+      "label": "Jupiter backflow prevention details",
+      "url": "https://www.jupiter.fl.us/243/Backflow-Prevention-Details",
+      "kind": "utility example"
+    }
+  ]
+}

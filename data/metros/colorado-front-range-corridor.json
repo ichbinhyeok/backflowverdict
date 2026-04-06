@@ -1,0 +1,59 @@
+{
+  "metroId": "front-range-corridor",
+  "title": "Front Range backflow testing",
+  "state": "colorado",
+  "metroSlug": "front-range-corridor",
+  "cityNames": [
+    "Denver",
+    "Aurora",
+    "Arvada",
+    "Castle Rock",
+    "Parker",
+    "Englewood",
+    "Lafayette",
+    "Longmont",
+    "Thornton",
+    "Westminster",
+    "Fort Collins",
+    "Greeley",
+    "Colorado Springs"
+  ],
+  "countyNames": [
+    "Denver County",
+    "Adams County",
+    "Jefferson County",
+    "Douglas County",
+    "Boulder County",
+    "Larimer County",
+    "Weld County",
+    "El Paso County"
+  ],
+  "utilityIds": [
+    "denver-water",
+    "aurora-water",
+    "arvada-water",
+    "castle-rock-water",
+    "parker-water",
+    "englewood-utilities",
+    "lafayette-water",
+    "longmont-water",
+    "thornton-water",
+    "westminster-water",
+    "fort-collins-utilities",
+    "greeley-water",
+    "csu-backflow"
+  ],
+  "guideSlugs": [
+    "backflow-reporting-portals",
+    "anniversary-date-vs-calendar-deadline",
+    "rpz-vs-dcva-vs-pvb",
+    "approved-testers-vs-find-a-tester",
+    "backflow-test-cost"
+  ],
+  "description": "Front Range support page for Colorado utility routes where fire-line, irrigation, date-specific testing, and third-party reporting workflows vary by city.",
+  "summary": "Colorado's Front Range is a good metro support layer because adjacent utilities share state rules but still diverge on penalty timing, portal workflow, and annual due-date handling. This page groups those local routes without flattening them into a fake statewide answer.",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 60,
+  "pageStatus": "PUBLISH",
+  "lastReviewed": "2026-04-05"
+}

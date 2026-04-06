@@ -1,0 +1,103 @@
+{
+  "utilityId": "patterson-water",
+  "utilityName": "City of Patterson Backflow Prevention Device Annual Test Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "patterson-annual-test-program",
+  "state": "california",
+  "serviceAreaCities": [
+    "Patterson"
+  ],
+  "serviceAreaCounties": [
+    "Stanislaus County"
+  ],
+  "searchAliases": [
+    "patterson backflow testing",
+    "patterson approved backflow testers",
+    "patterson annual backflow test"
+  ],
+  "utilityUrl": "https://www.pattersonca.gov/681/Backflow-Prevention-Device-Annual-Test-P",
+  "officialProgramUrls": [
+    "https://www.pattersonca.gov/681/Backflow-Prevention-Device-Annual-Test-P",
+    "https://www.pattersonca.gov/DocumentCenter/View/12149/Sacramento-Certified-Backflow-Prevention-Assembly-Testers"
+  ],
+  "testingFrequency": "Annual",
+  "dueBasis": "Patterson mails periodic test and maintenance letters in January and expects property owners to notify the city of their selected approved outside tester. If the owner does not respond, the city may perform the testing itself.",
+  "coveredPropertyTypes": [
+    "Properties with backflow prevention devices installed on city water infrastructure",
+    "Commercial and industrial services under the city cross-connection program",
+    "Other protected services that receive annual test letters"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention devices on the city water infrastructure",
+    "Approved outside-tester assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.pattersonca.gov/681/Backflow-Prevention-Device-Annual-Test-P",
+  "officialListLabel": "Open Patterson's official approved tester page",
+  "submissionMethods": [
+    {
+      "label": "Patterson annual test program",
+      "url": "https://www.pattersonca.gov/681/Backflow-Prevention-Device-Annual-Test-P",
+      "kind": "program page"
+    }
+  ],
+  "phone": "209-895-8063",
+  "penalties": "Patterson does not frame the workflow as optional. If an owner does not notify the city of an approved outside tester after the annual letter, the city can move forward with testing under the program.",
+  "sourceExcerpt": "Patterson is valuable because the official page publishes the January annual-mailing cycle, the city-notification workflow, and a live table of approved outside testers.",
+  "sourceSnapshotPath": "storage/snapshots/patterson-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Patterson has unusually actionable municipal content because the city explains the January letter cycle, the owner response workflow, and a current table of approved outside testers.",
+  "whoIsAffected": "Property owners and responsible parties whose backflow prevention devices are installed on the City of Patterson water infrastructure.",
+  "residentialNotes": [
+    "Patterson's public page is phrased around property owners and responsible parties rather than only large commercial accounts.",
+    "The annual notice system means even smaller protected properties can receive explicit testing instructions from the city."
+  ],
+  "commercialNotes": [
+    "Commercial intent is strong because the city maintains an approved outside tester table instead of a generic advisory page.",
+    "The city can also test devices when an owner does not respond, which adds urgency to the annual cycle."
+  ],
+  "annualTesting": {
+    "summary": "Patterson runs an annual program tied to January letters and an approved outside tester workflow.",
+    "highlights": [
+      "The city mails periodic test and maintenance letters in January.",
+      "Owners are expected to notify the city of the approved outside tester they will use.",
+      "Patterson publishes the approved outside tester table directly on the public page."
+    ],
+    "workflowSteps": [
+      "Watch for the city's annual letter or confirm the device is on the annual program.",
+      "Choose one of Patterson's approved outside testers and notify the city.",
+      "Complete the annual test so the city does not have to step in under the program."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the property received or should have received the annual Patterson notice.",
+    "Select an approved outside tester from the city table.",
+    "Notify the city by phone or email of the tester you are using.",
+    "Complete the test on time so the city does not need to default to its own testing process."
+  ],
+  "failureHighlights": [
+    "Patterson uses an annual letter cycle rather than generic evergreen copy.",
+    "The city maintains a public approved outside tester table.",
+    "Owners who do not respond can lose control of the testing workflow."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Patterson's approved-list structure shapes the usable quote set.",
+    "repairRetestRange": "Repair and retest pricing depends on the assembly and whether the city requires a corrected test under the annual program.",
+    "pricingNotes": "The commercial value is in the official-list funnel and annual-notice urgency, not a public fee schedule."
+  },
+  "sources": [
+    {
+      "label": "Patterson annual backflow test program",
+      "url": "https://www.pattersonca.gov/681/Backflow-Prevention-Device-Annual-Test-P",
+      "kind": "official program page"
+    },
+    {
+      "label": "Patterson linked certified tester resource",
+      "url": "https://www.pattersonca.gov/DocumentCenter/View/12149/Sacramento-Certified-Backflow-Prevention-Assembly-Testers",
+      "kind": "official linked pdf"
+    }
+  ]
+}

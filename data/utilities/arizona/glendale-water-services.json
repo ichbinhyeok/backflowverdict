@@ -1,0 +1,137 @@
+{
+  "utilityId": "glendale-water",
+  "utilityName": "City of Glendale Cross Connection Control and Backflow",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "glendale-water-services",
+  "state": "arizona",
+  "serviceAreaCities": [
+    "Glendale"
+  ],
+  "serviceAreaCounties": [
+    "Maricopa County"
+  ],
+  "searchAliases": [
+    "glendale az backflow testing",
+    "glendale backflow tester list",
+    "glendale fire hydrant meter backflow"
+  ],
+  "utilityUrl": "https://www.glendaleaz.com/UserFiles/Servers/Server_15209001/File/Departments/Water%20Services/Cross%20Connection%20Control/Fire%20Hydrant%20Meter%20%26%20Cross%20Connection%20Control%20Policy%20Agreement.pdf",
+  "officialProgramUrls": [
+    "https://www.glendaleaz.com/UserFiles/Servers/Server_15209001/File/Departments/Water%20Services/Cross%20Connection%20Control/Fire%20Hydrant%20Meter%20%26%20Cross%20Connection%20Control%20Policy%20Agreement.pdf",
+    "https://www.glendaleaz.com/UserFiles/Servers/Server_15209001/File/Departments/Water%20Services/Cross%20Connection%20Control/Backflow%20Tester%20List%205-5-2025.pdf"
+  ],
+  "testingFrequency": "Before use and through the city-recognized certified tester workflow",
+  "dueBasis": "Glendale requires a backflow permit for hydrant-meter use, requires an RP assembly within one business day and before use, and requires the assembly to be tested by a certified tester before inspection closes out the work.",
+  "coveredPropertyTypes": [
+    "Hydrant meter users",
+    "Construction and development projects",
+    "Commercial sites using temporary water",
+    "Other services routed through Glendale cross-connection control"
+  ],
+  "coveredDeviceTypes": [
+    "Reduced pressure principle assemblies",
+    "Hydrant meter backflow assemblies",
+    "Certified tester inspection reports",
+    "City-recognized backflow assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.glendaleaz.com/UserFiles/Servers/Server_15209001/File/Departments/Water%20Services/Cross%20Connection%20Control/Backflow%20Tester%20List%205-5-2025.pdf",
+  "officialListLabel": "Open the Glendale certified tester resource list",
+  "submissionMethods": [
+    {
+      "label": "Glendale hydrant meter and cross connection policy",
+      "url": "https://www.glendaleaz.com/UserFiles/Servers/Server_15209001/File/Departments/Water%20Services/Cross%20Connection%20Control/Fire%20Hydrant%20Meter%20%26%20Cross%20Connection%20Control%20Policy%20Agreement.pdf",
+      "kind": "policy agreement"
+    },
+    {
+      "label": "Glendale tester resource list",
+      "url": "https://www.glendaleaz.com/UserFiles/Servers/Server_15209001/File/Departments/Water%20Services/Cross%20Connection%20Control/Backflow%20Tester%20List%205-5-2025.pdf",
+      "kind": "official tester list"
+    }
+  ],
+  "phone": "623-930-4138",
+  "penalties": "Glendale can remove a hydrant meter from service if it is operating without the required RP assembly and requires a copy of the test report at inspection.",
+  "sourceExcerpt": "Glendale pairs a public tester resource list with a permit-and-inspection workflow for temporary water and hydrant meter assemblies, including one-business-day installation timing and pre-use testing.",
+  "sourceSnapshotPath": "storage/snapshots/glendale-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Glendale is a useful Arizona utility because it combines a real tester resource list with permit, inspection, and pre-use assembly rules for hydrant and temporary-water work.",
+  "whoIsAffected": "Glendale customers and contractors using hydrant meters, temporary water, or other cross-connection-sensitive services that the city pushes through certified tester review.",
+  "residentialNotes": [
+    "Glendale is not a broad homeowner page; it is strongest for temporary-water, construction, and protected-service situations.",
+    "The resource list is official city inventory but not a city endorsement."
+  ],
+  "commercialNotes": [
+    "Commercial and contractor intent is strong because Glendale publishes exact permit, inspection, and assembly timing rules.",
+    "The tester list works well for city-specific next-action pages even though Glendale does not endorse the private firms on it."
+  ],
+  "annualTesting": {
+    "summary": "Glendale's public materials are strongest on certified-tester compliance, permits, and pre-use testing rather than a consumer reminder cadence table.",
+    "highlights": [
+      "The tester list is maintained by Glendale cross-connection control.",
+      "Certified test reports are expected before inspection closes out the installation.",
+      "Hydrant meter assemblies must be installed within one business day and before use."
+    ],
+    "workflowSteps": [
+      "Confirm the service is inside Glendale's cross-connection workflow.",
+      "Use a tester from the city resource list.",
+      "Keep the test report and inspection timing aligned so the service does not get pulled from use."
+    ]
+  },
+  "irrigation": {
+    "summary": "Glendale is less irrigation-heavy than Tempe, but the same certified-tester and ADEQ-backed resource list still supports protected irrigation services tied to city water.",
+    "highlights": [
+      "The city resource list is based on submitted ADEQ tester and gauge-calibration certificates.",
+      "Glendale cross-connection control treats backpressure and back-siphonage as the public-water risk.",
+      "The city does not endorse private testers even though it maintains the list."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation service needs a testable assembly.",
+      "Use a Glendale-recognized tester from the city resource PDF.",
+      "Keep the test report available for inspection and follow-up."
+    ]
+  },
+  "fireLine": {
+    "summary": "Glendale is especially good for protected temporary water and fire-hydrant meter work because the city publishes RP assembly timing and inspection rules.",
+    "highlights": [
+      "Hydrant meters must have an RP assembly installed within one business day.",
+      "Any hydrant meter operating without the assembly can be removed from service immediately.",
+      "Inspection requires a copy of the test report."
+    ],
+    "workflowSteps": [
+      "Pull the Glendale permit first.",
+      "Install the RP assembly before use.",
+      "Schedule inspection with the certified tester report ready."
+    ]
+  },
+  "workflowSteps": [
+    "Pull the Glendale permit for the protected service.",
+    "Use a certified tester from the city resource list.",
+    "Install and test the assembly before use.",
+    "Schedule inspection and keep the report ready so the service stays active."
+  ],
+  "failureHighlights": [
+    "Glendale can pull hydrant meters from service if the required assembly is missing.",
+    "The city requires pre-use testing and inspection, not just generic education.",
+    "The official tester list is a resource list, not an endorsement."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Glendale adds permit and inspection timing around the work.",
+    "repairRetestRange": "Repair and retest cost rises if the issue affects temporary water, hydrant meters, or a missed inspection.",
+    "pricingNotes": "The main value is avoiding service removal and failed inspection cycles."
+  },
+  "sources": [
+    {
+      "label": "Glendale hydrant meter and cross connection policy",
+      "url": "https://www.glendaleaz.com/UserFiles/Servers/Server_15209001/File/Departments/Water%20Services/Cross%20Connection%20Control/Fire%20Hydrant%20Meter%20%26%20Cross%20Connection%20Control%20Policy%20Agreement.pdf",
+      "kind": "official policy pdf"
+    },
+    {
+      "label": "Glendale tester resource list",
+      "url": "https://www.glendaleaz.com/UserFiles/Servers/Server_15209001/File/Departments/Water%20Services/Cross%20Connection%20Control/Backflow%20Tester%20List%205-5-2025.pdf",
+      "kind": "official tester list pdf"
+    }
+  ]
+}

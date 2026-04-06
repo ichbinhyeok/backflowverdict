@@ -1,0 +1,149 @@
+{
+  "utilityId": "fresno-water",
+  "utilityName": "City of Fresno Water Division Cross Connection and Backflow",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "fresno-water-division",
+  "state": "california",
+  "serviceAreaCities": [
+    "Fresno"
+  ],
+  "serviceAreaCounties": [
+    "Fresno County"
+  ],
+  "searchAliases": [
+    "fresno backflow testing",
+    "fresno water division backflow",
+    "fresno irrigation backflow"
+  ],
+  "utilityUrl": "https://www.fresno.gov/publicutilities/water-division/water-operations/",
+  "officialProgramUrls": [
+    "https://www.fresno.gov/publicutilities/water-division/water-operations/",
+    "https://www.fresno.gov/publicutilities/water-division/water-quality-and-testing/",
+    "https://www.fresno.gov/wp-content/uploads/2023/03/Rules-and-Regulations-of-Recycled-Water-Use.pdf"
+  ],
+  "testingFrequency": "Annually once the assembly is in the city program",
+  "dueBasis": "Fresno says annual tests of backflow devices are mandated to verify they work correctly. The Water Division manages more than 9,700 backflow devices across the city and coordinates planning, installation, and maintenance through the Cross Connection Control program.",
+  "coveredPropertyTypes": [
+    "Commercial properties",
+    "Industrial properties",
+    "Irrigation and recycled-water sites",
+    "Fire-protection and protected service connections",
+    "Residential properties where a cross-connection hazard exists"
+  ],
+  "coveredDeviceTypes": [
+    "Reduced pressure principle assemblies",
+    "Double check assemblies",
+    "Cross-connection control assemblies",
+    "Recycled-water cross-connection test assemblies"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Fresno water operations",
+      "url": "https://www.fresno.gov/publicutilities/water-division/water-operations/",
+      "kind": "program page"
+    },
+    {
+      "label": "Fresno water quality and testing",
+      "url": "https://www.fresno.gov/publicutilities/water-division/water-quality-and-testing/",
+      "kind": "water quality page"
+    },
+    {
+      "label": "Fresno recycled water rules",
+      "url": "https://www.fresno.gov/wp-content/uploads/2023/03/Rules-and-Regulations-of-Recycled-Water-Use.pdf",
+      "kind": "rules pdf"
+    }
+  ],
+  "phone": "559-621-5300",
+  "penalties": "Fresno frames cross-connection control as a city program with records of locations, tests, and repairs. Recycled-water customers must notify the city at least 48 hours before a cross-connection test supervised by the city.",
+  "sourceExcerpt": "Fresno is strong because the city openly says annual tests are mandated, discloses the scale of the device base, and ties recycled-water cross-connection testing to city-supervised procedures.",
+  "sourceSnapshotPath": "storage/snapshots/fresno-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Fresno is a strong California utility because it runs a visible Cross Connection Control program, mandates annual testing, and adds city-supervised cross-connection testing for recycled-water sites.",
+  "whoIsAffected": "Fresno water customers with protected service connections, cross-connection hazards, or recycled-water systems that interact with the potable system.",
+  "residentialNotes": [
+    "Residential value is strongest where irrigation, recycled water, or another city-identified hazard creates a real cross-connection question.",
+    "The city's program language is strong enough to support homeowner and HOA pages without inventing rules."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because Fresno publishes real program scale and annual-test requirements.",
+    "Industrial, institutional, and recycled-water sites are especially good fits."
+  ],
+  "annualTesting": {
+    "summary": "Fresno says annual tests of backflow devices are mandated and that the Backflow section manages more than 9,700 devices across the city.",
+    "highlights": [
+      "Annual testing is explicit on the Water Operations page.",
+      "The Backflow section manages a large citywide device inventory.",
+      "The city coordinates planning, installation, and maintenance through the Cross Connection Control program."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is in Fresno's protected inventory.",
+      "Complete the annual test with a qualified tester.",
+      "Keep the device records current through the city program."
+    ]
+  },
+  "irrigation": {
+    "summary": "Fresno irrigation content works because the city treats unavoidable cross-connections as cases where an approved backflow assembly becomes necessary.",
+    "highlights": [
+      "Cross-connections are explained plainly as public-water risks.",
+      "Irrigation and outdoor services are part of the real local hazard mix.",
+      "The city program coordinates installation and maintenance, not just final reports."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation setup triggers Fresno protection.",
+      "Install or maintain the approved assembly.",
+      "Keep annual testing current within the city program."
+    ]
+  },
+  "fireLine": {
+    "summary": "Fresno is not as fire-line explicit as some Texas or Florida utilities, but protected service connections still fit the same city backflow management program.",
+    "highlights": [
+      "The city uses RPP and double-check assemblies as common backflow types.",
+      "Annual testing and records are still the core compliance story.",
+      "City-managed records of tests and repairs matter for larger properties."
+    ],
+    "workflowSteps": [
+      "Confirm the protected service connection class.",
+      "Use the correct assembly type and qualified tester.",
+      "Keep the city-side records complete after testing or repair."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the service connection is inside Fresno's cross-connection program.",
+    "Test the assembly on the required cycle.",
+    "Coordinate any installation or maintenance updates through the Water Division.",
+    "Keep the city's record of tests and repairs current."
+  ],
+  "failureHighlights": [
+    "Fresno publicly says annual testing is mandated.",
+    "The city manages a very large protected-device inventory.",
+    "Recycled-water cross-connection tests can require 48-hour notice and city presence."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Fresno adds value through public scale and program clarity.",
+    "repairRetestRange": "Repair and retest costs rise where recycled-water or more complex site conditions are involved.",
+    "pricingNotes": "The main local cost driver is staying on top of city-managed records for a large protected-device base."
+  },
+  "sources": [
+    {
+      "label": "Fresno water operations",
+      "url": "https://www.fresno.gov/publicutilities/water-division/water-operations/",
+      "kind": "official program page"
+    },
+    {
+      "label": "Fresno water quality and testing",
+      "url": "https://www.fresno.gov/publicutilities/water-division/water-quality-and-testing/",
+      "kind": "official utility page"
+    },
+    {
+      "label": "Fresno recycled water rules",
+      "url": "https://www.fresno.gov/wp-content/uploads/2023/03/Rules-and-Regulations-of-Recycled-Water-Use.pdf",
+      "kind": "official rules pdf"
+    }
+  ]
+}

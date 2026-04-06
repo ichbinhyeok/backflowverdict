@@ -1,0 +1,138 @@
+{
+  "utilityId": "buckeye-water",
+  "utilityName": "City of Buckeye Environmental Compliance and Backflow Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "buckeye-water-resources",
+  "state": "arizona",
+  "serviceAreaCities": [
+    "Buckeye"
+  ],
+  "serviceAreaCounties": [
+    "Maricopa County"
+  ],
+  "searchAliases": [
+    "buckeye backflow testing",
+    "buckeye irrigation backflow",
+    "buckeye fire line backflow"
+  ],
+  "utilityUrl": "https://www.buckeyeaz.gov/community/residents/water-resources/environmental-compliance",
+  "officialProgramUrls": [
+    "https://www.buckeyeaz.gov/community/residents/water-resources/environmental-compliance",
+    "https://www.buckeyeaz.gov/home/showpublisheddocument/15447/639045928491930000"
+  ],
+  "testingFrequency": "Annually after installation",
+  "dueBasis": "Buckeye says the city sends annual test due notices to backflow assembly users and requires annual testing at hazardous cross-connections under city code and ADEQ rules.",
+  "coveredPropertyTypes": [
+    "Multi-family properties",
+    "Commercial properties",
+    "Industrial properties",
+    "Dedicated landscape irrigation systems",
+    "Engineered fire lines"
+  ],
+  "coveredDeviceTypes": [
+    "Reduced pressure principle assemblies",
+    "Double check assemblies for engineered fire lines",
+    "Approved AWWA-certified backflow preventers",
+    "Assemblies witnessed by the city inspector on development work"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Buckeye environmental compliance",
+      "url": "https://www.buckeyeaz.gov/community/residents/water-resources/environmental-compliance",
+      "kind": "program page"
+    },
+    {
+      "label": "Buckeye utility standards",
+      "url": "https://www.buckeyeaz.gov/home/showpublisheddocument/15447/639045928491930000",
+      "kind": "standards manual"
+    }
+  ],
+  "phone": "623-349-6194",
+  "penalties": "Buckeye treats annual testing as an owner responsibility and uses annual due notices to enforce compliance. Development-side testing must be witnessed and reported to the city inspector before occupancy.",
+  "sourceExcerpt": "Buckeye is a strong Arizona utility because it pairs annual due notices with explicit assembly classes for irrigation, commercial sites, and engineered fire lines.",
+  "sourceSnapshotPath": "storage/snapshots/buckeye-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Buckeye is a useful Arizona utility because it publishes annual due notices, clear required assembly classes, and direct owner responsibility for annual testing.",
+  "whoIsAffected": "Buckeye customers with hazardous cross-connections, including multifamily, commercial, industrial, dedicated irrigation, and engineered fire-line services.",
+  "residentialNotes": [
+    "Buckeye is strongest where a home has dedicated landscape irrigation or another hazard trigger rather than general domestic service.",
+    "Owner participation language makes the customer responsible for the annual test cycle."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because Buckeye directly names multi-family, commercial, industrial, and irrigation facilities.",
+    "The city uses annual due notices rather than leaving compliance timing vague."
+  ],
+  "annualTesting": {
+    "summary": "Buckeye says owners must have annual tests and inspections performed on all required backflow prevention assemblies.",
+    "highlights": [
+      "The city sends annual test due notices.",
+      "ADEQ-backed annual testing applies at hazardous cross-connections.",
+      "Owner expense and responsibility are explicit."
+    ],
+    "workflowSteps": [
+      "Watch for the annual Buckeye due notice.",
+      "Hire a certified tester for the required assembly.",
+      "Keep the annual test current so the city program stays satisfied."
+    ]
+  },
+  "irrigation": {
+    "summary": "Buckeye is strong for irrigation because dedicated landscape irrigation systems require a reduced pressure principle assembly.",
+    "highlights": [
+      "Dedicated landscape irrigation is named directly in city code language.",
+      "Annual testing still applies once the assembly is installed.",
+      "Buckeye uses the same hazardous-cross-connection logic as its commercial pages."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation service is dedicated and protected.",
+      "Use the correct RP assembly for the irrigation line.",
+      "Complete annual testing on the city's due-notice cycle."
+    ]
+  },
+  "fireLine": {
+    "summary": "Buckeye explicitly carves out engineered fire lines as the place where a double check assembly is used instead of the default RP.",
+    "highlights": [
+      "Engineered fire lines are named directly on the public page.",
+      "Fire-line assembly class is different from most other Buckeye hazards.",
+      "Development work also requires city-witnessed testing and reports."
+    ],
+    "workflowSteps": [
+      "Confirm the service is an engineered fire line.",
+      "Install the correct fire-line assembly class.",
+      "Coordinate any development or inspector-witnessed testing with the city."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm Buckeye has required an assembly at the service.",
+    "Use the right assembly class for the service type.",
+    "Complete the annual test when the city sends the due notice.",
+    "Keep any development-side report on file with the inspector if the site is still in buildout."
+  ],
+  "failureHighlights": [
+    "Buckeye sends annual test due notices.",
+    "Dedicated irrigation and engineered fire lines have different assembly rules.",
+    "Development-side backflow tests can require city inspector involvement."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Buckeye adds annual due-notice discipline and owner-responsibility pressure.",
+    "repairRetestRange": "Repair and retest costs rise on dedicated irrigation and engineered fire-line assemblies.",
+    "pricingNotes": "The main local value is avoiding missed Buckeye due notices and failed occupancy/inspection handoffs."
+  },
+  "sources": [
+    {
+      "label": "Buckeye environmental compliance",
+      "url": "https://www.buckeyeaz.gov/community/residents/water-resources/environmental-compliance",
+      "kind": "official program page"
+    },
+    {
+      "label": "Buckeye utility standards",
+      "url": "https://www.buckeyeaz.gov/home/showpublisheddocument/15447/639045928491930000",
+      "kind": "official standards pdf"
+    }
+  ]
+}

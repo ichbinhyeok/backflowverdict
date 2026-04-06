@@ -1,0 +1,160 @@
+{
+  "utilityId": "tallahassee-water",
+  "utilityName": "City of Tallahassee Utilities Cross-Connection Control",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "tallahassee-utilities",
+  "state": "florida",
+  "serviceAreaCities": [
+    "Tallahassee"
+  ],
+  "serviceAreaCounties": [
+    "Leon County"
+  ],
+  "searchAliases": [
+    "tallahassee backflow testing",
+    "tallahassee certified backflow testers",
+    "tallahassee biennial backflow"
+  ],
+  "utilityUrl": "https://www.talgov.com/you/you-learn-utilities-water-cross.aspx",
+  "officialProgramUrls": [
+    "https://www.talgov.com/you/you-learn-utilities-water-cross.aspx",
+    "https://www.talgov.com/you/documents",
+    "https://www.talgov.com/Uploads/Public/Documents/you/forms/backflow_optin.pdf",
+    "https://www.talgov.com/Uploads/Public/Documents/you/cross_rules.pdf"
+  ],
+  "testingFrequency": "Annual by default, biennial for qualifying residential assemblies",
+  "dueBasis": "Tallahassee says customers can qualify for biennial testing when they meet the residential criteria in the city rules. Everyone else stays on the annual track, and delinquent customers can be automatically enrolled in the city-coordinated testing program.",
+  "coveredPropertyTypes": [
+    "Residential properties with assemblies",
+    "Commercial properties",
+    "Irrigation services",
+    "Premises with alternate water sources or booster pumps",
+    "Protected service connections under city rules"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Residential and commercial assemblies",
+    "City-contractor tested assemblies",
+    "Protected irrigation and service-connection devices"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.talgov.com/you/documents",
+  "officialListLabel": "Open the Tallahassee utility documents page for the tester list",
+  "submissionMethods": [
+    {
+      "label": "Tallahassee cross-connection control",
+      "url": "https://www.talgov.com/you/you-learn-utilities-water-cross.aspx",
+      "kind": "program page"
+    },
+    {
+      "label": "Tallahassee utility documents",
+      "url": "https://www.talgov.com/you/documents",
+      "kind": "documents hub"
+    },
+    {
+      "label": "Tallahassee opt-in testing form",
+      "url": "https://www.talgov.com/Uploads/Public/Documents/you/forms/backflow_optin.pdf",
+      "kind": "opt-in program form"
+    },
+    {
+      "label": "Tallahassee cross-connection rules",
+      "url": "https://www.talgov.com/Uploads/Public/Documents/you/cross_rules.pdf",
+      "kind": "rules pdf"
+    }
+  ],
+  "phone": "850-891-1248",
+  "penalties": "Tallahassee can automatically enroll delinquent customers in the city-coordinated testing program. The rules are built to achieve compliance before water service discontinuance, but the city still uses notifications and billing-based enforcement.",
+  "sourceExcerpt": "Tallahassee is one of the strongest Florida city programs because it combines annual-versus-biennial qualification rules, a city-coordinated testing option, tester-list links, and utility-bill collection mechanics.",
+  "sourceSnapshotPath": "storage/snapshots/tallahassee-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Tallahassee is a very strong Florida utility because it combines residential versus commercial cadence rules, city-coordinated testing, and a documented contractor/testing program.",
+  "whoIsAffected": "Tallahassee residential and commercial customers with required backflow assemblies, especially those with irrigation, alternate water sources, booster pumps, or other hazard triggers under city rules.",
+  "residentialNotes": [
+    "Tallahassee is unusually strong for residential pages because the city publicly explains when a property can move to every-two-year testing.",
+    "If the city does not receive the questionnaire or the property has hazards, the assembly stays on the annual cycle."
+  ],
+  "commercialNotes": [
+    "Commercial demand is strong because the city offers a one-time-fee city-contractor testing program and still allows private contractors as long as the customer stays compliant.",
+    "This is a very usable utility page for recurring lead intent."
+  ],
+  "annualTesting": {
+    "summary": "Tallahassee uses annual testing by default, but qualifying residential assemblies can shift to every two years. Delinquent customers can be auto-enrolled into the city-coordinated testing program.",
+    "highlights": [
+      "The city explains the biennial qualification rules in public FAQs.",
+      "Residential opt-in can be billed monthly; commercial opt-in is a one-time fee.",
+      "Customers may still use their own testing contractor if they remain compliant."
+    ],
+    "workflowSteps": [
+      "Check whether the assembly qualifies for biennial residential testing.",
+      "If not, stay on the annual cycle.",
+      "Use either the city-coordinated program or a private contractor and keep the city record compliant."
+    ]
+  },
+  "irrigation": {
+    "summary": "Tallahassee is strong for irrigation because irrigation is part of the same residential-versus-commercial testing logic and utility-bill based compliance program.",
+    "highlights": [
+      "Residential properties with qualifying conditions can test every two years.",
+      "Hazards like alternate water sources keep the property on the annual path.",
+      "The city can still coordinate testing through its own contractor program."
+    ],
+    "workflowSteps": [
+      "Confirm whether the irrigation-connected property qualifies for biennial testing.",
+      "Choose city-coordinated or private-contractor testing.",
+      "Keep the city questionnaire and compliance record current."
+    ]
+  },
+  "fireLine": {
+    "summary": "Tallahassee is less public about fire-line staffing than West Palm, but the same city rules, notifications, and contractor program still govern protected service assemblies.",
+    "highlights": [
+      "The rules create a citywide compliance framework instead of a one-off plumbing process.",
+      "Commercial customers can opt into the city contractor program.",
+      "Private contractors are still allowed if the customer remains compliant."
+    ],
+    "workflowSteps": [
+      "Confirm the protected service is inside the Tallahassee rules framework.",
+      "Choose the city contractor path or a compliant private contractor.",
+      "Keep the test and maintenance record current so the customer is not forced into delinquent status."
+    ]
+  },
+  "workflowSteps": [
+    "Determine whether the assembly is annual or qualifies for biennial testing.",
+    "Choose city-coordinated testing or a private contractor.",
+    "Complete the test and any questionnaire or opt-in paperwork.",
+    "Stay current so the city does not auto-enroll the account as delinquent."
+  ],
+  "failureHighlights": [
+    "Tallahassee publicly explains annual versus biennial qualification.",
+    "The city can auto-enroll delinquent customers into its contractor program.",
+    "Utility-bill collection mechanics make this a real compliance workflow."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced if the customer hires a private contractor, but Tallahassee also offers city-coordinated testing billed through the utility account.",
+    "repairRetestRange": "Repair and retest costs vary by assembly condition and whether the city or a private contractor handles the testing loop.",
+    "pricingNotes": "The strongest local cost signal is predictable city-bill collection instead of emergency noncompliance cleanup."
+  },
+  "sources": [
+    {
+      "label": "Tallahassee cross-connection control",
+      "url": "https://www.talgov.com/you/you-learn-utilities-water-cross.aspx",
+      "kind": "official program page"
+    },
+    {
+      "label": "Tallahassee utility documents",
+      "url": "https://www.talgov.com/you/documents",
+      "kind": "official documents page"
+    },
+    {
+      "label": "Tallahassee opt-in testing form",
+      "url": "https://www.talgov.com/Uploads/Public/Documents/you/forms/backflow_optin.pdf",
+      "kind": "official opt-in form pdf"
+    },
+    {
+      "label": "Tallahassee cross-connection rules",
+      "url": "https://www.talgov.com/Uploads/Public/Documents/you/cross_rules.pdf",
+      "kind": "official rules pdf"
+    }
+  ]
+}

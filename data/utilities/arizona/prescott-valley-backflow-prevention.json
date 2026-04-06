@@ -1,0 +1,124 @@
+{
+  "utilityId": "prescott-valley-water",
+  "utilityName": "Town of Prescott Valley Backflow Prevention Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "prescott-valley-backflow-prevention",
+  "state": "arizona",
+  "serviceAreaCities": [
+    "Prescott Valley"
+  ],
+  "serviceAreaCounties": [
+    "Yavapai County"
+  ],
+  "searchAliases": [
+    "prescott valley backflow testing",
+    "prescott valley certified backflow testers",
+    "prescott valley irrigation backflow"
+  ],
+  "utilityUrl": "https://cms1files.revize.com/prescottvalleyaz/Documents/Departments/Utilities/Customer%20Accounts/Forms/Certified%20Backflow%20testers.pdf",
+  "officialProgramUrls": [
+    "https://cms1files.revize.com/prescottvalleyaz/Documents/Departments/Utilities/Customer%20Accounts/Forms/Certified%20Backflow%20testers.pdf",
+    "https://prescott-az.gov/wp-content/uploads/2025/02/ENG-GES-Chapters-4-6-Without-Redlines-20250221.pdf"
+  ],
+  "testingFrequency": "At installation and annually thereafter for required assemblies",
+  "dueBasis": "Prescott Valley's utility materials say required assemblies are tested at installation and annually thereafter. The town's certified tester handout says none of the listed companies are specifically endorsed, but accepted testers must keep current certification, test-kit calibration, and a Town business license on file.",
+  "coveredPropertyTypes": [
+    "Commercial services",
+    "Irrigation services",
+    "Residential services with wells, ponds, or other alternate water sources",
+    "Properties with other cross-connection hazards"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Reduced pressure assemblies",
+    "Double check assemblies",
+    "Irrigation containment devices"
+  ],
+  "approvedTesterMode": "DIRECTORY_ONLY",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Prescott Valley certified backflow testers",
+      "url": "https://cms1files.revize.com/prescottvalleyaz/Documents/Departments/Utilities/Customer%20Accounts/Forms/Certified%20Backflow%20testers.pdf",
+      "kind": "town tester handout"
+    },
+    {
+      "label": "Prescott area engineering standards chapters 4 to 6",
+      "url": "https://prescott-az.gov/wp-content/uploads/2025/02/ENG-GES-Chapters-4-6-Without-Redlines-20250221.pdf",
+      "kind": "utility standards context"
+    }
+  ],
+  "phone": "928-759-9062",
+  "penalties": "Testing, maintenance, and repair remain the customer's responsibility. Prescott Valley also requires accepted testers to keep certification, calibration, and town business-license records current before relying on the directory handout.",
+  "sourceExcerpt": "Prescott Valley is a good Northern Arizona utility because the town publishes a real certified-tester handout, says listed companies are not specifically endorsed, and still ties required assemblies to installation and annual testing.",
+  "sourceSnapshotPath": "storage/snapshots/prescott-valley-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Prescott Valley is useful because it combines installation-plus-annual testing rules with a clearly non-endorsed tester directory, which fits the project's directory-only route model cleanly.",
+  "whoIsAffected": "Prescott Valley utility customers with required containment assemblies, especially irrigation services and residential properties using wells, ponds, or other alternate water sources.",
+  "residentialNotes": [
+    "Prescott Valley is unusually relevant for residential demand because the code calls out homes with wells, ponds, or submerged outlets as hazard cases.",
+    "The town's tester handout is useful, but it is not a town endorsement list."
+  ],
+  "commercialNotes": [
+    "Commercial value comes from the accepted-tester requirements and the clear annual testing rule.",
+    "This is a better find-a-tester utility than an approved-tester utility because the town explicitly avoids endorsing the listed companies."
+  ],
+  "annualTesting": {
+    "summary": "Prescott Valley says required assemblies are tested at installation and annually thereafter, and the town expects accepted testers to keep certification and calibration records current.",
+    "highlights": [
+      "Installation testing and annual testing are both part of the local rule set.",
+      "The town's tester handout says none of the listed companies are specifically endorsed.",
+      "Accepted testers need current certification, calibration, and town business-license records."
+    ],
+    "workflowSteps": [
+      "Confirm the property has a Prescott Valley-required assembly.",
+      "Choose a qualified tester and verify the tester still meets the town documentation requirements.",
+      "Complete the installation or annual test and keep the utility record current."
+    ]
+  },
+  "irrigation": {
+    "summary": "Prescott Valley is strong for irrigation because the local code explicitly calls out alternate water sources and other hazard scenarios that often arise around irrigation setups.",
+    "highlights": [
+      "Residential services with wells, ponds, or similar alternate sources are a real trigger in the town code.",
+      "The town still routes testing back through certified testers rather than generic handyman work.",
+      "The directory should be treated as non-endorsed utility routing, not approval."
+    ],
+    "workflowSteps": [
+      "Confirm whether the irrigation or alternate-water setup triggers a required containment assembly.",
+      "Use a qualified tester that still satisfies the town's certification and calibration requirements.",
+      "Keep the annual test current with Prescott Valley Utilities."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the property is in Prescott Valley's backflow program.",
+    "Verify the tester is qualified under the town's certification, calibration, and business-license rules.",
+    "Complete the installation or annual test.",
+    "Keep the utility-side record current."
+  ],
+  "failureHighlights": [
+    "Prescott Valley requires installation testing and annual testing for required assemblies.",
+    "The town's tester handout is explicitly not an endorsement list.",
+    "Certification, gauge calibration, and a current town business license matter before a tester is treated as acceptable."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, and the real local friction is verifying the tester still satisfies the town's accepted-documentation rules.",
+    "repairRetestRange": "Repair and retest cost depends on the assembly type and the hazard that triggered the device requirement.",
+    "pricingNotes": "Prescott Valley is better framed as a qualified-directory market than an official approved-list market."
+  },
+  "sources": [
+    {
+      "label": "Prescott Valley certified backflow testers handout",
+      "url": "https://cms1files.revize.com/prescottvalleyaz/Documents/Departments/Utilities/Customer%20Accounts/Forms/Certified%20Backflow%20testers.pdf",
+      "kind": "official tester directory pdf"
+    },
+    {
+      "label": "Prescott area engineering standards chapters 4 to 6",
+      "url": "https://prescott-az.gov/wp-content/uploads/2025/02/ENG-GES-Chapters-4-6-Without-Redlines-20250221.pdf",
+      "kind": "official utility standards"
+    }
+  ]
+}

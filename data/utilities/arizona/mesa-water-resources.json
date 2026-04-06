@@ -1,0 +1,148 @@
+{
+  "utilityId": "mesa-water",
+  "utilityName": "Mesa Water Resources Backflow Prevention",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "mesa-water-resources",
+  "state": "arizona",
+  "serviceAreaCities": [
+    "Mesa"
+  ],
+  "serviceAreaCounties": [
+    "Maricopa County"
+  ],
+  "searchAliases": [
+    "mesa backflow testing",
+    "mesa backflow portal",
+    "mesa fire contractor backflow"
+  ],
+  "utilityUrl": "https://www.mesaaz.gov/Utilities/Water-Wastewater/Backflow-Prevention",
+  "officialProgramUrls": [
+    "https://www.mesaaz.gov/Utilities/Water-Wastewater/Backflow-Prevention",
+    "https://www.mesaaz.gov/files/assets/public/v/1/utilities/water/backflow/new-mesa-city-code-backflow-prevention-2025.pdf",
+    "https://www.mesaaz.gov/files/assets/public/v/1/utilities/water/backflow/backflow-general-tester-list.pdf"
+  ],
+  "testingFrequency": "Upon installation and annually thereafter",
+  "dueBasis": "Mesa sends annual notices to regulated customers, requires recognized testers to submit results through the backflow portal within seven days of service, and requires immediate retesting after repair or maintenance.",
+  "coveredPropertyTypes": [
+    "Commercial and industrial customers",
+    "Homes with dedicated landscape meters",
+    "Single-family residences covered by city and plumbing code",
+    "Most fire sprinkler systems and other hazard points"
+  ],
+  "coveredDeviceTypes": [
+    "Domestic backflow assemblies",
+    "Irrigation backflow assemblies",
+    "Fire protection assemblies",
+    "Point-of-use backflow assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.mesaaz.gov/files/assets/public/v/1/utilities/water/backflow/backflow-general-tester-list.pdf",
+  "officialListLabel": "Open the Mesa general tester list",
+  "submissionMethods": [
+    {
+      "label": "Mesa Backflow Prevention program",
+      "url": "https://www.mesaaz.gov/Utilities/Water-Wastewater/Backflow-Prevention",
+      "kind": "program page"
+    },
+    {
+      "label": "Mesa general tester list",
+      "url": "https://www.mesaaz.gov/files/assets/public/v/1/utilities/water/backflow/backflow-general-tester-list.pdf",
+      "kind": "official tester list"
+    },
+    {
+      "label": "Mesa city code on backflow prevention",
+      "url": "https://www.mesaaz.gov/files/assets/public/v/1/utilities/water/backflow/new-mesa-city-code-backflow-prevention-2025.pdf",
+      "kind": "city code"
+    }
+  ],
+  "phone": "480-644-6462",
+  "penalties": "Mesa can keep a regulated customer out of compliance if the test is late, the portal filing misses the seven-day window, or the assembly is repaired without an immediate retest by a recognized tester.",
+  "sourceExcerpt": "Mesa publishes one of the cleaner city workflows: annual notices, seven-day portal reporting, immediate retesting after repairs, and separate resources for general testers and fire contractors.",
+  "sourceSnapshotPath": "storage/snapshots/mesa-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Mesa is a high-value Arizona utility because it publishes the annual cadence, the seven-day submission rule, tester lists, and a city-code layer that covers residential, irrigation, and fire-related hazards.",
+  "whoIsAffected": "Commercial, industrial, irrigation, fire-sprinkler, and dedicated-landscape-meter customers, plus residential sites that city code and plumbing rules identify as cross-connection hazards.",
+  "residentialNotes": [
+    "Mesa is stronger than many cities on residential coverage because dedicated landscape meters and other residential cross-connections are called out directly.",
+    "Single-family homes are not automatically outside the program if a hazard exists under the plumbing code or city ordinance."
+  ],
+  "commercialNotes": [
+    "Mesa's seven-day reporting requirement and immediate retest rule make the workflow operationally strict.",
+    "Fire and non-fire work are not identical because Mesa separates general testers from fire-contractor resources."
+  ],
+  "annualTesting": {
+    "summary": "Mesa treats annual testing as the recurring baseline and requires recognized testers to upload the results within seven days of service.",
+    "highlights": [
+      "Mesa sends annual notices to regulated customers.",
+      "Repair or maintenance triggers an immediate retest requirement.",
+      "Recognized testers submit results through the city portal within seven days."
+    ],
+    "workflowSteps": [
+      "Watch for Mesa's annual notice or regulated-customer status.",
+      "Use a tester recognized by Mesa.",
+      "Upload the results through the portal within seven days and retest immediately if repairs were made."
+    ]
+  },
+  "irrigation": {
+    "summary": "Mesa explicitly treats dedicated landscape meters and landscape sprinkler systems as backflow-relevant cross-connections.",
+    "highlights": [
+      "Landscape sprinkler and drip systems are listed as cross-connection examples.",
+      "Homes with dedicated landscape meters are directly within Mesa's program.",
+      "Irrigation assemblies still need testing and portal submission through the normal city workflow."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation service or dedicated landscape meter is correctly protected.",
+      "Use a recognized tester to complete the irrigation assembly test.",
+      "Submit the result through Mesa's portal within seven days so the irrigation service stays current."
+    ]
+  },
+  "fireLine": {
+    "summary": "Mesa keeps separate resources for fire contractors, which makes the fire-line path stronger than a generic annual-testing page.",
+    "highlights": [
+      "Most fire sprinkler systems are listed as covered cross-connections.",
+      "Mesa distinguishes general testers from fire-contractor resources.",
+      "The annual testing and portal reporting discipline still applies."
+    ],
+    "workflowSteps": [
+      "Verify whether the service is on the fire-protection side of the property.",
+      "Use the appropriate recognized fire-side contractor or tester resource.",
+      "Report the result through the city workflow without missing the seven-day window."
+    ]
+  },
+  "workflowSteps": [
+    "Identify whether the property or device is already in Mesa's regulated-customer pool.",
+    "Use a recognized tester from the city resources.",
+    "Upload the test through the portal within seven days of service.",
+    "If the assembly was repaired, retest immediately and keep the replacement data aligned with Mesa's record."
+  ],
+  "failureHighlights": [
+    "Mesa uses a seven-day result-submission window.",
+    "Repairs trigger an immediate retest expectation.",
+    "Residential irrigation and fire-service contexts both appear in the official program."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Mesa adds process friction through the portal deadline and annual notice cycle.",
+    "repairRetestRange": "Repair and retest cost changes with the device class and whether fire-side work is involved.",
+    "pricingNotes": "The city does not publish a retail tester fee, so the main value is in the strict operational rules and list of recognized testers."
+  },
+  "sources": [
+    {
+      "label": "Mesa Backflow Prevention program",
+      "url": "https://www.mesaaz.gov/Utilities/Water-Wastewater/Backflow-Prevention",
+      "kind": "official program page"
+    },
+    {
+      "label": "Mesa city code on backflow prevention",
+      "url": "https://www.mesaaz.gov/files/assets/public/v/1/utilities/water/backflow/new-mesa-city-code-backflow-prevention-2025.pdf",
+      "kind": "official code pdf"
+    },
+    {
+      "label": "Mesa general tester list",
+      "url": "https://www.mesaaz.gov/files/assets/public/v/1/utilities/water/backflow/backflow-general-tester-list.pdf",
+      "kind": "official tester list pdf"
+    }
+  ]
+}

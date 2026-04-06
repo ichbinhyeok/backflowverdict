@@ -1,0 +1,139 @@
+{
+  "utilityId": "queen-creek-water",
+  "utilityName": "Town of Queen Creek Backflow Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "queen-creek-backflow-information",
+  "state": "arizona",
+  "serviceAreaCities": [
+    "Queen Creek"
+  ],
+  "serviceAreaCounties": [
+    "Maricopa County",
+    "Pinal County"
+  ],
+  "searchAliases": [
+    "queen creek backflow testing",
+    "queen creek approved backflow tester",
+    "queen creek bsi backflow"
+  ],
+  "utilityUrl": "https://www.queencreekaz.gov/government/utilities/water/backflow-information",
+  "officialProgramUrls": [
+    "https://www.queencreekaz.gov/government/utilities/water/backflow-information",
+    "https://www.queencreekaz.gov/government/utilities/water/contractor-information"
+  ],
+  "testingFrequency": "Annually after installation and on the BSI filing cycle",
+  "dueBasis": "Queen Creek requires annual backflow assembly reports through BSI Online, requires current tester licenses and up-to-date gauge calibration certificates, and charges a $14.95 filing fee per test report once the device is in the established reporting cycle.",
+  "coveredPropertyTypes": [
+    "Commercial properties",
+    "Protected residential properties",
+    "Irrigation services",
+    "Fire-related protected services",
+    "New assemblies entering the Queen Creek system"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow assemblies reported through BSI",
+    "Town-approved backflow devices",
+    "Assemblies tested by state-certified testers",
+    "Protected service assemblies entering the town workflow"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.queencreekaz.gov/government/utilities/water/contractor-information",
+  "officialListLabel": "Open Queen Creek contractor information for approved tester routing",
+  "submissionMethods": [
+    {
+      "label": "Queen Creek backflow information",
+      "url": "https://www.queencreekaz.gov/government/utilities/water/backflow-information",
+      "kind": "program page"
+    },
+    {
+      "label": "Queen Creek contractor information",
+      "url": "https://www.queencreekaz.gov/government/utilities/water/contractor-information",
+      "kind": "approved contractor page"
+    }
+  ],
+  "phone": "800-414-4990",
+  "penalties": "Queen Creek says reports will not be accepted if the tester license or test kit calibration is not up to date. Customers stay non-compliant if the accepted BSI workflow is not followed.",
+  "sourceExcerpt": "Queen Creek is a strong Arizona utility because it turns annual backflow testing into a real BSI workflow with filing fees, contractor approval, and explicit non-acceptance rules for expired credentials.",
+  "sourceSnapshotPath": "storage/snapshots/queen-creek-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Queen Creek is a strong utility because it combines annual backflow reporting, BSI filing fees, and strict tester credential requirements.",
+  "whoIsAffected": "Queen Creek customers with assemblies that must be reported through the town's BSI-linked backflow workflow, including irrigation and other protected services.",
+  "residentialNotes": [
+    "Residential demand is strongest when the property has an irrigation or other protected service that puts it into the BSI reporting cycle.",
+    "The town lets customers use providers not on the list, but only if their credentials are filed and accepted first."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because Queen Creek uses BSI filing fees and formal credential acceptance instead of an ad hoc local process.",
+    "This is a clean utility-first page for annual-testing and approved-tester routing."
+  ],
+  "annualTesting": {
+    "summary": "Queen Creek requires annual test reports through BSI Online and only accepts testers with current licenses and calibration documents.",
+    "highlights": [
+      "The filing fee is $14.95 per test report.",
+      "Reports are not accepted if credentials are out of date.",
+      "Brand-new assemblies can enter the system without the filing fee in the first year."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is in the Queen Creek BSI cycle.",
+      "Use an approved tester or ensure the tester gets credentials accepted first.",
+      "File the test through BSI with the correct fee and documentation."
+    ]
+  },
+  "irrigation": {
+    "summary": "Queen Creek is useful for irrigation because the same BSI workflow applies to irrigation-related assemblies and the town openly routes users to approved contractor information.",
+    "highlights": [
+      "Irrigation users still need accepted tester credentials.",
+      "Town contractor information is public.",
+      "Filing fees and accepted BSI reports are the real compliance gate."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation assembly is in the town's reporting system.",
+      "Use an approved tester or get the tester approved through BSI.",
+      "Submit the result with the accepted fee and credentials."
+    ]
+  },
+  "fireLine": {
+    "summary": "Queen Creek is less public about fire-line nuance than Buckeye, but the same accepted-tester and BSI submission rules still apply to protected services.",
+    "highlights": [
+      "State-certified tester rules are public.",
+      "The town directs users to approved contractor information.",
+      "Accepted BSI reporting is still the main compliance gate."
+    ],
+    "workflowSteps": [
+      "Confirm the protected service and device record.",
+      "Use a properly credentialed tester.",
+      "Submit the result through Queen Creek's accepted workflow."
+    ]
+  },
+  "workflowSteps": [
+    "Check whether the assembly is already in the Queen Creek BSI cycle.",
+    "Choose an approved tester or get the tester's credentials accepted.",
+    "Complete the annual test.",
+    "Submit the accepted report and filing fee so the device does not remain non-compliant."
+  ],
+  "failureHighlights": [
+    "Queen Creek has a real filing-fee workflow, not a vague city page.",
+    "Expired tester credentials cause report rejection.",
+    "Customers can use off-list testers only if those testers become accepted first."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Queen Creek adds a $14.95 filing fee per report in the regular cycle.",
+    "repairRetestRange": "Repair and retest costs rise if the first vendor cannot get accepted or if the report is rejected for credential issues.",
+    "pricingNotes": "The strongest local cost signal is avoiding rejected BSI submissions and repeated test fees."
+  },
+  "sources": [
+    {
+      "label": "Queen Creek backflow information",
+      "url": "https://www.queencreekaz.gov/government/utilities/water/backflow-information",
+      "kind": "official program page"
+    },
+    {
+      "label": "Queen Creek contractor information",
+      "url": "https://www.queencreekaz.gov/government/utilities/water/contractor-information",
+      "kind": "official contractor page"
+    }
+  ]
+}

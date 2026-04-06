@@ -1,0 +1,124 @@
+{
+  "utilityId": "miami-dade-wasd",
+  "utilityName": "Miami-Dade Water and Sewer Department Cross-Connection Control",
+  "governingEntityType": "county utility",
+  "canonicalSlug": "miami-dade-water-and-sewer-department",
+  "state": "florida",
+  "serviceAreaCities": [
+    "Miami"
+  ],
+  "serviceAreaCounties": [
+    "Miami-Dade County"
+  ],
+  "searchAliases": [
+    "miami dade backflow testing",
+    "miami dade cross connection control",
+    "miami irrigation backflow"
+  ],
+  "utilityUrl": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1517344068939644",
+  "officialProgramUrls": [
+    "https://www.miamidade.gov/global/service.page?Mduid_service=ser1517344068939644",
+    "https://www.miamidade.gov/water/library/brochures/cross-connection-backflow.pdf"
+  ],
+  "testingFrequency": "Upon installation and annually thereafter",
+  "dueBasis": "Miami-Dade says certain customers, including irrigation users and listed hazard facilities, must install assemblies and have them tested upon installation and annually by a certified tester.",
+  "coveredPropertyTypes": [
+    "Hospitals and adult congregate living facilities",
+    "Service stations and auto repair shops",
+    "Water customers with lawn irrigation systems",
+    "Non-residential and higher-hazard multi-family properties"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies at the service connection",
+    "Lawn irrigation protection assemblies",
+    "Reduced pressure assemblies for higher hazard situations",
+    "County-approved backflow preventers"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Miami-Dade cross-connection service page",
+      "url": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1517344068939644",
+      "kind": "program page"
+    },
+    {
+      "label": "Miami-Dade cross-connection brochure",
+      "url": "https://www.miamidade.gov/water/library/brochures/cross-connection-backflow.pdf",
+      "kind": "official brochure"
+    }
+  ],
+  "phone": "305-547-3046",
+  "penalties": "Miami-Dade places the obligation directly on the water customer to install or maintain the required assembly. The practical penalty is noncompliance with a county protection program tied to the service connection.",
+  "sourceExcerpt": "Miami-Dade is a strong Florida utility because the county brochure and service page spell out which customer types need assemblies and confirm annual testing by a certified tester.",
+  "sourceSnapshotPath": "storage/snapshots/miami-dade-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Miami-Dade is one of the clearest Florida county programs because it names hazard classes, includes irrigation in the protected group, and requires annual testing by certified testers.",
+  "whoIsAffected": "Hazard facilities, irrigation customers, and other Miami-Dade water customers that the county code or county program identifies as needing a service-connection assembly.",
+  "residentialNotes": [
+    "Miami-Dade explicitly includes lawn irrigation systems in the protected customer mix, which makes residential irrigation a real local compliance topic.",
+    "Straight residential potable service is not the strongest page angle unless irrigation or another hazard exists."
+  ],
+  "commercialNotes": [
+    "Miami-Dade names several commercial and institutional hazard classes directly, which makes the page commercially useful.",
+    "County-scale rules create strong next-action content even without a public tester directory."
+  ],
+  "annualTesting": {
+    "summary": "Miami-Dade requires covered customers to have assemblies tested upon installation and annually by a certified backflow prevention assembly tester.",
+    "highlights": [
+      "Annual testing is explicit in the county brochure.",
+      "Covered customer classes are named publicly.",
+      "The utility frames this as cross-connection protection at the service connection."
+    ],
+    "workflowSteps": [
+      "Confirm the property falls into one of Miami-Dade's covered customer classes.",
+      "Use a certified tester to perform the installation test or annual retest.",
+      "Keep the county program documentation current for the service connection."
+    ]
+  },
+  "irrigation": {
+    "summary": "Miami-Dade explicitly names lawn irrigation systems in the covered customer set, which makes irrigation a strong Florida subpage.",
+    "highlights": [
+      "Lawn irrigation systems are listed in the county brochure.",
+      "Irrigation risk is handled as a service-connection protection issue, not just a landscaping detail.",
+      "Annual testing still applies once the irrigation-related assembly is required."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation service falls inside Miami-Dade's covered class.",
+      "Use the required assembly at the service connection.",
+      "Keep the annual certified test current so the irrigation connection stays compliant."
+    ]
+  },
+  "workflowSteps": [
+    "Check whether the property falls into a Miami-Dade covered customer class.",
+    "Install the correct assembly at the service connection if required.",
+    "Use a certified tester to perform the installation test and annual retest.",
+    "Keep the county compliance record current for the protected service."
+  ],
+  "failureHighlights": [
+    "Miami-Dade directly names irrigation as a trigger category.",
+    "County code ties the obligation to the service connection, not just interior plumbing.",
+    "Annual testing is required once the assembly is in place."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced because Miami-Dade does not publish a consumer fee schedule on the program page.",
+    "repairRetestRange": "Repair and retest cost depends on the assembly type and the property hazard class.",
+    "pricingNotes": "The value of the page is in hazard-class clarity and next-action routing, not in a published county test fee."
+  },
+  "sources": [
+    {
+      "label": "Miami-Dade cross-connection service page",
+      "url": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1517344068939644",
+      "kind": "official program page"
+    },
+    {
+      "label": "Miami-Dade cross-connection brochure",
+      "url": "https://www.miamidade.gov/water/library/brochures/cross-connection-backflow.pdf",
+      "kind": "official brochure"
+    }
+  ]
+}

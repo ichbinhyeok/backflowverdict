@@ -1,0 +1,137 @@
+{
+  "utilityId": "castle-rock-water",
+  "utilityName": "Castle Rock Water Cross-Connection and Backflow Program",
+  "governingEntityType": "municipal water utility",
+  "canonicalSlug": "castle-rock-water",
+  "state": "colorado",
+  "serviceAreaCities": [
+    "Castle Rock"
+  ],
+  "serviceAreaCounties": [
+    "Douglas County"
+  ],
+  "searchAliases": [
+    "castle rock backflow testing",
+    "castle rock certified backflow tester",
+    "castle rock water backflow"
+  ],
+  "utilityUrl": "https://www.crgov.com/2440/Cross-Connection-Backflow",
+  "officialProgramUrls": [
+    "https://www.crgov.com/2440/Cross-Connection-Backflow",
+    "https://www.crgov.com/DocumentCenter/View/29057/Backflow-Tester-List-2024-CL-PDF"
+  ],
+  "testingFrequency": "Annually",
+  "dueBasis": "Castle Rock says annual testing is required, compliance is managed by Castle Rock Water, and only certified testers may work in town.",
+  "coveredPropertyTypes": [
+    "Irrigation systems",
+    "Commercial services",
+    "Fire suppression services",
+    "Other protected water services"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Irrigation devices",
+    "Fire suppression assemblies",
+    "Certified testable assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.crgov.com/DocumentCenter/View/29057/Backflow-Tester-List-2024-CL-PDF",
+  "officialListLabel": "Open the Castle Rock certified backflow tester list",
+  "submissionMethods": [
+    {
+      "label": "Castle Rock cross-connection and backflow page",
+      "url": "https://www.crgov.com/2440/Cross-Connection-Backflow",
+      "kind": "program page"
+    },
+    {
+      "label": "Castle Rock tester list PDF",
+      "url": "https://www.crgov.com/DocumentCenter/View/29057/Backflow-Tester-List-2024-CL-PDF",
+      "kind": "official tester list"
+    }
+  ],
+  "phone": "720-733-6000",
+  "penalties": "If the work falls outside the accepted tester and documentation path, the customer risks missing the local compliance requirement.",
+  "sourceExcerpt": "Castle Rock is a strong Colorado utility because annual testing, tester certification, and the official tester list all line up on the same utility workflow.",
+  "sourceSnapshotPath": "storage/snapshots/castle-rock-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Castle Rock is a strong Colorado page because annual testing, tester certification, and the live town tester list all line up on the same utility workflow.",
+  "whoIsAffected": "Castle Rock Water customers with irrigation, fire suppression, and other protected assemblies that require certified annual testing.",
+  "residentialNotes": [
+    "Residential demand is strongest for irrigation systems and other properties with real protected assemblies.",
+    "Castle Rock makes the certified tester requirement explicit."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because the town keeps certification, insurance, and calibration expectations visible.",
+    "This is a good approved-tester route for Colorado expansion."
+  ],
+  "annualTesting": {
+    "summary": "Castle Rock Water says annual backflow testing is required and only certified testers may do the work in town.",
+    "highlights": [
+      "Annual testing is explicit.",
+      "Only certified testers may test in Castle Rock.",
+      "The public tester list requires current certification, gauge calibration, and insurance."
+    ],
+    "workflowSteps": [
+      "Confirm the device is inside Castle Rock Water's program.",
+      "Choose a certified tester from the town list.",
+      "Complete the annual test and keep the local record current."
+    ]
+  },
+  "irrigation": {
+    "summary": "Castle Rock is strong for irrigation because the town calls for periodic testing of irrigation systems and keeps a public certified tester list.",
+    "highlights": [
+      "Irrigation systems are a clear local trigger.",
+      "The town discourages bad blowout setups around the backflow device.",
+      "Certified testers are public and current."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation device and seasonal service plan.",
+      "Use a certified tester from the town list.",
+      "Keep the annual record current with Castle Rock Water."
+    ]
+  },
+  "fireLine": {
+    "summary": "The town treats protected assemblies through the same certified tester and compliance workflow.",
+    "highlights": [
+      "Fire suppression assemblies sit inside the town's annual-testing logic.",
+      "Town-certified testers are public.",
+      "Certification, calibration, and insurance are part of the accepted vendor standard."
+    ],
+    "workflowSteps": [
+      "Confirm the fire protection assembly class.",
+      "Use a certified tester from the town list.",
+      "Keep annual testing current with Castle Rock Water."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the service is under Castle Rock Water's program.",
+    "Choose a certified tester from the town list.",
+    "Complete the annual inspection or test.",
+    "Keep the utility-side record current."
+  ],
+  "failureHighlights": [
+    "Castle Rock says annual testing is required.",
+    "Only certified testers are permitted in the town program.",
+    "The public tester list is current and utility-managed."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, and the town explicitly recommends getting several quotes.",
+    "repairRetestRange": "Repair and retest cost depends on assembly type and service class.",
+    "pricingNotes": "Castle Rock's main commercial advantage is a clean certified-tester workflow plus list freshness."
+  },
+  "sources": [
+    {
+      "label": "Castle Rock cross-connection and backflow page",
+      "url": "https://www.crgov.com/2440/Cross-Connection-Backflow",
+      "kind": "official utility page"
+    },
+    {
+      "label": "Castle Rock tester list PDF",
+      "url": "https://www.crgov.com/DocumentCenter/View/29057/Backflow-Tester-List-2024-CL-PDF",
+      "kind": "official tester list pdf"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "slug": "failed-backflow-test-next-steps",
+  "title": "Failed backflow test next steps",
+  "description": "What a failed backflow test usually means, how repair and retest sequencing works, and where owners lose time.",
+  "intro": "Most owners do not get into trouble because the device failed. They get into trouble because the repair, retest, and submission sequence was handled sloppily.",
+  "callout": "The governing utility page stays canonical. This guide exists to make the failure workflow easier to read before you jump back into the local program rules.",
+  "sourceExcerpt": "A failed test becomes a compliance problem when repair, retest, and submission are not completed in the utility's required sequence and timeline.",
+  "sourceSnapshotPath": "storage/snapshots/guides/failed-backflow-test-next-steps.html",
+  "reviewerInitials": "TL",
+  "lastReviewed": "2026-04-04",
+  "published": true,
+  "sections": [
+    {
+      "heading": "Failure rarely ends at one invoice",
+      "body": "A failed test can trigger repair labor, parts, another visit, retest submission, and in some cities a shortened compliance window.",
+      "bullets": [
+        "Some utilities give a specific repair window, such as 30 days.",
+        "An incomplete or rejected report can keep the property noncompliant even after the device is fixed."
+      ]
+    },
+    {
+      "heading": "Keep the paperwork chain intact",
+      "body": "Repair completion is not the same thing as compliance completion. The utility or its vendor still needs the right test report in the right system.",
+      "bullets": [
+        "Use the same governing utility workflow that handled the original notice.",
+        "If the utility uses BSI or VEPO, make sure the follow-up tester and report path match the system rules."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "Round Rock test failure window",
+      "url": "https://www.roundrocktexas.gov/city-departments/utilities-and-environmental-services/water/backflow/",
+      "kind": "utility example"
+    },
+    {
+      "label": "Fort Worth testing and inspection sequence",
+      "url": "https://www.fortworthtexas.gov/departments/water/backflow",
+      "kind": "utility example"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "metroId": "south-florida-water-utilities",
+  "title": "South Florida backflow testing",
+  "state": "florida",
+  "metroSlug": "south-florida-water-utilities",
+  "cityNames": [
+    "Miami",
+    "Fort Lauderdale",
+    "Jupiter",
+    "West Palm Beach"
+  ],
+  "countyNames": [
+    "Miami-Dade County",
+    "Broward County",
+    "Palm Beach County"
+  ],
+  "utilityIds": [
+    "miami-dade-wasd",
+    "broward-water",
+    "fort-lauderdale-water",
+    "jupiter-water",
+    "pbc-water-utilities",
+    "west-palm-beach-water"
+  ],
+  "guideSlugs": [
+    "approved-testers-vs-find-a-tester",
+    "backflow-test-cost",
+    "rpz-vs-dcva-vs-pvb"
+  ],
+  "description": "South Florida support page for county and city utility backflow routes across Miami-Dade, Broward, Jupiter, and Palm Beach.",
+  "summary": "South Florida works as a metro support layer because county and city utilities publish different official-list, directory-only, and enforcement models while serving the same demand region. This page groups those surfaces without pretending the region is one authority.",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 60,
+  "pageStatus": "PUBLISH",
+  "lastReviewed": "2026-04-05"
+}

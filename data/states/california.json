@@ -1,0 +1,45 @@
+{
+  "state": "california",
+  "title": "California backflow testing requirements",
+  "description": "Representative state guide for California utility backflow programs, approved tester lists, and policy-heavy cross-connection enforcement.",
+  "summary": "California is one of the best fit states for expansion because it combines a visible statewide cross-connection policy layer with utility programs that publish approved tester lists, orientation rules, meter-protection requirements, and hazard-based installation guidance.",
+  "authoritySummary": "California utilities operate under an explicit cross-connection control policy environment, but the real install, test, and meter-protection workflow still happens utility by utility. San Diego, IRWD, and EBMUD all publish customer-facing program pages that are strong enough for utility-first pages.",
+  "sourceExcerpt": "California is a high-value state because the state policy layer exists and major utilities expose enough tester, installation, and annual-testing detail to support trustworthy local compliance pages.",
+  "sourceSnapshotPath": "storage/snapshots/states/california-backflow-testing.html",
+  "reviewerInitials": "TL",
+  "lastVerified": "2026-04-05",
+  "published": true,
+  "statewideHighlights": [
+    "The state policy layer is visible, but the actual assembly and tester workflow remains utility-specific.",
+    "Approved tester lists are common in larger utilities.",
+    "Meter-protection and fire-protection details are spelled out more clearly than in many states.",
+    "California utilities often require orientation or recognized certification before testers can work in the district."
+  ],
+  "featuredUtilityIds": [
+    "san-diego-water",
+    "pasadena-water",
+    "santa-rosa-water"
+  ],
+  "sources": [
+    {
+      "label": "California State Water Resources Control Board Drinking Water Program",
+      "url": "https://water.waterboards.ca.gov/drinking_water/programs/",
+      "kind": "state program"
+    },
+    {
+      "label": "California cross-connection policy handbook staff report",
+      "url": "https://www.waterboards.ca.gov/drinking_water/certlic/drinkingwater/docs/2023/cccph-rptoct23.pdf",
+      "kind": "state policy context"
+    },
+    {
+      "label": "San Diego Cross-Connection Control and Backflow Prevention",
+      "url": "https://www.sandiego.gov/public-utilities/permits-construction/construction-and-development/backflow",
+      "kind": "utility example"
+    },
+    {
+      "label": "EBMUD backflow prevention",
+      "url": "https://www.ebmud.com/development-services/backflow-prevention",
+      "kind": "utility example"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "state": "arizona",
+  "title": "Arizona backflow testing requirements",
+  "description": "Representative state guide for Arizona utility backflow programs, registered tester lists, and annual test-report workflows.",
+  "summary": "Arizona is a strong expansion state because the large municipal utilities publish real customer workflows instead of generic plumbing copy. Phoenix, Tucson, and Mesa all expose tester requirements, annual testing expectations, and city-level reporting mechanics on official pages.",
+  "authoritySummary": "Arizona programs commonly point back to state drinking-water and plumbing rules, then push the actual tester registration, due-date handling, and submission mechanics down to the utility. In practice, the customer still has to follow the specific city program that governs the service connection.",
+  "sourceExcerpt": "Arizona earns expansion priority because Phoenix, Tucson, and Mesa each publish customer-facing rules, certified tester resources, and annual compliance language that can support utility-first local pages.",
+  "sourceSnapshotPath": "storage/snapshots/states/arizona-backflow-testing.html",
+  "reviewerInitials": "TL",
+  "lastVerified": "2026-04-05",
+  "published": true,
+  "statewideHighlights": [
+    "Arizona utility programs often cite state code but enforce through city-run cross-connection offices.",
+    "Annual testing is common across commercial, irrigation, and higher-hazard assemblies.",
+    "Registered tester lists are publicly available in multiple Arizona utility programs.",
+    "Desert-state irrigation demand makes irrigation-specific backflow content commercially relevant."
+  ],
+  "featuredUtilityIds": [
+    "phoenix-water",
+    "tucson-water",
+    "prescott-water"
+  ],
+  "sources": [
+    {
+      "label": "Phoenix Backflow Prevention Program",
+      "url": "https://www.phoenix.gov/administration/departments/pdd/tools-resources/inspections/types-of-inspections/backflow-prevention-program.html",
+      "kind": "utility example"
+    },
+    {
+      "label": "Tucson backflow ordinance",
+      "url": "https://www.tucsonaz.gov/files/sharedassets/public/v/1/city-services/tucson-water/water-quality/documents/backflow-ordinance.pdf",
+      "kind": "utility ordinance example"
+    },
+    {
+      "label": "Mesa Backflow Prevention program",
+      "url": "https://www.mesaaz.gov/Utilities/Water-Wastewater/Backflow-Prevention",
+      "kind": "utility example"
+    }
+  ]
+}

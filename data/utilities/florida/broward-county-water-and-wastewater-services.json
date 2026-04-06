@@ -1,0 +1,127 @@
+{
+  "utilityId": "broward-water",
+  "utilityName": "Broward County Water and Wastewater Services Backflow Certification",
+  "governingEntityType": "county utility",
+  "canonicalSlug": "broward-county-water-and-wastewater-services",
+  "state": "florida",
+  "serviceAreaCities": [
+    "Fort Lauderdale"
+  ],
+  "serviceAreaCounties": [
+    "Broward County"
+  ],
+  "searchAliases": [
+    "broward backflow testing",
+    "broward backflow certification",
+    "broward irrigation backflow"
+  ],
+  "utilityUrl": "https://www.broward.org/WaterServices/Pages/BackflowCertification.aspx",
+  "officialProgramUrls": [
+    "https://www.broward.org/WaterServices/Pages/BackflowCertification.aspx"
+  ],
+  "testingFrequency": "Annually",
+  "dueBasis": "Broward notifies customers 60 days and 30 days before the annual compliance due date and requires passing test results plus filing fees through Backflow Solutions Incorporated.",
+  "coveredPropertyTypes": [
+    "Commercial, institutional, and governmental customers",
+    "Residential and multifamily buildings over three stories",
+    "Domestic services",
+    "Irrigation services",
+    "Fire protection services"
+  ],
+  "coveredDeviceTypes": [
+    "Domestic backflow assemblies",
+    "Irrigation backflow assemblies",
+    "Fire service backflow assemblies",
+    "Appropriate assembly types required by county ordinance"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Broward backflow certification program",
+      "url": "https://www.broward.org/WaterServices/Pages/BackflowCertification.aspx",
+      "kind": "program page"
+    }
+  ],
+  "phone": "954-831-3276",
+  "penalties": "Broward expects passing test results and filing-fee payment by the annual due date. The county separates who may work on domestic, irrigation, and fire-related backflows, so the wrong tester path can still leave the account out of compliance.",
+  "sourceExcerpt": "Broward is one of the strongest Florida county pages because it publishes annual notice timing, filing-fee handling, and separate technician qualification rules for domestic, irrigation, and fire-service work.",
+  "sourceSnapshotPath": "storage/snapshots/broward-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Broward County is a high-value Florida utility because it publishes due-date notices, filing-fee handling, and separate tester qualification rules for domestic, irrigation, and fire-service assemblies.",
+  "whoIsAffected": "Commercial, institutional, governmental, taller residential and multifamily buildings, and customers with domestic, irrigation, or fire-related assemblies under Broward's ordinance.",
+  "residentialNotes": [
+    "Broward is one of the clearer county programs for taller residential and multifamily buildings.",
+    "Residential irrigation still requires qualified personnel under the county's separate domestic-versus-irrigation rule."
+  ],
+  "commercialNotes": [
+    "This is strong commercial lead content because the county names the covered customer classes and the annual due-date workflow.",
+    "Managed properties have to care about both tester qualification and filing-fee timing."
+  ],
+  "annualTesting": {
+    "summary": "Broward sends 60-day and 30-day notices before the annual compliance deadline and expects passing test results plus filing fees through BSI.",
+    "highlights": [
+      "The annual due-date reminders are public and concrete.",
+      "Passing test results and payment move through the BSI workflow.",
+      "The county distinguishes who is qualified for domestic, irrigation, and fire-related work."
+    ],
+    "workflowSteps": [
+      "Watch for Broward's 60-day and 30-day notices.",
+      "Use a qualified technician for the right assembly class.",
+      "Submit the passing result and any required filing fees through the county's program workflow."
+    ]
+  },
+  "irrigation": {
+    "summary": "Broward treats irrigation as its own technician-qualification path, which makes irrigation a real county subpage.",
+    "highlights": [
+      "Only properly certified personnel working under the right licensing umbrella can work on irrigation-related services.",
+      "Irrigation does not share exactly the same worker-qualification path as fire service.",
+      "The annual due-date and BSI submission workflow still apply."
+    ],
+    "workflowSteps": [
+      "Confirm the service is classified as irrigation rather than fire or domestic.",
+      "Use the right qualified technician for the irrigation assembly.",
+      "Submit the passing result and filing fee before the annual due date passes."
+    ]
+  },
+  "fireLine": {
+    "summary": "Broward explicitly says fire service work must be handled by fire-service trained and qualified technicians.",
+    "highlights": [
+      "Fire-service work has a stricter qualification rule than ordinary domestic service.",
+      "The annual county compliance cycle still applies.",
+      "Using the wrong contractor can leave the account noncompliant even if a test was attempted."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is part of the fire service.",
+      "Use a fire-service trained and qualified technician.",
+      "Complete the annual test and submit the county-required result through the compliance workflow."
+    ]
+  },
+  "workflowSteps": [
+    "Identify which Broward customer class and assembly class applies to the property.",
+    "Watch for the 60-day and 30-day annual notices.",
+    "Use the right qualified technician for domestic, irrigation, or fire service work.",
+    "Submit passing results and any filing fees through the county workflow before the due date."
+  ],
+  "failureHighlights": [
+    "Broward uses explicit 60-day and 30-day reminders.",
+    "Domestic, irrigation, and fire-service qualification rules differ.",
+    "Passing results and filing fees move together through the county process."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but the county adds filing fees and qualification risk to the total compliance cost.",
+    "repairRetestRange": "Repair and retest pricing depends heavily on whether the work is domestic, irrigation, or fire service.",
+    "pricingNotes": "The main local cost signal is not a flat county test fee; it is the annual compliance plus filing workflow."
+  },
+  "sources": [
+    {
+      "label": "Broward backflow certification program",
+      "url": "https://www.broward.org/WaterServices/Pages/BackflowCertification.aspx",
+      "kind": "official program page"
+    }
+  ]
+}

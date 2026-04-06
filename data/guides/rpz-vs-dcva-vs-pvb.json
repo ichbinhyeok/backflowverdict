@@ -1,0 +1,42 @@
+{
+  "slug": "rpz-vs-dcva-vs-pvb",
+  "title": "RPZ vs DCVA vs PVB",
+  "description": "A short practical guide to the common backflow assembly types and why utilities choose one over another.",
+  "intro": "This page is not a substitute for utility approval or plan review. It helps you read the local page with less confusion when you see assembly acronyms.",
+  "callout": "Use this page for orientation only. The local utility still determines which assembly fits the hazard class and workflow.",
+  "sourceExcerpt": "RPZ, DCVA, and PVB assemblies signal different hazard and installation assumptions, but the governing utility still decides which assembly is allowed in the local workflow.",
+  "sourceSnapshotPath": "storage/snapshots/guides/rpz-vs-dcva-vs-pvb.html",
+  "reviewerInitials": "TL",
+  "lastReviewed": "2026-04-04",
+  "published": true,
+  "sections": [
+    {
+      "heading": "RPZ assemblies show up where health hazard is high",
+      "body": "Reduced pressure zone assemblies are common where the utility wants stronger protection against contamination and a visible relief mechanism.",
+      "bullets": [
+        "You will often see RPZ or RPZA language on higher-hazard commercial sites.",
+        "Access, drainage, and inspection conditions can matter more than owners expect."
+      ]
+    },
+    {
+      "heading": "DCVA and PVB are not interchangeable in every local workflow",
+      "body": "Double check valve assemblies and pressure vacuum breakers often appear in lower-hazard or irrigation settings, but the actual allowed configuration is still a utility question.",
+      "bullets": [
+        "Some utilities call out DCVA or RPZ by hazard class.",
+        "Irrigation-specific rules and fireline rules can follow separate review paths."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "EPA cross-connection control manual",
+      "url": "https://19january2021snapshot.epa.gov/sites/static/files/2015-09/documents/epa816r03002_0.pdf",
+      "kind": "federal guidance"
+    },
+    {
+      "label": "Fort Worth backflow hazard and assembly examples",
+      "url": "https://www.fortworthtexas.gov/departments/water/backflow",
+      "kind": "utility example"
+    }
+  ]
+}

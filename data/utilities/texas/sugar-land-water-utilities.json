@@ -1,0 +1,126 @@
+{
+  "utilityId": "sugar-land-water",
+  "utilityName": "City of Sugar Land Water Utilities",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "sugar-land-water-utilities",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Sugar Land"
+  ],
+  "serviceAreaCounties": [
+    "Fort Bend County"
+  ],
+  "searchAliases": [
+    "sugar land backflow testing",
+    "sugar land annual backflow test"
+  ],
+  "utilityUrl": "https://www.sugarlandtx.gov/627/Backflow-Testing-Program",
+  "officialProgramUrls": [
+    "https://www.sugarlandtx.gov/627/Backflow-Testing-Program"
+  ],
+  "testingFrequency": "Annual for devices protecting against health hazards",
+  "dueBasis": "Testing is due on the same date every month and not one year from the last test date. Test reports for existing and replacement devices must be submitted through the BSI tracking system.",
+  "coveredPropertyTypes": [
+    "Primarily industrial and commercial properties with health-hazard protection devices",
+    "Fireline assemblies requiring state-licensed fireline testing companies"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention devices protecting against health hazards",
+    "Fireline backflow devices"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Sugar Land backflow testing program",
+      "url": "https://www.sugarlandtx.gov/627/Backflow-Testing-Program",
+      "kind": "program page"
+    },
+    {
+      "label": "BSI Online backflow tracking system",
+      "url": "https://www.bsionlinetracking.com/",
+      "kind": "submission portal"
+    }
+  ],
+  "phone": "281-275-2450",
+  "penalties": "Escalated enforcement for missed annual testing may include termination of water service under City ordinance.",
+  "sourceExcerpt": "Sugar Land requires annual test reports for health-hazard backflow devices, uses BSI for recordkeeping, and can escalate missed testing to water service termination.",
+  "sourceSnapshotPath": "storage/snapshots/sugar-land-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Sugar Land runs an annual testing program for health-hazard backflow devices and tracks compliance through BSI.",
+  "whoIsAffected": "Primarily industrial and commercial owners responsible for backflow devices protecting the public water supply from health hazards.",
+  "residentialNotes": [
+    "Sugar Land's public copy is not written around routine residential sprinkler questions; the page is mostly aimed at owners of enrolled health-hazard devices.",
+    "If a smaller property is in the City's program, owner responsibility and the BSI timing rules still matter even when the property is not commercial."
+  ],
+  "commercialNotes": [
+    "Sugar Land is one of the clearer commercial pages in the pilot because it spells out owner accountability, BSI submission timing, and escalation to water shutoff.",
+    "Industrial and commercial owners should treat the due date logic seriously because the City says testing is due on the same date every month, not a year from the last test."
+  ],
+  "annualTesting": {
+    "summary": "Sugar Land's annual program centers on health-hazard devices and a strict records workflow in BSI.",
+    "highlights": [
+      "Testing is due on the same date every month, not one year from the last test date.",
+      "Testers or testing companies must submit reports through BSI within 48 hours of the test date.",
+      "Owners remain responsible for compliance even if a tenant or manager handles the work."
+    ],
+    "workflowSteps": [
+      "Use the City notice and the BSI record to confirm the due date.",
+      "Hire a TCEQ-licensed tester using a currently calibrated gauge.",
+      "Make sure the report is entered into BSI within 48 hours."
+    ]
+  },
+  "irrigation": {
+    "summary": "Sugar Land does not publish a separate irrigation-permit backflow page in the way some cities do. When an irrigation or domestic assembly is inside the City's backflow program, the same owner-responsibility and BSI submission rules apply.",
+    "highlights": [
+      "The public Sugar Land page is program-wide rather than irrigation-specific.",
+      "Testing companies handling irrigation or domestic lines still work through the same BSI reporting flow.",
+      "The City focuses more on the reporting deadline and enforcement path than on a separate sprinkler installation workflow."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is actually tracked by Sugar Land's backflow program.",
+      "Use a qualified tester and the customer's confirmation number if BSI requires it.",
+      "Submit the report through BSI without missing the 48-hour entry rule."
+    ]
+  },
+  "fireLine": {
+    "summary": "Sugar Land is explicit on fire lines: those devices must be tested by a state-licensed backflow tester who is employed by a fireline testing company.",
+    "highlights": [
+      "Fireline backflows have a stricter tester-employment rule than general assemblies.",
+      "The report still goes through BSI on the same owner-responsibility timeline.",
+      "Escalated enforcement can reach water service termination."
+    ],
+    "workflowSteps": [
+      "Confirm the device is a fireline assembly before booking the tester.",
+      "Use a state-licensed backflow tester employed by a fireline testing company.",
+      "Get the report into BSI within 48 hours so the City does not treat the device as overdue."
+    ]
+  },
+  "workflowSteps": [
+    "Use the City program page to confirm the annual test requirement and due date.",
+    "Hire a TCEQ-licensed tester with a currently calibrated gauge.",
+    "Make sure the tester submits the report through BSI within 48 hours.",
+    "Resolve overdue or failed-device issues before enforcement escalates."
+  ],
+  "failureHighlights": [
+    "The owner remains responsible for compliance even if testing work is delegated.",
+    "Fireline devices must be tested by a state-licensed backflow tester employed by a fireline testing company.",
+    "Missed testing can escalate to water service termination."
+  ],
+  "costBand": {
+    "testingRange": "Private market quotes vary by assembly and property type.",
+    "repairRetestRange": "Repair and retest cost varies with the assembly, fireline involvement, and contractor scope.",
+    "pricingNotes": "The City page is stronger on workflow and enforcement than public pricing, so use local quotes rather than assuming a statewide rate."
+  },
+  "sources": [
+    {
+      "label": "Sugar Land backflow testing program",
+      "url": "https://www.sugarlandtx.gov/627/Backflow-Testing-Program",
+      "kind": "official program page"
+    }
+  ]
+}

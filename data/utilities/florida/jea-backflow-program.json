@@ -1,0 +1,148 @@
+{
+  "utilityId": "jea-water",
+  "utilityName": "JEA Backflow Program",
+  "governingEntityType": "regional utility",
+  "canonicalSlug": "jea-backflow-program",
+  "state": "florida",
+  "serviceAreaCities": [
+    "Jacksonville"
+  ],
+  "serviceAreaCounties": [
+    "Duval County"
+  ],
+  "searchAliases": [
+    "jacksonville backflow testing",
+    "jea backflow vendors",
+    "jea irrigation backflow"
+  ],
+  "utilityUrl": "https://www.jea.com/About/Water_Supply/Backflow/Commercial_Backflow_Requirements/",
+  "officialProgramUrls": [
+    "https://www.jea.com/backflowvendors/",
+    "https://www.jea.com/about/water_supply/backflow/residential_backflow_requirements/",
+    "https://www.jea.com/About/Water_Supply/Backflow/Commercial_Backflow_Requirements/"
+  ],
+  "testingFrequency": "Commercial annually; residential irrigation on the JEA residential checkup cycle, generally every two years",
+  "dueBasis": "JEA runs a two-track system: commercial services are tested annually, while residential irrigation and reclaimed-water protections follow the utility checkup program. Commercial failed tests must be repaired or replaced and retested within 30 days.",
+  "coveredPropertyTypes": [
+    "Commercial water services",
+    "Residential irrigation services",
+    "Reclaimed-water irrigation customers",
+    "Fire sprinkler services under JEA rules"
+  ],
+  "coveredDeviceTypes": [
+    "Reduced pressure assemblies",
+    "Double check assemblies on certain fire lines",
+    "Residential irrigation backflow preventers",
+    "Reclaimed-water protection devices"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.jea.com/backflowvendors/",
+  "officialListLabel": "Open JEA's qualified backflow vendors list",
+  "submissionMethods": [
+    {
+      "label": "JEA qualified backflow vendors",
+      "url": "https://www.jea.com/backflowvendors/",
+      "kind": "official vendor list"
+    },
+    {
+      "label": "JEA residential backflow requirements",
+      "url": "https://www.jea.com/about/water_supply/backflow/residential_backflow_requirements/",
+      "kind": "residential rules"
+    },
+    {
+      "label": "JEA commercial backflow requirements",
+      "url": "https://www.jea.com/About/Water_Supply/Backflow/Commercial_Backflow_Requirements/",
+      "kind": "commercial rules"
+    }
+  ],
+  "phone": "904-665-4410",
+  "penalties": "Commercial failed tests must be repaired or replaced and retested within 30 days. Residential customers who do not submit results within 45 days can have a utility-dispatched tester sent and a $35 fee added to the bill.",
+  "sourceExcerpt": "JEA is one of the strongest Florida utilities because it openly separates commercial annual testing, residential irrigation rules, and a live qualified-vendor list with compliance scores.",
+  "sourceSnapshotPath": "storage/snapshots/jea-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "JEA is a flagship Florida utility because it publishes qualified vendors, annual commercial rules, and a real residential irrigation workflow.",
+  "whoIsAffected": "JEA commercial customers, residential irrigation customers, reclaimed-water users, and certain fire-line services that require backflow protection or testing.",
+  "residentialNotes": [
+    "Residential demand is strong because JEA publishes a utility-run checkup program and a $35 fallback test fee if the owner does nothing.",
+    "This is not a generic Jacksonville plumbing page; it is a real utility workflow."
+  ],
+  "commercialNotes": [
+    "Commercial value is very strong because JEA publishes annual testing, 30-day failed-test repair timing, and vendor compliance scores.",
+    "This is one of the cleanest monetizable approved-tester routes in the Florida cluster."
+  ],
+  "annualTesting": {
+    "summary": "JEA requires annual testing for commercial services, while residential irrigation assemblies run on the utility's residential checkup cycle.",
+    "highlights": [
+      "Commercial services are tested annually.",
+      "Commercial failed tests must be repaired or replaced and retested within 30 days.",
+      "Residential customers who do not submit results within 45 days can trigger a JEA-dispatched tester and a $35 bill charge."
+    ],
+    "workflowSteps": [
+      "Confirm whether the service is commercial or residential irrigation.",
+      "Choose a qualified vendor from JEA's list or follow the utility-run checkup program.",
+      "Complete the test and clear any failed-test repairs inside the utility timeline."
+    ]
+  },
+  "irrigation": {
+    "summary": "JEA is especially strong for irrigation because the residential program explicitly covers irrigation meters, non-meter irrigation, and reclaimed-water irrigation connections.",
+    "highlights": [
+      "Residential irrigation devices are part of a utility-run checkup program.",
+      "Reclaimed-water irrigation has its own protective rules.",
+      "Qualified vendors are public and easy to route to."
+    ],
+    "workflowSteps": [
+      "Confirm whether the system uses an irrigation meter, main water service, or reclaimed water.",
+      "Use a qualified JEA vendor or follow the utility-scheduled checkup program.",
+      "Repair and retest failed devices inside the JEA timeline."
+    ]
+  },
+  "fireLine": {
+    "summary": "Some fire sprinkler lines may use double checks under specific circumstances and still sit inside the utility's annual commercial workflow.",
+    "highlights": [
+      "Some fire sprinkler lines may use DC assemblies under JEA policy.",
+      "Commercial annual testing still applies.",
+      "The qualified vendor list includes strong fire-protection companies."
+    ],
+    "workflowSteps": [
+      "Confirm the fire-line assembly type under JEA rules.",
+      "Use a qualified vendor that handles the relevant assembly class.",
+      "Retest failed assemblies within 30 days if required."
+    ]
+  },
+  "workflowSteps": [
+    "Identify whether the service is commercial or residential irrigation.",
+    "Use a qualified JEA backflow vendor or follow the utility-run residential program.",
+    "Complete the test on the correct cycle.",
+    "Repair and retest failed assemblies inside the JEA timeline."
+  ],
+  "failureHighlights": [
+    "JEA publishes both qualified vendors and compliance scores.",
+    "Commercial failed tests have a 30-day repair and retest window.",
+    "Residential non-response can trigger a utility-dispatched test and fee."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced when the owner chooses a vendor, but JEA can bill $35 for a utility-arranged residential test if the owner does not submit results in time.",
+    "repairRetestRange": "Repair and retest cost depends on device class, especially for commercial and fire-side assemblies.",
+    "pricingNotes": "JEA's strongest local value is a fully operational utility workflow plus a ranked vendor surface."
+  },
+  "sources": [
+    {
+      "label": "JEA qualified backflow vendors",
+      "url": "https://www.jea.com/backflowvendors/",
+      "kind": "official vendor list"
+    },
+    {
+      "label": "JEA residential backflow requirements",
+      "url": "https://www.jea.com/about/water_supply/backflow/residential_backflow_requirements/",
+      "kind": "official residential rules"
+    },
+    {
+      "label": "JEA commercial backflow requirements",
+      "url": "https://www.jea.com/About/Water_Supply/Backflow/Commercial_Backflow_Requirements/",
+      "kind": "official commercial rules"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "state": "florida",
+  "title": "Florida backflow testing requirements",
+  "description": "Representative state guide for Florida utility backflow programs, annual and biennial testing cycles, and outsourced compliance portals.",
+  "summary": "Florida is one of the best commercial fits because irrigation-heavy service areas, county-run compliance programs, and frequent outsourced reporting platforms create clear next-action pages. Miami-Dade, Broward County, and Tampa each publish concrete reporting and testing rules.",
+  "authoritySummary": "Florida utilities often reference state backflow rules, but the customer experience is still controlled by the local utility or county program. That means the real workflow lives in the utility notice, its accepted tester rules, and its reporting portal.",
+  "sourceExcerpt": "Florida is a strong revenue and content fit because county and city utilities publish explicit annual testing, irrigation, and reporting workflows instead of vague educational pages.",
+  "sourceSnapshotPath": "storage/snapshots/states/florida-backflow-testing.html",
+  "reviewerInitials": "TL",
+  "lastVerified": "2026-04-05",
+  "published": true,
+  "statewideHighlights": [
+    "Annual testing remains the default for commercial and higher-hazard assemblies.",
+    "Residential irrigation frequently gets its own cadence, often every two years.",
+    "BSI and SwiftComply style reporting workflows are common.",
+    "County programs often separate domestic, irrigation, and fire-service tester qualifications."
+  ],
+  "featuredUtilityIds": [
+    "miami-dade-wasd",
+    "lee-county-utilities",
+    "jupiter-water"
+  ],
+  "sources": [
+    {
+      "label": "Miami-Dade cross-connection and backflow prevention service page",
+      "url": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1517344068939644",
+      "kind": "utility example"
+    },
+    {
+      "label": "Miami-Dade cross-connection and backflow brochure",
+      "url": "https://www.miamidade.gov/water/library/brochures/cross-connection-backflow.pdf",
+      "kind": "utility brochure"
+    },
+    {
+      "label": "Broward Water Services backflow certification",
+      "url": "https://www.broward.org/WaterServices/Pages/BackflowCertification.aspx",
+      "kind": "utility example"
+    },
+    {
+      "label": "City of Tampa backflow prevention program",
+      "url": "https://www.tampa.gov/water/builders-and-homeowners/backflow-prevention",
+      "kind": "utility example"
+    }
+  ]
+}

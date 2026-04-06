@@ -1,0 +1,144 @@
+{
+  "utilityId": "fort-lauderdale-water",
+  "utilityName": "City of Fort Lauderdale Backflow and Cross-Connection Control",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "fort-lauderdale-water",
+  "state": "florida",
+  "serviceAreaCities": [
+    "Fort Lauderdale"
+  ],
+  "serviceAreaCounties": [
+    "Broward County"
+  ],
+  "searchAliases": [
+    "fort lauderdale backflow testing",
+    "fort lauderdale irrigation backflow",
+    "fort lauderdale bsi backflow"
+  ],
+  "utilityUrl": "https://www.fortlauderdale.gov/government/departments-i-z/parks-recreation/sustainability/environmental-regulatory-affairs/backflow-cross-connection",
+  "officialProgramUrls": [
+    "https://www.fortlauderdale.gov/government/departments-i-z/parks-recreation/sustainability/environmental-regulatory-affairs/backflow-cross-connection",
+    "https://www.fortlauderdale.gov/home/showpublisheddocument/51493/637317106006870000",
+    "https://www.fortlauderdale.gov/home/showpublisheddocument/27069/636806372595930000"
+  ],
+  "testingFrequency": "Annually for commercial and hazardous assemblies; every two years for residential irrigation",
+  "dueBasis": "Fort Lauderdale routes annual compliance through BSI and says failure to submit a backflow test report can lead to a $250 fine after 90 days, with annual testing for commercial, industrial, and hazardous sites and biennial testing for residential irrigation devices.",
+  "coveredPropertyTypes": [
+    "Commercial properties",
+    "Industrial properties",
+    "Hazardous occupancies",
+    "Residential irrigation systems",
+    "Temporary hydrant meter uses"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Residential irrigation backflow devices",
+    "Hydrant meter check-valve backflow devices",
+    "Utility-protected service connection devices"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Fort Lauderdale backflow and cross-connection page",
+      "url": "https://www.fortlauderdale.gov/government/departments-i-z/parks-recreation/sustainability/environmental-regulatory-affairs/backflow-cross-connection",
+      "kind": "program page"
+    },
+    {
+      "label": "Fort Lauderdale annual backflow report form",
+      "url": "https://www.fortlauderdale.gov/home/showpublisheddocument/51493/637317106006870000",
+      "kind": "report form"
+    }
+  ],
+  "phone": "888-966-6050",
+  "penalties": "Fort Lauderdale says missing test-report submission can lead to a $250 fine after 90 days, and its hydrant meter rules require the city-issued backflow device to stay in place for temporary water service.",
+  "sourceExcerpt": "Fort Lauderdale is a strong Florida city because it publishes a real annual backflow report form, a BSI-driven compliance path, different residential versus commercial testing cycles, and an explicit fine for missing submissions.",
+  "sourceSnapshotPath": "storage/snapshots/fort-lauderdale-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Fort Lauderdale is a strong Florida utility because it combines BSI reporting, city forms, residential versus commercial testing cycles, and an explicit fine for missing reports.",
+  "whoIsAffected": "Commercial, industrial, hazardous, residential irrigation, and temporary-water users in Fort Lauderdale who are subject to the city's backflow and cross-connection rules.",
+  "residentialNotes": [
+    "Fort Lauderdale is one of the clearer Florida city programs for residential irrigation because the city publicly uses a two-year cycle for those devices.",
+    "Ordinary residential potable lines are a weaker angle unless irrigation or another hazard triggers the requirement."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because the city posts annual report forms and a specific fine for missing submission windows.",
+    "Industrial and hazardous occupancies remain on the annual cycle."
+  ],
+  "annualTesting": {
+    "summary": "Fort Lauderdale requires annual testing for commercial, industrial, and hazardous occupancies and routes reporting through its city form and BSI compliance workflow.",
+    "highlights": [
+      "The city publishes a backflow annual report form.",
+      "Failure to submit the report can lead to a $250 fine after 90 days.",
+      "BSI serves as the compliance workflow for the city program."
+    ],
+    "workflowSteps": [
+      "Confirm whether the service is on the annual or biennial cycle.",
+      "Complete the test using a certified tester.",
+      "Submit the result through the city form and BSI workflow before the deadline passes."
+    ]
+  },
+  "irrigation": {
+    "summary": "Fort Lauderdale is especially useful for irrigation pages because the city publicly distinguishes residential irrigation from commercial annual testing.",
+    "highlights": [
+      "Residential irrigation devices are tested every two years.",
+      "Commercial and hazardous sites stay on the annual cycle.",
+      "Hydrant meter and temporary-water rules reinforce the utility-first local workflow."
+    ],
+    "workflowSteps": [
+      "Confirm the device is a residential irrigation assembly or a commercial irrigation service.",
+      "Follow the correct cycle for that class.",
+      "Submit the result through the city's compliance path."
+    ]
+  },
+  "fireLine": {
+    "summary": "Fort Lauderdale is less public about fire-line staffing than Broward, but the city still publishes protected-service reporting and enforcement rules that support a fire-line page.",
+    "highlights": [
+      "The city annual-report workflow applies to hazardous and protected services.",
+      "Temporary water service uses a city-issued backflow-protected meter setup.",
+      "Non-submission can still lead to fines."
+    ],
+    "workflowSteps": [
+      "Confirm whether the protected service is a fire line or another hazardous connection.",
+      "Complete the test on the city's required cycle.",
+      "Submit the result before the city fine window is triggered."
+    ]
+  },
+  "workflowSteps": [
+    "Identify whether the service is annual or biennial under Fort Lauderdale's rules.",
+    "Complete the test with a certified tester.",
+    "Submit the report through the city and BSI workflow.",
+    "Resolve missing reports quickly so the fine clock does not run out."
+  ],
+  "failureHighlights": [
+    "Fort Lauderdale publishes a real annual report form.",
+    "The city distinguishes residential irrigation from commercial annual cycles.",
+    "Missing submissions can lead to a $250 fine after 90 days."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but the city fine and reporting workflow create more urgency than a typical informational page.",
+    "repairRetestRange": "Repair and retest costs vary by whether the device serves residential irrigation, a commercial site, or a higher-hazard protected service.",
+    "pricingNotes": "The strongest local cost pressure is the risk of fines and missed reporting windows."
+  },
+  "sources": [
+    {
+      "label": "Fort Lauderdale backflow and cross-connection page",
+      "url": "https://www.fortlauderdale.gov/government/departments-i-z/parks-recreation/sustainability/environmental-regulatory-affairs/backflow-cross-connection",
+      "kind": "official program page"
+    },
+    {
+      "label": "Fort Lauderdale annual backflow report form",
+      "url": "https://www.fortlauderdale.gov/home/showpublisheddocument/51493/637317106006870000",
+      "kind": "official report form"
+    },
+    {
+      "label": "Fort Lauderdale hydrant meter permit rules",
+      "url": "https://www.fortlauderdale.gov/home/showpublisheddocument/27069/636806372595930000",
+      "kind": "official permit form"
+    }
+  ]
+}

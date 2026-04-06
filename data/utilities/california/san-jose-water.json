@@ -1,0 +1,144 @@
+{
+  "utilityId": "san-jose-water",
+  "utilityName": "San Jose Water Cross-Connection Control and Backflow Program",
+  "governingEntityType": "water utility",
+  "canonicalSlug": "san-jose-water",
+  "state": "california",
+  "serviceAreaCities": [
+    "San Jose"
+  ],
+  "serviceAreaCounties": [
+    "Santa Clara County"
+  ],
+  "searchAliases": [
+    "san jose water backflow testing",
+    "san jose water approved testers",
+    "san jose fire service backflow"
+  ],
+  "utilityUrl": "https://www.sjwater.com/work-with-us/builders-contractors/backflow/",
+  "officialProgramUrls": [
+    "https://www.sjwater.com/work-with-us/builders-contractors/backflow/",
+    "https://www.sjwater.com/sites/default/files/2018-04/Cross_Conn_Control_Backflow_Prevention.pdf",
+    "https://www.sjwater.com/sites/default/files/2018-03/Rule16.pdf"
+  ],
+  "testingFrequency": "At least annually",
+  "dueBasis": "San Jose Water says testing and recordkeeping are required on all backflow preventers at least once a year, and customers contacted by the Cross-Connection and Backflow Program are expected to act when a hazard survey identifies the need for protection.",
+  "coveredPropertyTypes": [
+    "Fire services",
+    "Domestic services where hazard surveys require protection",
+    "Irrigation systems",
+    "Pools, boilers, decorative fountains, and other cross-connection hazards",
+    "Commercial and residential customers identified by the program"
+  ],
+  "coveredDeviceTypes": [
+    "Lead-free reduced pressure assemblies",
+    "Lead-free double check assemblies where allowed",
+    "Air-gap protection",
+    "Fire service backflow devices"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "San Jose Water backflow page",
+      "url": "https://www.sjwater.com/work-with-us/builders-contractors/backflow/",
+      "kind": "program page"
+    },
+    {
+      "label": "San Jose Water backflow brochure",
+      "url": "https://www.sjwater.com/sites/default/files/2018-04/Cross_Conn_Control_Backflow_Prevention.pdf",
+      "kind": "utility brochure"
+    }
+  ],
+  "phone": "408-279-7872",
+  "penalties": "San Jose Water evaluates extension requests case by case, but customers identified by hazard survey still need to install protection and keep annual testing current under California cross-connection rules.",
+  "sourceExcerpt": "San Jose Water is a strong California utility because it publishes hazard-assessment logic, annual testing requirements, fire-service coverage, and a specialized backflow department instead of a generic FAQ-only page.",
+  "sourceSnapshotPath": "storage/snapshots/san-jose-water-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "San Jose Water is a strong California utility because it combines annual testing, hazard-based install rules, fire-service coverage, and a dedicated backflow department.",
+  "whoIsAffected": "Commercial and residential properties, fire services, irrigation systems, and other San Jose Water customers whose properties create actual or potential cross-connection hazards.",
+  "residentialNotes": [
+    "San Jose Water is unusually usable for residential pages because it publicly says it offers testing support for both commercial and residential customers.",
+    "Single-family demand usually shows up through irrigation, pools, or another identified hazard."
+  ],
+  "commercialNotes": [
+    "Commercial intent is strong because the utility runs hazard surveys and keeps a list of locations with the greatest need for backflow devices.",
+    "Fire services and some domestic services are explicitly called out."
+  ],
+  "annualTesting": {
+    "summary": "San Jose Water says testing and recordkeeping are required on all backflow preventers at least once a year, and its backflow department administers the cross-connection control program.",
+    "highlights": [
+      "Annual testing is explicit.",
+      "A dedicated team of licensed Cross Connection Specialists runs the program.",
+      "Customers contacted after a survey are expected to respond and bring the property into compliance."
+    ],
+    "workflowSteps": [
+      "If San Jose Water contacts the property after a survey or review, confirm which device is required.",
+      "Keep the annual test and recordkeeping current.",
+      "Contact the backflow department if the assembly type or timing is unclear."
+    ]
+  },
+  "irrigation": {
+    "summary": "San Jose Water repeatedly names irrigation systems as common cross-connections that can pull residential and commercial properties into the program.",
+    "highlights": [
+      "Irrigation systems are directly named as cross-connection hazards.",
+      "Hazard surveys drive whether protection is required on the service.",
+      "Annual testing and recordkeeping still apply once the assembly is required."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation setup has been flagged by San Jose Water's hazard review.",
+      "Install the approved assembly if required.",
+      "Keep the irrigation backflow device on its annual testing cycle."
+    ]
+  },
+  "fireLine": {
+    "summary": "San Jose Water is worth a fire-line subpage because it explicitly says backflow prevention devices are required on fire services.",
+    "highlights": [
+      "Fire services are named directly in the public FAQs.",
+      "The utility prefers lead-free reduced pressure assemblies in most conditions.",
+      "Annual testing and recordkeeping apply after the device is installed."
+    ],
+    "workflowSteps": [
+      "Confirm whether the protected service is a fire line or another high-hazard connection.",
+      "Use the assembly type San Jose Water accepts for that service.",
+      "Keep the annual testing record current under the backflow department's program."
+    ]
+  },
+  "workflowSteps": [
+    "Review whether San Jose Water has identified the property as a hazard site.",
+    "Install or maintain the required assembly type.",
+    "Keep annual testing and recordkeeping current.",
+    "Work with the backflow department if extension or assembly-selection questions come up."
+  ],
+  "failureHighlights": [
+    "San Jose Water uses hazard surveys instead of vague boilerplate.",
+    "Fire services and some domestic services are directly included.",
+    "Annual testing and recordkeeping are explicit public requirements."
+  ],
+  "costBand": {
+    "testingRange": "Testing is shaped by the utility's annual-testing requirement and whatever assembly type the hazard survey requires.",
+    "repairRetestRange": "Repair and retest pricing depends on whether the device is serving fire, irrigation, or another high-hazard connection.",
+    "pricingNotes": "The page's value is in hazard-based compliance clarity, not a posted retail rate."
+  },
+  "sources": [
+    {
+      "label": "San Jose Water backflow page",
+      "url": "https://www.sjwater.com/work-with-us/builders-contractors/backflow/",
+      "kind": "official program page"
+    },
+    {
+      "label": "San Jose Water backflow brochure",
+      "url": "https://www.sjwater.com/sites/default/files/2018-04/Cross_Conn_Control_Backflow_Prevention.pdf",
+      "kind": "official brochure"
+    },
+    {
+      "label": "San Jose Water Rule 16",
+      "url": "https://www.sjwater.com/sites/default/files/2018-03/Rule16.pdf",
+      "kind": "utility rule"
+    }
+  ]
+}

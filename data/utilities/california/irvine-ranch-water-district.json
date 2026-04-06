@@ -1,0 +1,129 @@
+{
+  "utilityId": "irwd-backflow",
+  "utilityName": "Irvine Ranch Water District Backflow Prevention",
+  "governingEntityType": "water district",
+  "canonicalSlug": "irvine-ranch-water-district",
+  "state": "california",
+  "serviceAreaCities": [
+    "Irvine"
+  ],
+  "serviceAreaCounties": [
+    "Orange County"
+  ],
+  "searchAliases": [
+    "irwd backflow testing",
+    "irwd backflow tester list",
+    "irvine backflow prevention"
+  ],
+  "utilityUrl": "https://www.irwd.com/services/backflow-prevention",
+  "officialProgramUrls": [
+    "https://www.irwd.com/services/backflow-prevention",
+    "https://www.irwd.com/images/pdf/services/Backflow/IRWD_BACKFLOW_TESTER_LIST_9_25_25.pdf"
+  ],
+  "testingFrequency": "Upon utility notice and annually thereafter",
+  "dueBasis": "IRWD says customers will be notified when a backflow assembly is required and points them to a partial list of certified testers who can perform testing in the district.",
+  "coveredPropertyTypes": [
+    "Residential customers with higher hazard conditions",
+    "Commercial and industrial customers",
+    "Properties where IRWD determines contamination risk exists",
+    "Sites with dedicated irrigation or special-use water connections"
+  ],
+  "coveredDeviceTypes": [
+    "Approved backflow prevention assemblies",
+    "Double check valve assemblies",
+    "Reduced pressure principle assemblies",
+    "Pressure vacuum breaker assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.irwd.com/images/pdf/services/Backflow/IRWD_BACKFLOW_TESTER_LIST_9_25_25.pdf",
+  "officialListLabel": "Open the IRWD backflow tester list",
+  "submissionMethods": [
+    {
+      "label": "IRWD Backflow Prevention",
+      "url": "https://www.irwd.com/services/backflow-prevention",
+      "kind": "program page"
+    },
+    {
+      "label": "IRWD Backflow Test and Maintenance Report form",
+      "url": "https://www.irwd.com/services/backflow-prevention",
+      "kind": "form link hub"
+    },
+    {
+      "label": "IRWD tester list",
+      "url": "https://www.irwd.com/images/pdf/services/Backflow/IRWD_BACKFLOW_TESTER_LIST_9_25_25.pdf",
+      "kind": "official tester list"
+    }
+  ],
+  "phone": "949-453-5300",
+  "penalties": "IRWD frames backflow protection as a required response when the district identifies contamination risk. The practical penalty is that the water customer cannot ignore the district determination or skip the assembly maintenance requirement.",
+  "sourceExcerpt": "IRWD is strong because it exposes the district decision rule, a tester list, approved assembly context, and a practical hazard-based explanation that works for residential and commercial pages.",
+  "sourceSnapshotPath": "storage/snapshots/irwd-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "IRWD is a good California district page because it clearly explains when the district will require an assembly, what assembly types it recognizes, and where customers can find certified testers.",
+  "whoIsAffected": "Residential, commercial, and industrial customers when IRWD determines that the potable system may be exposed to contamination through a backflow condition.",
+  "residentialNotes": [
+    "IRWD is useful because it does not hide the possibility that residential properties can be required to install and maintain assemblies when hazard conditions exist.",
+    "Residential irrigation and special-use connections are part of the risk-based story even if IRWD does not mass-label every home as regulated."
+  ],
+  "commercialNotes": [
+    "Commercial and industrial customers are squarely inside IRWD's backflow program when hazard potential exists.",
+    "IRWD's hazard-based explanation is strong support content for commercial next-action pages."
+  ],
+  "annualTesting": {
+    "summary": "IRWD requires customers who are brought into the program to maintain approved assemblies and use certified testers recognized by State Water Board-accepted organizations.",
+    "highlights": [
+      "The district notifies the customer when an assembly is required.",
+      "Certified testers recognized by state-approved organizations perform the work.",
+      "A district-specific maintenance report form is part of the workflow."
+    ],
+    "workflowSteps": [
+      "Confirm whether IRWD has designated the service for backflow protection.",
+      "Choose a tester from the district's partial list or another recognized certified tester.",
+      "Keep the district's maintenance report and annual testing current."
+    ]
+  },
+  "irrigation": {
+    "summary": "IRWD serves a region where irrigation and landscape systems are a real contamination pathway, so hazard-based irrigation content fits naturally.",
+    "highlights": [
+      "IRWD explains multiple assembly types that appear frequently in irrigation settings.",
+      "Irrigation risk is part of the same hazard-based determination framework.",
+      "Customers should not assume a landscape connection is exempt if IRWD sees contamination potential."
+    ],
+    "workflowSteps": [
+      "Check whether the irrigation connection is part of the district's hazard determination.",
+      "Use an approved assembly type for the installation conditions.",
+      "Keep the annual testing and district report form aligned with the service."
+    ]
+  },
+  "workflowSteps": [
+    "Wait for IRWD's determination or notice that the service requires an assembly.",
+    "Install an approved assembly type that matches the site hazard.",
+    "Use a recognized certified tester to test and maintain the assembly.",
+    "Keep the annual testing record and district form current once the assembly is in service."
+  ],
+  "failureHighlights": [
+    "IRWD uses a hazard-based utility determination rather than a one-size-fits-all rule.",
+    "The district points to a partial tester list rather than hiding the tester path entirely.",
+    "Residential and commercial hazard cases both appear in the public explanation."
+  ],
+  "costBand": {
+    "testingRange": "Testing remains market-priced because IRWD mostly defines the hazard and documentation framework.",
+    "repairRetestRange": "Repair and retest cost depends on assembly type and site hazard, not a district-set price sheet.",
+    "pricingNotes": "The monetizable value is the district determination and tester-routing clarity rather than a published fee table."
+  },
+  "sources": [
+    {
+      "label": "IRWD Backflow Prevention",
+      "url": "https://www.irwd.com/services/backflow-prevention",
+      "kind": "official program page"
+    },
+    {
+      "label": "IRWD tester list",
+      "url": "https://www.irwd.com/images/pdf/services/Backflow/IRWD_BACKFLOW_TESTER_LIST_9_25_25.pdf",
+      "kind": "official tester list pdf"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "utilityId": "round-rock-water",
+  "utilityName": "City of Round Rock Backflow Prevention",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "round-rock-water-utilities",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Round Rock"
+  ],
+  "serviceAreaCounties": [
+    "Williamson County"
+  ],
+  "searchAliases": [
+    "round rock backflow testing",
+    "round rock registered backflow tester"
+  ],
+  "utilityUrl": "https://www.roundrocktexas.gov/city-departments/utilities-and-environmental-services/water/backflow/",
+  "officialProgramUrls": [
+    "https://www.roundrocktexas.gov/city-departments/utilities-and-environmental-services/water/backflow/",
+    "https://www.roundrocktexas.gov/wp-content/uploads/2023/05/List-of-Registered-Testers-5.10.23.pdf"
+  ],
+  "testingFrequency": "Annual for high-hazard devices; every 7 years for low-hazard devices",
+  "dueBasis": "Round Rock sends notices through BSI Online about 30 days before the testing due date. High-hazard devices require annual testing and low-hazard residential irrigation devices require testing every 7 years.",
+  "coveredPropertyTypes": [
+    "Non-residential high-hazard properties such as restaurants, hospitals, and industries",
+    "Residential pools with auto-fill",
+    "Residential irrigation systems treated as low hazard"
+  ],
+  "coveredDeviceTypes": [
+    "High-hazard backflow assemblies",
+    "Low-hazard irrigation assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.roundrocktexas.gov/wp-content/uploads/2023/05/List-of-Registered-Testers-5.10.23.pdf",
+  "officialListLabel": "Open the Round Rock registered tester list",
+  "submissionMethods": [
+    {
+      "label": "Round Rock backflow program page",
+      "url": "https://www.roundrocktexas.gov/city-departments/utilities-and-environmental-services/water/backflow/",
+      "kind": "program page"
+    },
+    {
+      "label": "BSI Online tracking",
+      "url": "https://www.bsionlinetracking.com/",
+      "kind": "submission portal"
+    }
+  ],
+  "phone": "512-218-5575",
+  "penalties": "If the owner misses testing, the City may test the device and add a $75 fee plus the actual test cost to the water bill. Failed devices get a 30-day repair and retest window.",
+  "sourceExcerpt": "Round Rock requires annual testing for high-hazard devices, 7-year testing for low-hazard devices, and uses BSI Online for report submission and notice handling.",
+  "sourceSnapshotPath": "storage/snapshots/round-rock-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Round Rock splits testing cadence by hazard class: annual for high-hazard devices and every 7 years for low-hazard residential devices.",
+  "whoIsAffected": "Commercial high-hazard properties, residential pools with auto-fill, and residential irrigation systems covered by the City's backflow program.",
+  "residentialNotes": [
+    "Round Rock residential users need to pay attention to the low-hazard seven-year rule and the places where that lower cadence no longer applies.",
+    "Pools with auto-fill and residential irrigation systems are common local triggers."
+  ],
+  "commercialNotes": [
+    "Commercial and other high-hazard properties stay on the annual side of the program.",
+    "Missed testing can turn into City-arranged testing and added billing exposure."
+  ],
+  "annualTesting": {
+    "summary": "Round Rock annual testing is mainly the high-hazard side of the program, while some low-hazard residential irrigation devices move to a seven-year cycle.",
+    "highlights": [
+      "High-hazard devices are annual.",
+      "Low-hazard residential irrigation devices are every seven years.",
+      "BSI Online controls notice and reporting workflow."
+    ],
+    "workflowSteps": [
+      "Identify whether the device is in the high-hazard or low-hazard class.",
+      "Use the BSI notice and schedule the test with a registered BPAT.",
+      "Submit through BSI Online and repair within 30 days if the device fails."
+    ]
+  },
+  "irrigation": {
+    "summary": "Round Rock is one of the best pilot cities for irrigation because it explicitly distinguishes low-hazard residential irrigation from high-hazard annual cases.",
+    "highlights": [
+      "Residential irrigation often falls into the low-hazard seven-year lane.",
+      "That does not mean every irrigation site is exempt from frequent testing.",
+      "Pools with auto-fill and other added hazards can move the property into a stricter category."
+    ],
+    "workflowSteps": [
+      "Confirm whether the irrigation device is low hazard or tied to a higher-risk property condition.",
+      "Use a registered BPAT and BSI Online for submission.",
+      "If the device fails, repair and retest within 30 days."
+    ]
+  },
+  "workflowSteps": [
+    "Use the city notice and BSI Online confirmation number to schedule the test.",
+    "Hire a registered BPAT or make sure the licensed tester registers with the City before testing.",
+    "Have the tester submit the report through BSI Online.",
+    "If the device fails, repair and retest within 30 days."
+  ],
+  "failureHighlights": [
+    "A failed device triggers a 30-day repair and retest clock.",
+    "Reports can be rejected if license or gauge information is not current with the City.",
+    "If the City has to step in for missed testing, the cost can be added to the owner's bill."
+  ],
+  "costBand": {
+    "testingRange": "Private quotes vary; if the City has to arrange a missed test it can add a $75 fee plus the actual test cost.",
+    "repairRetestRange": "Repair and retest cost depends on the assembly and contractor, and can be billed back if the City had to intervene.",
+    "pricingNotes": "Use private quotes for market pricing, but do not ignore the City fee exposure in missed-test situations."
+  },
+  "sources": [
+    {
+      "label": "Round Rock backflow prevention program",
+      "url": "https://www.roundrocktexas.gov/city-departments/utilities-and-environmental-services/water/backflow/",
+      "kind": "official program page"
+    },
+    {
+      "label": "Round Rock registered tester list",
+      "url": "https://www.roundrocktexas.gov/wp-content/uploads/2023/05/List-of-Registered-Testers-5.10.23.pdf",
+      "kind": "official pdf"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "metroId": "tampa-bay-gulf-coast",
+  "title": "Tampa Bay and Gulf Coast backflow testing",
+  "state": "florida",
+  "metroSlug": "tampa-bay-gulf-coast",
+  "cityNames": [
+    "Tampa",
+    "Brandon",
+    "Sarasota",
+    "Bradenton"
+  ],
+  "countyNames": [
+    "Hillsborough County",
+    "Sarasota County",
+    "Manatee County"
+  ],
+  "utilityIds": [
+    "tampa-water",
+    "hillsborough-county-water",
+    "sarasota-county-utilities",
+    "manatee-county-utilities"
+  ],
+  "guideSlugs": [
+    "backflow-test-cost",
+    "failed-backflow-test-next-steps",
+    "approved-testers-vs-find-a-tester"
+  ],
+  "description": "Gulf Coast support page for utility-first local routes across Tampa, Hillsborough County, Sarasota County, and Manatee County.",
+  "summary": "The Tampa Bay and Gulf Coast cluster matters because local utilities mix different cadences, permit workflows, and tester-list rules. This page groups those surfaces into a commercial support layer without replacing the utilities themselves.",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 60,
+  "pageStatus": "PUBLISH",
+  "lastReviewed": "2026-04-05"
+}

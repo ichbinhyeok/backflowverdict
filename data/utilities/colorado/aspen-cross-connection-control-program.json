@@ -1,0 +1,142 @@
+{
+  "utilityId": "aspen-water",
+  "utilityName": "City of Aspen Cross Connection Control AKA Backflow Prevention Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "aspen-cross-connection-control-program",
+  "state": "colorado",
+  "serviceAreaCities": [
+    "Aspen"
+  ],
+  "serviceAreaCounties": [
+    "Pitkin County"
+  ],
+  "searchAliases": [
+    "aspen backflow testing",
+    "aspen certified backflow testers",
+    "aspen irrigation backflow"
+  ],
+  "utilityUrl": "https://www.aspen.gov/1156/Cross-Connection-Control-Program",
+  "officialProgramUrls": [
+    "https://www.aspen.gov/1156/Cross-Connection-Control-Program",
+    "https://www.aspen.gov/DocumentCenter/View/8018/2025-City-of-Aspen-Backflow-Flyer-and-Tester-List--PDF"
+  ],
+  "testingFrequency": "At least annually, plus on installation and after repair",
+  "dueBasis": "Aspen says initial notifications now come directly from BSI and testers are required to submit reports online through BSI. The city also says containment devices are tested at least annually and residents receive a reminder before the anniversary of the test date.",
+  "coveredPropertyTypes": [
+    "Commercial accounts",
+    "Multi-family accounts",
+    "Residential irrigation systems",
+    "Fire systems and other protected services"
+  ],
+  "coveredDeviceTypes": [
+    "Reduced pressure principle devices",
+    "Double check assemblies",
+    "Vacuum breakers",
+    "Containment and isolation devices"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.aspen.gov/DocumentCenter/View/8018/2025-City-of-Aspen-Backflow-Flyer-and-Tester-List--PDF",
+  "officialListLabel": "Open Aspen's certified tester list",
+  "submissionMethods": [
+    {
+      "label": "Aspen cross connection control program",
+      "url": "https://www.aspen.gov/1156/Cross-Connection-Control-Program",
+      "kind": "program page"
+    },
+    {
+      "label": "BSI Online tester portal",
+      "url": "https://app.bsionlinetracking.com",
+      "kind": "tester portal"
+    },
+    {
+      "label": "Aspen flyer and tester list",
+      "url": "https://www.aspen.gov/DocumentCenter/View/8018/2025-City-of-Aspen-Backflow-Flyer-and-Tester-List--PDF",
+      "kind": "official tester list"
+    }
+  ],
+  "phone": "970-920-5110",
+  "penalties": "Aspen publicly frames annual testing as required by state and federal law and routes tester submissions through BSI, so noncompliance does not stay informal or off-system.",
+  "sourceExcerpt": "Aspen publishes BSI-driven annual testing, a city-hosted certified tester list, and explicit device guidance for irrigation and fire systems.",
+  "sourceSnapshotPath": "storage/snapshots/aspen-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Aspen is a high-quality Colorado utility because the city publishes BSI-driven annual testing, a certified tester list, and device-level guidance for irrigation, fire systems, and containment assemblies.",
+  "whoIsAffected": "Commercial, multi-family, irrigation, fire-system, and other protected water services inside Aspen's cross-connection control program.",
+  "residentialNotes": [
+    "Aspen explicitly mentions residential lawn sprinkler systems as an isolation-device example.",
+    "Residential users are not outside the system if they have irrigation or another protected cross-connection risk."
+  ],
+  "commercialNotes": [
+    "Commercial and multi-family accounts have been in Aspen's containment program for years and sit on a clear annual cadence.",
+    "The BSI workflow makes Aspen operationally stronger than a generic city explainer page."
+  ],
+  "annualTesting": {
+    "summary": "Aspen requires annual testing, reminder notices before the anniversary date, and tester result submission through BSI.",
+    "highlights": [
+      "Initial notifications now come directly from BSI.",
+      "Backflow testers are required to submit reports through the BSI portal.",
+      "Residents still choose their preferred certified tester from the city's list."
+    ],
+    "workflowSteps": [
+      "Watch for Aspen or BSI's reminder ahead of the anniversary date.",
+      "Choose a certified tester from Aspen's list.",
+      "Have the tester submit the report through BSI and keep the device current for the next cycle."
+    ]
+  },
+  "irrigation": {
+    "summary": "Aspen publicly calls out irrigation systems as common cross-connections and says irrigation systems generally require a vacuum breaker.",
+    "highlights": [
+      "The city lists irrigation systems among common cross-connection examples.",
+      "Aspen's public guidance says irrigation systems generally use a vacuum breaker.",
+      "Residential lawn sprinkler systems are a specific example of an isolation device."
+    ],
+    "workflowSteps": [
+      "Confirm whether the assembly protects a lawn sprinkler or broader irrigation system.",
+      "Use the device type Aspen's guidance expects for irrigation.",
+      "Keep the annual test current through Aspen's tester and BSI workflow."
+    ]
+  },
+  "fireLine": {
+    "summary": "Aspen specifically calls out fire systems and says fire systems generally use a double check backflow preventer.",
+    "highlights": [
+      "Aspen includes fire systems in its common cross-connection examples.",
+      "The city guidance says fire systems generally use a double check backflow preventer.",
+      "Aspen's tester list separates domestic-and-irrigation capability from fire-capable testers."
+    ],
+    "workflowSteps": [
+      "Confirm whether the service is fire, domestic, or irrigation.",
+      "Choose a tester from Aspen's list who covers fire work when needed.",
+      "Keep the fire assembly inside Aspen's annual and portal-based compliance loop."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the device type and whether the service is domestic, irrigation, or fire.",
+    "Use Aspen's certified tester list to choose the right tester.",
+    "Complete the test and make sure it is entered through BSI.",
+    "Keep the anniversary-date reminder cycle intact for the next year."
+  ],
+  "failureHighlights": [
+    "Aspen uses BSI for notification and tester reporting.",
+    "The city publishes a certified tester list rather than leaving customers to guess.",
+    "The public guidance separates irrigation and fire-system device expectations."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Aspen's certified-list and BSI workflow shape the real customer path.",
+    "repairRetestRange": "Repair and retest cost depends on whether the assembly is domestic, irrigation, or fire-related.",
+    "pricingNotes": "Aspen's strongest commercial signal is the utility's operational discipline around reminders, list-based routing, and BSI reporting."
+  },
+  "sources": [
+    {
+      "label": "Aspen cross connection control program",
+      "url": "https://www.aspen.gov/1156/Cross-Connection-Control-Program",
+      "kind": "official program page"
+    },
+    {
+      "label": "Aspen flyer and certified tester list",
+      "url": "https://www.aspen.gov/DocumentCenter/View/8018/2025-City-of-Aspen-Backflow-Flyer-and-Tester-List--PDF",
+      "kind": "official tester list pdf"
+    }
+  ]
+}

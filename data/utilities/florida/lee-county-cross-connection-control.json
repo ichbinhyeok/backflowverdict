@@ -1,0 +1,138 @@
+{
+  "utilityId": "lee-county-utilities",
+  "utilityName": "Lee County Utilities Cross-Connection Control Program",
+  "governingEntityType": "county utility",
+  "canonicalSlug": "lee-county-cross-connection-control",
+  "state": "florida",
+  "serviceAreaCities": [
+    "Fort Myers",
+    "Cape Coral",
+    "Bonita Springs",
+    "Estero"
+  ],
+  "serviceAreaCounties": [
+    "Lee County"
+  ],
+  "searchAliases": [
+    "lee county backflow testing",
+    "fort myers backflow testing",
+    "lee county cross connection control"
+  ],
+  "utilityUrl": "https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention",
+  "officialProgramUrls": [
+    "https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention",
+    "https://ccclink.floridawaterstar.com/",
+    "https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention/customerportal"
+  ],
+  "testingFrequency": "At installation and annually thereafter",
+  "dueBasis": "Lee County Utilities says required devices are tested at installation and every year after that. The county uses a cross-connection portal, gives customers portal access tied to the account, and expects approved reports to keep the account in compliance.",
+  "coveredPropertyTypes": [
+    "Commercial services",
+    "Irrigation systems",
+    "County utility customers with hazard conditions",
+    "Other service connections where Lee County requires protection"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention devices",
+    "Containment assemblies",
+    "Irrigation assemblies",
+    "County-monitored backflow devices"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Lee County Utilities cross-connection control and backflow prevention",
+      "url": "https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention",
+      "kind": "program page"
+    },
+    {
+      "label": "Lee County customer portal",
+      "url": "https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention/customerportal",
+      "kind": "customer portal"
+    },
+    {
+      "label": "Lee County CCC portal login",
+      "url": "https://ccclink.floridawaterstar.com/",
+      "kind": "reporting portal"
+    }
+  ],
+  "phone": "239-533-8845",
+  "penalties": "Lee County Utilities keeps customers inside its cross-connection control program and portal workflow. Missing installation or annual testing leaves the account out of compliance until the accepted report is posted.",
+  "sourceExcerpt": "Lee County is a useful Southwest Florida utility because it publishes installation-plus-annual testing, a county customer portal, and a real cross-connection workflow instead of generic water-quality copy.",
+  "sourceSnapshotPath": "storage/snapshots/lee-county-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Lee County is a strong Southwest Florida utility because it combines annual testing, portal-driven compliance, and county-level cross-connection workflow on public pages.",
+  "whoIsAffected": "Lee County Utilities customers with required backflow devices, especially irrigation, commercial, and other hazard-based service connections.",
+  "residentialNotes": [
+    "Residential demand is strongest where irrigation or another county-triggered hazard puts the property into the program.",
+    "The county workflow is more useful than a generic local-plumber article because the customer portal matters."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because the county portal becomes part of the actual next-action path.",
+    "Lee County is also a good metro anchor because it covers multiple city-branded searches under one county authority."
+  ],
+  "annualTesting": {
+    "summary": "Lee County says devices are tested at installation and annually thereafter inside the county cross-connection program.",
+    "highlights": [
+      "Initial testing and annual testing are both explicit.",
+      "Lee County gives customers a dedicated portal path.",
+      "The account stays tied to county compliance until the accepted report is posted."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is in Lee County Utilities' program.",
+      "Complete the installation or annual test.",
+      "Use the county portal and customer workflow to keep the record current."
+    ]
+  },
+  "irrigation": {
+    "summary": "Lee County is commercially useful for irrigation because county utility customers still need annual compliance and portal-based recordkeeping on irrigation assemblies.",
+    "highlights": [
+      "Irrigation is one of the clearest local demand surfaces in this county program.",
+      "Portal-based compliance matters more than generic contractor selection.",
+      "The same installation and annual-testing logic still applies."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation assembly is still inside Lee County's program.",
+      "Complete the required annual test.",
+      "Use the county portal to keep the account compliant."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the service connection is under Lee County Utilities' cross-connection program.",
+    "Complete the installation or annual test.",
+    "Use the county customer or reporting portal.",
+    "Keep the county-side record current."
+  ],
+  "failureHighlights": [
+    "Lee County says devices are tested at installation and annually thereafter.",
+    "The county uses a customer portal and a dedicated CCC portal.",
+    "County compliance is not complete until the accepted report is posted."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but the county portal and account workflow matter more than any public list price.",
+    "repairRetestRange": "Repair and retest cost depends on the assembly and whether the corrective work delays county compliance.",
+    "pricingNotes": "Lee County's local friction is the portal-driven compliance step, not just getting a device tested."
+  },
+  "sources": [
+    {
+      "label": "Lee County Utilities cross-connection control and backflow prevention",
+      "url": "https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention",
+      "kind": "official program page"
+    },
+    {
+      "label": "Lee County customer portal",
+      "url": "https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention/customerportal",
+      "kind": "official customer portal"
+    },
+    {
+      "label": "Lee County CCC portal login",
+      "url": "https://ccclink.floridawaterstar.com/",
+      "kind": "official reporting portal"
+    }
+  ]
+}

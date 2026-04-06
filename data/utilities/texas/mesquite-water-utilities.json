@@ -1,0 +1,154 @@
+{
+  "utilityId": "mesquite-water",
+  "utilityName": "City of Mesquite Backflow Prevention",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "mesquite-water-utilities",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Mesquite"
+  ],
+  "serviceAreaCounties": [
+    "Dallas County"
+  ],
+  "searchAliases": [
+    "mesquite backflow testing",
+    "mesquite registered backflow tester",
+    "mesquite irrigation backflow"
+  ],
+  "utilityUrl": "https://www.cityofmesquite.com/245/Backflow-Prevention",
+  "officialProgramUrls": [
+    "https://www.cityofmesquite.com/245/Backflow-Prevention",
+    "https://www.cityofmesquite.com/DocumentCenter/View/192/Commercial-Backflow-Requirements",
+    "https://www.cityofmesquite.com/DocumentCenter/View/195/Residential-Irrigation-Requirements",
+    "https://www.cityofmesquite.com/DocumentCenter/View/196/View-the-Backflow-Testers-List"
+  ],
+  "testingFrequency": "Upon installation and annually thereafter, excluding residential assemblies that require testing on installation",
+  "dueBasis": "Mesquite says all backflow prevention assemblies must be tested upon installation and thereafter annually by a licensed backflow tester, excluding residential assemblies that require testing upon installation. The tester must be registered with the City, contact the Backflow Inspector before testing, and complete the observed test appointment.",
+  "coveredPropertyTypes": [
+    "Commercial properties with backflow assemblies",
+    "Residential irrigation systems",
+    "Fire line assemblies",
+    "Restaurants, dental offices, and other cross-connection hazard sites"
+  ],
+  "coveredDeviceTypes": [
+    "Reduced pressure assemblies",
+    "Double check assemblies",
+    "Residential irrigation check valve assemblies",
+    "Fire line assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.cityofmesquite.com/DocumentCenter/View/196/View-the-Backflow-Testers-List",
+  "officialListLabel": "Open the Mesquite backflow tester list",
+  "submissionMethods": [
+    {
+      "label": "Mesquite backflow prevention page",
+      "url": "https://www.cityofmesquite.com/245/Backflow-Prevention",
+      "kind": "program page"
+    },
+    {
+      "label": "Mesquite commercial backflow requirements",
+      "url": "https://www.cityofmesquite.com/DocumentCenter/View/192/Commercial-Backflow-Requirements",
+      "kind": "commercial guidance"
+    },
+    {
+      "label": "Mesquite residential irrigation requirements",
+      "url": "https://www.cityofmesquite.com/DocumentCenter/View/195/Residential-Irrigation-Requirements",
+      "kind": "irrigation guidance"
+    }
+  ],
+  "phone": "972-216-6947",
+  "penalties": "Mesquite charges a $25 annual inspection fee per assembly in addition to private tester pricing, requires the Backflow Inspector to witness testing, and will not treat the job as complete if the observed-test workflow is skipped.",
+  "sourceExcerpt": "Mesquite publishes a strong municipal workflow: installation testing, annual testing for non-residential assemblies, a city-registered tester list, observed-test scheduling with the inspector, a $25 annual inspection fee, and separate commercial and residential assembly guidance.",
+  "sourceSnapshotPath": "storage/snapshots/mesquite-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Mesquite is a strong pilot utility because it clearly publishes annual-vs-residential cadence, inspector-witnessed testing, the official tester list, and separate commercial, irrigation, and fire line assembly rules.",
+  "whoIsAffected": "Commercial sites, restaurants, dental offices, residential irrigation systems, fire line assemblies, and other properties where Mesquite requires a backflow assembly to protect the public water system.",
+  "residentialNotes": [
+    "Mesquite residential assemblies are mainly an installation workflow rather than a blanket annual workflow, which makes it easy for homeowners to confuse their obligations.",
+    "Residential irrigation users still need a permit, a registered tester, and a witnessed test before final inspection."
+  ],
+  "commercialNotes": [
+    "Commercial properties sit on the annual side of the Mesquite program, and the City publishes a detailed assembly guide that reaches beyond a basic consumer explainer.",
+    "Mesquite also distinguishes fire line testers from general testers on the official list, which matters for larger properties and higher-risk systems."
+  ],
+  "annualTesting": {
+    "summary": "Mesquite's public rule is direct: all assemblies are tested on installation and then annually, except residential assemblies that only require testing on installation.",
+    "highlights": [
+      "Annual testing remains the norm for non-residential assemblies.",
+      "Mesquite adds a $25 annual fee per assembly on the utility bill.",
+      "The City requires the Backflow Inspector to be present to observe the test."
+    ],
+    "workflowSteps": [
+      "Confirm whether the assembly is residential-installation-only or part of the annual commercial cycle.",
+      "Use a Mesquite-registered backflow tester.",
+      "Call the Backflow Inspector at 972-216-6947 before testing so the City can witness the test."
+    ]
+  },
+  "irrigation": {
+    "summary": "Mesquite's residential irrigation document is unusually practical: permit first, use the approved device type, then complete a witnessed test before final inspection closes.",
+    "highlights": [
+      "A permit is required for lawn irrigation installation.",
+      "Residential irrigation systems need the assembly tested before final inspection by the Building Inspection Department.",
+      "Mesquite requires a registered tester and an inspector-witnessed appointment even on residential irrigation work."
+    ],
+    "workflowSteps": [
+      "Pull the irrigation permit before installation.",
+      "Install the approved assembly with the required layout details, including the Y-strainer where the guide calls for it.",
+      "Schedule the Mesquite Backflow Inspector before the registered tester performs the test."
+    ]
+  },
+  "fireLine": {
+    "summary": "Mesquite's commercial assembly guide treats fire lines as a separate technical case and pairs that with a tester list that explicitly labels fire line testers.",
+    "highlights": [
+      "Fire lines require a stainless-steel RP assembly under the published guide.",
+      "The official tester PDF repeatedly labels fire line testers instead of burying them in a generic list.",
+      "The same witnessed-test rule applies, so the inspector still has to be present."
+    ],
+    "workflowSteps": [
+      "Confirm the property falls into the fire line side of the commercial backflow guide.",
+      "Choose a tester that Mesquite labels as a fire line tester on the official PDF.",
+      "Coordinate the witnessed test with the Backflow Inspector before the appointment."
+    ]
+  },
+  "workflowSteps": [
+    "Use Mesquite's official page to determine whether the assembly is installation-only or annual.",
+    "Hire a licensed tester registered with the City of Mesquite.",
+    "Call the Backflow Inspector before testing so the City can witness the appointment.",
+    "Keep the permit, inspector, and tester workflow aligned so the job closes without repeat visits."
+  ],
+  "failureHighlights": [
+    "Mesquite requires the inspector to be present for testing, so a test can still fail procedurally even if the device itself passes.",
+    "The residential-installation-only rule creates confusion; many owners assume it applies more broadly than it does.",
+    "Fire line assemblies use different device rules and should not be handed to a generic tester by default."
+  ],
+  "costBand": {
+    "testingRange": "Private testing price is market-based, but Mesquite adds a $25 annual fee per assembly for annual inspections.",
+    "repairRetestRange": "Repair and retest pricing widens for commercial and fire line assemblies because the witnessed-test workflow and device type are more specialized.",
+    "pricingNotes": "Mesquite's residential irrigation guide also lists a $125 irrigation permit fee, which means the City-side cost stack matters before the contractor invoice is even considered."
+  },
+  "sources": [
+    {
+      "label": "Mesquite backflow prevention page",
+      "url": "https://www.cityofmesquite.com/245/Backflow-Prevention",
+      "kind": "official program page"
+    },
+    {
+      "label": "Mesquite commercial backflow requirements",
+      "url": "https://www.cityofmesquite.com/DocumentCenter/View/192/Commercial-Backflow-Requirements",
+      "kind": "official pdf"
+    },
+    {
+      "label": "Mesquite residential irrigation requirements",
+      "url": "https://www.cityofmesquite.com/DocumentCenter/View/195/Residential-Irrigation-Requirements",
+      "kind": "official pdf"
+    },
+    {
+      "label": "Mesquite tester list",
+      "url": "https://www.cityofmesquite.com/DocumentCenter/View/196/View-the-Backflow-Testers-List",
+      "kind": "official pdf"
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "utilityId": "lewisville-water",
+  "utilityName": "City of Lewisville Backflow Testing",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "lewisville-water-utilities",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Lewisville"
+  ],
+  "serviceAreaCounties": [
+    "Denton County"
+  ],
+  "searchAliases": [
+    "lewisville backflow testing",
+    "lewisville registered backflow tester"
+  ],
+  "utilityUrl": "https://www.cityoflewisville.com/city-hall/city-departments/public-services/meter-services/backflow-testing",
+  "officialProgramUrls": [
+    "https://www.cityoflewisville.com/city-hall/city-departments/public-services/meter-services/backflow-testing",
+    "https://eservices.cityoflewisville.com/autotables/",
+    "https://www.bsionlinetracking.com/"
+  ],
+  "testingFrequency": "At installation and at least once per year thereafter",
+  "dueBasis": "Lewisville says backflow prevention assemblies must be tested at installation and at least once per year thereafter by a licensed tester registered with the City. Test reports must be submitted electronically through BSI Online within ten days of the test date.",
+  "coveredPropertyTypes": [
+    "Irrigation systems",
+    "Fire sprinkler systems",
+    "Commercial and industrial facilities",
+    "Multi-family properties",
+    "Properties with boilers, chemical systems, or auxiliary water supplies"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Irrigation assemblies",
+    "Fire assembly devices including fire DCDAs when properly licensed"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://eservices.cityoflewisville.com/autotables/",
+  "officialListLabel": "Open the Lewisville registered tester list",
+  "submissionMethods": [
+    {
+      "label": "Lewisville backflow testing program page",
+      "url": "https://www.cityoflewisville.com/city-hall/city-departments/public-services/meter-services/backflow-testing",
+      "kind": "program page"
+    },
+    {
+      "label": "Lewisville tester registration portal",
+      "url": "https://www.mgoconnect.org/",
+      "kind": "tester registration"
+    },
+    {
+      "label": "BSI Online submission portal",
+      "url": "https://www.bsionlinetracking.com/",
+      "kind": "submission portal"
+    }
+  ],
+  "phone": "972-219-3400",
+  "penalties": "Lewisville says failure to install, test, and maintain required devices can justify discontinuing water service. The code excerpt on the City page also cites misdemeanor exposure, daily fines of $100 to $1,000, and City recovery of expenses.",
+  "sourceExcerpt": "Lewisville publishes one of the clearer municipal backflow pages in Texas: annual testing cadence, an official tester list, a ten-day electronic submission deadline through BSI, a $25 filing fee, and quoted enforcement language from the code.",
+  "sourceSnapshotPath": "storage/snapshots/lewisville-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Lewisville is strong pilot content because it publishes the annual cadence, official tester list, BSI submission deadline, filing fee, and enforcement language on one page.",
+  "whoIsAffected": "Irrigation, fire sprinkler, commercial, industrial, multi-family, and other properties the City deems a cross-connection hazard.",
+  "residentialNotes": [
+    "Residential users usually hit this through irrigation systems and other hazards the City flags at the meter or within the property.",
+    "Not every listed tester can handle every device type, so homeowners need to match the tester to the assembly."
+  ],
+  "commercialNotes": [
+    "Commercial, industrial, multifamily, and managed properties should assume annual testing is part of recurring compliance once the City requires a device.",
+    "Lewisville's code excerpts make service interruption and fine exposure more explicit than many city pages."
+  ],
+  "annualTesting": {
+    "summary": "Lewisville publishes one of the cleanest annual-testing workflows in the pilot set: test at installation and at least once per year thereafter, then submit electronically through BSI within ten days.",
+    "highlights": [
+      "At least annual after installation is the baseline rule.",
+      "BSI submission must happen within ten days of the test date.",
+      "Lewisville also adds a $25 filing fee per test submission."
+    ],
+    "workflowSteps": [
+      "Confirm the property falls into a category where Lewisville requires an assembly.",
+      "Use a Texas-licensed tester who is currently registered with the City of Lewisville.",
+      "Submit the completed report through BSI Online within ten days.",
+      "If the tester cannot legally handle the device type, switch before the deadline slips."
+    ]
+  },
+  "irrigation": {
+    "summary": "Lewisville explicitly names irrigation as one of the common property types that require backflow assemblies and recurring testing.",
+    "highlights": [
+      "Irrigation is not treated as a side topic; it is one of the first examples on the official page.",
+      "Residential irrigation users still have to respect the same tester registration and BSI submission rules.",
+      "Late report submission can keep an irrigation job noncompliant even after the field test is done."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation system has the required assembly in place.",
+      "Choose a Lewisville-registered tester who can handle the actual device type.",
+      "Make sure the completed test is submitted through BSI within ten days."
+    ]
+  },
+  "fireLine": {
+    "summary": "Lewisville's tester page and code language make fire assemblies a separate operational concern because not every tester can legally test every fire device.",
+    "highlights": [
+      "Fire sprinkler systems are explicitly named on the official page.",
+      "Lewisville warns that testers need the right credentials for the assembly being tested.",
+      "Fire assembly delays can be more expensive because the enforcement language is stronger and the device type is more specialized."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is part of the fire protection side of the property.",
+      "Verify the chosen tester is licensed for the fire assembly type, not just general backflow work.",
+      "Submit through the same Lewisville BSI workflow before the ten-day deadline."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the property falls into one of Lewisville's listed hazard categories or has received a City notice.",
+    "Use a Texas-licensed tester who is currently registered with the City of Lewisville.",
+    "Submit the completed test through BSI Online within ten days of the test date.",
+    "Use the tester list carefully, because not every tester is licensed for every assembly type."
+  ],
+  "failureHighlights": [
+    "Late reports can miss Lewisville's ten-day submission rule even if the test itself was completed.",
+    "The City warns that not every registered tester can test every assembly type.",
+    "Lewisville's code language includes service shutoff and fine exposure."
+  ],
+  "costBand": {
+    "testingRange": "Consumer testing price is market-based, but Lewisville adds a $25 City filing fee per test submission.",
+    "repairRetestRange": "Repair and retest pricing depends on assembly type, especially when fire assemblies or larger commercial systems are involved.",
+    "pricingNotes": "Lewisville is unusually transparent about the City fee layered on top of the private tester invoice."
+  },
+  "sources": [
+    {
+      "label": "Lewisville backflow testing page",
+      "url": "https://www.cityoflewisville.com/city-hall/city-departments/public-services/meter-services/backflow-testing",
+      "kind": "official program page"
+    },
+    {
+      "label": "Lewisville tester list",
+      "url": "https://eservices.cityoflewisville.com/autotables/",
+      "kind": "official list"
+    },
+    {
+      "label": "BSI Online for Lewisville submissions",
+      "url": "https://www.bsionlinetracking.com/",
+      "kind": "official vendor portal"
+    }
+  ]
+}

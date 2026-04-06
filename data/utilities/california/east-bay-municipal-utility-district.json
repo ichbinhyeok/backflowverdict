@@ -1,0 +1,130 @@
+{
+  "utilityId": "ebmud-backflow",
+  "utilityName": "East Bay Municipal Utility District Backflow Prevention",
+  "governingEntityType": "water district",
+  "canonicalSlug": "east-bay-municipal-utility-district",
+  "state": "california",
+  "serviceAreaCities": [
+    "Oakland"
+  ],
+  "serviceAreaCounties": [
+    "Alameda County",
+    "Contra Costa County"
+  ],
+  "searchAliases": [
+    "ebmud backflow testing",
+    "ebmud approved backflow testers",
+    "oakland backflow tester"
+  ],
+  "utilityUrl": "https://www.ebmud.com/development-services/backflow-prevention",
+  "officialProgramUrls": [
+    "https://www.ebmud.com/development-services/backflow-prevention",
+    "https://www.ebmud.com/download_file/force/23962/750?Approved_Backflow_Testers_09.2023.pdf="
+  ],
+  "testingFrequency": "Upon installation and annually thereafter",
+  "dueBasis": "EBMUD requires tests to be performed by testers on the district's approved list and keeps separate scheduling rules for fire flushes and related field operations.",
+  "coveredPropertyTypes": [
+    "Commercial and industrial services",
+    "New or modified services where EBMUD identifies a hazard",
+    "Fire services requiring a flush appointment",
+    "Regional district customers needing containment assemblies"
+  ],
+  "coveredDeviceTypes": [
+    "Approved district backflow assemblies",
+    "Fire service backflow assemblies",
+    "Containment assemblies",
+    "Testable assemblies on the approved device list"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.ebmud.com/download_file/force/23962/750?Approved_Backflow_Testers_09.2023.pdf=",
+  "officialListLabel": "Open the EBMUD approved tester list",
+  "submissionMethods": [
+    {
+      "label": "EBMUD backflow prevention",
+      "url": "https://www.ebmud.com/development-services/backflow-prevention",
+      "kind": "program page"
+    },
+    {
+      "label": "EBMUD approved tester list",
+      "url": "https://www.ebmud.com/download_file/force/23962/750?Approved_Backflow_Testers_09.2023.pdf=",
+      "kind": "official tester list"
+    },
+    {
+      "label": "EBMUD official policy concerning backflow prevention",
+      "url": "https://www.ebmud.com/development-services/backflow-prevention",
+      "kind": "policy link hub"
+    }
+  ],
+  "phone": "510-287-0874",
+  "penalties": "EBMUD does not present the program as optional. Fire-service work can stall until the correct assembly is installed and the district has scheduled the required flush under its notice rules.",
+  "sourceExcerpt": "EBMUD is strong because it publishes an approved tester list, a district exam path for testers, fire-flush scheduling rules, and a visible official policy layer.",
+  "sourceSnapshotPath": "storage/snapshots/ebmud-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "EBMUD supports trustworthy utility pages because it publishes an approved tester list, official policy links, and fire-flush rules that make the program operationally concrete.",
+  "whoIsAffected": "District customers who need containment assemblies, commercial and industrial projects, and fire-service work that EBMUD identifies as needing approved backflow protection.",
+  "residentialNotes": [
+    "EBMUD is less residential-marketing heavy than some city utilities, but residential hazard cases can still be pulled into the district's protection rules where appropriate.",
+    "The public value is strongest for mixed-use, commercial, and managed-property intent."
+  ],
+  "commercialNotes": [
+    "EBMUD is a strong commercial page because the district runs its own tester approval exam and maintains the public approved list.",
+    "Fire-flush scheduling and installation sequence matter for larger properties and projects."
+  ],
+  "annualTesting": {
+    "summary": "EBMUD requires the test to be performed by a tester from the district's approved list and maintains its own approval process for testers.",
+    "highlights": [
+      "Only approved district testers can perform the accepted test.",
+      "The district maintains a public approved list.",
+      "Tester approval itself requires certification plus an EBMUD exam."
+    ],
+    "workflowSteps": [
+      "Confirm the service is under EBMUD's backflow requirements.",
+      "Use a tester from the approved district list.",
+      "Keep the annual test and any required district forms current."
+    ]
+  },
+  "fireLine": {
+    "summary": "EBMUD's fire-side workflow is useful because the district requires scheduling and will not perform an underground fire service flush until the proper assembly is installed.",
+    "highlights": [
+      "The district requires at least 48 hours notice for a fire flush appointment.",
+      "The local Fire Marshal or Fire Inspector should be scheduled before calling EBMUD for the flush.",
+      "An appropriate backflow assembly must already be installed before the flush happens."
+    ],
+    "workflowSteps": [
+      "Coordinate the fire-side schedule with the local inspector first.",
+      "Install the required assembly before requesting the EBMUD flush.",
+      "Keep the flush and test sequence aligned so the project does not stall."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the service or project requires EBMUD backflow protection.",
+    "Use an EBMUD-approved tester from the district list.",
+    "Complete the annual test and any district paperwork.",
+    "If the property includes fire service, schedule the fire-flush sequence with the required notice."
+  ],
+  "failureHighlights": [
+    "EBMUD keeps its own approved tester exam and public list.",
+    "Fire-service work can stall if the assembly is not installed before the flush.",
+    "The district's program is stronger for commercial and project-driven intent than for generic plumbing content."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced but constrained by EBMUD's approved-list rule.",
+    "repairRetestRange": "Repair and retest costs rise on projects that include fire-service scheduling or larger assemblies.",
+    "pricingNotes": "The district's commercial value is in approval gating and project sequencing, not in a public retail fee sheet."
+  },
+  "sources": [
+    {
+      "label": "EBMUD backflow prevention",
+      "url": "https://www.ebmud.com/development-services/backflow-prevention",
+      "kind": "official program page"
+    },
+    {
+      "label": "EBMUD approved tester list",
+      "url": "https://www.ebmud.com/download_file/force/23962/750?Approved_Backflow_Testers_09.2023.pdf=",
+      "kind": "official tester list pdf"
+    }
+  ]
+}

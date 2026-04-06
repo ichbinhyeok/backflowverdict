@@ -1,0 +1,149 @@
+{
+  "utilityId": "marana-water",
+  "utilityName": "Marana Water Backflow Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "marana-water-quality",
+  "state": "arizona",
+  "serviceAreaCities": [
+    "Marana"
+  ],
+  "serviceAreaCounties": [
+    "Pima County"
+  ],
+  "searchAliases": [
+    "marana backflow testing",
+    "marana approved backflow tester",
+    "marana cmid backflow"
+  ],
+  "utilityUrl": "https://www.maranaaz.gov/Departments/Water-Water-Reclamation/Water-Quality",
+  "officialProgramUrls": [
+    "https://www.maranaaz.gov/Departments/Water-Water-Reclamation/Water-Quality",
+    "https://www.maranaaz.gov/files/assets/cityofmarana/v/1/water/documents/approved-bf-tester-list-08.14.2024.pdf",
+    "https://www.maranaaz.gov/files/assets/cityofmarana/v/1/water/documents/marana-water-backflow-requirements.pdf"
+  ],
+  "testingFrequency": "Annually on the neighborhood testing schedule",
+  "dueBasis": "Marana says required backflow assemblies must be tested annually by a certified tester registered with Marana Water. Failure to complete the test can lead to disconnection of potable water until a passing test is completed, and failed tests must be repaired or replaced within 7 days.",
+  "coveredPropertyTypes": [
+    "Commercial buildings",
+    "Industrial buildings",
+    "Buildings three stories or more",
+    "Multi-family residences",
+    "Homes with more than one source of water including CMID areas"
+  ],
+  "coveredDeviceTypes": [
+    "Registered-tester assemblies",
+    "CMID-related backflow assemblies",
+    "Reduced pressure assemblies",
+    "Annual-test assemblies tracked in SAMS"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.maranaaz.gov/files/assets/cityofmarana/v/1/water/documents/approved-bf-tester-list-08.14.2024.pdf",
+  "officialListLabel": "Open the Marana approved backflow tester list",
+  "submissionMethods": [
+    {
+      "label": "Marana water quality",
+      "url": "https://www.maranaaz.gov/Departments/Water-Water-Reclamation/Water-Quality",
+      "kind": "program page"
+    },
+    {
+      "label": "Marana approved tester list",
+      "url": "https://www.maranaaz.gov/files/assets/cityofmarana/v/1/water/documents/approved-bf-tester-list-08.14.2024.pdf",
+      "kind": "official tester list"
+    },
+    {
+      "label": "Marana backflow requirements",
+      "url": "https://www.maranaaz.gov/files/assets/cityofmarana/v/1/water/documents/marana-water-backflow-requirements.pdf",
+      "kind": "requirements pdf"
+    }
+  ],
+  "phone": "520-382-2570",
+  "penalties": "Marana warns that failure to complete the annual test can lead to disconnection of potable water until the device is compliant. Failed tests must be repaired or replaced within 7 days, and replacement permits must be submitted 24 hours before installation.",
+  "sourceExcerpt": "Marana is one of the strongest Arizona utility pages because it publishes a real approved tester list, annual schedule rules, 7-day failed-test repair timing, and potable-water disconnection consequences.",
+  "sourceSnapshotPath": "storage/snapshots/marana-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Marana is a strong Arizona utility because it combines a public approved tester list, annual scheduling, 7-day repair timing, and potable-water shutoff risk.",
+  "whoIsAffected": "Marana commercial, industrial, multifamily, high-rise, and special residential customers, especially those in areas with non-potable irrigation water from CMID.",
+  "residentialNotes": [
+    "Marana is unusually useful for residential pages because the town explicitly names neighborhoods with non-potable irrigation water that must protect the potable system.",
+    "Potable reconnection can require a passing test from a Marana-approved tester."
+  ],
+  "commercialNotes": [
+    "Commercial and multifamily intent is strong because Marana publishes tester registration, fees, SAMS workflow, and failed-test timing.",
+    "This is a high-quality utility page for annual-testing and failed-test lead intent."
+  ],
+  "annualTesting": {
+    "summary": "Marana requires annual testing by a certified tester that is registered with Marana Water and uses neighborhood schedule letters plus SAMS for reporting.",
+    "highlights": [
+      "Annual testing is explicit.",
+      "Only Marana-approved testers are accepted.",
+      "Failure to test can lead to potable-water disconnection."
+    ],
+    "workflowSteps": [
+      "Wait for the Marana letter or schedule window.",
+      "Use a tester on the approved Marana list.",
+      "Make sure the result is posted through the accepted Marana workflow."
+    ]
+  },
+  "irrigation": {
+    "summary": "Marana is especially good for irrigation because non-potable irrigation neighborhoods like Gladden Farms and Rancho Marana are part of the public explanation.",
+    "highlights": [
+      "CMID-related irrigation is a named local hazard.",
+      "Approved testers are public.",
+      "Permits and inspections matter when assemblies are replaced or reconnected."
+    ],
+    "workflowSteps": [
+      "Confirm whether the property is tied to CMID or another auxiliary source.",
+      "Use a Marana-approved tester for the annual test.",
+      "If the device fails, repair or replace it within 7 days and keep the permit timing intact."
+    ]
+  },
+  "fireLine": {
+    "summary": "Marana is less fire-line-specific than Tempe or Buckeye, but the same annual approved-tester and 7-day failed-test rules still govern larger protected services.",
+    "highlights": [
+      "High-rise and multifamily properties are named in the public page.",
+      "Replacement requires permit timing and inspection discipline.",
+      "Annual approved-tester routing still applies."
+    ],
+    "workflowSteps": [
+      "Confirm the protected-service class and permit needs.",
+      "Use an approved Marana tester.",
+      "If the device fails, complete repair or replacement inside the 7-day window."
+    ]
+  },
+  "workflowSteps": [
+    "Wait for the Marana testing letter or schedule period.",
+    "Hire an approved tester from the Marana list.",
+    "Complete the annual test and post the result.",
+    "If the device fails, repair or replace it within 7 days so potable service is not disconnected."
+  ],
+  "failureHighlights": [
+    "Marana publishes one of the strongest Arizona failed-test timelines.",
+    "Approved tester inventory is public.",
+    "Potable-water disconnect language makes the risk concrete."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Marana adds tester registration, schedule discipline, and shutoff risk.",
+    "repairRetestRange": "Repair and retest costs rise quickly because failed assemblies must be fixed or replaced within 7 days.",
+    "pricingNotes": "The strongest local cost driver is avoiding potable-water disconnect and repeat permit/inspection work."
+  },
+  "sources": [
+    {
+      "label": "Marana water quality",
+      "url": "https://www.maranaaz.gov/Departments/Water-Water-Reclamation/Water-Quality",
+      "kind": "official program page"
+    },
+    {
+      "label": "Marana approved tester list",
+      "url": "https://www.maranaaz.gov/files/assets/cityofmarana/v/1/water/documents/approved-bf-tester-list-08.14.2024.pdf",
+      "kind": "official tester list pdf"
+    },
+    {
+      "label": "Marana backflow requirements",
+      "url": "https://www.maranaaz.gov/files/assets/cityofmarana/v/1/water/documents/marana-water-backflow-requirements.pdf",
+      "kind": "official requirements pdf"
+    }
+  ]
+}

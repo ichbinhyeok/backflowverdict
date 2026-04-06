@@ -1,0 +1,153 @@
+{
+  "utilityId": "talty-sud",
+  "utilityName": "Talty Special Utility District Backflow Testing",
+  "governingEntityType": "special utility district",
+  "canonicalSlug": "talty-special-utility-district",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Talty",
+    "Forney"
+  ],
+  "serviceAreaCounties": [
+    "Kaufman County"
+  ],
+  "searchAliases": [
+    "talty backflow testing",
+    "talty sud backflow",
+    "forney talty sud backflow"
+  ],
+  "utilityUrl": "https://www.taltysud.com/backflow",
+  "officialProgramUrls": [
+    "https://www.taltysud.com/backflow",
+    "https://www.taltysud.com/irrigation",
+    "https://www.taltysud.com/forms/backflowtesters.pdf",
+    "https://www.taltysud.com/forms/BackflowForm.pdf",
+    "https://www.taltysud.com/forms/BackflowTesterReg.pdf",
+    "https://www.taltysud.com/"
+  ],
+  "testingFrequency": "Upon installation and annually for health-hazard or commercial properties",
+  "dueBasis": "Talty SUD says irrigation assemblies are tested upon installation and the test form must be provided to the district office. The district also requires annual testing for assemblies protecting against a health hazard and for all commercial properties regardless of health hazard, with test results due by either May 1 or November 1 depending on the cycle.",
+  "coveredPropertyTypes": [
+    "Irrigation systems",
+    "Commercial properties regardless of hazard class",
+    "Properties with onsite sewer facilities or septic systems",
+    "Developments served by Talty Special Utility District"
+  ],
+  "coveredDeviceTypes": [
+    "Inline testable backflow devices",
+    "Double check valve assemblies",
+    "Reduced pressure zone assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.taltysud.com/forms/backflowtesters.pdf",
+  "officialListLabel": "Open the Talty SUD registered tester list",
+  "submissionMethods": [
+    {
+      "label": "Talty SUD backflow page",
+      "url": "https://www.taltysud.com/backflow",
+      "kind": "program page"
+    },
+    {
+      "label": "Talty SUD irrigation page",
+      "url": "https://www.taltysud.com/irrigation",
+      "kind": "irrigation guidance"
+    },
+    {
+      "label": "Talty SUD backflow test form",
+      "url": "https://www.taltysud.com/forms/BackflowForm.pdf",
+      "kind": "official form"
+    },
+    {
+      "label": "Talty SUD tester registration form",
+      "url": "https://www.taltysud.com/forms/BackflowTesterReg.pdf",
+      "kind": "registration form"
+    }
+  ],
+  "phone": "972-552-4422",
+  "penalties": "Talty SUD says failure to complete testing and send results by the deadline will result in disconnection of service. The district also says service remains disconnected until compliance is met and outstanding balances are paid.",
+  "sourceExcerpt": "Talty SUD is strong file-backed pilot material because it publishes installation testing, annual health-hazard and commercial testing, OSSF-to-RPZ rules, hard May 1 or November 1 deadlines, an official tester list, a report form, and a registration form.",
+  "sourceSnapshotPath": "storage/snapshots/talty-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Talty SUD is a strong district example because it publishes explicit annual testing triggers, deadline months, RPZ rules for OSSF properties, and a hard service-disconnection consequence for noncompliance.",
+  "whoIsAffected": "Irrigation systems, commercial properties, properties with onsite sewer facilities or septic systems, and customers served by Talty Special Utility District who have testable backflow assemblies.",
+  "residentialNotes": [
+    "Talty SUD is more nuanced than a blanket annual rule: some residential developments now only require an initial irrigation test, while OSSF and other health-hazard properties stay in the annual lane.",
+    "Residential owners should not assume the relaxed rule applies everywhere, because Talty still requires annual testing when the property is a health hazard."
+  ],
+  "commercialNotes": [
+    "Talty says commercial properties are annual regardless of health hazard, which makes the district stricter than a basic residential sprinkler explanation.",
+    "Commercial accounts also face a more direct operational consequence because Talty explicitly ties missed deadlines to disconnection."
+  ],
+  "annualTesting": {
+    "summary": "Talty SUD requires annual testing for health-hazard assemblies and for all commercial properties, with hard May 1 or November 1 deadlines depending on the cycle.",
+    "highlights": [
+      "Annual testing is tied to health hazard and commercial status, not just a one-size-fits-all rule.",
+      "Results are due by either May 1 or November 1 depending on the assigned cycle.",
+      "Talty publishes both the tester list and the official TCEQ-style report form."
+    ],
+    "workflowSteps": [
+      "Confirm whether the property is in the annual lane because of commercial status or a health hazard.",
+      "Use a tester registered with the Talty SUD office.",
+      "Submit the completed report by the May 1 or November 1 deadline for the property's cycle."
+    ]
+  },
+  "irrigation": {
+    "summary": "Talty SUD is especially strong on irrigation because the district ties permit, inspection, device selection, and annual hazard rules together on official pages.",
+    "highlights": [
+      "All new irrigation systems require a district permit before installation begins.",
+      "All landscape irrigation systems must use an approved inline testable backflow device.",
+      "If the property has an OSSF and the DCV fails, Talty requires replacement with an RPZ."
+    ],
+    "workflowSteps": [
+      "Pull the Talty irrigation permit before starting installation.",
+      "Install the approved testable device and keep the plan and inspection path aligned with the district.",
+      "Use a Talty-registered tester and submit the report on time if the property falls into the annual-testing group."
+    ]
+  },
+  "workflowSteps": [
+    "Use Talty's backflow page to confirm whether the property is installation-only or part of the annual testing cycle.",
+    "If the property has an irrigation system, complete the permit and inspection workflow through the district office first.",
+    "Hire a tester who is registered with the Talty SUD office and uses a current gauge certification.",
+    "Send the completed report to the district office by the May 1 or November 1 deadline tied to the property cycle."
+  ],
+  "failureHighlights": [
+    "Talty treats OSSF properties as health hazards and requires RPZ protection, which can turn a failed DCV into a replacement project instead of a simple retest.",
+    "The district uses hard deadlines and says missed results can lead to disconnection of service.",
+    "A tester can be licensed and still unusable for the job if they have not registered with the Talty office."
+  ],
+  "costBand": {
+    "testingRange": "Private testing price is market-based, but Talty layers permit and compliance deadlines around the work.",
+    "repairRetestRange": "Repair and retest cost can jump if an OSSF property has to replace a failed DCV with an RPZ instead of repairing in place.",
+    "pricingNotes": "Talty's published paperwork also shows a $50 tester registration fee and a $195 irrigation permit and inspection fee, which helps explain why district jobs can feel heavier than a simple plumber visit."
+  },
+  "sources": [
+    {
+      "label": "Talty SUD backflow page",
+      "url": "https://www.taltysud.com/backflow",
+      "kind": "official program page"
+    },
+    {
+      "label": "Talty SUD irrigation page",
+      "url": "https://www.taltysud.com/irrigation",
+      "kind": "official irrigation guidance"
+    },
+    {
+      "label": "Talty SUD tester list",
+      "url": "https://www.taltysud.com/forms/backflowtesters.pdf",
+      "kind": "official pdf"
+    },
+    {
+      "label": "Talty SUD backflow test form",
+      "url": "https://www.taltysud.com/forms/BackflowForm.pdf",
+      "kind": "official pdf"
+    },
+    {
+      "label": "Talty SUD tester registration form",
+      "url": "https://www.taltysud.com/forms/BackflowTesterReg.pdf",
+      "kind": "official pdf"
+    }
+  ]
+}

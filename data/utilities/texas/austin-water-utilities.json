@@ -1,0 +1,152 @@
+{
+  "utilityId": "austin-water",
+  "utilityName": "Austin Water Cross-Connection Control",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "austin-water-utilities",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Austin"
+  ],
+  "serviceAreaCounties": [
+    "Travis County"
+  ],
+  "searchAliases": [
+    "austin backflow testing",
+    "austin water backflow prevention"
+  ],
+  "utilityUrl": "https://www.austintexas.gov/my-mm/water/cross-connection-control-water-protection-program",
+  "officialProgramUrls": [
+    "https://www.austintexas.gov/my-mm/water/cross-connection-control-water-protection-program",
+    "https://www.austintexas.gov/my-mm/water/backflow-prevention-overview",
+    "https://www.austintexas.gov/water/backflow-prevention-assembly-tester-information"
+  ],
+  "testingFrequency": "At least once a year for many listed assemblies, plus initial testing on installation",
+  "dueBasis": "Austin Water's 2025 ordinance requires annual testing for assemblies protecting health hazards and specified non-health hazards, with all test and maintenance reports submitted online through WEIRS.",
+  "coveredPropertyTypes": [
+    "Health-hazard connections",
+    "Building isolation and suite isolation where listed by ordinance",
+    "Private fire hydrants and fire sprinkler connections",
+    "Sites with industrial fluids, chemicals, irrigation, or auxiliary water sources"
+  ],
+  "coveredDeviceTypes": [
+    "RPZ",
+    "DCVA",
+    "PVB",
+    "Private fire hydrant and fire sprinkler assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://services.austintexas.gov/weirs/",
+  "officialListLabel": "Use Austin Water resources and WEIRS-linked tester information",
+  "submissionMethods": [
+    {
+      "label": "Austin Water cross-connection program",
+      "url": "https://www.austintexas.gov/my-mm/water/cross-connection-control-water-protection-program",
+      "kind": "program page"
+    },
+    {
+      "label": "Austin backflow tester information",
+      "url": "https://www.austintexas.gov/water/backflow-prevention-assembly-tester-information",
+      "kind": "tester requirements"
+    },
+    {
+      "label": "WEIRS database",
+      "url": "https://services.austintexas.gov/weirs/",
+      "kind": "submission portal"
+    }
+  ],
+  "phone": "512-972-1060",
+  "penalties": "Austin Water reviews records, investigates compliance, and can issue violations or suspend City registration for repeated tester violations. Falsified records can trigger criminal prosecution.",
+  "sourceExcerpt": "Austin requires annual testing for many backflow assemblies, online TMR submission through WEIRS, and City registration for BPATs in addition to TCEQ licensing.",
+  "sourceSnapshotPath": "storage/snapshots/austin-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Austin Water runs a stricter ordinance-backed program with annual testing for many assemblies, online WEIRS reporting, and City registration for testers.",
+  "whoIsAffected": "Sites with health-hazard assemblies, building or suite isolation, private fire hydrants, fire sprinklers, irrigation, auxiliary water, or other listed backflow risks.",
+  "residentialNotes": [
+    "Residential users usually run into Austin rules through irrigation, pools, and other listed health-risk conditions rather than generic annual notices.",
+    "Austin's online-only reporting means even smaller projects still have to respect the formal WEIRS process."
+  ],
+  "commercialNotes": [
+    "Austin is one of the stronger commercial and managed-property programs because the ordinance reaches building isolation, suites, fire systems, and listed non-health hazards.",
+    "Commercial users should expect utility registration, ordinance review, and portal discipline to matter."
+  ],
+  "annualTesting": {
+    "summary": "Austin annual testing is ordinance-driven, broader than many cities, and tied to online reporting through WEIRS.",
+    "highlights": [
+      "Many listed assemblies require at least annual testing.",
+      "Austin requires City registration for BPATs in addition to TCEQ licensing.",
+      "Paper reports are no longer accepted."
+    ],
+    "workflowSteps": [
+      "Confirm the site falls into one of Austin's listed annual testing categories.",
+      "Use a TCEQ-licensed BPAT who is also registered with Austin Water.",
+      "Submit the TMR through WEIRS within five calendar days."
+    ]
+  },
+  "irrigation": {
+    "summary": "Austin irrigation can fall inside the same ordinance-backed hazard logic that drives the rest of the cross-connection program.",
+    "highlights": [
+      "Irrigation is explicitly listed among the site risks Austin monitors.",
+      "The right question is not just whether irrigation exists, but whether the site falls into the ordinance's annual testing categories.",
+      "WEIRS reporting still controls the submission side."
+    ],
+    "workflowSteps": [
+      "Determine whether the irrigation setup falls into Austin's listed annual testing categories.",
+      "Use an Austin-registered tester.",
+      "Submit through WEIRS on the utility timeline."
+    ]
+  },
+  "fireLine": {
+    "summary": "Austin's ordinance is especially useful for fire line questions because it explicitly reaches private fire hydrants and fire sprinkler connections.",
+    "highlights": [
+      "Private fire hydrants and fire sprinkler connections are named in the Austin program.",
+      "Fire-related assemblies sit inside the same ordinance and WEIRS reporting model.",
+      "Austin's enforcement language is stronger than a typical generic city handout."
+    ],
+    "workflowSteps": [
+      "Confirm the fire hydrant or sprinkler assembly is covered by the ordinance category in question.",
+      "Use a tester who is both TCEQ licensed and Austin registered.",
+      "Keep WEIRS reporting and any status change updates current with Austin Water."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm whether the site falls under Austin Water's annual testing categories in the current ordinance.",
+    "Use a TCEQ-licensed BPAT registered with Austin Water.",
+    "Submit each complete Test and Maintenance Report online through WEIRS within five calendar days.",
+    "If the assembly is removed, replaced, or tied to a removed hazard, report that status to Austin Water so the record is updated."
+  ],
+  "failureHighlights": [
+    "Paper TMRs are no longer accepted.",
+    "Austin requires more than state licensing alone; tester registration with the utility matters too.",
+    "False or incomplete records can trigger City enforcement and even criminal exposure."
+  ],
+  "costBand": {
+    "testingRange": "Private Austin quotes vary by assembly, hazard class, and whether the tester is already registered with Austin Water.",
+    "repairRetestRange": "Repair and retest cost widens for fire hydrant, fire sprinkler, and larger commercial hazard cases.",
+    "pricingNotes": "Austin is strong on compliance detail and less public on retail pricing, so use the ordinance and WEIRS workflow as the anchor before comparing quotes."
+  },
+  "sources": [
+    {
+      "label": "Austin Water cross-connection control program",
+      "url": "https://www.austintexas.gov/my-mm/water/cross-connection-control-water-protection-program",
+      "kind": "official program page"
+    },
+    {
+      "label": "Austin backflow prevention overview",
+      "url": "https://www.austintexas.gov/my-mm/water/backflow-prevention-overview",
+      "kind": "official overview"
+    },
+    {
+      "label": "Austin BPAT registration and WEIRS instructions",
+      "url": "https://www.austintexas.gov/water/backflow-prevention-assembly-tester-information",
+      "kind": "official tester page"
+    },
+    {
+      "label": "Austin ordinance 20250410-002",
+      "url": "https://www.austintexas.gov/sites/default/files/files/Water/SSD/Ord.-20250410-002---Chapter-15-1-Cross-Connection.pdf",
+      "kind": "official ordinance"
+    }
+  ]
+}

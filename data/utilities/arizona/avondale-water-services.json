@@ -1,0 +1,149 @@
+{
+  "utilityId": "avondale-water",
+  "utilityName": "City of Avondale Backflow and Cross-Connection Control",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "avondale-water-services",
+  "state": "arizona",
+  "serviceAreaCities": [
+    "Avondale"
+  ],
+  "serviceAreaCounties": [
+    "Maricopa County"
+  ],
+  "searchAliases": [
+    "avondale backflow testing",
+    "avondale approved tester list",
+    "avondale fire line backflow"
+  ],
+  "utilityUrl": "https://www.avondaleaz.gov/government/departments/public-works/water/backflow-cross-connection",
+  "officialProgramUrls": [
+    "https://www.avondaleaz.gov/government/departments/public-works/water/backflow-cross-connection",
+    "https://www.avondaleaz.gov/home/showpublisheddocument/9038/638254490100330000",
+    "https://www.avondaleaz.gov/home/showpublisheddocument/17667/638119626066630000"
+  ],
+  "testingFrequency": "At installation and annually thereafter",
+  "dueBasis": "Avondale says annual testing is required, that customers will be notified when results are due, and that only a Certified Backflow Prevention Assembly Tester approved by the City may test devices in the system.",
+  "coveredPropertyTypes": [
+    "Commercial developments",
+    "Multifamily developments",
+    "Fire protection water connections",
+    "Non-single-family sites",
+    "Other city-water customers with required assemblies"
+  ],
+  "coveredDeviceTypes": [
+    "Double check assemblies",
+    "Reduced pressure devices",
+    "Reduced pressure detector assemblies",
+    "Air gap assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.avondaleaz.gov/home/showpublisheddocument/9038/638254490100330000",
+  "officialListLabel": "Open the Avondale approved tester list",
+  "submissionMethods": [
+    {
+      "label": "Avondale backflow and cross-connection page",
+      "url": "https://www.avondaleaz.gov/government/departments/public-works/water/backflow-cross-connection",
+      "kind": "program page"
+    },
+    {
+      "label": "Avondale approved tester list",
+      "url": "https://www.avondaleaz.gov/home/showpublisheddocument/9038/638254490100330000",
+      "kind": "official tester list"
+    },
+    {
+      "label": "Avondale engineering requirements manual",
+      "url": "https://www.avondaleaz.gov/home/showpublisheddocument/17667/638119626066630000",
+      "kind": "engineering manual"
+    }
+  ],
+  "phone": "623-333-4400",
+  "penalties": "Avondale refuses submission of test reports from companies that fail to maintain the required documentation and uses recognized testers for fire-protection and other protected services.",
+  "sourceExcerpt": "Avondale is a strong Arizona utility because it publishes an annual-testing page, an approved tester list, and engineering standards that make fire protection, irrigation, and commercial backflow rules concrete.",
+  "sourceSnapshotPath": "storage/snapshots/avondale-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Avondale is a strong utility-first page because the city pairs annual testing, approved testers, and specific approved device classes in one public workflow.",
+  "whoIsAffected": "Avondale water customers with required assemblies, especially commercial, multifamily, irrigation, and fire-protection services tied to city water.",
+  "residentialNotes": [
+    "Single-family homes are not the main angle because Avondale's strongest public language sits around broader developments and protected services.",
+    "Residential irrigation still matters when the city has required an assembly and annual testing."
+  ],
+  "commercialNotes": [
+    "Commercial intent is strong because Avondale explicitly says all developments except single-family residential require devices.",
+    "The approved tester list and city notification flow make this a real next-action utility page."
+  ],
+  "annualTesting": {
+    "summary": "Avondale requires annual testing of installed backflow prevention devices and notifies customers when test results become due.",
+    "highlights": [
+      "Only a certified tester approved by the City of Avondale may test devices in the system.",
+      "Public Works staff file the test results and create the following year's schedule.",
+      "The city can refuse reports from testing companies that do not keep their documentation current."
+    ],
+    "workflowSteps": [
+      "Check the Avondale due notice or current record.",
+      "Use a tester from the city-approved list.",
+      "Make sure the result is filed so the next year's testing cycle stays active."
+    ]
+  },
+  "irrigation": {
+    "summary": "Avondale's public rules fit irrigation because the city frames backpressure, chemical injectors, and cross-connections as drinking-water risks that require approved devices.",
+    "highlights": [
+      "Annual testing applies once the device is installed.",
+      "Approved device classes are listed in the city manual.",
+      "The city-approved tester list gives irrigation customers a direct next action."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation assembly type Avondale expects.",
+      "Use a city-approved tester.",
+      "Keep the test result and next-year schedule current with Public Works."
+    ]
+  },
+  "fireLine": {
+    "summary": "Avondale explicitly requires a double check valve assembly at all fire protection water connections.",
+    "highlights": [
+      "Fire protection water connections are named directly in the engineering manual.",
+      "Certified testers recognized by Avondale must handle the annual and initial testing.",
+      "Device location and installation rules are spelled out in city standards."
+    ],
+    "workflowSteps": [
+      "Confirm the service is a fire protection water connection.",
+      "Install the fire-line assembly per city detail.",
+      "Use an Avondale-approved tester for the acceptance and annual test cycle."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm Avondale has required an assembly at the service.",
+    "Pick a company from the approved tester list.",
+    "Complete the annual or post-install test.",
+    "Get the result into the city file so the next schedule is generated correctly."
+  ],
+  "failureHighlights": [
+    "Avondale publishes an approved tester list and annual-notice language.",
+    "Public Works manages both filing and next-year scheduling.",
+    "Fire protection water connections are explicitly regulated."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Avondale narrows the provider path through its approved tester list.",
+    "repairRetestRange": "Repair and retest cost rises on fire-protection and larger commercial assemblies.",
+    "pricingNotes": "The strongest local cost signal is staying inside the recognized-tester workflow so the city accepts the test."
+  },
+  "sources": [
+    {
+      "label": "Avondale backflow and cross-connection page",
+      "url": "https://www.avondaleaz.gov/government/departments/public-works/water/backflow-cross-connection",
+      "kind": "official program page"
+    },
+    {
+      "label": "Avondale approved tester list",
+      "url": "https://www.avondaleaz.gov/home/showpublisheddocument/9038/638254490100330000",
+      "kind": "official tester list pdf"
+    },
+    {
+      "label": "Avondale engineering requirements manual",
+      "url": "https://www.avondaleaz.gov/home/showpublisheddocument/17667/638119626066630000",
+      "kind": "official engineering manual"
+    }
+  ]
+}

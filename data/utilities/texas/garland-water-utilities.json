@@ -1,0 +1,153 @@
+{
+  "utilityId": "garland-water",
+  "utilityName": "City of Garland Water Supply Protection",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "garland-water-utilities",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Garland"
+  ],
+  "serviceAreaCounties": [
+    "Dallas County"
+  ],
+  "searchAliases": [
+    "garland backflow testing",
+    "garland registered backflow tester",
+    "garland irrigation backflow"
+  ],
+  "utilityUrl": "https://www.garlandtx.gov/3335/Water-Supply-Protection-Backflow",
+  "officialProgramUrls": [
+    "https://www.garlandtx.gov/3335/Water-Supply-Protection-Backflow",
+    "https://www.garlandtx.gov/3180/Irrigation-Installation",
+    "https://www.garlandtx.gov/586/Registration-for-Backflow-Testers",
+    "https://www.garlandtx.gov/DocumentCenter/View/2623/List-of-Backflow-Testers-PDF"
+  ],
+  "testingFrequency": "Prior to permanent activation and annually thereafter",
+  "dueBasis": "Garland says all backflow prevention assemblies shall be tested according to TCEQ regulations prior to permanent activation of the plumbing system and annually thereafter. Test reports must be submitted to Garland Water Utilities within 10 days of the test.",
+  "coveredPropertyTypes": [
+    "Non-residential customers under the water supply protection program",
+    "Landscape irrigation systems requiring permits",
+    "Fire sprinkler systems and other fire line assemblies",
+    "Properties where Garland Water Utilities requires a registered assembly"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Irrigation backflow assemblies",
+    "Fire line assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.garlandtx.gov/DocumentCenter/View/2623/List-of-Backflow-Testers-PDF",
+  "officialListLabel": "Open the Garland backflow tester list",
+  "submissionMethods": [
+    {
+      "label": "Garland water supply protection page",
+      "url": "https://www.garlandtx.gov/3335/Water-Supply-Protection-Backflow",
+      "kind": "program page"
+    },
+    {
+      "label": "Garland irrigation installation page",
+      "url": "https://www.garlandtx.gov/3180/Irrigation-Installation",
+      "kind": "irrigation guidance"
+    },
+    {
+      "label": "Garland tester registration page",
+      "url": "https://www.garlandtx.gov/586/Registration-for-Backflow-Testers",
+      "kind": "registration page"
+    }
+  ],
+  "phone": "972-205-3244",
+  "penalties": "Garland makes permit compliance, tester registration, and 10-day report delivery part of the utility workflow. Fire line testers face added registration requirements, and irrigation permits can stall or fail if the required test results are not delivered.",
+  "sourceExcerpt": "Garland publishes a strong municipal workflow: register assemblies and testers, test prior to permanent activation and annually thereafter, submit reports within 10 days, and bring extra documents for fire line tester registration.",
+  "sourceSnapshotPath": "storage/snapshots/garland-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Garland is a strong pilot utility because it publishes the annual cadence, 10-day report rule, tester-registration workflow, irrigation permit details, and fire line registration requirements on official pages.",
+  "whoIsAffected": "Non-residential customers, irrigation systems, fire sprinkler systems, and any property where Garland Water Utilities requires a registered backflow assembly.",
+  "residentialNotes": [
+    "Garland lets qualifying homesteaded homeowners pull certain irrigation permits themselves, but they still must provide backflow test results to the Water Department and to the permitting office.",
+    "Residential irrigation users should not assume installation is finished until Garland receives the test results and the permit inspection path is closed."
+  ],
+  "commercialNotes": [
+    "Garland's non-residential program is heavier on documentation than a generic plumbing explanation suggests because assembly registration, tester registration, annual testing, and report timing all matter together.",
+    "Fire line work is more specialized because fire line testers have to bring SCR, RME, and letter-of-employment documents during registration."
+  ],
+  "annualTesting": {
+    "summary": "Garland explicitly says assemblies are tested before permanent activation and annually thereafter, and the report must reach Garland Water Utilities within 10 days of the test.",
+    "highlights": [
+      "Annual testing is the ongoing baseline after activation.",
+      "Report delivery is not open-ended; Garland says submit within 10 days.",
+      "Only a TCEQ-licensed tester registered with Garland Water Utilities can perform the test."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is registered with Garland Water Utilities.",
+      "Use a TCEQ-approved tester who is currently registered with Garland.",
+      "Submit the completed report to Garland Water Utilities within 10 days of the test."
+    ]
+  },
+  "irrigation": {
+    "summary": "Garland's irrigation path is useful because it ties permit, inspection, and backflow testing together on one official page.",
+    "highlights": [
+      "All new landscape irrigation systems require a permit.",
+      "The irrigator has to provide test results to the Garland Water Department before final inspection.",
+      "Garland also requires rain sensor and freeze-gauge compliance on covered irrigation work."
+    ],
+    "workflowSteps": [
+      "Pull the irrigation permit before installation or repair work begins.",
+      "Use a licensed backflow tester registered with the Garland Water Department.",
+      "Provide the passing test results to Garland Water Utilities and email the copy to the permit office before requesting final inspection."
+    ]
+  },
+  "fireLine": {
+    "summary": "Garland's fire line content is mostly registration-driven rather than consumer-marketing copy, but it is still strong because the City calls out separate fire line tester documents.",
+    "highlights": [
+      "Fire line testers must bring SCR, RME, and a letter of employment when registering.",
+      "Garland treats fire line testers as a stricter subclass of registered testers.",
+      "The same annual testing and 10-day report submission rule still applies to the assembly itself."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is part of the fire protection side of the property.",
+      "Verify the tester has completed Garland registration with the fire line-specific documents.",
+      "Submit the test report to Garland Water Utilities within 10 days so the file stays current."
+    ]
+  },
+  "workflowSteps": [
+    "Check whether the property is in Garland's water supply protection program or irrigation permit path.",
+    "Make sure the assembly and the tester are both registered with Garland Water Utilities.",
+    "Complete the test before permanent activation or by the annual due cycle.",
+    "Submit the report to Garland Water Utilities within 10 days and keep the permit side in sync if irrigation work is involved."
+  ],
+  "failureHighlights": [
+    "Garland uses a short 10-day report window after testing.",
+    "Fire line testers need extra registration documents beyond a standard BPAT license and gauge calibration.",
+    "Irrigation permits can remain stuck if the Water Department does not receive the passing test results."
+  ],
+  "costBand": {
+    "testingRange": "Private testing price is market-based, but Garland layers permit and registration steps around the work.",
+    "repairRetestRange": "Repair and retest cost varies by device type, especially once irrigation permitting or fire line registration enters the job.",
+    "pricingNotes": "Garland publishes a $88 irrigation permit fee, a $75 annual tester-registration fee, and a $25 test-form booklet fee on the official workflow. The tester-side fees matter even if the property owner only sees the final quote."
+  },
+  "sources": [
+    {
+      "label": "Garland water supply protection page",
+      "url": "https://www.garlandtx.gov/3335/Water-Supply-Protection-Backflow",
+      "kind": "official program page"
+    },
+    {
+      "label": "Garland irrigation installation page",
+      "url": "https://www.garlandtx.gov/3180/Irrigation-Installation",
+      "kind": "official irrigation guidance"
+    },
+    {
+      "label": "Garland tester registration page",
+      "url": "https://www.garlandtx.gov/586/Registration-for-Backflow-Testers",
+      "kind": "official registration page"
+    },
+    {
+      "label": "Garland tester list",
+      "url": "https://www.garlandtx.gov/DocumentCenter/View/2623/List-of-Backflow-Testers-PDF",
+      "kind": "official pdf"
+    }
+  ]
+}

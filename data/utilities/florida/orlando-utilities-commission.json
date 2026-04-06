@@ -1,0 +1,149 @@
+{
+  "utilityId": "ouc-water",
+  "utilityName": "Orlando Utilities Commission Backflow Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "orlando-utilities-commission",
+  "state": "florida",
+  "serviceAreaCities": [
+    "Orlando"
+  ],
+  "serviceAreaCounties": [
+    "Orange County"
+  ],
+  "searchAliases": [
+    "orlando backflow testing",
+    "ouc backflow testing",
+    "orlando irrigation backflow device"
+  ],
+  "utilityUrl": "https://www.ouc.com/about/water-services/backflow/",
+  "officialProgramUrls": [
+    "https://www.ouc.com/about/water-services/backflow/",
+    "https://www.ouc.com/wp-content/uploads/2024/12/Development_Services_dev_backflow_req.pdf",
+    "https://www.ouc.com/wp-content/uploads/2025/02/residential_missing_backflow_irrigation.pdf"
+  ],
+  "testingFrequency": "Annually for residential and commercial devices",
+  "dueBasis": "OUC says all residential and commercial backflow prevention devices must be tested annually. Residential testing and maintenance are handled by OUC, while commercial customers may use OUC or their own licensed plumber and still must stay compliant.",
+  "coveredPropertyTypes": [
+    "Residential properties with irrigation potential",
+    "Commercial properties",
+    "Multi-family properties",
+    "Fire lines near the point of service",
+    "Any OUC customer with a potential cross-connection"
+  ],
+  "coveredDeviceTypes": [
+    "Residential backflow prevention devices",
+    "Commercial backflow prevention devices",
+    "Fire-line devices near the point of service",
+    "FDEP-required irrigation-related devices"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "OUC backflow program",
+      "url": "https://www.ouc.com/about/water-services/backflow/",
+      "kind": "program page"
+    },
+    {
+      "label": "OUC development services backflow requirements",
+      "url": "https://www.ouc.com/wp-content/uploads/2024/12/Development_Services_dev_backflow_req.pdf",
+      "kind": "development requirements"
+    },
+    {
+      "label": "OUC residential missing backflow notice",
+      "url": "https://www.ouc.com/wp-content/uploads/2025/02/residential_missing_backflow_irrigation.pdf",
+      "kind": "residential notice"
+    }
+  ],
+  "phone": "407-423-9018",
+  "penalties": "OUC says failure to comply with testing requirements may result in termination of water service. Commercial customers are responsible for repairs and deadlines when devices fail.",
+  "sourceExcerpt": "OUC is a strong Florida utility because it openly separates residential and commercial responsibility, publishes annual testing, gives exact commercial test pricing, and uses service-termination language for noncompliance.",
+  "sourceSnapshotPath": "storage/snapshots/orlando-utilities-commission-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "OUC is one of the strongest Florida utility pages because it combines annual testing, residential-versus-commercial responsibility splits, pricing, and service-termination risk.",
+  "whoIsAffected": "Residential and commercial OUC customers with actual or potential cross-connections, including irrigation, domestic, and fire-line services near the point of service.",
+  "residentialNotes": [
+    "Residential pages are unusually strong because OUC installs and maintains required residential devices and even gives a monthly maintenance fee.",
+    "If the homeowner refuses testing, OUC warns that service can be terminated."
+  ],
+  "commercialNotes": [
+    "Commercial value is very strong because OUC states who pays, who can test, and what annual tests cost for different device sizes.",
+    "This is a very monetizable utility page because the commercial workflow is concrete."
+  ],
+  "annualTesting": {
+    "summary": "OUC says residential and commercial devices must be tested annually. Residential devices are handled by OUC, while commercial customers can use OUC or their own licensed provider.",
+    "highlights": [
+      "Annual testing is explicit for both residential and commercial customers.",
+      "Commercial testing by OUC costs $48 annually for 5/8-inch through 4-inch devices and $110 for 6-inch and above.",
+      "Noncompliance may result in water-service termination."
+    ],
+    "workflowSteps": [
+      "Confirm whether the property is residential or commercial.",
+      "Follow the correct OUC testing responsibility path.",
+      "Keep the annual test current so the account does not move toward termination."
+    ]
+  },
+  "irrigation": {
+    "summary": "OUC is very strong for irrigation pages because it says all properties with irrigation potential need backflow devices regardless of water source.",
+    "highlights": [
+      "Residential irrigation devices are installed and maintained by OUC when missing.",
+      "Commercial domestic and irrigation services are both required to have devices in place.",
+      "The residential notice makes irrigation-specific device placement and ownership clear."
+    ],
+    "workflowSteps": [
+      "Confirm whether the property has irrigation or another cross-connection risk.",
+      "Install or accept the required OUC device.",
+      "Keep annual testing and maintenance current."
+    ]
+  },
+  "fireLine": {
+    "summary": "OUC gives useful fire-line detail because it says most fire-line backflows can be found within 25 feet of the point of service and treats commercial fire work as a licensed installation path.",
+    "highlights": [
+      "Commercial installers include plumbers, fire-line companies, and backflow specialists.",
+      "Fire lines often do not have meters, so locating the device matters.",
+      "Commercial customers carry repair and replacement cost when devices fail."
+    ],
+    "workflowSteps": [
+      "Confirm whether the protected service is domestic, irrigation, or fire line.",
+      "Use the right licensed installer for the assembly class.",
+      "Keep the annual test current and complete any repair deadline quickly."
+    ]
+  },
+  "workflowSteps": [
+    "Determine whether the property is residential or commercial under OUC's program.",
+    "Install or confirm the required device at the point of service.",
+    "Follow the correct annual-testing path for that customer class.",
+    "Resolve failed devices quickly so service does not move toward interruption."
+  ],
+  "failureHighlights": [
+    "OUC publicly states annual testing for both residential and commercial devices.",
+    "Residential and commercial responsibility splits are crystal clear.",
+    "OUC uses service-termination language for noncompliance."
+  ],
+  "costBand": {
+    "testingRange": "Residential customers pay a $4 monthly maintenance fee after installation, while commercial OUC-run annual tests are priced at $48 for 5/8-inch to 4-inch devices and $110 for 6-inch and above.",
+    "repairRetestRange": "Commercial repair and retest costs sit with the customer when the device fails or must be replaced.",
+    "pricingNotes": "The utility is unusually explicit about recurring testing costs, which makes this page commercially valuable."
+  },
+  "sources": [
+    {
+      "label": "OUC backflow program",
+      "url": "https://www.ouc.com/about/water-services/backflow/",
+      "kind": "official program page"
+    },
+    {
+      "label": "OUC development services backflow requirements",
+      "url": "https://www.ouc.com/wp-content/uploads/2024/12/Development_Services_dev_backflow_req.pdf",
+      "kind": "official requirements pdf"
+    },
+    {
+      "label": "OUC residential missing backflow notice",
+      "url": "https://www.ouc.com/wp-content/uploads/2025/02/residential_missing_backflow_irrigation.pdf",
+      "kind": "official residential notice pdf"
+    }
+  ]
+}

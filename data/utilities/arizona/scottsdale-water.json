@@ -1,0 +1,126 @@
+{
+  "utilityId": "scottsdale-water",
+  "utilityName": "Scottsdale Water Backflow Prevention / Cross-Connection Control",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "scottsdale-water",
+  "state": "arizona",
+  "serviceAreaCities": [
+    "Scottsdale"
+  ],
+  "serviceAreaCounties": [
+    "Maricopa County"
+  ],
+  "searchAliases": [
+    "scottsdale backflow testing",
+    "scottsdale certified backflow testers",
+    "scottsdale temporary water backflow"
+  ],
+  "utilityUrl": "https://www.scottsdaleaz.gov/water/water-service/commercial-services",
+  "officialProgramUrls": [
+    "https://www.scottsdaleaz.gov/water/water-service/commercial-services"
+  ],
+  "testingFrequency": "Commercial annually; temporary and construction protection on activation",
+  "dueBasis": "Scottsdale requires installation, testing, and maintenance of approved assemblies on covered plumbing systems, sends commercial customers annual inspection notices, and requires certified testers for testing, installation, retrofit, and replacement work.",
+  "coveredPropertyTypes": [
+    "Commercial customers",
+    "Temporary water and construction projects",
+    "Protected plumbing systems under Scottsdale ordinances",
+    "Irrigation and private water mains downstream of backflow devices"
+  ],
+  "coveredDeviceTypes": [
+    "Approved backflow prevention assemblies",
+    "Temporary water meter backflow devices",
+    "Private water main downstream protection",
+    "Commercial service assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.scottsdaleaz.gov/water/water-service/commercial-services",
+  "officialListLabel": "Open Scottsdale commercial services backflow resources",
+  "submissionMethods": [
+    {
+      "label": "Scottsdale commercial services",
+      "url": "https://www.scottsdaleaz.gov/water/water-service/commercial-services",
+      "kind": "program page"
+    }
+  ],
+  "phone": "480-312-5668",
+  "penalties": "Scottsdale controls the annual notice cycle for commercial customers and will not place temporary meters until the backflow device has been inspected and approved by the city.",
+  "sourceExcerpt": "Scottsdale is a strong Arizona utility because it combines annual commercial inspections, certified tester requirements, and construction-water rules that require city inspection before a meter is delivered.",
+  "sourceSnapshotPath": "storage/snapshots/scottsdale-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Scottsdale is a strong support utility because it publishes the annual commercial inspection rule, certified tester requirement, and a real temporary-water backflow workflow.",
+  "whoIsAffected": "Commercial services, construction and temporary water users, irrigation or private-main projects downstream of required backflow devices, and other plumbing systems covered by Scottsdale ordinances.",
+  "residentialNotes": [
+    "Scottsdale's strongest public program language is commercial, but temporary water, irrigation, and downstream private-main work still create local next-action demand.",
+    "Single-home sprinkler and hose protection topics exist, but the commercial program is the real monetizable surface."
+  ],
+  "commercialNotes": [
+    "Scottsdale is particularly useful for commercial and project intent because the city mails annual notices and requires certified testers for all meaningful assembly work.",
+    "Temporary water service rules make construction and development pages worth supporting."
+  ],
+  "annualTesting": {
+    "summary": "Scottsdale mails annual notices to commercial customers and requires certified testers for inspection, testing, installation, retrofits, and replacements.",
+    "highlights": [
+      "Commercial customers are notified by mail when inspections are due.",
+      "Certified testers are required for all meaningful backflow work.",
+      "Approved assemblies must be installed, tested, and maintained under city rules."
+    ],
+    "workflowSteps": [
+      "Watch for Scottsdale's annual inspection notice.",
+      "Use a certified tester for testing or replacement work.",
+      "Keep the commercial assembly maintained and inspected on the city's cycle."
+    ]
+  },
+  "irrigation": {
+    "summary": "Scottsdale's public materials are broad enough to support irrigation and downstream private-main pages, especially where contamination risk exists.",
+    "highlights": [
+      "Private water mains downstream of devices still follow MAG and city requirements.",
+      "Irrigation and plumbing systems are part of the same cross-connection protection framework.",
+      "Approved assemblies and certified testers remain the gate."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation or downstream private-main setup needs a city-accepted assembly.",
+      "Use a certified tester or contractor for the work.",
+      "Keep the assembly maintained under Scottsdale's protection program."
+    ]
+  },
+  "fireLine": {
+    "summary": "Scottsdale's public page is less fire-specific than Mesa or Broward, but construction-water and protected commercial systems still make fire-side intent relevant.",
+    "highlights": [
+      "Certified testers are required for retrofit and replacement work.",
+      "Temporary meter and commercial-system approval still route through city inspection.",
+      "Approved assembly use remains mandatory on covered systems."
+    ],
+    "workflowSteps": [
+      "Confirm the fire-side or commercial assembly class.",
+      "Use a certified tester or contractor for the inspection path.",
+      "Coordinate any city inspection requirement before the protected service is placed into use."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the service is inside Scottsdale's commercial or protected-system program.",
+    "Use a certified tester or contractor.",
+    "Complete the annual inspection or project work under city requirements.",
+    "For temporary water, obtain inspection and approval before the meter is delivered."
+  ],
+  "failureHighlights": [
+    "Scottsdale uses mailed annual inspection notices for commercial customers.",
+    "Certified testers are required across testing, installation, and replacement work.",
+    "Temporary water service depends on city inspection and approval of the backflow device."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Scottsdale's certified-tester requirement and annual inspection cycle shape the actual commercial workflow.",
+    "repairRetestRange": "Repair and retest costs rise on temporary-water or protected project work that needs city approval.",
+    "pricingNotes": "The value is in the strong annual and project workflow, not in a public fee sheet."
+  },
+  "sources": [
+    {
+      "label": "Scottsdale commercial services backflow section",
+      "url": "https://www.scottsdaleaz.gov/water/water-service/commercial-services",
+      "kind": "official program page"
+    }
+  ]
+}

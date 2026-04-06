@@ -1,0 +1,122 @@
+{
+  "utilityId": "gptx-water",
+  "utilityName": "Grand Prairie Water Utilities",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "grand-prairie-water-utilities",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Grand Prairie"
+  ],
+  "serviceAreaCounties": [
+    "Dallas County",
+    "Tarrant County"
+  ],
+  "searchAliases": [
+    "grand prairie backflow testing",
+    "grand prairie annual backflow test"
+  ],
+  "utilityUrl": "https://www.gptx.org/government/city-departments/public-health-environmental-quality/cross-connection-control-prevention",
+  "officialProgramUrls": [
+    "https://www.gptx.org/files/sharedassets/public/v/2/departments/public-health-amp-environmental-quality/documents/cross-connection-control-and-prevention.pdf"
+  ],
+  "testingFrequency": "Annual",
+  "dueBasis": "Backflow assemblies enrolled in the local cross-connection program must be tested annually and submitted through the utility workflow.",
+  "coveredPropertyTypes": [
+    "Commercial properties with hazard connections",
+    "Irrigation systems with required assemblies",
+    "Multifamily and facility sites enrolled by the utility"
+  ],
+  "coveredDeviceTypes": [
+    "RPZ",
+    "DCVA",
+    "PVB"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.gptx.org/government/city-departments/public-health-environmental-quality/cross-connection-control-prevention",
+  "officialListLabel": "Open the Grand Prairie program page",
+  "submissionMethods": [
+    {
+      "label": "Cross-connection program overview",
+      "url": "https://www.gptx.org/government/city-departments/public-health-environmental-quality/cross-connection-control-prevention",
+      "kind": "program page"
+    },
+    {
+      "label": "Program manual PDF",
+      "url": "https://www.gptx.org/files/sharedassets/public/v/2/departments/public-health-amp-environmental-quality/documents/cross-connection-control-and-prevention.pdf",
+      "kind": "pdf"
+    }
+  ],
+  "phone": "972-237-8055",
+  "penalties": "Unresolved failures can trigger utility enforcement and service-risk follow-up under the local program.",
+  "sourceExcerpt": "Grand Prairie describes a cross-connection control and prevention program that requires annual testing and documentation for enrolled backflow prevention assemblies.",
+  "sourceSnapshotPath": "storage/snapshots/gptx-cross-connection-program.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Annual testing is required for enrolled backflow prevention assemblies in the Grand Prairie utility program.",
+  "whoIsAffected": "Commercial sites, irrigation systems, and other hazard connections managed through the Grand Prairie cross-connection program.",
+  "residentialNotes": [
+    "Residential pressure vacuum breakers and irrigation assemblies matter mainly when the utility or irrigation rules require enrollment.",
+    "Homeowners should confirm whether a pool auto-fill or irrigation setup has already triggered a backflow record with the City."
+  ],
+  "commercialNotes": [
+    "Grand Prairie's cross-connection program is more likely to touch commercial hazards, multifamily sites, and managed facilities.",
+    "Treat annual testing and documentation as part of the utility compliance file, not just a plumbing service call."
+  ],
+  "annualTesting": {
+    "summary": "Grand Prairie uses a straightforward annual testing model for assemblies enrolled in the cross-connection program.",
+    "highlights": [
+      "Annual testing is the default expectation for enrolled assemblies.",
+      "The utility workflow matters as much as the field test itself because the documentation still has to be accepted.",
+      "This page is strongest for users who already know they are in the program and need the next action path."
+    ],
+    "workflowSteps": [
+      "Confirm the device is in Grand Prairie's cross-connection program.",
+      "Schedule the annual test before the utility deadline window closes.",
+      "Submit the report through the utility's accepted process and keep proof of submission.",
+      "If the device fails, complete repair and retest before the utility follow-up window closes."
+    ]
+  },
+  "irrigation": {
+    "summary": "Grand Prairie irrigation assemblies are part of the same utility-controlled cross-connection program when the site requires an enrolled device.",
+    "highlights": [
+      "Do not assume an irrigation assembly is outside the program just because the property is smaller.",
+      "Irrigation, pools, and other outdoor hazards can still trigger the same annual documentation problem.",
+      "Use the utility program page first when a landscaper gives a generic answer."
+    ],
+    "workflowSteps": [
+      "Confirm whether the irrigation setup requires an enrolled backflow assembly under the utility program.",
+      "Schedule testing with a tester who can submit through the accepted utility path.",
+      "If the device fails, repair and retest before treating the file as complete."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the assembly is enrolled in the utility cross-connection program.",
+    "Schedule the annual test with a tester recognized by the governing workflow.",
+    "Submit the report through the utility's accepted process and keep proof of submission.",
+    "If the assembly fails, complete repairs and arrange a retest before the deadline."
+  ],
+  "failureHighlights": [
+    "A failed assembly typically needs repair plus a documented retest.",
+    "Do not treat repair completion alone as closure; the retest still matters.",
+    "If the utility requests correction quickly, use the official program page first."
+  ],
+  "costBand": {
+    "testingRange": "$85 to $165 for a routine annual test",
+    "repairRetestRange": "$250 to $1,250 depending on device type and parts",
+    "pricingNotes": "Commercial hazard class, emergency scheduling, and device accessibility change the final price."
+  },
+  "sources": [
+    {
+      "label": "Grand Prairie cross-connection program",
+      "url": "https://www.gptx.org/government/city-departments/public-health-environmental-quality/cross-connection-control-prevention",
+      "kind": "official program page"
+    },
+    {
+      "label": "Grand Prairie cross-connection manual",
+      "url": "https://www.gptx.org/files/sharedassets/public/v/2/departments/public-health-amp-environmental-quality/documents/cross-connection-control-and-prevention.pdf",
+      "kind": "official pdf"
+    }
+  ]
+}

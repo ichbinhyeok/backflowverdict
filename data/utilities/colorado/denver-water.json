@@ -1,0 +1,138 @@
+{
+  "utilityId": "denver-water",
+  "utilityName": "Denver Water Cross-Connection Control and Backflow Prevention Program",
+  "governingEntityType": "water utility",
+  "canonicalSlug": "denver-water",
+  "state": "colorado",
+  "serviceAreaCities": [
+    "Denver"
+  ],
+  "serviceAreaCounties": [
+    "Denver County"
+  ],
+  "searchAliases": [
+    "denver water backflow testing",
+    "denver irrigation backflow",
+    "denver fire line backflow"
+  ],
+  "utilityUrl": "https://www.denverwater.org/contractors/construction-information/backflow-prevention-program",
+  "officialProgramUrls": [
+    "https://www.denverwater.org/contractors/construction-information/backflow-prevention-program",
+    "https://www.denverwater.org/sites/default/files/2017-05/backflow-device-test-maintenance-report.pdf"
+  ],
+  "testingFrequency": "Upon installation and annually thereafter",
+  "dueBasis": "Denver Water sends a testing reminder 30 days before the annual test is due, expects certified testers to report results to the Cross-Connection Control office, and can assess a $250 penalty after repeated ignored notices.",
+  "coveredPropertyTypes": [
+    "Commercial services",
+    "Industrial services",
+    "Domestic services where the site hazard requires protection",
+    "Irrigation and fire line services",
+    "Sites with an auxiliary water supply"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Irrigation RP or PVB devices",
+    "Fire line assemblies",
+    "Domestic containment assemblies"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Denver Water backflow program",
+      "url": "https://www.denverwater.org/contractors/construction-information/backflow-prevention-program",
+      "kind": "program page"
+    },
+    {
+      "label": "Denver Water test and maintenance report",
+      "url": "https://www.denverwater.org/sites/default/files/2017-05/backflow-device-test-maintenance-report.pdf",
+      "kind": "test report form"
+    }
+  ],
+  "phone": "303-893-2444",
+  "penalties": "Denver Water can assess a $250 penalty after three unanswered notification letters and can move service into suspension status when testing or installation is not completed.",
+  "sourceExcerpt": "Denver Water is one of the clearest Colorado programs because it publishes annual reminder timing, irrigation season rules, a penalty path, and a direct reporting address for the cross-connection office.",
+  "sourceSnapshotPath": "storage/snapshots/denver-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Denver Water is a strong flagship Colorado utility because it publishes the annual reminder cycle, irrigation season rule, reporting path, and an explicit penalty for ignored notices.",
+  "whoIsAffected": "Commercial, industrial, domestic, irrigation, fire-line, and auxiliary-water-supply customers when Denver Water requires an approved assembly.",
+  "residentialNotes": [
+    "Denver Water can pull domestic services into the program when the site hazard justifies it, so residential users should not assume the rules are only commercial.",
+    "Residential irrigation assemblies have their own seasonal testing rhythm when the water is turned on."
+  ],
+  "commercialNotes": [
+    "Commercial and industrial services are clearly inside the Denver Water program and are a strong fit for next-action pages.",
+    "The penalty path makes Denver more commercially urgent than a generic educational page."
+  ],
+  "annualTesting": {
+    "summary": "Denver Water requires certified testers to test assemblies on installation and annually thereafter, then report the results to the cross-connection control office.",
+    "highlights": [
+      "The utility sends reminder notices 30 days before the annual due date.",
+      "Test reports are sent to the cross-connection control office.",
+      "A penalty path exists after repeated ignored notices."
+    ],
+    "workflowSteps": [
+      "Watch for Denver Water's annual reminder.",
+      "Use a certified tester to complete the test.",
+      "Submit the test report to the cross-connection control office before the service moves toward suspension."
+    ]
+  },
+  "irrigation": {
+    "summary": "Denver Water has a clear irrigation testing season and specific accepted assembly types for irrigation protection.",
+    "highlights": [
+      "Irrigation backflow testing season runs from May to September.",
+      "Irrigation services must use an RP or PVB depending on installation requirements.",
+      "Denver Water sends a reminder notice before the annual irrigation test is due."
+    ],
+    "workflowSteps": [
+      "As irrigation season starts, confirm the assembly is ready for testing.",
+      "Use the assembly type Denver Water accepts for the installation condition.",
+      "Complete the irrigation test when the water is turned on and send the report to Denver Water."
+    ]
+  },
+  "fireLine": {
+    "summary": "Denver Water treats fire-line services as part of the core program rather than an edge case.",
+    "highlights": [
+      "All fire line services are required to have an approved assembly installed.",
+      "Fire-flow and construction-related utility work should be coordinated with Denver Water forms and standards.",
+      "Fire service can create larger and more expensive correction paths when the assembly is missing or overdue."
+    ],
+    "workflowSteps": [
+      "Confirm whether the service is domestic, irrigation, or fire-line.",
+      "Install the approved fire-line assembly before the service is placed into use.",
+      "Keep the annual test current so the service does not move into penalty or suspension status."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the service is in Denver Water's backflow program.",
+    "Use a certified tester to test the assembly on installation and annually thereafter.",
+    "Send the report to the cross-connection control office.",
+    "If delays are unavoidable, contact Denver Water before the service reaches suspension status."
+  ],
+  "failureHighlights": [
+    "Denver Water sends reminder letters and can assess a $250 penalty.",
+    "Irrigation testing is seasonal rather than generic year-round filler.",
+    "Fire-line and auxiliary-water cases are explicitly called out in the public program."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Denver Water adds real compliance cost through penalties and suspension risk.",
+    "repairRetestRange": "Repair and retest cost varies widely by domestic, irrigation, or fire-line assembly type.",
+    "pricingNotes": "The financial risk is not just the tester invoice; it is also Denver Water's penalty and service-interruption exposure."
+  },
+  "sources": [
+    {
+      "label": "Denver Water backflow program",
+      "url": "https://www.denverwater.org/contractors/construction-information/backflow-prevention-program",
+      "kind": "official program page"
+    },
+    {
+      "label": "Denver Water test and maintenance report",
+      "url": "https://www.denverwater.org/sites/default/files/2017-05/backflow-device-test-maintenance-report.pdf",
+      "kind": "official report form"
+    }
+  ]
+}

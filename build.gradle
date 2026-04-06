@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '4.0.3'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'gg.jte.gradle' version '3.2.3'
+}
+
+group = 'owner.backflow'
+version = '0.0.1-SNAPSHOT'
+description = 'BackflowVerdict utility-first compliance site'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'gg.jte:jte-spring-boot-starter-4:3.2.3'
+    implementation 'gg.jte:jte:3.2.3'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+    testImplementation 'org.springframework.boot:spring-boot-test-autoconfigure'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+jte {
+    generate()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir layout.buildDirectory.dir('generated-sources/jte')
+        }
+    }
+}
+
+tasks.named('compileJava') {
+    dependsOn tasks.named('generateJte')
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

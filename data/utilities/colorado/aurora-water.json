@@ -1,0 +1,124 @@
+{
+  "utilityId": "aurora-water",
+  "utilityName": "Aurora Water Backflow Prevention",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "aurora-water",
+  "state": "colorado",
+  "serviceAreaCities": [
+    "Aurora"
+  ],
+  "serviceAreaCounties": [
+    "Arapahoe County"
+  ],
+  "searchAliases": [
+    "aurora water backflow testing",
+    "aurora annual backflow test",
+    "aurora hydrant meter backflow"
+  ],
+  "utilityUrl": "https://www.auroragov.org/residents/water/pay_my_water_bill/backflow_prevention",
+  "officialProgramUrls": [
+    "https://www.auroragov.org/residents/water/pay_my_water_bill/backflow_prevention",
+    "https://www.auroragov.org/residents/water/service_center___emergencies/hydrant_meter_program"
+  ],
+  "testingFrequency": "Upon installation and annually thereafter",
+  "dueBasis": "Aurora says operational tests by a certified technician must be conducted upon installation and at least annually thereafter, and results must be submitted online before the annual test due date.",
+  "coveredPropertyTypes": [
+    "Water customers with required backflow assemblies",
+    "Commercial and managed properties",
+    "Hydrant users",
+    "Property owners responsible for protected services"
+  ],
+  "coveredDeviceTypes": [
+    "Required backflow prevention assemblies",
+    "Hydrant-meter RP devices",
+    "Domestic containment devices",
+    "Cross-connection control devices"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Aurora Water backflow prevention",
+      "url": "https://www.auroragov.org/residents/water/pay_my_water_bill/backflow_prevention",
+      "kind": "program page"
+    },
+    {
+      "label": "Aurora hydrant meter program",
+      "url": "https://www.auroragov.org/residents/water/service_center___emergencies/hydrant_meter_program",
+      "kind": "hydrant backflow guidance"
+    }
+  ],
+  "phone": "303-326-8520",
+  "penalties": "Aurora places responsibility on the billed customer or owner and expects online submission before the annual due date. The practical risk is staying out of compliance with the city's annual testing requirement.",
+  "sourceExcerpt": "Aurora is a good Colorado utility because it publishes the annual due-date rule, online result submission, responsibility assignment, and a separate hydrant-meter RP requirement.",
+  "sourceSnapshotPath": "storage/snapshots/aurora-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Aurora Water is a strong supporting Colorado utility because it publishes a clean annual-testing rule, online submission requirement, and ownership-responsibility language.",
+  "whoIsAffected": "Aurora Water customers and property owners whose service requires a backflow prevention assembly, including hydrant users who need RP protection.",
+  "residentialNotes": [
+    "Aurora assigns responsibility to the billed water customer or the property owner, which matters for single-site ownership and property-management setups.",
+    "Residential properties can still enter the program where the city requires a protected service."
+  ],
+  "commercialNotes": [
+    "Aurora's clear owner responsibility and online-due-date workflow make it usable for commercial lead intent.",
+    "Hydrant-meter use adds another practical compliance path beyond ordinary building service."
+  ],
+  "annualTesting": {
+    "summary": "Aurora requires certified technicians to test assemblies upon installation and at least annually thereafter, then submit the results online before the due date.",
+    "highlights": [
+      "Annual testing is explicit on the public page.",
+      "Results are submitted online rather than held offline.",
+      "Responsibility sits with the water customer or property owner."
+    ],
+    "workflowSteps": [
+      "Confirm the responsible party and the annual due date.",
+      "Use a certified backflow technician to perform the test.",
+      "Submit the result online before the due date so the assembly stays current."
+    ]
+  },
+  "irrigation": {
+    "summary": "Aurora does not publish a separate irrigation mini-program as strongly as Denver does, but the annual testing and protected-service rules still apply to landscape risk when an assembly is required.",
+    "highlights": [
+      "Annual test discipline still applies once an irrigation-related assembly is required.",
+      "Landscape and outdoor water uses can surface cross-connection risks even when the page is not branded as an irrigation program.",
+      "Hydrant-related outdoor water use explicitly requires RP protection."
+    ],
+    "workflowSteps": [
+      "Confirm whether the irrigation or temporary outdoor use requires city-recognized backflow protection.",
+      "Use the correct RP or other required assembly for the setup.",
+      "Keep the online annual test submission current once the device is active."
+    ]
+  },
+  "workflowSteps": [
+    "Identify the responsible party for the service.",
+    "Use a certified technician to perform installation and annual operational testing.",
+    "Submit the test results online before the due date.",
+    "For hydrant or temporary outdoor use, provide the required RP protection and current test data."
+  ],
+  "failureHighlights": [
+    "Aurora requires online submission before the due date.",
+    "The owner or billed customer is explicitly responsible.",
+    "Hydrant use has its own RP requirement with current test data."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but missing the online due-date workflow can create avoidable compliance friction.",
+    "repairRetestRange": "Repair and retest costs vary by service type and whether temporary or outdoor water-use protection is involved.",
+    "pricingNotes": "Aurora's value is the clear annual workflow and owner-responsibility language, not a published test-price table."
+  },
+  "sources": [
+    {
+      "label": "Aurora Water backflow prevention",
+      "url": "https://www.auroragov.org/residents/water/pay_my_water_bill/backflow_prevention",
+      "kind": "official program page"
+    },
+    {
+      "label": "Aurora hydrant meter program",
+      "url": "https://www.auroragov.org/residents/water/service_center___emergencies/hydrant_meter_program",
+      "kind": "official hydrant guidance"
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "utilityId": "longmont-water",
+  "utilityName": "City of Longmont Backflow Prevention and Cross-Connection Control",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "longmont-water-utilities",
+  "state": "colorado",
+  "serviceAreaCities": [
+    "Longmont"
+  ],
+  "serviceAreaCounties": [
+    "Boulder County"
+  ],
+  "searchAliases": [
+    "longmont backflow testing",
+    "longmont swiftcomply backflow",
+    "longmont irrigation backflow"
+  ],
+  "utilityUrl": "https://longmontcolorado.gov/water/drinking-water/backflow-prevention/",
+  "officialProgramUrls": [
+    "https://longmontcolorado.gov/water/drinking-water/backflow-prevention/"
+  ],
+  "testingFrequency": "Annually with utility due dates between April and September",
+  "dueBasis": "Longmont requires annual testing by certified testers, says new and replacement assemblies must be tested after installation, and publishes a notice-and-enforcement sequence that starts 45 days before the due date and can escalate to civil penalties and water suspension.",
+  "coveredPropertyTypes": [
+    "Commercial properties",
+    "Industrial properties",
+    "Multifamily properties",
+    "Agricultural facilities",
+    "Irrigation services and homes with hazards like fire suppression or boilers"
+  ],
+  "coveredDeviceTypes": [
+    "Reduced pressure zone assemblies",
+    "Irrigation backflow assemblies",
+    "Protected cross-connection assemblies",
+    "Assemblies reported through SwiftComply"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Longmont backflow prevention program",
+      "url": "https://longmontcolorado.gov/water/drinking-water/backflow-prevention/",
+      "kind": "program page"
+    }
+  ],
+  "phone": "303-651-8416",
+  "penalties": "Longmont adds a fee 31 days past due, warns of escalated civil enforcement at 61 days, and can assess civil penalties up to $500 per assembly with service interruption scheduled at 91 days past due.",
+  "sourceExcerpt": "Longmont is one of the strongest Colorado pages because it publishes annual due-date ranges, a 45-day reminder, fee and penalty escalation, and a hard shift to SwiftComply for test submissions.",
+  "sourceSnapshotPath": "storage/snapshots/longmont-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Longmont is a very strong Colorado utility because it combines annual testing, enforcement timing, irrigation-specific upgrade rules, and a real portal transition.",
+  "whoIsAffected": "Longmont customers with backflow assemblies, especially non-single-family properties, irrigation services, and homes with higher-hazard conditions like fire suppression or boilers.",
+  "residentialNotes": [
+    "Longmont is unusually useful for residential pages because the city explicitly mentions irrigation, fire suppression, and boiler scenarios.",
+    "Single-family homes are not automatically in the program, but the city gives concrete examples of when they are."
+  ],
+  "commercialNotes": [
+    "Commercial and multifamily intent is extremely strong because Longmont publishes a real notice, fee, and penalty ladder.",
+    "This is one of the best non-Texas utility pages for recurring commercial lead intent."
+  ],
+  "annualTesting": {
+    "summary": "Longmont requires annual testing by certified testers and publishes an enforcement ladder starting 45 days before the due date and ending with civil penalties and possible water suspension.",
+    "highlights": [
+      "45-day reminders go out before the due date.",
+      "31 days past due triggers a fee and city-contracted outreach.",
+      "91 days past due can trigger up to $500 per assembly and service interruption."
+    ],
+    "workflowSteps": [
+      "Check the annual Longmont due date for the property.",
+      "Use a certified tester and submit on time.",
+      "If the schedule slips, resolve it before the fee and penalty ladder escalates."
+    ]
+  },
+  "irrigation": {
+    "summary": "Longmont has especially strong irrigation content because DCVAs are no longer approved long term on irrigation lines and failed units must move toward RP protection.",
+    "highlights": [
+      "Irrigation systems are treated as high-hazard cross-connections.",
+      "A failed irrigation DCVA must be replaced with an RP within 60 days or repaired on a two-year replacement timeline.",
+      "The city now routes submission through SwiftComply."
+    ],
+    "workflowSteps": [
+      "Confirm whether the irrigation line still has a DCVA.",
+      "If it fails, choose repair with timeline or full RP replacement.",
+      "Keep the city and SwiftComply record current while the upgrade is completed."
+    ]
+  },
+  "fireLine": {
+    "summary": "Longmont is less public about fire-line staffing than Tallahassee or West Palm, but it still names fire suppression as a trigger for protected residential and commercial services.",
+    "highlights": [
+      "Homes with fire suppression can be pulled into the program.",
+      "Commercial fire-protected buildings stay inside the same testing and enforcement ladder.",
+      "RP assemblies are the default new or replacement expectation."
+    ],
+    "workflowSteps": [
+      "Confirm whether fire suppression triggered the assembly requirement.",
+      "Use the correct RP assembly unless the city approves an exception.",
+      "Keep annual testing current so the property avoids enforcement."
+    ]
+  },
+  "workflowSteps": [
+    "Check the Longmont due date and reminder timeline.",
+    "Test with a certified tester and submit through the current city workflow.",
+    "Resolve failed irrigation or replacement issues quickly.",
+    "Stay ahead of the fee and penalty ladder before service interruption is scheduled."
+  ],
+  "failureHighlights": [
+    "Longmont publishes one of the clearest due-date escalation ladders in the set.",
+    "Irrigation upgrade rules are operational and monetizable.",
+    "SwiftComply adoption is already part of the public workflow."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Longmont adds a $10 passing-test portal charge and escalating late-compliance costs.",
+    "repairRetestRange": "Repair and retest costs rise quickly on irrigation upgrades and failed assemblies.",
+    "pricingNotes": "The main cost pressure is avoiding late fees, civil penalties, and shutoff scheduling."
+  },
+  "sources": [
+    {
+      "label": "Longmont backflow prevention program",
+      "url": "https://longmontcolorado.gov/water/drinking-water/backflow-prevention/",
+      "kind": "official program page"
+    }
+  ]
+}

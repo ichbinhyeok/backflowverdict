@@ -1,0 +1,145 @@
+{
+  "utilityId": "college-station-water",
+  "utilityName": "City of College Station Backflow Prevention",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "college-station-water-utilities",
+  "state": "texas",
+  "serviceAreaCities": [
+    "College Station"
+  ],
+  "serviceAreaCounties": [
+    "Brazos County"
+  ],
+  "searchAliases": [
+    "college station backflow testing",
+    "college station registered backflow tester"
+  ],
+  "utilityUrl": "https://www.cstx.gov/living-here/utilities/water-services/drinking-water/",
+  "officialProgramUrls": [
+    "https://www.cstx.gov/living-here/utilities/water-services/drinking-water/",
+    "https://www.cstx.gov/media/1hzno1mm/backflowpreventionassemblytesterlist.pdf",
+    "https://www.cstx.gov/media/x5opl1q0/backflowtestform.pdf"
+  ],
+  "testingFrequency": "Installation testing plus ordinance-driven ongoing reporting",
+  "dueBasis": "College Station says backflow prevention devices must be tested on installation, testers must be TCEQ-certified and registered with the City, and original reports must reach Water Services within 30 days of testing per city ordinance.",
+  "coveredPropertyTypes": [
+    "Lawn irrigation systems requiring a permit and approved backflow device",
+    "Properties where a certified inspector deems a backflow assembly appropriate",
+    "Sites requiring general or fireline registered testers"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Irrigation backflow devices",
+    "Fireline and general assemblies represented on the City's tester list"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.cstx.gov/media/1hzno1mm/backflowpreventionassemblytesterlist.pdf",
+  "officialListLabel": "Open the College Station registered tester list",
+  "submissionMethods": [
+    {
+      "label": "College Station drinking water and backflow page",
+      "url": "https://www.cstx.gov/living-here/utilities/water-services/drinking-water/",
+      "kind": "program page"
+    },
+    {
+      "label": "College Station registered tester list",
+      "url": "https://www.cstx.gov/media/1hzno1mm/backflowpreventionassemblytesterlist.pdf",
+      "kind": "official list"
+    },
+    {
+      "label": "College Station backflow test report",
+      "url": "https://www.cstx.gov/media/x5opl1q0/backflowtestform.pdf",
+      "kind": "official report form"
+    }
+  ],
+  "phone": "979-764-3660",
+  "penalties": "College Station requires tester registration with the City and says original reports must reach Water Services within 30 days of testing. Tester registration also carries a $50 annual company fee.",
+  "sourceExcerpt": "College Station is strong on source-backed process: install-test requirement, city-registered BPATs, a published tester list, a report form, and a 30-day report delivery rule tied to ordinance.",
+  "sourceSnapshotPath": "storage/snapshots/college-station-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "College Station is a useful procedural page because it clearly publishes the tester list, report form, 30-day submission rule, and City registration requirements for BPATs.",
+  "whoIsAffected": "Lawn irrigation systems, properties where inspectors require a backflow assembly, and fireline or general assemblies using City-registered testers.",
+  "residentialNotes": [
+    "Residential users most often see College Station through irrigation permit work and required installation testing.",
+    "City registration still matters on the tester side even when the property is smaller."
+  ],
+  "commercialNotes": [
+    "Commercial and managed properties should pay attention to the separate fireline and general tester categories on the City list.",
+    "The report deadline and company registration fee make College Station more process-heavy than a generic plumber explanation suggests."
+  ],
+  "annualTesting": {
+    "summary": "College Station is strongest on process rather than consumer copy: the City publishes the tester list, report form, and a 30-day report delivery rule.",
+    "highlights": [
+      "The test report must reach Water Services within 30 days of testing.",
+      "The tester must be both TCEQ certified and registered with the City.",
+      "The City publishes separate fireline and general tester lists in one PDF."
+    ],
+    "workflowSteps": [
+      "Use a City-registered BPAT.",
+      "Complete the City report form.",
+      "Deliver the original report to Water Services within 30 days."
+    ]
+  },
+  "irrigation": {
+    "summary": "College Station explicitly ties irrigation systems to permitting and approved backflow devices, which makes this a clear irrigation compliance page.",
+    "highlights": [
+      "All lawn irrigation systems must have an installation permit and an approved backflow prevention device.",
+      "Installation testing is required.",
+      "The irrigation workflow sits next to the same City tester registration and report rules."
+    ],
+    "workflowSteps": [
+      "Complete the irrigation permit path first.",
+      "Test the device on installation using a City-registered BPAT.",
+      "Send the original report to Water Services within 30 days."
+    ]
+  },
+  "fireLine": {
+    "summary": "College Station's published tester list is useful for fire line cases because it separates fireline testers from general testers.",
+    "highlights": [
+      "The City list distinguishes fireline testers from general testers.",
+      "Using the wrong tester category creates avoidable compliance risk.",
+      "The same report and delivery rules still apply once the right tester is chosen."
+    ],
+    "workflowSteps": [
+      "Confirm the device falls into the fireline side of the tester list.",
+      "Use a registered fireline tester rather than assuming a general tester is enough.",
+      "Submit the report through the City process within the ordinance window."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm whether the project or property requires a backflow assembly through Water Services or the irrigation permit workflow.",
+    "Use a TCEQ-certified BPAT who is also registered with the City of College Station.",
+    "Complete the City report form and deliver the original report to Water Services within 30 days of testing.",
+    "If you need a tester, start with the City's registered tester PDF rather than a generic search."
+  ],
+  "failureHighlights": [
+    "College Station separates state certification from City registration; both matter.",
+    "The report deadline is tied to when testing occurs, not just when a notice is received.",
+    "Irrigation work adds a permit requirement on top of the testing workflow."
+  ],
+  "costBand": {
+    "testingRange": "The City does not publish consumer testing price bands, so retail cost remains market-based.",
+    "repairRetestRange": "Repair and retest price depends on the assembly and contractor; City materials focus on procedure rather than consumer pricing.",
+    "pricingNotes": "The published $50 annual registration fee applies to tester companies, not directly to the property owner."
+  },
+  "sources": [
+    {
+      "label": "College Station drinking water and backflow page",
+      "url": "https://www.cstx.gov/living-here/utilities/water-services/drinking-water/",
+      "kind": "official program page"
+    },
+    {
+      "label": "College Station registered tester list",
+      "url": "https://www.cstx.gov/media/1hzno1mm/backflowpreventionassemblytesterlist.pdf",
+      "kind": "official pdf"
+    },
+    {
+      "label": "College Station backflow test report form",
+      "url": "https://www.cstx.gov/media/x5opl1q0/backflowtestform.pdf",
+      "kind": "official pdf"
+    }
+  ]
+}

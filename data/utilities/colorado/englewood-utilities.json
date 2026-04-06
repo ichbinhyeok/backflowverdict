@@ -1,0 +1,137 @@
+{
+  "utilityId": "englewood-utilities",
+  "utilityName": "City of Englewood Backflow Prevention and Cross-Connection Control Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "englewood-utilities",
+  "state": "colorado",
+  "serviceAreaCities": [
+    "Englewood"
+  ],
+  "serviceAreaCounties": [
+    "Arapahoe County"
+  ],
+  "searchAliases": [
+    "englewood co backflow",
+    "englewood cross connection control",
+    "englewood backflow testing"
+  ],
+  "utilityUrl": "https://www.englewoodco.gov/government/city-departments/utilities/customers/cross-connection-control-and-backflow-prevention-program",
+  "officialProgramUrls": [
+    "https://www.englewoodco.gov/government/city-departments/utilities/customers/cross-connection-control-and-backflow-prevention-program",
+    "https://www.englewoodco.gov/government/city-departments/utilities/services/contact-us"
+  ],
+  "testingFrequency": "On the city certification cycle and whenever changed water use creates new cross-connection risk",
+  "dueBasis": "Englewood's program centers on surveys, inspections, and utility notification whenever customers add new cross-connections or change protected water uses.",
+  "coveredPropertyTypes": [
+    "Commercial properties",
+    "Multifamily properties",
+    "Properties with irrigation systems",
+    "Properties with boilers or storage",
+    "Facilities with whole-building water treatment"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Cross-connection control devices",
+    "Fire line-related protected assemblies"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Englewood BPCCC program",
+      "url": "https://www.englewoodco.gov/government/city-departments/utilities/customers/cross-connection-control-and-backflow-prevention-program",
+      "kind": "program page"
+    },
+    {
+      "label": "Englewood utilities contact",
+      "url": "https://www.englewoodco.gov/government/city-departments/utilities/services/contact-us",
+      "kind": "utility contact"
+    }
+  ],
+  "phone": "303-762-2635",
+  "penalties": "If customers do not notify the city when the hazard profile changes, the utility can miss the re-survey and certification path needed to keep the service compliant.",
+  "sourceExcerpt": "Englewood is a useful Colorado utility because the program is driven by change-of-use notifications, city re-surveys, and real hazard triggers.",
+  "sourceSnapshotPath": "storage/snapshots/englewood-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Englewood is a strong utility page because it captures when a property enters the city program, not just a generic test due date.",
+  "whoIsAffected": "Englewood commercial and multifamily properties, plus any services where irrigation, boilers, storage, treatment, or fire-line conditions create cross-connection risk.",
+  "residentialNotes": [
+    "Residential demand is narrower here than in irrigation-heavy utilities because the public language leans toward multifamily and commercial hazards.",
+    "This page is strongest when the property has a real cross-connection trigger."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because the city identifies concrete hazard triggers instead of vague annual reminders.",
+    "Englewood broadens the Colorado cluster with a survey-and-notify style program."
+  ],
+  "annualTesting": {
+    "summary": "Englewood's public strength is the city-run certification and re-survey workflow around real hazard changes.",
+    "highlights": [
+      "The city asks customers to notify the backflow team about new cross-connections or changed water uses.",
+      "Examples explicitly include irrigation, boilers, storage, and whole-facility treatment.",
+      "The city performs required surveys and inspections of multifamily and commercial buildings."
+    ],
+    "workflowSteps": [
+      "Identify whether the property has a new or changed cross-connection hazard.",
+      "Notify Englewood's backflow team.",
+      "Follow the city's survey, inspection, and certification path."
+    ]
+  },
+  "irrigation": {
+    "summary": "Englewood is useful for irrigation because the city explicitly names irrigation systems as a water-usage change that can trigger the workflow.",
+    "highlights": [
+      "Irrigation is an explicit city trigger.",
+      "The city expects notice before it can keep the compliance file current.",
+      "This makes the page useful for new landscape or retrofit work."
+    ],
+    "workflowSteps": [
+      "Flag the irrigation installation or change to the city.",
+      "Coordinate the city survey or inspection.",
+      "Complete whatever certification path the utility requires."
+    ]
+  },
+  "fireLine": {
+    "summary": "The public page says customers must coordinate with the Fire Marshal if work requires shutting off water to the fire line.",
+    "highlights": [
+      "Fire-line coordination is explicitly called out.",
+      "The city ties fire-side work back into the utility program.",
+      "This makes the route stronger than a generic backflow explainer."
+    ],
+    "workflowSteps": [
+      "Confirm whether the work affects a fire line.",
+      "Coordinate with Englewood utilities and the Fire Marshal as required.",
+      "Keep the city's certification file current after the work is complete."
+    ]
+  },
+  "workflowSteps": [
+    "Check whether the property has a cross-connection hazard or changed water use.",
+    "Notify Englewood's backflow team.",
+    "Complete the city survey, inspection, and certification steps.",
+    "Coordinate fire-line shutoff separately when the work affects fire protection."
+  ],
+  "failureHighlights": [
+    "Englewood names specific hazard triggers instead of generic annual copy.",
+    "The city expects proactive notice when water use changes.",
+    "Fire-line coordination is called out publicly."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but the main local issue is coordinating with the city early when the hazard profile changes.",
+    "repairRetestRange": "Repair and retest cost depends on assembly type and whether fire-line coordination is involved.",
+    "pricingNotes": "The strongest local advantage is the city's clear change-of-use logic, not a posted fee."
+  },
+  "sources": [
+    {
+      "label": "Englewood BPCCC program",
+      "url": "https://www.englewoodco.gov/government/city-departments/utilities/customers/cross-connection-control-and-backflow-prevention-program",
+      "kind": "official utility page"
+    },
+    {
+      "label": "Englewood utilities contact",
+      "url": "https://www.englewoodco.gov/government/city-departments/utilities/services/contact-us",
+      "kind": "official utilities contact"
+    }
+  ]
+}

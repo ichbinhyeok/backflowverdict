@@ -1,0 +1,138 @@
+{
+  "utilityId": "tempe-water",
+  "utilityName": "City of Tempe Backflow Prevention Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "tempe-backflow-prevention",
+  "state": "arizona",
+  "serviceAreaCities": [
+    "Tempe"
+  ],
+  "serviceAreaCounties": [
+    "Maricopa County"
+  ],
+  "searchAliases": [
+    "tempe backflow testing",
+    "tempe registered backflow tester",
+    "tempe fire line backflow"
+  ],
+  "utilityUrl": "https://www.tempe.gov/government/public-works/water/backflow-prevention-program",
+  "officialProgramUrls": [
+    "https://www.tempe.gov/government/public-works/water/backflow-prevention-program",
+    "https://www.tempe.gov/home/showpublisheddocument/112159/639052888033930000"
+  ],
+  "testingFrequency": "At installation and annually on the anniversary date",
+  "dueBasis": "Tempe uses annual anniversary-date testing by a City-registered certified tester, sends reminders before the due date, and can escalate unresolved noncompliance to termination of water service.",
+  "coveredPropertyTypes": [
+    "Commercial properties",
+    "Multifamily properties",
+    "Irrigation services",
+    "Fire line services",
+    "Residential services where Tempe identifies a hazard"
+  ],
+  "coveredDeviceTypes": [
+    "Reduced pressure assemblies",
+    "Pressure vacuum breakers",
+    "Double check assemblies for fire lines",
+    "Privately owned backflow prevention assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.tempe.gov/home/showpublisheddocument/112159/639052888033930000",
+  "officialListLabel": "Open the Tempe registered testing companies list",
+  "submissionMethods": [
+    {
+      "label": "Tempe backflow prevention program",
+      "url": "https://www.tempe.gov/government/public-works/water/backflow-prevention-program",
+      "kind": "program page"
+    },
+    {
+      "label": "Tempe registered testing companies list",
+      "url": "https://www.tempe.gov/home/showpublisheddocument/112159/639052888033930000",
+      "kind": "official tester list"
+    }
+  ],
+  "phone": "480-350-2678",
+  "penalties": "Tempe warns that unresolved overdue tests can move toward water-service termination and that stolen assemblies must be replaced with the same type of device.",
+  "sourceExcerpt": "Tempe runs a real containment program with annual anniversary testing, registered testers, notice timing, and direct fire-line language around double-check assemblies.",
+  "sourceSnapshotPath": "storage/snapshots/tempe-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Tempe is a strong Arizona utility because it combines annual anniversary testing, registered testers, explicit notice timing, and escalation to water-service termination.",
+  "whoIsAffected": "Tempe customers with contained cross-connection hazards, including irrigation, fire-line, multifamily, commercial, and other assemblies tracked by the Water Utilities Division.",
+  "residentialNotes": [
+    "Tempe is useful for residential intent when irrigation, fire sprinklers, or another hazard brings the property into the containment program.",
+    "Users are responsible for maintaining three years of testing and repair records."
+  ],
+  "commercialNotes": [
+    "Commercial and multifamily intent is strong because Tempe publishes both tester registration rules and real notice timing.",
+    "Fire lines are clearly treated differently from ordinary irrigation assemblies."
+  ],
+  "annualTesting": {
+    "summary": "Tempe requires installation testing and annual anniversary-date testing by a City-registered tester.",
+    "highlights": [
+      "Tempe sends an initial notice 45 days before the due date.",
+      "Overdue notices follow if the test is not posted.",
+      "Users must use a certified tester registered with the City."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly and due date on the Tempe notice.",
+      "Use a Tempe-registered tester for the test.",
+      "Get the result posted before the overdue window closes."
+    ]
+  },
+  "irrigation": {
+    "summary": "Tempe distinguishes containment and isolation, which makes irrigation a real utility angle rather than a generic plumbing topic.",
+    "highlights": [
+      "Pressure vacuum breakers are described as isolation devices inside the user system.",
+      "Replacement or relocation can require a plumbing permit.",
+      "The city-owned meter and annual notices stay central to compliance."
+    ],
+    "workflowSteps": [
+      "Confirm whether the irrigation assembly is serving as containment or isolation.",
+      "Use a registered tester for the annual anniversary test.",
+      "If the assembly is moved or replaced, coordinate the permit and record updates with Tempe."
+    ]
+  },
+  "fireLine": {
+    "summary": "Tempe explicitly says fire lines should be protected with a double check assembly located outside or inside the fire riser room.",
+    "highlights": [
+      "Fire lines are called out directly on the program page.",
+      "Tempe treats fire-line protection separately from ordinary PVB irrigation use.",
+      "Registered tester routing still applies."
+    ],
+    "workflowSteps": [
+      "Confirm the fire line assembly type Tempe expects.",
+      "Use a Tempe-registered tester who can handle fire-line assemblies.",
+      "Keep the annual fire-line record current so enforcement does not escalate."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the due date from Tempe notice or city record.",
+    "Hire a Tempe-registered tester.",
+    "Complete the annual test on the anniversary cycle.",
+    "Post the result before enforcement moves toward shutoff."
+  ],
+  "failureHighlights": [
+    "Tempe publishes a 45-day reminder and overdue notice sequence.",
+    "Water service termination is on the table for unresolved noncompliance.",
+    "Fire lines are explicitly called out as double-check assembly use cases."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Tempe adds notice timing and tester-registration discipline.",
+    "repairRetestRange": "Repair and retest cost rises if the assembly was stolen, relocated, or tied to a fire line.",
+    "pricingNotes": "The strongest local cost driver is avoiding Tempe enforcement and repeat site visits."
+  },
+  "sources": [
+    {
+      "label": "Tempe backflow prevention program",
+      "url": "https://www.tempe.gov/government/public-works/water/backflow-prevention-program",
+      "kind": "official program page"
+    },
+    {
+      "label": "Tempe registered testing companies list",
+      "url": "https://www.tempe.gov/home/showpublisheddocument/112159/639052888033930000",
+      "kind": "official tester list pdf"
+    }
+  ]
+}

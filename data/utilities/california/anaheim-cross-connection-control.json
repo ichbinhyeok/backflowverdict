@@ -1,0 +1,143 @@
+{
+  "utilityId": "anaheim-water",
+  "utilityName": "City of Anaheim Cross Connection Control",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "anaheim-cross-connection-control",
+  "state": "california",
+  "serviceAreaCities": [
+    "Anaheim"
+  ],
+  "serviceAreaCounties": [
+    "Orange County"
+  ],
+  "searchAliases": [
+    "anaheim backflow testing",
+    "anaheim approved backflow testers",
+    "anaheim cross connection control"
+  ],
+  "utilityUrl": "https://www.anaheim.net/769/Cross-Connection-Control",
+  "officialProgramUrls": [
+    "https://www.anaheim.net/769/Cross-Connection-Control",
+    "https://www.anaheim.net/710/Standard-Specifications-Requirements",
+    "https://www.anaheim.net/DocumentCenter/View/1626/Water-Services-Standard-Specifications"
+  ],
+  "testingFrequency": "Immediately after installation, relocation, or repair, and at least annually thereafter",
+  "dueBasis": "Anaheim says backflow prevention devices must be tested annually, and repaired and retested if defective. The annual tests must be performed by an Orange County Health Care Agency certified tester carrying a valid City of Anaheim business license.",
+  "coveredPropertyTypes": [
+    "Commercial and industrial services",
+    "Multi-family and high-hazard premises",
+    "Irrigation services",
+    "Fireline and development-phase services"
+  ],
+  "coveredDeviceTypes": [
+    "Approved backflow prevention devices",
+    "Fireline backflow devices",
+    "Irrigation backflow devices",
+    "Cross-connection control assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.anaheim.net/769/Cross-Connection-Control",
+  "officialListLabel": "Open Anaheim's official approved tester page",
+  "submissionMethods": [
+    {
+      "label": "Anaheim cross connection control",
+      "url": "https://www.anaheim.net/769/Cross-Connection-Control",
+      "kind": "program page"
+    },
+    {
+      "label": "Anaheim standard specifications",
+      "url": "https://www.anaheim.net/710/Standard-Specifications-Requirements",
+      "kind": "standards page"
+    }
+  ],
+  "phone": "714-765-4173",
+  "penalties": "Anaheim only accepts approved testers from the city workflow, no longer accepts mailed or emailed reports, and requires defective devices to be repaired and retested before they can be treated as compliant.",
+  "sourceExcerpt": "Anaheim publishes annual testing rules, approved-list gating, electronic submission, and utility specifications for irrigation and fireline work.",
+  "sourceSnapshotPath": "storage/snapshots/anaheim-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Anaheim is a strong Southern California utility because it publishes annual testing rules, approved-list gating, online submission, and utility specifications for irrigation and proposed fireline work.",
+  "whoIsAffected": "Water users at locations where Anaheim requires a backflow prevention device, especially commercial, multi-family, irrigation, and fireline-related services.",
+  "residentialNotes": [
+    "Anaheim's strongest public language is utility-wide rather than single-family-only, so residential intent usually shows up through irrigation or other protected services.",
+    "The city points users to county certification and approved-tester requirements instead of leaving the workflow generic."
+  ],
+  "commercialNotes": [
+    "Anaheim has real commercial next-action value because it couples annual testing with approved-list and electronic-submission rules.",
+    "The city's standards make fireline and development-phase questions commercially relevant rather than filler."
+  ],
+  "annualTesting": {
+    "summary": "Anaheim requires annual testing and also requires a retest any time a device is repaired, relocated, or newly installed.",
+    "highlights": [
+      "Only testers on the city's approved list may be used.",
+      "The tester must hold Orange County certification and a valid Anaheim business license.",
+      "Test results are submitted through Anaheim's electronic workflow."
+    ],
+    "workflowSteps": [
+      "Confirm the device is still on Anaheim's annual testing program.",
+      "Choose a tester from Anaheim's approved list.",
+      "Complete the test and submit the result through Anaheim's electronic workflow."
+    ]
+  },
+  "irrigation": {
+    "summary": "Anaheim's published irrigation standards explicitly require backflow protection to keep irrigation systems from contaminating the public water supply.",
+    "highlights": [
+      "Anaheim's landscape and water standards call for backflow devices on irrigation projects.",
+      "The city routes irrigation users into the broader cross-connection control rules instead of treating irrigation as separate filler content.",
+      "Annual testing still sits inside the same approved-tester workflow."
+    ],
+    "workflowSteps": [
+      "Confirm whether the project or site uses an irrigation connection that requires device protection.",
+      "Use an Anaheim-approved tester when the assembly comes due.",
+      "Keep the result inside Anaheim's approved reporting path so the device stays compliant."
+    ]
+  },
+  "fireLine": {
+    "summary": "Anaheim's utility standards and required-forms index show that proposed fireline work sits inside the backflow compliance workflow rather than outside it.",
+    "highlights": [
+      "Anaheim maintains required forms for proposed fireline backflow devices.",
+      "Development-phase services cannot leave backflow devices in an unmanaged state.",
+      "The same city approval and testing requirements apply before the utility treats the installation as complete."
+    ],
+    "workflowSteps": [
+      "Start with Anaheim's fireline requirements and utility forms.",
+      "Use a tester and installer that the utility will accept under its cross-connection program.",
+      "Do not treat the fireline device as complete until the city-accepted testing and reporting steps are finished."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm whether the issue is annual testing, a repair, or a relocation.",
+    "Choose an approved Anaheim tester with the required county certification and city license.",
+    "Complete the test and submit the result electronically.",
+    "If the device is defective, repair or replace it and retest before treating the matter as closed."
+  ],
+  "failureHighlights": [
+    "Anaheim only accepts approved testers from the city's list.",
+    "The city no longer accepts mailed or emailed reports.",
+    "Defective devices must be repaired and retested."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Anaheim's approved-list gate and electronic reporting matter more than a published retail price.",
+    "repairRetestRange": "Repair and retest cost depends on the device type and whether the issue arose during annual testing, relocation, or installation.",
+    "pricingNotes": "The real Anaheim friction is the approved-tester requirement plus the city's submission rules."
+  },
+  "sources": [
+    {
+      "label": "Anaheim cross connection control",
+      "url": "https://www.anaheim.net/769/Cross-Connection-Control",
+      "kind": "official program page"
+    },
+    {
+      "label": "Anaheim standard specifications",
+      "url": "https://www.anaheim.net/710/Standard-Specifications-Requirements",
+      "kind": "official standards page"
+    },
+    {
+      "label": "Anaheim water services standard specifications",
+      "url": "https://www.anaheim.net/DocumentCenter/View/1626/Water-Services-Standard-Specifications",
+      "kind": "official specification pdf"
+    }
+  ]
+}

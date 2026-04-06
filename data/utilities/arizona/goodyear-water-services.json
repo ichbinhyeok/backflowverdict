@@ -1,0 +1,138 @@
+{
+  "utilityId": "goodyear-water",
+  "utilityName": "City of Goodyear Backflow Prevention and Cross-Connection Control",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "goodyear-water-services",
+  "state": "arizona",
+  "serviceAreaCities": [
+    "Goodyear"
+  ],
+  "serviceAreaCounties": [
+    "Maricopa County"
+  ],
+  "searchAliases": [
+    "goodyear backflow testing",
+    "goodyear water backflow",
+    "goodyear cross connection control"
+  ],
+  "utilityUrl": "https://www.goodyearaz.gov/government/departments/water-services/backflow-prevention",
+  "officialProgramUrls": [
+    "https://www.goodyearaz.gov/government/departments/water-services/backflow-prevention",
+    "https://www.goodyearaz.gov/home/showpublisheddocument/588/636443491390730000"
+  ],
+  "testingFrequency": "On the city compliance cycle after installation and annually where the assembly remains in service",
+  "dueBasis": "Goodyear runs a real backflow program, lets testers enter results with either a code or device serial number, and routes construction-meter, hydrant, business-owner, and fire-line questions through the city utility workflow.",
+  "coveredPropertyTypes": [
+    "Commercial properties",
+    "Irrigation systems",
+    "Construction and hydrant meters",
+    "Fire-line services",
+    "Other protected services in the city water system"
+  ],
+  "coveredDeviceTypes": [
+    "Reduced pressure assemblies",
+    "Double check valve assemblies",
+    "Hydrant meter backflow devices",
+    "Protected service assemblies"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Goodyear backflow prevention page",
+      "url": "https://www.goodyearaz.gov/government/departments/water-services/backflow-prevention",
+      "kind": "program page"
+    },
+    {
+      "label": "Goodyear utility instructions PDF",
+      "url": "https://www.goodyearaz.gov/home/showpublisheddocument/588/636443491390730000",
+      "kind": "utility pdf"
+    }
+  ],
+  "phone": "623-932-3910",
+  "penalties": "Goodyear frames the program as a drinking-water protection obligation and routes all result-entry and shutdown questions through the city. Missing the utility process leaves the assembly outside the accepted city compliance path.",
+  "sourceExcerpt": "Goodyear is a strong Arizona city because the program is operational, not generic, and it covers test entry, hydrant meters, business-owner FAQs, and fire-line coordination.",
+  "sourceSnapshotPath": "storage/snapshots/goodyear-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Goodyear is a utility-first Arizona page because the city exposes a genuine compliance workflow instead of a thin city overview.",
+  "whoIsAffected": "Goodyear services with irrigation, fire-line, hydrant-meter, construction, or other cross-connection risk that the city backflow program tracks.",
+  "residentialNotes": [
+    "Residential demand is strongest where a property has an irrigation or other protected service that puts it inside the city program.",
+    "The city utility page is more useful than generic homeowner plumbing advice because it explains result-entry and enforcement mechanics."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because the city openly handles business-owner FAQs, hydrant meters, and fire-line shutdown questions.",
+    "This utility broadens the Arizona cluster with a city that behaves like an actual compliance operator."
+  ],
+  "annualTesting": {
+    "summary": "Goodyear is useful because testers can file results through the city process even when the customer only has the device serial number.",
+    "highlights": [
+      "The city explicitly supports backflow result entry.",
+      "Codes are optional if the device serial number is known.",
+      "The utility page is built around real city-side workflow questions."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is in the Goodyear program.",
+      "Schedule a certified tester.",
+      "Enter the results through the city workflow using the code or serial number."
+    ]
+  },
+  "irrigation": {
+    "summary": "Goodyear is strong for irrigation because the utility bundles irrigation, business-owner, and meter questions on the same backflow surface.",
+    "highlights": [
+      "Irrigation is one of the clearest local triggers.",
+      "The city page supports real city-side testing questions.",
+      "This utility should convert better than generic irrigation content."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation assembly record.",
+      "Schedule the tester.",
+      "Use the city result-entry workflow."
+    ]
+  },
+  "fireLine": {
+    "summary": "Goodyear also supports fire-line and shutdown intent because the utility explicitly addresses fire-line and shutdown questions on the same program page.",
+    "highlights": [
+      "The city calls out shutdown questions for work on assemblies.",
+      "Hydrant and construction-meter flows are already part of the same utility surface.",
+      "This is a stronger city page than a bare code citation."
+    ],
+    "workflowSteps": [
+      "Confirm whether the work touches a fire line or shutdown.",
+      "Coordinate with the city utility workflow.",
+      "Complete the required testing and result entry."
+    ]
+  },
+  "workflowSteps": [
+    "Check whether the assembly is inside Goodyear's program.",
+    "Schedule a certified tester.",
+    "Use the city's result-entry workflow with the code or device serial number.",
+    "Coordinate shutdown or hydrant-meter questions with the utility before the work starts."
+  ],
+  "failureHighlights": [
+    "Goodyear exposes a real result-entry workflow.",
+    "The city handles fire-line, hydrant-meter, and business-owner questions on the same surface.",
+    "This is a stronger utility page than generic city FAQ content."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but the local value is a clear city-side filing path.",
+    "repairRetestRange": "Repair and retest cost depends on assembly type and whether shutdown or fire-side coordination is required.",
+    "pricingNotes": "The strongest signal is that the utility already behaves like an operator, not an educational brochure."
+  },
+  "sources": [
+    {
+      "label": "Goodyear backflow prevention",
+      "url": "https://www.goodyearaz.gov/government/departments/water-services/backflow-prevention",
+      "kind": "official program page"
+    },
+    {
+      "label": "Goodyear utility instructions PDF",
+      "url": "https://www.goodyearaz.gov/home/showpublisheddocument/588/636443491390730000",
+      "kind": "official utility pdf"
+    }
+  ]
+}

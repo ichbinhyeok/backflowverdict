@@ -1,0 +1,134 @@
+{
+  "utilityId": "manatee-county-utilities",
+  "utilityName": "Manatee County Utilities Cross Connection Control Program",
+  "governingEntityType": "county utility",
+  "canonicalSlug": "manatee-county-utilities",
+  "state": "florida",
+  "serviceAreaCities": [],
+  "serviceAreaCounties": [
+    "Manatee County"
+  ],
+  "searchAliases": [
+    "manatee county backflow testing",
+    "manatee county potable testers",
+    "manatee county backflow annual letter"
+  ],
+  "utilityUrl": "https://www.mymanatee.org/departments/utilities-department/backflow-division",
+  "officialProgramUrls": [
+    "https://www.mymanatee.org/departments/utilities-department/backflow-division",
+    "https://www.mymanatee.org/departments/utilities/manatee_county_water_division/backflow_prevention_assembly_information/backflow_prevention_service_provider_complaint"
+  ],
+  "testingFrequency": "Annual testing and county-directed retest timelines",
+  "dueBasis": "Manatee County requires annual testing within 30 days of the county letter, escalates final notices to a seven-day response window, and charges at least $50 per backflow preventer when the county contract tester has to step in.",
+  "coveredPropertyTypes": [
+    "County utility customers with backflow preventers",
+    "Commercial properties",
+    "Irrigation services",
+    "Fire-line services that require State Fire Marshal certification"
+  ],
+  "coveredDeviceTypes": [
+    "Potable backflow preventers",
+    "Certified testable assemblies",
+    "Fireline backflow preventers"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.mymanatee.org/departments/utilities-department/backflow-division",
+  "officialListLabel": "Open the Manatee County program page for the county potable testers list",
+  "submissionMethods": [
+    {
+      "label": "Manatee County cross connection control program",
+      "url": "https://www.mymanatee.org/departments/utilities-department/backflow-division",
+      "kind": "program page"
+    },
+    {
+      "label": "Manatee County provider registration rules",
+      "url": "https://www.mymanatee.org/departments/utilities/manatee_county_water_division/backflow_prevention_assembly_information/backflow_prevention_service_provider_complaint",
+      "kind": "provider rules"
+    }
+  ],
+  "phone": "941-792-8811",
+  "penalties": "The county can schedule the county contract tester and charge at least $50 per assembly when customers ignore testing deadlines. Failed tests must be repaired or replaced and re-certified within 30 days, and contractor portal rules are strict.",
+  "sourceExcerpt": "Manatee County is a high-intent Florida county utility because the program uses real letter deadlines, county-contractor intervention, and portal filing deadlines instead of generic education copy.",
+  "sourceSnapshotPath": "storage/snapshots/manatee-county-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Manatee County is one of the strongest Florida county utilities because the testing clock, county-contractor fallback, and portal deadlines are all explicit.",
+  "whoIsAffected": "Manatee County utility customers with backflow preventers, especially properties that received annual testing letters, failed-test notices, irrigation hazards, or fire-line assemblies.",
+  "residentialNotes": [
+    "Residential demand is strong after county annual letters because the timeline is explicit and the county can bill for non-compliance testing.",
+    "This page works best when the owner already has a testable assembly, not for generic plumbing searches."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because the county has tight filing deadlines and real contractor registration rules.",
+    "Fire-line providers need extra State Fire Marshal credentials, which creates higher-intent routing."
+  ],
+  "annualTesting": {
+    "summary": "Manatee County gives customers 30 days from the annual letter date to complete testing and uses a county contractor plus billing pressure when they do not comply.",
+    "highlights": [
+      "Annual testing must be completed within 30 days of the county letter.",
+      "Final notices leave only seven days before the county contract tester is scheduled.",
+      "The county charges at least $50 per assembly when it has to step in."
+    ],
+    "workflowSteps": [
+      "Read the county annual testing letter immediately.",
+      "Use a registered county tester from the potable testers list.",
+      "Complete the test within 30 days and avoid the county-contractor fallback."
+    ]
+  },
+  "irrigation": {
+    "summary": "County letters and portal filing rules create a real annual-testing service loop for irrigation users too.",
+    "highlights": [
+      "The county uses a registered tester list rather than generic local plumbers.",
+      "Late cases roll quickly toward county-managed testing and billing.",
+      "Portal filing rules are strict."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation assembly is in the county program.",
+      "Use a registered tester from the county list.",
+      "Keep the portal filing on time."
+    ]
+  },
+  "fireLine": {
+    "summary": "County registration rules require State Fire Marshal credentials for testing fireline backflow preventers.",
+    "highlights": [
+      "Fireline testers need extra state credentials.",
+      "Failed tests must be entered within 1 business day.",
+      "Registered contractors lose privileges if they violate county rules."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is a fireline device.",
+      "Use a county-registered provider with State Fire Marshal credentials.",
+      "Repair, retest, and file the failed-test result inside the county timeline."
+    ]
+  },
+  "workflowSteps": [
+    "Read the county letter and clock the 30-day deadline.",
+    "Choose a county-registered tester.",
+    "Complete the test or repair before the county escalates the case.",
+    "Keep portal filing on time so the assembly does not drift into county-managed non-compliance."
+  ],
+  "failureHighlights": [
+    "Manatee County uses 30-day and 7-day deadline ladders.",
+    "The county can schedule a contract tester and bill at least $50 per assembly.",
+    "Failed tests must be entered within 1 business day."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced when handled through a registered provider, but the county fallback adds at least $50 per assembly.",
+    "repairRetestRange": "Repair and retest cost rises quickly if the device fails and the county case is already escalated.",
+    "pricingNotes": "The strongest local monetary signal is the county-contractor fallback and fee pressure."
+  },
+  "sources": [
+    {
+      "label": "Manatee County cross connection control program",
+      "url": "https://www.mymanatee.org/departments/utilities-department/backflow-division",
+      "kind": "official county program page"
+    },
+    {
+      "label": "Manatee County provider registration rules",
+      "url": "https://www.mymanatee.org/departments/utilities/manatee_county_water_division/backflow_prevention_assembly_information/backflow_prevention_service_provider_complaint",
+      "kind": "official provider rules"
+    }
+  ]
+}

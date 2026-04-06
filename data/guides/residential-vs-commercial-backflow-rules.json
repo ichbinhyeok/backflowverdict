@@ -1,0 +1,60 @@
+{
+  "slug": "residential-vs-commercial-backflow-rules",
+  "title": "Residential vs commercial backflow rules",
+  "description": "Why the local trigger is rarely just residential versus commercial, and how utilities actually split hazard, irrigation, multifamily, and managed-property cases.",
+  "intro": "People often ask whether backflow rules are only commercial. The more useful answer is that utilities split the risk by hazard, device type, irrigation, fire service, and property class.",
+  "callout": "Use this guide to frame the split, then go back to the utility page because the local utility still decides which residential or commercial cases trigger the device and testing rule.",
+  "sourceExcerpt": "The practical split is not simply residential versus commercial. Utilities often separate hazard classes, irrigation, multifamily, fire service, and managed-property cases inside the same program.",
+  "sourceSnapshotPath": "storage/snapshots/guides/residential-vs-commercial-backflow-rules.html",
+  "reviewerInitials": "TL",
+  "lastReviewed": "2026-04-05",
+  "published": true,
+  "sections": [
+    {
+      "heading": "Residential does not automatically mean exempt",
+      "body": "Utilities often pull residential irrigation, pools, wells, or specific device setups into the backflow program. That means homeowner demand is real, but it usually starts with a narrower trigger than generic plumbing content suggests.",
+      "bullets": [
+        "Tampa is useful because it explicitly separates residential and commercial cadence.",
+        "Lee County and Miami-Dade show how irrigation and hazard context widen the residential scope."
+      ]
+    },
+    {
+      "heading": "Commercial pages need the local hazard logic",
+      "body": "Commercial, multifamily, institutional, and managed-property pages work when they explain the actual local trigger: hazard class, fire service, irrigation, restricted access, or county filing requirements.",
+      "bullets": [
+        "Fort Worth and Broward are strong examples where commercial and managed-property language is more specific than a generic annual-test article.",
+        "This is one reason commercial-focused utility pages can support stronger next-action and sponsor intent."
+      ]
+    },
+    {
+      "heading": "The best content mirrors the local split",
+      "body": "Utility pages should not pretend the same CTA works for every property type. Residential irrigation, restaurant, medical, industrial, and multifamily cases often need different framing even when they sit inside the same authority.",
+      "bullets": [
+        "This guide supports the utility pages by explaining the pattern, not by replacing the local rule.",
+        "It is especially useful on metros where county and city utilities mix different property triggers."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "Tampa backflow prevention",
+      "url": "https://www.tampa.gov/water/builders-and-homeowners/backflow-prevention",
+      "kind": "utility example"
+    },
+    {
+      "label": "Miami-Dade cross-connection control service",
+      "url": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1517344068939644",
+      "kind": "county utility example"
+    },
+    {
+      "label": "Fort Worth water backflow program",
+      "url": "https://www.fortworthtexas.gov/departments/water/backflow",
+      "kind": "utility example"
+    },
+    {
+      "label": "Lee County cross-connection and backflow prevention",
+      "url": "https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention",
+      "kind": "county utility example"
+    }
+  ]
+}

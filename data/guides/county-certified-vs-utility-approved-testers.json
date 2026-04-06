@@ -1,0 +1,60 @@
+{
+  "slug": "county-certified-vs-utility-approved-testers",
+  "title": "County-certified vs utility-approved testers",
+  "description": "Why a county certification list, a city-approved list, and a non-endorsed handout are not the same thing even when they all help users find testers.",
+  "intro": "Tester-list pages look deceptively similar. The problem is that the trust claim changes depending on whether the list comes from a county health agency, a utility approval program, or a non-endorsed public handout.",
+  "callout": "This site has to keep those list types separate because they drive different wording, different route names, and different commercial constraints.",
+  "sourceExcerpt": "A county-certified tester directory, a utility-approved roster, and a non-endorsed public handout may all be helpful, but they are not interchangeable trust contracts.",
+  "sourceSnapshotPath": "storage/snapshots/guides/county-certified-vs-utility-approved-testers.html",
+  "reviewerInitials": "TL",
+  "lastReviewed": "2026-04-05",
+  "published": true,
+  "sections": [
+    {
+      "heading": "Utility-approved means the authority is stronger",
+      "body": "When a city or utility publishes its own approved or authorized tester list, the route can legitimately lead with the authority source and use approved-list language.",
+      "bullets": [
+        "Santa Rosa and Scottsdale publish utility-controlled tester lists.",
+        "These pages can support approved-tester routes when the authority claim is actually justified."
+      ]
+    },
+    {
+      "heading": "County-certified is useful but not identical",
+      "body": "A county-certified tester directory can still be valuable, but it describes a different authority relationship. Pasadena is a strong example because the county list informs routing without automatically turning every local page into a utility-approved roster.",
+      "bullets": [
+        "County-certified directories often deserve directory-only or carefully labeled routing.",
+        "The copy has to avoid implying city approval when the source is really county certification."
+      ]
+    },
+    {
+      "heading": "Public handouts can be usable without endorsement",
+      "body": "Some utilities publish a tester handout while explicitly saying they do not endorse the listed firms. That matters for route naming, label hierarchy, and sponsor separation.",
+      "bullets": [
+        "Prescott Valley is a strong example of a list that helps users but does not justify an approved-list claim.",
+        "This is exactly why the site distinguishes approved-testers from find-a-tester."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "Los Angeles County certified tester directory",
+      "url": "https://publichealth.lacounty.gov/eh/docs/permit/certified-backflow-prevention-device-testers_contact.pdf",
+      "kind": "county list"
+    },
+    {
+      "label": "Prescott Valley certified testers handout",
+      "url": "https://cms1files.revize.com/prescottvalleyaz/Documents/Departments/Utilities/Customer%20Accounts/Forms/Certified%20Backflow%20testers.pdf",
+      "kind": "public handout"
+    },
+    {
+      "label": "Santa Rosa authorized testers list",
+      "url": "https://www.srcity.org/DocumentCenter/View/45218/Certified-Testers-Authorized-to-Test-in-Santa-Rosa-2025-PDF",
+      "kind": "utility list"
+    },
+    {
+      "label": "Scottsdale backflow testers list",
+      "url": "https://www.scottsdaleaz.gov/docs/default-source/scottsdaleaz/water/water-operations/backflow-testers.pdf?sfvrsn=debc7310_5",
+      "kind": "utility list"
+    }
+  ]
+}

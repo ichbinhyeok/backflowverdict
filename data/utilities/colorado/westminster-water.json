@@ -1,0 +1,139 @@
+{
+  "utilityId": "westminster-water",
+  "utilityName": "City of Westminster Cross-Connection Control and Backflow Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "westminster-water",
+  "state": "colorado",
+  "serviceAreaCities": [
+    "Westminster"
+  ],
+  "serviceAreaCounties": [
+    "Adams County",
+    "Jefferson County"
+  ],
+  "searchAliases": [
+    "westminster backflow testing",
+    "westminster irrigation backflow",
+    "westminster fire line backflow"
+  ],
+  "utilityUrl": "https://www.westminsterco.gov/706/Cross-Connection-Control-Backflow",
+  "officialProgramUrls": [
+    "https://www.westminsterco.gov/706/Cross-Connection-Control-Backflow",
+    "https://www.westminsterco.gov/DocumentCenter/View/12467/Cross-Connection-Control-Manual"
+  ],
+  "testingFrequency": "Upon installation and annually thereafter",
+  "dueBasis": "Westminster says all commercial, industrial, domestic, irrigation, and fire line services must have an approved backflow assembly installed when the city determines one is required, and each assembly must be tested at installation and annually thereafter.",
+  "coveredPropertyTypes": [
+    "Commercial services",
+    "Industrial services",
+    "Domestic services where the city requires containment protection",
+    "Irrigation services",
+    "Fire line services"
+  ],
+  "coveredDeviceTypes": [
+    "Approved backflow prevention assemblies",
+    "Irrigation assemblies",
+    "Fire line assemblies",
+    "Containment devices accepted by Westminster"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Westminster cross-connection control and backflow program",
+      "url": "https://www.westminsterco.gov/706/Cross-Connection-Control-Backflow",
+      "kind": "program page"
+    },
+    {
+      "label": "Westminster cross-connection manual",
+      "url": "https://www.westminsterco.gov/DocumentCenter/View/12467/Cross-Connection-Control-Manual",
+      "kind": "manual"
+    }
+  ],
+  "phone": "303-658-2500",
+  "penalties": "Westminster's public rules frame the program as a city-enforced protection requirement across domestic, irrigation, and fire line services. Missing installation or annual testing leaves the service out of compliance with the city water system.",
+  "sourceExcerpt": "Westminster is a useful Colorado utility because the city makes the scope broad and explicit: commercial, industrial, domestic, irrigation, and fire line services all fall into the same city-enforced cross-connection control framework.",
+  "sourceSnapshotPath": "storage/snapshots/westminster-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Westminster is a strong Colorado utility because it openly covers domestic, irrigation, and fire line services in the same annual-testing framework.",
+  "whoIsAffected": "Commercial, industrial, domestic, irrigation, and fire line services in Westminster where the city determines an approved backflow assembly is required.",
+  "residentialNotes": [
+    "Westminster is stronger than many Colorado utilities for residential angles because it explicitly includes domestic service in the same city program.",
+    "Residential demand still becomes real only when the city has determined that containment protection is required."
+  ],
+  "commercialNotes": [
+    "Commercial value is solid because Westminster makes the service classes explicit and does not hide fire line and irrigation behind a separate standards manual alone.",
+    "The broad scope makes Westminster a good expansion utility even without a public tester directory."
+  ],
+  "annualTesting": {
+    "summary": "Westminster says each approved backflow prevention assembly must be tested at the time of installation and annually thereafter.",
+    "highlights": [
+      "Installation testing is explicit.",
+      "Annual retesting is explicit.",
+      "Domestic, irrigation, and fire line services are all named in the public scope."
+    ],
+    "workflowSteps": [
+      "Confirm Westminster has required an approved assembly on the service.",
+      "Complete the installation test or annual retest on time.",
+      "Keep the city compliance record current under Westminster's program."
+    ]
+  },
+  "irrigation": {
+    "summary": "Westminster explicitly names irrigation service in the public cross-connection scope, which makes irrigation a real page rather than a thin keyword variation.",
+    "highlights": [
+      "Irrigation services are directly named in the city program.",
+      "Installation testing and annual retesting both apply.",
+      "The manual gives more detail once the city has required protection."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation service needs a city-approved assembly.",
+      "Complete installation testing or annual retesting.",
+      "Follow the city manual if the irrigation setup or hazard class needs more detail."
+    ]
+  },
+  "fireLine": {
+    "summary": "Westminster is worth a fire-line page because the city explicitly names fire line service inside the same annual-testing framework.",
+    "highlights": [
+      "Fire line services are publicly listed in the scope.",
+      "Installation testing and annual testing both apply.",
+      "The city program keeps fire line inside the core compliance surface rather than treating it as a hidden appendix."
+    ],
+    "workflowSteps": [
+      "Confirm the service is a fire line subject to Westminster's program.",
+      "Complete the required installation test or annual retest.",
+      "Keep the fire line compliance record aligned with the city manual."
+    ]
+  },
+  "workflowSteps": [
+    "Identify whether Westminster has required an assembly on the service.",
+    "Complete the installation test or annual test on schedule.",
+    "Use the city manual for hazard and assembly details where needed.",
+    "Keep the city compliance record current."
+  ],
+  "failureHighlights": [
+    "Westminster explicitly includes domestic, irrigation, and fire line services in one public scope.",
+    "Installation testing and annual retesting are both public requirements.",
+    "The city program is broad enough to support multiple search intents without generic filler."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Westminster's broad service scope makes the real cost question whether the city has required protection on the line.",
+    "repairRetestRange": "Repair and retest costs rise with larger irrigation or fire line assemblies.",
+    "pricingNotes": "The page is valuable because it answers whether Westminster's city program applies, not because the city posts retail rates."
+  },
+  "sources": [
+    {
+      "label": "Westminster cross-connection control and backflow program",
+      "url": "https://www.westminsterco.gov/706/Cross-Connection-Control-Backflow",
+      "kind": "official program page"
+    },
+    {
+      "label": "Westminster cross-connection manual",
+      "url": "https://www.westminsterco.gov/DocumentCenter/View/12467/Cross-Connection-Control-Manual",
+      "kind": "official manual"
+    }
+  ]
+}

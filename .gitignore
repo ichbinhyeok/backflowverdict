@@ -1,0 +1,16 @@
+.gradle/
+build/
+out/
+.idea/
+*.log
+*.pyc
+__pycache__/
+storage/*
+!storage/snapshots/
+!storage/snapshots/**
+storage/leads/
+jte-classes/
+.gstack/
+.playwright-cli/
+output/
+data/ops/change_log.jsonl

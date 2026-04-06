@@ -1,0 +1,124 @@
+{
+  "utilityId": "csu-backflow",
+  "utilityName": "Colorado Springs Utilities Backflow Prevention",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "colorado-springs-utilities",
+  "state": "colorado",
+  "serviceAreaCities": [
+    "Colorado Springs"
+  ],
+  "serviceAreaCounties": [
+    "El Paso County"
+  ],
+  "searchAliases": [
+    "colorado springs backflow testing",
+    "csu backflow swiftcomply",
+    "colorado springs irrigation backflow"
+  ],
+  "utilityUrl": "https://www.csu.org/safety/backflow-prevention-professionals",
+  "officialProgramUrls": [
+    "https://www.csu.org/safety/backflow-prevention-professionals",
+    "https://www.csu.org/hubfs/Document-Library/UtilitiesRulesRegsTariff.pdf"
+  ],
+  "testingFrequency": "Annually after the assembly is in the program",
+  "dueBasis": "Colorado Springs Utilities requires customers to hire a backflow tester for the annual compliance test and expects test results to be entered within five days through SwiftComply.",
+  "coveredPropertyTypes": [
+    "Protected utility customers",
+    "External and irrigation assembly locations",
+    "Commercial and managed properties",
+    "Any service already surveyed into the program"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "External assemblies",
+    "Irrigation assemblies",
+    "Surveyed utility assemblies"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Colorado Springs Utilities backflow professionals portal",
+      "url": "https://www.csu.org/safety/backflow-prevention-professionals",
+      "kind": "tester portal guidance"
+    },
+    {
+      "label": "Colorado Springs Utilities rules and regulations",
+      "url": "https://www.csu.org/hubfs/Document-Library/UtilitiesRulesRegsTariff.pdf",
+      "kind": "rules and tariff document"
+    }
+  ],
+  "phone": "719-668-4388",
+  "penalties": "Colorado Springs Utilities will not accept a test on a newly installed assembly until the backflow team has surveyed it, and old results are expected to be entered promptly through the portal.",
+  "sourceExcerpt": "Colorado Springs is useful because it exposes the contractor-facing side of the compliance loop: SwiftComply registration, certification uploads, five-day entry timing, and survey-first rules for new assemblies.",
+  "sourceSnapshotPath": "storage/snapshots/colorado-springs-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Colorado Springs Utilities is a strong Colorado page because it shows how the utility actually runs the testing workflow: portal registration, certification uploads, five-day test entry, and survey-first rules.",
+  "whoIsAffected": "Customers and testers working on assemblies that Colorado Springs Utilities has already surveyed into the program, including external and irrigation assemblies.",
+  "residentialNotes": [
+    "Colorado Springs is less residential-marketing heavy than Tampa or Broward, but any surveyed assembly still lives inside the same portal-driven workflow.",
+    "Residential intent mostly shows up through external or irrigation assembly cases rather than generic homeowner education."
+  ],
+  "commercialNotes": [
+    "This is a strong contractor and managed-property utility because the portal rules are explicit.",
+    "The survey-first rule matters operationally for new installations and replacements."
+  ],
+  "annualTesting": {
+    "summary": "Colorado Springs Utilities expects annual compliance testing by certified testers and wants results entered into SwiftComply within five days.",
+    "highlights": [
+      "Certified testers must register and upload certification and test-kit information.",
+      "Test results should be entered within five days of testing.",
+      "A newly installed assembly must be surveyed by the utility before a test can be accepted."
+    ],
+    "workflowSteps": [
+      "Register the tester and current certification information in SwiftComply.",
+      "Confirm the assembly is already surveyed into the utility record.",
+      "Enter the test result promptly and fix record errors through the utility team when needed."
+    ]
+  },
+  "irrigation": {
+    "summary": "Colorado Springs publishes a separate external and irrigation assembly form, which makes irrigation-specific intent worth supporting.",
+    "highlights": [
+      "External and irrigation assemblies have a distinct form path.",
+      "Portal submission rules still apply.",
+      "Survey-first discipline matters before the utility will accept a test for a new assembly."
+    ],
+    "workflowSteps": [
+      "Confirm whether the assembly is domestic, external, or irrigation.",
+      "Use the right form and portal workflow for the assembly type.",
+      "Enter the result within five days and coordinate any new-assembly survey issues with the utility team."
+    ]
+  },
+  "workflowSteps": [
+    "Register the tester and current certification in SwiftComply.",
+    "Confirm the assembly is already surveyed by Colorado Springs Utilities.",
+    "Perform the annual compliance test.",
+    "Enter the result within five days and flag any record errors or replacements through the utility."
+  ],
+  "failureHighlights": [
+    "Colorado Springs uses a five-day result-entry expectation.",
+    "New assemblies must be surveyed before tests are accepted.",
+    "The tester portal is mandatory for practical compliance."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but the portal registration and survey-first rule create real workflow cost.",
+    "repairRetestRange": "Repair and retest costs vary depending on whether the assembly record is already accurate in the utility system.",
+    "pricingNotes": "The value is in understanding the portal and survey gate, not in a public price schedule."
+  },
+  "sources": [
+    {
+      "label": "Colorado Springs Utilities backflow professionals",
+      "url": "https://www.csu.org/safety/backflow-prevention-professionals",
+      "kind": "official portal guidance"
+    },
+    {
+      "label": "Colorado Springs Utilities rules and regulations",
+      "url": "https://www.csu.org/hubfs/Document-Library/UtilitiesRulesRegsTariff.pdf",
+      "kind": "official rules pdf"
+    }
+  ]
+}

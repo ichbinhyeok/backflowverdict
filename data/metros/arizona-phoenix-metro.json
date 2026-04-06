@@ -1,0 +1,48 @@
+{
+  "metroId": "phoenix-metro",
+  "title": "Phoenix metro backflow testing",
+  "state": "arizona",
+  "metroSlug": "phoenix-metro",
+  "cityNames": [
+    "Phoenix",
+    "Mesa",
+    "Chandler",
+    "Gilbert",
+    "Scottsdale",
+    "Tempe",
+    "Glendale",
+    "Avondale",
+    "Goodyear",
+    "Buckeye",
+    "Queen Creek"
+  ],
+  "countyNames": [
+    "Maricopa County"
+  ],
+  "utilityIds": [
+    "phoenix-water",
+    "mesa-water",
+    "chandler-water",
+    "gilbert-water",
+    "scottsdale-water",
+    "tempe-water",
+    "glendale-water",
+    "avondale-water",
+    "goodyear-water",
+    "buckeye-water",
+    "queen-creek-water"
+  ],
+  "guideSlugs": [
+    "approved-testers-vs-find-a-tester",
+    "anniversary-date-vs-calendar-deadline",
+    "county-certified-vs-utility-approved-testers",
+    "backflow-test-cost",
+    "rpz-vs-dcva-vs-pvb"
+  ],
+  "description": "Phoenix-area support page for the East Valley and West Valley utility cluster where approved-list and fire-line rules vary by city.",
+  "summary": "The Phoenix cluster works well as a metro support layer because many neighboring cities publish different tester-list, anniversary-date, and fire-line workflows. This page groups those routes without flattening them into a fake single authority.",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 60,
+  "pageStatus": "PUBLISH",
+  "lastReviewed": "2026-04-05"
+}

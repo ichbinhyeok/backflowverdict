@@ -1,0 +1,148 @@
+{
+  "utilityId": "san-diego-water",
+  "utilityName": "City of San Diego Public Utilities Backflow Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "san-diego-public-utilities",
+  "state": "california",
+  "serviceAreaCities": [
+    "San Diego"
+  ],
+  "serviceAreaCounties": [
+    "San Diego County"
+  ],
+  "searchAliases": [
+    "san diego backflow testing",
+    "san diego approved backflow testers",
+    "san diego fire protection backflow"
+  ],
+  "utilityUrl": "https://www.sandiego.gov/public-utilities/permits-construction/construction-and-development/backflow",
+  "officialProgramUrls": [
+    "https://www.sandiego.gov/public-utilities/permits-construction/construction-and-development/backflow",
+    "https://www.sandiego.gov/sites/default/files/backflowtesters.pdf",
+    "https://www.sandiego.gov/sites/default/files/di_55_21-policy_on_cross_connection_and_backflow_prevention.pdf"
+  ],
+  "testingFrequency": "Upon installation and annually thereafter",
+  "dueBasis": "San Diego says all backflow devices are tested annually and points customers to the approved tester list when the Public Utilities Department contacts them for compliance.",
+  "coveredPropertyTypes": [
+    "Multi-family services with 1.5-inch and larger meters",
+    "Commercial and industrial services",
+    "Dedicated irrigation meters",
+    "Fire protection and meter-protection services"
+  ],
+  "coveredDeviceTypes": [
+    "Meter-protection backflow assemblies",
+    "Dedicated irrigation assemblies",
+    "Fire protection backflow assemblies",
+    "Approved city-listed assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.sandiego.gov/sites/default/files/backflowtesters.pdf",
+  "officialListLabel": "Open the San Diego approved tester list",
+  "submissionMethods": [
+    {
+      "label": "San Diego Backflow Program",
+      "url": "https://www.sandiego.gov/public-utilities/permits-construction/construction-and-development/backflow",
+      "kind": "program page"
+    },
+    {
+      "label": "San Diego Request for Test form",
+      "url": "https://www.sandiego.gov/sites/default/files/cross_connection_faq.pdf",
+      "kind": "faq and submission context"
+    },
+    {
+      "label": "San Diego approved tester list",
+      "url": "https://www.sandiego.gov/sites/default/files/backflowtesters.pdf",
+      "kind": "official tester list"
+    }
+  ],
+  "phone": "858-292-6329",
+  "penalties": "San Diego says failure to install and maintain a required device can lead to code enforcement, fines, and water service termination until compliance is restored.",
+  "sourceExcerpt": "San Diego publishes exactly the kind of utility workflow this project needs: approved tester list, annual testing language, orientation rules for testers, and clear meter, irrigation, and fire-protection context.",
+  "sourceSnapshotPath": "storage/snapshots/san-diego-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "San Diego is one of the best California fits because the city publishes annual testing rules, an approved tester list, a tester-orientation gate, and explicit enforcement consequences.",
+  "whoIsAffected": "Multi-family, commercial, industrial, dedicated irrigation, and fire-protection services that the Public Utilities Department identifies as requiring backflow protection.",
+  "residentialNotes": [
+    "San Diego's strongest public language is tied to multi-family, irrigation, and other protected services rather than a broad residential-all-properties claim.",
+    "Single-family users usually encounter this through irrigation or meter-protection requirements rather than a generic annual reminder."
+  ],
+  "commercialNotes": [
+    "San Diego is strong for lead intent because the city publishes both an approved tester list and real enforcement language.",
+    "The utility also expects testers to meet certification and orientation requirements before working in the district."
+  ],
+  "annualTesting": {
+    "summary": "San Diego states that all backflow devices are required to be tested annually and that testing must be done by approved list testers.",
+    "highlights": [
+      "Annual testing is explicit on the public program page.",
+      "Approved testers are required.",
+      "The city keeps a certification and orientation gate for testers who want onto the list."
+    ],
+    "workflowSteps": [
+      "Use the city's notice or program contact to confirm the assembly is due.",
+      "Choose a tester from San Diego's approved list.",
+      "Complete the test and submit the required documentation so the city can close the compliance loop."
+    ]
+  },
+  "irrigation": {
+    "summary": "Dedicated irrigation meters are specifically called out by San Diego, which makes irrigation a real subpage instead of filler.",
+    "highlights": [
+      "Dedicated irrigation meters require a backflow prevention assembly regardless of size.",
+      "Backflow devices must be installed close to the meter and per city standards.",
+      "The same annual testing rule applies after installation."
+    ],
+    "workflowSteps": [
+      "Confirm whether the service is on a dedicated irrigation meter.",
+      "Install the approved device at the location accepted by the city.",
+      "Keep the annual test current using a tester from the approved list."
+    ]
+  },
+  "fireLine": {
+    "summary": "San Diego's public materials keep fire protection and meter protection in the same compliance conversation, which is useful for fire-line intent.",
+    "highlights": [
+      "The city references fire protection in its device-requirement materials.",
+      "Backflow preventers must be city-approved and installed according to city standards.",
+      "Fire-protection and meter-protection questions route through the same cross-connection team."
+    ],
+    "workflowSteps": [
+      "Confirm whether the backflow requirement is tied to fire protection or meter protection.",
+      "Use the city's approved standards and list-based tester workflow.",
+      "Keep the test and device paperwork aligned with the assigned specialist."
+    ]
+  },
+  "workflowSteps": [
+    "If the Public Utilities Department contacts you, confirm which service connection is under the program.",
+    "Choose a tester from the approved list.",
+    "Complete the installation or annual test under the city's program standards.",
+    "Resolve any enforcement notices quickly so the issue does not escalate to fines or shutoff."
+  ],
+  "failureHighlights": [
+    "San Diego explicitly mentions fines and water termination for noncompliance.",
+    "Only approved testers can perform accepted testing.",
+    "Irrigation and fire-protection cases are both visible on public pages."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-based, but the city's approved-list constraint shapes the quote more than a public fee schedule.",
+    "repairRetestRange": "Repair and retest pricing depends on assembly size and whether fire or meter-protection constraints apply.",
+    "pricingNotes": "The commercial value is in the approved-list funnel and the enforcement pressure, not in a published retail rate."
+  },
+  "sources": [
+    {
+      "label": "San Diego Backflow Program",
+      "url": "https://www.sandiego.gov/public-utilities/permits-construction/construction-and-development/backflow",
+      "kind": "official program page"
+    },
+    {
+      "label": "San Diego approved tester list",
+      "url": "https://www.sandiego.gov/sites/default/files/backflowtesters.pdf",
+      "kind": "official tester list pdf"
+    },
+    {
+      "label": "San Diego cross-connection policy instruction",
+      "url": "https://www.sandiego.gov/sites/default/files/di_55_21-policy_on_cross_connection_and_backflow_prevention.pdf",
+      "kind": "official policy pdf"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "utilityId": "mckinney-water",
+  "utilityName": "City of McKinney Cross Connection Prevention",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "mckinney-water-utilities",
+  "state": "texas",
+  "serviceAreaCities": [
+    "McKinney"
+  ],
+  "serviceAreaCounties": [
+    "Collin County"
+  ],
+  "searchAliases": [
+    "mckinney backflow testing",
+    "mckinney backflow tester registration"
+  ],
+  "utilityUrl": "https://www.mckinneytexas.org/513/Backflow",
+  "officialProgramUrls": [
+    "https://www.mckinneytexas.org/513/Backflow",
+    "https://www.mckinneytexas.org/514/Irrigation",
+    "https://www.mckinneytexas.org/DocumentCenter/View/133/Backflow-Registration-Form-Fireline?bidId=",
+    "https://www.mckinneytexas.org/DocumentCenter/View/133/BPAT-Test-Report?bidId="
+  ],
+  "testingFrequency": "As required by the City workflow using McKinney test forms",
+  "dueBasis": "McKinney's public materials focus on process more than a consumer-friendly cadence. BPATs must register with the City, use City-specific forms, and submit signed original test results through the Public Works recordkeeping process. Irrigation work runs through the CSS permitting and inspection portal, and fireline testing has a separate City registration form.",
+  "coveredPropertyTypes": [
+    "Properties whose assemblies are tested under the City's cross-connection prevention workflow",
+    "Irrigation systems routed through the City's CSS portal",
+    "Fireline testers and general testers registering with the City"
+  ],
+  "coveredDeviceTypes": [
+    "General backflow assemblies tested using City forms",
+    "Irrigation backflow devices",
+    "Fireline assemblies using the separate fireline registration path"
+  ],
+  "approvedTesterMode": "DIRECTORY_ONLY",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "McKinney backflow program page",
+      "url": "https://www.mckinneytexas.org/513/Backflow",
+      "kind": "program page"
+    },
+    {
+      "label": "McKinney irrigation portal page",
+      "url": "https://www.mckinneytexas.org/514/Irrigation",
+      "kind": "program page"
+    },
+    {
+      "label": "McKinney test report form",
+      "url": "https://www.mckinneytexas.org/DocumentCenter/View/133/BPAT-Test-Report?bidId=",
+      "kind": "official form"
+    }
+  ],
+  "phone": "972-547-7362",
+  "penalties": "McKinney accepts only City-approved forms and signed originals, so noncompliant paperwork can be rejected even when the field test was completed. Registration lapses with calibration expiration, and separate permit or inspection steps can block closeout.",
+  "sourceExcerpt": "McKinney is a workflow city, not a simple list city: BPAT registration, signed originals, paper forms, CSS irrigation permitting, and separate fireline registration all matter.",
+  "sourceSnapshotPath": "storage/snapshots/mckinney-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "McKinney is a paperwork-heavy utility. The main risk is not just failing the field test; it is using the wrong City form, the wrong registration path, or the wrong submission method.",
+  "whoIsAffected": "Properties and testers operating within McKinney's cross-connection prevention program, including general assemblies, irrigation jobs, and fireline testing workflows.",
+  "residentialNotes": [
+    "Residential owners most often meet McKinney through irrigation permitting and inspection, not through a public approved-tester list.",
+    "If the assembly touches a permitted irrigation job, the CSS portal matters before the test report does."
+  ],
+  "commercialNotes": [
+    "Commercial and managed properties should treat McKinney as a document-control city because registration, original signatures, and the right form set all matter.",
+    "Fireline and general testing use different City registration documents, so scope mistakes are easy to make."
+  ],
+  "annualTesting": {
+    "summary": "McKinney's public guidance is stronger on accepted paperwork than on a consumer-facing annual cadence. Whatever testing is due must be performed by a registered BPAT using the City's forms and signed originals.",
+    "highlights": [
+      "BPAT registration with the City is required before testing.",
+      "Electronic signatures are not accepted on the City's forms.",
+      "Registration expires with the gauge calibration expiration date."
+    ],
+    "workflowSteps": [
+      "Register the BPAT with the City and confirm calibration is current.",
+      "Use the correct City test report form for the assembly.",
+      "Submit the signed original through Public Works recordkeeping."
+    ]
+  },
+  "irrigation": {
+    "summary": "McKinney irrigation work runs through a separate City Services and Sustainability portal. Contractor registration, permits, inspections, and payments all sit in CSS before the assembly paperwork is truly done.",
+    "highlights": [
+      "Irrigation uses a separate City portal rather than only the backflow page.",
+      "Contractors, permits, inspections, and payments are all handled in CSS.",
+      "Backflow testing still has to align with the City's approved forms and submission rules when the assembly is part of the irrigation project."
+    ],
+    "workflowSteps": [
+      "Use the CSS portal for irrigation contractor registration, permits, and inspections.",
+      "Coordinate the backflow test with the irrigation project timeline.",
+      "Submit the signed City test report once the field work is complete."
+    ]
+  },
+  "fireLine": {
+    "summary": "McKinney separates fireline testing administratively. Fireline BPATs use a different City registration form than general testers, so the first compliance question is which registration path applies.",
+    "highlights": [
+      "McKinney publishes a dedicated fireline BPAT registration form.",
+      "Using the general registration path for a fireline-only scope creates avoidable paperwork risk.",
+      "The City still expects the correct test form and signed original once testing is complete."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly should use the fireline registration path rather than the general BPAT path.",
+      "Register with the City using the dedicated fireline form when required.",
+      "Submit the signed original test report through Public Works after the fireline test is complete."
+    ]
+  },
+  "workflowSteps": [
+    "Register the BPAT with the City of McKinney and pay the registration fee before testing.",
+    "Use only City-approved test forms for each assembly tested, and switch to the fireline form set when the scope requires it.",
+    "If the project involves irrigation, complete the CSS permit and inspection path alongside the backflow paperwork.",
+    "Submit the signed and dated original through the Public Works recordkeeping process by mail or physical drop-off.",
+    "Keep registration, calibration, and payment details current so reports are not rejected."
+  ],
+  "failureHighlights": [
+    "Electronic signatures are not accepted.",
+    "Using the wrong form can break the acceptance workflow even if the assembly was tested.",
+    "Registration expires with the gauge calibration expiration date, so stale tester credentials can create compliance problems."
+  ],
+  "costBand": {
+    "testingRange": "Private market pricing varies; BPAT registration with the City also carries a public registration fee.",
+    "repairRetestRange": "Repair and retest costs vary by assembly and scope, but paperwork handling is stricter than many BSI-managed cities.",
+    "pricingNotes": "In McKinney, process friction matters almost as much as the raw test quote because the City still wants signed originals and approved forms."
+  },
+  "sources": [
+    {
+      "label": "McKinney backflow program",
+      "url": "https://www.mckinneytexas.org/513/Backflow",
+      "kind": "official program page"
+    },
+    {
+      "label": "McKinney irrigation portal page",
+      "url": "https://www.mckinneytexas.org/514/Irrigation",
+      "kind": "official program page"
+    },
+    {
+      "label": "McKinney BPAT registration form",
+      "url": "https://www.mckinneytexas.org/DocumentCenter/View/132/Backflow-Registration-Form-General?bidId=",
+      "kind": "official form"
+    },
+    {
+      "label": "McKinney fireline BPAT registration form",
+      "url": "https://www.mckinneytexas.org/DocumentCenter/View/133/Backflow-Registration-Form-Fireline?bidId=",
+      "kind": "official form"
+    },
+    {
+      "label": "McKinney BPAT test report form",
+      "url": "https://www.mckinneytexas.org/DocumentCenter/View/133/BPAT-Test-Report?bidId=",
+      "kind": "official form"
+    }
+  ]
+}

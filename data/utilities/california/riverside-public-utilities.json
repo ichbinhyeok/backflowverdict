@@ -1,0 +1,149 @@
+{
+  "utilityId": "riverside-water",
+  "utilityName": "Riverside Public Utilities Backflow Prevention",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "riverside-public-utilities",
+  "state": "california",
+  "serviceAreaCities": [
+    "Riverside"
+  ],
+  "serviceAreaCounties": [
+    "Riverside County"
+  ],
+  "searchAliases": [
+    "riverside backflow testing",
+    "riverside approved backflow testers",
+    "riverside fire line backflow"
+  ],
+  "utilityUrl": "https://www.riversideca.gov/utilities/developers/water-engineering/backflow-prevention-1",
+  "officialProgramUrls": [
+    "https://www.riversideca.gov/utilities/developers/water-engineering/backflow-prevention-1",
+    "https://www.riversideca.gov/utilities/developers/water-engineering/faq",
+    "https://www.riversideca.gov/utilities/sites/riversideca.gov.utilities/files/RPU%20Approved%20Backflow%20Tester%20List%206.3.25.pdf"
+  ],
+  "testingFrequency": "Upon installation and at least annually thereafter",
+  "dueBasis": "Riverside Public Utilities says each installed backflow device must be tested for proper operation at least annually, and it makes the customer responsible for following up with the contracted tester and assuring reports are submitted by the due date.",
+  "coveredPropertyTypes": [
+    "Commercial water connections",
+    "Industrial water connections",
+    "Irrigation services",
+    "Fire protection services",
+    "Developer and contractor water projects"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Fire protection detector assemblies",
+    "Irrigation assemblies",
+    "USC-approved backflow prevention assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.riversideca.gov/utilities/sites/riversideca.gov.utilities/files/RPU%20Approved%20Backflow%20Tester%20List%206.3.25.pdf",
+  "officialListLabel": "Open the Riverside approved backflow tester list",
+  "submissionMethods": [
+    {
+      "label": "Riverside backflow prevention program",
+      "url": "https://www.riversideca.gov/utilities/developers/water-engineering/backflow-prevention-1",
+      "kind": "program page"
+    },
+    {
+      "label": "Riverside approved tester list",
+      "url": "https://www.riversideca.gov/utilities/sites/riversideca.gov.utilities/files/RPU%20Approved%20Backflow%20Tester%20List%206.3.25.pdf",
+      "kind": "official tester list"
+    },
+    {
+      "label": "Riverside developer FAQ",
+      "url": "https://www.riversideca.gov/utilities/developers/water-engineering/faq",
+      "kind": "faq and workflow page"
+    }
+  ],
+  "phone": "951-351-6167",
+  "penalties": "Riverside says only approved testers may submit accepted reports, and the utility warns that water service will remain locked off until a tampered or stolen assembly is replaced, inspected, and certified.",
+  "sourceExcerpt": "Riverside Public Utilities is one of the clearest California utility pages because it publishes Rule 13 context, an approved tester list, annual testing language, and explicit customer responsibility for getting reports in on time.",
+  "sourceSnapshotPath": "storage/snapshots/riverside-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Riverside is a strong California utility because it combines annual testing language, an official approved tester list, and direct utility enforcement around accepted reports and restored service.",
+  "whoIsAffected": "Commercial, industrial, irrigation, fire protection, and other Riverside service connections that the utility's cross-connection control program requires to have a backflow assembly.",
+  "residentialNotes": [
+    "Riverside's strongest public language is commercial and project oriented, but irrigation and protected residential services still route into the same cross-connection program.",
+    "The customer is still responsible for making sure the tester actually submits the report."
+  ],
+  "commercialNotes": [
+    "Riverside is commercially valuable because the utility keeps a live approved tester list and makes clear that only accepted reports from approved testers count.",
+    "Developer, irrigation, and fire-service angles are all supported by public utility pages."
+  ],
+  "annualTesting": {
+    "summary": "Riverside Public Utilities says each installed backflow device must be tested for proper operation at least annually and the customer must make sure the report is submitted on time.",
+    "highlights": [
+      "Annual testing language is explicit on the public program page.",
+      "Only approved certified testers may submit accepted reports to RPU.",
+      "The utility maintains records of locations, tests, and repairs under its cross-connection control program."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is in Riverside's cross-connection control program.",
+      "Use a tester from Riverside's approved list.",
+      "Follow up until the report is submitted and accepted before the due date."
+    ]
+  },
+  "irrigation": {
+    "summary": "Riverside's public materials treat irrigation assemblies as part of the same utility protection program rather than a separate landscaping topic.",
+    "highlights": [
+      "Irrigation assemblies sit inside the same approved-tester and accepted-report workflow.",
+      "Customers are still responsible for report submission timing.",
+      "The FAQ and standards content make contractor and service-line work easier to route."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation service requires a Riverside-approved assembly.",
+      "Use an approved tester for the annual test or retest.",
+      "Make sure the report reaches RPU and is accepted."
+    ]
+  },
+  "fireLine": {
+    "summary": "Riverside's developer and security materials make fire-protection assemblies a real local angle, not an afterthought.",
+    "highlights": [
+      "RPU references fire protection assemblies in its approved assembly descriptions.",
+      "Security and replacement guidance explicitly mentions fire protection systems.",
+      "Service can remain locked off until the assembly is replaced, inspected, and certified."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is tied to fire protection or a protected service connection.",
+      "Use an approved Riverside tester familiar with the assembly class.",
+      "Complete replacement or retest quickly so service restoration is not delayed."
+    ]
+  },
+  "workflowSteps": [
+    "Identify the Riverside service connection and assembly requirement.",
+    "Choose a tester from the Riverside approved list.",
+    "Complete the annual test or any required repair or replacement.",
+    "Follow up until RPU has the accepted report on file."
+  ],
+  "failureHighlights": [
+    "Riverside keeps the customer responsible for making sure the report is submitted on time.",
+    "Only approved testers may submit accepted reports.",
+    "Utility materials explicitly tie missing replacement certification to service staying locked off."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Riverside narrows the quote path through an approved tester list.",
+    "repairRetestRange": "Repair and retest cost can rise on irrigation or fire-protection assemblies where accepted certification affects service restoration.",
+    "pricingNotes": "The strongest local value is the approved-tester filter and clear accepted-report workflow, not a posted city fee."
+  },
+  "sources": [
+    {
+      "label": "Riverside backflow prevention program",
+      "url": "https://www.riversideca.gov/utilities/developers/water-engineering/backflow-prevention-1",
+      "kind": "official program page"
+    },
+    {
+      "label": "Riverside developer FAQ",
+      "url": "https://www.riversideca.gov/utilities/developers/water-engineering/faq",
+      "kind": "official faq page"
+    },
+    {
+      "label": "Riverside approved tester list",
+      "url": "https://www.riversideca.gov/utilities/sites/riversideca.gov.utilities/files/RPU%20Approved%20Backflow%20Tester%20List%206.3.25.pdf",
+      "kind": "official tester list pdf"
+    }
+  ]
+}

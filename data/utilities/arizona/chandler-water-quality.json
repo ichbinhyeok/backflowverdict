@@ -1,0 +1,148 @@
+{
+  "utilityId": "chandler-water",
+  "utilityName": "City of Chandler Water Quality Backflow Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "chandler-water-quality",
+  "state": "arizona",
+  "serviceAreaCities": [
+    "Chandler"
+  ],
+  "serviceAreaCounties": [
+    "Maricopa County"
+  ],
+  "searchAliases": [
+    "chandler backflow testing",
+    "chandler approved backflow companies",
+    "chandler sams backflow"
+  ],
+  "utilityUrl": "https://www.chandleraz.gov/residents/water/water-quality",
+  "officialProgramUrls": [
+    "https://www.chandleraz.gov/residents/water/water-quality",
+    "https://www.chandleraz.gov/residents/water/water-quality/backflow-testing-companies",
+    "https://www.chandleraz.gov/sites/default/files/departments/development-services/City-of-Chandler-2025-Specifications-and-Standards-Details-Supplement-to-MAG.pdf"
+  ],
+  "testingFrequency": "Upon installation and annually thereafter",
+  "dueBasis": "Chandler maintains required backflow records through its Water Quality division, routes management through the SAMS cross-connection platform, and requires certified testers approved by the city for accepted testing and maintenance work.",
+  "coveredPropertyTypes": [
+    "Commercial and industrial customers",
+    "Multifamily and HOA-managed sites",
+    "Irrigation and outdoor water-use systems where protection is required",
+    "Protected services tracked through Chandler Water Quality"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Irrigation backflow assemblies",
+    "Fire protection assemblies",
+    "City-approved USC or ASSE assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.chandleraz.gov/residents/water/water-quality/backflow-testing-companies",
+  "officialListLabel": "Open the Chandler approved testing companies list",
+  "submissionMethods": [
+    {
+      "label": "Chandler Water Quality",
+      "url": "https://www.chandleraz.gov/residents/water/water-quality",
+      "kind": "program page"
+    },
+    {
+      "label": "Chandler approved testing companies",
+      "url": "https://www.chandleraz.gov/residents/water/water-quality/backflow-testing-companies",
+      "kind": "official tester list"
+    },
+    {
+      "label": "Chandler 2025 standards supplement",
+      "url": "https://www.chandleraz.gov/sites/default/files/departments/development-services/City-of-Chandler-2025-Specifications-and-Standards-Details-Supplement-to-MAG.pdf",
+      "kind": "engineering standards"
+    }
+  ],
+  "phone": "480-782-3660",
+  "penalties": "Chandler treats backflow compliance as an active Water Quality field-services program. The customer risk is staying outside the approved-company workflow or missing the city-managed record path inside SAMS.",
+  "sourceExcerpt": "Chandler is a strong Arizona utility because the city publishes a live approved testing-company list, tracks assemblies through the SAMS platform, and requires city-approved certified testers.",
+  "sourceSnapshotPath": "storage/snapshots/chandler-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Chandler is a strong expansion utility because it combines a city-run Water Quality program, a maintained approved-company list, and explicit city-approved tester requirements.",
+  "whoIsAffected": "Commercial, multifamily, HOA, irrigation, and other protected Chandler services that Water Quality tracks through its cross-connection workflow.",
+  "residentialNotes": [
+    "Chandler is less broad than Tampa on ordinary homeowner pages, but HOA, multifamily, and outdoor water-use cases can still create real local demand.",
+    "Residential and managed-community irrigation issues can still route through the same Water Quality backflow program."
+  ],
+  "commercialNotes": [
+    "Chandler is especially strong for commercial and managed-property intent because the city keeps an approved testing-company list rather than leaving tester discovery vague.",
+    "The SAMS platform makes this a real operating program, not just a static educational page."
+  ],
+  "annualTesting": {
+    "summary": "Chandler Water Quality manages the city backflow program and requires city-approved certified testing companies for accepted ongoing testing and maintenance work.",
+    "highlights": [
+      "Water Quality uses the SAMS cross-connection platform for backflow management.",
+      "The city publishes an approved testing-company list.",
+      "City standards require all backflow assemblies to be tested by a certified tester approved by Chandler."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is in Chandler's active Water Quality program.",
+      "Choose a company from Chandler's approved testing list.",
+      "Keep the result aligned with the city-managed record workflow."
+    ]
+  },
+  "irrigation": {
+    "summary": "Chandler's backflow program supports real irrigation demand because outdoor water-use systems still route into the same approved-company and city-record workflow.",
+    "highlights": [
+      "Landscape and outdoor water-use systems are part of the same city-managed protection story.",
+      "The approved-company list gives irrigation owners a direct next step.",
+      "City-approved assembly standards still apply to the installation."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation assembly type and city requirement.",
+      "Use a Chandler-approved testing company.",
+      "Keep the test and any follow-up work aligned with Water Quality records."
+    ]
+  },
+  "fireLine": {
+    "summary": "Chandler's standards treat fire-protection assemblies as city-approved backflow devices rather than an afterthought.",
+    "highlights": [
+      "City standards call for approved assemblies including fire-protection use when applicable.",
+      "Backflow companies in the approved list include fire-focused firms.",
+      "Commercial fire-side testing should stay inside the approved-company path."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is serving fire protection.",
+      "Use an approved company qualified for the fire-side assembly class.",
+      "Keep the accepted test result inside Chandler's managed compliance path."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the service is tracked by Chandler Water Quality.",
+    "Choose a city-approved certified testing company.",
+    "Complete the test or maintenance work using the Chandler-approved workflow.",
+    "Keep the city-managed record current through the Water Quality program."
+  ],
+  "failureHighlights": [
+    "Chandler relies on an approved-company list rather than ad hoc tester selection.",
+    "The city uses a real system-of-record platform for backflow management.",
+    "Engineering standards reinforce that only city-approved certified testers may perform accepted testing."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Chandler narrows the market through its approved-company list and managed record system.",
+    "repairRetestRange": "Repair and retest cost varies by assembly type and whether the work touches commercial or fire-protection service.",
+    "pricingNotes": "The commercial value comes from a live approved-company funnel and strong city program, not from a public flat fee."
+  },
+  "sources": [
+    {
+      "label": "Chandler Water Quality",
+      "url": "https://www.chandleraz.gov/residents/water/water-quality",
+      "kind": "official program page"
+    },
+    {
+      "label": "Chandler Backflow Testing Companies",
+      "url": "https://www.chandleraz.gov/residents/water/water-quality/backflow-testing-companies",
+      "kind": "official tester list"
+    },
+    {
+      "label": "Chandler 2025 standards supplement",
+      "url": "https://www.chandleraz.gov/sites/default/files/departments/development-services/City-of-Chandler-2025-Specifications-and-Standards-Details-Supplement-to-MAG.pdf",
+      "kind": "official engineering standards"
+    }
+  ]
+}

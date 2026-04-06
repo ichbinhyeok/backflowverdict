@@ -1,0 +1,137 @@
+{
+  "utilityId": "flagstaff-water",
+  "utilityName": "City of Flagstaff Backflow Prevention Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "flagstaff-water-services",
+  "state": "arizona",
+  "serviceAreaCities": [
+    "Flagstaff"
+  ],
+  "serviceAreaCounties": [
+    "Coconino County"
+  ],
+  "searchAliases": [
+    "flagstaff backflow testing",
+    "flagstaff certified backflow tester",
+    "flagstaff fire sprinkler backflow"
+  ],
+  "utilityUrl": "https://www.flagstaff.az.gov/35/Backflow-Prevention",
+  "officialProgramUrls": [
+    "https://www.flagstaff.az.gov/35/Backflow-Prevention",
+    "https://public.destinyhosted.com/flagsdocs/2021/CCMTGF/20210406_1248/5327_ORD2021.09.CrossConnectionControls.pdf"
+  ],
+  "testingFrequency": "Annually",
+  "dueBasis": "Flagstaff requires annual testing for assemblies in the city program, sends courtesy notices when testing is due, and routes tester result submission through BSI Online or city compliance staff.",
+  "coveredPropertyTypes": [
+    "Businesses with contamination risk",
+    "Properties with irrigation systems",
+    "Fire sprinkler services",
+    "Other protected services under the city cross-connection program"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow assemblies",
+    "Fire sprinkler backflow devices",
+    "Irrigation backflow assemblies",
+    "Approved assemblies near the meter"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Flagstaff backflow prevention page",
+      "url": "https://www.flagstaff.az.gov/35/Backflow-Prevention",
+      "kind": "program page"
+    },
+    {
+      "label": "Flagstaff cross-connection ordinance",
+      "url": "https://public.destinyhosted.com/flagsdocs/2021/CCMTGF/20210406_1248/5327_ORD2021.09.CrossConnectionControls.pdf",
+      "kind": "ordinance"
+    }
+  ],
+  "phone": "928-213-2475",
+  "penalties": "Customers are responsible for keeping assemblies in satisfactory condition, retesting immediately after repairs, and obtaining approval before removing or disconnecting devices. Missing the city process can push the property outside Flagstaff's accepted compliance path.",
+  "sourceExcerpt": "Flagstaff is a strong Arizona utility because it mixes annual testing, BSI result handling, meter-adjacent installation rules, and a residential fire-sprinkler waiver in one city-owned workflow.",
+  "sourceSnapshotPath": "storage/snapshots/flagstaff-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Flagstaff is a utility-first page because the city program clearly explains who is exempt, who needs annual testing, and how testers must route reports.",
+  "whoIsAffected": "Flagstaff businesses and protected services with contamination risk, plus irrigation and fire sprinkler assemblies that fall inside the city cross-connection program.",
+  "residentialNotes": [
+    "Single-family residences used solely for residential purposes are exempt from assembly requirements, which makes this page more precise than generic statewide copy.",
+    "Residential fire sprinkler owners can apply for a waiver rather than assuming annual testing always applies."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because Flagstaff clearly states annual testing, repair retesting, and approved-assembly location rules.",
+    "This utility brings a colder-climate Arizona market with strong fire-sprinkler and enclosure language into the cluster."
+  ],
+  "annualTesting": {
+    "summary": "Flagstaff requires annual testing and expects certified testers to submit results through BSI or the city compliance workflow.",
+    "highlights": [
+      "Annual testing is explicit.",
+      "The city sends courtesy notices when annual testing is due.",
+      "Repairs require immediate retest and result submission."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is in the Flagstaff program.",
+      "Schedule a certified tester.",
+      "Have the tester submit the result through BSI or the city workflow."
+    ]
+  },
+  "irrigation": {
+    "summary": "Flagstaff irrigation is notable because freeze protection and heated enclosure placement affect how assemblies are installed and maintained.",
+    "highlights": [
+      "Assemblies should be located close to the meter in a heated enclosure.",
+      "Indoor installation requires city approval and a hold harmless agreement.",
+      "The program is stronger than generic irrigation advice because the climate changes the compliance details."
+    ],
+    "workflowSteps": [
+      "Confirm where the assembly is located relative to the meter.",
+      "Schedule a certified tester familiar with Flagstaff requirements.",
+      "Keep annual results current through the city workflow."
+    ]
+  },
+  "fireLine": {
+    "summary": "Flagstaff also supports fire-side demand because the city publicly addresses annual fire-sprinkler testing waivers and assembly removal approval.",
+    "highlights": [
+      "Residential fire sprinkler waiver logic is public.",
+      "Removal or disconnection requires prior city approval.",
+      "The city treats repair and maintenance as compliance events, not informal plumbing work."
+    ],
+    "workflowSteps": [
+      "Confirm whether the service qualifies for a waiver or standard annual testing.",
+      "Get city approval before removing or disconnecting the device.",
+      "Retest immediately after any repair work."
+    ]
+  },
+  "workflowSteps": [
+    "Check whether the property is inside the Flagstaff cross-connection program.",
+    "Confirm whether the assembly is exempt, standard, or fire-sprinkler waiver eligible.",
+    "Schedule a certified tester.",
+    "Keep annual and repair-triggered results inside the city workflow."
+  ],
+  "failureHighlights": [
+    "Flagstaff requires immediate retest after repair.",
+    "The city uses BSI for tester submission support.",
+    "The program has unusually clear freeze-protection and fire-sprinkler rules."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but mountain-climate installation details can increase service complexity.",
+    "repairRetestRange": "Repair and retest cost rises when the assembly needs enclosure or variance work.",
+    "pricingNotes": "The strongest local value is clarity around waiver, variance, and repair-retest rules."
+  },
+  "sources": [
+    {
+      "label": "Flagstaff backflow prevention",
+      "url": "https://www.flagstaff.az.gov/35/Backflow-Prevention",
+      "kind": "official program page"
+    },
+    {
+      "label": "Flagstaff cross-connection ordinance",
+      "url": "https://public.destinyhosted.com/flagsdocs/2021/CCMTGF/20210406_1248/5327_ORD2021.09.CrossConnectionControls.pdf",
+      "kind": "official ordinance pdf"
+    }
+  ]
+}

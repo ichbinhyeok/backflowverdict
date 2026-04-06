@@ -1,0 +1,144 @@
+{
+  "utilityId": "fort-collins-utilities",
+  "utilityName": "Fort Collins Utilities Backflow Prevention and Cross-Connection Control",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "fort-collins-utilities",
+  "state": "colorado",
+  "serviceAreaCities": [
+    "Fort Collins"
+  ],
+  "serviceAreaCounties": [
+    "Larimer County"
+  ],
+  "searchAliases": [
+    "fort collins backflow testing",
+    "fort collins irrigation backflow",
+    "fort collins bsi backflow"
+  ],
+  "utilityUrl": "https://www.fcgov.com/utilities/safety-and-security/landscape-safely/backflow-prevention",
+  "officialProgramUrls": [
+    "https://www.fcgov.com/utilities/safety-and-security/landscape-safely/backflow-prevention",
+    "https://www.fcgov.com/utilities/residential/conserve/water-efficiency/hydrants-meters-and-backflow-prevention",
+    "https://www.fcgov.com/utilities/safety-and-security/landscape-safely/backflow-prevention/backflow-testers"
+  ],
+  "testingFrequency": "Upon installation and annually thereafter",
+  "dueBasis": "Fort Collins Utilities requires test reports on all devices annually, requires new and replacement assemblies to be entered into BSI Online or sent to the city's cross-connection email, and warns that customers can face water-service suspension for noncompliance.",
+  "coveredPropertyTypes": [
+    "Commercial properties",
+    "Industrial properties",
+    "Irrigation systems",
+    "Construction and hydrant meter uses",
+    "Other services with actual or potential cross-connections"
+  ],
+  "coveredDeviceTypes": [
+    "Reduced pressure assemblies",
+    "Pressure vacuum breakers",
+    "Hydrant meter backflow assemblies",
+    "Utility-approved cross-connection control devices"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.fcgov.com/utilities/safety-and-security/landscape-safely/backflow-prevention/backflow-testers",
+  "officialListLabel": "Open the Fort Collins local certified backflow tester list",
+  "submissionMethods": [
+    {
+      "label": "Fort Collins backflow program",
+      "url": "https://www.fcgov.com/utilities/safety-and-security/landscape-safely/backflow-prevention",
+      "kind": "program page"
+    },
+    {
+      "label": "Fort Collins certified tester list",
+      "url": "https://www.fcgov.com/utilities/safety-and-security/landscape-safely/backflow-prevention/backflow-testers",
+      "kind": "official tester list"
+    }
+  ],
+  "phone": "970-416-2249",
+  "penalties": "Fort Collins says customers who fail to comply can have water service suspended, and new backflow devices must be tested within 48 hours of installation before the compliance file is complete.",
+  "sourceExcerpt": "Fort Collins is a strong Colorado utility because it publishes annual testing, BSI Online reporting, a local certified tester list, and a real service-suspension consequence.",
+  "sourceSnapshotPath": "storage/snapshots/fort-collins-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Fort Collins is a strong Colorado utility because it combines annual testing, BSI reporting, a local tester list, and explicit water-service suspension risk.",
+  "whoIsAffected": "Commercial, industrial, irrigation, hydrant-meter, and other Fort Collins Utilities customers whose services create actual or potential cross-connections.",
+  "residentialNotes": [
+    "Fort Collins is strongest where irrigation, hydrant-meter, or another cross-connection hazard exists.",
+    "Residential irrigation demand is real because the city gives specific device rules and tester routing."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because Fort Collins uses both BSI Online and service-suspension language.",
+    "The official local tester list gives a clean approved-testers surface."
+  ],
+  "annualTesting": {
+    "summary": "Fort Collins requires all devices to be tested annually and expects new or replacement device results to be reported through BSI Online or the city's cross-connection workflow.",
+    "highlights": [
+      "Annual testing is explicit.",
+      "New devices must be tested within 48 hours of installation.",
+      "Noncompliance can trigger water-service suspension."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is inside Fort Collins Utilities' program.",
+      "Use a tester from the city's certified tester list.",
+      "Submit the result through BSI Online or the city workflow before the compliance window closes."
+    ]
+  },
+  "irrigation": {
+    "summary": "Fort Collins irrigation content is strong because the city publishes both acceptable device types and tester routing.",
+    "highlights": [
+      "Pressure vacuum breakers are common for lawn irrigation where accepted by the city.",
+      "The official tester list keeps irrigation users inside a clean local routing path.",
+      "Annual testing still applies after installation."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation assembly type Fort Collins requires.",
+      "Use a certified tester from the city's list.",
+      "Keep the annual report current through the reporting workflow."
+    ]
+  },
+  "fireLine": {
+    "summary": "Fort Collins is less fire-specific than Broward, but hydrant-meter and protected-service content still create a strong utility protection page.",
+    "highlights": [
+      "The city keeps construction and hydrant-meter backflow rules visible.",
+      "New and replacement devices have a fast post-install test requirement.",
+      "Noncompliance still moves toward service suspension."
+    ],
+    "workflowSteps": [
+      "Confirm the protected service and assembly class.",
+      "Use a local certified tester familiar with the installation.",
+      "Get the post-install and annual testing record into the city system on time."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the service is under the Fort Collins program.",
+    "Choose a tester from the local certified tester list.",
+    "Submit annual or post-install results through BSI Online or the city workflow.",
+    "Resolve defects quickly so the service does not move toward suspension."
+  ],
+  "failureHighlights": [
+    "Fort Collins keeps a public local tester list.",
+    "New devices must be tested within 48 hours of installation.",
+    "The utility uses service-suspension language for noncompliance."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Fort Collins narrows the path through a local tester list and utility reporting rules.",
+    "repairRetestRange": "Repair and retest cost depends on the assembly type and whether the case is irrigation, hydrant meter, or another protected service.",
+    "pricingNotes": "The strongest local cost signal is noncompliance risk, not a posted utility fee."
+  },
+  "sources": [
+    {
+      "label": "Fort Collins backflow prevention program",
+      "url": "https://www.fcgov.com/utilities/safety-and-security/landscape-safely/backflow-prevention",
+      "kind": "official program page"
+    },
+    {
+      "label": "Fort Collins hydrants, meters, and backflow prevention",
+      "url": "https://www.fcgov.com/utilities/residential/conserve/water-efficiency/hydrants-meters-and-backflow-prevention",
+      "kind": "official utility page"
+    },
+    {
+      "label": "Fort Collins certified tester list",
+      "url": "https://www.fcgov.com/utilities/safety-and-security/landscape-safely/backflow-prevention/backflow-testers",
+      "kind": "official tester list"
+    }
+  ]
+}

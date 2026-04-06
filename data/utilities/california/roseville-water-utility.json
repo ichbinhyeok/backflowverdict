@@ -1,0 +1,144 @@
+{
+  "utilityId": "roseville-water",
+  "utilityName": "City of Roseville Water Utility Cross-Connection and Backflow Prevention Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "roseville-water-utility",
+  "state": "california",
+  "serviceAreaCities": [
+    "Roseville"
+  ],
+  "serviceAreaCounties": [
+    "Placer County"
+  ],
+  "searchAliases": [
+    "roseville backflow testing",
+    "roseville irrigation backflow",
+    "roseville fire sprinkler backflow"
+  ],
+  "utilityUrl": "https://www.roseville.ca.us/government/departments/environmental_utilities/at_your_service/water_supply/cross_connection_and_backflow_prevention_program",
+  "officialProgramUrls": [
+    "https://www.roseville.ca.us/government/departments/environmental_utilities/at_your_service/water_supply/cross_connection_and_backflow_prevention_program",
+    "https://www.roseville.ca.us/backflow",
+    "https://www.roseville.ca.us/government/departments/development_services/engineering_land_development/construction_management_inspection/design_construction_standards"
+  ],
+  "testingFrequency": "Annually",
+  "dueBasis": "Roseville requires annual testing on commercial or domestic use lines, irrigation, and fire sprinklers, and it gives customers 30 days to repair or replace a failed assembly after notice.",
+  "coveredPropertyTypes": [
+    "Commercial properties",
+    "Industrial properties",
+    "Domestic use lines where Roseville requires protection",
+    "Irrigation systems",
+    "Fire sprinkler systems"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies at the point of connection",
+    "Irrigation assemblies",
+    "Fire sprinkler assemblies",
+    "City-approved BPAs constructed to Roseville standards"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Roseville cross-connection control program",
+      "url": "https://www.roseville.ca.us/government/departments/environmental_utilities/at_your_service/water_supply/cross_connection_and_backflow_prevention_program",
+      "kind": "program page"
+    },
+    {
+      "label": "Roseville backflow information hub",
+      "url": "https://www.roseville.ca.us/backflow",
+      "kind": "program page"
+    }
+  ],
+  "phone": "916-746-1700",
+  "penalties": "Roseville says failure to respond and repair a defective assembly can result in termination of water service under the city's municipal code and California administrative code.",
+  "sourceExcerpt": "Roseville is a strong California build because the city publicly spells out annual testing across domestic, irrigation, and fire sprinkler lines, plus a 30-day repair clock and shutoff exposure for failed assemblies.",
+  "sourceSnapshotPath": "storage/snapshots/roseville-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Roseville is a strong California utility because it makes annual testing, 30-day failed-assembly repair timing, and water-shutoff risk explicit on public pages.",
+  "whoIsAffected": "Commercial, industrial, irrigation, fire sprinkler, and other Roseville water services where the utility's cross-connection control program requires a backflow prevention assembly.",
+  "residentialNotes": [
+    "Roseville does not frame every homeowner as annual-test demand, but it does pull domestic use lines into the program when protection is required.",
+    "Single-family and multifamily users often hit this through irrigation or another site hazard rather than a generic citywide notice."
+  ],
+  "commercialNotes": [
+    "Roseville is strong for commercial lead intent because the city openly references annual testing, defects, repair windows, and service shutoff risk.",
+    "Fire sprinkler and irrigation users are explicitly named, which makes the support pages real instead of filler."
+  ],
+  "annualTesting": {
+    "summary": "Roseville requires annual backflow prevention device testing on commercial or domestic use lines, irrigation, and fire sprinklers to eliminate actual or potential cross-connections into the public water supply.",
+    "highlights": [
+      "Annual testing is explicit across domestic, irrigation, and fire sprinkler services.",
+      "A failed assembly must be repaired or replaced within 30 days of notice.",
+      "Failure to respond can lead to water service termination."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is on Roseville's annual test list.",
+      "Complete the annual inspection or retest through the city's process.",
+      "If the assembly fails, repair or replace it within 30 days and close out the reinspection."
+    ]
+  },
+  "irrigation": {
+    "summary": "Roseville treats irrigation as a core cross-connection topic, not a side note.",
+    "highlights": [
+      "Irrigation systems are named as common cross-connections.",
+      "Annual testing applies where irrigation assemblies are installed on protected water service lines.",
+      "Roseville also surveys recycled-water dual-plumbed sites."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation service or recycled-water setup requires a protected assembly.",
+      "Keep the annual inspection current.",
+      "If notified of a defect, repair or replace the assembly within the city's 30-day window."
+    ]
+  },
+  "fireLine": {
+    "summary": "Roseville is worth a fire-line subpage because the utility directly names fire sprinklers in both the annual testing language and the cross-connection examples.",
+    "highlights": [
+      "Fire sprinkler systems are explicitly named in the annual testing requirement.",
+      "Defective assemblies must be corrected quickly after notice.",
+      "Shutoff exposure gives the page real local urgency."
+    ],
+    "workflowSteps": [
+      "Confirm the fire sprinkler assembly sits inside Roseville's annual testing program.",
+      "Complete the annual inspection on time.",
+      "Repair or replace failed assemblies within 30 days so the protected service is not exposed to shutoff."
+    ]
+  },
+  "workflowSteps": [
+    "Identify the Roseville service line and assembly requirement.",
+    "Complete the annual test or reinspection through the city's process.",
+    "If the assembly is defective, repair or replace it inside the 30-day window.",
+    "Keep the city compliance record clear so service is not threatened."
+  ],
+  "failureHighlights": [
+    "Roseville gives a clear 30-day correction window after a failed inspection.",
+    "Irrigation and fire sprinklers are both explicitly covered.",
+    "The city ties ignored failures to potential water service termination."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Roseville's strong correction deadline makes annual compliance more urgent than a generic inspection.",
+    "repairRetestRange": "Repair and retest costs vary by assembly size and whether the line serves irrigation or fire sprinklers.",
+    "pricingNotes": "The key local signal is the 30-day repair window and shutoff risk, not a public fee sheet."
+  },
+  "sources": [
+    {
+      "label": "Roseville cross-connection and backflow prevention program",
+      "url": "https://www.roseville.ca.us/government/departments/environmental_utilities/at_your_service/water_supply/cross_connection_and_backflow_prevention_program",
+      "kind": "official program page"
+    },
+    {
+      "label": "Roseville backflow information hub",
+      "url": "https://www.roseville.ca.us/backflow",
+      "kind": "official program page"
+    },
+    {
+      "label": "Roseville design and construction standards",
+      "url": "https://www.roseville.ca.us/government/departments/development_services/engineering_land_development/construction_management_inspection/design_construction_standards",
+      "kind": "official standards page"
+    }
+  ]
+}

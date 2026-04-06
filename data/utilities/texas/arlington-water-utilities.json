@@ -1,0 +1,147 @@
+{
+  "utilityId": "arlington-water",
+  "utilityName": "Arlington Water Utilities",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "arlington-water-utilities",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Arlington"
+  ],
+  "serviceAreaCounties": [
+    "Tarrant County"
+  ],
+  "searchAliases": [
+    "arlington backflow testing",
+    "arlington irrigation backflow",
+    "arlington fireline backflow"
+  ],
+  "utilityUrl": "https://www.arlingtontx.gov/city_hall/departments/water_utilities",
+  "officialProgramUrls": [
+    "https://www.arlingtontx.gov/city_hall/departments/water_utilities",
+    "https://www.arlingtontx.gov/files/assets/city/v/2/city-secretary/documents/city-code-of-ordinances/backflow-prevention-chapter.pdf",
+    "https://www.arlingtontx.gov/UserFiles/Servers/Server_14481062/File/City%20Hall/Depts/City%20Secretary/City_Code_of_Ordinances/IRRChapter.pdf"
+  ],
+  "testingFrequency": "At installation, move, repair or replacement; annually for health-hazard assemblies",
+  "dueBasis": "Arlington's backflow ordinance requires testing immediately after installation, when an assembly is moved, after repair or replacement, before re-occupancy after a year of vacancy, and at least annually for assemblies protecting against health hazards. The Regulatory Authority can require more frequent testing.",
+  "coveredPropertyTypes": [
+    "Residential and commercial premises under Arlington's backflow ordinance",
+    "Lawn irrigation systems installed under City permit",
+    "Fire sprinkler and fire suppression systems",
+    "Properties with health-hazard or high-hazard assemblies"
+  ],
+  "coveredDeviceTypes": [
+    "Health-hazard backflow assemblies",
+    "Irrigation backflow devices",
+    "Fire line DCVA, detector check, and RPZ assemblies"
+  ],
+  "approvedTesterMode": "DIRECTORY_ONLY",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Water utilities department page",
+      "url": "https://www.arlingtontx.gov/city_hall/departments/water_utilities",
+      "kind": "department page"
+    },
+    {
+      "label": "Arlington backflow prevention ordinance",
+      "url": "https://www.arlingtontx.gov/files/assets/city/v/2/city-secretary/documents/city-code-of-ordinances/backflow-prevention-chapter.pdf",
+      "kind": "official ordinance"
+    },
+    {
+      "label": "Arlington irrigation ordinance",
+      "url": "https://www.arlingtontx.gov/UserFiles/Servers/Server_14481062/File/City%20Hall/Depts/City%20Secretary/City_Code_of_Ordinances/IRRChapter.pdf",
+      "kind": "official ordinance"
+    }
+  ],
+  "phone": "817-275-5931",
+  "penalties": "Arlington's backflow ordinance allows misdemeanor enforcement, treats each day a violation continues as a separate offense, and the ordinance history states violations can carry fines up to $2,000. The irrigation chapter separately carries enforcement and penalty provisions.",
+  "sourceExcerpt": "Arlington publishes detailed backflow and irrigation ordinances rather than a consumer-oriented approved tester list. The code is explicit about testing triggers, City registration, irrigation permits, and fire line contractor rules.",
+  "sourceSnapshotPath": "storage/snapshots/arlington-water-utilities.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Arlington is a code-driven city: annual testing is tied to health-hazard assemblies, but installation, moves, repairs, replacement, irrigation permits, and fire line work all have separate ordinance triggers.",
+  "whoIsAffected": "Residential and commercial properties with health-hazard assemblies, lawn irrigation systems, fire sprinkler systems, and premises that have been vacant long enough to trigger re-occupancy testing.",
+  "residentialNotes": [
+    "Residential owners most often run into Arlington's rules through lawn irrigation permits and re-occupancy or repair testing triggers.",
+    "A homeowner should not flatten Arlington into a generic annual rule because the ordinance splits health-hazard annual testing from other event-based triggers."
+  ],
+  "commercialNotes": [
+    "Commercial and other higher-hazard premises are much more likely to sit in the annual testing lane.",
+    "Fire protection, inspection access, and City registration requirements make Arlington more ordinance-heavy than a generic plumber quote suggests."
+  ],
+  "annualTesting": {
+    "summary": "Arlington's annual testing rule is specific: assemblies that protect against health hazards must be tested at least once a year, while other triggers come from installation, repair, replacement, moves, and long vacancy.",
+    "highlights": [
+      "Health-hazard assemblies are tested at least annually.",
+      "Assemblies are also tested on installation, move, repair or replacement, and before re-occupancy after a year of vacancy.",
+      "Only certified testers registered with the City's Regulatory Authority can perform the work."
+    ],
+    "workflowSteps": [
+      "Confirm whether the property sits in the health-hazard annual lane or an event-driven lane.",
+      "Use a City-registered certified tester.",
+      "Put the results on the City form and keep the premises records current."
+    ]
+  },
+  "irrigation": {
+    "summary": "Arlington's irrigation workflow is permit-led: lawn irrigation systems need a building inspection permit and must comply with the plumbing code, the irrigation chapter, and the backflow chapter together.",
+    "highlights": [
+      "All lawn irrigation systems require a permit from the Building Inspection Department.",
+      "Potable interconnections with alternate water sources are prohibited.",
+      "If reclaimed water is involved, Arlington requires both a reclaimed-water-side double check assembly and an RPZ on the potable side."
+    ],
+    "workflowSteps": [
+      "Pull the irrigation permit before installation work begins.",
+      "Install the assembly to Arlington's plumbing, irrigation, and backflow code requirements.",
+      "Use the City testing and reporting path once the device is installed or later repaired."
+    ]
+  },
+  "fireLine": {
+    "summary": "Arlington is unusually explicit on fire line rules. Fire sprinkler systems use a City-approved DCVA as the minimum in many cases, but an RPZ is required when anything other than potable water can enter the system.",
+    "highlights": [
+      "Fire systems with non-potable-approved piping or without periodic flow-through need at least a City-approved DCVA.",
+      "An RPZ is required when antifreeze, foam, or other non-potable solutions can enter the sprinkler system unless an air gap protects the tank.",
+      "Testing and repair on fire lines must be performed by personnel permanently employed by an approved fire line contractor."
+    ],
+    "workflowSteps": [
+      "Confirm whether the fire system can stay on a DCVA or must move to an RPZ.",
+      "Install the fire line equipment through a state-licensed fire sprinkler system contractor.",
+      "Have a licensed fire line tester complete and submit the cross-connection test report to the Regulatory Authority."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm whether the assembly is in Arlington's health-hazard annual lane or was triggered by installation, vacancy, repair, move, or replacement.",
+    "Use a certified tester registered with Arlington's Regulatory Authority.",
+    "If the work involves irrigation or fire protection, follow the separate permit and contractor rules before treating the job as routine testing.",
+    "Use the City's reporting form and keep assembly records on site."
+  ],
+  "failureHighlights": [
+    "Arlington can require testing more frequently than the minimum annual rule when the Regulatory Authority deems it necessary.",
+    "Using an unregistered tester or ignoring a repair order creates ordinance exposure, not just scheduling delay.",
+    "Fire line repair work cannot be detached from approved fire line contractor requirements."
+  ],
+  "costBand": {
+    "testingRange": "$85 to $160 for a routine annual test",
+    "repairRetestRange": "$250 to $1,350 depending on access and device type",
+    "pricingNotes": "Arlington's public materials are stronger on ordinance triggers and contractor requirements than on retail pricing, so use local quotes rather than assuming the code reveals price."
+  },
+  "sources": [
+    {
+      "label": "Arlington Water Utilities",
+      "url": "https://www.arlingtontx.gov/city_hall/departments/water_utilities",
+      "kind": "official department page"
+    },
+    {
+      "label": "Arlington backflow prevention ordinance",
+      "url": "https://www.arlingtontx.gov/files/assets/city/v/2/city-secretary/documents/city-code-of-ordinances/backflow-prevention-chapter.pdf",
+      "kind": "official ordinance"
+    },
+    {
+      "label": "Arlington irrigation ordinance",
+      "url": "https://www.arlingtontx.gov/UserFiles/Servers/Server_14481062/File/City%20Hall/Depts/City%20Secretary/City_Code_of_Ordinances/IRRChapter.pdf",
+      "kind": "official ordinance"
+    }
+  ]
+}

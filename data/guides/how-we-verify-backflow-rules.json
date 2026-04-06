@@ -1,0 +1,60 @@
+{
+  "slug": "how-we-verify-backflow-rules",
+  "title": "How we verify local backflow rules",
+  "description": "What counts as an official source, how local utility pages override generic assumptions, and why stale pages are suppressed.",
+  "intro": "The fastest way to publish junk in this category is to paraphrase generic plumbing advice and pretend it applies to every utility. This site works only if the local program page stays canonical.",
+  "callout": "We verify utility pages against the governing authority first, then use statewide and evergreen sources only to explain the workflow around that local rule.",
+  "sourceExcerpt": "The local utility or district page stays canonical. Statewide and evergreen sources support comprehension, but stale or weakly sourced local pages must be suppressed.",
+  "sourceSnapshotPath": "storage/snapshots/guides/how-we-verify-backflow-rules.html",
+  "reviewerInitials": "TL",
+  "lastReviewed": "2026-04-04",
+  "published": true,
+  "sections": [
+    {
+      "heading": "Official source beats generic explanation",
+      "body": "A city or utility program page, ordinance, tester list, or submission portal beats a generalized article every time. We keep the local page canonical and use guides to support comprehension, not replace the rule.",
+      "bullets": [
+        "TCEQ establishes the statewide floor, but cities still control notices, portals, and local enforcement.",
+        "If a utility has a hazard split or a city-specific portal, we use that instead of a one-size-fits-all annual claim."
+      ]
+    },
+    {
+      "heading": "Tester pages only open under explicit rules",
+      "body": "An approved-tester page only goes live when the governing authority exposes an official list or equivalent official lookup. Non-official directory pages stay separate and do not borrow the authority language.",
+      "bullets": [
+        "Lewisville and College Station both publish official tester lists.",
+        "Dallas publishes registration and portal instructions, but that is not the same as an official public list."
+      ]
+    },
+    {
+      "heading": "Freshness matters more than page count",
+      "body": "If a local rule page goes stale, the safer behavior is to suppress it from public routes and sitemap generation until it is re-verified.",
+      "bullets": [
+        "Each utility JSON stores its own last-verified date and stale window.",
+        "A thin but current site is better than a large site filled with expired rules."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "TCEQ backflow prevention assembly report instructions",
+      "url": "https://www.tceq.texas.gov/downloads/drinking-water/plan-technical-review/prevention/tceq-20700.pdf",
+      "kind": "state baseline"
+    },
+    {
+      "label": "Lewisville backflow testing page",
+      "url": "https://www.cityoflewisville.com/city-hall/city-departments/public-services/meter-services/backflow-testing",
+      "kind": "utility example"
+    },
+    {
+      "label": "Dallas Water Utilities backflow test reports page",
+      "url": "https://dallas.gov/departments/waterutilities/Pages/Backflow-Test-Reports.aspx",
+      "kind": "utility example"
+    },
+    {
+      "label": "College Station drinking water and backflow page",
+      "url": "https://www.cstx.gov/living-here/utilities/water-services/drinking-water/",
+      "kind": "utility example"
+    }
+  ]
+}

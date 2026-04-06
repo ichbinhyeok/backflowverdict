@@ -1,0 +1,60 @@
+{
+  "slug": "approved-testers-vs-find-a-tester",
+  "title": "Approved testers vs find a tester",
+  "description": "Why official tester lists and commercial directories must stay separate, and what each page type is allowed to claim.",
+  "intro": "These two page types look similar on the surface, but they have different trust contracts. If they blur together, the site stops being reliable.",
+  "callout": "Official authority lists stay official-first. Directory pages are clearly labeled as non-official and only exist when there is real public inventory to show.",
+  "sourceExcerpt": "Official tester lists and commercial directories must stay separate. Authority pages lead with the governing source; non-official directories are explicitly labeled and only go live when real inventory exists.",
+  "sourceSnapshotPath": "storage/snapshots/guides/approved-testers-vs-find-a-tester.html",
+  "reviewerInitials": "TL",
+  "lastReviewed": "2026-04-04",
+  "published": true,
+  "sections": [
+    {
+      "heading": "What an approved tester page can say",
+      "body": "An approved tester page can point to an official utility list or city-maintained lookup. It can also show clearly separated sponsor inventory, but only below the authority block and without implying endorsement.",
+      "bullets": [
+        "Round Rock, Lewisville, and College Station all expose official tester lists.",
+        "The authority source should always appear before any commercial placement."
+      ]
+    },
+    {
+      "heading": "What a find-a-tester page can say",
+      "body": "A non-official directory can help users discover local testers, but it cannot borrow the language or visual hierarchy of an authority list. If there is no real public inventory, the page should not render.",
+      "bullets": [
+        "Directory pages are for lead routing, not for making compliance claims.",
+        "If a provider list is draft-only or unverified, the route should stay hidden."
+      ]
+    },
+    {
+      "heading": "Where people get misled",
+      "body": "The common failure mode is taking a city page that mentions tester registration and presenting it as though the site itself maintains the approved roster. That is exactly the ambiguity this project avoids.",
+      "bullets": [
+        "Dallas is a good example of a strong official program page that still does not justify an approved-list claim by itself.",
+        "When in doubt, route users back to the governing utility page."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "Round Rock registered tester list",
+      "url": "https://www.roundrocktexas.gov/wp-content/uploads/2023/05/List-of-Registered-Testers-5.10.23.pdf",
+      "kind": "official list"
+    },
+    {
+      "label": "Lewisville tester list and submission rules",
+      "url": "https://www.cityoflewisville.com/city-hall/city-departments/public-services/meter-services/backflow-testing",
+      "kind": "official utility page"
+    },
+    {
+      "label": "College Station registered tester list",
+      "url": "https://www.cstx.gov/media/1hzno1mm/backflowpreventionassemblytesterlist.pdf",
+      "kind": "official list"
+    },
+    {
+      "label": "Dallas Water Utilities backflow test reports page",
+      "url": "https://dallas.gov/departments/waterutilities/Pages/Backflow-Test-Reports.aspx",
+      "kind": "official program page"
+    }
+  ]
+}

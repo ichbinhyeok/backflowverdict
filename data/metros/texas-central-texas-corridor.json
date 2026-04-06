@@ -1,0 +1,37 @@
+{
+  "metroId": "central-texas-corridor",
+  "title": "Central Texas backflow testing",
+  "state": "texas",
+  "metroSlug": "central-texas-corridor",
+  "cityNames": [
+    "Austin",
+    "Round Rock",
+    "Leander",
+    "San Antonio",
+    "College Station"
+  ],
+  "countyNames": [
+    "Travis County",
+    "Williamson County",
+    "Bexar County",
+    "Brazos County"
+  ],
+  "utilityIds": [
+    "austin-water",
+    "round-rock-water",
+    "leander-water",
+    "saws-backflow",
+    "college-station-water"
+  ],
+  "guideSlugs": [
+    "who-needs-a-backflow-preventer",
+    "approved-testers-vs-find-a-tester",
+    "backflow-test-cost"
+  ],
+  "description": "Support layer for the Central Texas utility cluster where Austin-area, SAWS, and College Station style workflows create different next-action paths.",
+  "summary": "Central Texas is useful commercially because the cluster mixes city utilities, portal-driven reporting, and formal approved-list programs. The metro page keeps that comparison on one surface without replacing the utility as canonical.",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 60,
+  "pageStatus": "PUBLISH",
+  "lastReviewed": "2026-04-05"
+}

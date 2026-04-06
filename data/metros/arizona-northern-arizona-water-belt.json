@@ -1,0 +1,31 @@
+{
+  "metroId": "northern-arizona-water-belt",
+  "title": "Northern Arizona backflow testing",
+  "state": "arizona",
+  "metroSlug": "northern-arizona-water-belt",
+  "cityNames": [
+    "Prescott",
+    "Prescott Valley",
+    "Flagstaff"
+  ],
+  "countyNames": [
+    "Yavapai County",
+    "Coconino County"
+  ],
+  "utilityIds": [
+    "prescott-water",
+    "prescott-valley-water",
+    "flagstaff-water"
+  ],
+  "guideSlugs": [
+    "approved-testers-vs-find-a-tester",
+    "failed-backflow-test-next-steps",
+    "backflow-test-cost"
+  ],
+  "description": "Northern Arizona support page for Prescott-area and Flagstaff utility routes where annual testing and tester-routing rules differ by authority.",
+  "summary": "Northern Arizona benefits from a metro support page because Prescott, Prescott Valley, and Flagstaff sit in the same search region but use different tester-routing and compliance patterns. This page groups the utilities without pretending the region is one authority.",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 60,
+  "pageStatus": "PUBLISH",
+  "lastReviewed": "2026-04-05"
+}

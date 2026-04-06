@@ -1,0 +1,47 @@
+{
+  "metroId": "dfw-metroplex",
+  "title": "Dallas-Fort Worth backflow testing",
+  "state": "texas",
+  "metroSlug": "dallas-fort-worth-metroplex",
+  "cityNames": [
+    "Dallas",
+    "Fort Worth",
+    "Arlington",
+    "Grand Prairie",
+    "Garland",
+    "Mesquite",
+    "Lewisville",
+    "McKinney",
+    "Frisco"
+  ],
+  "countyNames": [
+    "Dallas County",
+    "Tarrant County",
+    "Denton County",
+    "Collin County"
+  ],
+  "utilityIds": [
+    "dallas-water",
+    "fort-worth-water",
+    "arlington-water",
+    "gptx-water",
+    "garland-water",
+    "mesquite-water",
+    "lewisville-water",
+    "mckinney-water",
+    "frisco-water",
+    "talty-sud"
+  ],
+  "guideSlugs": [
+    "approved-testers-vs-find-a-tester",
+    "failed-backflow-test-next-steps",
+    "backflow-test-cost",
+    "how-we-verify-backflow-rules"
+  ],
+  "description": "Utility-first support page for the Dallas-Fort Worth cluster. Use it to compare nearby authorities, then drop into the exact utility rule page before acting.",
+  "summary": "DFW is commercially important because multiple city and district utilities publish different tester-list, annual-testing, and failed-test workflows. This page groups those surfaces without pretending the metro summary is the underlying authority.",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 60,
+  "pageStatus": "PUBLISH",
+  "lastReviewed": "2026-04-05"
+}

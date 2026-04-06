@@ -1,0 +1,27 @@
+{
+  "metroId": "southern-arizona",
+  "title": "Southern Arizona backflow testing",
+  "state": "arizona",
+  "metroSlug": "southern-arizona",
+  "cityNames": [
+    "Tucson",
+    "Marana"
+  ],
+  "countyNames": [
+    "Pima County"
+  ],
+  "utilityIds": [
+    "tucson-water",
+    "marana-water"
+  ],
+  "guideSlugs": [
+    "approved-testers-vs-find-a-tester",
+    "failed-backflow-test-next-steps"
+  ],
+  "description": "Southern Arizona support page for Tucson-area utility routes where approved lists, reclaimed-water issues, and annual tester workflows overlap.",
+  "summary": "Southern Arizona is smaller than the Phoenix cluster, but it still benefits from a metro page because Tucson and Marana have distinct local program surfaces and tester-routing implications.",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 60,
+  "pageStatus": "PUBLISH",
+  "lastReviewed": "2026-04-05"
+}

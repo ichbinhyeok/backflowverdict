@@ -1,0 +1,149 @@
+{
+  "utilityId": "pbc-water-utilities",
+  "utilityName": "Palm Beach County Water Utilities Backflow Prevention Program",
+  "governingEntityType": "county utility",
+  "canonicalSlug": "palm-beach-county-water-utilities",
+  "state": "florida",
+  "serviceAreaCities": [
+    "Unincorporated Palm Beach County"
+  ],
+  "serviceAreaCounties": [
+    "Palm Beach County"
+  ],
+  "searchAliases": [
+    "palm beach county backflow testing",
+    "palm beach county irrigation backflow",
+    "palm beach county clpc backflow"
+  ],
+  "utilityUrl": "https://discover.pbcgov.org/waterutilities/Pages/Backflow-Prevention.aspx",
+  "officialProgramUrls": [
+    "https://discover.pbcgov.org/waterutilities/Pages/Backflow-Prevention.aspx",
+    "https://discover.pbcgov.org/waterutilities/Minimum%20Design%20Standards/Potable%20Water%20Design%20Standards%20%28March%202023%29.pdf",
+    "https://discover.pbcgov.org/waterutilities/Pages/Plumbing-Contractors-List.aspx"
+  ],
+  "testingFrequency": "Upon installation and annually thereafter",
+  "dueBasis": "Palm Beach County Water Utilities uses a Cross-Connection Link and Protect Compliance workflow, requires annual testing after installation, and publishes both utility design standards and a county plumbing contractors list for backflow-related work.",
+  "coveredPropertyTypes": [
+    "Commercial properties",
+    "Industrial properties",
+    "Irrigation systems",
+    "County utility customers with protected service connections",
+    "Higher-hazard properties under county standards"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies at the service connection",
+    "Irrigation assemblies",
+    "Higher-hazard reduced pressure assemblies",
+    "County-approved protected devices"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Palm Beach County Water Utilities backflow page",
+      "url": "https://discover.pbcgov.org/waterutilities/Pages/Backflow-Prevention.aspx",
+      "kind": "program page"
+    },
+    {
+      "label": "Palm Beach County potable water design standards",
+      "url": "https://discover.pbcgov.org/waterutilities/Minimum%20Design%20Standards/Potable%20Water%20Design%20Standards%20%28March%202023%29.pdf",
+      "kind": "design standards"
+    },
+    {
+      "label": "Palm Beach County plumbing contractors list",
+      "url": "https://discover.pbcgov.org/waterutilities/Pages/Plumbing-Contractors-List.aspx",
+      "kind": "contractor directory"
+    }
+  ],
+  "phone": "561-740-4600",
+  "penalties": "Palm Beach County Water Utilities makes the county compliance workflow part of service-connection protection. Missing annual testing or using the wrong contractor path can leave the county utility record unresolved.",
+  "sourceExcerpt": "Palm Beach County is a useful Florida county utility because it pairs a backflow prevention page with county design standards, CLPC compliance workflow language, and a public contractor list.",
+  "sourceSnapshotPath": "storage/snapshots/palm-beach-county-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Palm Beach County is a strong Florida county utility because it combines county standards, an explicit compliance workflow, and a public contractor list.",
+  "whoIsAffected": "Commercial, industrial, irrigation, and other Palm Beach County Water Utilities customers whose services require a protected backflow assembly under county standards.",
+  "residentialNotes": [
+    "Palm Beach County is most useful for residential demand where irrigation or another service-connection hazard exists.",
+    "The county page is more compliance-workflow driven than consumer-marketing driven."
+  ],
+  "commercialNotes": [
+    "Commercial value is good because the county uses a formal compliance workflow and posts contractor and standards links publicly.",
+    "The county utility framing makes this a real next-action page rather than a generic Florida overview."
+  ],
+  "annualTesting": {
+    "summary": "Palm Beach County Water Utilities uses a county compliance workflow and requires annual testing after installation for protected assemblies.",
+    "highlights": [
+      "Annual testing is paired with a county compliance workflow.",
+      "County design standards reinforce the service-connection protection rules.",
+      "The county publishes a contractor list that supports next-action routing."
+    ],
+    "workflowSteps": [
+      "Confirm the service connection is inside Palm Beach County Water Utilities' backflow program.",
+      "Complete the annual test after installation or on the recurring county cycle.",
+      "Keep the result aligned with the county utility compliance workflow."
+    ]
+  },
+  "irrigation": {
+    "summary": "Palm Beach County's contractor list and service-connection standards make irrigation a real local page, especially in a county where outdoor water use is common.",
+    "highlights": [
+      "Irrigation assemblies still sit inside the same county compliance workflow.",
+      "The contractor list gives a clear next action even without a tester-only PDF.",
+      "County standards keep the assembly requirement tied to service protection, not just landscaping."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation service needs county protection.",
+      "Use a contractor familiar with the county utility workflow.",
+      "Keep the annual testing record current."
+    ]
+  },
+  "fireLine": {
+    "summary": "Palm Beach County is less fire-list specific than West Palm Beach, but the county standards still make protected high-hazard services worth a fire-line page.",
+    "highlights": [
+      "County standards govern protected service-connection devices.",
+      "The same compliance workflow still applies on protected higher-hazard services.",
+      "The contractor list helps route work into a county-friendly path."
+    ],
+    "workflowSteps": [
+      "Confirm the service is a higher-hazard or protected service connection.",
+      "Use a contractor familiar with county standards.",
+      "Keep the annual testing and documentation cycle aligned with the county workflow."
+    ]
+  },
+  "workflowSteps": [
+    "Identify whether Palm Beach County Water Utilities requires a protected assembly on the service.",
+    "Complete installation or annual testing on the county schedule.",
+    "Use the county contractor list and standards as needed.",
+    "Keep the county utility compliance record current."
+  ],
+  "failureHighlights": [
+    "Palm Beach County uses a named compliance workflow instead of vague county copy.",
+    "County standards and contractor links are both public.",
+    "The utility page is usable for irrigation and other service-connection intent."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but county workflow and contractor-routing rules shape the actual path.",
+    "repairRetestRange": "Repair and retest pricing varies with assembly size and whether the case is routine irrigation or a higher-hazard protected connection.",
+    "pricingNotes": "The local value is in county workflow clarity, not a public county fee schedule."
+  },
+  "sources": [
+    {
+      "label": "Palm Beach County Water Utilities backflow prevention page",
+      "url": "https://discover.pbcgov.org/waterutilities/Pages/Backflow-Prevention.aspx",
+      "kind": "official program page"
+    },
+    {
+      "label": "Palm Beach County potable water design standards",
+      "url": "https://discover.pbcgov.org/waterutilities/Minimum%20Design%20Standards/Potable%20Water%20Design%20Standards%20%28March%202023%29.pdf",
+      "kind": "official standards pdf"
+    },
+    {
+      "label": "Palm Beach County plumbing contractors list",
+      "url": "https://discover.pbcgov.org/waterutilities/Pages/Plumbing-Contractors-List.aspx",
+      "kind": "official contractor list"
+    }
+  ]
+}

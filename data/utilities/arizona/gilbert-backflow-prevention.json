@@ -1,0 +1,99 @@
+{
+  "utilityId": "gilbert-water",
+  "utilityName": "Town of Gilbert Backflow Prevention",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "gilbert-backflow-prevention",
+  "state": "arizona",
+  "serviceAreaCities": [
+    "Gilbert"
+  ],
+  "serviceAreaCounties": [
+    "Maricopa County"
+  ],
+  "searchAliases": [
+    "gilbert backflow testing",
+    "gilbert backflow prevention",
+    "gilbert fire hydrant meter backflow"
+  ],
+  "utilityUrl": "https://www.gilbertaz.gov/departments/development-services/plan-review-inspection/inspection-code-compliance/backflow-prevention",
+  "officialProgramUrls": [
+    "https://www.gilbertaz.gov/departments/development-services/plan-review-inspection/inspection-code-compliance/backflow-prevention"
+  ],
+  "testingFrequency": "Upon installation and annually thereafter for protected commercial services",
+  "dueBasis": "Gilbert administers a containment and internal cross-connection control program on all commercial water users under Arizona Administrative Code R18-4-215, town code, and the International Plumbing Code.",
+  "coveredPropertyTypes": [
+    "All commercial water users",
+    "Internal point-of-use lines that pose a contamination threat",
+    "Protected service connections at the water meter",
+    "Fire-related and construction uses governed by town code and inspection rules"
+  ],
+  "coveredDeviceTypes": [
+    "Containment assemblies at the water meter",
+    "Internal point-of-use backflow assemblies",
+    "Approved commercial protection devices",
+    "Code-driven cross-connection control devices"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Gilbert backflow prevention",
+      "url": "https://www.gilbertaz.gov/departments/development-services/plan-review-inspection/inspection-code-compliance/backflow-prevention",
+      "kind": "program page"
+    }
+  ],
+  "phone": "480-503-6000",
+  "penalties": "Gilbert frames backflow as an enforced cross-connection control program for commercial water users, so the risk is staying outside the town's required containment and internal protection workflow.",
+  "sourceExcerpt": "Gilbert is useful because the town publishes a direct statement that all commercial water users are in the containment and internal cross-connection program under Arizona code and town ordinance.",
+  "sourceSnapshotPath": "storage/snapshots/gilbert-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Gilbert is a good Arizona buildout utility because it clearly states that all commercial water users are managed under a town-run containment and internal backflow program.",
+  "whoIsAffected": "Commercial water users and any internal water supply lines that the Gilbert Backflow Prevention Department identifies as posing a contamination threat.",
+  "residentialNotes": [
+    "Gilbert's public program language is much more commercial than residential.",
+    "Residential intent is weaker here unless it is tied to a clearly protected service or project."
+  ],
+  "commercialNotes": [
+    "Gilbert is strong for commercial and managed-property intent because the town explicitly says all commercial water users are in the program.",
+    "The distinction between containment at the meter and internal point-of-use protection gives this utility real depth."
+  ],
+  "annualTesting": {
+    "summary": "Gilbert runs a town-level containment and internal cross-connection program for commercial users under Arizona and municipal code authority.",
+    "highlights": [
+      "The program explicitly applies to all commercial water users.",
+      "Gilbert distinguishes containment assemblies at the meter from internal point-of-use protection.",
+      "The authority stack is visible: Arizona code, town muni-code, and the plumbing code."
+    ],
+    "workflowSteps": [
+      "Confirm whether the service is in Gilbert's commercial water-user program.",
+      "Determine whether containment, internal protection, or both are required.",
+      "Keep the protected assemblies installed and tested under the town's inspection workflow."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the property is in Gilbert's commercial backflow program.",
+    "Identify whether the requirement is containment at the meter, internal point-of-use protection, or both.",
+    "Use the town's inspection and code-compliance workflow to keep the assembly current."
+  ],
+  "failureHighlights": [
+    "Gilbert explicitly covers all commercial water users.",
+    "The town distinguishes containment from internal protection.",
+    "The backflow department is framed as an enforcement function, not a passive info page."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Gilbert's value is in knowing whether the town requires containment, internal protection, or both.",
+    "repairRetestRange": "Repair and retest cost varies depending on whether the assembly is at the meter or on an internal line.",
+    "pricingNotes": "The main value is compliance clarity under town code, not a posted flat rate."
+  },
+  "sources": [
+    {
+      "label": "Gilbert backflow prevention",
+      "url": "https://www.gilbertaz.gov/departments/development-services/plan-review-inspection/inspection-code-compliance/backflow-prevention",
+      "kind": "official program page"
+    }
+  ]
+}

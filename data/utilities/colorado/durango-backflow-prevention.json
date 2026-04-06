@@ -1,0 +1,144 @@
+{
+  "utilityId": "durango-water",
+  "utilityName": "City of Durango Backflow Prevention",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "durango-backflow-prevention",
+  "state": "colorado",
+  "serviceAreaCities": [
+    "Durango"
+  ],
+  "serviceAreaCounties": [
+    "La Plata County"
+  ],
+  "searchAliases": [
+    "durango backflow testing",
+    "durango certified backflow testers",
+    "durango fire suppression backflow"
+  ],
+  "utilityUrl": "https://www.durangoco.gov/411/Backflow-Prevention",
+  "officialProgramUrls": [
+    "https://www.durangoco.gov/411/Backflow-Prevention",
+    "https://www.durangoco.gov/DocumentCenter/View/1674",
+    "https://www.durangoco.gov/DocumentCenter/View/36817/2026-City-of-Durango-Licensed-Certified-CCCT-Web-Page-List-ADA"
+  ],
+  "testingFrequency": "Upon installation, after repair, and annually",
+  "dueBasis": "Durango says backflow preventers are required to be tested upon installation, after any repairs, and once annually. All test reports must be emailed to CCCP@durangoco.gov within five days, and property owners must keep reports for three years.",
+  "coveredPropertyTypes": [
+    "Commercial irrigation systems",
+    "Irrigation systems with fertilizer injection",
+    "Residential and commercial in-floor heating systems",
+    "Beverage dispensers",
+    "Fire suppression systems"
+  ],
+  "coveredDeviceTypes": [
+    "Testable backflow prevention assemblies",
+    "Commercial irrigation assemblies",
+    "Fire suppression assemblies",
+    "Service-connection protection devices"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.durangoco.gov/DocumentCenter/View/36817/2026-City-of-Durango-Licensed-Certified-CCCT-Web-Page-List-ADA",
+  "officialListLabel": "Open Durango's certified tester list",
+  "submissionMethods": [
+    {
+      "label": "Durango backflow prevention",
+      "url": "https://www.durangoco.gov/411/Backflow-Prevention",
+      "kind": "program page"
+    },
+    {
+      "label": "Durango certified tester list",
+      "url": "https://www.durangoco.gov/DocumentCenter/View/36817/2026-City-of-Durango-Licensed-Certified-CCCT-Web-Page-List-ADA",
+      "kind": "official tester list"
+    }
+  ],
+  "phone": "970-375-4882",
+  "penalties": "Durango ties the program directly to the city code and expects test reports within five days. Owners are also expected to keep test records for three years, which makes backflow compliance part of the utility's formal record trail.",
+  "sourceExcerpt": "Durango lists the exact property types that trigger protection, requires annual testing plus five-day report delivery, and links directly to a licensed certified tester list.",
+  "sourceSnapshotPath": "storage/snapshots/durango-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Durango is an unusually actionable Colorado local page because it publishes the annual cadence, five-day reporting deadline, and direct certified-tester list alongside explicit examples like irrigation, fire suppression, and beverage dispensers.",
+  "whoIsAffected": "Customers with a city water service where Durango identifies a potential cross connection, including irrigation, heating, beverage, and fire suppression uses.",
+  "residentialNotes": [
+    "Durango is not purely commercial. The public page explicitly mentions residential in-floor heating systems and certain residential irrigation scenarios.",
+    "Residential users with a protected assembly still have the same annual and post-repair testing expectations."
+  ],
+  "commercialNotes": [
+    "Durango is commercially attractive because the city spells out exact high-intent use cases like irrigation, beverage, and fire suppression.",
+    "The five-day reporting deadline makes the compliance path tighter than a generic educational page."
+  ],
+  "annualTesting": {
+    "summary": "Durango requires testing on installation, after repairs, and once annually, with the report emailed to the city within five days.",
+    "highlights": [
+      "Annual testing is explicit on the public page.",
+      "Test reports go to CCCP@durangoco.gov within five days of the test.",
+      "Owners must keep reports for three years."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is on Durango's program and whether the event is installation, repair, or annual testing.",
+      "Choose a tester from Durango's certified list.",
+      "Complete the test and get the report to the city within five days."
+    ]
+  },
+  "irrigation": {
+    "summary": "Durango specifically calls out commercial irrigation systems and irrigation systems with fertilizer injection as examples that require testable assemblies.",
+    "highlights": [
+      "Commercial irrigation is explicitly listed on the page.",
+      "Fertilizer-injection irrigation systems are named as cross-connection risks.",
+      "The same annual and five-day reporting rules still apply."
+    ],
+    "workflowSteps": [
+      "Confirm whether the irrigation setup includes fertilizer injection or another higher-risk condition.",
+      "Use a Durango-listed tester to inspect the assembly.",
+      "Return the result to the city within five days and keep the record."
+    ]
+  },
+  "fireLine": {
+    "summary": "Durango directly includes fire suppression systems in its public examples, which makes fire intent part of the real local compliance surface.",
+    "highlights": [
+      "Fire suppression systems are listed among the uses that require protection.",
+      "The city links to a certified tester list from the same page.",
+      "Fire-related assemblies still sit inside the annual and post-repair testing rule."
+    ],
+    "workflowSteps": [
+      "Confirm whether the protected assembly is tied to fire suppression.",
+      "Use a certified tester from Durango's list.",
+      "Keep the testing and reporting cycle current so the utility record stays clean."
+    ]
+  },
+  "workflowSteps": [
+    "Identify whether the service is irrigation, heating, beverage, fire suppression, or another protected use.",
+    "Choose a tester from Durango's certified list.",
+    "Complete the annual or post-repair test.",
+    "Email the report within five days and retain records for three years."
+  ],
+  "failureHighlights": [
+    "Durango publishes a five-day reporting deadline.",
+    "The city links directly to a certified tester list.",
+    "The public page names exact property and device scenarios instead of speaking in vague generalities."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Durango's five-day report deadline changes how quickly owners need to act after a test.",
+    "repairRetestRange": "Repair and retest cost varies by device type and whether the protected use is irrigation, heating, beverage, or fire suppression.",
+    "pricingNotes": "Durango's real value is the specificity of the compliance surface and the official tester route, not a published city price list."
+  },
+  "sources": [
+    {
+      "label": "Durango backflow prevention",
+      "url": "https://www.durangoco.gov/411/Backflow-Prevention",
+      "kind": "official program page"
+    },
+    {
+      "label": "Durango cross connection control ordinance",
+      "url": "https://www.durangoco.gov/DocumentCenter/View/1674",
+      "kind": "official ordinance pdf"
+    },
+    {
+      "label": "Durango certified tester list",
+      "url": "https://www.durangoco.gov/DocumentCenter/View/36817/2026-City-of-Durango-Licensed-Certified-CCCT-Web-Page-List-ADA",
+      "kind": "official tester list pdf"
+    }
+  ]
+}

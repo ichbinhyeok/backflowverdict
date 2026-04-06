@@ -1,0 +1,138 @@
+{
+  "utilityId": "thornton-water",
+  "utilityName": "City of Thornton Cross Connections and Backflow Prevention",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "thornton-water-services",
+  "state": "colorado",
+  "serviceAreaCities": [
+    "Thornton"
+  ],
+  "serviceAreaCounties": [
+    "Adams County"
+  ],
+  "searchAliases": [
+    "thornton backflow testing",
+    "thornton backflow solutions",
+    "thornton irrigation backflow"
+  ],
+  "utilityUrl": "https://www.thorntonco.gov/city-services/water/cross-connections-backflow-prevention",
+  "officialProgramUrls": [
+    "https://www.thorntonco.gov/city-services/water/cross-connections-backflow-prevention",
+    "https://www.thorntonco.gov/media/file/cross-connection-control-backflow-prevention-program-brochure"
+  ],
+  "testingFrequency": "At installation and at least annually after that",
+  "dueBasis": "Thornton says commercial, industrial, and non-single-family residences must have approved devices installed and tested annually. Test results must be submitted online to Backflow Solutions before the annual due date.",
+  "coveredPropertyTypes": [
+    "Commercial properties",
+    "Industrial properties",
+    "Non-single-family residences with more than two units",
+    "Irrigation projects",
+    "Other services with cross-connection risk"
+  ],
+  "coveredDeviceTypes": [
+    "Approved backflow devices",
+    "Reduced pressure assemblies",
+    "Double check assemblies",
+    "Backflow devices routed through Backflow Solutions"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Thornton cross connections and backflow prevention",
+      "url": "https://www.thorntonco.gov/city-services/water/cross-connections-backflow-prevention",
+      "kind": "program page"
+    },
+    {
+      "label": "Thornton backflow brochure",
+      "url": "https://www.thorntonco.gov/media/file/cross-connection-control-backflow-prevention-program-brochure",
+      "kind": "program brochure"
+    }
+  ],
+  "phone": "720-977-6586",
+  "penalties": "Thornton requires online annual reporting and keeps facility owners inside a real city compliance program. Missing the annual due date can leave the property out of compliance with the city ordinance.",
+  "sourceExcerpt": "Thornton is a strong Colorado utility because it openly names the covered customer classes, requires annual testing, and routes accepted reports through Backflow Solutions instead of vague phone-only instructions.",
+  "sourceSnapshotPath": "storage/snapshots/thornton-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Thornton is a strong Colorado city because it names the covered classes, publishes annual-testing language, and gives a clean portal-driven reporting path.",
+  "whoIsAffected": "Thornton commercial, industrial, irrigation, and non-single-family properties plus any service where the city identifies a cross-connection risk.",
+  "residentialNotes": [
+    "Thornton is weaker for ordinary detached homes, but strong for irrigation and residences with more than two units.",
+    "Irrigation installation remains visible even in the homeowner permit materials."
+  ],
+  "commercialNotes": [
+    "Commercial and multifamily intent is strong because the city names those classes directly and requires annual reporting before the due date.",
+    "The Backflow Solutions workflow gives a real next-action path."
+  ],
+  "annualTesting": {
+    "summary": "Thornton says necessary assemblies must be tested at installation and at least annually after that, with reports submitted online before the annual due date.",
+    "highlights": [
+      "Annual testing is explicit.",
+      "Backflow Solutions is the city's online reporting path.",
+      "Commercial, industrial, and non-single-family properties are public target classes."
+    ],
+    "workflowSteps": [
+      "Confirm the property is in Thornton's annual inspection universe.",
+      "Use a certified backflow technician for the operational test.",
+      "Submit the result online before the annual due date."
+    ]
+  },
+  "irrigation": {
+    "summary": "Thornton has real irrigation value because the city brochure and permit materials both treat lawn irrigation backflow as standard city work, not edge-case plumbing.",
+    "highlights": [
+      "The city brochure explains assembly types and risks clearly.",
+      "Homeowner permit materials still call out lawn sprinkler backflow work.",
+      "Annual reporting still routes through the same portal."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation project and assembly type.",
+      "Use a qualified tester or installer.",
+      "Keep the annual report current in the Thornton workflow."
+    ]
+  },
+  "fireLine": {
+    "summary": "Thornton is less explicit than Avondale on fire-line assembly classes, but the same annual testing and approved device rules still govern protected services.",
+    "highlights": [
+      "Approved devices are required under city ordinance.",
+      "Annual testing applies to necessary backflow assemblies after installation.",
+      "Portal submission is still the acceptance path."
+    ],
+    "workflowSteps": [
+      "Confirm the protected service connection class.",
+      "Use a certified tester with the right assembly experience.",
+      "Submit the annual result through Thornton's reporting workflow."
+    ]
+  },
+  "workflowSteps": [
+    "Check whether the property is in Thornton's annual inspection group.",
+    "Perform the operational test with a certified technician.",
+    "Submit results online through Backflow Solutions.",
+    "Resolve any missing-device or inspection gaps before the annual deadline passes."
+  ],
+  "failureHighlights": [
+    "Thornton publicly names its covered customer classes.",
+    "Annual reporting is portal-based, not vague.",
+    "The city does not recommend any testing company over another, so the page stays utility-first."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Thornton adds a clear reporting path and annual deadline discipline.",
+    "repairRetestRange": "Repair and retest costs vary by assembly type and whether the property is commercial, multifamily, or irrigation-heavy.",
+    "pricingNotes": "The main value is clean routing into the city-required reporting path."
+  },
+  "sources": [
+    {
+      "label": "Thornton cross connections and backflow prevention",
+      "url": "https://www.thorntonco.gov/city-services/water/cross-connections-backflow-prevention",
+      "kind": "official program page"
+    },
+    {
+      "label": "Thornton backflow brochure",
+      "url": "https://www.thorntonco.gov/media/file/cross-connection-control-backflow-prevention-program-brochure",
+      "kind": "official brochure pdf"
+    }
+  ]
+}

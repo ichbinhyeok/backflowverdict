@@ -1,0 +1,149 @@
+{
+  "utilityId": "west-palm-beach-water",
+  "utilityName": "City of West Palm Beach Cross-Connection Control and Backflow Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "west-palm-beach-water",
+  "state": "florida",
+  "serviceAreaCities": [
+    "West Palm Beach"
+  ],
+  "serviceAreaCounties": [
+    "Palm Beach County"
+  ],
+  "searchAliases": [
+    "west palm beach backflow testing",
+    "west palm beach approved plumbers backflow",
+    "west palm beach fire line backflow"
+  ],
+  "utilityUrl": "https://www.wpb.org/Departments/Public-Utilities/Cross-Connection-Control",
+  "officialProgramUrls": [
+    "https://www.wpb.org/Departments/Public-Utilities/Cross-Connection-Control",
+    "https://www.wpb.org/files/assets/city/v/1/public-utilities/documents/crossconnectioncontrolmanu.pdf",
+    "https://www.wpb.org/files/assets/city/v/1/public-utilities/documents/approved-plumbers-list.pdf"
+  ],
+  "testingFrequency": "Upon installation and on the city's recurring certification cycle",
+  "dueBasis": "West Palm Beach publishes a cross-connection control manual and an approved plumbing contractors list for backflow testing, repair, and fire-line work inside the city. The city's approved list controls which contractors may test and repair assemblies within the utility service area.",
+  "coveredPropertyTypes": [
+    "Commercial services",
+    "Industrial services",
+    "Domestic services where protection is required",
+    "Irrigation systems",
+    "Fire line services"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Irrigation assemblies",
+    "Fire line backflow assemblies",
+    "City-certified devices handled by approved contractors"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.wpb.org/files/assets/city/v/1/public-utilities/documents/approved-plumbers-list.pdf",
+  "officialListLabel": "Open the West Palm Beach approved plumbing contractors list",
+  "submissionMethods": [
+    {
+      "label": "West Palm Beach cross-connection control program",
+      "url": "https://www.wpb.org/Departments/Public-Utilities/Cross-Connection-Control",
+      "kind": "program page"
+    },
+    {
+      "label": "West Palm Beach cross-connection control manual",
+      "url": "https://www.wpb.org/files/assets/city/v/1/public-utilities/documents/crossconnectioncontrolmanu.pdf",
+      "kind": "manual"
+    },
+    {
+      "label": "West Palm Beach approved plumbing contractors",
+      "url": "https://www.wpb.org/files/assets/city/v/1/public-utilities/documents/approved-plumbers-list.pdf",
+      "kind": "official contractor list"
+    }
+  ],
+  "phone": "561-822-1300",
+  "penalties": "West Palm Beach controls who may test and repair backflow assemblies inside the city. Using a contractor outside the approved list can leave the device outside the city's accepted certification path.",
+  "sourceExcerpt": "West Palm Beach is one of the clearest Florida city programs because it publishes both a cross-connection manual and an approved contractors PDF, including contractors approved only for fire line assemblies.",
+  "sourceSnapshotPath": "storage/snapshots/west-palm-beach-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "West Palm Beach is a strong Florida utility because it combines a city manual with an approved contractors list that distinguishes general backflow testing from fire-line-only approvals.",
+  "whoIsAffected": "Commercial, industrial, irrigation, fire line, and other West Palm Beach services where the city requires certified cross-connection control and approved contractors.",
+  "residentialNotes": [
+    "Residential demand is most credible when tied to irrigation or another protected service because the city materials are contractor- and certification-heavy.",
+    "The approved contractor list gives homeowners a concrete next action where city certification is required."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because the city-approved list is public and fire-line approvals are separately labeled.",
+    "This is a clean approved-testers surface because the official list itself is the routing asset."
+  ],
+  "annualTesting": {
+    "summary": "West Palm Beach runs its cross-connection control program through a city manual and an approved contractor list, so ongoing testing needs to stay inside that official certification path.",
+    "highlights": [
+      "The city publishes an approved plumbing contractors list.",
+      "Fire-line-only approvals are labeled separately on the public PDF.",
+      "The official list is the correct next action for testing and repairs."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is inside West Palm Beach's certified contractor workflow.",
+      "Choose a contractor from the city's approved list.",
+      "Complete the test or repair through the city's accepted certification path."
+    ]
+  },
+  "irrigation": {
+    "summary": "West Palm Beach's contractor-driven system still makes irrigation useful because irrigation assemblies need to stay inside the same city-approved workflow.",
+    "highlights": [
+      "Approved contractors can handle ordinary testing and repair work.",
+      "The city manual provides the backflow framework behind the contractor list.",
+      "Irrigation demand can route directly into the approved contractor PDF."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation service needs a city-approved contractor.",
+      "Pick a contractor listed for general backflow assembly work.",
+      "Complete the test or repair under the city's certification rules."
+    ]
+  },
+  "fireLine": {
+    "summary": "West Palm Beach is especially strong for fire-line intent because the public approved contractor list marks contractors approved only to work on fire line backflow assemblies.",
+    "highlights": [
+      "Fire-line-only approvals are called out directly on the official PDF.",
+      "The city-approved list is the right starting point for fire-line work.",
+      "The city manual gives the broader cross-connection framework behind the contractor list."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is part of a fire line.",
+      "Choose a contractor on the city's list that is approved for fire line work.",
+      "Keep the testing or repair inside the city's accepted certification path."
+    ]
+  },
+  "workflowSteps": [
+    "Identify whether the assembly is ordinary, irrigation, or fire-line work.",
+    "Open the city's approved contractor list.",
+    "Use the right approved contractor for the assembly class.",
+    "Complete the test or repair under the West Palm Beach program."
+  ],
+  "failureHighlights": [
+    "West Palm Beach publishes an official approved contractors list.",
+    "Fire-line-only approvals are explicitly labeled.",
+    "The city manual and contractor list together create a strong utility-first workflow."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but the city-approved contractor list narrows the quote path.",
+    "repairRetestRange": "Repair and retest costs rise on fire-line work because only a subset of listed contractors are approved for that assembly class.",
+    "pricingNotes": "The strongest local value is the official contractor routing, not a public municipal fee."
+  },
+  "sources": [
+    {
+      "label": "West Palm Beach cross-connection control program",
+      "url": "https://www.wpb.org/Departments/Public-Utilities/Cross-Connection-Control",
+      "kind": "official program page"
+    },
+    {
+      "label": "West Palm Beach cross-connection manual",
+      "url": "https://www.wpb.org/files/assets/city/v/1/public-utilities/documents/crossconnectioncontrolmanu.pdf",
+      "kind": "official manual"
+    },
+    {
+      "label": "West Palm Beach approved plumbing contractors list",
+      "url": "https://www.wpb.org/files/assets/city/v/1/public-utilities/documents/approved-plumbers-list.pdf",
+      "kind": "official contractor list"
+    }
+  ]
+}

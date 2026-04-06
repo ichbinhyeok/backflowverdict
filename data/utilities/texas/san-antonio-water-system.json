@@ -1,0 +1,150 @@
+{
+  "utilityId": "saws-backflow",
+  "utilityName": "San Antonio Water System Backflow Prevention",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "san-antonio-water-system",
+  "state": "texas",
+  "serviceAreaCities": [
+    "San Antonio"
+  ],
+  "serviceAreaCounties": [
+    "Bexar County"
+  ],
+  "searchAliases": [
+    "saws backflow testing",
+    "san antonio backflow prevention annual testing"
+  ],
+  "utilityUrl": "https://www.saws.org/backflow-prevention/",
+  "officialProgramUrls": [
+    "https://www.saws.org/backflow-prevention/",
+    "https://www.saws.org/backflow-prevention/annual-testing-of-backflow-prevention-assemblies/",
+    "https://www.saws.org/conservation/commercial-programs-rebates/annual-irrigation-checkup/",
+    "https://www.bsionlinetracking.com/customer"
+  ],
+  "testingFrequency": "Annual",
+  "dueBasis": "Annual testing is required by City of San Antonio ordinance and state regulations. SAWS uses BSI to manage notices, customer service inspections, and customer tracking.",
+  "coveredPropertyTypes": [
+    "Connections that may present a potential source of contamination to the public water system",
+    "Sites requiring external backflow assemblies",
+    "Sites requiring internal assemblies to protect customers from hazardous cross-connections"
+  ],
+  "coveredDeviceTypes": [
+    "External backflow assemblies",
+    "Internal backflow assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.bsionlinetracking.com/customer",
+  "officialListLabel": "Find a registered testing company in the SAWS BSI portal",
+  "submissionMethods": [
+    {
+      "label": "SAWS backflow prevention program",
+      "url": "https://www.saws.org/backflow-prevention/",
+      "kind": "program page"
+    },
+    {
+      "label": "BSI customer portal",
+      "url": "https://www.bsionlinetracking.com/customer",
+      "kind": "customer portal"
+    },
+    {
+      "label": "BSI submission portal",
+      "url": "https://www.bsionline.com/",
+      "kind": "submission portal"
+    }
+  ],
+  "phone": "210-233-2910",
+  "penalties": "SAWS monitors and enforces annual testing requirements for external assemblies, and BSI now handles due and past-due notice operations on behalf of SAWS.",
+  "sourceExcerpt": "SAWS requires annual testing under city ordinance and state regulations and directs customers to BSI to find registered testing companies and check compliance.",
+  "sourceSnapshotPath": "storage/snapshots/saws-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "San Antonio requires annual backflow testing and routes both customer compliance checks and registered testing company discovery through BSI under the SAWS program.",
+  "whoIsAffected": "Properties with connections that can contaminate the public water system and customers requiring external or internal backflow assemblies.",
+  "residentialNotes": [
+    "Residential users most often see SAWS through annual notices for irrigation, fire sprinkler, septic, well, or alternative-water conditions.",
+    "SAWS is not a one-size-fits-all page because internal and external assemblies can sit on different compliance tracks."
+  ],
+  "commercialNotes": [
+    "Commercial owners should expect SAWS customer service inspection and development workflows to overlap with annual testing when hazard conditions change.",
+    "The public materials are clearer on BSI workflow and notice handling than on retail tester pricing."
+  ],
+  "annualTesting": {
+    "summary": "SAWS requires annual testing under City ordinance and state regulations and now uses BSI for due notices, customer tracking, and tester lookup.",
+    "highlights": [
+      "Annual testing is the default rule for SAWS backflow assemblies.",
+      "BSI handles due and past-due notices for SAWS.",
+      "A failed annual test form counts as delinquent until the assembly passes."
+    ],
+    "workflowSteps": [
+      "Use the BSI customer portal to confirm due status and tester options.",
+      "Book the test with a registered SAWS testing company.",
+      "Repair and retest promptly if the annual form shows a failure because SAWS treats failed annual tests as delinquent."
+    ]
+  },
+  "irrigation": {
+    "summary": "SAWS irrigation compliance is broader than a single annual test reminder. Irrigation systems need the right assembly, and large landscapes can also fall into the separate annual irrigation checkup program.",
+    "highlights": [
+      "SAWS requires backflow protection on irrigation systems based on the hazard presented.",
+      "Single-family irrigation tied to septic systems, private wells, or other alternate sources often sits in the annual notice stream.",
+      "Large landscapes over five acres or very high annual water use may also need an annual irrigation checkup by May 1."
+    ],
+    "workflowSteps": [
+      "Confirm the property's irrigation hazard class with SAWS or BSI.",
+      "Complete the annual backflow test with a licensed BPAT when the assembly is in the SAWS program.",
+      "If the site meets the large-landscape thresholds, complete the separate annual irrigation checkup on time as well."
+    ]
+  },
+  "fireLine": {
+    "summary": "SAWS fire line work is stricter than a normal domestic test. Fireline assemblies must be tested by a licensed fireline tester, and some right-of-way installations stay under SAWS operational control.",
+    "highlights": [
+      "A licensed fireline tester is required for fireline assembly testing.",
+      "Assemblies located in the public right-of-way may stay under SAWS inspection and maintenance rules.",
+      "Fireline failures do not pause the delinquency clock; the annual record is still unresolved until the assembly passes."
+    ],
+    "workflowSteps": [
+      "Confirm whether the fireline assembly is customer-side or in a SAWS-controlled right-of-way location.",
+      "Use a licensed fireline tester rather than a generic backflow-only contractor.",
+      "Make sure the passing result reaches the SAWS and BSI workflow before the deadline window closes."
+    ]
+  },
+  "workflowSteps": [
+    "Use the SAWS program page to confirm whether the assembly is part of the annual testing program.",
+    "Check compliance or find a registered testing company through the BSI customer portal.",
+    "Complete testing and make sure the tester submits results through the correct BSI channel.",
+    "For new service or construction, complete the CSI and Development Services steps alongside assembly requirements."
+  ],
+  "failureHighlights": [
+    "Annual testing is enforced under both local ordinance and state regulations.",
+    "SAWS separates customer-side and public-system-side assembly oversight, so scope matters.",
+    "New construction and CSI workflows can add extra sequencing beyond the recurring annual test."
+  ],
+  "costBand": {
+    "testingRange": "Private San Antonio market quotes vary by assembly type and scope.",
+    "repairRetestRange": "Repair and retest costs depend on whether the issue is on an external or internal assembly and whether permitting is implicated.",
+    "pricingNotes": "Use the SAWS program for compliance path and BSI for tester discovery rather than assuming one standard retail price."
+  },
+  "sources": [
+    {
+      "label": "SAWS cross-connection control and backflow prevention program",
+      "url": "https://www.saws.org/backflow-prevention/",
+      "kind": "official program page"
+    },
+    {
+      "label": "SAWS annual testing of backflow prevention assemblies",
+      "url": "https://www.saws.org/backflow-prevention/annual-testing-of-backflow-prevention-assemblies/",
+      "kind": "official program page"
+    },
+    {
+      "label": "SAWS annual irrigation checkup program",
+      "url": "https://www.saws.org/conservation/commercial-programs-rebates/annual-irrigation-checkup/",
+      "kind": "official program page"
+    },
+    {
+      "label": "BSI customer portal",
+      "url": "https://www.bsionlinetracking.com/customer",
+      "kind": "official portal"
+    }
+  ]
+}

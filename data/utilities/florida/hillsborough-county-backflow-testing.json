@@ -1,0 +1,111 @@
+{
+  "utilityId": "hillsborough-county-water",
+  "utilityName": "Hillsborough County Water Resources Backflow and Cross Connection Service Testing",
+  "governingEntityType": "county utility",
+  "canonicalSlug": "hillsborough-county-backflow-testing",
+  "state": "florida",
+  "serviceAreaCities": [
+    "Tampa",
+    "Brandon",
+    "Plant City"
+  ],
+  "serviceAreaCounties": [
+    "Hillsborough County"
+  ],
+  "searchAliases": [
+    "hillsborough county backflow testing",
+    "hillsborough county certified backflow testers",
+    "hillsborough county backflow permit"
+  ],
+  "utilityUrl": "https://hcfl.gov/backflow",
+  "officialProgramUrls": [
+    "https://hcfl.gov/backflow",
+    "https://hcfl.gov/residents/property-owners-and-renters/water-and-sewer/certified-backflow-testers"
+  ],
+  "testingFrequency": "Annual",
+  "dueBasis": "Hillsborough County says all property owners with a backflow assembly must have it tested annually. Only a registered Hillsborough County certified tester can perform the test, failed assemblies must be reported within 48 hours, and installations, replacements, or relocations require a permit plus field inspection.",
+  "coveredPropertyTypes": [
+    "Homes and businesses with backflow assemblies",
+    "New installations, replacements, and relocations at Hillsborough County Public Utilities service connections",
+    "Properties routed through the county BMP portal"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow assemblies",
+    "Permitted replacement and relocation assemblies",
+    "County-registered tester submissions"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://hcfl.gov/residents/property-owners-and-renters/water-and-sewer/certified-backflow-testers",
+  "officialListLabel": "Open Hillsborough County's certified tester page",
+  "submissionMethods": [
+    {
+      "label": "Hillsborough County backflow program",
+      "url": "https://hcfl.gov/backflow",
+      "kind": "program page"
+    },
+    {
+      "label": "Hillsborough County certified tester page",
+      "url": "https://hcfl.gov/residents/property-owners-and-renters/water-and-sewer/certified-backflow-testers",
+      "kind": "official tester page"
+    }
+  ],
+  "phone": "813-307-1000",
+  "penalties": "Hillsborough County's workflow is not casual. Failed assemblies must be reported within 48 hours, permit closure depends on inspection approval and a completed backflow test report, and only county-registered testers are accepted.",
+  "sourceExcerpt": "Hillsborough County ties annual testing, tester registration, permit closure, failed-test notice timing, and county-run submission tooling into one operational workflow.",
+  "sourceSnapshotPath": "storage/snapshots/hillsborough-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Hillsborough County is a high-intent Florida utility because it requires annual testing, registered testers, 48-hour failed-test notice, and permit-linked reporting for installation and replacement work.",
+  "whoIsAffected": "Property owners with a backflow assembly at a Hillsborough County Public Utilities service connection, including homes, businesses, and permitted installation or replacement projects.",
+  "residentialNotes": [
+    "Hillsborough County explicitly says all property owners with a backflow assembly must have it tested annually, so the public page is not commercial-only.",
+    "Residential users still need county-registered testers and can encounter permit and inspection steps when assemblies are installed or replaced."
+  ],
+  "commercialNotes": [
+    "Commercial intent is strong because the page combines annual testing with permit closure, tester enrollment, and failed-test reporting.",
+    "The county's BMP platform gives this utility a more operational workflow than a basic FAQ page."
+  ],
+  "annualTesting": {
+    "summary": "Hillsborough County requires annual testing for every property owner who has a backflow assembly and only accepts county-registered certified testers.",
+    "highlights": [
+      "Annual testing is explicit on the official page.",
+      "Only a registered Hillsborough County certified tester can perform the test.",
+      "The county has a dedicated tester page and portal-linked workflow."
+    ],
+    "workflowSteps": [
+      "Confirm the property's assembly is due under the county's annual cycle.",
+      "Choose a tester from Hillsborough County's registered tester list.",
+      "Complete the test and keep the result inside the county reporting workflow."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the service connection is under the Hillsborough County Public Utilities program.",
+    "Choose a tester from the county-certified list.",
+    "Complete the annual test or permitted installation workflow.",
+    "If the device fails, notify the county within 48 hours and finish the repair path quickly."
+  ],
+  "failureHighlights": [
+    "Only county-registered testers are accepted.",
+    "Failed assemblies must be reported within 48 hours.",
+    "Permit closure depends on inspection approval and the completed test report."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Hillsborough County's registered-tester requirement narrows the usable provider set.",
+    "repairRetestRange": "Repair and retest cost depends on the device and whether the issue happened during an installation, replacement, relocation, or annual cycle.",
+    "pricingNotes": "The strongest commercial signal is the county's operational discipline rather than a posted utility fee schedule."
+  },
+  "sources": [
+    {
+      "label": "Hillsborough County backflow program",
+      "url": "https://hcfl.gov/backflow",
+      "kind": "official program page"
+    },
+    {
+      "label": "Hillsborough County certified backflow testers",
+      "url": "https://hcfl.gov/residents/property-owners-and-renters/water-and-sewer/certified-backflow-testers",
+      "kind": "official tester page"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "metroId": "western-colorado",
+  "title": "Western Colorado backflow testing",
+  "state": "colorado",
+  "metroSlug": "western-colorado",
+  "cityNames": [
+    "Aspen",
+    "Durango",
+    "Grand Junction"
+  ],
+  "countyNames": [
+    "Pitkin County",
+    "La Plata County",
+    "Mesa County"
+  ],
+  "utilityIds": [
+    "aspen-water",
+    "durango-water",
+    "grand-junction-water"
+  ],
+  "guideSlugs": [
+    "failed-backflow-test-next-steps",
+    "approved-testers-vs-find-a-tester"
+  ],
+  "description": "Western Colorado support page for smaller but high-signal city utility programs with strong local annual testing and tester-routing rules.",
+  "summary": "Western Colorado is a useful support layer because cities like Aspen and Durango publish surprisingly actionable backflow workflows even without the scale of the Front Range. The metro page groups those surfaces while still sending users back to the exact authority page.",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 60,
+  "pageStatus": "PUBLISH",
+  "lastReviewed": "2026-04-05"
+}

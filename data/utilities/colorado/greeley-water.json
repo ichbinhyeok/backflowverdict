@@ -1,0 +1,149 @@
+{
+  "utilityId": "greeley-water",
+  "utilityName": "City of Greeley Cross-Connection Control Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "greeley-water",
+  "state": "colorado",
+  "serviceAreaCities": [
+    "Greeley"
+  ],
+  "serviceAreaCounties": [
+    "Weld County"
+  ],
+  "searchAliases": [
+    "greeley backflow testing",
+    "greeley backflow report",
+    "greeley spry backflow"
+  ],
+  "utilityUrl": "https://greeleygov.com/services/ws/about-our-system/our-water-system/cross-connection",
+  "officialProgramUrls": [
+    "https://greeleygov.com/services/ws/about-our-system/our-water-system/cross-connection",
+    "https://sprybackflow.com/CityofGreeley",
+    "https://greeleygov.com/services/ws/about-our-system/our-water-system/cross-connection/backflow-testers"
+  ],
+  "testingFrequency": "Upon installation and annually thereafter",
+  "dueBasis": "Greeley requires all containment backflow prevention assemblies to be tested upon installation, after repairs or relocation, and annually. The city moved testing notifications and report submission into its Spry Backflow portal.",
+  "coveredPropertyTypes": [
+    "Commercial properties",
+    "Industrial properties",
+    "Multi-family sites where protection is required",
+    "Irrigation systems",
+    "Fire sprinkler and other containment connections"
+  ],
+  "coveredDeviceTypes": [
+    "Containment backflow prevention assemblies",
+    "Irrigation assemblies",
+    "Fire sprinkler protection assemblies",
+    "City-recognized containment devices"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://greeleygov.com/services/ws/about-our-system/our-water-system/cross-connection/backflow-testers",
+  "officialListLabel": "Open the Greeley local certified backflow testers list",
+  "submissionMethods": [
+    {
+      "label": "Greeley cross-connection program",
+      "url": "https://greeleygov.com/services/ws/about-our-system/our-water-system/cross-connection",
+      "kind": "program page"
+    },
+    {
+      "label": "Spry Backflow portal",
+      "url": "https://sprybackflow.com/CityofGreeley",
+      "kind": "submission portal"
+    },
+    {
+      "label": "Greeley backflow testers",
+      "url": "https://greeleygov.com/services/ws/about-our-system/our-water-system/cross-connection/backflow-testers",
+      "kind": "official tester list"
+    }
+  ],
+  "phone": "970-350-9811",
+  "penalties": "Greeley treats annual testing as a containment control requirement. Missing the Spry submission cycle or using the wrong tester path keeps the assembly out of compliance with the city's water system program.",
+  "sourceExcerpt": "Greeley is a strong Colorado utility because it publishes annual testing, a Spry Backflow submission workflow, and a local certified tester list rather than leaving the customer with generic state-rule text.",
+  "sourceSnapshotPath": "storage/snapshots/greeley-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Greeley is a strong Colorado utility because it combines annual testing, Spry portal reporting, and an official local tester list.",
+  "whoIsAffected": "Commercial, industrial, irrigation, fire sprinkler, and other Greeley services that need a containment backflow prevention assembly.",
+  "residentialNotes": [
+    "Greeley is more utility-program driven than homeowner-blog driven, so residential demand is strongest where irrigation or a flagged hazard exists.",
+    "Once the city requires a containment assembly, the same annual testing and portal workflow applies."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because Greeley gives both a submission portal and a tester list.",
+    "The utility workflow is cleaner than a generic Colorado city because the local path is public."
+  ],
+  "annualTesting": {
+    "summary": "Greeley requires containment backflow prevention assemblies to be tested upon installation, after repair or relocation, and annually, with notices and reporting now routed through Spry Backflow.",
+    "highlights": [
+      "Annual testing is explicit.",
+      "Spry Backflow handles notices and submissions.",
+      "The city publishes a local certified tester list."
+    ],
+    "workflowSteps": [
+      "Check the Spry Backflow portal for the active Greeley account and due date.",
+      "Choose a tester from the city's local certified tester list.",
+      "Complete the test and make sure the result lands in the Greeley Spry workflow."
+    ]
+  },
+  "irrigation": {
+    "summary": "Greeley's containment framing still makes irrigation a strong subpage because irrigation assemblies live inside the same annual-testing and portal workflow.",
+    "highlights": [
+      "Irrigation assemblies still require annual containment testing once installed.",
+      "The tester list and Spry workflow keep irrigation pages useful instead of thin.",
+      "Post-repair and relocation retests are explicitly required."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation assembly is on the city's containment list.",
+      "Use a city-listed tester.",
+      "Submit the annual or post-repair result through Greeley's portal workflow."
+    ]
+  },
+  "fireLine": {
+    "summary": "Greeley is worth a fire-line subpage because containment assemblies are not limited to ordinary irrigation or domestic services.",
+    "highlights": [
+      "Containment rules apply on installation, repair, relocation, and annual retest cycles.",
+      "The city tester list helps route specialized assemblies back into a local path.",
+      "Portal reporting is part of the utility workflow."
+    ],
+    "workflowSteps": [
+      "Confirm the fire-service or containment assembly class.",
+      "Use a Greeley-listed tester for the work.",
+      "Make sure the result is submitted through the city's reporting system."
+    ]
+  },
+  "workflowSteps": [
+    "Identify the Greeley assembly and due date in the portal workflow.",
+    "Use a local certified tester from the city's list.",
+    "Complete the annual, post-repair, or post-relocation test.",
+    "Confirm the result is accepted inside the Spry Backflow submission path."
+  ],
+  "failureHighlights": [
+    "Greeley uses a real portal workflow instead of phone-only backflow management.",
+    "The city tester list gives clean local routing.",
+    "Installation, repair, relocation, and annual cycles are all public."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but the local tester list and Spry portal shape the workflow more than generic Colorado guidance.",
+    "repairRetestRange": "Repair and retest cost depends on the assembly type and whether the job is a relocation or a standard annual test.",
+    "pricingNotes": "The local value comes from the operational workflow and tester routing, not a published city rate."
+  },
+  "sources": [
+    {
+      "label": "Greeley cross-connection program",
+      "url": "https://greeleygov.com/services/ws/about-our-system/our-water-system/cross-connection",
+      "kind": "official program page"
+    },
+    {
+      "label": "Greeley Spry Backflow portal",
+      "url": "https://sprybackflow.com/CityofGreeley",
+      "kind": "submission portal"
+    },
+    {
+      "label": "Greeley local certified backflow testers",
+      "url": "https://greeleygov.com/services/ws/about-our-system/our-water-system/cross-connection/backflow-testers",
+      "kind": "official tester list"
+    }
+  ]
+}

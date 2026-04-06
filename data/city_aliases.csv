@@ -1,0 +1,73 @@
+city,state,utilityId,aliasSlug,aliasMode,justification,lastReviewed
+Avondale,arizona,avondale-water,avondale,REDIRECT,City search demand maps directly to Avondale's approved-tester and annual-testing workflow.,2026-04-05
+Buckeye,arizona,buckeye-water,buckeye,REDIRECT,City search demand maps directly to Buckeye's governing backflow and annual due-notice workflow.,2026-04-05
+Chandler,arizona,chandler-water,chandler,REDIRECT,City search demand maps directly to Chandler Water Quality and the governing backflow workflow.,2026-04-05
+Flagstaff,arizona,flagstaff-water,flagstaff,REDIRECT,City search demand maps directly to Flagstaff's governing backflow workflow.,2026-04-05
+Gilbert,arizona,gilbert-water,gilbert,REDIRECT,City search demand maps directly to Gilbert's governing backflow prevention department.,2026-04-05
+Glendale,arizona,glendale-water,glendale,REDIRECT,City search demand maps directly to Glendale's cross-connection and hydrant-meter workflow.,2026-04-05
+Goodyear,arizona,goodyear-water,goodyear,REDIRECT,City search demand maps directly to Goodyear's governing backflow workflow.,2026-04-05
+Marana,arizona,marana-water,marana,REDIRECT,City search demand maps directly to Marana Water and the approved tester workflow.,2026-04-05
+Mesa,arizona,mesa-water,mesa,REDIRECT,City search demand maps directly to Mesa Water Resources and the city portal workflow.,2026-04-04
+Phoenix,arizona,phoenix-water,phoenix,REDIRECT,City search demand maps directly to the governing Phoenix backflow program.,2026-04-04
+Prescott,arizona,prescott-water,prescott,REDIRECT,City search demand maps directly to Prescott's governing approved-tester and annual-testing workflow.,2026-04-05
+Prescott Valley,arizona,prescott-valley-water,prescott-valley,REDIRECT,City search demand maps directly to Prescott Valley's governing backflow workflow even though the tester handout stays directory-only.,2026-04-05
+Queen Creek,arizona,queen-creek-water,queen-creek,REDIRECT,City search demand maps directly to Queen Creek's BSI-driven backflow workflow.,2026-04-05
+Scottsdale,arizona,scottsdale-water,scottsdale,REDIRECT,City search demand maps directly to Scottsdale Water's governing commercial services program.,2026-04-05
+Tempe,arizona,tempe-water,tempe,REDIRECT,City search demand maps directly to Tempe's governing backflow program and registered tester workflow.,2026-04-05
+Tucson,arizona,tucson-water,tucson,REDIRECT,City search demand maps directly to the governing Tucson Water workflow.,2026-04-04
+Anaheim,california,anaheim-water,anaheim,REDIRECT,City search demand maps directly to Anaheim's governing cross-connection workflow.,2026-04-05
+Fresno,california,fresno-water,fresno,REDIRECT,City search demand maps directly to Fresno Water Division and the governing cross-connection program.,2026-04-05
+Irvine,california,irwd-backflow,irvine,REDIRECT,City search demand maps directly to IRWD's governing district program.,2026-04-04
+Modesto,california,modesto-water,modesto,REDIRECT,City search demand maps directly to Modesto's governing cross-connection and backflow program.,2026-04-05
+Oakland,california,ebmud-backflow,oakland,NOINDEX_BRIDGE,"Regional utility coverage is stronger than a city-only page, so keep an alias bridge instead of a hard redirect.",2026-04-04
+Pasadena,california,pasadena-water,pasadena,REDIRECT,City search demand maps directly to Pasadena Water and Power's governing cross-connection program.,2026-04-05
+Patterson,california,patterson-water,patterson,REDIRECT,City search demand maps directly to Patterson's annual-test and approved-tester workflow.,2026-04-05
+Riverside,california,riverside-water,riverside,REDIRECT,City search demand maps directly to Riverside Public Utilities and the governing approved-tester workflow.,2026-04-05
+Roseville,california,roseville-water,roseville,REDIRECT,City search demand maps directly to Roseville's governing cross-connection program.,2026-04-05
+Sacramento,california,sacramento-water,sacramento,REDIRECT,City search demand maps directly to Sacramento's Department of Utilities and approved tester workflow.,2026-04-05
+San Diego,california,san-diego-water,san-diego,REDIRECT,City search demand maps directly to the San Diego Public Utilities backflow program.,2026-04-04
+San Francisco,california,sfpuc-water,san-francisco,REDIRECT,City search demand maps directly to SFPUC's certified tester and backflow workflow.,2026-04-05
+San Jose,california,san-jose-water,san-jose,REDIRECT,City search demand maps directly to San Jose Water's governing backflow program.,2026-04-05
+Santa Rosa,california,santa-rosa-water,santa-rosa,REDIRECT,City search demand maps directly to Santa Rosa's governing backflow prevention and authorized-tester workflow.,2026-04-05
+Santa Clara,california,santa-clara-water,santa-clara,REDIRECT,City search demand maps directly to Santa Clara Water & Sewer Utilities and the governing policy handbook.,2026-04-05
+Arvada,colorado,arvada-water,arvada,REDIRECT,City search demand maps directly to Arvada's governing annual-testing and certified-tester workflow.,2026-04-05
+Aspen,colorado,aspen-water,aspen,REDIRECT,City search demand maps directly to Aspen's governing cross-connection control program.,2026-04-05
+Aurora,colorado,aurora-water,aurora,REDIRECT,City search demand maps directly to Aurora Water's governing program.,2026-04-04
+Castle Rock,colorado,castle-rock-water,castle-rock,REDIRECT,City search demand maps directly to Castle Rock Water's governing certified-tester workflow.,2026-04-05
+Colorado Springs,colorado,csu-backflow,colorado-springs,REDIRECT,City search demand maps directly to Colorado Springs Utilities.,2026-04-04
+Denver,colorado,denver-water,denver,REDIRECT,City search demand maps directly to Denver Water's governing program.,2026-04-04
+Durango,colorado,durango-water,durango,REDIRECT,City search demand maps directly to Durango's official backflow prevention and tester-list workflow.,2026-04-05
+Englewood,colorado,englewood-utilities,englewood,REDIRECT,City search demand maps directly to Englewood's BPCCC utility workflow.,2026-04-05
+Fort Collins,colorado,fort-collins-utilities,fort-collins,REDIRECT,City search demand maps directly to Fort Collins Utilities and the governing tester-list workflow.,2026-04-05
+Grand Junction,colorado,grand-junction-water,grand-junction,REDIRECT,City search demand maps directly to Grand Junction's governing backflow prevention program.,2026-04-05
+Greeley,colorado,greeley-water,greeley,REDIRECT,City search demand maps directly to Greeley's governing cross-connection and Spry workflow.,2026-04-05
+Longmont,colorado,longmont-water,longmont,REDIRECT,City search demand maps directly to Longmont's governing backflow program and enforcement workflow.,2026-04-05
+Lafayette,colorado,lafayette-water,lafayette,REDIRECT,City search demand maps directly to Lafayette's governing BSI-backed compliance workflow.,2026-04-05
+Parker,colorado,parker-water,parker,REDIRECT,City search demand maps directly to Parker Water and Sanitation District's governing portal-driven program.,2026-04-05
+Thornton,colorado,thornton-water,thornton,REDIRECT,City search demand maps directly to Thornton's governing cross-connection and Backflow Solutions workflow.,2026-04-05
+Westminster,colorado,westminster-water,westminster,REDIRECT,City search demand maps directly to Westminster's governing cross-connection program.,2026-04-05
+Fort Lauderdale,florida,fort-lauderdale-water,fort-lauderdale,REDIRECT,City search demand now maps directly to the City of Fort Lauderdale utility workflow.,2026-04-05
+Fort Myers,florida,lee-county-utilities,fort-myers,NOINDEX_BRIDGE,"Lee County authority governs the compliance program, so keep a bridge page for city-branded discovery instead of a hard redirect.",2026-04-05
+Jacksonville,florida,jea-water,jacksonville,REDIRECT,City search demand maps directly to JEA's governing backflow vendor and utility workflow.,2026-04-05
+Jupiter,florida,jupiter-water,jupiter,REDIRECT,City search demand maps directly to Jupiter's governing annual-testing workflow.,2026-04-05
+Miami,florida,miami-dade-wasd,miami,NOINDEX_BRIDGE,"County authority governs the compliance program, so keep a bridge page for city-branded discovery.",2026-04-04
+Orlando,florida,ouc-water,orlando,REDIRECT,City search demand maps directly to OUC's governing backflow program and annual-testing workflow.,2026-04-05
+Tallahassee,florida,tallahassee-water,tallahassee,REDIRECT,City search demand maps directly to Tallahassee Utilities and the governing cross-connection workflow.,2026-04-05
+Tampa,florida,tampa-water,tampa,REDIRECT,City search demand maps directly to Tampa Water Department's governing program.,2026-04-04
+West Palm Beach,florida,west-palm-beach-water,west-palm-beach,REDIRECT,City search demand maps directly to West Palm Beach's governing approved-contractor workflow.,2026-04-05
+Arlington,texas,arlington-water,arlington,NOINDEX_BRIDGE,Keep a bridge route for city-led search intent while routing users to the governing utility workflow.,2026-04-04
+Austin,texas,austin-water,austin,REDIRECT,City search demand maps directly to Austin Water's cross-connection program.,2026-04-04
+College Station,texas,college-station-water,college-station,REDIRECT,City search demand maps directly to the City of College Station program and tester list.,2026-04-04
+Dallas,texas,dallas-water,dallas,REDIRECT,City search demand maps directly to Dallas Water Utilities' governing program page.,2026-04-04
+Fort Worth,texas,fort-worth-water,fort-worth,REDIRECT,City search demand maps directly to the governing water utility backflow page.,2026-04-04
+Frisco,texas,frisco-water,frisco,REDIRECT,City search demand maps directly to the Frisco backflow program and BSI workflow.,2026-04-04
+Garland,texas,garland-water,garland,REDIRECT,City search demand maps directly to Garland Water Utilities and the water-supply-protection workflow.,2026-04-04
+Grand Prairie,texas,gptx-water,grand-prairie,REDIRECT,City search demand maps directly to the governing utility page with no separate enforcement layer.,2026-04-04
+Leander,texas,leander-water,leander,REDIRECT,City search demand maps directly to Leander's hazard-based backflow program.,2026-04-04
+Lewisville,texas,lewisville-water,lewisville,REDIRECT,City search demand maps directly to the Lewisville official program and tester list workflow.,2026-04-04
+McKinney,texas,mckinney-water,mckinney,REDIRECT,City search demand maps directly to the McKinney backflow program and City-form workflow.,2026-04-04
+Mesquite,texas,mesquite-water,mesquite,REDIRECT,City search demand maps directly to Mesquite Utilities and the governing backflow workflow.,2026-04-04
+Round Rock,texas,round-rock-water,round-rock,REDIRECT,City search demand maps directly to the utility backflow program and tester workflow.,2026-04-04
+San Antonio,texas,saws-backflow,san-antonio,REDIRECT,City search demand maps directly to the SAWS backflow program.,2026-04-04
+Sugar Land,texas,sugar-land-water,sugar-land,REDIRECT,City search demand maps directly to the utility testing program with no separate city-only bridge content.,2026-04-04
+Talty,texas,talty-sud,talty,REDIRECT,City-level search intent maps directly to the special utility district that governs water service and backflow compliance.,2026-04-04

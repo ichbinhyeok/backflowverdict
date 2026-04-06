@@ -1,0 +1,136 @@
+{
+  "utilityId": "santa-rosa-water",
+  "utilityName": "Santa Rosa Backflow Prevention Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "santa-rosa-backflow-prevention",
+  "state": "california",
+  "serviceAreaCities": [
+    "Santa Rosa"
+  ],
+  "serviceAreaCounties": [
+    "Sonoma County"
+  ],
+  "searchAliases": [
+    "santa rosa backflow testing",
+    "santa rosa certified backflow testers",
+    "santa rosa annual backflow test"
+  ],
+  "utilityUrl": "https://www.srcity.org/3888/Backflow-Prevention",
+  "officialProgramUrls": [
+    "https://www.srcity.org/3888/Backflow-Prevention",
+    "https://www.srcity.org/DocumentCenter/View/45218/Certified-Testers-Authorized-to-Test-in-Santa-Rosa-2025-PDF",
+    "https://www.srcity.org/DocumentCenter/View/45217/Backflow-Tester-Application-Checklist-PDF"
+  ],
+  "testingFrequency": "Annually",
+  "dueBasis": "Santa Rosa says devices are tested every year by a certified tester authorized to test devices in the city. The utility sends reminder postcards about 30 days before the due date and expects the passing report within 30 days of that due date. Late reports can trigger an annual notice fee and a 30-day shutoff notice.",
+  "coveredPropertyTypes": [
+    "Commercial services",
+    "Industrial services",
+    "Irrigation systems",
+    "High-hazard premises",
+    "Other locations where Santa Rosa requires containment"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention devices",
+    "Irrigation assemblies",
+    "Containment assemblies",
+    "City-recognized testable devices"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.srcity.org/DocumentCenter/View/45218/Certified-Testers-Authorized-to-Test-in-Santa-Rosa-2025-PDF",
+  "officialListLabel": "Open Santa Rosa's certified tester list",
+  "submissionMethods": [
+    {
+      "label": "Santa Rosa backflow prevention program",
+      "url": "https://www.srcity.org/3888/Backflow-Prevention",
+      "kind": "program page"
+    },
+    {
+      "label": "Santa Rosa certified tester list",
+      "url": "https://www.srcity.org/DocumentCenter/View/45218/Certified-Testers-Authorized-to-Test-in-Santa-Rosa-2025-PDF",
+      "kind": "official tester list"
+    },
+    {
+      "label": "Santa Rosa tester application checklist",
+      "url": "https://www.srcity.org/DocumentCenter/View/45217/Backflow-Tester-Application-Checklist-PDF",
+      "kind": "tester authorization checklist"
+    }
+  ],
+  "phone": "707-543-4200",
+  "penalties": "Santa Rosa says late test reports can trigger an annual notice fee and eventually a 30-day shutoff notice. The city also requires testers to hold authorization before they can test devices in Santa Rosa.",
+  "sourceExcerpt": "Santa Rosa is a strong Northern California utility because the city publishes annual testing, due-date reminder timing, late-notice consequences, and a real authorized tester PDF with a separate tester application checklist.",
+  "sourceSnapshotPath": "storage/snapshots/santa-rosa-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Santa Rosa is a high-quality California utility page because annual testing, 30-day notice timing, tester authorization, and enforcement all sit on public city documents.",
+  "whoIsAffected": "Santa Rosa customers with city-required backflow devices, especially commercial, industrial, irrigation, and other higher-hazard services.",
+  "residentialNotes": [
+    "Residential demand is mostly irrigation-driven or tied to other higher-risk service conditions rather than generic single-family plumbing.",
+    "Santa Rosa's reminder and shutoff language gives this utility stronger next-action value than a generic article."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because Santa Rosa combines annual testing, tester authorization, and real late-notice consequences.",
+    "The city keeps both the customer workflow and the tester onboarding checklist public."
+  ],
+  "annualTesting": {
+    "summary": "Santa Rosa says backflow devices are tested every year by authorized testers and expects the passing report within 30 days of the due date.",
+    "highlights": [
+      "Reminder postcards go out about 30 days before the due date.",
+      "Late reports can trigger an annual notice fee and a 30-day shutoff notice.",
+      "Only Santa Rosa-authorized testers should be treated as official utility entries."
+    ],
+    "workflowSteps": [
+      "Check the due date from Santa Rosa's reminder or account record.",
+      "Choose a tester from Santa Rosa's authorized list.",
+      "Submit the passing report within 30 days of the due date."
+    ]
+  },
+  "irrigation": {
+    "summary": "Santa Rosa is commercially useful for irrigation because the same annual testing and shutoff-risk logic applies to irrigation assemblies inside the city program.",
+    "highlights": [
+      "Irrigation assemblies stay inside the same authorized tester workflow.",
+      "The city keeps the annual reminder and enforcement cycle visible.",
+      "Tester authorization matters as much as the test itself."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation assembly is in Santa Rosa's annual program.",
+      "Use a city-authorized tester.",
+      "Return the passing result before the late-notice window escalates."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the device is inside Santa Rosa's annual backflow program.",
+    "Choose a tester from the city's authorized list.",
+    "Complete the annual test.",
+    "Return the passing result within 30 days of the due date."
+  ],
+  "failureHighlights": [
+    "Santa Rosa sends reminders about 30 days before the due date.",
+    "Late reports can trigger an annual notice fee and a 30-day shutoff notice.",
+    "The city publishes both the authorized tester list and the tester application checklist."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Santa Rosa's reminder timing and authorized-tester rules are the more important local constraints.",
+    "repairRetestRange": "Repair and retest cost depends on the device class and whether the late-notice cycle has already started.",
+    "pricingNotes": "The real Santa Rosa pressure is avoiding late-notice fees and shutoff escalation, not chasing the cheapest generic test."
+  },
+  "sources": [
+    {
+      "label": "Santa Rosa backflow prevention program",
+      "url": "https://www.srcity.org/3888/Backflow-Prevention",
+      "kind": "official program page"
+    },
+    {
+      "label": "Santa Rosa certified testers authorized to test devices",
+      "url": "https://www.srcity.org/DocumentCenter/View/45218/Certified-Testers-Authorized-to-Test-in-Santa-Rosa-2025-PDF",
+      "kind": "official tester list pdf"
+    },
+    {
+      "label": "Santa Rosa backflow tester application checklist",
+      "url": "https://www.srcity.org/DocumentCenter/View/45217/Backflow-Tester-Application-Checklist-PDF",
+      "kind": "official authorization checklist"
+    }
+  ]
+}

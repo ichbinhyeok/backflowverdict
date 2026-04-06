@@ -1,0 +1,135 @@
+{
+  "utilityId": "tucson-water",
+  "utilityName": "Tucson Water Backflow Prevention",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "tucson-water",
+  "state": "arizona",
+  "serviceAreaCities": [
+    "Tucson"
+  ],
+  "serviceAreaCounties": [
+    "Pima County"
+  ],
+  "searchAliases": [
+    "tucson backflow testing",
+    "tucson backflow tester list",
+    "tucson ibak backflow"
+  ],
+  "utilityUrl": "https://www.tucsonaz.gov/Departments/Water/Commercial-and-Multifamily-Customers/Backflow-Prevention/Backflow-Prevention-iBAK",
+  "officialProgramUrls": [
+    "https://www.tucsonaz.gov/Departments/Water/Commercial-and-Multifamily-Customers/Backflow-Prevention/Backflow-Prevention-iBAK",
+    "https://www.tucsonaz.gov/files/sharedassets/public/v/1/city-services/tucson-water/water-quality/documents/backflow-ordinance.pdf",
+    "https://www.tucsonaz.gov/files/sharedassets/public/v/1/city-services/tucson-water/water-quality/documents/backflow_tester_list_2020_march.pdf"
+  ],
+  "testingFrequency": "Upon installation and annually thereafter",
+  "dueBasis": "Tucson Water requires annual testing and can issue a four-day shutoff notice if the compliance date passes without the required test results. Registered testers submit through the iBAK system.",
+  "coveredPropertyTypes": [
+    "Commercial and multifamily customers",
+    "Reclaimed water sites",
+    "Irrigation locations using reclaimed or pressurized systems",
+    "Any customer where Tucson Water requires an assembly"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Reclaimed-water protection devices",
+    "Irrigation RP assemblies",
+    "Domestic containment devices"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.tucsonaz.gov/files/sharedassets/public/v/1/city-services/tucson-water/water-quality/documents/backflow_tester_list_2020_march.pdf",
+  "officialListLabel": "Open the Tucson Water tester list",
+  "submissionMethods": [
+    {
+      "label": "Tucson Water iBAK results entry",
+      "url": "https://www.tucsonaz.gov/Departments/Water/Commercial-and-Multifamily-Customers/Backflow-Prevention/Backflow-Prevention-iBAK",
+      "kind": "online submission"
+    },
+    {
+      "label": "Tucson backflow ordinance",
+      "url": "https://www.tucsonaz.gov/files/sharedassets/public/v/1/city-services/tucson-water/water-quality/documents/backflow-ordinance.pdf",
+      "kind": "utility ordinance"
+    },
+    {
+      "label": "Tucson reclaimed water page",
+      "url": "https://www.tucsonaz.gov/Departments/Water/Water-Resources-and-Drought-Preparedness/Reclaimed-Water",
+      "kind": "irrigation and reclaimed context"
+    }
+  ],
+  "phone": "520-791-2650",
+  "penalties": "If the compliance date passes without the required results, Tucson Water may send a short shutoff warning. Tester registration and equipment registration are required before online entry can be used.",
+  "sourceExcerpt": "Tucson is valuable because the city ordinance, iBAK portal, tester list, and reclaimed-water content all point to an operational compliance program instead of generic education.",
+  "sourceSnapshotPath": "storage/snapshots/tucson-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Tucson Water publishes one of the clearer Arizona workflows: annual testing, registered testers, an iBAK portal, and a short shutoff-warning path when compliance is missed.",
+  "whoIsAffected": "Commercial and multifamily customers, reclaimed-water users, irrigation users with protected connections, and any Tucson Water customer that the utility flags as requiring backflow protection.",
+  "residentialNotes": [
+    "Residential systems that use reclaimed or pressurized irrigation setups can trigger backflow requirements even when the rest of the property feels residential.",
+    "Tucson's gray-water and reclaimed-water guidance reinforces that irrigation equipment can create a real cross-connection issue."
+  ],
+  "commercialNotes": [
+    "Tucson's ordinance and iBAK workflow make this more than a simple annual reminder program.",
+    "Commercial and multifamily operators should treat the tester-registration requirement as part of compliance, not an afterthought."
+  ],
+  "annualTesting": {
+    "summary": "Tucson Water requires annual testing and expects registered testers to submit results through iBAK once their tester and equipment information is active with the utility.",
+    "highlights": [
+      "Annual test results are tied to the utility's compliance date system.",
+      "Only Tucson-registered testers can use the online submission tool.",
+      "Missed compliance can lead quickly to a shutoff warning."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly and tester are active in Tucson Water's records.",
+      "Use the iBAK workflow to submit current test results.",
+      "Resolve any failures or missing records before Tucson reaches the compliance cutoff."
+    ]
+  },
+  "irrigation": {
+    "summary": "Tucson's reclaimed-water and gray-water materials make irrigation protection a real local topic, not filler content.",
+    "highlights": [
+      "Reclaimed water cannot be allowed to enter the public drinking water system.",
+      "Pressurized irrigation and gray-water related equipment can require RP protection.",
+      "Tucson links irrigation-adjacent water reuse topics back to backflow protection."
+    ],
+    "workflowSteps": [
+      "Confirm whether the irrigation or reclaimed-water setup creates a cross-connection hazard.",
+      "Use the right assembly type for the service and pressure conditions.",
+      "Keep the annual test result in Tucson Water's system so the irrigation side does not create a compliance failure."
+    ]
+  },
+  "workflowSteps": [
+    "Check whether Tucson Water has assigned the property a backflow compliance date.",
+    "Use a Tucson-registered tester with current equipment registration.",
+    "Submit the test through iBAK before the compliance date passes.",
+    "If the assembly fails or the record is incomplete, fix it before Tucson issues a shutoff warning."
+  ],
+  "failureHighlights": [
+    "Tucson can move quickly with a short shutoff warning after the compliance date.",
+    "Tester registration is mandatory for online submission.",
+    "Reclaimed-water and irrigation setups add extra cross-connection risk."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Tucson adds operational risk through the compliance-date and shutoff-warning structure.",
+    "repairRetestRange": "Repair and retest costs vary by device and whether reclaimed or irrigation equipment is involved.",
+    "pricingNotes": "The utility value here is the iBAK workflow and registered tester structure, not a published flat fee."
+  },
+  "sources": [
+    {
+      "label": "Tucson Water iBAK results entry",
+      "url": "https://www.tucsonaz.gov/Departments/Water/Commercial-and-Multifamily-Customers/Backflow-Prevention/Backflow-Prevention-iBAK",
+      "kind": "official submission page"
+    },
+    {
+      "label": "Tucson backflow ordinance",
+      "url": "https://www.tucsonaz.gov/files/sharedassets/public/v/1/city-services/tucson-water/water-quality/documents/backflow-ordinance.pdf",
+      "kind": "official ordinance pdf"
+    },
+    {
+      "label": "Tucson certified tester list",
+      "url": "https://www.tucsonaz.gov/files/sharedassets/public/v/1/city-services/tucson-water/water-quality/documents/backflow_tester_list_2020_march.pdf",
+      "kind": "official tester list pdf"
+    }
+  ]
+}

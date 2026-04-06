@@ -1,0 +1,141 @@
+{
+  "utilityId": "sswd-water",
+  "utilityName": "Sacramento Suburban Water District Cross-Connection Control Program",
+  "governingEntityType": "water district",
+  "canonicalSlug": "sacramento-suburban-water-district",
+  "state": "california",
+  "serviceAreaCities": [
+    "Carmichael",
+    "Foothill Farms",
+    "North Highlands",
+    "Antelope"
+  ],
+  "serviceAreaCounties": [
+    "Sacramento County"
+  ],
+  "searchAliases": [
+    "sacramento suburban water district backflow",
+    "sswd approved backflow tester",
+    "sswd cross connection control"
+  ],
+  "utilityUrl": "https://www.sswd.org/services/cross-connection-control-program",
+  "officialProgramUrls": [
+    "https://www.sswd.org/services/cross-connection-control-program",
+    "https://www.sswd.org/departments/water-quality"
+  ],
+  "testingFrequency": "Upon installation and at least annually thereafter",
+  "dueBasis": "SSWD says commercial, irrigation, institutional, industrial, and multifamily service connections require approved assemblies and approved tester portal entry.",
+  "coveredPropertyTypes": [
+    "Commercial properties",
+    "Irrigation systems",
+    "Institutional properties",
+    "Industrial properties",
+    "Multifamily residential properties",
+    "Certain single-family residential properties"
+  ],
+  "coveredDeviceTypes": [
+    "Approved backflow prevention assemblies",
+    "Containment assemblies",
+    "Irrigation backflow devices"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.sswd.org/services/cross-connection-control-program",
+  "officialListLabel": "Open SSWD cross-connection FAQs for the approved tester list",
+  "submissionMethods": [
+    {
+      "label": "SSWD cross-connection program",
+      "url": "https://www.sswd.org/services/cross-connection-control-program",
+      "kind": "program page"
+    },
+    {
+      "label": "SSWD water quality page",
+      "url": "https://www.sswd.org/departments/water-quality",
+      "kind": "utility page"
+    }
+  ],
+  "phone": "916-972-7171",
+  "penalties": "Falling outside the district's approved assembly and tester process risks rejected or missing compliance records.",
+  "sourceExcerpt": "SSWD is a strong district utility because it clearly defines covered service classes and runs a tester-entry portal.",
+  "sourceSnapshotPath": "storage/snapshots/sswd-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "SSWD is a strong district page because approved testers and annual test entry live inside a real utility workflow.",
+  "whoIsAffected": "SSWD customers with commercial, irrigation, institutional, industrial, multifamily, and selected single-family service connections that require containment assemblies.",
+  "residentialNotes": [
+    "Residential demand is strongest where a single-family property has irrigation or another condition that pushes it into the district program.",
+    "This is a useful suburban district page because it answers when a house is and is not in scope."
+  ],
+  "commercialNotes": [
+    "Commercial value is high because SSWD names covered service classes and requires tester portal entry.",
+    "District-based utilities like this broaden the five-state model beyond city utilities."
+  ],
+  "annualTesting": {
+    "summary": "SSWD requires approved testers to enter results through the district portal.",
+    "highlights": [
+      "Annual testing is explicit.",
+      "Approved testers submit results through the district portal.",
+      "The program clearly names commercial, irrigation, institutional, industrial, and multifamily service classes."
+    ],
+    "workflowSteps": [
+      "Confirm the service class is inside SSWD's program.",
+      "Choose an SSWD-approved tester.",
+      "Have the tester enter results through the district portal."
+    ]
+  },
+  "irrigation": {
+    "summary": "SSWD is a strong irrigation utility because the district specifically names irrigation connections as assembly-required.",
+    "highlights": [
+      "Irrigation is explicitly covered by the district program.",
+      "Approved tester routing is public.",
+      "District-side test entry makes the workflow operational, not generic."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation service is in scope.",
+      "Use an SSWD-approved tester.",
+      "Make sure the test is entered in the district portal."
+    ]
+  },
+  "fireLine": {
+    "summary": "The district still applies approved-assembly logic to larger protected services.",
+    "highlights": [
+      "District policy is hazard-based.",
+      "Approved tester routing still matters for larger protected services.",
+      "The district portal keeps reporting centralized."
+    ],
+    "workflowSteps": [
+      "Confirm the service and hazard class with the district.",
+      "Use an approved tester.",
+      "Keep the district record current through the portal."
+    ]
+  },
+  "workflowSteps": [
+    "Check whether the service class is inside SSWD's program.",
+    "Choose an SSWD-approved tester.",
+    "Complete the test on the required cycle.",
+    "Ensure the result reaches the district portal."
+  ],
+  "failureHighlights": [
+    "SSWD is explicit about which service classes must install assemblies.",
+    "The district operates its own tester-entry portal.",
+    "This is a district-first compliance page."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but SSWD narrows the path through approved testers and district portal entry.",
+    "repairRetestRange": "Repair and retest cost depends on the device and service class.",
+    "pricingNotes": "The biggest local value is the district's operational workflow and covered-class clarity."
+  },
+  "sources": [
+    {
+      "label": "SSWD cross-connection control FAQs",
+      "url": "https://www.sswd.org/services/cross-connection-control-program",
+      "kind": "official district program page"
+    },
+    {
+      "label": "SSWD water quality page",
+      "url": "https://www.sswd.org/departments/water-quality",
+      "kind": "official district utility page"
+    }
+  ]
+}

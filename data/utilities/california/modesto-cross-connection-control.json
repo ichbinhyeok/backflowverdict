@@ -1,0 +1,125 @@
+{
+  "utilityId": "modesto-water",
+  "utilityName": "City of Modesto Cross-Connection and Backflow Control Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "modesto-cross-connection-control",
+  "state": "california",
+  "serviceAreaCities": [
+    "Modesto"
+  ],
+  "serviceAreaCounties": [
+    "Stanislaus County"
+  ],
+  "searchAliases": [
+    "modesto backflow testing",
+    "modesto certified backflow tester",
+    "modesto cross connection control"
+  ],
+  "utilityUrl": "https://www.modestogov.com/1009/Cross-Connection-Backflow-Control-Program",
+  "officialProgramUrls": [
+    "https://www.modestogov.com/1009/Cross-Connection-Backflow-Control-Program"
+  ],
+  "testingFrequency": "Upon installation and at least annually thereafter for protected assemblies",
+  "dueBasis": "Modesto runs a utility-side cross-connection program and exposes a certified tester list from the official page.",
+  "coveredPropertyTypes": [
+    "Commercial properties",
+    "Industrial properties",
+    "Irrigation systems",
+    "Multifamily properties"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Containment assemblies",
+    "Irrigation backflow devices"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.modestogov.com/1009/Cross-Connection-Backflow-Control-Program",
+  "officialListLabel": "Open the Modesto certified tester list from the official program page",
+  "submissionMethods": [
+    {
+      "label": "Modesto backflow program",
+      "url": "https://www.modestogov.com/1009/Cross-Connection-Backflow-Control-Program",
+      "kind": "program page"
+    }
+  ],
+  "phone": "209-342-2246",
+  "penalties": "Missing the city-recognized tester path can leave the assembly outside Modesto's accepted compliance workflow.",
+  "sourceExcerpt": "Modesto is a useful California city because the official utility page exposes the program and a certified tester list.",
+  "sourceSnapshotPath": "storage/snapshots/modesto-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Modesto is credible because the city program and certified tester path live on the same official utility surface.",
+  "whoIsAffected": "Modesto services with irrigation, commercial, industrial, or other cross-connection risk.",
+  "residentialNotes": [
+    "Residential demand is strongest where irrigation or another protected service exists.",
+    "This is a utility compliance page, not generic homeowner plumbing content."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because Modesto uses a city-owned program and tester path.",
+    "This page has a real next action instead of city-blurb SEO."
+  ],
+  "annualTesting": {
+    "summary": "Modesto keeps protected assemblies inside the city's certified-tester workflow.",
+    "highlights": [
+      "The city exposes a certified tester list.",
+      "The program is framed around drinking-water protection.",
+      "Protected services should stay on the city workflow."
+    ],
+    "workflowSteps": [
+      "Confirm the service is inside Modesto's program.",
+      "Choose a tester from the city path.",
+      "Complete the annual or post-install certification."
+    ]
+  },
+  "irrigation": {
+    "summary": "Modesto is strongest for irrigation and similar cross-connection hazards.",
+    "highlights": [
+      "Irrigation is a clear local trigger.",
+      "The city tester list gives a clean next step.",
+      "The page is utility-first rather than city-blurb SEO."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation service needs containment protection.",
+      "Use the city tester path.",
+      "Keep the result inside the official city loop."
+    ]
+  },
+  "fireLine": {
+    "summary": "The same city-owned program still supports larger protected services.",
+    "highlights": [
+      "Commercial and industrial risk language is explicit.",
+      "The certified tester path is public.",
+      "Utility-owned compliance language is stronger than generic FAQs."
+    ],
+    "workflowSteps": [
+      "Confirm the service class and device type.",
+      "Use a certified tester.",
+      "Submit the result through the city-recognized workflow."
+    ]
+  },
+  "workflowSteps": [
+    "Check whether the property is inside Modesto's program.",
+    "Use a certified tester from the official city path.",
+    "Complete the test or retest.",
+    "Keep the city's accepted compliance record current."
+  ],
+  "failureHighlights": [
+    "Modesto exposes a real certified tester list.",
+    "The utility page is clearly about distribution-system protection.",
+    "This page is strongest for protected-service demand."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but the main local value is clarity around the city-certified tester path.",
+    "repairRetestRange": "Repair and retest cost depends on the assembly and hazard class.",
+    "pricingNotes": "The strongest signal is the official utility workflow, not a posted retail fee."
+  },
+  "sources": [
+    {
+      "label": "Modesto cross-connection and backflow control program",
+      "url": "https://www.modestogov.com/1009/Cross-Connection-Backflow-Control-Program",
+      "kind": "official utility page"
+    }
+  ]
+}

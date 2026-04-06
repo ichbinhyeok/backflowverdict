@@ -1,0 +1,121 @@
+{
+  "utilityId": "frisco-water",
+  "utilityName": "City of Frisco Backflow Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "frisco-water-utilities",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Frisco"
+  ],
+  "serviceAreaCounties": [
+    "Collin County",
+    "Denton County"
+  ],
+  "searchAliases": [
+    "frisco backflow testing",
+    "frisco registered backflow tester"
+  ],
+  "utilityUrl": "https://www.friscotexas.gov/165/Backflow",
+  "officialProgramUrls": [
+    "https://www.friscotexas.gov/165/Backflow",
+    "https://www.bsionlinetracking.com/"
+  ],
+  "testingFrequency": "Upon installation and annually thereafter for certain testable assemblies",
+  "dueBasis": "Certain backflow prevention assemblies with test ports must be tested upon installation and thereafter annually by a licensed backflow tester. Frisco administers annual inspection fees through BSI.",
+  "coveredPropertyTypes": [
+    "Properties with potential hazards identified by the Public Works Backflow Inspector",
+    "Irrigation systems with required backflow assemblies",
+    "Sites requiring plumbing permits and backflow approval before related inspections"
+  ],
+  "coveredDeviceTypes": [
+    "Testable backflow prevention assemblies",
+    "Irrigation backflow assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.bsionlinetracking.com/",
+  "officialListLabel": "Use BSI to obtain the list of registered Frisco testers",
+  "submissionMethods": [
+    {
+      "label": "Frisco backflow program page",
+      "url": "https://www.friscotexas.gov/165/Backflow",
+      "kind": "program page"
+    },
+    {
+      "label": "BSI tracking",
+      "url": "https://www.bsionlinetracking.com/",
+      "kind": "submission portal"
+    }
+  ],
+  "phone": "972-292-5000",
+  "penalties": "Frisco charges a per-device annual inspection fee through the City in addition to private tester charges.",
+  "sourceExcerpt": "Frisco says certain testable backflow assemblies must be tested upon installation and annually thereafter, and the City partners with BSI for program administration and registered tester access.",
+  "sourceSnapshotPath": "storage/snapshots/frisco-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Frisco requires installation testing and recurring annual testing for certain testable assemblies, with BSI handling much of the program workflow.",
+  "whoIsAffected": "Properties where the hazard review requires a testable backflow assembly, including irrigation-related installations and other inspected hazards.",
+  "residentialNotes": [
+    "Frisco homeowners run into this most often through irrigation systems and related permit work.",
+    "The City fee layer means even routine residential testing is not just a private contractor quote problem."
+  ],
+  "commercialNotes": [
+    "Commercial sites should expect the hazard review to control whether a device is testable and annual.",
+    "Backflow approval can affect related inspection sequencing for larger projects."
+  ],
+  "annualTesting": {
+    "summary": "Frisco is not purely annual-for-everything. The City requires installation testing and then annual testing for certain testable assemblies identified by its program.",
+    "highlights": [
+      "Certain testable assemblies are annual after installation.",
+      "The City layers a per-device annual inspection fee on top of tester pricing.",
+      "BSI is part of the core workflow, not an optional extra."
+    ],
+    "workflowSteps": [
+      "Confirm that the assembly falls into Frisco's testable annual category.",
+      "Use a licensed tester and account for the City inspection fee.",
+      "Route reporting and tester lookup through the BSI-backed Frisco workflow."
+    ]
+  },
+  "irrigation": {
+    "summary": "Frisco irrigation work is one of the clearest local triggers because backflow approval can hold up related inspection flow.",
+    "highlights": [
+      "Irrigation-related assemblies are part of the City's backflow review rather than a separate landscaping-only issue.",
+      "Missing backflow approval can disrupt irrigation inspection timing.",
+      "The City fee layer still applies where the assembly enters the annual program."
+    ],
+    "workflowSteps": [
+      "Check whether the irrigation installation requires a testable backflow assembly.",
+      "Clear the backflow approval step before assuming irrigation inspections can close.",
+      "Keep the BSI and City fee workflow aligned with the install timeline."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm with the Frisco program whether the property needs a testable backflow assembly.",
+    "Use a licensed tester and account for the City's per-device annual inspection fee.",
+    "Use BSI for tester discovery and program administration.",
+    "Keep installation permits and subsequent testing aligned with the City's inspection flow."
+  ],
+  "failureHighlights": [
+    "Frisco separates tester cost from the City's annual inspection fee.",
+    "Irrigation inspection scheduling depends on backflow approval being complete.",
+    "Do not assume all assemblies are annual; the City's hazard review determines the requirement."
+  ],
+  "costBand": {
+    "testingRange": "Private tester pricing varies, plus a City-administered per-device annual inspection fee.",
+    "repairRetestRange": "Repair and retest costs vary with assembly type and installation conditions.",
+    "pricingNotes": "Frisco is one of the clearer cities on the existence of a City fee layered on top of private testing charges."
+  },
+  "sources": [
+    {
+      "label": "Frisco backflow program",
+      "url": "https://www.friscotexas.gov/165/Backflow",
+      "kind": "official program page"
+    },
+    {
+      "label": "Frisco irrigation page",
+      "url": "https://www.friscotexas.gov/1468/Irrigation",
+      "kind": "official related workflow"
+    }
+  ]
+}

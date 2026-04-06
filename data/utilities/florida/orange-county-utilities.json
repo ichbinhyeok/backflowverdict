@@ -1,0 +1,135 @@
+{
+  "utilityId": "orange-county-utilities",
+  "utilityName": "Orange County Utilities Cross Connection Control",
+  "governingEntityType": "county utility",
+  "canonicalSlug": "orange-county-utilities",
+  "state": "florida",
+  "serviceAreaCities": [],
+  "serviceAreaCounties": [
+    "Orange County"
+  ],
+  "searchAliases": [
+    "orange county florida backflow testing",
+    "orange county utilities registered backflow testers",
+    "orange county reclaimed water backflow"
+  ],
+  "utilityUrl": "https://www.ocfl.net/WaterGarbageRecycling/CrossConnectionControl.aspx",
+  "officialProgramUrls": [
+    "https://www.ocfl.net/WaterGarbageRecycling/CrossConnectionControl.aspx",
+    "https://www.ocfl.net/Portals/0/resource%20library/water%20-%20garbage%20-%20recycling/CrossConnectionManual-CERT.pdf"
+  ],
+  "testingFrequency": "On the county program cycle for protected assemblies",
+  "dueBasis": "Orange County runs a real cross-connection control section, accepts backflow test reports by email, registers testers, and keeps a public search path for Registered Backflow Testers and Irrigation Contractors.",
+  "coveredPropertyTypes": [
+    "Commercial properties",
+    "Protected residential areas with reclaimed water infrastructure",
+    "Irrigation systems",
+    "County utility customers with protected service connections"
+  ],
+  "coveredDeviceTypes": [
+    "RPBA devices",
+    "PVB devices",
+    "DCVA devices",
+    "Dual-check devices in reclaimed-water areas"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.ocfl.net/WaterGarbageRecycling/CrossConnectionControl.aspx",
+  "officialListLabel": "Open the Orange County Utilities cross-connection page for tester search instructions",
+  "submissionMethods": [
+    {
+      "label": "Orange County cross connection control",
+      "url": "https://www.ocfl.net/WaterGarbageRecycling/CrossConnectionControl.aspx",
+      "kind": "program page"
+    },
+    {
+      "label": "Orange County cross connection manual",
+      "url": "https://www.ocfl.net/Portals/0/resource%20library/water%20-%20garbage%20-%20recycling/CrossConnectionManual-CERT.pdf",
+      "kind": "manual"
+    }
+  ],
+  "phone": "407-836-6970",
+  "penalties": "Orange County routes the program through a dedicated cross-connection section and keeps accepted reporting inside county tools and the county backflow email. Missing the right county workflow can keep the device outside accepted compliance.",
+  "sourceExcerpt": "Orange County is a strong Florida county utility because it combines a live cross-connection section, registered tester search instructions, backflow test forms, and reclaimed-water-specific device rules.",
+  "sourceSnapshotPath": "storage/snapshots/orange-county-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Orange County is a strong Florida county utility because it exposes the real county program, the registered tester search path, and reclaimed-water-specific device rules.",
+  "whoIsAffected": "Orange County Utilities customers with cross-connection hazards, irrigation systems, reclaimed-water interconnects, and protected service connections.",
+  "residentialNotes": [
+    "Residential demand is strongest in reclaimed-water neighborhoods because the county explicitly addresses those areas.",
+    "The county even changed who installs dual-check devices in those protected reclaimed-water zones."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because the county publishes the manual, tester search instructions, and direct report-submission contact.",
+    "This is a serious county workflow, not a light educational page."
+  ],
+  "annualTesting": {
+    "summary": "Orange County runs a formal cross-connection section with backflow test forms, a manual, and county-side reporting, which makes annual or recurring testing a real county workflow.",
+    "highlights": [
+      "The county publishes backflow tools and standards.",
+      "Registered Backflow Testers and Irrigation Contractors are searchable from the public page.",
+      "Backflow test reports route through the county backflow email and section staff."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is inside the Orange County program.",
+      "Use a registered tester or irrigation contractor found through the county search path.",
+      "Submit the report through the county workflow."
+    ]
+  },
+  "irrigation": {
+    "summary": "Orange County is especially good for irrigation because reclaimed-water and potable-interconnect rules are built directly into the public county page.",
+    "highlights": [
+      "Residential reclaimed-water areas have county-specific dual-check rules.",
+      "The county publishes both a reclaimed-water customer guide and irrigation practices support.",
+      "Registered irrigation contractors are part of the same public search path."
+    ],
+    "workflowSteps": [
+      "Check whether the property is in a reclaimed-water neighborhood or interconnect situation.",
+      "Use the county's registered tester or irrigation-contractor path.",
+      "Follow the county standards and report-submission workflow."
+    ]
+  },
+  "fireLine": {
+    "summary": "Orange County is less fire-line-specific than West Palm, but the same county standards and tester registration workflow still govern larger protected service assemblies.",
+    "highlights": [
+      "The county standards cover multiple assembly types.",
+      "The cross-connection manual is part of the public workflow.",
+      "Registered tester search is still the next step for larger protected services."
+    ],
+    "workflowSteps": [
+      "Confirm the protected service class and required device type.",
+      "Use the county's registered tester search path.",
+      "Submit results through the county section."
+    ]
+  },
+  "workflowSteps": [
+    "Check whether the service is under Orange County's cross-connection section.",
+    "Use the public search instructions to find a registered tester or irrigation contractor.",
+    "Complete the test and any county-required forms.",
+    "Send the report through the county workflow so the assembly stays compliant."
+  ],
+  "failureHighlights": [
+    "Orange County publishes registered tester search instructions on the main program page.",
+    "Reclaimed-water and irrigation are first-class parts of the county program.",
+    "The county manual and standards are public."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but Orange County narrows the path through registered tester and irrigation-contractor search.",
+    "repairRetestRange": "Repair and retest cost rises on reclaimed-water and interconnect conditions.",
+    "pricingNotes": "The main local value is county-process clarity and a strong irrigation/reclaimed-water angle."
+  },
+  "sources": [
+    {
+      "label": "Orange County cross connection control",
+      "url": "https://www.ocfl.net/WaterGarbageRecycling/CrossConnectionControl.aspx",
+      "kind": "official program page"
+    },
+    {
+      "label": "Orange County cross connection manual",
+      "url": "https://www.ocfl.net/Portals/0/resource%20library/water%20-%20garbage%20-%20recycling/CrossConnectionManual-CERT.pdf",
+      "kind": "official manual pdf"
+    }
+  ]
+}

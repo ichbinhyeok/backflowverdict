@@ -1,0 +1,135 @@
+{
+  "utilityId": "phoenix-water",
+  "utilityName": "City of Phoenix Backflow Prevention Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "phoenix-water-services",
+  "state": "arizona",
+  "serviceAreaCities": [
+    "Phoenix"
+  ],
+  "serviceAreaCounties": [
+    "Maricopa County"
+  ],
+  "searchAliases": [
+    "phoenix backflow testing",
+    "phoenix approved backflow tester",
+    "phoenix fire line backflow"
+  ],
+  "utilityUrl": "https://www.phoenix.gov/administration/departments/pdd/tools-resources/inspections/types-of-inspections/backflow-prevention-program.html",
+  "officialProgramUrls": [
+    "https://www.phoenix.gov/administration/departments/pdd/tools-resources/inspections/types-of-inspections/backflow-prevention-program.html",
+    "https://www.phoenix.gov/content/dam/phoenix/pddsite/documents/trt/external/dsd_trt_pdf_00636.pdf",
+    "https://www.phoenix.gov/content/dam/phoenix/pddsite/documents/trt/external/dsd_trt_pdf_00937.pdf"
+  ],
+  "testingFrequency": "Upon installation and annually thereafter",
+  "dueBasis": "Phoenix requires certified testers on the city list to perform testing and repairs, and the approved report has to be forwarded to Planning and Development by the due date shown on the work order.",
+  "coveredPropertyTypes": [
+    "Commercial and industrial services",
+    "Irrigation services and secondary protection points",
+    "Fire line services",
+    "Residential and multifamily sites where the city identifies a hazard"
+  ],
+  "coveredDeviceTypes": [
+    "Primary containment assemblies",
+    "Secondary protection assemblies",
+    "Irrigation backflow assemblies",
+    "Fire line backflow preventers"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.phoenix.gov/content/dam/phoenix/pddsite/documents/trt/external/dsd_trt_pdf_00937.pdf",
+  "officialListLabel": "Open the Phoenix tester list",
+  "submissionMethods": [
+    {
+      "label": "Phoenix Backflow Prevention Program",
+      "url": "https://www.phoenix.gov/administration/departments/pdd/tools-resources/inspections/types-of-inspections/backflow-prevention-program.html",
+      "kind": "program page"
+    },
+    {
+      "label": "Phoenix tester requirements",
+      "url": "https://www.phoenix.gov/content/dam/phoenix/pddsite/documents/trt/external/dsd_trt_pdf_00636.pdf",
+      "kind": "tester requirements"
+    },
+    {
+      "label": "Phoenix assembly test report",
+      "url": "https://www.phoenix.gov/content/dam/phoenix/pddsite/documents/trt/external/dsd_trt_pdf_00337.pdf",
+      "kind": "test report form"
+    }
+  ],
+  "phone": "602-534-2140",
+  "penalties": "Phoenix publishes noncompliance penalties inside the tester packet and can hold compliance open until the city-approved report is delivered. Fire-line downstream testing is handled separately by the Fire Department.",
+  "sourceExcerpt": "Phoenix publishes a full city-run program: certified tester requirements, a maintained tester list, city-approved report forms, due-date handling through work orders, and a separate fire-line responsibility split.",
+  "sourceSnapshotPath": "storage/snapshots/phoenix-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Phoenix is one of the strongest Arizona utilities because it publishes tester requirements, a current tester list, city code references, and a clear work-order driven reporting workflow.",
+  "whoIsAffected": "Commercial, industrial, irrigation, and fire-line services plus any residential or multifamily property where Phoenix determines that a cross-connection hazard exists.",
+  "residentialNotes": [
+    "Phoenix can require backflow protection at residential sites when the city identifies a hazard rather than leaving the topic only to commercial properties.",
+    "Residential owners should not assume irrigation or special-use plumbing is exempt just because the service is domestic."
+  ],
+  "commercialNotes": [
+    "Phoenix is documentation-heavy: the city list, approved report, and work-order due date all matter together.",
+    "Fire-line downstream testing is not handled the same way as domestic or irrigation assemblies."
+  ],
+  "annualTesting": {
+    "summary": "Phoenix requires city-listed certified testers to test assemblies on installation and annually thereafter, then send the approved report to the city by the due date on the work order.",
+    "highlights": [
+      "Testing and repairs must be done by a city-listed certified tester.",
+      "The test report must be on Phoenix's approved form.",
+      "Customers are expected to retain records for at least three years."
+    ],
+    "workflowSteps": [
+      "Verify the assembly is active in Phoenix's program.",
+      "Use a tester currently listed on the Phoenix approved company list.",
+      "Submit the approved test form to Planning and Development by the work-order due date."
+    ]
+  },
+  "fireLine": {
+    "summary": "Phoenix explicitly separates downstream testing of fire-line backflow devices by assigning that responsibility to the Phoenix Fire Department.",
+    "highlights": [
+      "Fire-line downstream testing is carved out from the standard utility workflow.",
+      "Fire protection work is governed together with the city's backflow and fire-prevention teams.",
+      "Do not treat fire-line testing as identical to ordinary domestic or irrigation testing."
+    ],
+    "workflowSteps": [
+      "Confirm whether the assembly is serving a fire line or downstream fire protection equipment.",
+      "Coordinate the testing path with the Phoenix Fire Department requirements.",
+      "Keep the utility-side report and the fire-side requirement aligned so the record does not stall."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm whether Phoenix has identified the service as requiring a backflow assembly.",
+    "Use a tester from the city's approved tester list.",
+    "Complete the approved report and deliver it by the due date shown on the work order.",
+    "Retain the testing records in case Phoenix requests follow-up documentation."
+  ],
+  "failureHighlights": [
+    "Phoenix ties testing to a city work-order due date.",
+    "Only testers on the city list can perform the accepted test and repair workflow.",
+    "Fire-line downstream testing follows a separate responsibility path."
+  ],
+  "costBand": {
+    "testingRange": "Private testing price is market-based, but Phoenix adds city-form and due-date discipline around the work.",
+    "repairRetestRange": "Repair and retest pricing varies by device and whether the issue touches fire-line equipment.",
+    "pricingNotes": "The city does not publish retail testing prices, so the operational value is in the official tester list and reporting path rather than a fixed fee."
+  },
+  "sources": [
+    {
+      "label": "Phoenix Backflow Prevention Program",
+      "url": "https://www.phoenix.gov/administration/departments/pdd/tools-resources/inspections/types-of-inspections/backflow-prevention-program.html",
+      "kind": "official program page"
+    },
+    {
+      "label": "Phoenix Backflow Tester Requirements",
+      "url": "https://www.phoenix.gov/content/dam/phoenix/pddsite/documents/trt/external/dsd_trt_pdf_00636.pdf",
+      "kind": "official requirements pdf"
+    },
+    {
+      "label": "Phoenix Backflow Test List",
+      "url": "https://www.phoenix.gov/content/dam/phoenix/pddsite/documents/trt/external/dsd_trt_pdf_00937.pdf",
+      "kind": "official tester list pdf"
+    }
+  ]
+}

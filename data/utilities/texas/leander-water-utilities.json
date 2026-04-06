@@ -1,0 +1,147 @@
+{
+  "utilityId": "leander-water",
+  "utilityName": "City of Leander Cross-Connection Control",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "leander-water-utilities",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Leander"
+  ],
+  "serviceAreaCounties": [
+    "Williamson County",
+    "Travis County"
+  ],
+  "searchAliases": [
+    "leander backflow testing",
+    "leander irrigation backflow test"
+  ],
+  "utilityUrl": "https://www.leandertx.gov/507/Cross-Connection-Control-Backflow-Preven",
+  "officialProgramUrls": [
+    "https://www.leandertx.gov/507/Cross-Connection-Control-Backflow-Preven",
+    "https://www.leandertx.gov/784/Commercial-Irrigation-Inspection-Program",
+    "https://www.leandertx.gov/DocumentCenter/View/4606/Qualified-Irrigation-Inspectors-in-Leander",
+    "https://bsionline.com/"
+  ],
+  "testingFrequency": "Annual for many hazards; every five years for some residences without septic",
+  "dueBasis": "Leander's hazard list sets frequency by hazard. The FAQ says annual testing applies to fire sprinkler systems, pools with auto-fillers, residences with septic using irrigation, and other listed hazards, while some residences without septic test every five years.",
+  "coveredPropertyTypes": [
+    "Commercial properties with listed hazards",
+    "Residential properties with fire sprinklers or pools with auto-fillers",
+    "Residential irrigation systems, especially where septic is present"
+  ],
+  "coveredDeviceTypes": [
+    "RPZ",
+    "Grandfathered DCVA in limited older cases",
+    "Other hazard-appropriate backflow assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://bsionline.com/",
+  "officialListLabel": "Use the BSI website for Leander licensed registered testing agencies",
+  "submissionMethods": [
+    {
+      "label": "Leander cross-connection program",
+      "url": "https://www.leandertx.gov/507/Cross-Connection-Control-Backflow-Preven",
+      "kind": "program page"
+    },
+    {
+      "label": "BSI submission portal",
+      "url": "https://bsionline.com/",
+      "kind": "submission portal"
+    }
+  ],
+  "phone": "512-528-2780",
+  "penalties": "Testing frequency depends on the City's hazard list and grandfather rules; replacement of older grandfathered DCVAs may trigger stricter RPZ requirements.",
+  "sourceExcerpt": "Leander publishes a hazard-based frequency table, routes new-installation and existing-assembly reports through BSI, and gives unusually clear residential examples in its FAQ.",
+  "sourceSnapshotPath": "storage/snapshots/leander-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-04",
+  "verdictSummary": "Leander is useful because it publishes hazard-based frequency rules, including annual tests for many residential and commercial hazards and five-year testing for some residences without septic.",
+  "whoIsAffected": "Commercial sites with listed hazards, fire sprinkler systems, pools with auto-fillers, and irrigation systems, especially where septic affects the hazard class.",
+  "residentialNotes": [
+    "Leander is one of the best residential pilot cities because the FAQ explicitly distinguishes annual irrigation cases from five-year low-hazard residential cases.",
+    "Pools with auto-fill, fire sprinklers, septic-connected irrigation, and some private-well setups move a property out of the generic low-hazard bucket."
+  ],
+  "commercialNotes": [
+    "Commercial sites should treat Leander as hazard-list driven rather than blanket annual-for-everything.",
+    "The City also runs a separate commercial irrigation inspection program with a published inspector list, which adds a second workflow next to the backflow assembly rules."
+  ],
+  "annualTesting": {
+    "summary": "Leander's public materials are unusually specific: many hazards are annual, but some residences without septic are every five years.",
+    "highlights": [
+      "Fire sprinkler systems, pools with auto-fillers, and septic-connected irrigation are annual.",
+      "Some residences without septic fall to a five-year testing cycle.",
+      "Replacing an old grandfathered DCVA removes the grandfather and requires an RPZ."
+    ],
+    "workflowSteps": [
+      "Use the City's hazard examples and FAQ to classify the property.",
+      "Schedule the test on the cadence tied to that hazard class.",
+      "Route the report through the City's BSI-backed workflow and reevaluate the device type if replacement is needed."
+    ]
+  },
+  "irrigation": {
+    "summary": "Leander's irrigation rules are strong enough to justify a dedicated page. Residential irrigation can be annual or five-year depending on septic and hazard conditions, while commercial irrigation also carries a separate inspection program.",
+    "highlights": [
+      "Residential irrigation with septic requires annual RPZ testing.",
+      "Some residences without septic test every five years instead of annually.",
+      "Commercial irrigation is tracked through a separate City inspection program with a published qualified-inspector list."
+    ],
+    "workflowSteps": [
+      "Determine whether the irrigation system falls into the annual or five-year residential lane.",
+      "If the property is commercial, check the separate commercial irrigation inspection program requirements.",
+      "Use the qualified tester or inspector list the City points to and submit through the BSI path when the backflow assembly is tested."
+    ]
+  },
+  "fireLine": {
+    "summary": "Leander's FAQ is unusually direct for fire lines: residential and commercial fire sprinkler systems are annual and older grandfathered assemblies lose that status when they are replaced.",
+    "highlights": [
+      "Fire sprinkler systems are annual.",
+      "The City treats fire sprinkler systems as a distinct hazard example rather than burying them inside generic commercial copy.",
+      "Replacement can force a move from an older grandfathered device to an RPZ."
+    ],
+    "workflowSteps": [
+      "Confirm the fire sprinkler assembly's current hazard class and whether a grandfathered device is still allowed.",
+      "Schedule the annual fire-system test with the City's approved testing path.",
+      "If replacement is needed, confirm whether the device must be upgraded to an RPZ."
+    ]
+  },
+  "workflowSteps": [
+    "Use the Leander hazard list and FAQ to determine the testing frequency for the property.",
+    "Use a licensed tester and send new-installation or existing-assembly results through the correct BSI path.",
+    "Check whether an older grandfathered DCVA can remain or must be replaced with an RPZ.",
+    "Keep the property's hazard conditions current with the City if the use changes."
+  ],
+  "failureHighlights": [
+    "Leander's cadence depends heavily on hazard type, so using the wrong local assumption can over- or under-test.",
+    "Septic-connected irrigation gets annual RPZ treatment.",
+    "A grandfathered DCVA that needs replacement loses its grandfathered status and must be replaced with an RPZ."
+  ],
+  "costBand": {
+    "testingRange": "Private market pricing varies by device type and whether the hazard class requires annual testing.",
+    "repairRetestRange": "Repair cost widens if a grandfathered assembly now has to be replaced with an RPZ.",
+    "pricingNotes": "Leander is one of the better cities for explaining frequency logic, but still not a strong public source for retail pricing."
+  },
+  "sources": [
+    {
+      "label": "Leander cross-connection and backflow prevention page",
+      "url": "https://www.leandertx.gov/507/Cross-Connection-Control-Backflow-Preven",
+      "kind": "official program page"
+    },
+    {
+      "label": "Leander commercial irrigation inspection program",
+      "url": "https://www.leandertx.gov/784/Commercial-Irrigation-Inspection-Program",
+      "kind": "official program page"
+    },
+    {
+      "label": "Leander qualified irrigation inspectors list",
+      "url": "https://www.leandertx.gov/DocumentCenter/View/4606/Qualified-Irrigation-Inspectors-in-Leander",
+      "kind": "official pdf"
+    },
+    {
+      "label": "Leander backflow presentation",
+      "url": "https://www.leandertx.gov/DocumentCenter/View/4608/Backflow-Prevention-Presentation-PDF",
+      "kind": "official presentation"
+    }
+  ]
+}

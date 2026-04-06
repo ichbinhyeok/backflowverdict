@@ -1,0 +1,135 @@
+{
+  "utilityId": "sarasota-county-utilities",
+  "utilityName": "Sarasota County Public Utilities Cross-Connection Control Program",
+  "governingEntityType": "county utility",
+  "canonicalSlug": "sarasota-county-public-utilities",
+  "state": "florida",
+  "serviceAreaCities": [],
+  "serviceAreaCounties": [
+    "Sarasota County"
+  ],
+  "searchAliases": [
+    "sarasota county backflow testing",
+    "sarasota county approved tester",
+    "sarasota county irrigation backflow"
+  ],
+  "utilityUrl": "https://www.scgov.net/government/public-utilities/utility-engineering/asset-management/cross-connection-control-backflow-prevention-program",
+  "officialProgramUrls": [
+    "https://www.scgov.net/government/public-utilities/utility-engineering/asset-management/cross-connection-control-backflow-prevention-program",
+    "https://www.scgov.net/home/showpublisheddocument/72849/639008742293670000"
+  ],
+  "testingFrequency": "On the county notification cycle, with annual operational testing where required",
+  "dueBasis": "Sarasota County requires maximum protection for all non-residential customers, can require annual operational testing for residential irrigation assemblies, and routes notices to approved testers with shut-off timelines and hazard IDs.",
+  "coveredPropertyTypes": [
+    "Non-residential customers",
+    "Residential properties with auxiliary water or separate irrigation",
+    "Residential properties with connected irrigation plumbing",
+    "County utility customers with protected assemblies"
+  ],
+  "coveredDeviceTypes": [
+    "Maximum protection assemblies at the meter",
+    "Pressure vacuum breakers",
+    "Reduced pressure zone assemblies",
+    "Fire protection contractor-serviced devices"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.scgov.net/home/showpublisheddocument/72849/639008742293670000",
+  "officialListLabel": "Open the Sarasota County approved contractor list",
+  "submissionMethods": [
+    {
+      "label": "Sarasota County cross-connection program",
+      "url": "https://www.scgov.net/government/public-utilities/utility-engineering/asset-management/cross-connection-control-backflow-prevention-program",
+      "kind": "program page"
+    },
+    {
+      "label": "Sarasota County approved contractor list",
+      "url": "https://www.scgov.net/home/showpublisheddocument/72849/639008742293670000",
+      "kind": "official contractor list"
+    }
+  ],
+  "phone": "941-861-0527",
+  "penalties": "Failure to respond may result in code enforcement action. Reports can be rejected if a contractor is not properly registered with the utility.",
+  "sourceExcerpt": "Sarasota County is a high-quality Florida county utility because it combines customer notices, hazard IDs, approved contractor lists, and separate fire-protection contractor routing.",
+  "sourceSnapshotPath": "storage/snapshots/sarasota-county-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-04-05",
+  "verdictSummary": "Sarasota County is a strong Florida county utility because notice-based compliance, shutoff risk, and approved contractor lists all live on the same official program surface.",
+  "whoIsAffected": "Sarasota County utility customers with non-residential services, auxiliary water, separate irrigation, or connected lawn irrigation that creates cross-connection risk.",
+  "residentialNotes": [
+    "Residential demand is real here because the county explicitly addresses separate irrigation systems, auxiliary water, and connected lawn irrigation plumbing.",
+    "The county even offers a lower-friction dual-check option in limited situations."
+  ],
+  "commercialNotes": [
+    "Commercial value is strong because all non-residential customers must maintain maximum protection at the meter.",
+    "The county keeps both general approved contractors and fire protection contractors on public official lists."
+  ],
+  "annualTesting": {
+    "summary": "Sarasota County uses utility notices, approved testers, and county-side enforcement to keep backflow certifications current.",
+    "highlights": [
+      "Failure to respond can lead to code enforcement action.",
+      "Approved testers receive shut-off dates, service address, and hazard ID information from the customer notice.",
+      "Reports may be rejected if the contractor is not properly registered with the utility."
+    ],
+    "workflowSteps": [
+      "Read the county notice and keep the shut-off date and hazard ID handy.",
+      "Choose an approved tester from the county list.",
+      "Complete the test or repair and keep the utility's accepted report current."
+    ]
+  },
+  "irrigation": {
+    "summary": "Sarasota County is especially strong for irrigation because it explicitly covers separate irrigation systems, connected irrigation plumbing, and auxiliary water systems.",
+    "highlights": [
+      "Connected lawn irrigation must meet Florida code with PVB or RP protection.",
+      "The utility may require annual operational testing for irrigation devices.",
+      "Approved testers are public and county-registered."
+    ],
+    "workflowSteps": [
+      "Confirm whether the irrigation system is separate, connected, or auxiliary-water-fed.",
+      "Choose an approved contractor from the county list.",
+      "Respond before the county notice window closes."
+    ]
+  },
+  "fireLine": {
+    "summary": "The official PDF includes a separate fire protection contractor list.",
+    "highlights": [
+      "Fire protection contractors are listed separately from general backflow contractors.",
+      "The county warns that unregistered providers can have reports rejected.",
+      "This makes the fire-line route commercially useful and utility-authentic."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is tied to fire protection.",
+      "Choose a contractor from the fire protection section of the county PDF.",
+      "Submit the accepted report before the county deadline."
+    ]
+  },
+  "workflowSteps": [
+    "Read the county notice and identify the hazard ID and shut-off date.",
+    "Choose an approved contractor from the county PDF.",
+    "Complete testing or repair on time.",
+    "Avoid code enforcement or shutoff by keeping the accepted report current."
+  ],
+  "failureHighlights": [
+    "Sarasota County uses shut-off dates and hazard IDs in its notices.",
+    "Approved contractor and fire protection contractor lists are public.",
+    "Unregistered providers can have reports rejected."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced, but the county encourages customers to use an approved contractor and keep the report accepted.",
+    "repairRetestRange": "Repair and retest cost rises when the first report fails or the property drifts toward shutoff.",
+    "pricingNotes": "The strongest local value is the county's clear notice-to-contractor workflow and separate fire list."
+  },
+  "sources": [
+    {
+      "label": "Sarasota County cross-connection program",
+      "url": "https://www.scgov.net/government/public-utilities/utility-engineering/asset-management/cross-connection-control-backflow-prevention-program",
+      "kind": "official county program page"
+    },
+    {
+      "label": "Sarasota County approved contractor list",
+      "url": "https://www.scgov.net/home/showpublisheddocument/72849/639008742293670000",
+      "kind": "official contractor list pdf"
+    }
+  ]
+}
