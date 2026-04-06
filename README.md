@@ -50,3 +50,5 @@ A utility-first compliance site that helps owners and managers answer whether ba
 - Deploy path: GitHub Actions workflow at `.github/workflows/deploy.yml`
 - Runtime memory cap: `mem_limit: 512m` in `docker-compose.yml`
 - This project stays on Java 21 because Spring Boot 4 requires it.
+- Public hostname routing is a separate layer from the container deploy. The app can be healthy on `127.0.0.1:8093` while `https://backflowpath.com/` still serves another site if nginx or Cloudflare is pointing at the wrong upstream.
+- nginx reference config: `ops/nginx/backflowpath.conf`

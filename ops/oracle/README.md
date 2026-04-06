@@ -16,7 +16,7 @@
 2. Copy the repo or at least `build/libs`, `data`, and `ops/oracle` to the server.
 3. Review `/etc/backflowpath/backflowpath.env`.
 4. Run `sudo bash ops/oracle/install-or-update.sh`.
-5. Verify `systemctl status backflowpath` and `curl http://127.0.0.1:8080/healthz`.
+5. Verify `systemctl status backflowpath` and `curl http://127.0.0.1:8093/healthz`.
 
 ## Notes
 - `/ops/**` should stay private. Use a strong `APP_OPS_VERIFICATION_TOKEN`.
@@ -24,3 +24,4 @@
 - The example env file writes ops reports outside `build/` so they survive service restarts and redeploys.
 - The install script re-owns writable runtime directories so JSON, CSV, report, snapshot, lead, and provider-commercial-state files are not lost on restart.
 - Put nginx or another reverse proxy in front of the app and only expose public routes.
+- If `https://backflowpath.com/` renders another app while `curl http://127.0.0.1:8093/healthz` is healthy, the issue is the nginx or Cloudflare hostname mapping, not the BackflowPath container.
