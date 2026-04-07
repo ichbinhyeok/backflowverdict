@@ -18,19 +18,22 @@ public class LeadAdminService {
     private final LeadDeliveryService leadDeliveryService;
     private final BackflowRegistryService registryService;
     private final ProviderCommercialStateRepository providerCommercialStateRepository;
+    private final ProviderClaimRepository providerClaimRepository;
 
     public LeadAdminService(
             LeadRepository leadRepository,
             LeadAssignmentRepository leadAssignmentRepository,
             LeadDeliveryService leadDeliveryService,
             BackflowRegistryService registryService,
-            ProviderCommercialStateRepository providerCommercialStateRepository
+            ProviderCommercialStateRepository providerCommercialStateRepository,
+            ProviderClaimRepository providerClaimRepository
     ) {
         this.leadRepository = leadRepository;
         this.leadAssignmentRepository = leadAssignmentRepository;
         this.leadDeliveryService = leadDeliveryService;
         this.registryService = registryService;
         this.providerCommercialStateRepository = providerCommercialStateRepository;
+        this.providerClaimRepository = providerClaimRepository;
     }
 
     public List<LeadRecord> listLeads() {
@@ -133,6 +136,14 @@ public class LeadAdminService {
 
     public int queuedDeliveryCount() {
         return leadDeliveryService.queuedCount();
+    }
+
+    public List<ProviderClaimRecord> providerClaims() {
+        return providerClaimRepository.findAll();
+    }
+
+    public int providerClaimCount() {
+        return providerClaimRepository.count();
     }
 
     public List<LeadDeliveryRecord> recentDeliveries() {

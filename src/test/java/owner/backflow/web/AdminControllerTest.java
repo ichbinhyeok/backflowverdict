@@ -319,6 +319,35 @@ class AdminControllerTest {
     }
 
     @Test
+    void providerClaimAppearsInAdminInbox() throws Exception {
+        MockHttpSession session = adminSession();
+
+        mockMvc.perform(post("/claim-listing")
+                        .param("fullName", "Mina Kim")
+                        .param("companyName", "Backflow Field Services")
+                        .param("email", "mina@example.com")
+                        .param("phone", "555-818-2121")
+                        .param("website", "https://example.com")
+                        .param("serviceArea", "Dallas-Fort Worth")
+                        .param("requestType", "claim-existing-profile")
+                        .param("listingReference", "https://backflowpath.com/providers/example/")
+                        .param("notes", "Please review our profile and next steps.")
+                        .param("consentToReview", "yes")
+                        .header("Referer", "https://backflowpath.com/for-providers"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/claim-listing/thanks"));
+
+        mockMvc.perform(get("/admin").session(session))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("1 provider requests")))
+                .andExpect(content().string(containsString("Manual provider inbox")))
+                .andExpect(content().string(containsString("Backflow Field Services")))
+                .andExpect(content().string(containsString("Claim existing profile")))
+                .andExpect(content().string(containsString("https://backflowpath.com/providers/example/")))
+                .andExpect(content().string(containsString("Please review our profile and next steps.")));
+    }
+
+    @Test
     void leadCaptureDoesNotExposeSponsorEmailsAndShowsConsentCopy() throws Exception {
         MockHttpSession session = adminSession();
 

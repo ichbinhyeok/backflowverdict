@@ -18,12 +18,14 @@
 @param java.util.Map<String, Long> sponsorProspectMetroCounts = java.util.Map.of()
 @param java.util.List<owner.backflow.data.model.ProviderRecord> privateSponsorInventory = java.util.List.of()
 @param java.util.List<owner.backflow.service.LeadDeliveryRecord> recentDeliveries = java.util.List.of()
+@param java.util.List<owner.backflow.service.ProviderClaimRecord> providerClaims = java.util.List.of()
 @param int publicProviderCount = 0
 @param int sponsorOnlyProviderCount = 0
 @param int sponsorActiveProviderCount = 0
 @param int sponsorProspectProviderCount = 0
 @param int deliveredLeadCount = 0
 @param int queuedDeliveryCount = 0
+@param int providerClaimCount = 0
 @param int heldProviderCount = 0
 
 @template.layouts.app(page = page, content = @`
@@ -38,6 +40,7 @@
                     <span>${assignedLeadCount} assigned</span>
                     <span>${unassignedLeadCount} unassigned</span>
                     <span>${uncoveredLeadCount} without provider coverage</span>
+                    <span>${providerClaimCount} provider requests</span>
                 </div>
             @endif
         </div>
@@ -255,6 +258,66 @@
                                                 </label>
                                                 <button class="button button--secondary" type="submit">${provider.isSponsorActiveListing() ? "Move to prospect" : "Activate sponsor"}</button>
                                             </form>
+                                        </td>
+                                    </tr>
+                                @endfor
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+                </div>
+            </section>
+
+            <section class="section section--tight">
+                <div class="container">
+                    <div class="section-heading">
+                        <span class="eyebrow">Provider requests</span>
+                        <h2>Manual provider inbox</h2>
+                    </div>
+                    @if (providerClaims.isEmpty())
+                        <article class="detail-card">
+                            <h3>No provider requests yet</h3>
+                            <p>Claim, pricing, and listing requests from /claim-listing will appear here for manual follow-up.</p>
+                        </article>
+                    @else
+                        <div class="table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                <tr>
+                                    <th>Submitted</th>
+                                    <th>Contact</th>
+                                    <th>Company</th>
+                                    <th>Request</th>
+                                    <th>Service area</th>
+                                    <th>Listing reference</th>
+                                    <th>Notes</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @for (var claim : providerClaims)
+                                    <tr>
+                                        <td>${claim.submittedAt() != null ? claim.submittedAt().toString() : ""}</td>
+                                        <td>
+                                            <strong>${claim.fullName()}</strong>
+                                            <div class="detail-meta">${claim.email()}</div>
+                                            @if (claim.phone() != null && !claim.phone().isBlank())
+                                                <div class="detail-meta">${claim.phone()}</div>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            ${claim.companyName()}
+                                            @if (claim.website() != null && !claim.website().isBlank())
+                                                <div class="detail-meta"><a href="${claim.website()}">${claim.website()}</a></div>
+                                            @endif
+                                        </td>
+                                        <td>${claim.displayRequestType()}</td>
+                                        <td>${claim.serviceArea()}</td>
+                                        <td>${claim.listingReference()}</td>
+                                        <td>
+                                            ${claim.notes()}
+                                            @if (claim.referrer() != null && !claim.referrer().isBlank())
+                                                <div class="detail-meta">${claim.referrer()}</div>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endfor

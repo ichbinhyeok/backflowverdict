@@ -52,6 +52,7 @@
                     @if (provider.officialApprovalSourceUrl() != null && !provider.officialApprovalSourceUrl().isBlank())
                         <a class="button button--secondary" href="/r/cta?next=${provider.officialApprovalSourceUrl()}&pageFamily=provider-profile&providerId=${provider.providerId()}&ctaType=authority-source&source=/providers/${provider.providerId()}/">Authority source</a>
                     @endif
+                    <a class="button button--secondary" href="/claim-listing?requestType=claim-existing-profile">Claim or update this listing</a>
                 </div>
             </article>
 
@@ -254,4 +255,18 @@
             </div>
         </section>
     @endif
+
+    <section class="section section--tight">
+        <div class="container">
+            <article class="detail-card">
+                <span class="eyebrow">Provider updates</span>
+                <h2>Own this company?</h2>
+                <p>If this is your company, you can claim the profile, request corrections, or ask about featured placement. Listing claims are reviewed manually before anything is changed.</p>
+                <div class="card-actions">
+                    <a class="button button--secondary" href="/claim-listing?requestType=claim-existing-profile">Claim this listing</a>
+                    <a class="button button--secondary" href="/pricing">Pricing</a>
+                </div>
+            </article>
+        </div>
+    </section>
 `)

@@ -339,8 +339,17 @@ p {
     align-items: stretch;
 }
 
+.page-frame--claim {
+    grid-template-columns: minmax(0, 0.82fr) minmax(21rem, 0.5fr);
+    gap: 1.1rem;
+}
+
 .content-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.content-grid--claim {
+    gap: 1rem;
 }
 
 .utility-grid,
@@ -405,6 +414,11 @@ p {
 .page-hero--focus h1 {
     max-width: 14ch;
     font-size: clamp(2.6rem, 5.2vw, 4.65rem);
+}
+
+.page-hero--claim h1 {
+    max-width: 10.4ch;
+    font-size: clamp(2.75rem, 5.3vw, 4.75rem);
 }
 
 .lede {
@@ -509,6 +523,31 @@ p {
     align-content: center;
     gap: 1.15rem;
     max-width: 46rem;
+}
+
+.stack--claim {
+    gap: 1rem;
+}
+
+.page-frame--claim .hero__copy {
+    gap: 0.85rem;
+    max-width: 39rem;
+}
+
+.page-frame--claim .lede {
+    margin-top: 0.35rem;
+    max-width: 56ch;
+    font-size: 1rem;
+}
+
+.page-frame--claim .hero__stats {
+    margin-top: 0.65rem;
+}
+
+.page-frame--claim .hero__stats span {
+    min-height: 2.15rem;
+    padding: 0.45rem 0.72rem;
+    font-size: 0.78rem;
 }
 
 .hero__visual {
@@ -1221,9 +1260,18 @@ p {
     gap: 1.1rem;
 }
 
+.claim-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+}
+
 .field {
     display: grid;
     gap: 0.45rem;
+}
+
+.field--span-2 {
+    grid-column: 1 / -1;
 }
 
 .field span {
@@ -1256,6 +1304,32 @@ p {
 
 .field textarea {
     resize: vertical;
+}
+
+.claim-form-card {
+    padding: 1.3rem 1.25rem 1.15rem;
+}
+
+.claim-form-card .section-heading {
+    gap: 0.45rem;
+    margin-bottom: 1rem;
+}
+
+.claim-form-card .section-heading h2 {
+    font-size: clamp(1.75rem, 2.3vw, 2.55rem);
+}
+
+.claim-form-card .section-heading p {
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+.claim-form-card .hero__actions {
+    margin-top: 0.2rem;
+}
+
+.claim-form-card .button {
+    flex: 1 1 12rem;
 }
 
 .field--checkbox {
@@ -1406,6 +1480,14 @@ p {
     .footer-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .claim-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .field--span-2 {
+        grid-column: auto;
+    }
 }
 
 @media (max-width: 840px) {
@@ -1472,6 +1554,10 @@ p {
     .hero h1,
     .page-hero h1 {
         max-width: 100%;
+    }
+
+    .page-hero--claim h1 {
+        font-size: clamp(2.45rem, 11vw, 3.6rem);
     }
 
     .hero__visual {

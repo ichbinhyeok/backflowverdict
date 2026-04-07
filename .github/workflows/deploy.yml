@@ -85,10 +85,7 @@ jobs:
             APP_ADMIN_USERNAME=${{ secrets.APP_ADMIN_USERNAME }}
             APP_ADMIN_PASSWORD=${{ secrets.APP_ADMIN_PASSWORD }}
             APP_OPS_VERIFICATION_TOKEN=${{ secrets.APP_OPS_VERIFICATION_TOKEN }}
-            APP_DELIVERY_EMAIL_ENABLED=${{ secrets.APP_DELIVERY_EMAIL_ENABLED != '' && secrets.APP_DELIVERY_EMAIL_ENABLED || 'false' }}
-            APP_DELIVERY_FROM_EMAIL=${{ secrets.APP_DELIVERY_FROM_EMAIL }}
-            APP_DELIVERY_FROM_NAME=BackflowPath
-            APP_DELIVERY_REPLY_TO=${{ secrets.APP_DELIVERY_REPLY_TO }}
+            SPRING_MAIL_PASSWORD=${{ secrets.SPRING_MAIL_PASSWORD }}
             JAVA_OPTS=-XX:+UseG1GC -Xms256m -Xmx384m -Xss512k -Djava.security.egd=file:/dev/./urandom
             EOF
 

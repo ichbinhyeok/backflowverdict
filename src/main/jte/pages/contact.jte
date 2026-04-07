@@ -83,6 +83,9 @@
                 <span class="eyebrow">Related paths</span>
                 <h2>Where to go next</h2>
                 <div class="card-actions">
+                    <a class="button button--secondary" href="/for-providers">For providers</a>
+                    <a class="button button--secondary" href="/pricing">Pricing</a>
+                    <a class="button button--secondary" href="/claim-listing">Claim listing</a>
                     <a class="button button--secondary" href="/about">About</a>
                     <a class="button button--secondary" href="/methodology">Methodology</a>
                     <a class="button button--secondary" href="/corrections">Corrections</a>

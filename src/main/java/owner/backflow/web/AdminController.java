@@ -97,6 +97,8 @@ public class AdminController {
         model.addAttribute("deliveredLeadCount", leadAdminService.deliveredLeadCount());
         model.addAttribute("queuedDeliveryCount", leadAdminService.queuedDeliveryCount());
         model.addAttribute("recentDeliveries", leadAdminService.recentDeliveries());
+        model.addAttribute("providerClaims", leadAdminService.providerClaims());
+        model.addAttribute("providerClaimCount", leadAdminService.providerClaimCount());
         model.addAttribute("heldProviderCount", leadAdminService.heldProviderCount());
         model.addAttribute("username", adminAuthService.username());
         model.addAttribute("csrfToken", adminCsrfService.ensureToken(session));
