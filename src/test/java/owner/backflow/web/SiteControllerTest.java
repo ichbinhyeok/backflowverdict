@@ -51,6 +51,10 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("gtag/js?id=G-TEST123")))
                 .andExpect(content().string(containsString("window.dataLayer = window.dataLayer || [];")))
                 .andExpect(content().string(containsString("function gtag(){dataLayer.push(arguments);}")))
+                .andExpect(content().string(containsString("request_help_click")))
+                .andExpect(content().string(containsString("provider_website_click")))
+                .andExpect(content().string(containsString("tester_route_click")))
+                .andExpect(content().string(containsString("lead_form_submit")))
                 .andExpect(content().string(containsString("href=\"/about\"")))
                 .andExpect(content().string(containsString("href=\"/methodology\"")))
                 .andExpect(content().string(containsString("href=\"/editorial-standards\"")))
@@ -79,7 +83,8 @@ class SiteControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Privacy and lead routing notice")))
                 .andExpect(content().string(containsString("The same request is not resold to multiple providers without user consent.")))
-                .andExpect(content().string(containsString("noindex,follow")));
+                .andExpect(content().string(containsString("noindex,follow")))
+                .andExpect(content().string(not(containsString("gtag/js?id=G-TEST123"))));
 
         mockMvc.perform(get("/about"))
                 .andExpect(status().isOk())
@@ -122,7 +127,8 @@ class SiteControllerTest {
                 .andExpect(header().string("X-Robots-Tag", "noindex,follow"))
                 .andExpect(content().string(containsString("property=\"og:title\"")))
                 .andExpect(content().string(containsString("name=\"twitter:card\" content=\"summary_large_image\"")))
-                .andExpect(content().string(containsString("gtag/js?id=G-TEST123")));
+                .andExpect(content().string(not(containsString("gtag/js?id=G-TEST123"))))
+                .andExpect(content().string(not(containsString("request_help_click"))));
     }
 
     @Test

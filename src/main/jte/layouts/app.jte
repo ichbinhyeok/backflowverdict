@@ -34,13 +34,186 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/app.css">
-    @if (SiteRuntimeConfig.googleAnalyticsMeasurementId() != null && !SiteRuntimeConfig.googleAnalyticsMeasurementId().isBlank())
+    @if (!page.noindex() && SiteRuntimeConfig.googleAnalyticsMeasurementId() != null && !SiteRuntimeConfig.googleAnalyticsMeasurementId().isBlank())
         <script async src="https://www.googletagmanager.com/gtag/js?id=${SiteRuntimeConfig.googleAnalyticsMeasurementId()}"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${SiteRuntimeConfig.googleAnalyticsMeasurementId()}');
+
+            (function () {
+                function clean(value) {
+                    if (value == null) {
+                        return undefined;
+                    }
+                    var normalized = String(value).replace(/\s+/g, ' ').trim();
+                    return normalized === '' ? undefined : normalized;
+                }
+
+                function withPageContext(params) {
+                    var next = Object.assign({
+                        page_path: window.location.pathname,
+                        page_title: document.title,
+                        transport_type: 'beacon'
+                    }, params || {});
+
+                    Object.keys(next).forEach(function (key) {
+                        if (next[key] == null || next[key] === '') {
+                            delete next[key];
+                        }
+                    });
+                    return next;
+                }
+
+                function track(eventName, params) {
+                    if (!eventName || typeof gtag !== 'function') {
+                        return;
+                    }
+                    gtag('event', eventName, withPageContext(params));
+                }
+
+                function classifyLink(anchor) {
+                    try {
+                        var url = new URL(anchor.href, window.location.origin);
+                        var sameOrigin = url.origin === window.location.origin;
+                        var text = clean(anchor.textContent);
+
+                        if (sameOrigin && url.pathname === '/leads/new') {
+                            return {
+                                eventName: 'request_help_click',
+                                params: {
+                                    utility_id: clean(url.searchParams.get('utilityId')),
+                                    issue_type: clean(url.searchParams.get('issueType')),
+                                    page_family: clean(url.searchParams.get('pageFamily')),
+                                    source_page: clean(url.searchParams.get('source')),
+                                    cta_text: text
+                                }
+                            };
+                        }
+
+                        if (sameOrigin && url.pathname === '/r/cta') {
+                            return {
+                                eventName: 'provider_website_click',
+                                params: {
+                                    provider_id: clean(url.searchParams.get('providerId')),
+                                    utility_id: clean(url.searchParams.get('utilityId')),
+                                    page_family: clean(url.searchParams.get('pageFamily')),
+                                    cta_type: clean(url.searchParams.get('ctaType')),
+                                    destination: clean(url.searchParams.get('next')),
+                                    cta_text: text
+                                }
+                            };
+                        }
+
+                        if (sameOrigin && (url.pathname.indexOf('/approved-testers') >= 0 || url.pathname.indexOf('/find-a-tester') >= 0)) {
+                            return {
+                                eventName: 'tester_route_click',
+                                params: {
+                                    route_type: url.pathname.indexOf('/approved-testers') >= 0 ? 'approved' : 'directory',
+                                    destination_path: url.pathname,
+                                    cta_text: text
+                                }
+                            };
+                        }
+
+                        if (anchor.classList.contains('resource-item')) {
+                            return {
+                                eventName: 'submission_method_click',
+                                params: {
+                                    destination: url.href,
+                                    cta_text: text
+                                }
+                            };
+                        }
+
+                        if (!sameOrigin && text && text.toLowerCase().indexOf('official') >= 0) {
+                            return {
+                                eventName: 'official_program_click',
+                                params: {
+                                    destination: url.href,
+                                    cta_text: text
+                                }
+                            };
+                        }
+
+                        if (sameOrigin && url.pathname.indexOf('/utilities/') === 0) {
+                            return {
+                                eventName: 'utility_page_click',
+                                params: {
+                                    destination_path: url.pathname,
+                                    cta_text: text
+                                }
+                            };
+                        }
+
+                        if (sameOrigin && url.pathname.indexOf('/states/') === 0) {
+                            return {
+                                eventName: 'state_guide_click',
+                                params: {
+                                    destination_path: url.pathname,
+                                    cta_text: text
+                                }
+                            };
+                        }
+
+                        if (sameOrigin && url.pathname.indexOf('/metros/') === 0) {
+                            return {
+                                eventName: 'metro_page_click',
+                                params: {
+                                    destination_path: url.pathname,
+                                    cta_text: text
+                                }
+                            };
+                        }
+
+                        if (sameOrigin && url.pathname.indexOf('/guides/') === 0) {
+                            return {
+                                eventName: 'guide_click',
+                                params: {
+                                    destination_path: url.pathname,
+                                    cta_text: text
+                                }
+                            };
+                        }
+                    } catch (error) {
+                        return null;
+                    }
+                    return null;
+                }
+
+                document.addEventListener('click', function (event) {
+                    var anchor = event.target.closest('a[href]');
+                    if (!anchor) {
+                        return;
+                    }
+                    var tracked = classifyLink(anchor);
+                    if (tracked) {
+                        track(tracked.eventName, tracked.params);
+                    }
+                });
+
+                document.addEventListener('submit', function (event) {
+                    if (!(event.target instanceof HTMLFormElement)) {
+                        return;
+                    }
+                    var form = event.target;
+                    var action = clean(form.getAttribute('action'));
+                    if (action !== '/leads') {
+                        return;
+                    }
+
+                    var formData = new FormData(form);
+                    track('lead_form_submit', {
+                        utility_id: clean(formData.get('utilityId')),
+                        issue_type: clean(formData.get('issueType')),
+                        page_family: clean(formData.get('pageFamily')),
+                        property_type: clean(formData.get('propertyType')),
+                        has_email: clean(formData.get('email')) ? 'yes' : 'no',
+                        has_phone: clean(formData.get('phone')) ? 'yes' : 'no'
+                    });
+                });
+            }());
         </script>
     @endif
     @if (SiteRuntimeConfig.organizationStructuredData() != null)
