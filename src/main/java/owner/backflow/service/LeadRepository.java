@@ -55,7 +55,13 @@ public class LeadRepository {
                 normalize(leadRecord.pageFamily()),
                 normalize(leadRecord.notes()),
                 normalize(leadRecord.sourcePage()),
-                normalize(leadRecord.referrer())
+                normalize(leadRecord.referrer()),
+                normalize(leadRecord.submittedUtilityId()),
+                normalize(leadRecord.submittedUtilityName()),
+                normalize(leadRecord.submittedPageFamily()),
+                normalize(leadRecord.submittedSourcePage()),
+                normalize(leadRecord.routingStatus()),
+                normalize(leadRecord.routingReason())
         );
 
         Path path = jsonPath();
@@ -160,7 +166,13 @@ public class LeadRepository {
                         sanitizeCsvCell(lead.pageFamily()),
                         sanitizeCsvCell(lead.notes()),
                         sanitizeCsvCell(lead.sourcePage()),
-                        sanitizeCsvCell(lead.referrer())
+                        sanitizeCsvCell(lead.referrer()),
+                        sanitizeCsvCell(lead.submittedUtilityId()),
+                        sanitizeCsvCell(lead.submittedUtilityName()),
+                        sanitizeCsvCell(lead.submittedPageFamily()),
+                        sanitizeCsvCell(lead.submittedSourcePage()),
+                        sanitizeCsvCell(lead.routingStatus()),
+                        sanitizeCsvCell(lead.routingReason())
                 ))
                 .toList();
     }
@@ -200,7 +212,13 @@ public class LeadRepository {
             String pageFamily,
             String notes,
             String sourcePage,
-            String referrer
+            String referrer,
+            String submittedUtilityId,
+            String submittedUtilityName,
+            String submittedPageFamily,
+            String submittedSourcePage,
+            String routingStatus,
+            String routingReason
     ) {
     }
 }

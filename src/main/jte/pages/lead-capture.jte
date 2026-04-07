@@ -5,6 +5,7 @@
 @param String sourcePage = ""
 @param String selectedIssueType = ""
 @param String pageFamily = ""
+@param String routingToken = ""
 @param int activeSponsorCount = 0
 @param String formError = ""
 
@@ -13,43 +14,37 @@
         <div class="container page-frame">
             <div class="stack">
                 <div class="hero__copy">
-                    <span class="eyebrow kicker-rule">Form protocol 404-B</span>
+                    <span class="eyebrow kicker-rule">Request help</span>
                     <h1>Request local backflow help</h1>
-                    <p class="lede">This request is stored in JSONL and mirrored to CSV under the external leads root so redeploys do not wipe the inbox.</p>
+                    <p class="lede">Share your utility, deadline, failed-test details, or tester-search question and BackflowPath will review the request against the local workflow before following up.</p>
                     @if (utilityName != null && !utilityName.isBlank())
                         <div class="hero__stats">
                             <span>Utility: ${utilityName}</span>
-                            @if (sourcePage != null && !sourcePage.isBlank())
-                                <span>Source page: ${sourcePage}</span>
-                            @endif
-                            <span>${activeSponsorCount} active sponsor route(s)</span>
+                            <span>Use this form for testing, repair, retest, irrigation, or fire-line questions</span>
+                            <span>Official guidance stays separate from provider help</span>
                         </div>
                     @endif
                 </div>
 
                 <div class="content-grid">
                     <article class="detail-card">
-                        <span class="eyebrow">Why this form exists</span>
-                        <h2>Demand capture before full sponsor delivery</h2>
-                        <p>Right now the site needs to learn where demand exists, what issue types repeat, and which utility pages create real contact intent.</p>
+                        <span class="eyebrow">Why this form helps</span>
+                        <h2>Get the right next step</h2>
+                        <p>Backflow rules change by utility. This form gives BackflowPath the details needed to review the local rule, understand the issue, and point you toward the next practical step.</p>
                         <ul class="detail-list">
-                            <li>Annual testing and inspection requests</li>
+                            <li>Annual testing and inspection questions</li>
                             <li>Failed test repair and retest context</li>
-                            <li>Irrigation and fire-line follow-up</li>
+                            <li>Irrigation, fire-line, or tester-search follow-up</li>
                         </ul>
                     </article>
 
                     <article class="detail-card">
-                        <span class="eyebrow">Delivery path</span>
-                        <h2>What happens after submit</h2>
+                        <span class="eyebrow">What happens next</span>
+                        <h2>Reviewed against the utility workflow</h2>
                         <ul class="detail-list">
-                            <li>Name, phone, email, city, issue type, and notes are stored.</li>
-                            <li>Utility context, page family, and referrer are preserved for routing.</li>
-                            @if (activeSponsorCount > 0)
-                                <li>An email delivery record is created for active sponsor coverage.</li>
-                            @else
-                                <li>No active sponsor is mapped, so the request stays in follow-up mode.</li>
-                            @endif
+                            <li>BackflowPath reviews the utility, issue type, and notes together.</li>
+                            <li>If more detail is needed, follow-up can clarify the deadline, device type, or reporting path.</li>
+                            <li>If the utility context is verified and provider help fits the situation, the request can be shared with one or more active local sponsors that cover that utility.</li>
                         </ul>
                     </article>
                 </div>
@@ -67,10 +62,11 @@
                 <article class="detail-card">
                     <span class="eyebrow">Routing notice</span>
                     <h2>What you are consenting to</h2>
-                    <p>BackflowPath stores your request details so the team can review the utility context, triage the issue, and route follow-up when sponsor coverage exists.</p>
+                    <p>BackflowPath keeps this request so the team can review the utility context, respond about next steps, and share the request with local sponsors only when the utility routing context is verified and the form consent covers sponsor routing.</p>
                     <ul class="detail-list">
-                        <li>The request is stored with utility context and referrer details for internal review.</li>
-                        <li>BackflowPath does not resell the same request to multiple providers without your consent.</li>
+                        <li>Your request is reviewed alongside the local utility context attached to the lead link or saved request.</li>
+                        <li>If routing applies, the request may be shared with one or more active sponsors that cover the verified utility.</li>
+                        <li>If the routing metadata cannot be verified, BackflowPath stores the request for manual review and does not auto-route it to sponsors.</li>
                         <li>Read the full <a href="/privacy">privacy and lead routing notice</a> before submitting.</li>
                     </ul>
                 </article>
@@ -78,13 +74,9 @@
 
             <article class="detail-card">
                 <div class="section-heading">
-                    <span class="eyebrow">Lead form</span>
-                    <h2>Lead form</h2>
-                    @if (activeSponsorCount > 0)
-                        <p>An email delivery record will be created for active sponsor coverage after you submit this form.</p>
-                    @else
-                        <p>No active sponsor is mapped to this utility yet. Your request will be stored for follow-up, but it will not auto-send to a provider.</p>
-                    @endif
+                    <span class="eyebrow">Request details</span>
+                    <h2>Tell us what is going on</h2>
+                    <p>Include the notice, due date, failed-test issue, or utility name if you have it. The more specific the details, the easier it is to review the next step.</p>
                 </div>
 
                 @if (formError != null && !formError.isBlank())
@@ -96,6 +88,7 @@
                     <input type="hidden" name="utilityName" value="${utilityName}">
                     <input type="hidden" name="sourcePage" value="${sourcePage}">
                     <input type="hidden" name="pageFamily" value="${pageFamily}">
+                    <input type="hidden" name="rt" value="${routingToken}">
 
                     <div class="field field--honeypot" aria-hidden="true">
                         <span>Company website</span>
@@ -155,12 +148,12 @@
                         <span>Consent</span>
                         <div class="checkbox-field">
                             <input name="consentToRouting" type="checkbox" value="yes" required>
-                            <p>I agree that BackflowPath may store this request, review the utility context, and contact me about routing or follow-up. I understand the request is handled under the <a href="/privacy">privacy and lead routing notice</a>.</p>
+                            <p>I agree that BackflowPath may store this request, review the local utility context, and, when that routing context is verified, share the request with one or more active sponsors that cover the utility. I understand the request is handled under the <a href="/privacy">privacy and lead routing notice</a>.</p>
                         </div>
                     </label>
 
                     <div class="hero__actions">
-                        <button class="button button--primary" type="submit">Save lead request</button>
+                        <button class="button button--primary" type="submit">Request local help</button>
                         <a class="button button--secondary" href="/">Back to site</a>
                     </div>
                 </form>

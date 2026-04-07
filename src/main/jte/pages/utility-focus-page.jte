@@ -3,6 +3,7 @@
 @import owner.backflow.data.model.StateGuideRecord
 @import owner.backflow.data.model.UtilityRecord
 @import owner.backflow.data.model.UtilityFocusContent
+@import owner.backflow.service.LeadRoutingService
 @param PageMeta page
 @param UtilityRecord utility
 @param String eyebrow
@@ -35,7 +36,7 @@
                     @if (testerPath != null && testerLabel != null)
                         <a class="button button--primary" href="${testerPath}">${testerLabel}</a>
                     @endif
-                    <a class="button button--secondary" href="/leads/new?utilityId=${utility.utilityId()}&source=/utilities/${utility.state()}/${utility.canonicalSlug()}/&issueType=${eyebrow.toLowerCase().replace(" ", "-")}&pageFamily=utility-focus">${activeSponsorCount > 0 ? "Request sponsor callback" : "Save request for follow-up"}</a>
+                    <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", eyebrow.toLowerCase().replace(" ", "-"), "utility-focus")}">Request local help</a>
                 </div>
             </div>
             <aside class="panel panel--status">
@@ -128,18 +129,16 @@
                         <div class="hero__actions">
                             <a class="button button--primary" href="${testerPath}">${testerLabel}</a>
                             <a class="button button--secondary" href="${utility.utilityUrl()}">Open the official program page</a>
-                            <a class="button button--secondary" href="/leads/new?utilityId=${utility.utilityId()}&source=/utilities/${utility.state()}/${utility.canonicalSlug()}/&issueType=${eyebrow.toLowerCase().replace(" ", "-")}&pageFamily=utility-focus">${activeSponsorCount > 0 ? "Request sponsor callback" : "Save request for follow-up"}</a>
+                            <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", eyebrow.toLowerCase().replace(" ", "-"), "utility-focus")}">Request local help</a>
                         </div>
                     @else
                         <p>No public tester route is live for this utility yet. Stay on the official program path and confirm the scope directly with the utility.</p>
                         <div class="hero__actions">
                             <a class="button button--primary" href="${utility.utilityUrl()}">Open the official program page</a>
-                            <a class="button button--secondary" href="/leads/new?utilityId=${utility.utilityId()}&source=/utilities/${utility.state()}/${utility.canonicalSlug()}/&issueType=${eyebrow.toLowerCase().replace(" ", "-")}&pageFamily=utility-focus">${activeSponsorCount > 0 ? "Request sponsor callback" : "Save request for follow-up"}</a>
+                            <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", eyebrow.toLowerCase().replace(" ", "-"), "utility-focus")}">Request local help</a>
                         </div>
                     @endif
-                    @if (activeSponsorCount == 0)
-                        <p class="detail-meta">No active sponsor is mapped to this utility yet, so request submissions are stored for follow-up only.</p>
-                    @endif
+                    <p class="detail-meta">If you still need help after checking the official workflow, you can submit a request for local follow-up.</p>
                 </article>
 
                 <section class="section section--tight">

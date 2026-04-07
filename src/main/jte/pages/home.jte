@@ -3,6 +3,7 @@
 @import owner.backflow.data.model.MetroRecord
 @import owner.backflow.data.model.StateGuideRecord
 @import owner.backflow.data.model.UtilityRecord
+@import owner.backflow.service.LeadRoutingService
 @param PageMeta page
 @param java.util.List<UtilityRecord> utilities
 @param java.util.List<GuideRecord> guides
@@ -176,7 +177,7 @@
                             @elseif (!utility.officialProgramUrls().isEmpty())
                                 <a class="button button--secondary" href="${utility.officialProgramUrls().get(0)}">Official program page</a>
                             @endif
-                            <a class="button button--secondary" href="/leads/new?utilityId=${utility.utilityId()}&source=/utilities/${utility.state()}/${utility.canonicalSlug()}/&issueType=general-testing&pageFamily=home-card">Save request for follow-up</a>
+                            <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", "general-testing", "home-card")}">Request local help</a>
                         </div>
                     </article>
                 @endfor
@@ -223,6 +224,28 @@
                     </ul>
                 </article>
             </div>
+        </div>
+    </section>
+
+    <section class="section section--tight">
+        <div class="container split-panels">
+            <article class="detail-card">
+                <span class="eyebrow">For providers</span>
+                <h3>Claim or request a listing</h3>
+                <p>Backflow testers and service companies can claim existing profiles, request updates, or ask about featured placement without being mixed into the official utility layer.</p>
+                <div class="card-actions">
+                    <a class="button button--secondary" href="/for-providers">For providers</a>
+                    <a class="button button--secondary" href="/claim-listing">Claim listing</a>
+                </div>
+            </article>
+            <article class="detail-card">
+                <span class="eyebrow">Simple plans</span>
+                <h3>Review before billing</h3>
+                <p>Listing claims stay free. Featured utility and metro placement are reviewed before approval so commercial visibility never overwrites the authority workflow.</p>
+                <div class="card-actions">
+                    <a class="button button--secondary" href="/pricing">Pricing</a>
+                </div>
+            </article>
         </div>
     </section>
 `)

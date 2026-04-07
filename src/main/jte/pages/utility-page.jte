@@ -3,6 +3,7 @@
 @import owner.backflow.data.model.GuideRecord
 @import owner.backflow.data.model.MetroRecord
 @import owner.backflow.data.model.StateGuideRecord
+@import owner.backflow.service.LeadRoutingService
 @param PageMeta page
 @param UtilityRecord utility
 @param String annualTestingPath = null
@@ -34,7 +35,7 @@
                     @if (testerPath != null && testerLabel != null)
                         <a class="button button--secondary" href="${testerPath}">${testerLabel}</a>
                     @endif
-                    <a class="button button--secondary" href="/leads/new?utilityId=${utility.utilityId()}&source=/utilities/${utility.state()}/${utility.canonicalSlug()}/&issueType=general-testing&pageFamily=utility">${activeSponsorCount > 0 ? "Request sponsor callback" : "Save request for follow-up"}</a>
+                    <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", "general-testing", "utility")}">Request local help</a>
                 </div>
             </div>
             <aside class="panel panel--status">
@@ -236,7 +237,7 @@
                             <img src="/images/design/utility-provider-2.jpg" alt="Pressure vacuum breaker on an exterior wall">
                             <div>
                                 <strong>Sponsor layer stays separate</strong>
-                                <span>${activeSponsorCount > 0 ? activeSponsorCount + " active sponsor route(s) can receive callback requests from this utility." : "No active sponsor is mapped here yet, so requests are saved for follow-up only."}</span>
+                                <span>Provider help is reviewed separately from the official utility workflow and never replaces the authority guidance above.</span>
                             </div>
                         </div>
                     </div>
@@ -254,13 +255,13 @@
                         <div class="hero__actions">
                             <a class="button button--primary" href="${testerPath}">${testerLabel}</a>
                             <a class="button button--secondary" href="${utility.utilityUrl()}">Official program page</a>
-                            <a class="button button--secondary" href="/leads/new?utilityId=${utility.utilityId()}&source=/utilities/${utility.state()}/${utility.canonicalSlug()}/&issueType=general-testing&pageFamily=utility">${activeSponsorCount > 0 ? "Request sponsor callback" : "Save request for follow-up"}</a>
+                            <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", "general-testing", "utility")}">Request local help</a>
                         </div>
                     @else
                         <p>No public tester route is live for this utility yet. Stay on the authority workflow and submission methods before treating any outside provider directory as reliable.</p>
                         <div class="hero__actions">
                             <a class="button button--primary" href="${utility.utilityUrl()}">Official program page</a>
-                            <a class="button button--secondary" href="/leads/new?utilityId=${utility.utilityId()}&source=/utilities/${utility.state()}/${utility.canonicalSlug()}/&issueType=general-testing&pageFamily=utility">${activeSponsorCount > 0 ? "Request sponsor callback" : "Save request for follow-up"}</a>
+                            <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", "general-testing", "utility")}">Request local help</a>
                         </div>
                     @endif
                 </article>

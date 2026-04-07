@@ -1,6 +1,7 @@
 @import owner.backflow.web.PageMeta
 @import owner.backflow.data.model.GuideRecord
 @import owner.backflow.data.model.UtilityRecord
+@import owner.backflow.service.LeadRoutingService
 @param PageMeta page
 @param UtilityRecord utility
 @param GuideRecord failedGuide = null
@@ -19,7 +20,7 @@
                 <div class="hero__actions">
                     <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Back to utility page</a>
                     <a class="button button--primary" href="${utility.utilityUrl()}">Official program page</a>
-                    <a class="button button--secondary" href="/leads/new?utilityId=${utility.utilityId()}&source=/utilities/${utility.state()}/${utility.canonicalSlug()}/failed-test&issueType=failed-test-repair&pageFamily=failed-test">${activeSponsorCount > 0 ? "Request sponsor callback" : "Save request for follow-up"}</a>
+                    <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/failed-test", "failed-test-repair", "failed-test")}">Request local help</a>
                 </div>
             </div>
             <div class="side-stack">
@@ -89,7 +90,7 @@
                     @if (testerPath != null && testerLabel != null)
                         <a class="button button--primary" href="${testerPath}">${testerLabel}</a>
                     @endif
-                    <a class="button button--secondary" href="/leads/new?utilityId=${utility.utilityId()}&source=/utilities/${utility.state()}/${utility.canonicalSlug()}/failed-test&issueType=failed-test-repair&pageFamily=failed-test">${activeSponsorCount > 0 ? "Request sponsor callback" : "Save request for follow-up"}</a>
+                    <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/failed-test", "failed-test-repair", "failed-test")}">Request local help</a>
                 </div>
             </article>
 
@@ -117,9 +118,7 @@
                 @else
                     <p>No public tester route is live for this utility yet.</p>
                 @endif
-                @if (activeSponsorCount == 0)
-                    <p class="detail-meta">No active sponsor is mapped to this utility yet, so saved requests will stay in follow-up only mode.</p>
-                @endif
+                <p class="detail-meta">If you need help coordinating repair, retest, or a local provider, you can submit a request after checking the official utility workflow.</p>
             </article>
 
             <article class="detail-card">

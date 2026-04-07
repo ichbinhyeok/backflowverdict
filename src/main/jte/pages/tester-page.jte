@@ -1,6 +1,7 @@
 @import owner.backflow.web.PageMeta
 @import owner.backflow.data.model.UtilityRecord
 @import owner.backflow.data.model.ProviderRecord
+@import owner.backflow.service.LeadRoutingService
 @param PageMeta page
 @param UtilityRecord utility
 @param java.util.List<ProviderRecord> providers
@@ -15,7 +16,7 @@
                 <h1>${official ? utility.utilityName() + " approved testers" : utility.utilityName() + " find a tester"}</h1>
                 <p class="lede">
                     @if (official)
-                        This page mirrors cached entries from the governing authority's published tester list. Sponsor-only inventory stays off public pages and inside the private admin workflow.
+                        This page mirrors cached entries from the governing authority's published tester list. Any paid placement stays clearly separate from the official list.
                     @else
                         This is a provider discovery page, not an authority list. Use the official utility page for the compliance rule and reporting workflow first.
                     @endif
@@ -26,7 +27,7 @@
                         <a class="button button--primary" href="${utility.approvedTesterListUrl()}">${utility.officialListLabel()}</a>
                     @endif
                     <a class="button button--secondary" href="${utility.utilityUrl()}">Official program page</a>
-                    <a class="button button--secondary" href="/leads/new?utilityId=${utility.utilityId()}&source=/utilities/${utility.state()}/${utility.canonicalSlug()}/${official ? "approved-testers" : "find-a-tester"}&issueType=tester-search&pageFamily=tester-directory">${activeSponsorCount > 0 ? "Request sponsor callback" : "Save request for follow-up"}</a>
+                    <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/" + (official ? "approved-testers" : "find-a-tester"), "tester-search", "tester-directory")}">Request local help</a>
                 </div>
             </div>
             <aside class="detail-card">
@@ -88,7 +89,7 @@
                         @else
                             <div class="empty-state">
                                 <strong>No local official entries are cached yet</strong>
-                                <p>This route is live because the official program path is strong enough, but the file registry does not yet cache individual tester entries for this utility.</p>
+                                <p>Use the utility's official program page to confirm the latest authority list directly while BackflowPath expands this page.</p>
                             </div>
                         @endif
                     </article>
@@ -97,7 +98,7 @@
                         <div class="section-heading">
                             <span class="eyebrow">Provider inventory</span>
                             <h2>Directory entries mapped to this utility</h2>
-                            <p>No official approved tester list is stored for this utility in the file registry, so this page only presents labeled provider options.</p>
+                            <p>No official approved tester list is published here in BackflowPath, so this page only presents clearly labeled provider options.</p>
                         </div>
                         @if (!providers.isEmpty())
                             <div class="card-grid">
@@ -127,7 +128,7 @@
                                 @endfor
                             </div>
                         @else
-                            <div class="empty-state">This route is live because the official program path is strong enough, but the file registry does not yet include mapped provider inventory for this utility.</div>
+                            <div class="empty-state">BackflowPath does not yet show mapped provider options for this utility. Use the official program page while this route is expanded.</div>
                         @endif
                     </article>
                 @endif
@@ -151,7 +152,7 @@
                     <article class="trust-box">
                         <span class="trust-box__label">Official first</span>
                         <h2>Authority list context</h2>
-                        <p>Always confirm tester status on the governing utility list before treating a provider as approved. Private sponsor inventory is never blended into this public list.</p>
+                        <p>Always confirm tester status on the governing utility list before treating a provider as approved. Paid placements are never blended into this public list.</p>
                         <div class="card-actions">
                             <a class="button button--secondary" href="${utility.approvedTesterListUrl()}">${utility.officialListLabel()}</a>
                         </div>
@@ -181,7 +182,7 @@
                                 </div>
                             @endif
                         @endfor
-                        <p class="detail-meta">${activeSponsorCount > 0 ? activeSponsorCount + " active sponsor callback route(s) exist for this utility." : "No active sponsor is mapped here yet, so request submissions remain follow-up only."}</p>
+                        <p class="detail-meta">If you need help beyond the list, you can still submit a request for local follow-up.</p>
                     </article>
                 @endif
 

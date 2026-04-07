@@ -5,6 +5,7 @@
 @param boolean adminConfigured = true
 @param boolean error = false
 @param String username = "admin"
+@param String csrfToken = ""
 @param java.util.List<LeadInboxItem> inbox = java.util.List.of()
 @param int leadCount = 0
 @param int assignedLeadCount = 0
@@ -62,6 +63,7 @@
                             <p class="form-error">Invalid username or password.</p>
                         @endif
                         <form method="post" action="/admin/login" class="stack-form">
+                            <input type="hidden" name="_csrf" value="${csrfToken}">
                             <label class="field">
                                 <span>Username</span>
                                 <input name="username" type="text" value="${username}" autocomplete="username" required>
@@ -97,6 +99,7 @@
                     <article class="detail-card">
                         <h2>Session</h2>
                         <form method="post" action="/admin/logout" class="inline-form">
+                            <input type="hidden" name="_csrf" value="${csrfToken}">
                             <button class="button button--primary" type="submit">Sign out</button>
                         </form>
                     </article>
@@ -175,7 +178,7 @@
                             <li>${deliveredLeadCount} delivery email(s) sent</li>
                             <li>${queuedDeliveryCount} delivery email(s) queued for manual send or SMTP setup</li>
                         </ul>
-                        <p class="detail-meta">Lead delivery is created only when an ACTIVE sponsor-only provider with an email address covers the utility.</p>
+                        <p class="detail-meta">Lead delivery is created only when an ACTIVE sponsor-only provider with an email address covers a verified utility context and the form consent covers sponsor routing.</p>
                     </article>
 
                     <article class="detail-card">
@@ -244,6 +247,7 @@
                                         <td>${provider.pageLabel()}</td>
                                         <td>
                                             <form method="post" action="/admin/providers/${provider.providerId()}/sponsor-status" class="stack-form">
+                                                <input type="hidden" name="_csrf" value="${csrfToken}">
                                                 <input type="hidden" name="sponsorStatus" value="${provider.isSponsorActiveListing() ? "PROSPECT" : "ACTIVE"}">
                                                 <label class="field">
                                                     <span>Internal note</span>
@@ -339,12 +343,21 @@
                                         <td>${item.lead().capturedAt().toString()}</td>
                                         <td>${item.lead().fullName()}<br><span class="detail-meta">${item.lead().email()}</span></td>
                                         <td>${item.lead().phone()}</td>
-                                        <td>${item.lead().displayUtility()}</td>
+                                        <td>
+                                            ${item.lead().displayUtility()}
+                                            @if (!item.lead().hasTrustedUtility() && item.lead().submittedUtilityId() != null && !item.lead().submittedUtilityId().isBlank())
+                                                <div class="detail-meta">Submitted utility only: ${item.lead().submittedUtilityId()}</div>
+                                            @endif
+                                        </td>
                                         <td>${item.lead().displayIssueType()}</td>
                                         <td>${item.lead().displayPropertyType()}</td>
                                         <td>${item.lead().displayPageFamily()}</td>
                                         <td>${item.lead().city()}</td>
                                         <td>
+                                            @if (!item.lead().autoRouteEligible())
+                                                <div class="detail-meta">${item.lead().displayRoutingStatus()}</div>
+                                                <div class="detail-meta">${item.lead().routingReason()}</div>
+                                            @endif
                                             @if (item.availableProviders().isEmpty())
                                                 <span class="detail-meta">No assignable providers</span>
                                             @else
@@ -363,6 +376,7 @@
                                             @endif
                                             @if (!item.availableProviders().isEmpty())
                                                 <form method="post" action="/admin/leads/${item.lead().leadId()}/assign" class="stack-form">
+                                                    <input type="hidden" name="_csrf" value="${csrfToken}">
                                                     <label class="field">
                                                         <span>Provider</span>
                                                         <select name="providerId" required>
@@ -384,7 +398,10 @@
                                             @endif
                                         </td>
                                         <td>
-                                            ${item.lead().sourcePage()}
+                                            ${item.lead().displaySourcePage()}
+                                            @if (item.lead().sourcePage() != null && !item.lead().sourcePage().isBlank() && item.lead().submittedSourcePage() != null && !item.lead().submittedSourcePage().isBlank() && !item.lead().sourcePage().equals(item.lead().submittedSourcePage()))
+                                                <div class="detail-meta">Submitted: ${item.lead().submittedSourcePage()}</div>
+                                            @endif
                                             @if (item.lead().referrer() != null && !item.lead().referrer().isBlank())
                                                 <div class="detail-meta">${item.lead().referrer()}</div>
                                             @endif

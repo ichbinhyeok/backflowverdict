@@ -32,8 +32,10 @@ public class LeadDeliveryService {
     }
 
     public List<LeadDeliveryRecord> deliverIfPossible(LeadRecord lead) {
-        List<ProviderRecord> activeSponsors = registryService.findAssignableProvidersForUtility(lead.utilityId()).stream()
-                .filter(ProviderRecord::isSponsorActiveListing)
+        if (!lead.autoRouteEligible()) {
+            return List.of();
+        }
+        List<ProviderRecord> activeSponsors = registryService.findActiveSponsorsForUtility(lead.utilityId()).stream()
                 .filter(provider -> provider.email() != null && !provider.email().isBlank())
                 .toList();
         if (activeSponsors.isEmpty()) {

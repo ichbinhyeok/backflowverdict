@@ -27,8 +27,10 @@
                 <h2>Stored request data</h2>
                 <ul class="detail-list">
                     <li>Name, phone, email, city, property type, issue type, and notes from the form.</li>
-                    <li>Utility ID, utility name, page family, source page, and referring page when available.</li>
+                    <li>Trusted utility routing fields when BackflowPath can validate the request against a server-issued routing context.</li>
+                    <li>Submitted utility ID, utility name, page family, source page, and referring page when the browser sends them.</li>
                     <li>Delivery and assignment records when a request is routed internally.</li>
+                    <li>Provider listing claim requests, company details, and requested placement details when a provider submits the claim form.</li>
                 </ul>
             </article>
 
@@ -38,7 +40,8 @@
                 <ul class="detail-list">
                     <li>Submitting a request does not change the underlying utility rule.</li>
                     <li>BackflowPath keeps official authority guidance and sponsor routing separate.</li>
-                    <li>The same request is not resold to multiple providers without user consent.</li>
+                    <li>When the form consent is checked and the routing context is verified, the same request may be shared with one or more active sponsors that cover the verified utility.</li>
+                    <li>If the routing context cannot be verified, the request stays in BackflowPath for manual review and is not auto-shared with sponsors.</li>
                 </ul>
             </article>
         </div>

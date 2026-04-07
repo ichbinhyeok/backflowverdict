@@ -45,6 +45,9 @@
 - Sponsor activation is now file-backed through a private commercial-state ledger under the persistent leads root, so contract state survives redeploys without mutating the source CSV.
 - Public product branding, default site base URL, export filenames, delivery defaults, and Oracle deploy assets are now aligned to `BackflowPath` and `https://backflowpath.com`.
 - Docker deployment is now wired for OCI through a checked-in `Dockerfile`, `docker-compose.yml`, and GitHub Actions workflow targeting `shinhyeok22/backflow` on external port `8093` with `mem_limit: 512m`.
+- Lead routing now separates trusted utility context from submitted browser attribution, so sponsor auto-routing only runs when server-validated routing metadata survives verification.
+- Public lead consent and privacy copy now explicitly disclose one-to-many sponsor fan-out and clarify that unverified routing context is held for manual review instead of auto-routing.
+- Admin session mutations now require a per-session CSRF token for login, logout, lead assignment, and sponsor-status changes.
 
 ## Latest decisions
 - Package root is `owner.backflow`.
@@ -65,6 +68,9 @@
 - Hardened the GitHub Actions deploy workflow to verify not just `127.0.0.1:8093/healthz` but also a host-routed `Host: backflowpath.com` request on the OCI host, so a wrong nginx upstream now fails deploy visibly.
 - Direct OCI inspection confirmed the root cause: `/etc/nginx/conf.d/backflow-verdict.conf` was still using `server_name backflowverdict.com`, so `backflowpath.com` fell through to the first default vhost and rendered AutoMoneyPit. The server-side nginx config now points `backflowpath.com` and `www.backflowpath.com` to `127.0.0.1:8093`.
 - Java stays on 21 for this project because Spring Boot 4 requires it; the new Docker and OCI deploy path follows that runtime.
+- Trusted lead routing now requires server-issued verification over utility, source page, and page-family metadata before sponsor auto-delivery can happen.
+- Explicit sponsor-routing consent now covers sharing a verified request with one or more active sponsors; unverified context is stored but not auto-routed.
+- Admin auth remains lightweight session auth, but CSRF is now mandatory on all admin POST mutations.
 
 ## What changed this session
 - Merged project-local docs with the independent spec set.
@@ -131,12 +137,15 @@
 - Revalidated the polished surface with a fresh packaged runtime on port `8092`; the current representative desktop screenshots for home, Texas state, Austin utility, and the verification guide are stored under `.playwright-cli/` and reflect the updated hierarchy.
 - Renamed the public product surface to `BackflowPath`, updated the default base URL to `https://backflowpath.com`, switched admin export filenames and delivery defaults to the new brand, and renamed Oracle deploy files plus paths to `backflowpath`.
 - Added a Docker build, persistent-volume compose runtime, and OCI GitHub Actions deploy workflow modeled after the CarMoneyPit deployment pattern but adapted for `BackflowPath`, external port `8093`, internal port `8080`, and persistent `data/storage/leads/ops/logs` mounts.
+- Added a lead-routing trust service that signs server-issued lead links, validates trusted utility context on submit, stores submitted attribution separately from trusted routing fields, and blocks sponsor auto-routing when the metadata cannot be verified.
+- Updated lead capture, privacy, and admin messaging so sponsor fan-out is disclosed explicitly, hold-state leads are visible as manual-review items, and verified routing context is called out as a prerequisite for auto-delivery.
+- Added lightweight per-session CSRF tokens to the admin login, logout, lead assignment, and sponsor-status forms plus regression tests for missing-token rejection.
 
 ## Next recommended tasks
-1. Keep hardening trust and ops defaults, especially admin or ops exposure and freshness or verification discipline.
-2. Keep widening official-list-backed provider inventory in metros where approved routes still render with no cached entries.
-3. Replace placeholder provider inventory with an operable sponsor model before expanding directory routes further.
-4. Decide where directory-only pages should become real monetized provider surfaces instead of public-list-derived directory support.
+1. Decide whether verified lead links should move from the reused ops token to a dedicated lead-routing secret before production hardening is considered complete.
+2. Keep hardening trust and ops defaults, especially admin or ops exposure and freshness or verification discipline.
+3. Keep widening official-list-backed provider inventory in metros where approved routes still render with no cached entries.
+4. Replace placeholder provider inventory with an operable sponsor model before expanding directory routes further.
 5. Run one server-like deploy rehearsal with `./gradlew bootJar` plus `ops/oracle/install-or-update.sh` on a staging box or VM.
 
 ## Open questions
@@ -144,3 +153,4 @@
 - How to handle stale or incomplete approved-tester lists.
 - How thick the sponsor or provider operations layer needs to be before broader rollout.
 - When metro or provider aggregation should start, given that it is not the current implementation priority.
+- Whether lead-link signing should continue to reuse the ops verification token or move to a dedicated runtime secret before production launch.

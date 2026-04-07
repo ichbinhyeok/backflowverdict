@@ -3,6 +3,7 @@ package owner.backflow.web;
 import jakarta.servlet.http.HttpSession;
 import java.nio.charset.StandardCharsets;
 import owner.backflow.service.AdminAuthService;
+import owner.backflow.service.AdminCsrfService;
 import owner.backflow.service.LeadAdminService;
 import owner.backflow.service.LeadInboxItem;
 import org.springframework.http.HttpHeaders;
@@ -22,10 +23,16 @@ public class AdminController {
     static final String ADMIN_SESSION_KEY = "adminAuthenticated";
 
     private final AdminAuthService adminAuthService;
+    private final AdminCsrfService adminCsrfService;
     private final LeadAdminService leadAdminService;
 
-    public AdminController(AdminAuthService adminAuthService, LeadAdminService leadAdminService) {
+    public AdminController(
+            AdminAuthService adminAuthService,
+            AdminCsrfService adminCsrfService,
+            LeadAdminService leadAdminService
+    ) {
         this.adminAuthService = adminAuthService;
+        this.adminCsrfService = adminCsrfService;
         this.leadAdminService = leadAdminService;
     }
 
@@ -44,6 +51,7 @@ public class AdminController {
             ));
             model.addAttribute("authenticated", false);
             model.addAttribute("adminConfigured", false);
+            model.addAttribute("csrfToken", adminCsrfService.ensureToken(session));
             return "pages/admin";
         }
 
@@ -58,6 +66,7 @@ public class AdminController {
             model.addAttribute("adminConfigured", true);
             model.addAttribute("error", error != null);
             model.addAttribute("username", adminAuthService.username());
+            model.addAttribute("csrfToken", adminCsrfService.ensureToken(session));
             return "pages/admin";
         }
 
@@ -90,6 +99,7 @@ public class AdminController {
         model.addAttribute("recentDeliveries", leadAdminService.recentDeliveries());
         model.addAttribute("heldProviderCount", leadAdminService.heldProviderCount());
         model.addAttribute("username", adminAuthService.username());
+        model.addAttribute("csrfToken", adminCsrfService.ensureToken(session));
         return "pages/admin";
     }
 
@@ -97,18 +107,25 @@ public class AdminController {
     public String login(
             @RequestParam String username,
             @RequestParam String password,
+            @RequestParam(value = "_csrf", required = false) String csrfToken,
             HttpSession session
     ) {
         ensureAdminConfigured();
+        adminCsrfService.requireValid(session, csrfToken);
         if (!adminAuthService.authenticate(username, password)) {
             return "redirect:/admin?error=1";
         }
         session.setAttribute(ADMIN_SESSION_KEY, Boolean.TRUE);
+        adminCsrfService.rotate(session);
         return "redirect:/admin";
     }
 
     @PostMapping("/admin/logout")
-    public String logout(HttpSession session) {
+    public String logout(
+            @RequestParam(value = "_csrf", required = false) String csrfToken,
+            HttpSession session
+    ) {
+        adminCsrfService.requireValid(session, csrfToken);
         session.invalidate();
         return "redirect:/admin";
     }
@@ -118,12 +135,14 @@ public class AdminController {
             @PathVariable String leadId,
             @RequestParam String providerId,
             @RequestParam(value = "note", required = false) String note,
+            @RequestParam(value = "_csrf", required = false) String csrfToken,
             HttpSession session
     ) {
         ensureAdminConfigured();
         if (!isAuthenticated(session)) {
             return "redirect:/admin";
         }
+        adminCsrfService.requireValid(session, csrfToken);
         try {
             leadAdminService.assignLead(leadId, providerId, note, adminAuthService.username());
         } catch (IllegalArgumentException exception) {
@@ -137,12 +156,14 @@ public class AdminController {
             @PathVariable String providerId,
             @RequestParam String sponsorStatus,
             @RequestParam(value = "note", required = false) String note,
+            @RequestParam(value = "_csrf", required = false) String csrfToken,
             HttpSession session
     ) {
         ensureAdminConfigured();
         if (!isAuthenticated(session)) {
             return "redirect:/admin";
         }
+        adminCsrfService.requireValid(session, csrfToken);
         try {
             leadAdminService.updateSponsorStatus(providerId, sponsorStatus, note, adminAuthService.username());
         } catch (IllegalArgumentException exception) {

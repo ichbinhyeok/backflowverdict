@@ -82,7 +82,7 @@ class SiteControllerTest {
         mockMvc.perform(get("/privacy"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Privacy and lead routing notice")))
-                .andExpect(content().string(containsString("The same request is not resold to multiple providers without user consent.")))
+                .andExpect(content().string(containsString("the same request may be shared with one or more active sponsors that cover the verified utility")))
                 .andExpect(content().string(containsString("noindex,follow")))
                 .andExpect(content().string(not(containsString("gtag/js?id=G-TEST123"))));
 

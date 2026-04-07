@@ -7,6 +7,8 @@ import java.util.Optional;
 import owner.backflow.data.model.ProviderRecord;
 import owner.backflow.files.BackflowRegistryService;
 import owner.backflow.service.LeadAdminService;
+import owner.backflow.service.LeadRoutingContext;
+import owner.backflow.service.LeadRoutingService;
 import owner.backflow.service.LeadSubmissionGuardService;
 import owner.backflow.service.LeadRecord;
 import org.springframework.stereotype.Controller;
@@ -21,15 +23,18 @@ public class LeadController {
     private final LeadAdminService leadAdminService;
     private final BackflowRegistryService registryService;
     private final LeadSubmissionGuardService leadSubmissionGuardService;
+    private final LeadRoutingService leadRoutingService;
 
     public LeadController(
             LeadAdminService leadAdminService,
             BackflowRegistryService registryService,
-            LeadSubmissionGuardService leadSubmissionGuardService
+            LeadSubmissionGuardService leadSubmissionGuardService,
+            LeadRoutingService leadRoutingService
     ) {
         this.leadAdminService = leadAdminService;
         this.registryService = registryService;
         this.leadSubmissionGuardService = leadSubmissionGuardService;
+        this.leadRoutingService = leadRoutingService;
     }
 
     @GetMapping("/leads/new")
@@ -39,25 +44,37 @@ public class LeadController {
             @RequestParam(value = "source", required = false) String source,
             @RequestParam(value = "issueType", required = false) String issueType,
             @RequestParam(value = "pageFamily", required = false) String pageFamily,
+            @RequestParam(value = "rt", required = false) String routingToken,
             @RequestParam(value = "error", required = false) String error,
             Model model
     ) {
         String normalizedUtilityId = normalize(utilityId);
+        String normalizedSourcePage = normalize(source);
+        String normalizedPageFamily = normalize(pageFamily);
+        LeadRoutingContext trustedContext = leadRoutingService.resolveTrustedContext(
+                normalizedUtilityId,
+                normalizedSourcePage,
+                normalizedPageFamily,
+                normalize(routingToken)
+        );
         String resolvedUtilityName = registryService.findUtilityById(normalizedUtilityId)
                 .map(utility -> utility.utilityName())
                 .orElse(normalize(utilityName));
-        List<ProviderRecord> activeSponsors = registryService.findActiveSponsorsForUtility(normalizedUtilityId);
+        List<ProviderRecord> activeSponsors = trustedContext.autoRouteEligible()
+                ? registryService.findActiveSponsorsForUtility(trustedContext.utilityId())
+                : List.of();
         model.addAttribute("page", new PageMeta(
                 "Request backflow help | BackflowPath",
-                "Send a lead request for backflow testing, repair, or retest work.",
+                "Share your utility, deadline, or failed-test details so BackflowPath can review the next step.",
                 "/leads/new",
                 true
         ));
         model.addAttribute("utilityId", normalizedUtilityId);
         model.addAttribute("utilityName", resolvedUtilityName);
-        model.addAttribute("sourcePage", normalize(source));
+        model.addAttribute("sourcePage", normalizedSourcePage);
         model.addAttribute("selectedIssueType", normalize(issueType));
-        model.addAttribute("pageFamily", normalize(pageFamily));
+        model.addAttribute("pageFamily", normalizedPageFamily);
+        model.addAttribute("routingToken", trustedContext.autoRouteEligible() ? normalize(routingToken) : "");
         model.addAttribute("activeSponsorCount", activeSponsors.size());
         model.addAttribute("formError", formError(normalize(error)));
         return "pages/lead-capture";
@@ -76,6 +93,7 @@ public class LeadController {
             @RequestParam(required = false) String notes,
             @RequestParam(required = false) String sourcePage,
             @RequestParam(required = false) String pageFamily,
+            @RequestParam(value = "rt", required = false) String routingToken,
             @RequestParam(required = false) String consentToRouting,
             @RequestParam(required = false) String companyWebsite,
             HttpServletRequest request
@@ -84,11 +102,17 @@ public class LeadController {
             return "redirect:/leads/thanks";
         }
         if (!"yes".equalsIgnoreCase(normalize(consentToRouting))) {
-            return "redirect:" + leadFormRedirect(utilityId, sourcePage, issueType, pageFamily, "consent");
+            return "redirect:" + leadFormRedirect(utilityId, sourcePage, issueType, pageFamily, routingToken, "consent");
         }
         if (!leadSubmissionGuardService.tryAcquire(request.getRemoteAddr())) {
-            return "redirect:" + leadFormRedirect(utilityId, sourcePage, issueType, pageFamily, "rate-limit");
+            return "redirect:" + leadFormRedirect(utilityId, sourcePage, issueType, pageFamily, routingToken, "rate-limit");
         }
+        LeadRoutingContext trustedContext = leadRoutingService.resolveTrustedContext(
+                normalize(utilityId),
+                normalize(sourcePage),
+                normalize(pageFamily),
+                normalize(routingToken)
+        );
         leadAdminService.record(new LeadRecord(
                 null,
                 LocalDateTime.now(),
@@ -96,14 +120,20 @@ public class LeadController {
                 phone,
                 email,
                 city,
-                utilityId,
-                utilityName,
+                trustedContext.utilityId(),
+                trustedContext.utilityName(),
                 propertyType,
                 issueType,
-                pageFamily,
+                trustedContext.pageFamily(),
                 notes,
-                sourcePage,
-                Optional.ofNullable(request.getHeader("Referer")).orElse("")
+                trustedContext.sourcePage(),
+                Optional.ofNullable(request.getHeader("Referer")).orElse(""),
+                normalize(utilityId),
+                normalize(utilityName),
+                normalize(pageFamily),
+                normalize(sourcePage),
+                trustedContext.routingStatus(),
+                trustedContext.routingReason()
         ));
         return "redirect:/leads/thanks";
     }
@@ -112,7 +142,7 @@ public class LeadController {
     public String thanks(Model model) {
         model.addAttribute("page", new PageMeta(
                 "Request received | BackflowPath",
-                "We received your request and stored it for review.",
+                "BackflowPath received your request and will review it against the local utility context.",
                 "/leads/thanks",
                 true
         ));
@@ -136,6 +166,7 @@ public class LeadController {
             String sourcePage,
             String issueType,
             String pageFamily,
+            String routingToken,
             String errorCode
     ) {
         return UriComponentsBuilder.fromPath("/leads/new")
@@ -143,6 +174,7 @@ public class LeadController {
                 .queryParamIfPresent("source", nonBlank(normalize(sourcePage)))
                 .queryParamIfPresent("issueType", nonBlank(normalize(issueType)))
                 .queryParamIfPresent("pageFamily", nonBlank(normalize(pageFamily)))
+                .queryParamIfPresent("rt", nonBlank(normalize(routingToken)))
                 .queryParam("error", errorCode)
                 .build()
                 .encode()
