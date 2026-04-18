@@ -6,6 +6,7 @@
 @param java.util.Map<String, String> annualBriefPaths
 @param java.util.Map<String, String> failedBriefPaths
 @param java.util.Map<String, String> utilityPaths
+@param String demoPath
 @param int texasUtilityCount
 @param int dfwUtilityCount
 
@@ -19,11 +20,7 @@
                 <p class="lede">Paste the notice or failed result, choose the utility, and send one customer-ready brief from the office. Built for small busy BPAT offices that do not want to forward portal screenshots or rewrite the same explanation on every call.</p>
                 <div class="hero__actions">
                     <a class="button button--primary" href="#vendor-start-grid">Start with a utility</a>
-                    @if (SiteRuntimeConfig.supportEmail() != null && !SiteRuntimeConfig.supportEmail().isBlank())
-                        <a class="button button--secondary" href="mailto:${SiteRuntimeConfig.supportEmail()}?subject=BackflowPath%20office%20setup">Email about office setup</a>
-                    @else
-                        <a class="button button--secondary" href="#setup-package">See office setup</a>
-                    @endif
+                    <a class="button button--secondary" href="${demoPath}">View sample demo</a>
                 </div>
                 <div class="hero__stats">
                     <span>Annual notice</span>
@@ -74,6 +71,10 @@
                     <div class="metadata-block">
                         <strong>Success signal</strong>
                         <span>Repeat use and customer opens</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>See the artifact</strong>
+                        <span><a href="${demoPath}">Open the cold-email demo</a></span>
                     </div>
                     <div class="metadata-block">
                         <strong>Setup contact</strong>

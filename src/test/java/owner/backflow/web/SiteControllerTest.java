@@ -118,7 +118,9 @@ class SiteControllerTest {
         mockMvc.perform(get("/vendors/customer-briefs"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Turn an annual notice or failed test into a customer brief in 2 minutes.")))
+                .andExpect(content().string(containsString("View sample demo")))
                 .andExpect(content().string(containsString("Office lane")))
+                .andExpect(content().string(containsString("Open the cold-email demo")))
                 .andExpect(content().string(containsString("Customer brief, not the office record")))
                 .andExpect(content().string(containsString("portal screenshots")))
                 .andExpect(content().string(containsString("Annual notice brief")))
@@ -126,6 +128,26 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("/handoffs/new?utilityId=")))
                 .andExpect(content().string(containsString("Grand Prairie Water Utilities")))
                 .andExpect(content().string(containsString("customer_brief_entry_click")));
+    }
+
+    @Test
+    void vendorCustomerBriefDemoPageLoads() throws Exception {
+        mockMvc.perform(get("/vendors/customer-brief-demo"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Show the customer brief first. Explain the office workflow second.")))
+                .andExpect(content().string(containsString("Cold email demo")))
+                .andExpect(content().string(containsString("Annual notice sample")))
+                .andExpect(content().string(containsString("Failed test sample")))
+                .andExpect(content().string(containsString("See office workflow")))
+                .andExpect(content().string(containsString("Backflow result for Cedar Ridge Plaza")))
+                .andExpect(content().string(containsString("Failed backflow test for Willow Creek Medical Center")))
+                .andExpect(content().string(containsString("Sample Backflow Office")))
+                .andExpect(content().string(containsString("/vendors/customer-briefs")))
+                .andExpect(content().string(containsString("/handoffs/new?utilityId=arlington-water")))
+                .andExpect(content().string(containsString("/handoffs/new?utilityId=fort-worth-water")))
+                .andExpect(content().string(containsString("customer_brief_entry_click")))
+                .andExpect(content().string(containsString("noindex,follow")))
+                .andExpect(content().string(containsString("gtag/js?id=G-TEST123")));
     }
 
     @Test
