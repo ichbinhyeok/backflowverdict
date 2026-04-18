@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrlPattern;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.io.IOException;
@@ -101,7 +102,10 @@ class AdminControllerTest {
 
         mockMvc.perform(get("/admin").session(session))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Lead inbox")))
+                .andExpect(content().string(containsString("Admin control room")))
+                .andExpect(content().string(containsString("Storage snapshot")))
+                .andExpect(content().string(containsString("Vendor workflow")))
+                .andExpect(content().string(containsString("File-backed store preview")))
                 .andExpect(content().string(containsString("No leads captured yet")))
                 .andExpect(content().string(containsString("without provider coverage")))
                 .andExpect(content().string(containsString("sponsor-only providers kept off public routes")))
@@ -109,6 +113,39 @@ class AdminControllerTest {
                 .andExpect(content().string(containsString("Dallas-Fort Worth backflow testing")))
                 .andExpect(content().string(containsString("Private sponsor-only provider rows")))
                 .andExpect(content().string(containsString("Next Day Backflow Testing")));
+    }
+
+    @Test
+    void adminShowsVendorWorkflowSignalsAndStoragePreview() throws Exception {
+        MockHttpSession session = adminSession();
+
+        mockMvc.perform(post("/handoffs")
+                        .param("utilityId", "dallas-water")
+                        .param("issueType", "general-testing")
+                        .param("resultStatus", "pass")
+                        .param("submissionStatus", "submitted")
+                        .param("propertyLabel", "Main Street Retail Center")
+                        .param("siteAddress", "120 Main Street, Dallas, TX")
+                        .param("vendorCompanyName", "DFW Backflow Services")
+                        .param("vendorContactName", "Jordan Lee")
+                        .param("vendorPhone", "972-555-0144")
+                        .param("vendorEmail", "dispatch@dfwbackflow.example")
+                        .param("dueDate", "2026-05-01")
+                        .param("testDate", "2026-04-18")
+                        .param("sourcePath", "/vendors/customer-brief-demo"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrlPattern("/handoffs/*"));
+
+        mockMvc.perform(get("/admin").session(session))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Free handoff channel signals")))
+                .andExpect(content().string(containsString("DFW Backflow Services")))
+                .andExpect(content().string(containsString("Jordan Lee")))
+                .andExpect(content().string(containsString("972-555-0144")))
+                .andExpect(content().string(containsString("Main Street Retail Center")))
+                .andExpect(content().string(containsString("handoff_created")))
+                .andExpect(content().string(containsString("handoffs.jsonl")))
+                .andExpect(content().string(containsString("handoff-events.jsonl")));
     }
 
     @Test

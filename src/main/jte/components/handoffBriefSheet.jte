@@ -37,11 +37,11 @@
                 @endif
             </p>
             <p>
-                <strong>Who is handling the filing:</strong>
+                <strong>Who to contact about the filing:</strong>
                 @if (handoff.vendorCompanyName() != null && !handoff.vendorCompanyName().isBlank())
-                    ${handoff.vendorCompanyName()} is handling the utility filing and follow-up.
+                    ${handoff.vendorCompanyName()} is coordinating the filing or follow-up tied to this brief.
                 @else
-                    Your vendor is handling the utility filing and follow-up.
+                    Your vendor is coordinating the filing or follow-up tied to this brief.
                 @endif
             </p>
         </section>
@@ -110,8 +110,8 @@
         </section>
 
         <section class="document-section">
-            <span class="eyebrow">Who is handling the filing</span>
-            <h2>What your vendor is handling</h2>
+            <span class="eyebrow">Vendor-side follow-up</span>
+            <h2>What happens on the vendor side</h2>
             <ol class="step-list">
                 @for (var step : handoff.vendorActions())
                     <li>${step}</li>

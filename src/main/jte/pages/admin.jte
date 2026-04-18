@@ -1,5 +1,8 @@
 @import owner.backflow.web.PageMeta
+@import owner.backflow.service.AdminWorkspaceInspectorService.StorageFileSummary
+@import owner.backflow.service.HandoffChannelReportService.HandoffChannelReport
 @import owner.backflow.service.LeadInboxItem
+@import owner.backflow.service.HandoffRecord
 @param PageMeta page
 @param boolean authenticated = false
 @param boolean adminConfigured = true
@@ -27,13 +30,17 @@
 @param int queuedDeliveryCount = 0
 @param int providerClaimCount = 0
 @param int heldProviderCount = 0
+@param HandoffChannelReport handoffReport = null
+@param java.util.List<HandoffRecord> recentHandoffs = java.util.List.of()
+@param String storageRoot = ""
+@param java.util.List<StorageFileSummary> storageFiles = java.util.List.of()
 
 @template.layouts.app(page = page, content = @`
     <section class="page-hero">
         <div class="container">
             <span class="eyebrow">Admin</span>
-            <h1>${authenticated ? "Lead inbox" : "Admin login"}</h1>
-            <p class="lede">${authenticated ? "Private lead queue backed by JSONL and CSV files outside the build artifact." : "Use the configured admin credentials to open the private lead queue."}</p>
+            <h1>${authenticated ? "Admin control room" : "Admin login"}</h1>
+            <p class="lede">${authenticated ? "Review captured leads, vendor handoff workflow signals, and the live JSON or CSV store from one protected page." : "Use the configured admin credentials to open the private lead queue."}</p>
             @if (authenticated)
                 <div class="hero__stats">
                     <span>${leadCount} leads stored</span>
@@ -41,6 +48,9 @@
                     <span>${unassignedLeadCount} unassigned</span>
                     <span>${uncoveredLeadCount} without provider coverage</span>
                     <span>${providerClaimCount} provider requests</span>
+                    <span>${handoffReport != null ? handoffReport.totalHandoffs() : 0} handoffs</span>
+                    <span>${handoffReport != null ? handoffReport.recipientOpenCount() : 0} recipient open days</span>
+                    <span>${handoffReport != null ? handoffReport.ctaClickCount() : 0} handoff clicks</span>
                 </div>
             @endif
         </div>
@@ -91,12 +101,32 @@
             <section class="section section--tight">
                 <div class="container utility-grid">
                     <article class="detail-card">
-                        <h2>Exports</h2>
+                        <h2>Storage snapshot</h2>
+                        <p class="detail-meta">All lead, vendor, and click logs are stored outside the build artifact and previewed here from the live storage root.</p>
+                        @if (storageRoot != null && !storageRoot.isBlank())
+                            <p><strong>Root:</strong> <code>${storageRoot}</code></p>
+                        @endif
+                        <ul class="detail-list">
+                            <li>${storageFiles.size()} file(s) visible in storage</li>
+                            <li>${leadCount} lead record(s) in inbox view</li>
+                            <li>${handoffReport != null ? handoffReport.totalEvents() : 0} vendor workflow event(s)</li>
+                        </ul>
                         <div class="hero__actions">
                             <a class="button button--secondary" href="/admin/export.json">Download JSON</a>
                             <a class="button button--secondary" href="/admin/export.csv">Download CSV</a>
                         </div>
-                        <p class="detail-meta">Lead exports mirror the file-backed store, so you can inspect the inbox outside the app if needed.</p>
+                    </article>
+
+                    <article class="detail-card">
+                        <h2>Vendor workflow</h2>
+                        <ul class="detail-list">
+                            <li>${handoffReport != null ? handoffReport.totalHandoffs() : 0} briefs created</li>
+                            <li>${handoffReport != null ? handoffReport.preparedSendCount() : 0} send-prep actions</li>
+                            <li>${handoffReport != null ? handoffReport.markedSentCount() : 0} confirmed send day(s)</li>
+                            <li>${handoffReport != null ? handoffReport.recipientOpenCount() : 0} recipient open day(s)</li>
+                            <li>${handoffReport != null ? handoffReport.publicBriefDownloadedCount() : 0} public PDF download(s)</li>
+                        </ul>
+                        <p class="detail-meta">This stays focused on the free wedge: office-created customer briefs, not full vendor SaaS operations.</p>
                     </article>
 
                     <article class="detail-card">
@@ -106,6 +136,271 @@
                             <button class="button button--primary" type="submit">Sign out</button>
                         </form>
                     </article>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="section-heading">
+                        <span class="eyebrow">Vendor workflow</span>
+                        <h2>Free handoff channel signals</h2>
+                    </div>
+
+                    <div class="utility-grid">
+                        <article class="detail-card">
+                            <h3>Creation and send prep</h3>
+                            <ul class="detail-list">
+                                <li>${handoffReport != null ? handoffReport.createdCount() : 0} handoff create event(s)</li>
+                                <li>${handoffReport != null ? handoffReport.preparedSendCount() : 0} copy or draft prep action(s)</li>
+                                <li>${handoffReport != null ? handoffReport.markedSentCount() : 0} confirmed send day(s)</li>
+                                <li>${handoffReport != null ? handoffReport.repeatVendorUtilityRows().size() : 0} repeat vendor and utility loop(s)</li>
+                            </ul>
+                        </article>
+
+                        <article class="detail-card">
+                            <h3>Recipient response</h3>
+                            <ul class="detail-list">
+                                <li>${handoffReport != null ? handoffReport.recipientOpenCount() : 0} public brief open day(s)</li>
+                                <li>${handoffReport != null ? handoffReport.publicBriefDownloadedCount() : 0} public brief PDF download(s)</li>
+                                <li>${handoffReport != null ? handoffReport.ctaClickCount() : 0} CTA click(s) after open</li>
+                                <li>${handoffReport != null ? handoffReport.sourceDrawerClickCount() : 0} full-rule or help follow-on click(s)</li>
+                            </ul>
+                        </article>
+
+                        <article class="detail-card">
+                            <h3>Internal visibility</h3>
+                            <ul class="detail-list">
+                                <li>${handoffReport != null ? handoffReport.officePreviewOpenedCount() : 0} office preview open day(s)</li>
+                                <li>${handoffReport != null ? handoffReport.internalResultOpenedCount() : 0} internal result open day(s)</li>
+                                <li>${handoffReport != null ? handoffReport.archivePacketOpenedCount() : 0} archive packet open day(s)</li>
+                                <li>${handoffReport != null ? handoffReport.archivePacketDownloadedCount() : 0} archive PDF download(s)</li>
+                            </ul>
+                        </article>
+                    </div>
+
+                    @if (recentHandoffs.isEmpty())
+                        <article class="detail-card">
+                            <h3>No vendor handoffs yet</h3>
+                            <p>Create the first customer brief and the office details, source page, and workflow state will appear here.</p>
+                        </article>
+                    @else
+                        <div class="table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                <tr>
+                                    <th>Created</th>
+                                    <th>Vendor office</th>
+                                    <th>Customer and site</th>
+                                    <th>Utility</th>
+                                    <th>Workflow</th>
+                                    <th>Source</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @for (var handoff : recentHandoffs)
+                                    <tr>
+                                        <td>${handoff.createdAt() != null ? handoff.createdAt().toString() : ""}</td>
+                                        <td>
+                                            <strong>${handoff.vendorCompanyName() != null && !handoff.vendorCompanyName().isBlank() ? handoff.vendorCompanyName() : "(no company)"}</strong>
+                                            @if (handoff.vendorContactName() != null && !handoff.vendorContactName().isBlank())
+                                                <div class="detail-meta">${handoff.vendorContactName()}</div>
+                                            @endif
+                                            @if (handoff.vendorEmail() != null && !handoff.vendorEmail().isBlank())
+                                                <div class="detail-meta">${handoff.vendorEmail()}</div>
+                                            @endif
+                                            @if (handoff.vendorPhone() != null && !handoff.vendorPhone().isBlank())
+                                                <div class="detail-meta">${handoff.vendorPhone()}</div>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <strong>${handoff.propertyLabel() != null && !handoff.propertyLabel().isBlank() ? handoff.propertyLabel() : "(no property label)"}</strong>
+                                            @if (handoff.customerFirstName() != null && !handoff.customerFirstName().isBlank())
+                                                <div class="detail-meta">Customer: ${handoff.customerFirstName()}</div>
+                                            @endif
+                                            @if (handoff.siteAddress() != null && !handoff.siteAddress().isBlank())
+                                                <div class="detail-meta">${handoff.siteAddress()}</div>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            ${handoff.utilityName() != null && !handoff.utilityName().isBlank() ? handoff.utilityName() : handoff.utilityId()}
+                                            @if (handoff.utilityId() != null && !handoff.utilityId().isBlank())
+                                                <div class="detail-meta">${handoff.utilityId()}</div>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <div>${handoff.issueLabel() != null && !handoff.issueLabel().isBlank() ? handoff.issueLabel() : handoff.issueType()}</div>
+                                            <div class="detail-meta">${handoff.resultLabel() != null && !handoff.resultLabel().isBlank() ? handoff.resultLabel() : handoff.resultStatus()}</div>
+                                            <div class="detail-meta">${handoff.submissionLabel() != null && !handoff.submissionLabel().isBlank() ? handoff.submissionLabel() : handoff.submissionStatus()}</div>
+                                            @if (handoff.failedReason() != null && !handoff.failedReason().isBlank())
+                                                <div class="detail-meta">Fail reason: ${handoff.failedReason()}</div>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            ${handoff.createdFromPath()}
+                                            @if (handoff.handoffId() != null && !handoff.handoffId().isBlank())
+                                                <div class="detail-meta">ID: ${handoff.handoffId()}</div>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endfor
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+
+                    @if (handoffReport != null && !handoffReport.repeatVendorUtilityRows().isEmpty())
+                        <div class="table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                <tr>
+                                    <th>Vendor office</th>
+                                    <th>Utility</th>
+                                    <th>Handoffs</th>
+                                    <th>Recipient opens</th>
+                                    <th>Recipient downloads</th>
+                                    <th>Window</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @for (var row : handoffReport.repeatVendorUtilityRows())
+                                    <tr>
+                                        <td>${row.vendorCompanyName()}</td>
+                                        <td>
+                                            ${row.utilityName()}
+                                            @if (row.utilityId() != null && !row.utilityId().isBlank())
+                                                <div class="detail-meta">${row.utilityId()}</div>
+                                            @endif
+                                        </td>
+                                        <td>${row.handoffCount()}</td>
+                                        <td>${row.openedCount()}</td>
+                                        <td>${row.downloadedCount()}</td>
+                                        <td>
+                                            ${row.firstSeen() != null ? row.firstSeen().toString() : ""}
+                                            <div class="detail-meta">${row.lastSeen() != null ? row.lastSeen().toString() : ""}</div>
+                                        </td>
+                                    </tr>
+                                @endfor
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+
+                    @if (handoffReport != null && !handoffReport.recentEvents().isEmpty())
+                        <div class="table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                <tr>
+                                    <th>Recent vendor events</th>
+                                    <th>Vendor</th>
+                                    <th>Utility</th>
+                                    <th>Workflow</th>
+                                    <th>Origin</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @for (var event : handoffReport.recentEvents())
+                                    <tr>
+                                        <td>
+                                            <strong>${event.eventType()}</strong>
+                                            <div class="detail-meta">${event.occurredAt() != null ? event.occurredAt().toString() : ""}</div>
+                                        </td>
+                                        <td>${event.vendorCompanyName()}</td>
+                                        <td>${event.utilityName()}</td>
+                                        <td>
+                                            <div>${event.issueType()}</div>
+                                            <div class="detail-meta">${event.resultStatus()}</div>
+                                            <div class="detail-meta">${event.submissionStatus()}</div>
+                                        </td>
+                                        <td>
+                                            ${event.originPath()}
+                                            @if (event.requestPath() != null && !event.requestPath().isBlank())
+                                                <div class="detail-meta">${event.requestPath()}</div>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endfor
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+
+                    @if (handoffReport != null && !handoffReport.recentCtaClicks().isEmpty())
+                        <div class="table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                <tr>
+                                    <th>Recent handoff CTA clicks</th>
+                                    <th>Utility</th>
+                                    <th>Source</th>
+                                    <th>Destination</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @for (var click : handoffReport.recentCtaClicks())
+                                    <tr>
+                                        <td>
+                                            <strong>${click.ctaType()}</strong>
+                                            <div class="detail-meta">${click.clickedAt() != null ? click.clickedAt().toString() : ""}</div>
+                                            <div class="detail-meta">${click.pageFamily()}</div>
+                                        </td>
+                                        <td>${click.utilityName()}</td>
+                                        <td>${click.sourcePage()}</td>
+                                        <td>${click.destination()}</td>
+                                    </tr>
+                                @endfor
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+                </div>
+            </section>
+
+            <section class="section section--tight">
+                <div class="container">
+                    <div class="section-heading">
+                        <span class="eyebrow">Raw storage</span>
+                        <h2>File-backed store preview</h2>
+                    </div>
+                    @if (storageFiles.isEmpty())
+                        <article class="detail-card">
+                            <h3>No storage files yet</h3>
+                            <p>The admin root exists, but there are no JSON, JSONL, or CSV files to preview yet.</p>
+                        </article>
+                    @else
+                        <div class="table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                <tr>
+                                    <th>File</th>
+                                    <th>Updated</th>
+                                    <th>Size</th>
+                                    <th>Path</th>
+                                    <th>Preview</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @for (var file : storageFiles)
+                                    <tr>
+                                        <td><strong>${file.name()}</strong></td>
+                                        <td>${file.updatedAt()}</td>
+                                        <td>${file.displaySize()}</td>
+                                        <td><code>${file.absolutePath()}</code></td>
+                                        <td>
+                                            @if (file.preview() != null && !file.preview().isBlank())
+                                                <details>
+                                                    <summary>Show preview</summary>
+                                                    <pre>${file.preview()}</pre>
+                                                </details>
+                                            @else
+                                                <span class="detail-meta">No preview</span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endfor
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
                 </div>
             </section>
 

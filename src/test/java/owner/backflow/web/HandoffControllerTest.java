@@ -192,7 +192,7 @@ class HandoffControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Customer brief")))
                 .andExpect(content().string(containsString("Plain-language summary")))
-                .andExpect(content().string(containsString("What your vendor is handling")))
+                .andExpect(content().string(containsString("What happens on the vendor side")))
                 .andExpect(content().string(containsString("Next step")))
                 .andExpect(content().string(containsString("DFW Backflow Services")))
                 .andExpect(content().string(containsString("View full local rule")))

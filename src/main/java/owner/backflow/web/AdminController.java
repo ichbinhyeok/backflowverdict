@@ -2,8 +2,13 @@ package owner.backflow.web;
 
 import jakarta.servlet.http.HttpSession;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import owner.backflow.service.AdminAuthService;
 import owner.backflow.service.AdminCsrfService;
+import owner.backflow.service.AdminWorkspaceInspectorService;
+import owner.backflow.service.HandoffChannelReportService;
+import owner.backflow.service.HandoffRecord;
+import owner.backflow.service.HandoffRepository;
 import owner.backflow.service.LeadAdminService;
 import owner.backflow.service.LeadInboxItem;
 import org.springframework.http.HttpHeaders;
@@ -25,15 +30,24 @@ public class AdminController {
     private final AdminAuthService adminAuthService;
     private final AdminCsrfService adminCsrfService;
     private final LeadAdminService leadAdminService;
+    private final HandoffChannelReportService handoffChannelReportService;
+    private final HandoffRepository handoffRepository;
+    private final AdminWorkspaceInspectorService adminWorkspaceInspectorService;
 
     public AdminController(
             AdminAuthService adminAuthService,
             AdminCsrfService adminCsrfService,
-            LeadAdminService leadAdminService
+            LeadAdminService leadAdminService,
+            HandoffChannelReportService handoffChannelReportService,
+            HandoffRepository handoffRepository,
+            AdminWorkspaceInspectorService adminWorkspaceInspectorService
     ) {
         this.adminAuthService = adminAuthService;
         this.adminCsrfService = adminCsrfService;
         this.leadAdminService = leadAdminService;
+        this.handoffChannelReportService = handoffChannelReportService;
+        this.handoffRepository = handoffRepository;
+        this.adminWorkspaceInspectorService = adminWorkspaceInspectorService;
     }
 
     @GetMapping("/admin")
@@ -71,9 +85,13 @@ public class AdminController {
         }
 
         java.util.List<LeadInboxItem> inbox = leadAdminService.listInbox();
+        List<HandoffRecord> recentHandoffs = handoffRepository.findAll().stream()
+                .limit(15)
+                .toList();
+        var handoffReport = handoffChannelReportService.buildReport();
         model.addAttribute("page", new PageMeta(
-                "Admin leads | BackflowPath",
-                "View captured leads and lead sources.",
+                "Admin control room | BackflowPath",
+                "View captured leads, vendor handoff workflow signals, and local storage files from one protected admin page.",
                 "/admin",
                 true
         ));
@@ -100,6 +118,10 @@ public class AdminController {
         model.addAttribute("providerClaims", leadAdminService.providerClaims());
         model.addAttribute("providerClaimCount", leadAdminService.providerClaimCount());
         model.addAttribute("heldProviderCount", leadAdminService.heldProviderCount());
+        model.addAttribute("handoffReport", handoffReport);
+        model.addAttribute("recentHandoffs", recentHandoffs);
+        model.addAttribute("storageRoot", adminWorkspaceInspectorService.storageRoot());
+        model.addAttribute("storageFiles", adminWorkspaceInspectorService.listStorageFiles());
         model.addAttribute("username", adminAuthService.username());
         model.addAttribute("csrfToken", adminCsrfService.ensureToken(session));
         return "pages/admin";
