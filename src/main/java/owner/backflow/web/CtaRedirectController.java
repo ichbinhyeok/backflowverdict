@@ -41,12 +41,29 @@ public class CtaRedirectController {
                 utilityId,
                 providerId,
                 ctaType,
-                source,
+                sanitizeSource(source),
                 destination,
                 request.getHeader("Referer")
         ));
         RedirectView redirectView = new RedirectView(destination);
         redirectView.setExposeModelAttributes(false);
         return redirectView;
+    }
+
+    private String sanitizeSource(String source) {
+        String normalized = source == null ? "" : source.trim();
+        if (normalized.isBlank()) {
+            return "";
+        }
+        if (normalized.startsWith("/handoffs/brief/")) {
+            return "handoff-brief";
+        }
+        if (normalized.endsWith("/packet")) {
+            return "handoff-packet";
+        }
+        if (normalized.startsWith("/handoffs/")) {
+            return "handoff-result";
+        }
+        return normalized;
     }
 }

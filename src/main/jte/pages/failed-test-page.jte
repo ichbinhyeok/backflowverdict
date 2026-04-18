@@ -8,19 +8,24 @@
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 @param String testerPath = null
 @param String testerLabel = null
+@param String handoffBuilderPath = ""
 @param int activeSponsorCount = 0
 
 @template.layouts.app(page = page, content = @`
-    <section class="page-hero">
+    <div class="vendor-failure-surface">
+    <section class="page-hero vendor-failure-hero">
         <div class="container page-frame">
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Failed-test workflow</span>
                 <h1>${utility.utilityName()} failed backflow test next steps</h1>
-                <p class="lede">Use the governing utility workflow first, then move through repair, retest, and report submission in that order.</p>
+                <p class="lede">Use the governing utility workflow first, then split the office work into two lanes: customer brief first, repair and retest second.</p>
                 <div class="hero__actions">
+                    @if (handoffBuilderPath != null && !handoffBuilderPath.isBlank())
+                        <a class="button button--primary" href="${handoffBuilderPath}">Create failed-test brief</a>
+                    @endif
+                    <a class="button button--secondary" href="#repair-path">Repair / retest help</a>
+                    <a class="button button--secondary" href="${utility.utilityUrl()}">Official program page</a>
                     <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Back to utility page</a>
-                    <a class="button button--primary" href="${utility.utilityUrl()}">Official program page</a>
-                    <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/failed-test", "failed-test-repair", "failed-test")}">Request local help</a>
                 </div>
             </div>
             <div class="side-stack">
@@ -38,7 +43,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section vendor-failure-compliance">
         <div class="container">
             <article class="panel panel--dark">
                 <div class="section-heading">
@@ -76,25 +81,54 @@
         </div>
     </section>
 
-    <section class="section section--tight">
+    <section class="section section--tight vendor-failure-dual-lane">
         <div class="container content-grid">
-            <article class="detail-card">
-                <div class="visual-card">
-                    <img src="/images/design/failed-repair.jpg" alt="Repair specialist working on a backflow prevention assembly">
-                    <div class="visual-card__overlay">
-                        <strong>Repair specialist path</strong>
-                        <p>Use repair routing only after you understand the utility's exact submission and retest expectations.</p>
+            <article class="detail-card detail-card--key" id="office-send-path">
+                <span class="eyebrow">Office send path</span>
+                <h2>Need to explain the failure to the customer first?</h2>
+                <p>Use this when the office already has the failed result in hand and needs one clean explanation before repair scheduling starts bouncing between calls, texts, and PDFs.</p>
+                @if (handoffBuilderPath != null && !handoffBuilderPath.isBlank())
+                    <div class="card-actions">
+                        <a class="button button--primary" href="${handoffBuilderPath}">Create failed-test customer brief</a>
                     </div>
-                </div>
+                @endif
+                <ul class="detail-list">
+                    <li>Why the customer is hearing from you now</li>
+                    <li>What must happen next before compliance is restored</li>
+                    <li>What your office is still handling with the utility</li>
+                    <li>Whether the customer actually opened the brief</li>
+                </ul>
+            </article>
+
+            <article class="detail-card detail-card--warm" id="repair-path">
+                <span class="eyebrow">Repair path</span>
+                <h2>Need repair, retest, or provider coordination?</h2>
+                <p>Use this when the next job is field action, not explanation. Repair by itself does not close the failure.</p>
                 <div class="hero__actions">
                     @if (testerPath != null && testerLabel != null)
                         <a class="button button--primary" href="${testerPath}">${testerLabel}</a>
                     @endif
                     <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/failed-test", "failed-test-repair", "failed-test")}">Request local help</a>
                 </div>
+                <ul class="detail-list">
+                    <li>Repair the failed assembly or blocked components first</li>
+                    <li>Schedule the passing retest before the deadline slips</li>
+                    <li>Get the accepted report into the utility workflow last</li>
+                </ul>
             </article>
+        </div>
+    </section>
 
-            <article class="detail-card">
+    <section class="section section--tight vendor-failure-support">
+        <div class="container content-grid">
+            <article class="detail-card" id="local-help">
+                <div class="visual-card">
+                    <img src="/images/design/failed-repair.jpg" alt="Repair specialist working on a backflow prevention assembly">
+                    <div class="visual-card__overlay">
+                        <strong>Repair and retest context</strong>
+                        <p>Use provider routing only after you understand the utility's exact submission and retest expectations.</p>
+                    </div>
+                </div>
                 <span class="eyebrow">Local failure notes</span>
                 <h2>Do not stop at the repair</h2>
                 <ul class="detail-list">
@@ -102,23 +136,6 @@
                         <li>${item}</li>
                     @endfor
                 </ul>
-            </article>
-        </div>
-    </section>
-
-    <section class="section section--tight">
-        <div class="container content-grid">
-            <article class="detail-card">
-                <span class="eyebrow">Tester routing after a failed test</span>
-                <h2>Tester routing after a failed test</h2>
-                @if (testerPath != null && testerLabel != null)
-                    <div class="card-actions">
-                        <a class="button button--secondary" href="${testerPath}">${testerLabel}</a>
-                    </div>
-                @else
-                    <p>No public tester route is live for this utility yet.</p>
-                @endif
-                <p class="detail-meta">If you need help coordinating repair, retest, or a local provider, you can submit a request after checking the official utility workflow.</p>
             </article>
 
             <article class="detail-card">
@@ -157,4 +174,5 @@
             </div>
         </section>
     @endif
+    </div>
 `)

@@ -38,7 +38,7 @@ class SiteControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("backflow testing rules before you schedule the work.")))
                 .andExpect(content().string(containsString("Browse state guides")))
-                .andExpect(content().string(containsString("Browse metro coverage")))
+                .andExpect(content().string(containsString("See utility examples")))
                 .andExpect(content().string(containsString("What stays official")))
                 .andExpect(content().string(not(containsString("Request a quote"))))
                 .andExpect(content().string(not(containsString("Protocol v4.2 compliance engine"))))
@@ -84,7 +84,7 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Privacy and lead routing notice")))
                 .andExpect(content().string(containsString("the same request may be shared with one or more active sponsors that cover the verified utility")))
                 .andExpect(content().string(containsString("noindex,follow")))
-                .andExpect(content().string(not(containsString("gtag/js?id=G-TEST123"))));
+                .andExpect(content().string(containsString("gtag/js?id=G-TEST123")));
 
         mockMvc.perform(get("/about"))
                 .andExpect(status().isOk())
@@ -114,6 +114,21 @@ class SiteControllerTest {
     }
 
     @Test
+    void vendorCustomerBriefPageLoads() throws Exception {
+        mockMvc.perform(get("/vendors/customer-briefs"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Turn an annual notice or failed test into a customer brief in 2 minutes.")))
+                .andExpect(content().string(containsString("Office lane")))
+                .andExpect(content().string(containsString("Customer brief, not the office record")))
+                .andExpect(content().string(containsString("portal screenshots")))
+                .andExpect(content().string(containsString("Annual notice brief")))
+                .andExpect(content().string(containsString("Failed test brief")))
+                .andExpect(content().string(containsString("/handoffs/new?utilityId=")))
+                .andExpect(content().string(containsString("Grand Prairie Water Utilities")))
+                .andExpect(content().string(containsString("customer_brief_entry_click")));
+    }
+
+    @Test
     void sitemapAndCanonicalUseConfiguredBackflowPathBaseUrl() throws Exception {
         mockMvc.perform(get("/sitemap.xml"))
                 .andExpect(status().isOk())
@@ -127,8 +142,8 @@ class SiteControllerTest {
                 .andExpect(header().string("X-Robots-Tag", "noindex,follow"))
                 .andExpect(content().string(containsString("property=\"og:title\"")))
                 .andExpect(content().string(containsString("name=\"twitter:card\" content=\"summary_large_image\"")))
-                .andExpect(content().string(not(containsString("gtag/js?id=G-TEST123"))))
-                .andExpect(content().string(not(containsString("request_help_click"))));
+                .andExpect(content().string(containsString("gtag/js?id=G-TEST123")))
+                .andExpect(content().string(containsString("request_help_click")));
     }
 
     @Test
@@ -157,6 +172,7 @@ class SiteControllerTest {
         mockMvc.perform(get("/utilities/texas/grand-prairie-water-utilities/"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Grand Prairie Water Utilities backflow testing requirements")))
+                .andExpect(content().string(containsString("Start with the page that matches your situation")))
                 .andExpect(content().string(containsString("Annual testing is required")))
                 .andExpect(content().string(containsString("State compliance layer")))
                 .andExpect(content().string(containsString("Local questions people actually ask")))
@@ -485,7 +501,8 @@ class SiteControllerTest {
         mockMvc.perform(get("/utilities/texas/fort-worth-water-utilities/failed-test"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Fort Worth Water Backflow Program failed backflow test next steps")))
-                .andExpect(content().string(containsString("Tester routing after a failed test")))
+                .andExpect(content().string(containsString("Need to explain the failure to the customer first?")))
+                .andExpect(content().string(containsString("Need repair, retest, or provider coordination?")))
                 .andExpect(content().string(containsString("BreadcrumbList")));
     }
 
@@ -495,6 +512,7 @@ class SiteControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Dallas Water Utilities Backflow Prevention Program annual backflow testing")))
                 .andExpect(content().string(containsString("SwiftComply")))
+                .andExpect(content().string(containsString("source=/utilities/texas/dallas-water-utilities/annual-testing")))
                 .andExpect(content().string(containsString("State compliance layer")))
                 .andExpect(content().string(containsString("BreadcrumbList")));
 
@@ -1063,7 +1081,7 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Phoenix metro backflow testing")))
                 .andExpect(content().string(containsString("Public providers already mapped to this metro")))
                 .andExpect(content().string(containsString("Covers 3 utility pages in this metro")))
-                .andExpect(content().string(containsString("Official tester route")));
+                .andExpect(content().string(containsString("Review mapped utilities")));
 
         mockMvc.perform(get("/metros/florida/greater-orlando/backflow-testing"))
                 .andExpect(status().isOk())

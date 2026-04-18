@@ -3,7 +3,6 @@
 @import owner.backflow.data.model.MetroRecord
 @import owner.backflow.data.model.StateGuideRecord
 @import owner.backflow.data.model.UtilityRecord
-@import owner.backflow.service.LeadRoutingService
 @param PageMeta page
 @param java.util.List<UtilityRecord> utilities
 @param java.util.List<GuideRecord> guides
@@ -28,8 +27,8 @@
                 <p class="lede">BackflowPath organizes backflow requirements by utility so you can see who needs testing, how reports are filed, what happens after a failed test, and whether an official tester list exists. State, metro, and guide pages help you narrow down the right local path without mixing public guidance and provider options.</p>
                 <div class="hero__actions">
                     <a class="button button--primary" href="/states">Browse state guides</a>
-                    <a class="button button--secondary" href="/metros">Browse metro coverage</a>
-                    <a class="button button--secondary" href="/leads/new">Request help</a>
+                    <a class="button button--secondary" href="#utility-examples">See utility examples</a>
+                    <a class="button button--secondary" href="/guides">Browse guides</a>
                 </div>
                 <div class="hero__stats">
                     <span>${publishedUtilityCount} live utility pages</span>
@@ -69,16 +68,16 @@
                         <span>02</span>
                         <span class="material-symbols-outlined">verified_user</span>
                     </div>
-                    <h3>Follow the tester route</h3>
-                    <p>If the authority publishes an approved tester list, the site shows that official route. If not, provider options are clearly labeled as non-official directory help.</p>
+                    <h3>Open the page for your situation</h3>
+                    <p>Annual testing, failed-test, irrigation, and fire-line pages sit in front of the exact question that usually comes after the main utility rule.</p>
                 </article>
                 <article class="process-card">
                     <div class="process-card__index">
                         <span>03</span>
                         <span class="material-symbols-outlined">monitoring</span>
                     </div>
-                    <h3>Use the next-step pages</h3>
-                    <p>Annual testing, failed-test, irrigation, and fire-line pages handle the questions that usually come right after the main rule page.</p>
+                    <h3>Use the tester or help layer last</h3>
+                    <p>Once the rule is clear, use the official tester route when it exists. If it does not, provider and help surfaces stay clearly labeled as a separate action layer.</p>
                 </article>
             </div>
         </div>
@@ -153,7 +152,7 @@
         </section>
     @endif
 
-    <section class="section">
+    <section class="section" id="utility-examples">
         <div class="container">
             <div class="section-heading">
                 <span class="eyebrow">Popular utility pages</span>
@@ -172,12 +171,6 @@
                         </ul>
                         <div class="card-actions">
                             <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Open utility page</a>
-                            @if (testerPaths.get(utility.utilityId()) != null)
-                                <a class="button button--secondary" href="${testerPaths.get(utility.utilityId())}">${testerLabels.get(utility.utilityId())}</a>
-                            @elseif (!utility.officialProgramUrls().isEmpty())
-                                <a class="button button--secondary" href="${utility.officialProgramUrls().get(0)}">Official program page</a>
-                            @endif
-                            <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", "general-testing", "home-card")}">Request local help</a>
                         </div>
                     </article>
                 @endfor
@@ -227,25 +220,4 @@
         </div>
     </section>
 
-    <section class="section section--tight">
-        <div class="container split-panels">
-            <article class="detail-card">
-                <span class="eyebrow">For providers</span>
-                <h3>Claim or request a listing</h3>
-                <p>Backflow testers and service companies can claim existing profiles, request updates, or ask about featured placement without being mixed into the official utility layer.</p>
-                <div class="card-actions">
-                    <a class="button button--secondary" href="/for-providers">For providers</a>
-                    <a class="button button--secondary" href="/claim-listing">Claim listing</a>
-                </div>
-            </article>
-            <article class="detail-card">
-                <span class="eyebrow">Simple plans</span>
-                <h3>Review before billing</h3>
-                <p>Listing claims stay free. Featured utility and metro placement are reviewed before approval so commercial visibility never overwrites the authority workflow.</p>
-                <div class="card-actions">
-                    <a class="button button--secondary" href="/pricing">Pricing</a>
-                </div>
-            </article>
-        </div>
-    </section>
 `)

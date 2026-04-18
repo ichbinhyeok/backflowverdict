@@ -25,9 +25,7 @@
                 <div class="hero__actions">
                     @if (!utilities.isEmpty())
                         <a class="button button--primary" href="/utilities/${utilities.get(0).state()}/${utilities.get(0).canonicalSlug()}/">Open canonical utility page</a>
-                    @endif
-                    @if (!providers.isEmpty())
-                        <a class="button button--secondary" href="/providers/${providers.get(0).providerId()}/">Open provider profile</a>
+                        <a class="button button--secondary" href="#mapped-utilities">Review mapped utilities</a>
                     @endif
                 </div>
             </div>
@@ -82,11 +80,12 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="mapped-utilities">
         <div class="container">
             <div class="section-heading">
                 <span class="eyebrow">Mapped utilities</span>
                 <h2>Utility pages inside this metro cluster</h2>
+                <p class="lede">This is the part that matters first. Open the exact utility page before you use any provider or help surface.</p>
             </div>
             <div class="card-grid">
                 @for (var utility : utilities)
@@ -96,13 +95,6 @@
                         <p>${utility.verdictSummary()}</p>
                         <div class="card-actions">
                             <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Open utility page</a>
-                            @if (utility.supportsApprovedTestersPage())
-                                <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/approved-testers">Official tester route</a>
-                            @elseif (utility.supportsFindATesterPage())
-                                <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/find-a-tester">Directory route</a>
-                            @else
-                                <a class="button button--secondary" href="${utility.utilityUrl()}">Official program page</a>
-                            @endif
                         </div>
                     </article>
                 @endfor
@@ -115,6 +107,7 @@
             <div class="section-heading">
                 <span class="eyebrow">Provider surface</span>
                 <h2>Public providers already mapped to this metro</h2>
+                <p class="lede">Use this layer only after the local rule and next step are clear on the utility page.</p>
             </div>
             <div class="card-grid">
                 @for (var provider : providers)
@@ -136,9 +129,6 @@
                         </ul>
                         <div class="card-actions">
                             <a class="button button--secondary" href="/providers/${provider.providerId()}/">Open provider profile</a>
-                            @if (provider.siteUrl() != null && !provider.siteUrl().isBlank())
-                                <a class="button button--secondary" href="/r/cta?next=${provider.siteUrl()}&pageFamily=metro&providerId=${provider.providerId()}&ctaType=provider-website&source=/metros/${metro.state()}/${metro.metroSlug()}/backflow-testing">Open provider website</a>
-                            @endif
                         </div>
                     </article>
                 @endfor

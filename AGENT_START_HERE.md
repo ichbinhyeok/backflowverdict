@@ -22,6 +22,10 @@ BackflowPath
 9. `spec/06_indexing_quality_and_analytics.md`
 10. `spec/07_technical_architecture.md`
 11. `spec/08_delivery_and_handoff.md`
+12. `spec/09_backflow_workflow_insertion_strategy.md`
+13. `spec/10_vendor_strategy_and_revenue_memo.md`
+14. `spec/11_free_vendor_wedge_lock.md`
+15. `spec/12_vendor_setup_package_lock.md`
 
 ## Rules
 - Utility or water-authority page is the canonical SEO unit.

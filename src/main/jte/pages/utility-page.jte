@@ -11,6 +11,11 @@
 @param String fireLinePath = null
 @param String testerPath = null
 @param String testerLabel = null
+@param String generalHandoffPath = ""
+@param String annualHandoffPath = ""
+@param String failedHandoffPath = ""
+@param String irrigationHandoffPath = ""
+@param String fireLineHandoffPath = ""
 @param java.util.List<owner.backflow.web.FaqItem> faqItems
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 @param java.util.List<MetroRecord> metros = java.util.List.of()
@@ -24,6 +29,7 @@
                 <span class="eyebrow kicker-rule">${utility.governingEntityType()}</span>
                 <h1>${utility.utilityName()} backflow testing requirements</h1>
                 <p class="lede">${utility.verdictSummary()}</p>
+                <p class="detail-meta">Use this page to confirm the governing rule, then open the focused page that matches your exact situation.</p>
                 <div class="hero__stats">
                     <span>Testing cadence: ${utility.testingFrequency()}</span>
                     <span>Last verified: ${utility.lastVerified().toString()}</span>
@@ -32,10 +38,7 @@
                 </div>
                 <div class="hero__actions">
                     <a class="button button--primary" href="${utility.utilityUrl()}">Official program page</a>
-                    @if (testerPath != null && testerLabel != null)
-                        <a class="button button--secondary" href="${testerPath}">${testerLabel}</a>
-                    @endif
-                    <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", "general-testing", "utility")}">Request local help</a>
+                    <a class="button button--secondary" href="#next-step-paths">Choose your situation</a>
                 </div>
             </div>
             <aside class="panel panel--status">
@@ -59,26 +62,77 @@
     <section class="section">
         <div class="container page-frame">
             <div class="stack">
-                @if (annualTestingPath != null || irrigationPath != null || fireLinePath != null)
-                    <article class="detail-card">
-                        <div class="section-heading">
-                            <span class="eyebrow">Local page set</span>
-                            <h2>Cluster pages around the same utility workflow</h2>
-                        </div>
-                        <div class="card-actions">
-                            @if (annualTestingPath != null)
-                                <a class="button button--secondary" href="${annualTestingPath}">Annual testing</a>
-                            @endif
-                            @if (irrigationPath != null)
-                                <a class="button button--secondary" href="${irrigationPath}">Irrigation</a>
-                            @endif
-                            @if (fireLinePath != null)
-                                <a class="button button--secondary" href="${fireLinePath}">Fire line</a>
-                            @endif
-                            <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/failed-test">Failed test</a>
-                        </div>
-                    </article>
-                @endif
+                <section class="section section--tight" id="next-step-paths">
+                    <div class="section-heading">
+                        <span class="eyebrow">Next-step paths</span>
+                        <h2>Start with the page that matches your situation</h2>
+                        <p>This page is the rule hub. Homeowners should stay on the rule path. Office staff who already know the situation can use the brief buttons after they confirm the local workflow.</p>
+                    </div>
+                    <div class="card-grid">
+                        @if (annualTestingPath != null)
+                            <article class="detail-card detail-card--key">
+                                <span class="eyebrow">Routine notice</span>
+                                <h2>Annual testing</h2>
+                                <p>Open the annual page when the utility notice is about routine testing, timing, and accepted submission methods. Office staff can then create the customer brief from the same local rule path.</p>
+                                <div class="card-actions">
+                                    <a class="button button--secondary" href="${annualTestingPath}">Open annual testing</a>
+                                    @if (annualHandoffPath != null && !annualHandoffPath.isBlank())
+                                        <a class="button button--secondary" href="${annualHandoffPath}">Office staff: create annual brief</a>
+                                    @endif
+                                </div>
+                            </article>
+                        @endif
+
+                        <article class="detail-card detail-card--warm">
+                            <span class="eyebrow">Urgent status</span>
+                            <h2>Failed test</h2>
+                                <p>Open the failed-test page when the device already failed and you need the repair, retest, and reporting order. Office staff can then build the brief that explains the failure clearly to the customer.</p>
+                                <div class="card-actions">
+                                    <a class="button button--primary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/failed-test">Open failed-test steps</a>
+                                    @if (failedHandoffPath != null && !failedHandoffPath.isBlank())
+                                        <a class="button button--secondary" href="${failedHandoffPath}">Office staff: create failed-test brief</a>
+                                    @endif
+                                </div>
+                            </article>
+
+                        @if (irrigationPath != null)
+                            <article class="detail-card">
+                                <span class="eyebrow">System-specific</span>
+                                <h2>Irrigation</h2>
+                                <p>Open the irrigation page when the question is tied to sprinkler systems, reclaimed water, or landscape devices.</p>
+                                <div class="card-actions">
+                                    <a class="button button--secondary" href="${irrigationPath}">Open irrigation rules</a>
+                                </div>
+                            </article>
+                        @endif
+
+                        @if (fireLinePath != null)
+                            <article class="detail-card">
+                                <span class="eyebrow">System-specific</span>
+                                <h2>Fire line</h2>
+                                <p>Open the fire-line page when the backflow assembly serves fire protection equipment or a managed commercial site.</p>
+                                <div class="card-actions">
+                                    <a class="button button--secondary" href="${fireLinePath}">Open fire-line rules</a>
+                                </div>
+                            </article>
+                        @endif
+
+                        @if (testerPath != null && testerLabel != null)
+                            <article class="detail-card">
+                                <span class="eyebrow">Provider route</span>
+                                <h2>${testerLabel}</h2>
+                                @if (utility.supportsApprovedTestersPage())
+                                    <p>Use the published tester route after you confirm the rule, due basis, and submission path on this utility page.</p>
+                                @else
+                                    <p>Use the clearly labeled non-official tester route only after you confirm the utility workflow and reporting requirements.</p>
+                                @endif
+                                <div class="card-actions">
+                                    <a class="button button--secondary" href="${testerPath}">${testerLabel}</a>
+                                </div>
+                            </article>
+                        @endif
+                    </div>
+                </section>
 
                 <div class="content-grid">
                     <article class="detail-card detail-card--key">
@@ -107,7 +161,7 @@
                     <div class="section-heading">
                         <span class="eyebrow" style="color: rgba(197, 234, 223, 0.92);">Compliance workflow</span>
                         <h2 style="color: #ffffff;">Official workflow</h2>
-                        <p>Use the authority steps first. Repair, retest, and provider routing all sit downstream from this compliance sequence.</p>
+                        <p>Every focused page on this utility still runs through this authority sequence. Confirm the rule here before you branch into repair, testing, or provider routing.</p>
                     </div>
                     <ol class="step-list">
                         @for (var step : utility.workflowSteps())
@@ -200,6 +254,42 @@
                     @endif
                 </div>
 
+                <section class="section section--tight">
+                    <div class="section-heading">
+                        <span class="eyebrow">FAQ</span>
+                        <h2>Local questions people actually ask</h2>
+                    </div>
+                    <div class="faq-list">
+                        @for (var faqItem : faqItems)
+                            <details class="faq-item">
+                                <summary>${faqItem.question()}</summary>
+                                <p>${faqItem.answer()}</p>
+                            </details>
+                        @endfor
+                    </div>
+                </section>
+
+                <article class="trust-box trust-box--warning">
+                    <span class="trust-box__label">After the rule is clear</span>
+                    <h2>Need a tester or local help?</h2>
+                    @if (testerPath != null && testerLabel != null)
+                        @if (utility.supportsApprovedTestersPage())
+                            <p>Start with the governing authority's published tester list. Use provider help only after the official rule, due basis, and submission path are clear.</p>
+                        @else
+                            <p>No official tester list is stored for this utility, so the available tester route is a clearly labeled non-official directory.</p>
+                        @endif
+                        <div class="hero__actions">
+                            <a class="button button--primary" href="${testerPath}">${testerLabel}</a>
+                            <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", "general-testing", "utility")}">Request local help</a>
+                        </div>
+                    @else
+                        <p>No public tester route is live for this utility yet. Stay on the authority workflow and submission methods before treating any outside provider directory as reliable.</p>
+                        <div class="hero__actions">
+                            <a class="button button--primary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", "general-testing", "utility")}">Request local help</a>
+                        </div>
+                    @endif
+                </article>
+
                 <article class="detail-card detail-card--key">
                     <div class="section-heading">
                         <span class="eyebrow">Market cost analysis</span>
@@ -242,44 +332,6 @@
                         </div>
                     </div>
                 </article>
-
-                <article class="trust-box trust-box--warning">
-                    <span class="trust-box__label">Next step</span>
-                    <h2>Tester routing</h2>
-                    @if (testerPath != null && testerLabel != null)
-                        @if (utility.supportsApprovedTestersPage())
-                            <p>Start with the governing authority's published tester list. This route keeps official list entries first and leaves sponsor routing secondary.</p>
-                        @else
-                            <p>No official tester list is stored for this utility, so the available tester route is a clearly labeled non-official directory.</p>
-                        @endif
-                        <div class="hero__actions">
-                            <a class="button button--primary" href="${testerPath}">${testerLabel}</a>
-                            <a class="button button--secondary" href="${utility.utilityUrl()}">Official program page</a>
-                            <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", "general-testing", "utility")}">Request local help</a>
-                        </div>
-                    @else
-                        <p>No public tester route is live for this utility yet. Stay on the authority workflow and submission methods before treating any outside provider directory as reliable.</p>
-                        <div class="hero__actions">
-                            <a class="button button--primary" href="${utility.utilityUrl()}">Official program page</a>
-                            <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", "general-testing", "utility")}">Request local help</a>
-                        </div>
-                    @endif
-                </article>
-
-                <section class="section section--tight">
-                    <div class="section-heading">
-                        <span class="eyebrow">FAQ</span>
-                        <h2>Local questions people actually ask</h2>
-                    </div>
-                    <div class="faq-list">
-                        @for (var faqItem : faqItems)
-                            <details class="faq-item">
-                                <summary>${faqItem.question()}</summary>
-                                <p>${faqItem.answer()}</p>
-                            </details>
-                        @endfor
-                    </div>
-                </section>
             </div>
 
             <aside class="side-stack">

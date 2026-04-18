@@ -3,7 +3,6 @@
 @import owner.backflow.data.model.StateGuideRecord
 @import owner.backflow.data.model.UtilityRecord
 @import owner.backflow.data.model.UtilityFocusContent
-@import owner.backflow.service.LeadRoutingService
 @param PageMeta page
 @param UtilityRecord utility
 @param String eyebrow
@@ -14,6 +13,8 @@
 @param java.util.List<String> commercialNotes
 @param String testerPath = null
 @param String testerLabel = null
+@param String requestHelpPath
+@param String handoffBuilderPath = ""
 @param java.util.List<owner.backflow.web.FaqItem> faqItems
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 @param StateGuideRecord stateGuide = null
@@ -33,10 +34,11 @@
                 </div>
                 <div class="hero__actions">
                     <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Back to utility requirements</a>
-                    @if (testerPath != null && testerLabel != null)
-                        <a class="button button--primary" href="${testerPath}">${testerLabel}</a>
+                    <a class="button button--primary" href="${utility.utilityUrl()}">Open the official program page</a>
+                    @if (handoffBuilderPath != null && !handoffBuilderPath.isBlank())
+                        <a class="button button--secondary" href="${handoffBuilderPath}">Office staff: create annual brief</a>
                     @endif
-                    <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", eyebrow.toLowerCase().replace(" ", "-"), "utility-focus")}">Request local help</a>
+                    <a class="button button--secondary" href="#local-follow-up">Local follow-up options</a>
                 </div>
             </div>
             <aside class="panel panel--status">
@@ -68,14 +70,27 @@
                         <p class="detail-meta"><strong>Due basis:</strong> ${utility.dueBasis()}</p>
                     </article>
 
-                    <article class="detail-card">
+                    <article class="detail-card${handoffBuilderPath != null && !handoffBuilderPath.isBlank() ? " detail-card--key" : ""}">
                         <span class="eyebrow">Highlights</span>
-                        <h2>Highlights</h2>
-                        <ul class="detail-list">
-                            @for (var highlight : focus.highlights())
-                                <li>${highlight}</li>
-                            @endfor
-                        </ul>
+                        @if (handoffBuilderPath != null && !handoffBuilderPath.isBlank())
+                            <h2>Need to explain this to a customer?</h2>
+                            <p>If the office already has the annual notice in hand, create the customer brief here instead of rewriting the same explanation again.</p>
+                            <div class="card-actions">
+                                <a class="button button--secondary" href="${handoffBuilderPath}">Create annual customer brief</a>
+                            </div>
+                            <ul class="detail-list">
+                                @for (var highlight : focus.highlights())
+                                    <li>${highlight}</li>
+                                @endfor
+                            </ul>
+                        @else
+                            <h2>Highlights</h2>
+                            <ul class="detail-list">
+                                @for (var highlight : focus.highlights())
+                                    <li>${highlight}</li>
+                                @endfor
+                            </ul>
+                        @endif
                     </article>
                 </div>
 
@@ -117,25 +132,23 @@
                     @endif
                 </div>
 
-                <article class="trust-box trust-box--warning">
-                    <span class="trust-box__label">Next step</span>
-                    <h2>Tester routing</h2>
+                <article class="trust-box trust-box--warning" id="local-follow-up">
+                    <span class="trust-box__label">After the official step</span>
+                    <h2>Need local follow-up?</h2>
                     @if (testerPath != null && testerLabel != null)
                         @if (utility.supportsApprovedTestersPage())
-                            <p>Use the governing authority's official tester list first, then only treat any sponsor placement as secondary routing.</p>
+                            <p>Use the governing authority's official tester list after you confirm the rule, due basis, and submission method for this exact topic.</p>
                         @else
                             <p>This utility does not publish an official approved list in the registry. Use the non-official tester route only after confirming the exact utility workflow for this page topic.</p>
                         @endif
                         <div class="hero__actions">
                             <a class="button button--primary" href="${testerPath}">${testerLabel}</a>
-                            <a class="button button--secondary" href="${utility.utilityUrl()}">Open the official program page</a>
-                            <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", eyebrow.toLowerCase().replace(" ", "-"), "utility-focus")}">Request local help</a>
+                            <a class="button button--secondary" href="${requestHelpPath}">Request local help</a>
                         </div>
                     @else
                         <p>No public tester route is live for this utility yet. Stay on the official program path and confirm the scope directly with the utility.</p>
                         <div class="hero__actions">
-                            <a class="button button--primary" href="${utility.utilityUrl()}">Open the official program page</a>
-                            <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", eyebrow.toLowerCase().replace(" ", "-"), "utility-focus")}">Request local help</a>
+                            <a class="button button--primary" href="${requestHelpPath}">Request local help</a>
                         </div>
                     @endif
                     <p class="detail-meta">If you still need help after checking the official workflow, you can submit a request for local follow-up.</p>

@@ -34,7 +34,7 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/app.css">
-    @if (!page.noindex() && SiteRuntimeConfig.googleAnalyticsMeasurementId() != null && !SiteRuntimeConfig.googleAnalyticsMeasurementId().isBlank())
+    @if (SiteRuntimeConfig.googleAnalyticsMeasurementId() != null && !SiteRuntimeConfig.googleAnalyticsMeasurementId().isBlank())
         <script async src="https://www.googletagmanager.com/gtag/js?id=${SiteRuntimeConfig.googleAnalyticsMeasurementId()}"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -101,6 +101,18 @@
                                     page_family: clean(url.searchParams.get('pageFamily')),
                                     cta_type: clean(url.searchParams.get('ctaType')),
                                     destination: clean(url.searchParams.get('next')),
+                                    cta_text: text
+                                }
+                            };
+                        }
+
+                        if (sameOrigin && url.pathname === '/handoffs/new') {
+                            return {
+                                eventName: 'customer_brief_entry_click',
+                                params: {
+                                    utility_id: clean(url.searchParams.get('utilityId')),
+                                    issue_type: clean(url.searchParams.get('issueType')),
+                                    source_page: clean(url.searchParams.get('sourcePath')),
                                     cta_text: text
                                 }
                             };
@@ -216,6 +228,57 @@
             }());
         </script>
     @endif
+    <script>
+        document.addEventListener('click', async function (event) {
+            var button = event.target.closest('[data-copy-target]');
+            if (!button) {
+                return;
+            }
+
+            var targetId = button.getAttribute('data-copy-target');
+            if (!targetId) {
+                return;
+            }
+
+            var target = document.getElementById(targetId);
+            if (!target) {
+                return;
+            }
+
+            var text = '';
+            if (typeof target.value === 'string') {
+                text = target.value;
+            } else {
+                text = target.textContent || '';
+            }
+
+            if (!text) {
+                return;
+            }
+
+            var originalLabel = button.textContent;
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(text);
+                } else {
+                    target.focus();
+                    if (typeof target.select === 'function') {
+                        target.select();
+                    }
+                    document.execCommand('copy');
+                }
+                button.textContent = 'Copied';
+                window.setTimeout(function () {
+                    button.textContent = originalLabel;
+                }, 1200);
+            } catch (error) {
+                button.textContent = 'Copy failed';
+                window.setTimeout(function () {
+                    button.textContent = originalLabel;
+                }, 1500);
+            }
+        });
+    </script>
     @if (SiteRuntimeConfig.organizationStructuredData() != null)
         <script type="application/ld+json">$unsafe{SiteRuntimeConfig.organizationStructuredData()}</script>
     @endif

@@ -1,6 +1,10 @@
 # Context Tracker
 
 ## Current status
+- Workflow insertion is now a documented first-class strategy for BackflowPath, and the first handoff surfaces are live through `/vendors/customer-briefs`, `/handoffs/new`, `/handoffs/{internalToken}`, and `/handoffs/brief/{publicToken}`.
+- The handoff flow now acts as a vendor-to-customer value layer on top of the canonical utility and focus pages instead of trying to replace them as the main indexed destination.
+- A dedicated vendor strategy memo now locks the current understanding of the handoff feature as a narrow communication workflow first, not yet a full vendor SaaS.
+- The vendor handoff product definition is now locked more tightly around the office workflow: annual notice and failed-test situations where a small busy vendor office needs to send a customer explanation fast.
 - Product docs are merged and agent-readable.
 - Initial Spring Boot plus jte implementation is now scaffolded.
 - This is the fastest direct-monetization candidate in the portfolio.
@@ -50,6 +54,26 @@
 - Admin session mutations now require a per-session CSRF token for login, logout, lead assignment, and sponsor-status changes.
 
 ## Latest decisions
+- Workflow insertion for this project means creating customer-ready backflow briefs vendors can actually send, not asking vendors to share a generic BackflowPath landing page.
+- Handoff surfaces stay `noindex` and canonically point back to the source-backed utility or focus page so search authority remains on the local rule surface.
+- The current push focus is annual-testing, failed-test, and irrigation or fire-line explanation flows, not CTR or form optimization.
+- The vendor handoff feature should currently be treated as a backflow-specific customer explanation tool for small busy vendors, not as a broad vendor portal or CRM.
+- The locked working sentence is: a vendor office can create a customer brief in about two minutes, send it as a link or PDF, and see whether it was opened.
+- The practical first user is usually the office admin or coordinator, not the field technician.
+- The likely first paid path is setup-led and pilot-driven, not pure self-serve SaaS.
+- The current commercial ladder is free sendable wedge first, paid setup second, and recurring convenience only after repeat-office use is proven.
+- The current 3-month cash target should be read as a setup-win target, not as an MRR target.
+- The preferred paid output model is vendor-first co-branding with BackflowPath proof and recovery rails, not default full white-label.
+- The paid setup layer is now locked more tightly as office workflow alignment, not as generic branding work and not as vendor SaaS onboarding.
+- The paid setup layer is now publicly priced as a one-office pilot setup at $149 one-time.
+- Setup operations are now locked to an email-first manual flow: fit check, short intake, payment, draft in 3 business days, one revision.
+- Public recurring is intentionally deferred until repeat-office usage proves that memory and reuse are strong enough to sell honestly.
+- The free vendor wedge is now explicitly locked as a product layer: strong enough for one real customer send, but not responsible yet for office-wide memory, accounts, or multi-user workflow.
+- The free wedge should not generate a brief without a recognizable site anchor and a sender line the customer can actually use.
+- "Load last job" must stay scoped to the current utility and issue path so one office workflow does not contaminate another.
+- Handoff CTA tracking must never log internal office-token paths as CTA sources; handoff surfaces should collapse to stable source labels instead.
+- Free-wedge metrics should be read as prepared signals, manual sent markers, and open activity unless a stronger delivery signal exists.
+- Free-wedge repeat usage should prefer a stored office key over vendor-slug or raw sender strings, and open metrics should be read on a deduped day basis rather than raw page-hit counts.
 - Package root is `owner.backflow`.
 - Canonical entity is the utility or water authority, not the city.
 - This is a local compliance plus next-action product, not a generic plumbing SEO site.
@@ -73,6 +97,28 @@
 - Admin auth remains lightweight session auth, but CSRF is now mandatory on all admin POST mutations.
 
 ## What changed this session
+- Added file-backed handoff composition, builder, result, and public brief routes so vendors can turn a live issue into a sendable customer artifact with tracked recovery links.
+- Reworked the handoff UI so vendor and customer value are explicit, customer-facing details are separated from internal-only notes, and the public brief front-loads next steps plus official paths.
+- Removed the old raw-ID fallback from the handoff flow so internal office views and public customer briefs resolve only through their intended tokens.
+- Split handoff measurement into office preview, prepared-to-send actions, marked-sent actions, and recipient opens so the workflow can be judged as a real push channel instead of a vague document generator.
+- Added a quick intake helper that can pull likely dates, account references, address text, and failed-test context out of pasted notice or result text.
+- Reframed vendor-facing copy across the vendor landing, failed-test surface, builder, and result flow around the actual office workflow: customer brief first, office record second.
+- Reworked the vendor design tone away from the older green-heavy public feel into a calmer slate and white office-product surface with better mobile behavior and clearer send-state hierarchy.
+- Tightened the builder around a quicker office path by locking utility and issue context when the sender enters from a utility-specific workflow page.
+- Reworked the public brief to front-load a plain-language summary for non-expert recipients: why they got it, what they need to do, and who is handling the filing.
+- Rebalanced the result surface so the customer brief is more obviously the primary sendable artifact and the office record reads as secondary follow-through.
+- Tightened the free wedge so last-job reuse now stays scoped to the current utility and issue path instead of leaking context across different office workflows.
+- Added minimum trust gates for free brief generation: a site anchor plus a usable vendor sender line are now required before a brief can be created.
+- Restored one-click official proof on the public brief so recipients can reach the local rule and official program without digging through the office surface.
+- Sanitized handoff CTA source logging so internal office-token URLs collapse to stable handoff source labels instead of leaking into CTA logs and ops views.
+- Wired the result surface so customer-brief opens can go through tracked CTA paths, and renamed result plus ops reporting copy to make clear that prepared-send and open numbers are still proxy signals, not hard delivery truth.
+- Tightened the builder preview so utility changes redraw the preview immediately and the sender line now matches server validation by accepting phone or email.
+- Reworked the public brief and customer PDF so the recipient always sees why the brief exists, while official-rule proof and vendor follow-up stay clearly separated.
+- Added a stored `officeKey` across handoffs and handoff events so repeat-office usage can be read more stably than vendor slug or sender email alone.
+- Switched result and ops open counting to deduped open-day logic, then added regression coverage so repeated same-day brief refreshes do not inflate the free-wedge readout.
+- Added a BackflowPath-specific workflow insertion strategy doc and linked it into the core agent read order.
+- Added a vendor strategy and revenue memo so future agents can resume the product-definition, ICP, and monetization discussion without chat history.
+- Expanded the vendor memo to include B2C-versus-B2B channel logic plus the first prospect-sourcing approach through official tester lists, portal-backed utilities, and narrow metro outreach.
 - Merged project-local docs with the independent spec set.
 - Added agent read order, context tracker, and missing spec files.
 - Locked the spec around file-backed storage, city alias behavior, approved-tester eligibility, and stale-page policy.
@@ -140,15 +186,43 @@
 - Added a lead-routing trust service that signs server-issued lead links, validates trusted utility context on submit, stores submitted attribution separately from trusted routing fields, and blocks sponsor auto-routing when the metadata cannot be verified.
 - Updated lead capture, privacy, and admin messaging so sponsor fan-out is disclosed explicitly, hold-state leads are visible as manual-review items, and verified routing context is called out as a prerequisite for auto-delivery.
 - Added lightweight per-session CSRF tokens to the admin login, logout, lead assignment, and sponsor-status forms plus regression tests for missing-token rejection.
+- Tightened free vendor-loop measurement so office identity no longer fragments by sender email: new handoffs now slug vendors from the company name first, and the channel report now groups repeat usage by company-first office identity before falling back to older slug or email data.
+- Tightened the free handoff wedge again so the product no longer implies BackflowPath sends email or SMS on the vendor's behalf: result and ops surfaces now describe manual send confirmation explicitly, and repeated same-day send confirmations collapse into one send-day signal instead of inflating the loop.
+- Tightened the public brief trust language so blank optional notes now fall back to annual-notice or failed-workflow-specific reasons instead of a vague “active job” line, and the public brief plus customer PDF now separate vendor job follow-up from the governing official rule links.
+- Tightened the free builder and result surfaces again: unsupported office issue types no longer stay visually locked into the builder, save-profile and save-assembly actions moved behind optional browser-memory disclosure, and the result header now leads with recipient-open state while deeper send-confirmation metrics stay lower on the page.
+- Tightened the free wedge again around the actual outbound job: the result page now keeps a single obvious first-send surface, pushes tracking and office-record layers behind disclosure, and renames filing language so the customer-facing artifact reads less like office software.
+- Reordered the vendor entry page so a DFW utility starter comes before the explanatory blocks, keeping the first outbound visit focused on choosing a utility and generating the brief instead of reading through product theory.
+- Simplified the public customer brief again by removing duplicate explanation copy; the public surface now leans on one plain-language summary plus a clearer utility-filing label instead of repeating the same reason twice.
+- Expanded the vendor strategy docs so future agents can resume from the new monetization view: free proves one sendable success, paid setup aligns the workflow to one office, and recurring should only be pushed after reuse proves that memory and re-generation matter.
+- Added a dedicated free-wedge lock document so future agents do not weaken the free artifact into teaserware or accidentally expand it into a pseudo-SaaS before the paid layers are proven.
+- Added a dedicated setup-package lock document so future agents do not misframe the first paid layer as generic branding, PDF customization, or premature full-SaaS onboarding.
+- Extended the vendor memo with a tighter setup framing, explicit setup scope, explicit exclusions, and a short setup intake checklist.
+- Added setup-package and intake framing directly onto the vendor workflow surface so the free tool now shows what manual office alignment means without weakening the free wedge.
+- Added a light setup callout on the handoff result surface so offices that just created a brief can see the next paid layer in context.
+- Added public pilot-price and manual-setup language onto the vendor workflow surface so the paid layer is now visible as a real office-setup offer, not just an abstract next step.
+- Added a builder-level setup callout so repeat-use offices can see the paid alignment layer while they are still inside the free workflow.
+- Updated the contact surface so vendor-office setup questions now have an explicit manual inquiry path instead of living only in internal notes.
+
+ - Tightened repeat-usage reporting again so same-day mixed open events dedupe into one workflow-day at the headline level, while repeat vendor rows now count only recipient-facing public opens and recipient PDF downloads.
+ - Tightened the free builder framing again so the first send path is clearer: paste notice or failed result, lock the site, add the next date and sender line, generate the brief, and leave browser memory plus office-only detail behind disclosure.
 
 ## Next recommended tasks
-1. Decide whether verified lead links should move from the reused ops token to a dedicated lead-routing secret before production hardening is considered complete.
-2. Keep hardening trust and ops defaults, especially admin or ops exposure and freshness or verification discipline.
-3. Keep widening official-list-backed provider inventory in metros where approved routes still render with no cached entries.
-4. Replace placeholder provider inventory with an operable sponsor model before expanding directory routes further.
-5. Run one server-like deploy rehearsal with `./gradlew bootJar` plus `ops/oracle/install-or-update.sh` on a staging box or VM.
+1. Run a manual vendor push experiment on the tightened handoff flow, starting with annual notice and failed-test scenarios in the DFW utility set that already has the strongest local rule coverage.
+2. Validate the first true vendor ICP, likely small busy backflow-related shops where the office admin or coordinator handles the repeated customer explanation work.
+3. Run the first manual setup conversations using the newly locked intake list and learn which input items create the most friction.
+4. Watch whether the new pasted-text intake materially cuts builder time before adding any heavier PDF ingestion path.
+5. Learn which sender persona reuses the brief fastest: certified testers, irrigation contractors, or commercial and fire-line vendors.
+6. Decide whether verified lead links should move from the reused ops token to a dedicated lead-routing secret before production hardening is considered complete.
+7. Keep hardening trust and ops defaults, especially admin or ops exposure and freshness or verification discipline.
+8. Keep widening official-list-backed provider inventory in metros where approved routes still render with no cached entries.
+9. Replace placeholder provider inventory with an operable sponsor model before expanding directory routes further.
+10. Run one server-like deploy rehearsal with `./gradlew bootJar` plus `ops/oracle/install-or-update.sh` on a staging box or VM.
 
 ## Open questions
+- Which vendor persona should be the first true push channel for BackflowPath: certified testers, irrigation contractors, or commercial compliance vendors.
+- Whether the first paid offer should be setup fee plus monthly subscription or one simpler pilot price.
+- Whether the current text-and-link brief is enough for reuse, or whether a printable PDF artifact is required before outreach scales.
+- How much vendor-specific sender identity should be allowed before the brief starts weakening BackflowPath's trust position.
 - How much of launch should target residential versus commercial.
 - How to handle stale or incomplete approved-tester lists.
 - How thick the sponsor or provider operations layer needs to be before broader rollout.

@@ -22,14 +22,11 @@
                     <span>Verification code: <a href="/methodology#verification-code-${guide.reviewerInitials().toLowerCase()}">${guide.reviewerInitials()}</a></span>
                     <span>Freshness window: ${guide.staleAfterDays()} days</span>
                 </div>
-                <div class="hero__actions">
-                    @if (!relatedUtilities.isEmpty())
+                @if (!relatedUtilities.isEmpty())
+                    <div class="hero__actions">
                         <a class="button button--primary" href="/utilities/${relatedUtilities.get(0).state()}/${relatedUtilities.get(0).canonicalSlug()}/">Open a mapped utility page</a>
-                    @endif
-                    @if (!relatedMetros.isEmpty())
-                        <a class="button button--secondary" href="/metros/${relatedMetros.get(0).state()}/${relatedMetros.get(0).metroSlug()}/backflow-testing">Open mapped metro layer</a>
-                    @endif
-                </div>
+                    </div>
+                @endif
             </div>
             <aside class="panel panel--hero">
                 <span class="stat-card__label" style="color: rgba(141, 224, 196, 0.9);">Guide record</span>

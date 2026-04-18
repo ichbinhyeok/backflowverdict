@@ -21,6 +21,7 @@ import owner.backflow.data.model.StateGuideRecord;
 import owner.backflow.data.model.UtilityFocusContent;
 import owner.backflow.data.model.UtilityRecord;
 import owner.backflow.files.BackflowRegistryService;
+import owner.backflow.service.LeadRoutingService;
 import org.springframework.http.MediaType;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @Controller
 public class SiteController {
@@ -390,6 +392,11 @@ public class SiteController {
         model.addAttribute("fireLinePath", utility.supportsFireLinePage() ? utilityPath(utility) + "fire-line" : null);
         model.addAttribute("testerPath", testerPath(utility));
         model.addAttribute("testerLabel", testerLabel(utility));
+        model.addAttribute("generalHandoffPath", "");
+        model.addAttribute("annualHandoffPath", handoffBuilderPath(utility, "general-testing", utilityPath(utility) + "annual-testing"));
+        model.addAttribute("failedHandoffPath", handoffBuilderPath(utility, "failed-test-repair", utilityPath(utility) + "failed-test"));
+        model.addAttribute("irrigationHandoffPath", "");
+        model.addAttribute("fireLineHandoffPath", "");
         model.addAttribute("faqItems", faqItems);
         model.addAttribute("stateGuide", registryService.findPublishedStateGuide(utility.state()).orElse(null));
         model.addAttribute("metros", registryService.listPublishedMetrosForUtility(utility.utilityId()));
@@ -414,7 +421,8 @@ public class SiteController {
                 utility.utilityName() + " annual backflow testing",
                 utility.resolvedAnnualTesting(),
                 utility.resolvedAnnualTesting().summary(),
-                utilityPath(utility) + "annual-testing"
+                utilityPath(utility) + "annual-testing",
+                "general-testing"
         );
     }
 
@@ -441,6 +449,7 @@ public class SiteController {
         model.addAttribute("failedGuide", registryService.findPublishedGuide("failed-backflow-test-next-steps").orElse(null));
         model.addAttribute("testerPath", testerPath(utility));
         model.addAttribute("testerLabel", testerLabel(utility));
+        model.addAttribute("handoffBuilderPath", handoffBuilderPath(utility, "failed-test-repair", utilityPath(utility) + "failed-test"));
         model.addAttribute("activeSponsorCount", activeSponsorCount(utility));
         model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
                 "failed-backflow-test-next-steps",
@@ -525,7 +534,8 @@ public class SiteController {
                 utility.utilityName() + " irrigation backflow rules",
                 utility.irrigation(),
                 utility.irrigation().summary(),
-                utilityPath(utility) + "irrigation"
+                utilityPath(utility) + "irrigation",
+                "irrigation"
         );
     }
 
@@ -545,7 +555,8 @@ public class SiteController {
                 utility.utilityName() + " fire line backflow rules",
                 utility.fireLine(),
                 utility.fireLine().summary(),
-                utilityPath(utility) + "fire-line"
+                utilityPath(utility) + "fire-line",
+                "fire-line"
         );
     }
 
@@ -709,7 +720,8 @@ public class SiteController {
             String titleStem,
             UtilityFocusContent focus,
             String description,
-            String path
+            String path,
+            String handoffIssueType
     ) {
         model.addAttribute("page", page(
                 titleStem + " | BackflowPath",
@@ -734,11 +746,36 @@ public class SiteController {
         model.addAttribute("commercialNotes", utility.commercialNotes());
         model.addAttribute("testerPath", testerPath(utility));
         model.addAttribute("testerLabel", testerLabel(utility));
+        model.addAttribute(
+                "handoffBuilderPath",
+                ("general-testing".equals(handoffIssueType) || "failed-test-repair".equals(handoffIssueType))
+                        ? handoffBuilderPath(utility, handoffIssueType, path)
+                        : ""
+        );
+        model.addAttribute(
+                "requestHelpPath",
+                LeadRoutingService.requestHelpPath(
+                        utility.utilityId(),
+                        path,
+                        eyebrow.toLowerCase(Locale.ROOT).replace(" ", "-"),
+                        "utility-focus"
+                )
+        );
         model.addAttribute("faqItems", utilityFaqItems(utility));
         model.addAttribute("stateGuide", registryService.findPublishedStateGuide(utility.state()).orElse(null));
         model.addAttribute("relatedGuides", utilitySupportGuides(utility));
         model.addAttribute("activeSponsorCount", activeSponsorCount(utility));
         return "pages/utility-focus-page";
+    }
+
+    private String handoffBuilderPath(UtilityRecord utility, String issueType, String sourcePath) {
+        return UriComponentsBuilder.fromPath("/handoffs/new")
+                .queryParam("utilityId", utility.utilityId())
+                .queryParam("issueType", issueType)
+                .queryParam("sourcePath", sourcePath)
+                .build()
+                .encode()
+                .toUriString();
     }
 
     private List<GuideRecord> utilitySupportGuides(UtilityRecord utility) {

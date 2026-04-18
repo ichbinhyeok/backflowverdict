@@ -24,6 +24,7 @@ A utility-first compliance site that helps owners and managers answer whether ba
 - `spec/06_indexing_quality_and_analytics.md` - indexing rules, quality gates, kill rules, and measurement plan
 - `spec/07_technical_architecture.md` - system boundaries, package map, rendering model, and operational services
 - `spec/08_delivery_and_handoff.md` - workstreams, milestones, acceptance criteria, and handoff order
+- `spec/09_backflow_workflow_insertion_strategy.md` - BackflowPath-specific workflow insertion strategy, handoff surface rules, and manual push logic
 
 ## Package root
 `owner.backflow`
@@ -32,7 +33,7 @@ A utility-first compliance site that helps owners and managers answer whether ba
 1. `AGENT_START_HERE.md`
 2. `ops/context_tracker.md`
 3. This file
-4. `spec/00_strategy.md` through `spec/08_delivery_and_handoff.md`
+4. `spec/00_strategy.md` through `spec/09_backflow_workflow_insertion_strategy.md`
 
 ## Build principles
 - Treat the governing utility or water authority as the canonical entity.
