@@ -19,7 +19,7 @@
                         <a class="button button--primary" href="/states/${stateGuides.get(0).state()}/backflow-testing">Open a state guide</a>
                     @endif
                     <a class="button button--secondary" href="/guides">Browse common questions</a>
-                    <a class="button button--secondary" href="/leads/new">Request help</a>
+                    <a class="button button--secondary" href="${page.requestHelpPathOrDefault()}">Request help</a>
                 </div>
                 <div class="hero__stats">
                     <span>${stateGuides.size()} published state guides</span>

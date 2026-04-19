@@ -20,7 +20,7 @@
                         <a class="button button--primary" href="/guides/${guides.get(0).slug()}">Open a guide</a>
                     @endif
                     <a class="button button--secondary" href="/states">Browse state guides</a>
-                    <a class="button button--secondary" href="/leads/new">Request help</a>
+                    <a class="button button--secondary" href="${page.requestHelpPathOrDefault()}">Request help</a>
                 </div>
                 <div class="hero__stats">
                     <span>${publishedGuideCount} published guides</span>

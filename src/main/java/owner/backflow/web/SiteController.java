@@ -385,7 +385,12 @@ public class SiteController {
                         )),
                         faqStructuredData(faqItems)
                 )
-        ));
+        ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
+                utility.utilityId(),
+                utilityPath(utility),
+                "general-testing",
+                "utility"
+        )));
         model.addAttribute("utility", utility);
         model.addAttribute("annualTestingPath", utility.supportsAnnualTestingPage() ? utilityPath(utility) + "annual-testing" : null);
         model.addAttribute("irrigationPath", utility.supportsIrrigationPage() ? utilityPath(utility) + "irrigation" : null);
@@ -444,7 +449,12 @@ public class SiteController {
                         new BreadcrumbItem(utility.utilityName(), canonical(utilityPath(utility))),
                         new BreadcrumbItem("Failed test", canonical(utilityPath(utility) + "failed-test"))
                 ))
-        ));
+        ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
+                utility.utilityId(),
+                utilityPath(utility) + "failed-test",
+                "failed-test-repair",
+                "failed-test"
+        )));
         model.addAttribute("utility", utility);
         model.addAttribute("failedGuide", registryService.findPublishedGuide("failed-backflow-test-next-steps").orElse(null));
         model.addAttribute("testerPath", testerPath(utility));
@@ -479,7 +489,12 @@ public class SiteController {
                         new BreadcrumbItem(utility.utilityName(), canonical(utilityPath(utility))),
                         new BreadcrumbItem("Approved testers", canonical(utilityPath(utility) + "approved-testers"))
                 ))
-        ));
+        ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
+                utility.utilityId(),
+                utilityPath(utility) + "approved-testers",
+                "tester-search",
+                "tester-directory"
+        )));
         model.addAttribute("utility", utility);
         model.addAttribute("providers", providers);
         model.addAttribute("official", true);
@@ -510,7 +525,12 @@ public class SiteController {
                         new BreadcrumbItem(utility.utilityName(), canonical(utilityPath(utility))),
                         new BreadcrumbItem("Find a tester", canonical(utilityPath(utility) + "find-a-tester"))
                 ))
-        ));
+        ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
+                utility.utilityId(),
+                utilityPath(utility) + "find-a-tester",
+                "tester-search",
+                "tester-directory"
+        )));
         model.addAttribute("utility", utility);
         model.addAttribute("providers", providers);
         model.addAttribute("official", false);
@@ -723,6 +743,12 @@ public class SiteController {
             String path,
             String handoffIssueType
     ) {
+        String requestHelpPath = LeadRoutingService.requestHelpPath(
+                utility.utilityId(),
+                path,
+                eyebrow.toLowerCase(Locale.ROOT).replace(" ", "-"),
+                "utility-focus"
+        );
         model.addAttribute("page", page(
                 titleStem + " | BackflowPath",
                 description,
@@ -736,7 +762,7 @@ public class SiteController {
                         )),
                         faqStructuredData(utilityFaqItems(utility))
                 )
-        ));
+        ).withRequestHelpPath(requestHelpPath));
         model.addAttribute("utility", utility);
         model.addAttribute("eyebrow", eyebrow);
         model.addAttribute("heading", titleStem);
@@ -752,15 +778,7 @@ public class SiteController {
                         ? handoffBuilderPath(utility, handoffIssueType, path)
                         : ""
         );
-        model.addAttribute(
-                "requestHelpPath",
-                LeadRoutingService.requestHelpPath(
-                        utility.utilityId(),
-                        path,
-                        eyebrow.toLowerCase(Locale.ROOT).replace(" ", "-"),
-                        "utility-focus"
-                )
-        );
+        model.addAttribute("requestHelpPath", requestHelpPath);
         model.addAttribute("faqItems", utilityFaqItems(utility));
         model.addAttribute("stateGuide", registryService.findPublishedStateGuide(utility.state()).orElse(null));
         model.addAttribute("relatedGuides", utilitySupportGuides(utility));

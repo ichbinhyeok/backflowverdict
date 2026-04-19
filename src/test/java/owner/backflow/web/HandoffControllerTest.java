@@ -2,9 +2,11 @@ package owner.backflow.web;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.not;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrlPattern;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -74,12 +76,14 @@ class HandoffControllerTest {
                 .param("sourcePath", "/utilities/texas/grand-prairie-water-utilities/annual-testing"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Create a 2-minute customer brief")))
-                .andExpect(content().string(containsString("Load last brief")))
+                .andExpect(content().string(containsString("Load last job")))
                 .andExpect(content().string(containsString("Customer brief preview")))
                 .andExpect(content().string(containsString("Grand Prairie Water Utilities")))
                 .andExpect(content().string(containsString("Annual or routine testing")))
                 .andExpect(content().string(containsString("Optional browser memory")))
                 .andExpect(content().string(containsString("Saved profile and recent assemblies")))
+                .andExpect(content().string(containsString("restores the customer brief and any saved office-only detail")))
+                .andExpect(content().string(containsString("var lastOfficeRecordFields = ['propertyType'")))
                 .andExpect(content().string(containsString("Save assembly preset")))
                 .andExpect(content().string(containsString("Generate customer brief")))
                 .andExpect(content().string(containsString("Back to current rule")))
@@ -219,6 +223,7 @@ class HandoffControllerTest {
 
         mockMvc.perform(get(resultPath + "/packet"))
                 .andExpect(status().isOk())
+                .andExpect(content().string(containsString("viewer=office")))
                 .andExpect(content().string(containsString("Download PDF")))
                 .andExpect(content().string(containsString("Prepared by")))
                 .andExpect(content().string(containsString("DFW Backflow Services")))
@@ -234,6 +239,8 @@ class HandoffControllerTest {
         MvcResult briefPdfResult = mockMvc.perform(get(publicBriefPath + "/pdf"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_PDF))
+                .andExpect(header().string("Content-Disposition", containsString("backflow-result-sheet-main-street-retail-center.pdf")))
+                .andExpect(header().string("Content-Disposition", not(containsString(handoff.handoffId()))))
                 .andReturn();
         byte[] briefPdfBytes = briefPdfResult.getResponse().getContentAsByteArray();
         assertThat(new String(briefPdfBytes, StandardCharsets.ISO_8859_1))
@@ -243,6 +250,8 @@ class HandoffControllerTest {
         MvcResult packetPdfResult = mockMvc.perform(get(resultPath + "/packet.pdf"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_PDF))
+                .andExpect(header().string("Content-Disposition", containsString("backflow-office-record-main-street-retail-center.pdf")))
+                .andExpect(header().string("Content-Disposition", not(containsString(handoff.handoffId()))))
                 .andReturn();
         byte[] packetPdfBytes = packetPdfResult.getResponse().getContentAsByteArray();
         assertThat(new String(packetPdfBytes, StandardCharsets.ISO_8859_1))
@@ -290,6 +299,7 @@ class HandoffControllerTest {
                         .param("propertyLabel", "Main Street Retail Center")
                         .param("vendorCompanyName", "DFW Backflow Services")
                         .param("vendorPhone", "972-555-0144")
+                        .param("dueDate", "2026-05-01")
                         .param("sourcePath", "/utilities/texas/grand-prairie-water-utilities/annual-testing"))
                 .andExpect(status().is3xxRedirection())
                 .andReturn();
@@ -319,6 +329,7 @@ class HandoffControllerTest {
                         .param("propertyLabel", "Main Street Retail Center")
                         .param("vendorCompanyName", "DFW Backflow Services")
                         .param("vendorPhone", "972-555-0144")
+                        .param("dueDate", "2026-05-01")
                         .param("sourcePath", "/utilities/texas/grand-prairie-water-utilities/annual-testing"))
                 .andExpect(status().is3xxRedirection())
                 .andReturn();
@@ -354,6 +365,7 @@ class HandoffControllerTest {
                         .param("propertyLabel", "Main Street Retail Center")
                         .param("vendorCompanyName", "DFW Backflow Services")
                         .param("vendorPhone", "972-555-0144")
+                        .param("dueDate", "2026-05-01")
                         .param("sourcePath", "/utilities/texas/grand-prairie-water-utilities/annual-testing"))
                 .andExpect(status().is3xxRedirection())
                 .andReturn();
@@ -382,6 +394,7 @@ class HandoffControllerTest {
                         .param("propertyLabel", "Main Street Retail Center")
                         .param("vendorCompanyName", "DFW Backflow Services")
                         .param("vendorPhone", "972-555-0144")
+                        .param("dueDate", "2026-05-01")
                         .param("noticeSummary", "Customer received an annual compliance notice.")
                         .param("internalNote", "Internal vendor note: awaiting technician routing.")
                         .param("sourcePath", "/utilities/texas/grand-prairie-water-utilities/annual-testing"))
@@ -426,6 +439,7 @@ class HandoffControllerTest {
                         .param("propertyLabel", "Main Street Retail Center")
                         .param("vendorCompanyName", "DFW Backflow Services")
                         .param("vendorPhone", "972-555-0144")
+                        .param("dueDate", "2026-05-01")
                         .param("sourcePath", "/utilities/texas/grand-prairie-water-utilities/annual-testing"))
                 .andExpect(status().is3xxRedirection())
                 .andReturn();
@@ -450,6 +464,7 @@ class HandoffControllerTest {
                         .param("propertyLabel", "Main Street Retail Center")
                         .param("vendorCompanyName", "DFW Backflow Services")
                         .param("vendorPhone", "972-555-0144")
+                        .param("dueDate", "2026-05-01")
                         .param("sourcePath", "/utilities/texas/grand-prairie-water-utilities/failed-test"))
                 .andExpect(status().is3xxRedirection())
                 .andReturn();
@@ -478,12 +493,27 @@ class HandoffControllerTest {
     }
 
     @Test
+    void customerBriefRequiresDueDateForPassedResult() throws Exception {
+        mockMvc.perform(post("/handoffs")
+                        .param("utilityId", "gptx-water")
+                        .param("issueType", "general-testing")
+                        .param("resultStatus", "pass")
+                        .param("submissionStatus", "pending-submission")
+                        .param("propertyLabel", "Main Street Retail Center")
+                        .param("vendorCompanyName", "DFW Backflow Services")
+                        .param("vendorPhone", "972-555-0144"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Add the next due or filing date before generating the customer brief.")));
+    }
+
+    @Test
     void customerBriefRequiresSiteAnchor() throws Exception {
         mockMvc.perform(post("/handoffs")
                         .param("utilityId", "gptx-water")
                         .param("issueType", "general-testing")
                         .param("resultStatus", "pass")
                         .param("submissionStatus", "pending-submission")
+                        .param("dueDate", "2026-05-01")
                         .param("vendorCompanyName", "DFW Backflow Services")
                         .param("vendorPhone", "972-555-0144"))
                 .andExpect(status().isOk())
@@ -497,6 +527,7 @@ class HandoffControllerTest {
                         .param("issueType", "general-testing")
                         .param("resultStatus", "pass")
                         .param("submissionStatus", "pending-submission")
+                        .param("dueDate", "2026-05-01")
                         .param("propertyLabel", "Main Street Retail Center")
                         .param("vendorCompanyName", "DFW Backflow Services"))
                 .andExpect(status().isOk())
@@ -523,6 +554,7 @@ class HandoffControllerTest {
                         .param("submissionStatus", "pending-submission")
                         .param("propertyLabel", "Main Street Retail Center")
                         .param("vendorCompanyName", "DFW Backflow Services")
+                        .param("dueDate", "2026-05-01")
                         .param("vendorPhone", "972-555-0144"))
                 .andExpect(status().is3xxRedirection())
                 .andReturn()

@@ -233,8 +233,8 @@
                                     </label>
 
                                     <label class="field">
-                                        <span data-handoff-due-date-label>Next due or retest by</span>
-                                        <input name="dueDate" type="date" value="${dueDateValue}">
+                                        <span data-handoff-due-date-label>Next due or filing by</span>
+                                        <input name="dueDate" type="date" value="${dueDateValue}" required>
                                     </label>
                                 </div>
                             </section>
@@ -474,7 +474,7 @@
                                 <li>Who is affected: ${selectedUtility.whoIsAffected()}</li>
                             @endif
                             <li>Lead with the customer brief and keep source proof behind it.</li>
-                            <li>Browser memory and last-brief reuse stay scoped to the selected utility and issue path.</li>
+                            <li>Browser memory and last-job reuse stay scoped to the selected utility and issue path.</li>
                         </ul>
                     </article>
 
@@ -489,9 +489,9 @@
                             </summary>
 
                             <div class="workbench-disclosure__body">
-                                <p class="workbench-note">Load last brief restores only the customer-brief fields for this utility and issue path. Vendor profile and assembly presets stay separate.</p>
+                                <p class="workbench-note">Load last job restores the customer brief and any saved office-only detail for this utility and issue path in this browser. Vendor profile and assembly presets stay separate.</p>
                                 <div class="workbench-toolbar">
-                                    <button class="button button--secondary button--compact" type="button" data-handoff-load-last>Load last brief</button>
+                                    <button class="button button--secondary button--compact" type="button" data-handoff-load-last>Load last job</button>
                                     <button class="button button--secondary button--compact" type="button" data-handoff-apply-defaults>Use saved vendor profile</button>
                                     <button class="button button--secondary button--compact" type="button" data-handoff-save-defaults>Save vendor profile</button>
                                     <button class="button button--secondary button--compact" type="button" data-handoff-save-assembly>Save assembly preset</button>

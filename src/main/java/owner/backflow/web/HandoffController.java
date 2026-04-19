@@ -598,7 +598,7 @@ public class HandoffController {
                 true
         ));
         model.addAttribute("handoff", handoff);
-        model.addAttribute("briefUrl", handoffComposerService.absoluteUrl(handoffComposerService.briefPath(publicToken)));
+        model.addAttribute("briefUrl", handoffComposerService.absoluteUrl(officePreviewPath(handoffComposerService.briefPath(publicToken))));
         model.addAttribute("pdfPath", handoffComposerService.packetPdfPath(internalToken));
         model.addAttribute("fullRuleUrl", handoffComposerService.absoluteUrl(handoff.fullRulePath()));
         model.addAttribute("officialProgramUrl", handoff.officialProgramUrl());
@@ -618,7 +618,7 @@ public class HandoffController {
         HandoffRecord handoff = handoffPublic(publicToken);
         trackEvent(publicBriefPdfEventType(viewer, request), handoff, request);
         byte[] pdf = handoffPdfService.renderCustomerResultSheet(handoff, submissionGuidance(handoff));
-        return pdfResponse("backflow-result-sheet-" + handoff.handoffId() + ".pdf", pdf);
+        return pdfResponse(pdfFilename("backflow-result-sheet", handoff), pdf);
     }
 
     @GetMapping(value = "/handoffs/{handoffId}/packet.pdf", produces = MediaType.APPLICATION_PDF_VALUE)
@@ -626,7 +626,7 @@ public class HandoffController {
         HandoffRecord handoff = handoffInternal(handoffId);
         trackEvent("archive_packet_pdf_downloaded", handoff, request);
         byte[] pdf = handoffPdfService.renderCloseoutPacket(handoff, submissionGuidance(handoff));
-        return pdfResponse("backflow-office-record-" + handoff.handoffId() + ".pdf", pdf);
+        return pdfResponse(pdfFilename("backflow-office-record", handoff), pdf);
     }
 
     @PostMapping("/handoffs/{handoffId}/events")
@@ -792,10 +792,14 @@ public class HandoffController {
                     ? "Add the failed reason before generating a failed-test handoff."
                     : "Explain why the test could not be completed before generating this handoff.";
         }
-        if (resultStatus.requiresFailureNote() && dueDateValue.isBlank()) {
-            return resultStatus == HandoffResultStatus.FAIL
-                    ? "Add the repair or retest date before generating a failed-test handoff."
-                    : "Add the return-visit date before generating this handoff.";
+        if (dueDateValue.isBlank()) {
+            if (resultStatus == HandoffResultStatus.FAIL) {
+                return "Add the repair or retest date before generating a failed-test handoff.";
+            }
+            if (resultStatus == HandoffResultStatus.UNABLE_TO_TEST) {
+                return "Add the return-visit date before generating this handoff.";
+            }
+            return "Add the next due or filing date before generating the customer brief.";
         }
         return "";
     }
@@ -962,6 +966,25 @@ public class HandoffController {
                 .build()
                 .encode()
                 .toUriString();
+    }
+
+    private String pdfFilename(String prefix, HandoffRecord handoff) {
+        String siteSlug = sanitizeFilenameSegment(handoff.propertyLabel());
+        if (siteSlug.isBlank()) {
+            siteSlug = "handoff";
+        }
+        return prefix + "-" + siteSlug + ".pdf";
+    }
+
+    private String sanitizeFilenameSegment(String rawValue) {
+        String normalized = normalize(rawValue).toLowerCase(Locale.US);
+        if (normalized.isBlank()) {
+            return "";
+        }
+        String collapsed = normalized.replaceAll("[^a-z0-9]+", "-")
+                .replaceAll("^-+", "")
+                .replaceAll("-+$", "");
+        return collapsed;
     }
 
     private List<HandoffIssueType> activeOfficeIssueTypes() {

@@ -48,8 +48,8 @@ public class LeadRoutingService {
         String normalizedPageFamily = normalize(submittedPageFamily);
         String normalizedToken = normalize(routingToken);
 
-        if (normalizedUtilityId.isBlank() || normalizedSourcePage.isBlank() || normalizedPageFamily.isBlank()) {
-            return hold("HOLD_UNVERIFIED_CONTEXT", "Lead was submitted without a full verified routing context.");
+        if (normalizedSourcePage.isBlank() || normalizedPageFamily.isBlank()) {
+            return hold("HOLD_UNVERIFIED_CONTEXT", "Lead was submitted without a trusted source-page context.");
         }
         if (normalizedToken.isBlank()) {
             return hold("HOLD_UNVERIFIED_CONTEXT", "Lead was submitted without a trusted routing token.");
@@ -61,6 +61,17 @@ public class LeadRoutingService {
                 normalizedToken.getBytes(StandardCharsets.UTF_8)
         )) {
             return hold("HOLD_UNVERIFIED_CONTEXT", "Lead routing metadata did not pass server-side validation.");
+        }
+
+        if (normalizedUtilityId.isBlank()) {
+            return new LeadRoutingContext(
+                    "",
+                    "",
+                    normalizedSourcePage,
+                    normalizedPageFamily,
+                    "SOURCE_CONTEXT_VERIFIED",
+                    "Verified source-page context was captured without a utility-specific auto-route."
+            );
         }
 
         UtilityRecord utility = resolveUtilityForSource(normalizedUtilityId, normalizedSourcePage);
@@ -84,7 +95,6 @@ public class LeadRoutingService {
         String normalizedSourcePage = normalize(sourcePage);
         String normalizedPageFamily = normalize(pageFamily);
         if (secret.isBlank()
-                || normalizedUtilityId.isBlank()
                 || normalizedSourcePage.isBlank()
                 || normalizedPageFamily.isBlank()) {
             return "";

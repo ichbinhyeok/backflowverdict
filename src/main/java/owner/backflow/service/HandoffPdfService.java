@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 import owner.backflow.config.AppSiteProperties;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
 public class HandoffPdfService {
@@ -201,7 +202,7 @@ public class HandoffPdfService {
                                 "Verified local sources",
                                 paragraph("Use the full local rule or the official program only when someone needs the governing source behind this office record.")
                                         + linkList(List.of(
-                                                linkRow("Customer result sheet", absoluteUrl("/handoffs/brief/" + tokenOrFallback(handoff.publicToken(), handoff.handoffId()))),
+                                                linkRow("Customer result sheet", officePreviewUrl(handoff)),
                                                 linkRow("Full local rule", absoluteUrl(handoff.fullRulePath())),
                                                 linkRow("Official program page", handoff.officialProgramUrl())
                                         ))
@@ -725,12 +726,21 @@ public class HandoffPdfService {
         return baseUrl + "/" + normalizedPath;
     }
 
-    private String tokenOrFallback(String token, String fallback) {
+    private String officePreviewUrl(HandoffRecord handoff) {
+        String relativePath = UriComponentsBuilder.fromPath("/handoffs/brief/" + requiredToken(handoff.publicToken(), "Public handoff token missing."))
+                .queryParam("viewer", "office")
+                .build()
+                .encode()
+                .toUriString();
+        return absoluteUrl(relativePath);
+    }
+
+    private String requiredToken(String token, String errorMessage) {
         String normalizedToken = normalize(token);
         if (!normalizedToken.isBlank()) {
             return normalizedToken;
         }
-        return normalize(fallback);
+        throw new IllegalArgumentException(errorMessage);
     }
 
     private String normalize(String value) {

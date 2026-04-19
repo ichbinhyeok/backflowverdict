@@ -154,11 +154,13 @@
             var legacyDefaultsKey = 'backflowpath.handoff.vendor-defaults.v1';
             var defaultsKeyPrefix = 'backflowpath.handoff.vendor-defaults.v2.';
             var assemblyPresetKeyPrefix = 'backflowpath.handoff.assembly-presets.v2.';
-            var lastPublicJobKeyPrefix = 'backflowpath.handoff.last-public-job.v4.';
+            var lastJobKeyPrefix = 'backflowpath.handoff.last-job.v5.';
             var assemblyPresetLimit = 5;
             var vendorProfileFields = ['vendorCompanyName', 'vendorContactName', 'vendorPhone', 'vendorEmail', 'testerLicenseNumber'];
             var assemblyPresetFields = ['propertyType', 'propertyLabel', 'accountIdentifier', 'siteAddress', 'deviceLocation', 'assemblyMakeModel', 'assemblySize', 'assemblyType', 'assemblySerial'];
             var lastBriefFields = ['propertyLabel', 'accountIdentifier', 'siteAddress', 'resultStatus', 'submissionStatus', 'dueDate', 'noticeSummary', 'failedReason'];
+            var lastOfficeRecordFields = ['propertyType', 'testDate', 'submissionDate', 'deviceLocation', 'customerFirstName', 'assemblyMakeModel', 'assemblyType', 'assemblySize', 'assemblySerial', 'submissionReference', 'permitOrReportNumber', 'checkValveOneReading', 'checkValveTwoReading', 'openingPointReading', 'repairSummary', 'vendorContactName', 'testerLicenseNumber', 'technicianName', 'gaugeId', 'calibrationReference', 'testReadingSummary', 'internalNote'];
+            var lastJobFields = lastBriefFields.concat(lastOfficeRecordFields);
             var utilityField = form.elements.namedItem('utilityId');
             var note = document.querySelector('[data-handoff-storage-state]');
             var saveDefaultsButton = document.querySelector('[data-handoff-save-defaults]');
@@ -598,13 +600,13 @@
                 return assemblyPresetKeyPrefix + utilityId;
             }
 
-            function lastPublicJobKeyForContext() {
+            function lastJobKeyForContext() {
                 var utilityId = selectedUtilityId();
                 var issueType = selectedIssueTypeCode();
                 if (!utilityId || !issueType) {
                     return '';
                 }
-                return lastPublicJobKeyPrefix + utilityId + '.' + issueType;
+                return lastJobKeyPrefix + utilityId + '.' + issueType;
             }
 
             function parseStored(key) {
@@ -716,7 +718,7 @@
                 });
 
                 if (officeRecordDisclosure) {
-                    var needsDisclosure = ['deviceLocation', 'submissionDate', 'vendorContactName', 'vendorEmail', 'internalNote', 'technicianName', 'gaugeId', 'calibrationReference', 'checkValveOneReading', 'checkValveTwoReading', 'openingPointReading', 'repairSummary']
+                    var needsDisclosure = lastOfficeRecordFields
                             .some(function (fieldName) {
                                 var field = form.elements.namedItem(fieldName);
                                 return field && typeof field.value === 'string' && field.value.trim() !== '';
@@ -1094,12 +1096,12 @@
                     } else if (resultCode === 'unable-to-test') {
                         dueDateLabel.textContent = 'Return visit by';
                     } else {
-                        dueDateLabel.textContent = 'Next due or retest by';
+                        dueDateLabel.textContent = 'Next due or filing by';
                     }
                 }
 
                 if (dueDateField) {
-                    dueDateField.required = requiresFailureReason;
+                    dueDateField.required = true;
                 }
 
                 if (failedReasonField) {
@@ -1191,20 +1193,20 @@
 
             if (loadLastButton) {
                 loadLastButton.addEventListener('click', function () {
-                    var key = lastPublicJobKeyForContext();
+                    var key = lastJobKeyForContext();
                     if (!key) {
-                        setNote('Choose the utility and the issue path first so the last brief stays tied to the right workflow.', 'warning');
+                        setNote('Choose the utility and the issue path first so the last job stays tied to the right workflow.', 'warning');
                         return;
                     }
                     var lastJob = parseStored(key);
                     if (!lastJob) {
-                        setNote('No saved customer brief is stored for this utility and issue path yet.', 'warning');
+                        setNote('No saved job is stored for this utility and issue path yet.', 'warning');
                         return;
                     }
-                    applyValues(pickStoredValues(lastJob, lastBriefFields), false);
+                    applyValues(pickStoredValues(lastJob, lastJobFields), false);
                     renderVendorProfile();
                     renderAssemblyPresets();
-                    setNote('Last brief fields loaded. Review the address, date, and customer-facing copy before generating again.', 'success');
+                    setNote('Last job loaded. Review the brief, readings, and filing detail before generating again.', 'success');
                 });
             }
 
@@ -1303,9 +1305,9 @@
             }
 
             form.addEventListener('submit', function () {
-                var lastPublicJobKey = lastPublicJobKeyForContext();
-                if (lastPublicJobKey) {
-                    window.localStorage.setItem(lastPublicJobKey, JSON.stringify(collectScopedFields(lastBriefFields)));
+                var lastJobKey = lastJobKeyForContext();
+                if (lastJobKey) {
+                    window.localStorage.setItem(lastJobKey, JSON.stringify(collectScopedFields(lastJobFields)));
                 }
                 var key = defaultsKeyForUtility();
                 if (key) {

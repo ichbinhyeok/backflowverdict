@@ -521,6 +521,31 @@ class AdminControllerTest {
     }
 
     @Test
+    void sourceOnlyRoutingTokenPreservesVerifiedPageContextWithoutAutoRoute() throws Exception {
+        MockHttpSession session = adminSession();
+
+        mockMvc.perform(post("/leads")
+                        .param("fullName", "Source Only Lead")
+                        .param("phone", "555-121-3434")
+                        .param("city", "Dallas")
+                        .param("pageFamily", "state-index")
+                        .param("sourcePage", "/states")
+                        .param("rt", LeadRoutingService.issueToken("", "/states", "state-index"))
+                        .param("consentToRouting", "yes"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/leads/thanks"));
+
+        org.junit.jupiter.api.Assertions.assertTrue(Files.readString(LEADS_ROOT.resolve("leads.jsonl")).contains("\"routingStatus\":\"SOURCE_CONTEXT_VERIFIED\""));
+        org.junit.jupiter.api.Assertions.assertTrue(Files.readString(LEADS_ROOT.resolve("leads.jsonl")).contains("\"sourcePage\":\"/states\""));
+        org.junit.jupiter.api.Assertions.assertFalse(Files.exists(LEADS_ROOT.resolve("lead-deliveries.jsonl")));
+
+        mockMvc.perform(get("/admin").session(session))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Source context verified")))
+                .andExpect(content().string(containsString("/states")));
+    }
+
+    @Test
     void adminMutationsRejectMissingCsrfToken() throws Exception {
         MockHttpSession session = adminSession();
 

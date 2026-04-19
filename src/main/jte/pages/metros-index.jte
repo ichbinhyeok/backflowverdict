@@ -19,7 +19,7 @@
                         <a class="button button--primary" href="/metros/${metros.get(0).state()}/${metros.get(0).metroSlug()}/backflow-testing">Open a metro page</a>
                     @endif
                     <a class="button button--secondary" href="/states">Browse states</a>
-                    <a class="button button--secondary" href="/leads/new">Request help</a>
+                    <a class="button button--secondary" href="${page.requestHelpPathOrDefault()}">Request help</a>
                 </div>
                 <div class="hero__stats">
                     <span>${metros.size()} published metro pages</span>

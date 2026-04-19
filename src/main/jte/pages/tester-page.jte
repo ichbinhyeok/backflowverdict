@@ -2,6 +2,7 @@
 @import owner.backflow.data.model.UtilityRecord
 @import owner.backflow.data.model.ProviderRecord
 @import owner.backflow.service.LeadRoutingService
+@import owner.backflow.web.CtaPaths
 @param PageMeta page
 @param UtilityRecord utility
 @param java.util.List<ProviderRecord> providers
@@ -121,7 +122,7 @@
                                         <div class="card-actions">
                                             <a class="button button--secondary" href="/providers/${provider.providerId()}/">Open provider profile</a>
                                             @if (provider.siteUrl() != null && !provider.siteUrl().isBlank())
-                                                <a class="button button--secondary" href="/r/cta?next=${provider.siteUrl()}&pageFamily=tester-directory&utilityId=${utility.utilityId()}&providerId=${provider.providerId()}&ctaType=provider-website&source=/utilities/${utility.state()}/${utility.canonicalSlug()}/${official ? "approved-testers" : "find-a-tester"}">Open provider website</a>
+                                                <a class="button button--secondary" href="${CtaPaths.trackedPath(provider.siteUrl(), "tester-directory", utility.utilityId(), provider.providerId(), "provider-website", "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/" + (official ? "approved-testers" : "find-a-tester"))}">Open provider website</a>
                                             @endif
                                         </div>
                                     </article>

@@ -306,7 +306,7 @@
                     <a href="/guides">Guides</a>
                 </nav>
                 <div class="site-header__actions">
-                    <a class="button button--primary button--compact" href="/leads/new">Request help</a>
+                    <a class="button button--primary button--compact" href="${page.requestHelpPathOrDefault()}">Request help</a>
                 </div>
             </div>
             <details class="site-menu">
@@ -321,7 +321,7 @@
                         <a href="/metros">Metros</a>
                         <a href="/guides">Guides</a>
                     </nav>
-                    <a class="button button--primary button--compact site-menu__cta" href="/leads/new">Request help</a>
+                    <a class="button button--primary button--compact site-menu__cta" href="${page.requestHelpPathOrDefault()}">Request help</a>
                 </div>
             </details>
         </div>
@@ -351,7 +351,7 @@
             </div>
             <div class="footer-column">
                 <span class="footer-column__label">Get help</span>
-                <a href="/leads/new">Request help</a>
+                <a href="${page.requestHelpPathOrDefault()}">Request help</a>
                 <a href="/contact">Contact</a>
                 <a href="/privacy">Privacy</a>
             </div>

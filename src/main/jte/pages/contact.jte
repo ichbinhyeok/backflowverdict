@@ -10,7 +10,7 @@
                 <h1>Contact BackflowPath</h1>
                 <p class="lede">Use this path for corrections, source updates, broken links, vendor workflow setup questions, or questions about how a BackflowPath page was assembled. For utility-specific service help, the request form should still start after the user has seen the relevant local rule page.</p>
                 <div class="hero__actions">
-                    <a class="button button--primary" href="/leads/new">Request help</a>
+                    <a class="button button--primary" href="${page.requestHelpPathOrDefault()}">Request help</a>
                     @if (SiteRuntimeConfig.supportEmail() != null && !SiteRuntimeConfig.supportEmail().isBlank())
                         <a class="button button--secondary" href="mailto:${SiteRuntimeConfig.supportEmail()}?subject=BackflowPath%20office%20setup">Email vendor setup</a>
                     @endif

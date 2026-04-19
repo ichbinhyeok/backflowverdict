@@ -17,6 +17,7 @@ import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import owner.backflow.ops.FreshnessAuditService;
+import owner.backflow.service.LeadRoutingService;
 
 @SpringBootTest(properties = {
         "app.ops.verification-token=test-ops-token",
@@ -64,20 +65,27 @@ class SiteControllerTest {
 
     @Test
     void publicIndexPagesLoad() throws Exception {
+        String statesHelpPath = htmlHref(LeadRoutingService.requestHelpPath("", "/states", "", "state-index"));
+        String metrosHelpPath = htmlHref(LeadRoutingService.requestHelpPath("", "/metros", "", "metro-index"));
+        String guidesHelpPath = htmlHref(LeadRoutingService.requestHelpPath("", "/guides", "", "guide-index"));
+
         mockMvc.perform(get("/states"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Start with a state guide, then open the exact utility page.")))
-                .andExpect(content().string(containsString("Browse by state")));
+                .andExpect(content().string(containsString("Browse by state")))
+                .andExpect(content().string(containsString(statesHelpPath)));
 
         mockMvc.perform(get("/metros"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Compare nearby utilities and public provider coverage in one place.")))
-                .andExpect(content().string(containsString("Browse by metro")));
+                .andExpect(content().string(containsString("Browse by metro")))
+                .andExpect(content().string(containsString(metrosHelpPath)));
 
         mockMvc.perform(get("/guides"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Answer common backflow questions without losing the local rule.")))
-                .andExpect(content().string(containsString("Browse guides")));
+                .andExpect(content().string(containsString("Browse guides")))
+                .andExpect(content().string(containsString(guidesHelpPath)));
 
         mockMvc.perform(get("/privacy"))
                 .andExpect(status().isOk())
@@ -110,7 +118,30 @@ class SiteControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Contact BackflowPath")))
                 .andExpect(content().string(containsString("support@backflowpath.com")))
-                .andExpect(content().string(containsString("+1-555-0100")));
+                .andExpect(content().string(containsString("+1-555-0100")))
+                .andExpect(content().string(containsString(htmlHref(
+                        LeadRoutingService.requestHelpPath("", "/contact", "", "contact")
+                ))));
+    }
+
+    @Test
+    void providerPageEncodesTrackedAuthoritySourceLinks() throws Exception {
+        mockMvc.perform(get("/providers/austin-1st-home-commercial-services/"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString(
+                        htmlHref(CtaPaths.trackedPath(
+                                "https://services.austintexas.gov/water/weirs/index.cfm?fuseaction=report.publicWSCTechEmployer&tt=1",
+                                "provider-profile",
+                                "",
+                                "austin-1st-home-commercial-services",
+                                "authority-source",
+                                "/providers/austin-1st-home-commercial-services/"
+                        ))
+                )));
+    }
+
+    private String htmlHref(String value) {
+        return value.replace("&", "&amp;");
     }
 
     @Test

@@ -3,6 +3,7 @@
 @import owner.backflow.data.model.ProviderRecord
 @import owner.backflow.data.model.GuideRecord
 @import owner.backflow.data.model.UtilityRecord
+@import owner.backflow.web.CtaPaths
 @param PageMeta page
 @param ProviderRecord provider
 @param java.util.List<UtilityRecord> utilities
@@ -47,10 +48,10 @@
                 </div>
                 <div class="hero__actions">
                     @if (provider.siteUrl() != null && !provider.siteUrl().isBlank())
-                        <a class="button button--primary" href="/r/cta?next=${provider.siteUrl()}&pageFamily=provider-profile&providerId=${provider.providerId()}&ctaType=provider-website&source=/providers/${provider.providerId()}/">Open website</a>
+                        <a class="button button--primary" href="${CtaPaths.trackedPath(provider.siteUrl(), "provider-profile", "", provider.providerId(), "provider-website", "/providers/" + provider.providerId() + "/")}">Open website</a>
                     @endif
                     @if (provider.officialApprovalSourceUrl() != null && !provider.officialApprovalSourceUrl().isBlank())
-                        <a class="button button--secondary" href="/r/cta?next=${provider.officialApprovalSourceUrl()}&pageFamily=provider-profile&providerId=${provider.providerId()}&ctaType=authority-source&source=/providers/${provider.providerId()}/">Authority source</a>
+                        <a class="button button--secondary" href="${CtaPaths.trackedPath(provider.officialApprovalSourceUrl(), "provider-profile", "", provider.providerId(), "authority-source", "/providers/" + provider.providerId() + "/")}">Authority source</a>
                     @endif
                     <a class="button button--secondary" href="/claim-listing?requestType=claim-existing-profile">Claim or update this listing</a>
                 </div>
@@ -123,12 +124,12 @@
                         <li><strong>Email:</strong> ${provider.email()}</li>
                     @endif
                     @if (provider.siteUrl() != null && !provider.siteUrl().isBlank())
-                        <li><strong>Website:</strong> <a href="${provider.siteUrl()}">${provider.siteUrl()}</a></li>
+                        <li><strong>Website:</strong> <a href="${CtaPaths.trackedPath(provider.siteUrl(), "provider-profile", "", provider.providerId(), "provider-website", "/providers/" + provider.providerId() + "/")}">${provider.siteUrl()}</a></li>
                     @else
                         <li><strong>Website:</strong> No public website is stored for this provider profile yet.</li>
                     @endif
                     @if (provider.officialApprovalSourceUrl() != null && !provider.officialApprovalSourceUrl().isBlank())
-                        <li><strong>Authority source:</strong> <a href="${provider.officialApprovalSourceUrl()}">${provider.officialApprovalSourceUrl()}</a></li>
+                        <li><strong>Authority source:</strong> <a href="${CtaPaths.trackedPath(provider.officialApprovalSourceUrl(), "provider-profile", "", provider.providerId(), "authority-source", "/providers/" + provider.providerId() + "/")}">${provider.officialApprovalSourceUrl()}</a></li>
                     @endif
                 </ul>
             </article>

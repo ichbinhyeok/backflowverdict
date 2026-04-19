@@ -74,7 +74,7 @@ public class LeadController {
         model.addAttribute("sourcePage", normalizedSourcePage);
         model.addAttribute("selectedIssueType", normalize(issueType));
         model.addAttribute("pageFamily", normalizedPageFamily);
-        model.addAttribute("routingToken", trustedContext.autoRouteEligible() ? normalize(routingToken) : "");
+        model.addAttribute("routingToken", trustedContext.sourceContextVerified() ? normalize(routingToken) : "");
         model.addAttribute("activeSponsorCount", activeSponsors.size());
         model.addAttribute("formError", formError(normalize(error)));
         return "pages/lead-capture";
