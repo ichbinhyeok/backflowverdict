@@ -83,9 +83,19 @@ class HandoffControllerTest {
                 .andExpect(content().string(containsString("Save assembly preset")))
                 .andExpect(content().string(containsString("Generate customer brief")))
                 .andExpect(content().string(containsString("Back to current rule")))
+                .andExpect(content().string(org.hamcrest.Matchers.not(containsString("Pilot office setup is $149 one-time."))))
                 .andExpect(content().string(org.hamcrest.Matchers.not(containsString("Irrigation assembly testing"))))
                 .andExpect(content().string(org.hamcrest.Matchers.not(containsString("Fire line testing"))))
                 .andExpect(content().string(containsString("gtag/js?id=G-TEST123")));
+    }
+
+    @Test
+    void genericBuilderShowsQuickSampleButtons() throws Exception {
+        mockMvc.perform(get("/handoffs/new"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Need a fast demo first?")))
+                .andExpect(content().string(containsString("Try annual sample")))
+                .andExpect(content().string(containsString("Try failed-test sample")));
     }
 
     @Test
@@ -162,6 +172,9 @@ class HandoffControllerTest {
                 .andExpect(content().string(containsString("BackflowPath does not deliver the message for you in this free tool.")))
                 .andExpect(content().string(containsString("Confirm link sent")))
                 .andExpect(content().string(containsString("Customer brief URL")))
+                .andExpect(content().string(containsString("Did this reach a real customer?")))
+                .andExpect(content().string(containsString("Needs wording changes")))
+                .andExpect(content().string(containsString("Still testing")))
                 .andExpect(content().string(containsString("Office record")))
                 .andExpect(content().string(containsString("Morgan")))
                 .andExpect(content().string(containsString("Main Street Retail Center")))
@@ -239,6 +252,9 @@ class HandoffControllerTest {
         mockMvc.perform(post(resultPath + "/events")
                         .param("eventType", "brief_link_marked_sent"))
                 .andExpect(status().isNoContent());
+        mockMvc.perform(post(resultPath + "/events")
+                        .param("eventType", "brief_feedback_testing_only"))
+                .andExpect(status().isNoContent());
 
         List<HandoffEventRecord> events = handoffEventRepository.findAll().stream()
                 .filter(event -> handoff.handoffId().equals(event.handoffId()))
@@ -253,7 +269,8 @@ class HandoffControllerTest {
                         "archive_packet_opened",
                         "public_brief_pdf_downloaded",
                         "archive_packet_pdf_downloaded",
-                        "brief_link_marked_sent"
+                        "brief_link_marked_sent",
+                        "brief_feedback_testing_only"
                 );
         assertThat(events)
                 .extracting(HandoffEventRecord::originPath)

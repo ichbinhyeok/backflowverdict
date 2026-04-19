@@ -106,7 +106,9 @@ class OpsHandoffReportControllerTest {
         openHandoff(thirdResultPath, third.publicToken());
         postOfficeEvent(firstResultPath, "brief_link_copied");
         postOfficeEvent(firstResultPath, "brief_link_marked_sent");
+        postOfficeEvent(firstResultPath, "brief_feedback_missing_contact");
         postOfficeEvent(secondResultPath, "brief_email_draft_copied");
+        postOfficeEvent(secondResultPath, "brief_feedback_testing_only");
         clickTrackedFollowOn(firstResultPath, "gptx-water", "full-rule", "/utilities/texas/grand-prairie-water-utilities");
         clickTrackedFollowOn(firstResultPath, "gptx-water", "help-request", "/guides/failed-backflow-test-next-steps");
 
@@ -127,6 +129,9 @@ class OpsHandoffReportControllerTest {
                 .andExpect(content().string(containsString("brief_link_marked_sent")))
                 .andExpect(content().string(containsString("archive_packet_pdf_downloaded")))
                 .andExpect(content().string(containsString("Follow-on CTA clicks")))
+                .andExpect(content().string(containsString("Send feedback")))
+                .andExpect(content().string(containsString("Missing customer contact")))
+                .andExpect(content().string(containsString("Still testing")))
                 .andExpect(content().string(containsString("full-rule")))
                 .andExpect(content().string(containsString("help-request")))
                 .andExpect(content().string(containsString("handoff-packet")))

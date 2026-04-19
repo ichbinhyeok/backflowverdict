@@ -122,6 +122,50 @@
                         </details>
                     </div>
                 </div>
+                <div class="handoff-send-feedback">
+                    <div class="handoff-send-feedback__copy">
+                        <strong>Did this reach a real customer?</strong>
+                        <p>Use one tap here so the next product step follows actual office friction, not guesses.</p>
+                    </div>
+                    <div class="workbench-toolbar">
+                        <button
+                                class="button button--secondary button--compact"
+                                type="button"
+                                data-handoff-feedback-event="brief_feedback_sent"
+                                data-handoff-feedback-response="Marked as sent to a real customer."
+                                data-handoff-feedback-status-target="handoff-feedback-status"
+                        >Sent to a real customer</button>
+                        <button
+                                class="button button--secondary button--compact"
+                                type="button"
+                                data-handoff-feedback-event="brief_feedback_needs_edit"
+                                data-handoff-feedback-response="Marked as blocked by wording or layout edits."
+                                data-handoff-feedback-status-target="handoff-feedback-status"
+                        >Needs wording changes</button>
+                        <button
+                                class="button button--secondary button--compact"
+                                type="button"
+                                data-handoff-feedback-event="brief_feedback_missing_contact"
+                                data-handoff-feedback-response="Marked as blocked by missing contact details."
+                                data-handoff-feedback-status-target="handoff-feedback-status"
+                        >Missing customer contact</button>
+                        <button
+                                class="button button--secondary button--compact"
+                                type="button"
+                                data-handoff-feedback-event="brief_feedback_waiting_approval"
+                                data-handoff-feedback-response="Marked as waiting on owner or manager approval."
+                                data-handoff-feedback-status-target="handoff-feedback-status"
+                        >Waiting on approval</button>
+                        <button
+                                class="button button--secondary button--compact"
+                                type="button"
+                                data-handoff-feedback-event="brief_feedback_testing_only"
+                                data-handoff-feedback-response="Marked as a test-only run."
+                                data-handoff-feedback-status-target="handoff-feedback-status"
+                        >Still testing</button>
+                    </div>
+                    <p class="handoff-send-feedback__status" id="handoff-feedback-status">No feedback saved yet. Mark the real blocker after your first look.</p>
+                </div>
             </article>
 
             @if (submissionGuidance != null && !submissionGuidance.isBlank())

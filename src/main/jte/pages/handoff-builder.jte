@@ -123,6 +123,18 @@
                                     <button class="button button--secondary" type="button" data-handoff-intake-to-note>Suggest customer note</button>
                                     <button class="button button--secondary" type="button" data-handoff-intake-to-failed-reason>Suggest failed reason</button>
                                 </div>
+                                @if (selectedUtility == null)
+                                    <div class="workbench-demo-strip">
+                                        <div class="workbench-demo-strip__copy">
+                                            <strong>Need a fast demo first?</strong>
+                                            <span>Load one sample job to see the brief, note, and sender line without typing from scratch.</span>
+                                        </div>
+                                        <div class="workbench-toolbar">
+                                            <button class="button button--secondary button--compact" type="button" data-handoff-intake-sample-annual>Try annual sample</button>
+                                            <button class="button button--secondary button--compact" type="button" data-handoff-intake-sample-failed>Try failed-test sample</button>
+                                        </div>
+                                    </div>
+                                @endif
                             </section>
 
                             <section class="workbench-section">
@@ -430,17 +442,6 @@
                                     <button class="button button--primary" type="submit">Generate customer brief</button>
                                 </div>
                             </div>
-                            @if (SiteRuntimeConfig.supportEmail() != null && !SiteRuntimeConfig.supportEmail().isBlank())
-                                <div class="workbench-setup-callout">
-                                    <div class="workbench-setup-callout__copy">
-                                        <strong>Using this more than once for the same office?</strong>
-                                        <span>Pilot office setup is $149 one-time. It aligns your sender line, annual-note wording, failed-test wording, and sample utility briefs so your office does not rebuild the same message every time.</span>
-                                    </div>
-                                    <div class="workbench-toolbar">
-                                        <a class="button button--secondary" href="mailto:${SiteRuntimeConfig.supportEmail()}?subject=BackflowPath%20office%20setup&amp;body=Company%20name%3A%0AUtilities%3A%0AWorkflow%3A%20annual%20notice%20/%20failed%20test%20/%20both%0AWhat%20you%20want%20aligned%3A%0A">Email about office setup</a>
-                                    </div>
-                                </div>
-                            @endif
                             <p class="workbench-note" data-handoff-storage-state>Fast path: lock the site, next date, and sender line, then generate the brief.</p>
                         </form>
                     </article>

@@ -2921,6 +2921,35 @@ p {
     line-height: 1.45;
 }
 
+.workbench-demo-strip {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.9rem;
+    padding: 0.95rem;
+    border: 1px solid rgba(203, 213, 225, 0.95);
+    border-radius: 0.5rem;
+    background: linear-gradient(180deg, rgba(248, 250, 252, 0.98) 0%, rgba(255, 255, 255, 0.98) 100%);
+}
+
+.workbench-demo-strip__copy {
+    display: grid;
+    gap: 0.18rem;
+}
+
+.workbench-demo-strip__copy strong {
+    color: var(--primary);
+    font-family: var(--font-headline);
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.workbench-demo-strip__copy span {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.45;
+}
+
 .handoff-preview {
     display: grid;
     gap: 0.7rem;
@@ -3250,6 +3279,35 @@ p {
     font-size: 1rem;
     font-weight: 800;
     line-height: 1.2;
+}
+
+.handoff-send-feedback {
+    display: grid;
+    gap: 0.75rem;
+    padding: 0.95rem;
+    border: 1px solid rgba(214, 223, 234, 0.95);
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.98);
+}
+
+.handoff-send-feedback__copy {
+    display: grid;
+    gap: 0.18rem;
+}
+
+.handoff-send-feedback__copy strong {
+    color: var(--primary);
+    font-family: var(--font-headline);
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.handoff-send-feedback__copy p,
+.handoff-send-feedback__status {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
 }
 
 .handoff-artifact-grid .detail-card {

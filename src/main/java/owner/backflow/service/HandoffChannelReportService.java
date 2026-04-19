@@ -50,6 +50,13 @@ public class HandoffChannelReportService {
             "official-program",
             "help-request"
     );
+    private static final Map<String, String> SEND_FEEDBACK_LABELS = Map.of(
+            "brief_feedback_sent", "Sent to a real customer",
+            "brief_feedback_needs_edit", "Needs wording changes",
+            "brief_feedback_missing_contact", "Missing customer contact",
+            "brief_feedback_waiting_approval", "Waiting on owner or manager approval",
+            "brief_feedback_testing_only", "Still testing"
+    );
 
     private final HandoffRepository handoffRepository;
     private final HandoffEventRepository handoffEventRepository;
@@ -138,6 +145,22 @@ public class HandoffChannelReportService {
                 ))
                 .toList();
 
+        List<FeedbackReasonCount> sendFeedbackCounts = events.stream()
+                .filter(event -> SEND_FEEDBACK_LABELS.containsKey(normalize(event.eventType()).toLowerCase(Locale.ROOT)))
+                .collect(Collectors.groupingBy(
+                        event -> normalize(event.eventType()).toLowerCase(Locale.ROOT),
+                        Collectors.counting()
+                ))
+                .entrySet()
+                .stream()
+                .map(entry -> new FeedbackReasonCount(
+                        SEND_FEEDBACK_LABELS.getOrDefault(entry.getKey(), entry.getKey()),
+                        entry.getValue()
+                ))
+                .sorted(Comparator.comparingLong(FeedbackReasonCount::count).reversed()
+                        .thenComparing(FeedbackReasonCount::label))
+                .toList();
+
         long createdCount = count(events, "handoff_created");
         long preparedSendCount = countAny(events, PREPARED_SEND_EVENT_TYPES);
         long markedSentCount = countUniqueIdentityDays(events, MARKED_SEND_EVENT_TYPES);
@@ -168,6 +191,7 @@ public class HandoffChannelReportService {
                 count(events, "office_brief_preview_pdf_downloaded"),
                 count(events, "archive_packet_pdf_downloaded"),
                 eventTypeCounts,
+                sendFeedbackCounts,
                 ctaTypeCounts,
                 repeatVendorUtilityRows,
                 recentEvents,
@@ -430,6 +454,7 @@ public class HandoffChannelReportService {
             long officePreviewPdfDownloadedCount,
             long archivePacketDownloadedCount,
             List<EventTypeCount> eventTypeCounts,
+            List<FeedbackReasonCount> sendFeedbackCounts,
             List<CtaTypeCount> ctaTypeCounts,
             List<VendorUtilityUsageRow> repeatVendorUtilityRows,
             List<RecentEventRow> recentEvents,
@@ -438,6 +463,9 @@ public class HandoffChannelReportService {
     }
 
     public record EventTypeCount(String eventType, long count) {
+    }
+
+    public record FeedbackReasonCount(String label, long count) {
     }
 
     public record CtaTypeCount(String ctaType, long count) {

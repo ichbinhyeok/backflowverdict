@@ -79,7 +79,12 @@ public class HandoffController {
             "brief_email_draft_copied",
             "brief_link_marked_sent",
             "brief_text_marked_sent",
-            "brief_email_marked_sent"
+            "brief_email_marked_sent",
+            "brief_feedback_sent",
+            "brief_feedback_needs_edit",
+            "brief_feedback_missing_contact",
+            "brief_feedback_waiting_approval",
+            "brief_feedback_testing_only"
     );
 
     private final BackflowRegistryService registryService;

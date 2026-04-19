@@ -86,6 +86,23 @@
                     return;
                 }
 
+                var feedbackButton = event.target.closest('[data-handoff-feedback-event]');
+                if (feedbackButton) {
+                    event.preventDefault();
+                    var feedbackSaved = await sendHandoffEvent(feedbackButton.getAttribute('data-handoff-feedback-event'));
+                    pulseButton(feedbackButton, feedbackSaved ? 'Saved' : 'Save failed', feedbackSaved ? 1200 : 1500);
+                    var feedbackStatusTargetId = feedbackButton.getAttribute('data-handoff-feedback-status-target');
+                    if (feedbackStatusTargetId) {
+                        var feedbackStatus = document.getElementById(feedbackStatusTargetId);
+                        if (feedbackStatus) {
+                            feedbackStatus.textContent = feedbackSaved
+                                    ? (feedbackButton.getAttribute('data-handoff-feedback-response') || 'Feedback saved.')
+                                    : 'Could not save feedback right now.';
+                        }
+                    }
+                    return;
+                }
+
                 var button = event.target.closest('[data-copy-target]');
                 if (!button) {
                     return;
@@ -166,6 +183,8 @@
             var intakeApplyButton = document.querySelector('[data-handoff-intake-apply]');
             var intakeToNoteButton = document.querySelector('[data-handoff-intake-to-note]');
             var intakeToFailedReasonButton = document.querySelector('[data-handoff-intake-to-failed-reason]');
+            var intakeSampleAnnualButton = document.querySelector('[data-handoff-intake-sample-annual]');
+            var intakeSampleFailedButton = document.querySelector('[data-handoff-intake-sample-failed]');
 
             function setNote(message, tone) {
                 if (!note) {
@@ -173,6 +192,14 @@
                 }
                 note.textContent = message;
                 note.dataset.tone = tone || 'neutral';
+            }
+
+            function setFieldValue(fieldName, value) {
+                var field = form.elements.namedItem(fieldName);
+                if (!field) {
+                    return;
+                }
+                field.value = value || '';
             }
 
             function defaultNoteMessage() {
@@ -230,6 +257,44 @@
                     return '';
                 }
                 return field.value.trim();
+            }
+
+            function loadDemoScenario(scenario) {
+                if (!scenario) {
+                    return;
+                }
+                if (utilityField && utilityField.tagName === 'SELECT') {
+                    utilityField.value = scenario.utilityId || '';
+                }
+                if (issueTypeField && issueTypeField.tagName === 'SELECT') {
+                    issueTypeField.value = scenario.issueType || '';
+                }
+                if (resultStatusField) {
+                    resultStatusField.value = scenario.resultStatus || '';
+                }
+                setFieldValue('submissionStatus', scenario.submissionStatus || '');
+                setFieldValue('propertyLabel', scenario.propertyLabel || '');
+                setFieldValue('vendorCompanyName', scenario.vendorCompanyName || '');
+                setFieldValue('vendorPhone', scenario.vendorPhone || '');
+                setFieldValue('vendorContactName', scenario.vendorContactName || '');
+                if (intakeTextField) {
+                    intakeTextField.value = scenario.intakeText || '';
+                }
+                applyIntakeText();
+                if (scenario.issueType === 'failed-test-repair') {
+                    var suggestedReason = suggestedFailedReason(scenario.intakeText || '');
+                    if (suggestedReason) {
+                        failedReasonField.value = suggestedReason;
+                    }
+                } else {
+                    var suggestedNote = suggestedNoticeSummary(scenario.intakeText || '');
+                    if (suggestedNote) {
+                        noticeSummaryField.value = suggestedNote;
+                    }
+                }
+                updateOutcomeRequirements();
+                renderSendPreview();
+                setNote(scenario.loadedMessage || 'Demo loaded. Review the sample, then generate the customer brief.', 'success');
             }
 
             function normalizedBlob(text) {
@@ -1181,6 +1246,40 @@
                          renderSendPreview();
                          setNote('Suggested failed reason added. Review it before sending.', 'success');
                      }
+                 });
+             }
+
+             if (intakeSampleAnnualButton) {
+                 intakeSampleAnnualButton.addEventListener('click', function () {
+                     loadDemoScenario({
+                         utilityId: 'gptx-water',
+                         issueType: 'general-testing',
+                         resultStatus: 'pass',
+                         submissionStatus: 'pending-submission',
+                         propertyLabel: 'Main Street Retail Center',
+                         vendorCompanyName: 'DFW Backflow Services',
+                         vendorContactName: 'Jordan Lee',
+                         vendorPhone: '972-555-0144',
+                         intakeText: 'Annual backflow test due by 2026-05-01 for account ACC-2049 at 120 Main Street, Grand Prairie, TX. Grand Prairie Water Utilities still needs the passing annual result filed. We will send the city update after the office review.',
+                         loadedMessage: 'Annual sample loaded. Review the quick demo, then generate the customer brief.'
+                     });
+                 });
+             }
+
+             if (intakeSampleFailedButton) {
+                 intakeSampleFailedButton.addEventListener('click', function () {
+                     loadDemoScenario({
+                         utilityId: 'gptx-water',
+                         issueType: 'failed-test-repair',
+                         resultStatus: 'fail',
+                         submissionStatus: 'pending-submission',
+                         propertyLabel: 'Main Street Retail Center',
+                         vendorCompanyName: 'DFW Backflow Services',
+                         vendorContactName: 'Jordan Lee',
+                         vendorPhone: '972-555-0144',
+                         intakeText: 'Backflow assembly failed on 2026-04-20 for account ACC-2049 at 120 Main Street, Grand Prairie, TX. Repair by 2026-05-03. The relief valve and check readings did not hold, so repair and a passing retest are still required before the utility file can close.',
+                         loadedMessage: 'Failed-test sample loaded. Review the brief and failed reason, then generate the customer brief.'
+                     });
                  });
              }
 

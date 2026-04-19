@@ -98,6 +98,32 @@
                     </div>
                 @endif
             </article>
+
+            <article class="detail-card">
+                <h2>Send feedback</h2>
+                @if (report.sendFeedbackCounts().isEmpty())
+                    <p>No send feedback captured yet.</p>
+                @else
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                            <tr>
+                                <th>Feedback</th>
+                                <th>Count</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @for (var item : report.sendFeedbackCounts())
+                                <tr>
+                                    <td><strong>${item.label()}</strong></td>
+                                    <td>${item.count()}</td>
+                                </tr>
+                            @endfor
+                            </tbody>
+                        </table>
+                    </div>
+                @endif
+            </article>
         </div>
     </section>
 
