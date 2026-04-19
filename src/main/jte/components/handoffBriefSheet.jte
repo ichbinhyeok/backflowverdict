@@ -4,49 +4,101 @@
 @param String fullRuleTrackedPath = ""
 @param String officialProgramTrackedPath = ""
 
-<article class="document-sheet">
-    <header class="document-header">
+<article class="document-sheet document-sheet--brief">
+    <header class="document-header document-header--brief">
         <div class="document-kicker-row">
-            <span class="eyebrow">Customer brief</span>
-            <span class="document-proof">${handoff.resultLabel()}</span>
+            <div class="document-brandline">
+                <strong class="document-brandline__mark">BackflowPath</strong>
+                <span class="eyebrow">Customer brief</span>
+            </div>
+            <span class="document-proof ${"pass".equals(handoff.resultStatus()) ? "document-proof--success" : ("fail".equals(handoff.resultStatus()) ? "document-proof--danger" : "document-proof--warning")}">${handoff.resultLabel()}</span>
         </div>
         <h1>${handoff.headline()}</h1>
         <p class="document-intro">${handoff.publicSummary()}</p>
+        <section class="document-next-step-callout">
+            <div class="document-next-step-callout__copy">
+                <span class="eyebrow">What to do next</span>
+                <h2>
+                    @if (!handoff.customerActions().isEmpty())
+                        ${handoff.customerActions().get(0)}
+                    @else
+                        Review the result, follow the next step on this page, and keep the due date in view if one is shown.
+                    @endif
+                </h2>
+                <p>
+                    @if (handoff.customerActions().size() > 1)
+                        ${handoff.customerActions().get(1)}
+                    @elseif (submissionGuidance != null && !submissionGuidance.isBlank())
+                        ${submissionGuidance}
+                    @else
+                        This job is not fully closed until the utility side no longer shows the site as open.
+                    @endif
+                </p>
+            </div>
+            <div class="document-next-step-callout__facts">
+                <div class="document-next-step-callout__fact">
+                    <span>Utility filing</span>
+                    <strong>${handoff.submissionLabel()}</strong>
+                </div>
+                @if (handoff.dueDate() != null)
+                    <div class="document-next-step-callout__fact">
+                        <span>Action by</span>
+                        <strong>${handoff.dueDate().toString()}</strong>
+                    </div>
+                @endif
+                @if (handoff.vendorCompanyName() != null && !handoff.vendorCompanyName().isBlank())
+                    <div class="document-next-step-callout__fact">
+                        <span>Handled by</span>
+                        <strong>${handoff.vendorCompanyName()}</strong>
+                    </div>
+                @endif
+            </div>
+        </section>
         <section class="document-banner document-banner--summary">
             <span class="eyebrow">Plain-language summary</span>
-            <p>
-                <strong>Why you got this:</strong>
-                @if (handoff.failedReason() != null && !handoff.failedReason().isBlank())
-                    ${handoff.failedReason()}
-                @elseif (handoff.noticeSummary() != null && !handoff.noticeSummary().isBlank())
-                    ${handoff.noticeSummary()}
-                @elseif ("failed-test-repair".equals(handoff.issueType()))
-                    This brief is tied to a failed backflow test for this site, so the repair, retest, or closeout step on that failed-device file still needs attention.
-                @elseif ("general-testing".equals(handoff.issueType()))
-                    This brief is tied to the site's annual backflow testing requirement, so the testing or filing step connected to that notice still needs attention.
-                @else
-                    This site still has a backflow requirement open, so the next test or filing step has to be handled before it is treated as complete.
-                @endif
-            </p>
-            <p>
-                <strong>What you need to do:</strong>
-                @if (!handoff.customerActions().isEmpty())
-                    ${handoff.customerActions().get(0)}
-                @else
-                    Review the result, follow the next step on this page, and keep the due date in view if one is shown.
-                @endif
-            </p>
-            <p>
-                <strong>Who to contact about the filing:</strong>
-                @if (handoff.vendorCompanyName() != null && !handoff.vendorCompanyName().isBlank())
-                    ${handoff.vendorCompanyName()} is coordinating the filing or follow-up tied to this brief.
-                @else
-                    Your vendor is coordinating the filing or follow-up tied to this brief.
-                @endif
-            </p>
+            <div class="document-summary-grid">
+                <article class="document-summary-card">
+                    <span>Why you got this</span>
+                    <p>
+                        @if (handoff.failedReason() != null && !handoff.failedReason().isBlank())
+                            ${handoff.failedReason()}
+                        @elseif (handoff.noticeSummary() != null && !handoff.noticeSummary().isBlank())
+                            ${handoff.noticeSummary()}
+                        @elseif ("failed-test-repair".equals(handoff.issueType()))
+                            This brief is tied to a failed backflow test for this site, so the repair, retest, or closeout step on that failed-device file still needs attention.
+                        @elseif ("general-testing".equals(handoff.issueType()))
+                            This brief is tied to the site's annual backflow testing requirement, so the testing or filing step connected to that notice still needs attention.
+                        @else
+                            This site still has a backflow requirement open, so the next test or filing step has to be handled before it is treated as complete.
+                        @endif
+                    </p>
+                </article>
+
+                <article class="document-summary-card document-summary-card--action">
+                    <span>What you need to do</span>
+                    <p>
+                        @if (!handoff.customerActions().isEmpty())
+                            ${handoff.customerActions().get(0)}
+                        @else
+                            Review the result, follow the next step on this page, and keep the due date in view if one is shown.
+                        @endif
+                    </p>
+                </article>
+
+                <article class="document-summary-card">
+                    <span>Who is handling the filing</span>
+                    <p>
+                        @if (handoff.vendorCompanyName() != null && !handoff.vendorCompanyName().isBlank())
+                            ${handoff.vendorCompanyName()} is coordinating the filing or follow-up tied to this brief.
+                        @else
+                            Your vendor is coordinating the filing or follow-up tied to this brief.
+                        @endif
+                    </p>
+                </article>
+            </div>
         </section>
         <div class="document-meta-grid">
-            <div class="document-meta-card document-meta-card--action">
+            <div class="document-meta-card document-meta-card--action ${"submitted".equals(handoff.submissionStatus()) ? "document-meta-card--success" : "document-meta-card--pending"}">
                 <strong>Utility filing status</strong>
                 <span>${handoff.submissionLabel()}</span>
             </div>

@@ -104,7 +104,7 @@
                 <div class="section-heading">
                     <span class="eyebrow">Annual notice sample</span>
                     <h2>After a passing annual test, before the utility filing is closed</h2>
-                    <p>This is the common “the test passed, but the notice is not truly closed yet” explanation surface.</p>
+                    <p>This is the common "the test passed, but the notice is not truly closed yet" explanation surface.</p>
                 </div>
                 <div class="vendor-demo-sample__actions">
                     <a class="button button--secondary" href="${annualStartPath}">Use this annual path</a>
@@ -126,7 +126,7 @@
                 <div class="section-heading">
                     <span class="eyebrow">Failed test sample</span>
                     <h2>When the customer needs the repair and retest explained in plain English</h2>
-                    <p>This is the “it failed, what now?” surface. It keeps the first send understandable without exposing the whole office packet.</p>
+                    <p>This is the "it failed, what now?" surface. It keeps the first send understandable without exposing the whole office packet.</p>
                 </div>
                 <div class="vendor-demo-sample__actions">
                     <a class="button button--secondary" href="${failedStartPath}">Use this failed-test path</a>

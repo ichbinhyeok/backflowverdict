@@ -53,16 +53,19 @@
             </div>
         </div>
 
-        <article class="document-sheet document-sheet--record">
+        <article class="document-sheet document-sheet--record document-sheet--packet">
             <header class="document-header">
                 <div class="document-kicker-row">
-                    <span class="eyebrow">Office record</span>
-                    <span class="document-proof">${handoff.resultLabel()}</span>
+                    <div class="document-brandline">
+                        <strong class="document-brandline__mark">BackflowPath</strong>
+                        <span class="eyebrow">Office record</span>
+                    </div>
+                    <span class="document-proof ${"pass".equals(handoff.resultStatus()) ? "document-proof--success" : ("fail".equals(handoff.resultStatus()) ? "document-proof--danger" : "document-proof--warning")}">${handoff.resultLabel()}</span>
                 </div>
                 <h1>${handoff.headline()}</h1>
                 <p class="document-intro">${handoff.publicSummary()}</p>
                 <div class="document-meta-grid">
-                    <div class="document-meta-card document-meta-card--action">
+                    <div class="document-meta-card document-meta-card--action ${"submitted".equals(handoff.submissionStatus()) ? "document-meta-card--success" : "document-meta-card--pending"}">
                         <strong>Status with city or utility</strong>
                         <span>${handoff.submissionLabel()}</span>
                     </div>

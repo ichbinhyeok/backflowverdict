@@ -21,8 +21,22 @@ public class HandoffPdfService {
     }
 
     public byte[] renderCustomerResultSheet(HandoffRecord handoff, String submissionGuidance) {
+        String whyGotThis = joinedParagraphs(
+                handoff.noticeSummary(),
+                handoff.failedReason(),
+                customerReasonFallback(handoff)
+        );
+        String whatYouNeedToDo = handoff.customerActions().isEmpty()
+                ? "Review the result, follow the next step, and keep the due date in view if one is shown."
+                : handoff.customerActions().get(0);
+        String nextStepSupport = handoff.customerActions().size() > 1
+                ? handoff.customerActions().get(1)
+                : "This job is not fully closed until the utility side no longer shows the site as open.";
+        String whoHandlesFiling = !normalize(handoff.vendorCompanyName()).isBlank()
+                ? handoff.vendorCompanyName() + " is coordinating the filing or follow-up tied to this brief."
+                : "Your vendor is coordinating the filing or follow-up tied to this brief.";
         String body = pageShell(
-                "Customer result sheet",
+                "Customer brief",
                 handoff,
                 metaTable(List.of(
                         metaCell("Utility filing status", handoff.submissionLabel(), true),
@@ -32,12 +46,13 @@ public class HandoffPdfService {
                         metaCell("Site", handoff.propertyLabel(), false),
                         metaCell("Prepared by", handoff.vendorCompanyName(), false)
                 )),
-                banner("Utility filing status", escape(submissionGuidance))
-                        + banner("Why you got this", joinedParagraphs(
-                                handoff.noticeSummary(),
-                                handoff.failedReason(),
-                                customerReasonFallback(handoff)
-                        ))
+                priorityBanner("What to do next", whatYouNeedToDo, nextStepSupport)
+                        + summaryTable(List.of(
+                        summaryCell("Why you got this", whyGotThis),
+                        summaryCell("What you need to do", whatYouNeedToDo),
+                        summaryCell("Who is handling the filing", whoHandlesFiling)
+                ))
+                        + banner("Utility filing status", escape(submissionGuidance))
                         + banner("Official source", "Use the local rule or official program page for the governing source behind the job.")
                         + twoUp(
                                 section(
@@ -221,13 +236,14 @@ public class HandoffPdfService {
                         body {
                             margin: 0;
                             font-family: Arial, Helvetica, sans-serif;
-                            color: #0f172a;
+                            color: #17212a;
                             font-size: 9.6pt;
                             line-height: 1.45;
                             background: #ffffff;
                         }
                         .sheet {
-                            border: 1px solid #cbd5e1;
+                            border: 1px solid #dbe4ee;
+                            border-top: 3px solid #131b2e;
                             background: #ffffff;
                             padding: 14px;
                             box-sizing: border-box;
@@ -237,7 +253,19 @@ public class HandoffPdfService {
                             font-weight: 700;
                             letter-spacing: 1.3px;
                             text-transform: uppercase;
-                            color: #475569;
+                            color: #5b6472;
+                        }
+                        .brandline {
+                            margin-bottom: 8px;
+                        }
+                        .brandmark {
+                            display: inline-block;
+                            margin-right: 10px;
+                            color: #17212a;
+                            font-size: 9pt;
+                            font-weight: 800;
+                            letter-spacing: 1.2px;
+                            text-transform: uppercase;
                         }
                         .header-row {
                             width: 100%%;
@@ -252,7 +280,26 @@ public class HandoffPdfService {
                             font-weight: 700;
                             letter-spacing: 1.3px;
                             text-transform: uppercase;
-                            color: #475569;
+                            color: #5b6472;
+                            background: #f3f6fc;
+                            border: 1px solid #dbe4ee;
+                            border-radius: 999px;
+                            padding: 5px 8px;
+                        }
+                        .proof.proof-success {
+                            color: #0f766e;
+                            background: #f4fbf8;
+                            border-color: #bfded4;
+                        }
+                        .proof.proof-danger {
+                            color: #b91c1c;
+                            background: #fee2e2;
+                            border-color: #fecaca;
+                        }
+                        .proof.proof-warning {
+                            color: #b45309;
+                            background: #fef3c7;
+                            border-color: #fcd34d;
                         }
                         h1 {
                             margin: 8px 0 8px;
@@ -263,7 +310,7 @@ public class HandoffPdfService {
                         .intro {
                             margin: 0 0 14px;
                             font-size: 10.4pt;
-                            color: #475569;
+                            color: #52606d;
                         }
                         .meta-table,
                         .columns {
@@ -274,11 +321,12 @@ public class HandoffPdfService {
                             table-layout: fixed;
                         }
                         .meta-card,
+                        .summary-card,
                         .section,
                         .banner {
-                            border: 1px solid #cbd5e1;
+                            border: 1px solid #dbe4ee;
                             border-radius: 8px;
-                            background: #f8fafc;
+                            background: #f8f9ff;
                             page-break-inside: avoid;
                             break-inside: avoid;
                             overflow-wrap: anywhere;
@@ -288,8 +336,49 @@ public class HandoffPdfService {
                             vertical-align: top;
                             width: 50%%;
                         }
+                        .priority-banner {
+                            margin: 0 0 10px;
+                            padding: 12px 13px;
+                            border-radius: 8px;
+                            border: 1px solid #131b2e;
+                            background: #131b2e;
+                            color: #f8fafc;
+                        }
+                        .priority-banner .label {
+                            color: #dbe4ee;
+                            margin-bottom: 7px;
+                        }
+                        .priority-banner h2 {
+                            margin: 0 0 7px;
+                            color: #ffffff;
+                            font-size: 14pt;
+                            line-height: 1.08;
+                        }
+                        .priority-banner p {
+                            margin: 0;
+                            color: #dbe4ee;
+                            font-size: 9.4pt;
+                        }
+                        .summary-table {
+                            width: 100%%;
+                            border-collapse: separate;
+                            border-spacing: 8px;
+                            margin: 0 -8px 4px;
+                            table-layout: fixed;
+                        }
+                        .summary-card {
+                            width: 33.333%%;
+                            padding: 10px 12px;
+                            vertical-align: top;
+                            background: #ffffff;
+                        }
+                        .summary-card p {
+                            margin: 0;
+                            color: #2f3f49;
+                        }
                         .meta-card.emphasis {
-                            background: #e2e8f0;
+                            background: #eff4ff;
+                            border-color: #d3e4fe;
                         }
                         .label {
                             display: block;
@@ -298,20 +387,22 @@ public class HandoffPdfService {
                             font-weight: 700;
                             letter-spacing: 1.3px;
                             text-transform: uppercase;
-                            color: #475569;
+                            color: #5b6472;
                         }
                         .value {
                             font-size: 10.2pt;
                             font-weight: 700;
-                            color: #0f172a;
+                            color: #17212a;
                         }
                         .banner {
                             margin-top: 12px;
                             padding: 11px 12px;
+                            background: #eff4ff;
+                            border-left: 4px solid #131b2e;
                         }
                         .banner p {
                             margin: 0 0 10px;
-                            color: #334155;
+                            color: #2f3f49;
                         }
                         .banner p:last-child {
                             margin-bottom: 0;
@@ -335,8 +426,8 @@ public class HandoffPdfService {
                             width: 50%%;
                         }
                         .section-dark {
-                            background: #0f172a;
-                            border-color: #0f172a;
+                            background: #131b2e;
+                            border-color: #131b2e;
                             color: #f8fafc;
                         }
                         .section-dark .label,
@@ -347,7 +438,7 @@ public class HandoffPdfService {
                         }
                         .section-warm {
                             background: #fff7ed;
-                            border-color: #fed7aa;
+                            border-color: #fdba74;
                         }
                         h2 {
                             margin: 5px 0 9px;
@@ -381,7 +472,7 @@ public class HandoffPdfService {
                             margin: 0 0 6px;
                         }
                         .detail-list strong {
-                            color: #475569;
+                            color: #5b6472;
                         }
                         .narrative-block + .narrative-block {
                             margin-top: 12px;
@@ -393,7 +484,7 @@ public class HandoffPdfService {
                             font-weight: 700;
                             letter-spacing: 1.1px;
                             text-transform: uppercase;
-                            color: #475569;
+                            color: #5b6472;
                         }
                         .links {
                             margin-top: 8px;
@@ -405,18 +496,18 @@ public class HandoffPdfService {
                         .muted-note {
                             margin-top: 12px;
                             padding-top: 10px;
-                            border-top: 1px solid #cbd5e1;
+                            border-top: 1px solid #dbe4ee;
                             font-size: 9pt;
                             color: #64748b;
                         }
                         a {
-                            color: #0f172a;
+                            color: #131b2e;
                             text-decoration: underline;
                         }
                         .footer {
                             margin-top: 14px;
                             padding-top: 10px;
-                            border-top: 1px solid #cbd5e1;
+                            border-top: 1px solid #dbe4ee;
                             font-size: 9pt;
                             color: #64748b;
                             page-break-inside: avoid;
@@ -448,19 +539,24 @@ public class HandoffPdfService {
                 <table class="header-row">
                     <tr>
                         <td>
-                            <span class="kicker">%s</span>
+                            <div class="brandline">
+                                <span class="brandmark">%s</span>
+                                <span class="kicker">%s</span>
+                            </div>
                             <h1>%s</h1>
                             <p class="intro">%s</p>
                         </td>
-                        <td class="proof">%s</td>
+                        <td class="proof %s">%s</td>
                     </tr>
                 </table>
                 %s
                 %s
                 """.formatted(
+                escape(siteProperties.siteName()),
                 escape(kicker),
                 escape(handoff.headline()),
                 escape(handoff.publicSummary()),
+                proofClass(handoff),
                 escape(handoff.resultLabel()),
                 metaTable,
                 body
@@ -495,6 +591,53 @@ public class HandoffPdfService {
                 escape(label),
                 escape(value)
         );
+    }
+
+    private String summaryTable(List<String> cells) {
+        List<String> filtered = cells.stream().filter(cell -> !cell.isBlank()).toList();
+        if (filtered.isEmpty()) {
+            return "";
+        }
+        List<String> padded = new ArrayList<>(filtered);
+        while (padded.size() < 3) {
+            padded.add("<td></td>");
+        }
+        return """
+                <table class="summary-table">
+                    <tr>
+                        %s%s%s
+                    </tr>
+                </table>
+                """.formatted(padded.get(0), padded.get(1), padded.get(2));
+    }
+
+    private String priorityBanner(String label, String title, String text) {
+        if ((title == null || title.isBlank()) && (text == null || text.isBlank())) {
+            return "";
+        }
+        return """
+                <section class="priority-banner">
+                    <span class="label">%s</span>
+                    <h2>%s</h2>
+                    %s
+                </section>
+                """.formatted(
+                escape(label),
+                escape(title == null ? "" : title),
+                text == null || text.isBlank() ? "" : prose(text)
+        );
+    }
+
+    private String summaryCell(String label, String text) {
+        if (text == null || text.isBlank()) {
+            return "";
+        }
+        return """
+                <td class="summary-card">
+                    <span class="label">%s</span>
+                    %s
+                </td>
+                """.formatted(escape(label), prose(text));
     }
 
     private String banner(String label, String text) {
@@ -695,6 +838,17 @@ public class HandoffPdfService {
             return "This brief tracks the site's annual backflow testing requirement and the testing or filing step tied to that notice.";
         }
         return "This result was created from an active backflow job for this site.";
+    }
+
+    private String proofClass(HandoffRecord handoff) {
+        String resultStatus = normalize(handoff.resultStatus());
+        if ("fail".equals(resultStatus)) {
+            return "proof-danger";
+        }
+        if ("unable-to-test".equals(resultStatus)) {
+            return "proof-warning";
+        }
+        return "proof-success";
     }
 
     private boolean hasOfficeNarrative(HandoffRecord handoff) {

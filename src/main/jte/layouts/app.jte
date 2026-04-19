@@ -304,6 +304,7 @@
                     <a href="/states">States</a>
                     <a href="/metros">Metros</a>
                     <a href="/guides">Guides</a>
+                    <a href="/vendors/customer-briefs">For offices</a>
                 </nav>
                 <div class="site-header__actions">
                     <a class="button button--primary button--compact" href="/leads/new">Request help</a>
@@ -320,6 +321,7 @@
                         <a href="/states">States</a>
                         <a href="/metros">Metros</a>
                         <a href="/guides">Guides</a>
+                        <a href="/vendors/customer-briefs">For offices</a>
                     </nav>
                     <a class="button button--primary button--compact site-menu__cta" href="/leads/new">Request help</a>
                 </div>
@@ -352,6 +354,7 @@
             <div class="footer-column">
                 <span class="footer-column__label">Get help</span>
                 <a href="/leads/new">Request help</a>
+                <a href="/vendors/customer-briefs">Office workflow</a>
                 <a href="/contact">Contact</a>
                 <a href="/privacy">Privacy</a>
             </div>

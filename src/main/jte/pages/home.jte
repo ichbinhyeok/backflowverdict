@@ -47,6 +47,38 @@
         </div>
     </section>
 
+    <section class="section section--tight">
+        <div class="container content-grid">
+            <article class="detail-card detail-card--key">
+                <div class="section-heading">
+                    <span class="eyebrow">For small backflow offices</span>
+                    <h2>Send the customer-facing brief before the office packet</h2>
+                    <p class="lede">If you handle annual notices or failed tests, the office workflow turns the local utility path into a customer-ready brief in about 2 minutes.</p>
+                </div>
+                <ul class="detail-list">
+                    <li>Start from the exact utility and job type</li>
+                    <li>Turn the notice or failed result into one clear customer brief</li>
+                    <li>Send the link or PDF first and keep the office record behind it</li>
+                </ul>
+                <div class="card-actions">
+                    <a class="button button--primary" href="/vendors/customer-briefs">Open office workflow</a>
+                    <a class="button button--secondary" href="/vendors/customer-brief-demo">View sample demo</a>
+                </div>
+            </article>
+
+            <article class="detail-card">
+                <span class="eyebrow">What stays separate</span>
+                <h2>The public rule still comes first</h2>
+                <p>The office workflow does not replace the utility page. It sits behind the authority layer and helps a small office explain the next step without forwarding screenshots, notices, or internal records.</p>
+                <ul class="detail-list">
+                    <li>Utility rules and filing paths stay source-backed</li>
+                    <li>The customer brief becomes the first sendable surface</li>
+                    <li>The office packet stays available only when deeper proof is needed</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
     <section class="section">
         <div class="container">
             <div class="section-heading">

@@ -303,10 +303,15 @@ class HandoffControllerTest {
         mockMvc.perform(get("/handoffs/brief/" + handoff.publicToken()))
                 .andExpect(status().isOk());
 
-        mockMvc.perform(get(resultPath))
+        String html = mockMvc.perform(get(resultPath))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Open tracking and send notes")))
-                .andExpect(content().string(containsString("Recipient open activity landed on 1 day(s)")));
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        assertThat(html)
+                .contains("What happened after the send")
+                .containsPattern("(?s)Brief opens</span>\\s*<strong>1</strong>");
     }
 
     @Test
@@ -339,9 +344,15 @@ class HandoffControllerTest {
                 .contains("public_brief_opened_automated")
                 .doesNotContain("public_brief_opened");
 
-        mockMvc.perform(get(resultPath))
+        String html = mockMvc.perform(get(resultPath))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("No recipient open yet. This is the signal to watch before you widen the workflow.")));
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        assertThat(html)
+                .contains("No recipient open yet")
+                .containsPattern("(?s)Brief opens</span>\\s*<strong>0</strong>");
     }
 
     @Test
@@ -367,9 +378,15 @@ class HandoffControllerTest {
                         .param("eventType", "brief_email_marked_sent"))
                 .andExpect(status().isNoContent());
 
-        mockMvc.perform(get(resultPath))
+        String html = mockMvc.perform(get(resultPath))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Office confirmed a send on 1 day(s)")));
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        assertThat(html)
+                .contains("What happened after the send")
+                .containsPattern("(?s)Send confirmations</span>\\s*<strong>1</strong>");
     }
 
     @Test

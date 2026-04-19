@@ -17,7 +17,7 @@
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Vendor workflow</span>
                 <h1>Turn an annual notice or failed test into a customer brief in 2 minutes.</h1>
-                <p class="lede">Paste the notice or failed result, choose the utility, and send one customer-ready brief from the office. Built for small busy BPAT offices that do not want to forward portal screenshots or rewrite the same explanation on every call.</p>
+                <p class="lede">Paste the notice or failed result, choose the utility, and send one customer-ready brief from the office. Built for small busy backflow offices that do not want to forward portal screenshots or rewrite the same explanation on every call.</p>
                 <div class="hero__actions">
                     <a class="button button--primary" href="#vendor-start-grid">Start with a utility</a>
                     <a class="button button--secondary" href="${demoPath}">View sample demo</a>
