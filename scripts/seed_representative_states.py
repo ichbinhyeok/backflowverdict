@@ -1841,7 +1841,7 @@ Locked on 2026-04-04 after reviewing official utility and state-program sources.
 ## Why these five fit best
 - Public utility pages are strong enough to support utility-first local pages without inventing process detail.
 - The states show real program variation instead of repeating one template.
-- Official tester or portal workflows exist often enough to support next-action pages and later sponsor routing.
+- Official tester or portal workflows exist often enough to support next-action pages and later provider routing.
 - The mix of commercial, irrigation, multifamily, and fire-service exposure is broad enough to test monetization paths without devolving into generic plumbing SEO.
 """,
     encoding="utf-8",

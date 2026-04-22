@@ -71,7 +71,7 @@
     "summary": "San Francisco's strongest public signal is the certified tester list itself.",
     "highlights": [
       "The official list includes company names and contact details.",
-      "The route is an authority-first list, not a sponsor directory.",
+      "The route is an authority-first list, not a private directory.",
       "SFPUC contact remains the support layer behind the tester routing."
     ],
     "workflowSteps": [
@@ -98,7 +98,7 @@
     "highlights": [
       "The certified tester list is public and specific.",
       "Commercial and larger protected services are a natural fit for this route.",
-      "Official routing stays separate from sponsor inventory."
+      "Official routing stays separate from directory inventory."
     ],
     "workflowSteps": [
       "Confirm the assembly type and compliance requirement.",
@@ -114,7 +114,7 @@
   ],
   "failureHighlights": [
     "San Francisco publishes a real certified tester list.",
-    "The list includes direct vendor contact information.",
+    "The list includes direct tester contact information.",
     "This route is stronger as a high-intent approved-tester page than as a generic city explainer."
   ],
   "costBand": {
@@ -135,3 +135,4 @@
     }
   ]
 }
+

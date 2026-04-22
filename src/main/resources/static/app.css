@@ -355,7 +355,7 @@
     background: rgba(248, 250, 252, 0.92);
 }
 
-.document-banner--office {
+.document-banner--records {
     border-left-color: rgba(71, 85, 105, 0.72);
     background: rgba(241, 245, 249, 0.96);
 }
@@ -3356,7 +3356,7 @@ p {
     gap: 0.85rem;
 }
 
-.source-drawer--office {
+.source-drawer--records {
     background: rgba(248, 250, 252, 0.98);
 }
 
@@ -3975,5 +3975,6 @@ p {
         text-transform: uppercase;
     }
 }
+
 
 

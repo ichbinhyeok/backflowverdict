@@ -28,7 +28,7 @@
     },
     {
       "heading": "Reminder logic should match the due basis",
-      "body": "A lead site loses trust if it talks about annual testing without distinguishing anniversary cycles from hard dates. The copy, internal links, and sponsor timing should follow the actual local due logic.",
+      "body": "A lead site loses trust if it talks about annual testing without distinguishing anniversary cycles from hard dates. The copy, internal links, and follow-up timing should follow the actual local due logic.",
       "bullets": [
         "This guide exists to support annual-testing pages without flattening all local timing into one generic statement.",
         "Utilities with notice ladders and 30-day or 60-day reminders deserve different CTA timing from rolling anniversary programs."

@@ -28,9 +28,9 @@
     },
     {
       "heading": "Quote pages should reflect the reporting burden",
-      "body": "For lead and sponsor pages, the marketable angle is not just test price. It is whether the tester can handle the reporting system the utility actually uses.",
+      "body": "For quote-prep and provider pages, the practical angle is not just test price. It is whether the tester can handle the reporting system the utility actually uses.",
       "bullets": [
-        "Portal-driven utilities often justify stronger commercial messaging than a simple annual reminder page.",
+        "Portal-driven utilities often justify stronger workflow-specific messaging than a simple annual reminder page.",
         "This is one reason metro and provider profiles need to point back down into the exact utility workflow."
       ]
     }
@@ -58,3 +58,4 @@
     }
   ]
 }
+

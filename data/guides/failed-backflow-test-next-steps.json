@@ -20,7 +20,7 @@
     },
     {
       "heading": "Keep the paperwork chain intact",
-      "body": "Repair completion is not the same thing as compliance completion. The utility or its vendor still needs the right test report in the right system.",
+      "body": "Repair completion is not the same thing as compliance completion. The utility or its reporting system still needs the right test report in the right system.",
       "bullets": [
         "Use the same governing utility workflow that handled the original notice.",
         "If the utility uses BSI or VEPO, make sure the follow-up tester and report path match the system rules."

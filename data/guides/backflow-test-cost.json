@@ -12,7 +12,7 @@
   "sections": [
     {
       "heading": "Routine test cost is only part of the exposure",
-      "body": "A cheap routine quote can still become expensive if the tester is not registered, the gauge is out of calibration, or the report is rejected by the utility's vendor.",
+      "body": "A cheap routine quote can still become expensive if the tester is not registered, the gauge is out of calibration, or the report is rejected by the utility's reporting system.",
       "bullets": [
         "Some cities charge reporting fees through platforms like BSI.",
         "Missed-test city intervention fees can be added on top of the actual private test cost."

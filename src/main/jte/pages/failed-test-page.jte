@@ -78,7 +78,7 @@
 
     <section class="section section--tight failure-workflow-dual-lane">
         <div class="container content-grid">
-            <article class="detail-card detail-card--key" id="office-send-path">
+            <article class="detail-card detail-card--key" id="records-send-path">
                 <span class="eyebrow">Failure overview</span>
                 <h2>What the failed notice means</h2>
                 <p>A failed result is not closed until the repair, retest, and accepted submission all happen. Use this page to understand the sequence before anyone treats the job as complete.</p>

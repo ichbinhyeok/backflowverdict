@@ -121,7 +121,7 @@
   ],
   "costBand": {
     "testingRange": "Testing is market-priced, but Queen Creek adds a $14.95 filing fee per report in the regular cycle.",
-    "repairRetestRange": "Repair and retest costs rise if the first vendor cannot get accepted or if the report is rejected for credential issues.",
+    "repairRetestRange": "Repair and retest costs rise if the first tester cannot get accepted or if the report is rejected for credential issues.",
     "pricingNotes": "The strongest local cost signal is avoiding rejected BSI submissions and repeated test fees."
   },
   "sources": [
