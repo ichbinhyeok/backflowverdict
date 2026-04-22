@@ -66,19 +66,16 @@
                     <div class="section-heading">
                         <span class="eyebrow">Next-step paths</span>
                         <h2>Start with the page that matches your situation</h2>
-                        <p>This page is the rule hub. Homeowners should stay on the rule path. Office staff who already know the situation can use the brief buttons after they confirm the local workflow.</p>
+                        <p>This page is the rule hub. Use it to confirm the governing utility workflow, then open the focused page that matches the actual situation on site.</p>
                     </div>
                     <div class="card-grid">
                         @if (annualTestingPath != null)
                             <article class="detail-card detail-card--key">
                                 <span class="eyebrow">Routine notice</span>
                                 <h2>Annual testing</h2>
-                                <p>Open the annual page when the utility notice is about routine testing, timing, and accepted submission methods. Office staff can then create the customer brief from the same local rule path.</p>
+                                <p>Open the annual page when the utility notice is about routine testing, timing, and accepted submission methods.</p>
                                 <div class="card-actions">
                                     <a class="button button--secondary" href="${annualTestingPath}">Open annual testing</a>
-                                    @if (annualHandoffPath != null && !annualHandoffPath.isBlank())
-                                        <a class="button button--secondary" href="${annualHandoffPath}">Office staff: create annual brief</a>
-                                    @endif
                                 </div>
                             </article>
                         @endif
@@ -86,12 +83,9 @@
                         <article class="detail-card detail-card--warm">
                             <span class="eyebrow">Urgent status</span>
                             <h2>Failed test</h2>
-                                <p>Open the failed-test page when the device already failed and you need the repair, retest, and reporting order. Office staff can then build the brief that explains the failure clearly to the customer.</p>
+                                <p>Open the failed-test page when the device already failed and you need the repair, retest, and reporting order.</p>
                                 <div class="card-actions">
                                     <a class="button button--primary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/failed-test">Open failed-test steps</a>
-                                    @if (failedHandoffPath != null && !failedHandoffPath.isBlank())
-                                        <a class="button button--secondary" href="${failedHandoffPath}">Office staff: create failed-test brief</a>
-                                    @endif
                                 </div>
                             </article>
 

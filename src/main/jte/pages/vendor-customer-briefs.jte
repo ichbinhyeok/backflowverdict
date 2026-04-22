@@ -158,23 +158,23 @@
     <section class="section section--tight" id="setup-package">
         <div class="container">
             <div class="section-heading">
-                <span class="eyebrow">Manual office setup</span>
-                <h2>Need this aligned to one real office, not just used once?</h2>
-                <p>The paid setup layer is not a generic branding job. It is a narrow office-alignment offer for a small busy backflow shop that wants annual-notice and failed-test briefs ready in its own sender style.</p>
+                <span class="eyebrow">One-office setup</span>
+                <h2>Need one office-ready version of this workflow?</h2>
+                <p>This paid layer is for one small busy backflow office that wants the free annual-notice and failed-test brief aligned to its own sender line, default wording, and starter utilities. It is workflow alignment, not generic branding work.</p>
             </div>
             <div class="content-grid" style="margin-bottom: 0.9rem;">
                 <article class="detail-card detail-card--key">
-                    <span class="eyebrow">Pilot setup</span>
-                    <h3>$149 one-time for one office</h3>
-                    <p>This pilot offer covers one office, one annual-notice default brief, one failed-test default brief, sender defaults, PDF wording cleanup, about 1 to 3 starter utilities, and one revision round.</p>
+                    <span class="eyebrow">Pilot offer</span>
+                    <h3>$149 one-time</h3>
+                    <p>One office. One annual default brief. One failed-test default brief. Sender-line alignment. Customer PDF wording cleanup. About 1 to 3 starter utilities. One revision round after the first draft.</p>
                 </article>
 
                 <article class="detail-card">
                     <span class="eyebrow">How it works</span>
-                    <h3>Email first, then a short manual setup</h3>
+                    <h3>Email first, then one short intake</h3>
                     <ul class="detail-list">
-                        <li>Email in with your office and utility mix</li>
-                        <li>We confirm fit for the annual / failed workflow</li>
+                        <li>Email in with your office and the utilities you handle most</li>
+                        <li>We confirm the fit for annual-notice and failed-test handoff work</li>
                         <li>You send the short intake and payment</li>
                         <li>First draft comes back within 3 business days</li>
                     </ul>
@@ -182,14 +182,14 @@
             </div>
             <div class="card-grid card-grid--three">
                 <article class="detail-card detail-card--key">
-                    <span class="eyebrow">What setup does</span>
-                    <h3>Turn the free workflow into your office version</h3>
+                    <span class="eyebrow">What you get back</span>
+                    <h3>Turn the free workflow into one office-ready lane</h3>
                     <ul class="detail-list">
-                        <li>Align the sender line with your company, phone, and email</li>
-                        <li>Set one annual-notice default brief</li>
-                        <li>Set one failed-test default brief</li>
-                        <li>Clean up the customer PDF header and wording</li>
-                        <li>Prepare sample briefs for the utilities you handle most</li>
+                        <li>Sender line aligned to your company, phone, and email</li>
+                        <li>One annual-notice default brief your office can reuse</li>
+                        <li>One failed-test default brief your office can reuse</li>
+                        <li>Customer PDF wording cleaned up for real sends</li>
+                        <li>Sample briefs for about 1 to 3 starter utilities</li>
                     </ul>
                 </article>
 
@@ -206,7 +206,7 @@
 
                 <article class="detail-card">
                     <span class="eyebrow">Out of scope</span>
-                    <h3>What this setup does not try to replace</h3>
+                    <h3>What this does not include</h3>
                     <ul class="detail-list">
                         <li>It is not a CRM or team-seat rollout</li>
                         <li>It does not send email or SMS for your office</li>
@@ -231,8 +231,8 @@
         <div class="container">
             <div class="section-heading">
                 <span class="eyebrow">Setup intake</span>
-                <h2>What we need from one office to set this up well</h2>
-                <p>Keep the intake short. The goal is to align one office fast, not turn the setup into a discovery-heavy consulting project.</p>
+                <h2>What we need to set up one office fast</h2>
+                <p>Keep the intake short. The goal is to make one office ready to send annual-notice and failed-test briefs, not turn the setup into a discovery-heavy consulting project.</p>
             </div>
             <div class="content-grid">
                 <article class="detail-card">

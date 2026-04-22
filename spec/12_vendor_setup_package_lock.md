@@ -9,7 +9,7 @@ This document locks the current setup-led paid layer so future agents do not mis
 The setup package should stay narrow, sellable, and directly connected to the free handoff wedge.
 
 ## 2) Locked one-line definition
-BackflowPath setup aligns one small busy vendor office's annual-notice and failed-test customer-brief workflow so that office can send customer-ready links or PDFs in its own style without rewriting the same explanation every time.
+BackflowPath setup turns the free annual-notice and failed-test brief into one office-ready workflow for one small busy vendor office, with its own sender line, wording defaults, starter utilities, and customer PDF.
 
 ## 3) What setup is actually selling
 Setup is not selling software installation.
@@ -23,7 +23,7 @@ Setup is selling:
 
 The strongest plain-language version is:
 
-"We set up your customer brief workflow so your office can send annual notice and failed-test explanations in your own company style right away."
+"We set up one office-ready annual and failed-test brief workflow so your team can send customer-ready links or PDFs without rewriting the same explanation every time."
 
 ## 4) What setup is not
 The setup package is not:
@@ -67,8 +67,8 @@ The current locked setup scope is:
 - company name, phone, email, and sender line alignment
 - one annual-notice default brief template
 - one failed-test default brief template
-- PDF header and customer-facing wording cleanup
-- utility-specific sample briefs for about 1 to 3 recurring utilities
+- customer PDF header and wording cleanup
+- sample briefs for about 1 to 3 recurring utilities
 - one revision round
 - one short onboarding step such as a call or recorded walkthrough
 
@@ -131,7 +131,7 @@ It should not include:
 ## 12) Current packaging guidance
 The offer should be framed as:
 
-"customer brief workflow setup"
+"one-office customer brief workflow setup"
 
 It should not be framed as:
 - branding package
@@ -139,7 +139,7 @@ It should not be framed as:
 - vendor SaaS onboarding
 
 The commercial reason is simple:
-vendors care less about having a logo on a tool than about not having to explain the same annual-notice or failed-test situation from scratch every time.
+vendors care less about having a logo on a tool than about getting one office into a ready-to-send state for the exact annual-notice and failed-test situations they already handle every week.
 
 ## 13) Current pricing posture
 The current public pricing posture is now locked more tightly.

@@ -66,6 +66,7 @@
 - The preferred paid output model is vendor-first co-branding with BackflowPath proof and recovery rails, not default full white-label.
 - The paid setup layer is now locked more tightly as office workflow alignment, not as generic branding work and not as vendor SaaS onboarding.
 - The paid setup layer is now publicly priced as a one-office pilot setup at $149 one-time.
+- The paid setup message should now be read as one-office workflow alignment: sender line, annual and failed defaults, starter utilities, and customer PDF cleanup, not vague customization.
 - Setup operations are now locked to an email-first manual flow: fit check, short intake, payment, draft in 3 business days, one revision.
 - Public recurring is intentionally deferred until repeat-office usage proves that memory and reuse are strong enough to sell honestly.
 - The free vendor wedge is now explicitly locked as a product layer: strong enough for one real customer send, but not responsible yet for office-wide memory, accounts, or multi-user workflow.

@@ -121,7 +121,7 @@ The more realistic early revenue path is:
 - optional setup fee plus monthly subscription
 
 The strongest early paid offer is closer to:
-"we will set up your customer brief workflow for annual notices and failed tests"
+"we will turn the free annual-notice and failed-test brief into one office-ready workflow for your team"
 
 rather than:
 "buy a complete vendor platform."
@@ -192,7 +192,7 @@ The early commercial shape should be treated as:
 The current narrower internal assumption is lower than earlier rough brainstorming ranges because the product is still selling a tightly scoped workflow setup, not a full vendor platform.
 
 Working early ranges:
-- beta setup: roughly $149 to $199 for a narrow annual-notice plus failed-test alignment
+- beta setup: roughly $149 to $199 for one office, one annual-notice default, one failed-test default, sender-line alignment, and starter-utility samples
 - a later standard setup can rise once the workflow and sample utility pack are clearly repeatable
 - optional recurring, if offered early at all, should stay light and tied to memory and reuse rather than broad software promises
 

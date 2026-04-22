@@ -104,7 +104,7 @@
                 <div class="section-heading">
                     <span class="eyebrow">Annual notice sample</span>
                     <h2>After a passing annual test, before the utility filing is closed</h2>
-                    <p>This is the common “the test passed, but the notice is not truly closed yet” explanation surface.</p>
+                    <p>This is the common "the test passed, but the notice is not truly closed yet" explanation surface.</p>
                 </div>
                 <div class="vendor-demo-sample__actions">
                     <a class="button button--secondary" href="${annualStartPath}">Use this annual path</a>
@@ -126,7 +126,7 @@
                 <div class="section-heading">
                     <span class="eyebrow">Failed test sample</span>
                     <h2>When the customer needs the repair and retest explained in plain English</h2>
-                    <p>This is the “it failed, what now?” surface. It keeps the first send understandable without exposing the whole office packet.</p>
+                    <p>This is the "it failed, what now?" surface. It keeps the first send understandable without exposing the whole office packet.</p>
                 </div>
                 <div class="vendor-demo-sample__actions">
                     <a class="button button--secondary" href="${failedStartPath}">Use this failed-test path</a>
@@ -157,12 +157,12 @@
                 <div class="section-heading section-heading--vendor-dark">
                     <span class="eyebrow">Setup layer</span>
                     <h2>Need this aligned to one real office?</h2>
-                    <p>The next paid layer is still setup-led, not a full vendor SaaS. The free workflow proves the artifact. Setup aligns the sender line, annual note, failed-test wording, and sample PDFs for one office.</p>
+                    <p>The paid layer is a one-office setup, not a vendor platform. The free workflow proves the artifact first. Setup then aligns the sender line, annual wording, failed-test wording, starter utilities, and customer PDF for one office at $149 one-time.</p>
                 </div>
                 <ol class="step-list">
                     <li>Approve the artifact style on this page</li>
                     <li>Move into the office workflow page</li>
-                    <li>Ask for office setup only after the free flow feels useful</li>
+                    <li>Ask for setup only after the free flow already feels useful</li>
                 </ol>
                 @if (SiteRuntimeConfig.supportEmail() != null && !SiteRuntimeConfig.supportEmail().isBlank())
                     <div class="card-actions">

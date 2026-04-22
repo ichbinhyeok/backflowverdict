@@ -35,9 +35,6 @@
                 <div class="hero__actions">
                     <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Back to utility requirements</a>
                     <a class="button button--primary" href="${utility.utilityUrl()}">Open the official program page</a>
-                    @if (handoffBuilderPath != null && !handoffBuilderPath.isBlank())
-                        <a class="button button--secondary" href="${handoffBuilderPath}">Office staff: create annual brief</a>
-                    @endif
                     <a class="button button--secondary" href="#local-follow-up">Local follow-up options</a>
                 </div>
             </div>
@@ -70,27 +67,14 @@
                         <p class="detail-meta"><strong>Due basis:</strong> ${utility.dueBasis()}</p>
                     </article>
 
-                    <article class="detail-card${handoffBuilderPath != null && !handoffBuilderPath.isBlank() ? " detail-card--key" : ""}">
+                    <article class="detail-card">
                         <span class="eyebrow">Highlights</span>
-                        @if (handoffBuilderPath != null && !handoffBuilderPath.isBlank())
-                            <h2>Need to explain this to a customer?</h2>
-                            <p>If the office already has the annual notice in hand, create the customer brief here instead of rewriting the same explanation again.</p>
-                            <div class="card-actions">
-                                <a class="button button--secondary" href="${handoffBuilderPath}">Create annual customer brief</a>
-                            </div>
-                            <ul class="detail-list">
-                                @for (var highlight : focus.highlights())
-                                    <li>${highlight}</li>
-                                @endfor
-                            </ul>
-                        @else
-                            <h2>Highlights</h2>
-                            <ul class="detail-list">
-                                @for (var highlight : focus.highlights())
-                                    <li>${highlight}</li>
-                                @endfor
-                            </ul>
-                        @endif
+                        <h2>Highlights</h2>
+                        <ul class="detail-list">
+                            @for (var highlight : focus.highlights())
+                                <li>${highlight}</li>
+                            @endfor
+                        </ul>
                     </article>
                 </div>
 

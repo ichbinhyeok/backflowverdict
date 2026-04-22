@@ -18,12 +18,9 @@
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Failed-test workflow</span>
                 <h1>${utility.utilityName()} failed backflow test next steps</h1>
-                <p class="lede">Use the governing utility workflow first, then split the office work into two lanes: customer brief first, repair and retest second.</p>
+                <p class="lede">Use the governing utility workflow first, then move through repair, retest, and reporting in the order the utility expects.</p>
                 <div class="hero__actions">
-                    @if (handoffBuilderPath != null && !handoffBuilderPath.isBlank())
-                        <a class="button button--primary" href="${handoffBuilderPath}">Create failed-test brief</a>
-                    @endif
-                    <a class="button button--secondary" href="#repair-path">Repair / retest help</a>
+                    <a class="button button--primary" href="#repair-path">Repair / retest help</a>
                     <a class="button button--secondary" href="${utility.utilityUrl()}">Official program page</a>
                     <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Back to utility page</a>
                 </div>
@@ -84,19 +81,14 @@
     <section class="section section--tight vendor-failure-dual-lane">
         <div class="container content-grid">
             <article class="detail-card detail-card--key" id="office-send-path">
-                <span class="eyebrow">Office send path</span>
-                <h2>Need to explain the failure to the customer first?</h2>
-                <p>Use this when the office already has the failed result in hand and needs one clean explanation before repair scheduling starts bouncing between calls, texts, and PDFs.</p>
-                @if (handoffBuilderPath != null && !handoffBuilderPath.isBlank())
-                    <div class="card-actions">
-                        <a class="button button--primary" href="${handoffBuilderPath}">Create failed-test customer brief</a>
-                    </div>
-                @endif
+                <span class="eyebrow">Failure overview</span>
+                <h2>What the failed notice means</h2>
+                <p>A failed result is not closed until the repair, retest, and accepted submission all happen. Use this page to understand the sequence before anyone treats the job as complete.</p>
                 <ul class="detail-list">
-                    <li>Why the customer is hearing from you now</li>
-                    <li>What must happen next before compliance is restored</li>
-                    <li>What your office is still handling with the utility</li>
-                    <li>Whether the customer actually opened the brief</li>
+                    <li>The failure notice means the utility still considers the device out of compliance</li>
+                    <li>Repair alone does not close the file</li>
+                    <li>The passing retest has to happen before the deadline slips</li>
+                    <li>The accepted report is what actually closes the utility record</li>
                 </ul>
             </article>
 
