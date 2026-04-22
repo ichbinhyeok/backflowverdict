@@ -1,231 +1,31 @@
 # Context Tracker
 
 ## Current status
-- Workflow insertion is now a documented first-class strategy for BackflowPath, and the first handoff surfaces are live through `/vendors/customer-briefs`, `/handoffs/new`, `/handoffs/{internalToken}`, and `/handoffs/brief/{publicToken}`.
-- The handoff flow now acts as a vendor-to-customer value layer on top of the canonical utility and focus pages instead of trying to replace them as the main indexed destination.
-- A dedicated vendor strategy memo now locks the current understanding of the handoff feature as a narrow communication workflow first, not yet a full vendor SaaS.
-- The vendor handoff product definition is now locked more tightly around the office workflow: annual notice and failed-test situations where a small busy vendor office needs to send a customer explanation fast.
-- Product docs are merged and agent-readable.
-- Initial Spring Boot plus jte implementation is now scaffolded.
-- This is the fastest direct-monetization candidate in the portfolio.
-- Launch architecture is now locked to file-backed JSON and CSV, not a database.
-- Texas pilot content now includes 16 live utility records, 10 guides, annual-testing plus irrigation plus fire-line routes, failed-test routes, and sitemap plus robots endpoints.
-- The registry now includes 5 representative state hubs: Texas, Arizona, California, Colorado, and Florida.
-- Multi-state expansion now includes 64 non-Texas utilities, bringing the publishable utility surface to 80 file-backed utilities across the five-state set.
-- Texas remains the deepest current anchor, but the product is no longer surfaced as a Texas-only pilot.
-- Public directory routes are now gated behind explicit public provider inventory instead of placeholder CSV rows.
-- Round Rock and College Station approved-tester pages now include real official-list provider entries loaded from authority PDFs.
-- Freshness audit is now active through a scheduled ops service that writes a machine-readable report under `build/ops/`.
-- Publish eligibility now respects unresolved ops issues from `data/ops/broken_links.csv` and `data/ops/conflicts.csv`, not just `last_verified`.
-- Backend status endpoints now expose health and readiness at `/healthz` and `/readyz`.
-- A repeatable verification workflow now runs through `/ops/verification/run`, writes `build/ops/verification_report.json`, and records reviewer context in `data/ops/change_log.jsonl`.
-- Utility snapshot artifacts now exist under `storage/snapshots/`, so the latest verification workflow returns `status=ok` with zero findings.
-- Guide and state hub records now carry reviewer initials plus file-backed source evidence, and the same evidence contract is enforced across all published page families.
-- `/ops/**` endpoints are now protected by a local-or-token access rule, so verification routes are no longer world-open by default.
-- All 13 Texas pilot utilities now carry structured annual-testing, irrigation, and-or fire-line content blocks plus residential versus commercial notes where the official sources support them.
-- Utility and focus pages now include tester-routing CTA blocks, visible FAQ sections, and FAQPage schema output so the page hierarchy aligns more closely with the site-architecture spec.
-- Freshness audits now append a deduplicated summary event into `data/ops/change_log.jsonl` using ISO date strings.
-- Deployment now externalizes persistent file-backed roots for `data`, `ops` reports, `storage` snapshots, and `leads`, so deploys and restarts on Oracle Linux should not wipe source data or lead storage.
-- The Oracle install script now re-owns writable runtime directories for the app user after seeding so file writes keep working after redeploys.
-- Lead capture is now live through `/leads/new`, stored under the external leads root as JSONL plus CSV, and visible through the authenticated `/admin` inbox.
-- `/admin` now stays disabled until explicit credentials are set in env, then uses a session gate and supports JSON or CSV lead export for pre-deploy operations review.
-- State, guide, utility, focus, failed-test, and tester pages now emit breadcrumb structured data and carry denser internal links between the support layer and utility-first local pages.
-- Admin lead operations now include file-backed single-provider assignment records, utility-demand summaries, and provider-coverage gap reporting so sponsor routing can be operated without a database and without multi-buyer lead resale.
-- Metro support pages and public provider profile routes are now live, so the site can aggregate commercial surfaces without changing the canonical entity away from the utility.
-- Every representative state now sits at 16 utilities, so the five-state surface is no longer Texas-heavy by count even though Texas remains the most mature trust baseline.
-- Metro support coverage now includes 13 file-backed metro pages, including Northern Arizona and Southwest Florida clusters.
-- Evergreen support now includes portal-workflow, due-date, tester-authority, and residential-versus-commercial guides so the 80-utility surface has a thicker support layer.
-- Metro and provider pages now surface richer commercial routing context, including provider utility-coverage counts, cross-utility provider profiles, and guide links matched to each provider mix.
-- Provider inventory now has a backend-safe separation between public listings, sponsor-only assignable inventory, and hold-state drafts, so `/admin` can route leads without forcing sponsor rows onto public pages.
-- Official-list utilities no longer have cached-provider gaps; every `OFFICIAL_LIST` utility now has at least one public authority-backed provider row in the CSV registry.
-- Sponsor-only inventory now distinguishes ACTIVE routing rows from PROSPECT outreach rows, so private commercial prospects can be staged without accidentally entering public pages or lead assignment.
-- The public design system has been rebuilt around the new industrial-editorial draft direction: dark glass header, precision-ledger typography, local static photography assets, and asymmetrical utility-first page layouts.
-- Home, utility, state hub, approved-testers, provider profile, lead capture, and failed-test pages now visually track the Stitch drafts at near-copy level while preserving the current data and routing model.
-- Local draft imagery is now pinned under `src/main/resources/static/images/design/` instead of hotlinking the remote concept URLs.
-- Packaged runtime review now includes fresh desktop screenshots under `build/shots/` for the key public page families.
-- Guide, metro, and utility-focus pages now match the same industrial-editorial fidelity as the redesigned home, utility, provider, approved-testers, lead, and failed-test pages.
-- Provider profile and tester-directory pages have now been rebalanced after a broader desktop QA sweep, so those routes no longer read like sparse add-on surfaces beside the stronger draft-led core pages.
-- The provider CSV now includes real website-backed sponsor prospect inventory across Texas, Arizona, California, Colorado, and Florida metros, and `/admin` now reports sponsor prospect coverage by metro.
-- Sponsor activation is now file-backed through a private commercial-state ledger under the persistent leads root, so contract state survives redeploys without mutating the source CSV.
-- Public product branding, default site base URL, export filenames, delivery defaults, and Oracle deploy assets are now aligned to `BackflowPath` and `https://backflowpath.com`.
-- Docker deployment is now wired for OCI through a checked-in `Dockerfile`, `docker-compose.yml`, and GitHub Actions workflow targeting `shinhyeok22/backflow` on external port `8093` with `mem_limit: 512m`.
-- Lead routing now separates trusted utility context from submitted browser attribution, so sponsor auto-routing only runs when server-validated routing metadata survives verification.
-- Public lead consent and privacy copy now explicitly disclose one-to-many sponsor fan-out and clarify that unverified routing context is held for manual review instead of auto-routing.
-- Admin session mutations now require a per-session CSRF token for login, logout, lead assignment, and sponsor-status changes.
+- BackflowPath is tracked as an owner-facing utility-first compliance product.
+- The public site centers on utility, state, metro, guide, tester, failed-test, provider, and request-help pages.
+- Lead capture remains file-backed and manually reviewed through `/admin`.
+- Public provider browse remains secondary to the governing utility workflow.
 
 ## Latest decisions
-- Workflow insertion for this project means creating customer-ready backflow briefs vendors can actually send, not asking vendors to share a generic BackflowPath landing page.
-- Handoff surfaces stay `noindex` and canonically point back to the source-backed utility or focus page so search authority remains on the local rule surface.
-- The current push focus is annual-testing, failed-test, and irrigation or fire-line explanation flows, not CTR or form optimization.
-- The vendor handoff feature should currently be treated as a backflow-specific customer explanation tool for small busy vendors, not as a broad vendor portal or CRM.
-- The locked working sentence is: a vendor office can create a customer brief in about two minutes, send it as a link or PDF, and see whether it was opened.
-- The practical first user is usually the office admin or coordinator, not the field technician.
-- The likely first paid path is setup-led and pilot-driven, not pure self-serve SaaS.
-- The current commercial ladder is free sendable wedge first, paid setup second, and recurring convenience only after repeat-office use is proven.
-- The current 3-month cash target should be read as a setup-win target, not as an MRR target.
-- The preferred paid output model is vendor-first co-branding with BackflowPath proof and recovery rails, not default full white-label.
-- The paid setup layer is now locked more tightly as office workflow alignment, not as generic branding work and not as vendor SaaS onboarding.
-- The paid setup layer is now publicly priced as a one-office pilot setup at $149 one-time.
-- The paid setup message should now be read as one-office workflow alignment: sender line, annual and failed defaults, starter utilities, and customer PDF cleanup, not vague customization.
-- Setup operations are now locked to an email-first manual flow: fit check, short intake, payment, draft in 3 business days, one revision.
-- Public recurring is intentionally deferred until repeat-office usage proves that memory and reuse are strong enough to sell honestly.
-- The free vendor wedge is now explicitly locked as a product layer: strong enough for one real customer send, but not responsible yet for office-wide memory, accounts, or multi-user workflow.
-- The free wedge should not generate a brief without a recognizable site anchor and a sender line the customer can actually use.
-- "Load last job" must stay scoped to the current utility and issue path so one office workflow does not contaminate another.
-- Handoff CTA tracking must never log internal office-token paths as CTA sources; handoff surfaces should collapse to stable source labels instead.
-- Free-wedge metrics should be read as prepared signals, manual sent markers, and open activity unless a stronger delivery signal exists.
-- Free-wedge repeat usage should prefer a stored office key over vendor-slug or raw sender strings, and open metrics should be read on a deduped day basis rather than raw page-hit counts.
-- Package root is `owner.backflow`.
-- Canonical entity is the utility or water authority, not the city.
-- This is a local compliance plus next-action product, not a generic plumbing SEO site.
-- District or utility rule pages are canonical.
-- Official guidance and sponsor or provider directory content must never be blended.
-- Approved-tester pages require an official authority list; otherwise the route must stay on find-a-tester or stay hidden.
-- City pages are alias handling only. Clean mappings should redirect; weaker mappings can stay as noindex bridges.
-- Tester routing is the main commercial path.
-- Freshness checks and stale suppression are required for launch.
-- File-backed JSON and CSV stay as the source of truth through launch; do not switch to a database for launch.
-- This is an execution-hardening stage, not a pivot.
-- Texas is the seeded baseline state, not a permanent scope boundary.
-- Agents may expand into additional representative states when those utilities meet the same sourcing, verification, and stale-page gates.
-- Public brand and default hostname are now `BackflowPath` and `backflowpath.com`; package root remains `owner.backflow`.
-- Added an nginx reference config under `ops/nginx/` and clarified deployment docs because the app is healthy on host port `8093`, but the public `backflowpath.com` hostname is still serving another app through the edge routing layer.
-- Hardened the GitHub Actions deploy workflow to verify not just `127.0.0.1:8093/healthz` but also a host-routed `Host: backflowpath.com` request on the OCI host, so a wrong nginx upstream now fails deploy visibly.
-- Direct OCI inspection confirmed the root cause: `/etc/nginx/conf.d/backflow-verdict.conf` was still using `server_name backflowverdict.com`, so `backflowpath.com` fell through to the first default vhost and rendered AutoMoneyPit. The server-side nginx config now points `backflowpath.com` and `www.backflowpath.com` to `127.0.0.1:8093`.
-- Java stays on 21 for this project because Spring Boot 4 requires it; the new Docker and OCI deploy path follows that runtime.
-- Trusted lead routing now requires server-issued verification over utility, source page, and page-family metadata before sponsor auto-delivery can happen.
-- Explicit sponsor-routing consent now covers sharing a verified request with one or more active sponsors; unverified context is stored but not auto-routed.
-- Admin auth remains lightweight session auth, but CSRF is now mandatory on all admin POST mutations.
+- Keep the governing utility or water authority as the canonical entity.
+- Keep official guidance and public provider directories visibly separate.
+- Do not reintroduce private setup or internal routing surfaces into the published experience.
+- Manual request review is allowed; private internal routing workflows are not part of the active product.
+- Freshness, verification, and source clarity outrank conversion experiments.
 
 ## What changed this session
-- Added file-backed handoff composition, builder, result, and public brief routes so vendors can turn a live issue into a sendable customer artifact with tracked recovery links.
-- Reworked the handoff UI so vendor and customer value are explicit, customer-facing details are separated from internal-only notes, and the public brief front-loads next steps plus official paths.
-- Removed the old raw-ID fallback from the handoff flow so internal office views and public customer briefs resolve only through their intended tokens.
-- Split handoff measurement into office preview, prepared-to-send actions, marked-sent actions, and recipient opens so the workflow can be judged as a real push channel instead of a vague document generator.
-- Added a quick intake helper that can pull likely dates, account references, address text, and failed-test context out of pasted notice or result text.
-- Reframed vendor-facing copy across the vendor landing, failed-test surface, builder, and result flow around the actual office workflow: customer brief first, office record second.
-- Reworked the vendor design tone away from the older green-heavy public feel into a calmer slate and white office-product surface with better mobile behavior and clearer send-state hierarchy.
-- Tightened the builder around a quicker office path by locking utility and issue context when the sender enters from a utility-specific workflow page.
-- Reworked the public brief to front-load a plain-language summary for non-expert recipients: why they got it, what they need to do, and who is handling the filing.
-- Rebalanced the result surface so the customer brief is more obviously the primary sendable artifact and the office record reads as secondary follow-through.
-- Tightened the free wedge so last-job reuse now stays scoped to the current utility and issue path instead of leaking context across different office workflows.
-- Added minimum trust gates for free brief generation: a site anchor plus a usable vendor sender line are now required before a brief can be created.
-- Restored one-click official proof on the public brief so recipients can reach the local rule and official program without digging through the office surface.
-- Sanitized handoff CTA source logging so internal office-token URLs collapse to stable handoff source labels instead of leaking into CTA logs and ops views.
-- Wired the result surface so customer-brief opens can go through tracked CTA paths, and renamed result plus ops reporting copy to make clear that prepared-send and open numbers are still proxy signals, not hard delivery truth.
-- Tightened the builder preview so utility changes redraw the preview immediately and the sender line now matches server validation by accepting phone or email.
-- Reworked the public brief and customer PDF so the recipient always sees why the brief exists, while official-rule proof and vendor follow-up stay clearly separated.
-- Added a stored `officeKey` across handoffs and handoff events so repeat-office usage can be read more stably than vendor slug or sender email alone.
-- Switched result and ops open counting to deduped open-day logic, then added regression coverage so repeated same-day brief refreshes do not inflate the free-wedge readout.
-- Added a BackflowPath-specific workflow insertion strategy doc and linked it into the core agent read order.
-- Added a vendor strategy and revenue memo so future agents can resume the product-definition, ICP, and monetization discussion without chat history.
-- Expanded the vendor memo to include B2C-versus-B2B channel logic plus the first prospect-sourcing approach through official tester lists, portal-backed utilities, and narrow metro outreach.
-- Merged project-local docs with the independent spec set.
-- Added agent read order, context tracker, and missing spec files.
-- Locked the spec around file-backed storage, city alias behavior, approved-tester eligibility, and stale-page policy.
-- Scaffolded a runnable Gradle project with Spring Boot, jte, JSON and CSV data loading, seeded routes, and passing smoke tests.
-- Expanded the pilot-state content layer with additional Texas utility files, a stronger state hub, extra trust guides, and safer tester-route gating rules.
-- Replaced part of the placeholder provider layer with real public entries sourced from official Round Rock and College Station tester lists.
-- Extended the utility JSON contract to support annual-testing, irrigation, fire-line, and residential versus commercial notes.
-- Added a reusable utility subpage template, wired new routes into sitemap generation, and completed structured subpage content across the full 13-utility Texas pilot set.
-- Added a source freshness audit service and scheduled report writer with test coverage.
-- Tightened utility routing semantics so cities with registration details but no public authority list no longer pretend to have an official approved-tester page.
-- Reworked utility and focus templates to restore the missing provider CTA plus FAQ layer and reduced hero-heading overflow for long utility names after gstack visual review.
-- Wired ops broken-link and conflict logs into the actual publishability path, added backend health endpoints, and started writing deduplicated audit summaries into the versioned change log.
-- Added a verification workflow service, source-evidence audit, and verification report persistence so backend operations can reload files, rerun audits, and log reviewer-tagged verification runs without a database.
-- Backfilled all 13 utility snapshot artifacts and normalized Grand Prairie's snapshot path so verification no longer reports missing snapshot files.
-- Promoted missing source snapshot evidence to a real publish gate and extended that gate to evergreen guides and the Texas state hub after backfilling their evidence files.
-- Added Oracle Linux deployment assets under `ops/oracle/` with an install script, `systemd` unit, env template, and deploy notes.
-- Externalized runtime storage roots through `APP_DATA_ROOT`, `APP_LEADS_ROOT`, and ops report path overrides, plus a bootstrap config that creates the persistent directories on startup.
-- Added a file-backed lead pipeline, admin login page, inbox export endpoints, CTA links from public utility and tester pages into the lead capture flow, and removed source-level fallback admin credentials.
-- Added breadcrumb schema plus support-layer internal linking so evergreen guides, the Texas state hub, and local utility pages reinforce each other without shifting the canonical entity away from the utility.
-- Added Garland, Mesquite, and Talty SUD as new Texas pilot utilities with official source-backed annual-testing and-or irrigation and-or fire-line content, snapshot artifacts, city aliases, and official-list provider entries.
-- Added a file-backed lead assignment ledger under the external leads root, wired `/admin` to show assignable providers per utility, and enforced one active provider assignment per lead in the internal workflow.
-- Clarified the docs so future agents do not interpret the current Texas-heavy seed set as a Texas-only product boundary.
-- Generalized the home page, sitemap, guide layer, and state-guide template away from Texas-only assumptions so published state hubs render as a five-state surface.
-- Added representative-state selection notes under `ops/representative_states.md` and a reusable seeding script under `scripts/seed_representative_states.py`.
-- Seeded Arizona, California, Colorado, and Florida with state guides, utility JSON files, snapshot evidence files, city-alias rows, and initial official-list provider rows where public lists were available.
-- Deepened the five-state surface to a broader cluster shape by bringing Arizona, California, Colorado, and Florida up to twelve utilities each while Texas remains at sixteen.
-- Added Chandler, Scottsdale, Gilbert, Tempe, Glendale, Avondale, Buckeye, Marana, Queen Creek, Riverside, Roseville, San Jose, Sacramento, Santa Clara, Fresno, Modesto, Sacramento Suburban Water District, San Francisco Public Utilities Commission, Fort Collins, Greeley, Westminster, Longmont, Thornton, Grand Junction, Castle Rock, Englewood, Arvada, Fort Lauderdale, West Palm Beach, Palm Beach County, Tallahassee, Orange County Utilities, Orlando Utilities Commission, JEA, Sarasota County Public Utilities, and Manatee County Utilities utility pages with source-backed snapshots and route coverage.
-- Added official-list provider rows for Chandler, Tempe, Glendale, Avondale, Marana, Riverside, Sacramento, San Francisco, Castle Rock, Arvada, West Palm Beach, JEA, and Sarasota County so the approved-testers layer is no longer concentrated in Texas plus a few outliers.
-- Repointed the Fort Lauderdale city alias from the Broward county bridge to the new city utility page now that a direct city utility route exists.
-- Raised the regression suite to cover the five-state surface, including metro pages, provider profiles, new approved-tester pages, new focus pages, expanded city-alias redirects, and expanded sitemap expectations.
-- Added Anaheim, Patterson, Aspen, Durango, Hillsborough County, and Seminole County as new source-backed utility pages with snapshots, state coverage, and tester-routing support where official lists were available.
-- Added 11 metro support pages spanning Texas, Arizona, California, Colorado, and Florida so multi-utility commercial surfaces can exist without displacing utility-first canonicals.
-- Added new official-list provider rows for Anaheim, Patterson, Aspen, and Seminole County so the new approved-testers routes are not empty shells.
-- Added Prescott, Prescott Valley, Pasadena, Santa Rosa, Parker, Lafayette, Lee County, and Jupiter as new source-backed utility pages with snapshot evidence and city-alias coverage.
-- Added Northern Arizona and Southwest Florida metro pages, and widened Southern California, Northern California, Front Range, and South Florida metro clusters to absorb the new utility surface.
-- Added official or directory-safe provider inventory for Prescott, Prescott Valley, Pasadena, and Santa Rosa so approved-testers and find-a-tester routes stay populated where the source quality supports them.
-- Added four new evergreen guides covering reporting portals, anniversary versus calendar deadlines, county-certified versus utility-approved tester lists, and residential versus commercial rule splits.
-- Upgraded guide routing so guide pages now link into representative utilities, metros, and state hubs instead of stopping at a generic support layer.
-- Consolidated several duplicated provider rows into cross-utility metro-friendly profiles and added official-list provider inventory for Scottsdale, IRWD, and San Diego.
-- Expanded provider and metro templates with utility-coverage counts and support-guide links, and raised the regression suite to cover the 10-guide surface plus the richer provider inventory.
-- Added official-list provider rows for Austin, Fort Collins, Greeley, Modesto, and Manatee County so previously thin approved-tester routes now render real authority-backed entries.
-- Reworked admin lead routing to consume assignable inventory instead of public-only inventory, while keeping sponsor-only and hold-state provider rows off public routes.
-- Tightened sponsor-only assignability so only ACTIVE sponsor rows enter the inbox assignment queue, then seeded private sponsor prospect rows for DFW, Central Texas, Phoenix, Tucson, Sacramento, Riverside, Front Range, Greater Orlando, South Florida, and Southwest Florida commercial clusters.
-- Added a private sponsor inventory section to `/admin` with activation and demotion actions, and persisted those status flips into `provider-commercial-state.json` plus `.csv` under the leads root.
-- Switched jte runtime defaults to precompiled templates so packaged `bootJar` instances render pages instead of failing on first request.
-- Removed quote-style global CTA copy, shifted the home surface further toward link-first routing, and added favicon handling after gstack review of the packaged runtime.
-- Added request-host fallback for canonical URLs, `robots.txt`, and sitemap generation so a missing `APP_SITE_BASE_URL` no longer leaks `localhost:8080` into indexable output.
-- Replaced the earlier beige editorial theme with a new industrial green design system, rewrote the shared layout shell, and rebuilt the home, utility, state, approved-testers, provider, lead, and failed-test templates around the supplied Stitch mockups.
-- Downloaded and localized the draft imagery into `src/main/resources/static/images/design/` so the new hero, provider, state, approved, lead, and failed-test compositions do not depend on remote third-party image URLs at runtime.
-- Revalidated the public surface with `./gradlew.bat test`, rebuilt the packaged jar, and captured desktop screenshots for the redesigned home, Austin utility, Austin approved-testers, Pasadena provider, Texas state hub, Fort Worth failed-test, and Austin lead pages under `build/shots/`.
-- Removed `/admin` from the public shell, added a public metro nav path, and rebuilt the guide, utility-focus, and metro templates so the remaining public surfaces no longer feel like add-on pages beside the draft-driven core routes.
-- Ran a second packaged-runtime desktop sweep across state, guide, approved-testers, directory, provider, failed-test, and lead routes, then tightened the provider and tester templates where the page weight still felt too thin.
-- Recovered real browser QA after the earlier MCP permission failure by switching to local Playwright CLI with an installed Chromium binary, then re-ran desktop checks on the packaged runtime instead of relying on static screenshots alone.
-- Simplified the home landing page so it behaves like a true top-level SEO and routing surface rather than dumping the entire utility registry; the homepage now shows a six-utility featured set and routes the rest through state and metro hubs.
-- Tightened the home landing density again by capping the visible homepage guide set and reducing the featured utility count so the top-level SEO surface reads like a landing page instead of a registry dump, especially on iPhone SE-sized screens.
-- Added repeatable deep Playwright QA scripts under `output/playwright/qa/` and ran them sequentially against the packaged app on port 8090 across desktop and iPhone SE viewports, covering home, state, guide, utility, annual focus, approved testers, directory routes, failed-test, city aliases, metro flows, provider profiles, lead forms, and the admin gate.
-- Verified the final deep QA pass with no internal console errors, no internal page errors, no internal response errors, and full scenario passes on both desktop and iPhone SE; any synthetic QA lead created during testing was scrubbed from `storage/leads`.
-- Tightened mobile hit areas and readability after a layout sweep exposed small header and footer tap targets, dense inline guide links, narrow provider title links, and a horizontally scrolling approved-testers table.
-- Converted the official tester table into a responsive stacked layout on small screens, promoted lingering text links in guide, metro, and failed-test surfaces into real button CTAs, and added wrapping safeguards for source, metadata, and detail text.
-- Re-ran packaged-runtime QA on port `8091` using Playwright CLI sessions after the polish pass, and the latest `layout-sweep-mobile-8091.json` now reports zero overflow offenders, zero tiny-text warnings, and zero small tap targets across the representative iPhone SE surface.
-- Ran a second design-polish pass across the public desktop surface, adding stronger card hierarchy, softer key/warm/quiet card variants, refined section-heading rails, and a cleaner guide hero panel that no longer uses the raw slug as the main visual headline.
-- Revalidated the polished surface with a fresh packaged runtime on port `8092`; the current representative desktop screenshots for home, Texas state, Austin utility, and the verification guide are stored under `.playwright-cli/` and reflect the updated hierarchy.
-- Renamed the public product surface to `BackflowPath`, updated the default base URL to `https://backflowpath.com`, switched admin export filenames and delivery defaults to the new brand, and renamed Oracle deploy files plus paths to `backflowpath`.
-- Added a Docker build, persistent-volume compose runtime, and OCI GitHub Actions deploy workflow modeled after the CarMoneyPit deployment pattern but adapted for `BackflowPath`, external port `8093`, internal port `8080`, and persistent `data/storage/leads/ops/logs` mounts.
-- Added a lead-routing trust service that signs server-issued lead links, validates trusted utility context on submit, stores submitted attribution separately from trusted routing fields, and blocks sponsor auto-routing when the metadata cannot be verified.
-- Updated lead capture, privacy, and admin messaging so sponsor fan-out is disclosed explicitly, hold-state leads are visible as manual-review items, and verified routing context is called out as a prerequisite for auto-delivery.
-- Added lightweight per-session CSRF tokens to the admin login, logout, lead assignment, and sponsor-status forms plus regression tests for missing-token rejection.
-- Tightened free vendor-loop measurement so office identity no longer fragments by sender email: new handoffs now slug vendors from the company name first, and the channel report now groups repeat usage by company-first office identity before falling back to older slug or email data.
-- Tightened the free handoff wedge again so the product no longer implies BackflowPath sends email or SMS on the vendor's behalf: result and ops surfaces now describe manual send confirmation explicitly, and repeated same-day send confirmations collapse into one send-day signal instead of inflating the loop.
-- Tightened the public brief trust language so blank optional notes now fall back to annual-notice or failed-workflow-specific reasons instead of a vague “active job” line, and the public brief plus customer PDF now separate vendor job follow-up from the governing official rule links.
-- Tightened the free builder and result surfaces again: unsupported office issue types no longer stay visually locked into the builder, save-profile and save-assembly actions moved behind optional browser-memory disclosure, and the result header now leads with recipient-open state while deeper send-confirmation metrics stay lower on the page.
-- Tightened the free wedge again around the actual outbound job: the result page now keeps a single obvious first-send surface, pushes tracking and office-record layers behind disclosure, and renames filing language so the customer-facing artifact reads less like office software.
-- Reordered the vendor entry page so a DFW utility starter comes before the explanatory blocks, keeping the first outbound visit focused on choosing a utility and generating the brief instead of reading through product theory.
-- Simplified the public customer brief again by removing duplicate explanation copy; the public surface now leans on one plain-language summary plus a clearer utility-filing label instead of repeating the same reason twice.
-- Expanded the vendor strategy docs so future agents can resume from the new monetization view: free proves one sendable success, paid setup aligns the workflow to one office, and recurring should only be pushed after reuse proves that memory and re-generation matter.
-- Added a dedicated free-wedge lock document so future agents do not weaken the free artifact into teaserware or accidentally expand it into a pseudo-SaaS before the paid layers are proven.
-- Added a dedicated setup-package lock document so future agents do not misframe the first paid layer as generic branding, PDF customization, or premature full-SaaS onboarding.
-- Extended the vendor memo with a tighter setup framing, explicit setup scope, explicit exclusions, and a short setup intake checklist.
-- Added setup-package and intake framing directly onto the vendor workflow surface so the free tool now shows what manual office alignment means without weakening the free wedge.
-- Added a light setup callout on the handoff result surface so offices that just created a brief can see the next paid layer in context.
-- Added public pilot-price and manual-setup language onto the vendor workflow surface so the paid layer is now visible as a real office-setup offer, not just an abstract next step.
-- Added a builder-level setup callout so repeat-use offices can see the paid alignment layer while they are still inside the free workflow.
-- Updated the contact surface so vendor-office setup questions now have an explicit manual inquiry path instead of living only in internal notes.
-
- - Tightened repeat-usage reporting again so same-day mixed open events dedupe into one workflow-day at the headline level, while repeat vendor rows now count only recipient-facing public opens and recipient PDF downloads.
- - Tightened the free builder framing again so the first send path is clearer: paste notice or failed result, lock the site, add the next date and sender line, generate the brief, and leave browser memory plus office-only detail behind disclosure.
+- Removed legacy internal-routing language from the active read order and public docs.
+- Renamed the support and execution specs to match the owner-facing product model.
+- Rewrote privacy, request-help, corrections, and failed-test template copy toward public workflow language.
+- Kept public provider browse framed as secondary support after the governing rule is visible.
 
 ## Next recommended tasks
-1. Run a manual vendor push experiment on the tightened handoff flow, starting with annual notice and failed-test scenarios in the DFW utility set that already has the strongest local rule coverage.
-2. Validate the first true vendor ICP, likely small busy backflow-related shops where the office admin or coordinator handles the repeated customer explanation work.
-3. Run the first manual setup conversations using the newly locked intake list and learn which input items create the most friction.
-4. Watch whether the new pasted-text intake materially cuts builder time before adding any heavier PDF ingestion path.
-5. Learn which sender persona reuses the brief fastest: certified testers, irrigation contractors, or commercial and fire-line vendors.
-6. Decide whether verified lead links should move from the reused ops token to a dedicated lead-routing secret before production hardening is considered complete.
-7. Keep hardening trust and ops defaults, especially admin or ops exposure and freshness or verification discipline.
-8. Keep widening official-list-backed provider inventory in metros where approved routes still render with no cached entries.
-9. Replace placeholder provider inventory with an operable sponsor model before expanding directory routes further.
-10. Run one server-like deploy rehearsal with `./gradlew bootJar` plus `ops/oracle/install-or-update.sh` on a staging box or VM.
+1. Keep scrubbing residual internal-routing language from legacy implementation notes that are no longer part of the public product.
+2. Decide whether internal compatibility fields such as legacy provider status columns should be renamed later or simply documented as implementation leftovers.
+3. Keep widening source-backed utility coverage and public provider inventory where official lists support it.
+4. Keep hardening manual review, freshness, and indexing controls on the public owner-facing surface.
 
 ## Open questions
-- Which vendor persona should be the first true push channel for BackflowPath: certified testers, irrigation contractors, or commercial compliance vendors.
-- Whether the first paid offer should be setup fee plus monthly subscription or one simpler pilot price.
-- Whether the current text-and-link brief is enough for reuse, or whether a printable PDF artifact is required before outreach scales.
-- How much vendor-specific sender identity should be allowed before the brief starts weakening BackflowPath's trust position.
-- How much of launch should target residential versus commercial.
-- How to handle stale or incomplete approved-tester lists.
-- How thick the sponsor or provider operations layer needs to be before broader rollout.
-- When metro or provider aggregation should start, given that it is not the current implementation priority.
-- Whether lead-link signing should continue to reuse the ops verification token or move to a dedicated runtime secret before production launch.
+- Whether legacy internal provider-status fields should be renamed in code and data files after the public cleanup is complete.
+- How far metro and provider aggregation should expand before it begins to dilute utility-first trust.
+- Whether request-help follow-up needs a more explicit public service-level expectation on the site.

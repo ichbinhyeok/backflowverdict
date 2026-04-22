@@ -7,10 +7,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import owner.backflow.config.AppDataProperties;
-import owner.backflow.config.AppLeadsProperties;
 import owner.backflow.config.AppOpsProperties;
 import owner.backflow.files.BackflowRegistryService;
-import owner.backflow.service.ProviderCommercialStateRepository;
 
 class VerificationWorkflowServiceTest {
 
@@ -36,15 +34,10 @@ class VerificationWorkflowServiceTest {
         OpsIssueService opsIssueService = new OpsIssueService(dataProperties, opsProperties);
         opsIssueService.reload();
         SourceEvidenceService sourceEvidenceService = new SourceEvidenceService(dataProperties);
-        ProviderCommercialStateRepository providerCommercialStateRepository = new ProviderCommercialStateRepository(
-                new AppLeadsProperties(tempWorkspaceRoot.resolve("storage").resolve("leads").toString(), 600, 3)
-        );
-
         BackflowRegistryService registryService = new BackflowRegistryService(
                 dataProperties,
                 opsIssueService,
-                sourceEvidenceService,
-                providerCommercialStateRepository
+                sourceEvidenceService
         );
         registryService.reload();
 

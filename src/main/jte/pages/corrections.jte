@@ -68,7 +68,7 @@
             <article class="detail-card">
                 <span class="eyebrow">Evidence rule</span>
                 <h2>What counts as a strong correction</h2>
-                <p>The best correction requests point to a current authority page, portal, list, or notice. Provider claims can help flag a problem, but the public page should be updated only when the underlying source support is strong enough to defend the change.</p>
+                <p>The best correction requests point to a current authority page, portal, list, or notice. Provider feedback can help flag a problem, but the public page should be updated only when the underlying source support is strong enough to defend the change.</p>
             </article>
         </div>
     </section>

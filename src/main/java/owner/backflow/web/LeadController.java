@@ -2,9 +2,7 @@ package owner.backflow.web;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
-import owner.backflow.data.model.ProviderRecord;
 import owner.backflow.files.BackflowRegistryService;
 import owner.backflow.service.LeadAdminService;
 import owner.backflow.service.LeadRoutingContext;
@@ -60,9 +58,6 @@ public class LeadController {
         String resolvedUtilityName = registryService.findUtilityById(normalizedUtilityId)
                 .map(utility -> utility.utilityName())
                 .orElse(normalize(utilityName));
-        List<ProviderRecord> activeSponsors = trustedContext.autoRouteEligible()
-                ? registryService.findActiveSponsorsForUtility(trustedContext.utilityId())
-                : List.of();
         model.addAttribute("page", new PageMeta(
                 "Request backflow help | BackflowPath",
                 "Share your utility, deadline, or failed-test details so BackflowPath can review the next step.",
@@ -75,7 +70,6 @@ public class LeadController {
         model.addAttribute("selectedIssueType", normalize(issueType));
         model.addAttribute("pageFamily", normalizedPageFamily);
         model.addAttribute("routingToken", trustedContext.sourceContextVerified() ? normalize(routingToken) : "");
-        model.addAttribute("activeSponsorCount", activeSponsors.size());
         model.addAttribute("formError", formError(normalize(error)));
         return "pages/lead-capture";
     }
@@ -155,7 +149,7 @@ public class LeadController {
 
     private String formError(String errorCode) {
         return switch (errorCode) {
-            case "consent" -> "Consent is required before BackflowPath can store or route your request.";
+            case "consent" -> "Consent is required before BackflowPath can store and review your request.";
             case "rate-limit" -> "Too many requests came from this network in a short window. Please wait a few minutes and try again.";
             default -> "";
         };

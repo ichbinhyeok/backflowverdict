@@ -19,7 +19,7 @@ Only index pages with real local compliance value.
 - Thin city aliases
 - City bridge pages marked `noindex-bridge`
 - Approved-tester pages with no official list
-- Directory pages with no registry or sponsor inventory
+- Directory pages with no registry or public provider inventory
 
 ## Quality gates
 - Official source present
@@ -27,13 +27,13 @@ Only index pages with real local compliance value.
 - Source snapshot or excerpt stored in the file registry
 - Clear next-step workflow
 - Page mode set to `publish`
-- Clear distinction between official guidance and sponsor content
+- Clear distinction between official guidance and non-official directory content
 
 ## Core analytics
 - Organic landings by utility or district
 - CTA clicks by page family
 - Approved-tester CTR
-- Failed-test page conversion rate
+- Failed-test page request-help rate
 - Stale page rate
 
 ## Kill rules

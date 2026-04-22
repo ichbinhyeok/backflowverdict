@@ -32,22 +32,17 @@ import owner.backflow.data.model.StateGuideRecord;
 import owner.backflow.data.model.UtilityRecord;
 import owner.backflow.ops.OpsIssueService;
 import owner.backflow.ops.SourceEvidenceService;
-import owner.backflow.service.ProviderCommercialStateOverrideRecord;
-import owner.backflow.service.ProviderCommercialStateRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BackflowRegistryService {
     private static final Comparator<ProviderRecord> PROVIDER_SORT = Comparator
-            .comparing(ProviderRecord::isSponsored)
-            .reversed()
-            .thenComparing(ProviderRecord::coverageSize, Comparator.reverseOrder())
+            .comparing(ProviderRecord::coverageSize, Comparator.reverseOrder())
             .thenComparing(ProviderRecord::providerName);
 
     private final AppDataProperties dataProperties;
     private final OpsIssueService opsIssueService;
     private final SourceEvidenceService sourceEvidenceService;
-    private final ProviderCommercialStateRepository providerCommercialStateRepository;
     private final ObjectMapper objectMapper;
     private final CsvMapper csvMapper;
 
@@ -62,13 +57,11 @@ public class BackflowRegistryService {
     public BackflowRegistryService(
             AppDataProperties dataProperties,
             OpsIssueService opsIssueService,
-            SourceEvidenceService sourceEvidenceService,
-            ProviderCommercialStateRepository providerCommercialStateRepository
+            SourceEvidenceService sourceEvidenceService
     ) {
         this.dataProperties = dataProperties;
         this.opsIssueService = opsIssueService;
         this.sourceEvidenceService = sourceEvidenceService;
-        this.providerCommercialStateRepository = providerCommercialStateRepository;
         this.objectMapper = JsonMapper.builder().findAndAddModules().build();
         this.csvMapper = CsvMapper.builder().findAndAddModules().build();
     }
@@ -177,30 +170,12 @@ public class BackflowRegistryService {
 
     public List<ProviderRecord> findAssignableProvidersForUtility(String utilityId) {
         return sortProviders(providers.stream()
-                .filter(ProviderRecord::isAssignableListing)
-                .filter(provider -> provider.matchesUtility(utilityId)));
-    }
-
-    public List<ProviderRecord> findActiveSponsorsForUtility(String utilityId) {
-        return sortProviders(providers.stream()
-                .filter(ProviderRecord::isSponsorActiveListing)
+                .filter(ProviderRecord::isPublicListing)
                 .filter(provider -> provider.matchesUtility(utilityId)));
     }
 
     public List<ProviderRecord> listPublicProviders() {
         return sortProviders(providers.stream().filter(ProviderRecord::isPublicListing));
-    }
-
-    public List<ProviderRecord> listSponsorOnlyProviders() {
-        return sortProviders(providers.stream().filter(ProviderRecord::isSponsorOnlyListing));
-    }
-
-    public List<ProviderRecord> listActiveSponsorProviders() {
-        return sortProviders(providers.stream().filter(ProviderRecord::isSponsorActiveListing));
-    }
-
-    public List<ProviderRecord> listSponsorProspects() {
-        return sortProviders(providers.stream().filter(ProviderRecord::isSponsorProspectListing));
     }
 
     public List<ProviderRecord> listHeldProviders() {
@@ -226,7 +201,7 @@ public class BackflowRegistryService {
             return Optional.empty();
         }
         return providers.stream()
-                .filter(ProviderRecord::isAssignableListing)
+                .filter(ProviderRecord::isPublicListing)
                 .filter(provider -> provider.providerId().equalsIgnoreCase(providerId.trim()))
                 .findFirst();
     }
@@ -285,8 +260,7 @@ public class BackflowRegistryService {
         return providers.stream()
                 .filter(ProviderRecord::isPublicListing)
                 .filter(provider -> metro.utilityIds().stream().anyMatch(provider::matchesUtility))
-                .sorted(Comparator.comparing(ProviderRecord::isSponsored).reversed()
-                        .thenComparing((ProviderRecord provider) -> metroCoverageSize(provider, metro), Comparator.reverseOrder())
+                .sorted(Comparator.comparing((ProviderRecord provider) -> metroCoverageSize(provider, metro), Comparator.reverseOrder())
                         .thenComparing(ProviderRecord::providerName))
                 .toList();
     }
@@ -436,37 +410,25 @@ public class BackflowRegistryService {
                             row.phone(),
                             row.email(),
                             row.siteUrl(),
-                            row.sponsorStatus(),
+                            row.listingSource(),
                             row.pageLabel(),
                             row.lastReviewed()
                     ))
-                    .map(this::applyCommercialOverride)
                     .toList();
         } catch (IOException exception) {
             throw new IllegalStateException("Failed to parse provider CSV " + csvPath, exception);
         }
     }
 
-    private ProviderRecord applyCommercialOverride(ProviderRecord provider) {
-        Optional<ProviderCommercialStateOverrideRecord> override = providerCommercialStateRepository.findByProviderId(provider.providerId());
-        if (override.isEmpty()) {
-            return provider;
-        }
-        LocalDate reviewedOn = provider.lastReviewed();
-        if (override.get().updatedAt() != null) {
-            LocalDate overrideDate = override.get().updatedAt().toLocalDate();
-            if (reviewedOn == null || overrideDate.isAfter(reviewedOn)) {
-                reviewedOn = overrideDate;
-            }
-        }
-        return provider.withSponsorStatus(override.get().sponsorStatus(), reviewedOn);
-    }
-
     private ProviderListingStatus parseListingStatus(String rawStatus) {
         if (rawStatus == null || rawStatus.isBlank()) {
             return ProviderListingStatus.HOLD;
         }
-        return ProviderListingStatus.valueOf(rawStatus.trim().toUpperCase(Locale.US));
+        String normalized = rawStatus.trim().toUpperCase(Locale.US);
+        return switch (normalized) {
+            case "PUBLIC" -> ProviderListingStatus.PUBLIC;
+            default -> ProviderListingStatus.HOLD;
+        };
     }
 
     private List<StateGuideRecord> loadStateGuides(Path statesRoot) {

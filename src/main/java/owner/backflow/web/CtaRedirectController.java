@@ -51,19 +51,6 @@ public class CtaRedirectController {
     }
 
     private String sanitizeSource(String source) {
-        String normalized = source == null ? "" : source.trim();
-        if (normalized.isBlank()) {
-            return "";
-        }
-        if (normalized.startsWith("/handoffs/brief/")) {
-            return "handoff-brief";
-        }
-        if (normalized.endsWith("/packet")) {
-            return "handoff-packet";
-        }
-        if (normalized.startsWith("/handoffs/")) {
-            return "handoff-result";
-        }
-        return normalized;
+        return source == null ? "" : source.trim();
     }
 }

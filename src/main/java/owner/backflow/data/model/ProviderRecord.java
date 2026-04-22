@@ -14,7 +14,7 @@ public record ProviderRecord(
         String phone,
         String email,
         String siteUrl,
-        String sponsorStatus,
+        String listingSource,
         String pageLabel,
         LocalDate lastReviewed
 ) {
@@ -31,50 +31,12 @@ public record ProviderRecord(
         return listingStatus == ProviderListingStatus.PUBLIC;
     }
 
-    public boolean isSponsorOnlyListing() {
-        return listingStatus == ProviderListingStatus.SPONSOR_ONLY;
-    }
-
     public boolean isHoldListing() {
         return listingStatus == ProviderListingStatus.HOLD;
     }
 
     public boolean isAssignableListing() {
-        return isPublicListing() || isSponsorActiveListing();
-    }
-
-    public boolean isSponsored() {
-        return sponsorStatus != null && sponsorStatus.equalsIgnoreCase("ACTIVE");
-    }
-
-    public boolean isSponsorActiveListing() {
-        return isSponsorOnlyListing() && isSponsored();
-    }
-
-    public boolean isSponsorProspect() {
-        return sponsorStatus != null && sponsorStatus.equalsIgnoreCase("PROSPECT");
-    }
-
-    public boolean isSponsorProspectListing() {
-        return isSponsorOnlyListing() && isSponsorProspect();
-    }
-
-    public ProviderRecord withSponsorStatus(String updatedSponsorStatus, LocalDate reviewedOn) {
-        return new ProviderRecord(
-                providerId,
-                providerName,
-                coverageType,
-                coverageTargets,
-                listingStatus,
-                licenseOrCertificationNotes,
-                officialApprovalSourceUrl,
-                phone,
-                email,
-                siteUrl,
-                updatedSponsorStatus,
-                pageLabel,
-                reviewedOn == null ? lastReviewed : reviewedOn
-        );
+        return isPublicListing();
     }
 
     public int coverageSize() {

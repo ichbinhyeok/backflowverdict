@@ -14,11 +14,9 @@
 @param String testerPath = null
 @param String testerLabel = null
 @param String requestHelpPath
-@param String handoffBuilderPath = ""
 @param java.util.List<owner.backflow.web.FaqItem> faqItems
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 @param StateGuideRecord stateGuide = null
-@param int activeSponsorCount = 0
 
 @template.layouts.app(page = page, content = @`
     <section class="page-hero page-hero--focus">

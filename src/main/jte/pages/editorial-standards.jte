@@ -7,7 +7,7 @@
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Editorial standards</span>
                 <h1>Writing rules for a source-backed compliance site</h1>
-                <p class="lede">BackflowPath is not supposed to sound like a generic SEO education site. The public copy should clarify the local rule, preserve the official source, and keep sponsor or provider language visibly separate from utility authority. Editorial quality on this site is defined by trust, legibility, and restraint, not by word count alone.</p>
+                <p class="lede">BackflowPath is not supposed to sound like a generic SEO education site. The public copy should clarify the local rule, preserve the official source, and keep provider-directory language visibly separate from utility authority. Editorial quality on this site is defined by trust, legibility, and restraint, not by word count alone.</p>
             </div>
             <aside class="panel panel--hero">
                 <span class="stat-card__label" style="color: rgba(141, 224, 196, 0.9);">Core rule</span>
@@ -32,9 +32,9 @@
             </article>
 
             <article class="detail-card">
-                <span class="eyebrow">Monetization</span>
-                <h2>Commercial routing is downstream</h2>
-                <p>Lead capture, sponsor callbacks, and provider profiles can exist, but they should appear after the official workflow and source block. They are support actions, not the definition of the rule.</p>
+                <span class="eyebrow">Support actions</span>
+                <h2>Provider routing is downstream</h2>
+                <p>Request help and provider profiles can exist, but they should appear after the official workflow and source block. They are support actions, not the definition of the rule.</p>
             </article>
         </div>
     </section>

@@ -106,18 +106,6 @@
                             };
                         }
 
-                        if (sameOrigin && url.pathname === '/handoffs/new') {
-                            return {
-                                eventName: 'customer_brief_entry_click',
-                                params: {
-                                    utility_id: clean(url.searchParams.get('utilityId')),
-                                    issue_type: clean(url.searchParams.get('issueType')),
-                                    source_page: clean(url.searchParams.get('sourcePath')),
-                                    cta_text: text
-                                }
-                            };
-                        }
-
                         if (sameOrigin && (url.pathname.indexOf('/approved-testers') >= 0 || url.pathname.indexOf('/find-a-tester') >= 0)) {
                             return {
                                 eventName: 'tester_route_click',

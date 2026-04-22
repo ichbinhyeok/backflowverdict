@@ -1,20 +1,20 @@
 # 00 Strategy and Product Architecture
 
 ## 1) One-line thesis
-BackflowPath should be a utility-first compliance site for people who already have a backflow problem: they need to know whether testing is required, when it is due, what happens if the device fails, what it will cost, and who can handle it.
+BackflowPath should be a utility-first compliance site for people who already have a backflow problem: they need to know whether testing is required, when it is due, what happens if the device fails, what it may cost, and what the next safe local action is.
 
 ## 2) Why this vertical works
-- EPA treats cross-connection control and backflow prevention as a core drinking-water protection function, but obligations are enforced locally by cities, utilities, and water districts.
+- EPA and state policy set the frame, but obligations are enforced locally by cities, utilities, and water districts.
 - That fragmentation creates strong local search intent and weak national answers.
 - The highest-intent user already got a notice, has an annual deadline, failed a test, is installing irrigation, or needs to submit paperwork.
 - This makes the site a "local requirement plus next action" product, not a generic education site.
 
 ## 3) Primary users
 - Small commercial owners and operators: restaurants, retail, medical, mixed-use, car washes.
-- HOA, apartment, and facility managers handling annual compliance and vendor coordination.
+- HOA, apartment, and facility managers handling annual compliance across multiple addresses.
 - Homeowners with irrigation systems, pools, fire suppression lines, or assemblies that trigger testing.
 - Builders, remodelers, and buyers trying to confirm whether a device or test program applies.
-- Local testers and plumbers are secondary users but primary monetization partners.
+- Contractors and testers are secondary users who may browse the same public utility pages, but they are not the product center.
 
 ## 4) Query families
 ### Compliance lookup
@@ -73,8 +73,6 @@ The canonical entity should usually be the utility or water provider, not just t
 - `/metros/{metro}/backflow-testers`
 
 City alias pages should exist only where search demand is city-led and should route users to the governing utility page.
-If one city cleanly maps to one utility and adds no separate enforcement detail, use a 301 redirect to the utility page.
-Keep an indexable city page only when the city has its own code, notice flow, or measurable search demand that materially differs from the utility page.
 
 ## 7) Page modules
 Every local utility page should include:
@@ -111,10 +109,10 @@ Every local utility page should include:
 - Repair/retest range
 - What changes price
 
-7. Provider CTA
-- Tester directory
-- Quote request
-- Sponsor slot
+7. Next-action layer
+- Official tester list when one exists
+- Non-official directory only when clearly labeled
+- Request-help path after the rule is visible
 
 8. FAQ and internal links
 - Local FAQs
@@ -142,33 +140,20 @@ The moat is a normalized local rule graph, not content volume.
 - Reviewer initials and stale threshold
 - Last checked date
 
-### Additional moat layers
-- Entity resolution: many users search by city while compliance lives under a utility, district, or authority.
-- Update discipline: change log, stale-page flagging, and source snapshots.
-
-## 9) Monetization roadmap
-### Phase 1
-- Build trust first in pilot markets and collect a sponsor prospect list.
-- Optional call tracking or lead forms only after the page is trusted.
-
-### Phase 2
-- Start sponsor outreach to local testers and plumbers in the pilot markets.
-- Premium provider profiles with service area, certifications, and emergency repair CTA.
-- Pay-per-call or pay-per-form referrals to testers, irrigation contractors, and fire protection vendors.
-
-### Phase 3
-- Compliance reminder product for property managers: annual reminder emails or SMS.
-
-Retail affiliate is possible but should not be the primary plan.
+## 9) Product constraints
+- Do not hide the official workflow behind a directory or contact form.
+- Keep provider browse surfaces public, labeled, and secondary.
+- Manual request review is allowed; private internal routing flows are not part of the active product.
+- Trust and source clarity are more important than aggressive conversion mechanics.
 
 ## 10) Compliance and trust rules
 - Show exact official sources and `last verified` dates on every local page.
 - Never claim a tester is approved or certified unless the local authority says so.
-- Separate paid listings from official lists with zero ambiguity.
+- Separate non-official directories from official lists with zero ambiguity.
 - Do not provide legal or compliance guarantees.
 - A stale page is worse than no page in this category.
 - Use `/approved-testers` only when the authority publishes an official approved or certified list.
-- Use `/find-a-tester` when no official list exists and label the page as a sponsor or directory experience, not an authority list.
+- Use `/find-a-tester` when no official list exists and label the page as a non-official directory experience.
 - Freshness checks and stale-page suppression are launch-critical, not a later optimization.
 
 ## 11) Build sequence
@@ -177,15 +162,5 @@ Retail affiliate is possible but should not be the primary plan.
 3. Launch evergreen support guides first so local pages have strong internal links.
 4. Build 10-15 strong utility pages in the baseline state, then add one or two representative expansion states as soon as they can meet the same structured modules, source format, and freshness workflow.
 5. Ship refresh operations before broad expansion: source recheck queue, stale-page suppression, and change logs.
-6. Add `failed test` and either `approved testers` or `find a tester` pages once page eligibility rules are met.
+6. Add failed-test and tester-routing pages once page eligibility rules are met.
 7. Do not treat Texas-only depth as the goal. Expand to additional states when they add useful utility-pattern coverage and can still pass the same refresh SLA.
-
-## 12) Why it can win
-- It is boring, local, regulatory, and action-driven.
-- The searcher usually wants one practical answer, not a long explainer.
-- That makes it a strong "small but real" asset candidate for repeatable local SEO.
-
-## 13) Anchor sources
-- EPA Cross-Connection Control Manual: https://19january2021snapshot.epa.gov/sites/static/files/2015-09/documents/epa816r03002_0.pdf
-- Grand Prairie Cross-Connection Program example: https://www.gptx.org/files/sharedassets/public/v/2/departments/public-health-amp-environmental-quality/documents/cross-connection-control-and-prevention.pdf
-- Boynton Beach code example: https://codelibrary.amlegal.com/codes/boyntonbeach/latest/boyntonbeach_fl/0-0-0-55023

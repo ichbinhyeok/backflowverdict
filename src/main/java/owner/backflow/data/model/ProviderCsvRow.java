@@ -13,7 +13,7 @@ public record ProviderCsvRow(
         String phone,
         String email,
         String siteUrl,
-        String sponsorStatus,
+        String listingSource,
         String pageLabel,
         LocalDate lastReviewed
 ) {

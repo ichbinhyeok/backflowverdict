@@ -20,15 +20,7 @@ public record LeadInboxItem(
         return !availableProviders.isEmpty();
     }
 
-    public long sponsoredProviderCount() {
-        return availableProviders.stream().filter(ProviderRecord::isSponsored).count();
-    }
-
     public long publicProviderCount() {
         return availableProviders.stream().filter(ProviderRecord::isPublicListing).count();
-    }
-
-    public long sponsorOnlyProviderCount() {
-        return availableProviders.stream().filter(ProviderRecord::isSponsorOnlyListing).count();
     }
 }

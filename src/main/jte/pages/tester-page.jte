@@ -7,7 +7,6 @@
 @param UtilityRecord utility
 @param java.util.List<ProviderRecord> providers
 @param boolean official
-@param int activeSponsorCount = 0
 
 @template.layouts.app(page = page, content = @`
     <section class="page-hero">
@@ -17,7 +16,7 @@
                 <h1>${official ? utility.utilityName() + " approved testers" : utility.utilityName() + " find a tester"}</h1>
                 <p class="lede">
                     @if (official)
-                        This page mirrors cached entries from the governing authority's published tester list. Any paid placement stays clearly separate from the official list.
+                        This page mirrors cached entries from the governing authority's published tester list. Public provider profiles stay clearly separate from the official list.
                     @else
                         This is a provider discovery page, not an authority list. Use the official utility page for the compliance rule and reporting workflow first.
                     @endif
@@ -59,7 +58,7 @@
                         <div class="section-heading">
                             <span class="eyebrow">Official list entries</span>
                             <h2>Authority-first tester table</h2>
-                            <p>Use the governing authority list first. Provider profiles and sponsor routing remain secondary to the official approval context.</p>
+                            <p>Use the governing authority list first. Provider profiles remain secondary to the official approval context.</p>
                         </div>
                         @if (!providers.isEmpty())
                             <div class="table-wrap">
@@ -103,9 +102,9 @@
                         </div>
                         @if (!providers.isEmpty())
                             <div class="card-grid">
-                                @for (var provider : providers)
-                                    <article class="panel">
-                                        <span class="pill">${provider.isSponsored() ? "Featured directory" : "Directory"}</span>
+                                    @for (var provider : providers)
+                                        <article class="panel">
+                                        <span class="pill">Public directory</span>
                                         <h3><a href="/providers/${provider.providerId()}/">${provider.providerName()}</a></h3>
                                         <p>${provider.pageLabel()}</p>
                                         <ul class="detail-list">
@@ -153,7 +152,7 @@
                     <article class="trust-box">
                         <span class="trust-box__label">Official first</span>
                         <h2>Authority list context</h2>
-                        <p>Always confirm tester status on the governing utility list before treating a provider as approved. Paid placements are never blended into this public list.</p>
+                        <p>Always confirm tester status on the governing utility list before treating a provider as approved. Public provider profiles are never blended into this official list.</p>
                         <div class="card-actions">
                             <a class="button button--secondary" href="${utility.approvedTesterListUrl()}">${utility.officialListLabel()}</a>
                         </div>
@@ -169,8 +168,8 @@
                 @if (!providers.isEmpty())
                     <article class="panel panel--dashed">
                         <div class="section-heading">
-                            <span class="eyebrow">Commercial layer</span>
-                            <h2>Featured providers</h2>
+                            <span class="eyebrow">Directory highlights</span>
+                            <h2>Public provider profiles</h2>
                         </div>
                         @for (var provider : providers)
                             @if (providers.indexOf(provider) < 2)

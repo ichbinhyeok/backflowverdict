@@ -78,9 +78,6 @@ public final class RequestHelpPaths {
         if (normalized.startsWith("/utilities/")) {
             return "utility";
         }
-        if (normalized.startsWith("/vendors/")) {
-            return "vendor";
-        }
         if ("/contact".equals(normalized)) {
             return "contact";
         }

@@ -45,7 +45,7 @@
                         <span style="color: #ffffff;">${guides.size()}</span>
                     </div>
                 </div>
-                <p class="detail-meta" style="color: rgba(239, 241, 243, 0.74);">Use the metro layer to compare nearby workflows and commercial coverage, but drop into the exact utility page before acting on a rule.</p>
+                <p class="detail-meta" style="color: rgba(239, 241, 243, 0.74);">Use the metro layer to compare nearby workflows and public provider coverage, but drop into the exact utility page before acting on a rule.</p>
             </aside>
         </div>
     </section>
@@ -56,7 +56,7 @@
                 <span class="trust-box__label">How to use this</span>
                 <h2>Utility pages stay canonical</h2>
                 <p>${metro.summary()}</p>
-                <p>Use this metro page to compare nearby utility workflows and commercial options, then drop into the exact utility page before acting on a compliance step.</p>
+                <p>Use this metro page to compare nearby utility workflows and public provider options, then drop into the exact utility page before acting on a compliance step.</p>
             </article>
 
             <article class="detail-card">
@@ -112,7 +112,7 @@
             <div class="card-grid">
                 @for (var provider : providers)
                     <article class="detail-card">
-                        <span class="pill">${provider.isSponsored() ? "Sponsored" : "Public profile"}</span>
+                        <span class="pill">Public profile</span>
                         <h3><a href="/providers/${provider.providerId()}/">${provider.providerName()}</a></h3>
                         <p>${provider.pageLabel()}</p>
                         <ul class="detail-list">

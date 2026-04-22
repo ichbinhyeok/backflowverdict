@@ -8,12 +8,10 @@
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 @param String testerPath = null
 @param String testerLabel = null
-@param String handoffBuilderPath = ""
-@param int activeSponsorCount = 0
 
 @template.layouts.app(page = page, content = @`
-    <div class="vendor-failure-surface">
-    <section class="page-hero vendor-failure-hero">
+    <div class="failure-workflow-surface">
+    <section class="page-hero failure-workflow-hero">
         <div class="container page-frame">
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Failed-test workflow</span>
@@ -40,7 +38,7 @@
         </div>
     </section>
 
-    <section class="section vendor-failure-compliance">
+    <section class="section failure-workflow-compliance">
         <div class="container">
             <article class="panel panel--dark">
                 <div class="section-heading">
@@ -78,7 +76,7 @@
         </div>
     </section>
 
-    <section class="section section--tight vendor-failure-dual-lane">
+    <section class="section section--tight failure-workflow-dual-lane">
         <div class="container content-grid">
             <article class="detail-card detail-card--key" id="office-send-path">
                 <span class="eyebrow">Failure overview</span>
@@ -111,7 +109,7 @@
         </div>
     </section>
 
-    <section class="section section--tight vendor-failure-support">
+    <section class="section section--tight failure-workflow-support">
         <div class="container content-grid">
             <article class="detail-card" id="local-help">
                 <div class="visual-card">

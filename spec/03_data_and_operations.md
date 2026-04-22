@@ -1,12 +1,12 @@
 # 03 Data And Operations
 
-## 0) Storage model
+## 1) Storage model
 - No database at launch.
 - JSON is the source of truth for utilities, rule interpretations, page eligibility, and verification history.
-- CSV is used for bulk imports, exports, outreach lists, and provider inventories that are easy to review manually.
+- CSV is used for bulk imports, exports, and provider inventories that are easy to review manually.
 - Every published page must be derivable from versioned files plus linked official sources.
 
-## 1) Source classes
+## 2) Source classes
 - Utility manuals and compliance program pages
 - Municipal code pages
 - Approved tester lists
@@ -14,7 +14,7 @@
 - Fee schedules
 - Contact pages for cross-connection programs
 
-## 2) Registry design
+## 3) Registry design
 ### Utility registry JSON
 - path: `data/utilities/{state}/{utility-slug}.json`
 - utility_id
@@ -62,8 +62,8 @@
 - license_or_certification_notes
 - official_approval_source_url
 - phone/email/site
-- sponsor_status
 - page_label
+- listing_status
 - last_reviewed
 
 ### Operations logs
@@ -71,7 +71,7 @@
 - `data/ops/broken_links.csv`
 - `data/ops/conflicts.csv`
 
-## 3) Verification workflow
+## 4) Verification workflow
 1. Capture the official source URL and save a snapshot or durable excerpt.
 2. Extract exact requirement text and normalize fields into the utility JSON contract.
 3. Save `last_verified`, reviewer initials, and the next stale threshold.
@@ -79,13 +79,13 @@
 5. Re-check pilot markets monthly and long-tail markets on the defined cadence.
 6. Mark stale and suppress indexing when links break, rules change, or the stale threshold is exceeded.
 
-## 4) Refresh cadence
+## 5) Refresh cadence
 - Pilot utilities: monthly, stale after 45 days
 - State hubs: monthly
 - Evergreen guides: quarterly
 - Long-tail utilities: every 90-120 days, stale after 120 days
 
-## 5) Data quality gates
+## 6) Data quality gates
 - Never infer "approved tester" status without source support.
 - Never guess testing frequency.
 - Never publish if only secondary sources exist.
@@ -93,7 +93,7 @@
 - Never publish a city alias without a row in `data/city_aliases.csv`.
 - Keep an operations log for broken links and conflicting rules.
 
-## 6) Scale strategy
+## 7) Scale strategy
 - Start with 1 baseline state where public utility documentation is strong. The current seed set uses Texas, but the model is not meant to stay single-state.
 - Normalize the file contracts before adding more utilities.
 - Add one representative second state as soon as the team can preserve the same source evidence, verification cadence, and stale-page suppression rules there.

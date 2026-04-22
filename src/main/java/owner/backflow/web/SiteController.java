@@ -170,8 +170,8 @@ public class SiteController {
     @GetMapping("/privacy")
     public String privacyPage(Model model) {
         model.addAttribute("page", new PageMeta(
-                "Privacy and lead routing | BackflowPath",
-                "How BackflowPath stores lead requests, routes sponsor coverage, and handles follow-up.",
+                "Privacy and request handling | BackflowPath",
+                "How BackflowPath stores contact requests, preserves page context, and handles manual follow-up.",
                 canonical("/privacy"),
                 true
         ));
@@ -210,7 +210,7 @@ public class SiteController {
     public String editorialStandardsPage(Model model) {
         model.addAttribute("page", page(
                 "Editorial standards | BackflowPath",
-                "Editorial rules for separating official guidance, support content, and sponsored provider routing on BackflowPath.",
+                "Editorial rules for separating official guidance, support content, and non-official provider directories on BackflowPath.",
                 "/editorial-standards",
                 breadcrumbStructuredData(List.of(
                         new BreadcrumbItem("Home", canonical("/")),
@@ -397,16 +397,10 @@ public class SiteController {
         model.addAttribute("fireLinePath", utility.supportsFireLinePage() ? utilityPath(utility) + "fire-line" : null);
         model.addAttribute("testerPath", testerPath(utility));
         model.addAttribute("testerLabel", testerLabel(utility));
-        model.addAttribute("generalHandoffPath", "");
-        model.addAttribute("annualHandoffPath", handoffBuilderPath(utility, "general-testing", utilityPath(utility) + "annual-testing"));
-        model.addAttribute("failedHandoffPath", handoffBuilderPath(utility, "failed-test-repair", utilityPath(utility) + "failed-test"));
-        model.addAttribute("irrigationHandoffPath", "");
-        model.addAttribute("fireLineHandoffPath", "");
         model.addAttribute("faqItems", faqItems);
         model.addAttribute("stateGuide", registryService.findPublishedStateGuide(utility.state()).orElse(null));
         model.addAttribute("metros", registryService.listPublishedMetrosForUtility(utility.utilityId()));
         model.addAttribute("relatedGuides", utilitySupportGuides(utility));
-        model.addAttribute("activeSponsorCount", activeSponsorCount(utility));
         return "pages/utility-page";
     }
 
@@ -426,8 +420,7 @@ public class SiteController {
                 utility.utilityName() + " annual backflow testing",
                 utility.resolvedAnnualTesting(),
                 utility.resolvedAnnualTesting().summary(),
-                utilityPath(utility) + "annual-testing",
-                "general-testing"
+                utilityPath(utility) + "annual-testing"
         );
     }
 
@@ -459,8 +452,6 @@ public class SiteController {
         model.addAttribute("failedGuide", registryService.findPublishedGuide("failed-backflow-test-next-steps").orElse(null));
         model.addAttribute("testerPath", testerPath(utility));
         model.addAttribute("testerLabel", testerLabel(utility));
-        model.addAttribute("handoffBuilderPath", handoffBuilderPath(utility, "failed-test-repair", utilityPath(utility) + "failed-test"));
-        model.addAttribute("activeSponsorCount", activeSponsorCount(utility));
         model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
                 "failed-backflow-test-next-steps",
                 "backflow-test-cost",
@@ -481,7 +472,7 @@ public class SiteController {
         List<ProviderRecord> providers = registryService.findProvidersForUtility(utility.utilityId());
         model.addAttribute("page", page(
                 utility.utilityName() + " approved testers | BackflowPath",
-                "Official tester list and clearly labeled sponsor directory for " + utility.utilityName() + ".",
+                "Official tester list and clearly labeled non-official directory options for " + utility.utilityName() + ".",
                 utilityPath(utility) + "approved-testers",
                 breadcrumbStructuredData(List.of(
                         new BreadcrumbItem("Home", canonical("/")),
@@ -498,7 +489,6 @@ public class SiteController {
         model.addAttribute("utility", utility);
         model.addAttribute("providers", providers);
         model.addAttribute("official", true);
-        model.addAttribute("activeSponsorCount", activeSponsorCount(utility));
         return "pages/tester-page";
     }
 
@@ -534,7 +524,6 @@ public class SiteController {
         model.addAttribute("utility", utility);
         model.addAttribute("providers", providers);
         model.addAttribute("official", false);
-        model.addAttribute("activeSponsorCount", activeSponsorCount(utility));
         return "pages/tester-page";
     }
 
@@ -554,8 +543,7 @@ public class SiteController {
                 utility.utilityName() + " irrigation backflow rules",
                 utility.irrigation(),
                 utility.irrigation().summary(),
-                utilityPath(utility) + "irrigation",
-                "irrigation"
+                utilityPath(utility) + "irrigation"
         );
     }
 
@@ -575,8 +563,7 @@ public class SiteController {
                 utility.utilityName() + " fire line backflow rules",
                 utility.fireLine(),
                 utility.fireLine().summary(),
-                utilityPath(utility) + "fire-line",
-                "fire-line"
+                utilityPath(utility) + "fire-line"
         );
     }
 
@@ -740,8 +727,7 @@ public class SiteController {
             String titleStem,
             UtilityFocusContent focus,
             String description,
-            String path,
-            String handoffIssueType
+            String path
     ) {
         String requestHelpPath = LeadRoutingService.requestHelpPath(
                 utility.utilityId(),
@@ -772,28 +758,11 @@ public class SiteController {
         model.addAttribute("commercialNotes", utility.commercialNotes());
         model.addAttribute("testerPath", testerPath(utility));
         model.addAttribute("testerLabel", testerLabel(utility));
-        model.addAttribute(
-                "handoffBuilderPath",
-                ("general-testing".equals(handoffIssueType) || "failed-test-repair".equals(handoffIssueType))
-                        ? handoffBuilderPath(utility, handoffIssueType, path)
-                        : ""
-        );
         model.addAttribute("requestHelpPath", requestHelpPath);
         model.addAttribute("faqItems", utilityFaqItems(utility));
         model.addAttribute("stateGuide", registryService.findPublishedStateGuide(utility.state()).orElse(null));
         model.addAttribute("relatedGuides", utilitySupportGuides(utility));
-        model.addAttribute("activeSponsorCount", activeSponsorCount(utility));
         return "pages/utility-focus-page";
-    }
-
-    private String handoffBuilderPath(UtilityRecord utility, String issueType, String sourcePath) {
-        return UriComponentsBuilder.fromPath("/handoffs/new")
-                .queryParam("utilityId", utility.utilityId())
-                .queryParam("issueType", issueType)
-                .queryParam("sourcePath", sourcePath)
-                .build()
-                .encode()
-                .toUriString();
     }
 
     private List<GuideRecord> utilitySupportGuides(UtilityRecord utility) {
@@ -922,9 +891,7 @@ public class SiteController {
                 .append(",\"image\":\"").append(jsonEscape(canonical("/images/design/provider-map.jpg"))).append("\"")
                 .append(",\"keywords\":\"").append(jsonEscape(String.join(", ", providerServiceTypes(utilities)))).append("\"")
                 .append(",\"disambiguatingDescription\":\"")
-                .append(jsonEscape(provider.isSponsored()
-                        ? "Sponsored provider profile routed from mapped utility pages."
-                        : "Public provider profile grounded in utility or authority sources."))
+                .append(jsonEscape("Public provider profile grounded in utility or authority sources."))
                 .append("\"")
                 .append(",\"serviceType\":").append(jsonStringArray(providerServiceTypes(utilities)))
                 .append(",\"knowsAbout\":").append(jsonStringArray(List.of(
@@ -1388,7 +1355,4 @@ public class SiteController {
     private record BreadcrumbItem(String name, String url) {
     }
 
-    private int activeSponsorCount(UtilityRecord utility) {
-        return registryService.findActiveSponsorsForUtility(utility.utilityId()).size();
-    }
 }

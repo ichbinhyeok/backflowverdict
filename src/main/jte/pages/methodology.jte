@@ -103,7 +103,7 @@
                 <ul class="detail-list">
                     <li>The governing entity is resolved with enough confidence to support a canonical local page.</li>
                     <li>The page has source links, source excerpt support, freshness metadata, and a clear route classification.</li>
-                    <li>The commercial layer does not obscure the official workflow.</li>
+                    <li>Support and directory layers do not obscure the official workflow.</li>
                     <li>The page adds real local value instead of paraphrasing a generic guide.</li>
                 </ul>
             </article>
@@ -127,7 +127,7 @@
                 <span class="eyebrow">Public page signals</span>
                 <h2>What a strong page should show</h2>
                 <ul class="detail-list">
-                    <li>Official workflow before commercial routing</li>
+                    <li>Official workflow before provider routing</li>
                     <li>Source block and submission path near the top of the page</li>
                     <li>Verification code, review date, and correction path</li>
                     <li>Clear distinction between official tester routes and non-official directories</li>

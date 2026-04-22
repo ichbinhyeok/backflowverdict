@@ -16,7 +16,7 @@
             <aside class="panel panel--hero">
                 <span class="stat-card__label" style="color: rgba(141, 224, 196, 0.9);">Operating stance</span>
                 <div class="stat-card__value" style="color: #ffffff; font-size: clamp(2rem, 4vw, 2.7rem);">Authority first</div>
-                <p class="stat-card__meta" style="color: rgba(239, 241, 243, 0.74);">Official utility guidance stays primary. Provider profiles and lead routing are a separate layer and should never replace the governing rule.</p>
+                <p class="stat-card__meta" style="color: rgba(239, 241, 243, 0.74);">Official utility guidance stays primary. Provider profiles and request help are separate support layers and should never replace the governing rule.</p>
             </aside>
         </div>
     </section>
@@ -32,13 +32,13 @@
             <article class="detail-card">
                 <span class="eyebrow">Support layers</span>
                 <h2>State, metro, guide, and provider pages</h2>
-                <p>State guides, metro pages, and support guides exist to narrow down the correct utility workflow. Provider pages exist to make the commercial layer inspectable, not to imply utility approval where none is published.</p>
+                <p>State guides, metro pages, and support guides exist to narrow down the correct utility workflow. Provider pages exist to make public directory information inspectable, not to imply utility approval where none is published.</p>
             </article>
 
             <article class="detail-card">
                 <span class="eyebrow">Trust boundary</span>
-                <h2>Official guidance and sponsor routing stay separate</h2>
-                <p>If a utility publishes an official tester list, BackflowPath keeps that route distinct from any directory or sponsor option. If no official list exists, any provider discovery path is labeled as non-official.</p>
+                <h2>Official guidance and public provider browse stay separate</h2>
+                <p>If a utility publishes an official tester list, BackflowPath keeps that route distinct from any non-official directory. If no official list exists, provider discovery paths stay labeled as non-official.</p>
             </article>
         </div>
     </section>
@@ -64,7 +64,7 @@
                     <li>It is not the utility, district, or governing water authority.</li>
                     <li>It is not a legal opinion about local ordinance enforcement.</li>
                     <li>It is not a universal tester approval database.</li>
-                    <li>It is not a marketplace where commercial results rewrite the official workflow.</li>
+                    <li>It is not a marketplace where directory results rewrite the official workflow.</li>
                 </ul>
             </article>
         </div>
@@ -88,7 +88,7 @@
                 <h2>What BackflowPath avoids</h2>
                 <ul class="detail-list">
                     <li>Inventing approval or certification status for a tester</li>
-                    <li>Mixing sponsor placement into the official source block</li>
+                    <li>Mixing directory placement into the official source block</li>
                     <li>Keeping stale pages indexed after source evidence breaks or ages out</li>
                     <li>Replacing the utility's own rule page with generic educational copy</li>
                 </ul>
@@ -103,7 +103,7 @@
                 <h2>Recommended reading order</h2>
                 <ol class="step-list">
                     <li>Start on the utility page if you know the governing authority. If you only know the city or market, start on a state or metro page and click into the utility record.</li>
-                    <li>Read the official workflow, source block, submission method, and program phone before doing anything commercial.</li>
+                    <li>Read the official workflow, source block, submission method, and program phone before taking any provider action.</li>
                     <li>If the utility publishes an official tester list, use that route first. If no official list exists, treat any provider route as non-official discovery only.</li>
                     <li>If the rule looks stale, broken, or inconsistent with a current authority source, use the corrections path instead of guessing.</li>
                 </ol>
@@ -127,9 +127,9 @@
             </article>
 
             <article class="detail-card">
-                <span class="eyebrow">Commercial policy</span>
+                <span class="eyebrow">Provider policy</span>
                 <h2>How provider help fits</h2>
-                <p>Provider profiles and lead routing can help users act, but they should never become the only visible path to the answer. The utility program page, source evidence, and submission path stay public and auditable even when a commercial layer exists downstream.</p>
+                <p>Provider profiles and request help can help users act, but they should never become the only visible path to the answer. The utility program page, source evidence, and submission path stay public and auditable even when a directory layer exists downstream.</p>
             </article>
         </div>
     </section>

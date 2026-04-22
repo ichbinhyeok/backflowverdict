@@ -24,7 +24,7 @@
         <div class="container content-grid">
             <article class="detail-card">
                 <img src="/images/design/provider-logo.jpg" alt="Provider identity illustration" style="width: 7rem; height: 7rem; border-radius: 1rem; object-fit: cover; margin-bottom: 1rem;">
-                <span class="eyebrow kicker-rule">${provider.isSponsored() ? "Sponsored profile" : "Public provider profile"}</span>
+                <span class="eyebrow kicker-rule">Public provider profile</span>
                 <h1>${provider.providerName()}</h1>
                 <p class="lede">${provider.pageLabel()}</p>
                 <div class="hero__stats">
@@ -53,7 +53,7 @@
                     @if (provider.officialApprovalSourceUrl() != null && !provider.officialApprovalSourceUrl().isBlank())
                         <a class="button button--secondary" href="${CtaPaths.trackedPath(provider.officialApprovalSourceUrl(), "provider-profile", "", provider.providerId(), "authority-source", "/providers/" + provider.providerId() + "/")}">Authority source</a>
                     @endif
-                    <a class="button button--secondary" href="/claim-listing?requestType=claim-existing-profile">Claim or update this listing</a>
+                    <a class="button button--secondary" href="/contact">Report a profile issue</a>
                 </div>
             </article>
 
@@ -63,7 +63,7 @@
                     <h2 style="color: #ffffff;">Provider narrative and compliance posture</h2>
                 </div>
                 <p>${provider.licenseOrCertificationNotes()}</p>
-                <p>This profile does not override the utility's official rules. It exists to make the local provider layer inspectable and easier to route to.</p>
+                <p>This profile does not override the utility's official rules. It exists to make the public provider layer inspectable after the governing workflow is clear.</p>
             </article>
         </div>
     </section>
@@ -260,12 +260,12 @@
     <section class="section section--tight">
         <div class="container">
             <article class="detail-card">
-                <span class="eyebrow">Provider updates</span>
-                <h2>Own this company?</h2>
-                <p>If this is your company, you can claim the profile, request corrections, or ask about featured placement. Listing claims are reviewed manually before anything is changed.</p>
+                <span class="eyebrow">Profile maintenance</span>
+                <h2>Need a correction to this profile?</h2>
+                <p>If a phone number, website, or approval source is wrong, report it for manual review. BackflowPath updates public provider profiles only after checking the source record.</p>
                 <div class="card-actions">
-                    <a class="button button--secondary" href="/claim-listing?requestType=claim-existing-profile">Claim this listing</a>
-                    <a class="button button--secondary" href="/pricing">Pricing</a>
+                    <a class="button button--secondary" href="/corrections">Report a correction</a>
+                    <a class="button button--secondary" href="/contact">Contact BackflowPath</a>
                 </div>
             </article>
         </div>

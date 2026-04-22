@@ -89,8 +89,8 @@ class SiteControllerTest {
 
         mockMvc.perform(get("/privacy"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Privacy and lead routing notice")))
-                .andExpect(content().string(containsString("the same request may be shared with one or more active sponsors that cover the verified utility")))
+                .andExpect(content().string(containsString("Privacy and request handling")))
+                .andExpect(content().string(containsString("BackflowPath does not sell or fan out a request through a private dispatch queue.")))
                 .andExpect(content().string(containsString("noindex,follow")))
                 .andExpect(content().string(containsString("gtag/js?id=G-TEST123")));
 
@@ -145,7 +145,7 @@ class SiteControllerTest {
     }
 
     @Test
-    void vendorCustomerBriefRoutesReturnNotFound() throws Exception {
+    void legacyCustomerBriefRoutesReturnNotFound() throws Exception {
         mockMvc.perform(get("/vendors/customer-briefs"))
                 .andExpect(status().isNotFound());
 
@@ -464,12 +464,12 @@ class SiteControllerTest {
                 .getContentAsString();
 
         org.junit.jupiter.api.Assertions.assertTrue(
-                html.indexOf("Source block") < html.indexOf("Commercial layer"),
-                "Source block should appear before the commercial layer."
+                html.indexOf("Source block") < html.indexOf("Public provider direction"),
+                "Source block should appear before the provider layer."
         );
         org.junit.jupiter.api.Assertions.assertTrue(
-                html.indexOf("Submission methods and utility contact") < html.indexOf("Commercial layer"),
-                "Submission path should appear before the commercial layer."
+                html.indexOf("Submission methods and utility contact") < html.indexOf("Public provider direction"),
+                "Submission path should appear before the provider layer."
         );
     }
 

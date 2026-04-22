@@ -3,7 +3,6 @@ package owner.backflow.service;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.Base64;
-import java.util.Locale;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import owner.backflow.config.AppOpsProperties;
@@ -49,10 +48,10 @@ public class LeadRoutingService {
         String normalizedToken = normalize(routingToken);
 
         if (normalizedSourcePage.isBlank() || normalizedPageFamily.isBlank()) {
-            return hold("HOLD_UNVERIFIED_CONTEXT", "Lead was submitted without a trusted source-page context.");
+            return hold("HOLD_UNVERIFIED_CONTEXT", "Request was submitted without a trusted source-page context.");
         }
         if (normalizedToken.isBlank()) {
-            return hold("HOLD_UNVERIFIED_CONTEXT", "Lead was submitted without a trusted routing token.");
+            return hold("HOLD_UNVERIFIED_CONTEXT", "Request was submitted without a trusted routing token.");
         }
 
         String expectedToken = issueToken(normalizedUtilityId, normalizedSourcePage, normalizedPageFamily);
@@ -60,7 +59,7 @@ public class LeadRoutingService {
                 expectedToken.getBytes(StandardCharsets.UTF_8),
                 normalizedToken.getBytes(StandardCharsets.UTF_8)
         )) {
-            return hold("HOLD_UNVERIFIED_CONTEXT", "Lead routing metadata did not pass server-side validation.");
+            return hold("HOLD_UNVERIFIED_CONTEXT", "Request metadata did not pass server-side validation.");
         }
 
         if (normalizedUtilityId.isBlank()) {
@@ -69,14 +68,14 @@ public class LeadRoutingService {
                     "",
                     normalizedSourcePage,
                     normalizedPageFamily,
-                    "SOURCE_CONTEXT_VERIFIED",
-                    "Verified source-page context was captured without a utility-specific auto-route."
+                    "VERIFIED_PAGE_CONTEXT",
+                    "Verified page context was captured for manual review."
             );
         }
 
         UtilityRecord utility = resolveUtilityForSource(normalizedUtilityId, normalizedSourcePage);
         if (utility == null) {
-            return hold("HOLD_CONTEXT_MISMATCH", "Lead utility did not match the verified source page.");
+            return hold("HOLD_CONTEXT_MISMATCH", "Submitted utility did not match the verified source page.");
         }
 
         return new LeadRoutingContext(
@@ -84,8 +83,8 @@ public class LeadRoutingService {
                 utility.utilityName(),
                 normalizedSourcePage,
                 normalizedPageFamily,
-                "AUTO_ROUTE_ELIGIBLE",
-                "Verified utility routing metadata matched a server-issued token."
+                "VERIFIED_UTILITY_CONTEXT",
+                "Verified utility context matched a server-issued token and is ready for manual review."
         );
     }
 

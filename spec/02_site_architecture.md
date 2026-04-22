@@ -28,13 +28,13 @@
 - `/metros/{metro}/backflow-testers`
 - `/cities/{state}/{city-slug}/backflow-testing`
 
-## 2a) Route policy
+## 3) Route policy
 - `/approved-testers` is allowed only when the governing authority publishes an official approved or certified tester list.
 - `/find-a-tester` is the non-official provider discovery page when no official list exists.
 - City alias routes default to 301 redirects when a city maps cleanly to one utility and has no separate enforcement layer.
 - If a city route must exist for discovery but adds little unique content, keep it as a noindex bridge until it earns an indexed exception.
 
-## 3) Local page render order
+## 4) Local page render order
 1. H1 + direct answer
 2. Requirement verdict box
 3. Property/device matrix
@@ -42,24 +42,24 @@
 5. Failed-test module
 6. Cost band
 7. Local forms / portal / contact links
-8. Provider CTA
+8. Request-help and provider directory layer
 9. FAQ
 10. Sources and last verified
 
-## 4) Schema and structured content
+## 5) Schema and structured content
 - `FAQPage` for local and evergreen FAQs
 - `BreadcrumbList` for utility/state hierarchy
 - `HowTo` only for universal process pages, not local legal/compliance pages
 - No `LocalBusiness` on utility pages unless the page is actually a provider profile
 
-## 5) Internal linking system
+## 6) Internal linking system
 - Utility page -> annual testing / failed test / approved testers or find-a-tester
 - Utility page -> evergreen cost guide
-- Evergreen cost guide -> provider discovery pages
+- Evergreen cost guide -> utility pages and directory pages
 - Metro provider page -> nearby utility pages
 - State hub -> top utilities + evergreen support guides
 
-## 6) Programmatic page eligibility
+## 7) Programmatic page eligibility
 A local page should go live only if it has:
 - governing entity identified
 - official source URL
@@ -72,11 +72,11 @@ A local page should go live only if it has:
 Provider discovery pages should go live only if they have:
 - a mapped utility or metro target
 - explicit non-official labeling
-- provider or sponsor inventory
+- public provider inventory
 - service area clarity
 - review date
 
-## 7) Non-index or hold rules
+## 8) Non-index or hold rules
 - No official source
 - unclear governing authority
 - stale or contradictory requirements

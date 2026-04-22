@@ -6,7 +6,6 @@
 @param String selectedIssueType = ""
 @param String pageFamily = ""
 @param String routingToken = ""
-@param int activeSponsorCount = 0
 @param String formError = ""
 
 @template.layouts.app(page = page, content = @`
@@ -44,7 +43,7 @@
                         <ul class="detail-list">
                             <li>BackflowPath reviews the utility, issue type, and notes together.</li>
                             <li>If more detail is needed, follow-up can clarify the deadline, device type, or reporting path.</li>
-                            <li>If the utility context is verified and provider help fits the situation, the request can be shared with one or more active local sponsors that cover that utility.</li>
+                            <li>If public provider help fits the situation, the team can follow up with a manual recommendation after reviewing the rule context.</li>
                         </ul>
                     </article>
                 </div>
@@ -60,14 +59,14 @@
                 </article>
 
                 <article class="detail-card">
-                    <span class="eyebrow">Routing notice</span>
+                    <span class="eyebrow">Request notice</span>
                     <h2>What you are consenting to</h2>
-                    <p>BackflowPath keeps this request so the team can review the utility context, respond about next steps, and share the request with local sponsors only when the utility routing context is verified and the form consent covers sponsor routing.</p>
+                    <p>BackflowPath keeps this request so the team can review the utility context, respond about next steps, and follow up with public provider options when appropriate.</p>
                     <ul class="detail-list">
                         <li>Your request is reviewed alongside the local utility context attached to the lead link or saved request.</li>
-                        <li>If routing applies, the request may be shared with one or more active sponsors that cover the verified utility.</li>
-                        <li>If the routing metadata cannot be verified, BackflowPath stores the request for manual review and does not auto-route it to sponsors.</li>
-                        <li>Read the full <a href="/privacy">privacy and lead routing notice</a> before submitting.</li>
+                        <li>If the routing metadata cannot be verified, BackflowPath stores the request for manual review.</li>
+                        <li>BackflowPath does not treat this form as a private resale channel.</li>
+                        <li>Read the full <a href="/privacy">privacy and request handling notice</a> before submitting.</li>
                     </ul>
                 </article>
             </div>
@@ -148,7 +147,7 @@
                         <span>Consent</span>
                         <div class="checkbox-field">
                             <input name="consentToRouting" type="checkbox" value="yes" required>
-                            <p>I agree that BackflowPath may store this request, review the local utility context, and, when that routing context is verified, share the request with one or more active sponsors that cover the utility. I understand the request is handled under the <a href="/privacy">privacy and lead routing notice</a>.</p>
+                            <p>I agree that BackflowPath may store this request, review the local utility context, and follow up about next steps or public provider options. I understand the request is handled under the <a href="/privacy">privacy and request handling notice</a>.</p>
                         </div>
                     </label>
 

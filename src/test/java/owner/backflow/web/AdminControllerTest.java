@@ -102,50 +102,14 @@ class AdminControllerTest {
 
         mockMvc.perform(get("/admin").session(session))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Admin control room")))
+                .andExpect(content().string(containsString("Lead control room")))
                 .andExpect(content().string(containsString("Storage snapshot")))
-                .andExpect(content().string(containsString("Vendor workflow")))
-                .andExpect(content().string(containsString("File-backed store preview")))
+                .andExpect(content().string(containsString("Coverage watch")))
                 .andExpect(content().string(containsString("No leads captured yet")))
                 .andExpect(content().string(containsString("without provider coverage")))
-                .andExpect(content().string(containsString("sponsor-only providers kept off public routes")))
-                .andExpect(content().string(containsString("Sponsor prospect metros")))
-                .andExpect(content().string(containsString("Dallas-Fort Worth backflow testing")))
-                .andExpect(content().string(containsString("Private sponsor-only provider rows")))
-                .andExpect(content().string(containsString("Next Day Backflow Testing")));
-    }
-
-    @Test
-    void adminShowsVendorWorkflowSignalsAndStoragePreview() throws Exception {
-        MockHttpSession session = adminSession();
-
-        mockMvc.perform(post("/handoffs")
-                        .param("utilityId", "dallas-water")
-                        .param("issueType", "general-testing")
-                        .param("resultStatus", "pass")
-                        .param("submissionStatus", "submitted")
-                        .param("propertyLabel", "Main Street Retail Center")
-                        .param("siteAddress", "120 Main Street, Dallas, TX")
-                        .param("vendorCompanyName", "DFW Backflow Services")
-                        .param("vendorContactName", "Jordan Lee")
-                        .param("vendorPhone", "972-555-0144")
-                        .param("vendorEmail", "dispatch@dfwbackflow.example")
-                        .param("dueDate", "2026-05-01")
-                        .param("testDate", "2026-04-18")
-                        .param("sourcePath", "/vendors/customer-brief-demo"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrlPattern("/handoffs/*"));
-
-        mockMvc.perform(get("/admin").session(session))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Free handoff channel signals")))
-                .andExpect(content().string(containsString("DFW Backflow Services")))
-                .andExpect(content().string(containsString("Jordan Lee")))
-                .andExpect(content().string(containsString("972-555-0144")))
-                .andExpect(content().string(containsString("Main Street Retail Center")))
-                .andExpect(content().string(containsString("handoff_created")))
-                .andExpect(content().string(containsString("handoffs.jsonl")))
-                .andExpect(content().string(containsString("handoff-events.jsonl")));
+                .andExpect(content().string(containsString("public provider profiles")))
+                .andExpect(content().string(containsString("held provider rows")))
+                .andExpect(content().string(containsString("Most recent requests first")));
     }
 
     @Test
@@ -160,7 +124,7 @@ class AdminControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Tell us what is going on")))
                 .andExpect(content().string(containsString("Dallas Water Utilities")))
-                .andExpect(content().string(containsString("privacy and lead routing notice")));
+                .andExpect(content().string(containsString("privacy and request handling notice")));
 
         mockMvc.perform(post("/leads")
                         .param("fullName", "=Jordan Lee")
@@ -242,7 +206,7 @@ class AdminControllerTest {
         mockMvc.perform(post("/admin/leads/{leadId}/assign", leadId)
                         .session(session)
                         .param("providerId", "garland-polk-mechanical")
-                        .param("note", "Route to sponsor first")
+                        .param("note", "Start with the public provider list")
                         .param("_csrf", csrf(session)))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/admin"));
@@ -254,148 +218,13 @@ class AdminControllerTest {
         mockMvc.perform(get("/admin").session(session))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Polk Mechanical")))
-                .andExpect(content().string(containsString("Route to sponsor first")))
+                .andExpect(content().string(containsString("Start with the public provider list")))
                 .andExpect(content().string(containsString("4 assignable")))
-                .andExpect(content().string(containsString("4 public")))
-                .andExpect(content().string(containsString("0 sponsor-only")));
+                .andExpect(content().string(containsString("4 public profile(s)")));
     }
 
     @Test
-    void sponsorProspectCannotBeAssignedUntilActivated() throws Exception {
-        MockHttpSession session = adminSession();
-
-        mockMvc.perform(post("/leads")
-                        .param("fullName", "Jordan Park")
-                        .param("phone", "555-444-3333")
-                        .param("city", "Garland")
-                        .param("utilityId", "garland-water")
-                        .param("utilityName", "City of Garland Water Supply Protection")
-                        .param("propertyType", "commercial")
-                        .param("issueType", "annual-testing")
-                        .param("pageFamily", "utility")
-                        .param("notes", "Route only to active sponsors.")
-                        .param("sourcePage", "/utilities/texas/garland-water-utilities/")
-                        .param("rt", LeadRoutingService.issueToken(
-                                "garland-water",
-                                "/utilities/texas/garland-water-utilities/",
-                                "utility"
-                        ))
-                        .param("consentToRouting", "yes"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/leads/thanks"));
-
-        String leadId = leadAdminService.listLeads().getFirst().leadId();
-
-        mockMvc.perform(post("/admin/leads/{leadId}/assign", leadId)
-                        .session(session)
-                        .param("providerId", "next-day-backflow-texas")
-                        .param("note", "Should fail because this row is still a prospect")
-                        .param("_csrf", csrf(session)))
-                .andExpect(status().isBadRequest());
-    }
-
-    @Test
-    void sponsorProspectCanBeActivatedAndThenAssigned() throws Exception {
-        MockHttpSession session = adminSession();
-
-        mockMvc.perform(post("/admin/providers/{providerId}/sponsor-status", "next-day-backflow-texas")
-                        .session(session)
-                        .param("sponsorStatus", "ACTIVE")
-                        .param("note", "Contract signed")
-                        .param("_csrf", csrf(session)))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/admin"));
-
-        org.junit.jupiter.api.Assertions.assertTrue(Files.exists(LEADS_ROOT.resolve("provider-commercial-state.json")));
-        org.junit.jupiter.api.Assertions.assertTrue(Files.exists(LEADS_ROOT.resolve("provider-commercial-state.csv")));
-        org.junit.jupiter.api.Assertions.assertTrue(Files.readString(LEADS_ROOT.resolve("provider-commercial-state.json")).contains("next-day-backflow-texas"));
-        org.junit.jupiter.api.Assertions.assertTrue(Files.readString(LEADS_ROOT.resolve("provider-commercial-state.json")).contains("ACTIVE"));
-
-        mockMvc.perform(post("/leads")
-                        .param("fullName", "Casey Wu")
-                        .param("phone", "555-777-9999")
-                        .param("city", "Dallas")
-                        .param("utilityId", "dallas-water")
-                        .param("utilityName", "Dallas Water Utilities")
-                        .param("propertyType", "commercial")
-                        .param("issueType", "general-testing")
-                        .param("pageFamily", "metro")
-                        .param("notes", "Activated sponsor should be assignable.")
-                        .param("sourcePage", "/metros/texas/dallas-fort-worth-metroplex/backflow-testing")
-                        .param("rt", LeadRoutingService.issueToken(
-                                "dallas-water",
-                                "/metros/texas/dallas-fort-worth-metroplex/backflow-testing",
-                                "metro"
-                        ))
-                        .param("consentToRouting", "yes"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/leads/thanks"));
-
-        org.junit.jupiter.api.Assertions.assertTrue(Files.exists(LEADS_ROOT.resolve("lead-deliveries.jsonl")));
-        org.junit.jupiter.api.Assertions.assertTrue(Files.exists(LEADS_ROOT.resolve("lead-deliveries.csv")));
-        org.junit.jupiter.api.Assertions.assertTrue(Files.readString(LEADS_ROOT.resolve("lead-deliveries.jsonl")).contains("\"status\":\"QUEUED\""));
-        org.junit.jupiter.api.Assertions.assertTrue(Files.readString(LEADS_ROOT.resolve("lead-deliveries.jsonl")).contains("next-day-backflow-texas"));
-
-        String leadId = leadAdminService.listLeads().getFirst().leadId();
-
-        mockMvc.perform(post("/admin/leads/{leadId}/assign", leadId)
-                        .session(session)
-                        .param("providerId", "next-day-backflow-texas")
-                        .param("note", "Route to active sponsor")
-                        .param("_csrf", csrf(session)))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/admin"));
-
-        mockMvc.perform(get("/admin").session(session))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("1 sponsor-only providers active for internal lead routing")))
-                .andExpect(content().string(containsString("1 delivery email(s) queued for manual send or SMTP setup")))
-                .andExpect(content().string(containsString("Latest sponsor email delivery records")))
-                .andExpect(content().string(containsString("Route to active sponsor")))
-                .andExpect(content().string(containsString("Next Day Backflow Testing")));
-    }
-
-    @Test
-    void providerClaimAppearsInAdminInbox() throws Exception {
-        MockHttpSession session = adminSession();
-
-        mockMvc.perform(post("/claim-listing")
-                        .param("fullName", "Mina Kim")
-                        .param("companyName", "Backflow Field Services")
-                        .param("email", "mina@example.com")
-                        .param("phone", "555-818-2121")
-                        .param("website", "https://example.com")
-                        .param("serviceArea", "Dallas-Fort Worth")
-                        .param("requestType", "claim-existing-profile")
-                        .param("listingReference", "https://backflowpath.com/providers/example/")
-                        .param("notes", "Please review our profile and next steps.")
-                        .param("consentToReview", "yes")
-                        .header("Referer", "https://backflowpath.com/for-providers"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/claim-listing/thanks"));
-
-        mockMvc.perform(get("/admin").session(session))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("1 provider requests")))
-                .andExpect(content().string(containsString("Manual provider inbox")))
-                .andExpect(content().string(containsString("Backflow Field Services")))
-                .andExpect(content().string(containsString("Claim existing profile")))
-                .andExpect(content().string(containsString("https://backflowpath.com/providers/example/")))
-                .andExpect(content().string(containsString("Please review our profile and next steps.")));
-    }
-
-    @Test
-    void leadCaptureDoesNotExposeSponsorEmailsAndShowsConsentCopy() throws Exception {
-        MockHttpSession session = adminSession();
-
-        mockMvc.perform(post("/admin/providers/{providerId}/sponsor-status", "next-day-backflow-texas")
-                        .session(session)
-                        .param("sponsorStatus", "ACTIVE")
-                        .param("note", "Contract signed")
-                        .param("_csrf", csrf(session)))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/admin"));
-
+    void leadCaptureDoesNotExposeHeldDirectoryEmailsAndShowsConsentCopy() throws Exception {
         mockMvc.perform(get("/leads/new")
                         .param("utilityId", "dallas-water")
                         .param("source", "/utilities/texas/dallas-water-utilities/")
@@ -405,8 +234,9 @@ class AdminControllerTest {
                 .andExpect(content().string(containsString("Official guidance stays separate from provider help")))
                 .andExpect(content().string(containsString("Reviewed against the utility workflow")))
                 .andExpect(content().string(containsString("What you are consenting to")))
-                .andExpect(content().string(containsString("share the request with one or more active sponsors")))
-                .andExpect(content().string(not(containsString("Active sponsor emails"))))
+                .andExpect(content().string(containsString("follow up with public provider options when appropriate")))
+                .andExpect(content().string(containsString("BackflowPath does not treat this form as a private resale channel.")))
+                .andExpect(content().string(not(containsString("Held directory emails"))))
                 .andExpect(content().string(not(containsString("Israel@nextdaybackflowtesting.com"))));
     }
 
@@ -475,16 +305,6 @@ class AdminControllerTest {
 
     @Test
     void autoRoutingRequiresVerifiedRoutingToken() throws Exception {
-        MockHttpSession session = adminSession();
-
-        mockMvc.perform(post("/admin/providers/{providerId}/sponsor-status", "next-day-backflow-texas")
-                        .session(session)
-                        .param("sponsorStatus", "ACTIVE")
-                        .param("note", "Contract signed")
-                        .param("_csrf", csrf(session)))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/admin"));
-
         mockMvc.perform(post("/leads")
                         .param("fullName", "Unsigned Lead")
                         .param("phone", "555-101-2020")
@@ -497,7 +317,8 @@ class AdminControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/leads/thanks"));
 
-        org.junit.jupiter.api.Assertions.assertFalse(Files.exists(LEADS_ROOT.resolve("lead-deliveries.jsonl")));
+        String unsignedLeadJson = Files.readString(LEADS_ROOT.resolve("leads.jsonl"));
+        org.junit.jupiter.api.Assertions.assertTrue(unsignedLeadJson.contains("\"routingStatus\":\"HOLD_UNVERIFIED_CONTEXT\""));
 
         mockMvc.perform(post("/leads")
                         .param("fullName", "Signed Lead")
@@ -516,8 +337,10 @@ class AdminControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/leads/thanks"));
 
-        org.junit.jupiter.api.Assertions.assertTrue(Files.exists(LEADS_ROOT.resolve("lead-deliveries.jsonl")));
-        org.junit.jupiter.api.Assertions.assertTrue(Files.readString(LEADS_ROOT.resolve("lead-deliveries.jsonl")).contains("next-day-backflow-texas"));
+        String signedLeadJson = Files.readString(LEADS_ROOT.resolve("leads.jsonl"));
+        org.junit.jupiter.api.Assertions.assertTrue(signedLeadJson.contains("\"routingStatus\":\"VERIFIED_UTILITY_CONTEXT\""));
+        org.junit.jupiter.api.Assertions.assertTrue(signedLeadJson.contains("\"utilityId\":\"dallas-water\""));
+        org.junit.jupiter.api.Assertions.assertFalse(Files.exists(LEADS_ROOT.resolve("lead-deliveries.jsonl")));
     }
 
     @Test
@@ -535,13 +358,13 @@ class AdminControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/leads/thanks"));
 
-        org.junit.jupiter.api.Assertions.assertTrue(Files.readString(LEADS_ROOT.resolve("leads.jsonl")).contains("\"routingStatus\":\"SOURCE_CONTEXT_VERIFIED\""));
+        org.junit.jupiter.api.Assertions.assertTrue(Files.readString(LEADS_ROOT.resolve("leads.jsonl")).contains("\"routingStatus\":\"VERIFIED_PAGE_CONTEXT\""));
         org.junit.jupiter.api.Assertions.assertTrue(Files.readString(LEADS_ROOT.resolve("leads.jsonl")).contains("\"sourcePage\":\"/states\""));
         org.junit.jupiter.api.Assertions.assertFalse(Files.exists(LEADS_ROOT.resolve("lead-deliveries.jsonl")));
 
         mockMvc.perform(get("/admin").session(session))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Source context verified")))
+                .andExpect(content().string(containsString("Verified page context")))
                 .andExpect(content().string(containsString("/states")));
     }
 
@@ -552,9 +375,9 @@ class AdminControllerTest {
         mockMvc.perform(post("/admin/logout").session(session))
                 .andExpect(status().isForbidden());
 
-        mockMvc.perform(post("/admin/providers/{providerId}/sponsor-status", "next-day-backflow-texas")
+        mockMvc.perform(post("/admin/leads/{leadId}/assign", "missing-lead")
                         .session(session)
-                        .param("sponsorStatus", "ACTIVE")
+                        .param("providerId", "garland-polk-mechanical")
                         .param("note", "Missing token"))
                 .andExpect(status().isForbidden());
     }

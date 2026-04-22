@@ -11,16 +11,10 @@
 @param String fireLinePath = null
 @param String testerPath = null
 @param String testerLabel = null
-@param String generalHandoffPath = ""
-@param String annualHandoffPath = ""
-@param String failedHandoffPath = ""
-@param String irrigationHandoffPath = ""
-@param String fireLineHandoffPath = ""
 @param java.util.List<owner.backflow.web.FaqItem> faqItems
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 @param java.util.List<MetroRecord> metros = java.util.List.of()
 @param StateGuideRecord stateGuide = null
-@param int activeSponsorCount = 0
 
 @template.layouts.app(page = page, content = @`
     <section class="page-hero page-hero--utility">
@@ -305,9 +299,9 @@
 
                 <article class="panel panel--dashed">
                     <div class="section-heading">
-                        <span class="eyebrow">Commercial layer</span>
-                        <h2>Featured provider direction</h2>
-                        <p>Commercial routing stays clearly labeled below the official workflow. This block exists to frame provider discovery without implying authority status.</p>
+                        <span class="eyebrow">Provider browse layer</span>
+                        <h2>Public provider direction</h2>
+                        <p>Provider routing stays clearly labeled below the official workflow. This block exists to frame public provider discovery without implying authority status.</p>
                     </div>
                     <div class="card-grid">
                         <div class="mini-provider">
@@ -320,7 +314,7 @@
                         <div class="mini-provider">
                             <img src="/images/design/utility-provider-2.jpg" alt="Pressure vacuum breaker on an exterior wall">
                             <div>
-                                <strong>Sponsor layer stays separate</strong>
+                                <strong>Public directory stays separate</strong>
                                 <span>Provider help is reviewed separately from the official utility workflow and never replaces the authority guidance above.</span>
                             </div>
                         </div>
@@ -383,7 +377,7 @@
                 <article class="panel panel--dark">
                     <span class="eyebrow" style="color: rgba(197, 234, 223, 0.92);">Technical help</span>
                     <h2 style="color: #ffffff;">Need a direct contact path?</h2>
-                    <p>The utility program contact stays visible on-page so the commercial layer never becomes the only way to act.</p>
+                    <p>The utility program contact stays visible on-page so the provider layer never becomes the only way to act.</p>
                     <p><strong>${utility.phone()}</strong></p>
                 </article>
             </aside>
