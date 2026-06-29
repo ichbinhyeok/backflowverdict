@@ -19,6 +19,7 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import owner.backflow.config.AppOpsProperties;
 import owner.backflow.config.AppDataProperties;
 import owner.backflow.data.model.AliasMode;
 import owner.backflow.data.model.CityAliasCsvRow;
@@ -31,6 +32,7 @@ import owner.backflow.data.model.ProviderRecord;
 import owner.backflow.data.model.StateGuideRecord;
 import owner.backflow.data.model.UtilityRecord;
 import owner.backflow.ops.OpsIssueService;
+import owner.backflow.ops.OpsDates;
 import owner.backflow.ops.SourceEvidenceService;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +45,7 @@ public class BackflowRegistryService {
     private final AppDataProperties dataProperties;
     private final OpsIssueService opsIssueService;
     private final SourceEvidenceService sourceEvidenceService;
+    private final AppOpsProperties opsProperties;
     private final ObjectMapper objectMapper;
     private final CsvMapper csvMapper;
 
@@ -57,11 +60,13 @@ public class BackflowRegistryService {
     public BackflowRegistryService(
             AppDataProperties dataProperties,
             OpsIssueService opsIssueService,
-            SourceEvidenceService sourceEvidenceService
+            SourceEvidenceService sourceEvidenceService,
+            AppOpsProperties opsProperties
     ) {
         this.dataProperties = dataProperties;
         this.opsIssueService = opsIssueService;
         this.sourceEvidenceService = sourceEvidenceService;
+        this.opsProperties = opsProperties;
         this.objectMapper = JsonMapper.builder().findAndAddModules().build();
         this.csvMapper = CsvMapper.builder().findAndAddModules().build();
     }
@@ -121,7 +126,7 @@ public class BackflowRegistryService {
     }
 
     public List<UtilityRecord> listPublishedUtilities() {
-        LocalDate today = LocalDate.now();
+        LocalDate today = today();
         return utilitiesByKey.values().stream()
                 .filter(utility -> utility.isPublishable(today))
                 .filter(utility -> !opsIssueService.hasBlockingIssue(utility, today))
@@ -137,7 +142,7 @@ public class BackflowRegistryService {
     }
 
     public Optional<UtilityRecord> findPublishedUtility(String state, String slug) {
-        LocalDate today = LocalDate.now();
+        LocalDate today = today();
         return Optional.ofNullable(utilitiesByKey.get(key(state, slug)))
                 .filter(utility -> utility.isPublishable(today))
                 .filter(utility -> !opsIssueService.hasBlockingIssue(utility, today))
@@ -145,7 +150,7 @@ public class BackflowRegistryService {
     }
 
     public Optional<UtilityRecord> findUtilityById(String utilityId) {
-        LocalDate today = LocalDate.now();
+        LocalDate today = today();
         return Optional.ofNullable(utilitiesById.get(utilityId))
                 .filter(utility -> utility.isPublishable(today))
                 .filter(utility -> !opsIssueService.hasBlockingIssue(utility, today))
@@ -207,7 +212,7 @@ public class BackflowRegistryService {
     }
 
     public List<UtilityRecord> findPublishedUtilitiesForProvider(ProviderRecord provider) {
-        LocalDate today = LocalDate.now();
+        LocalDate today = today();
         return provider.coverageTargets().stream()
                 .map(utilitiesById::get)
                 .filter(java.util.Objects::nonNull)
@@ -219,7 +224,7 @@ public class BackflowRegistryService {
     }
 
     public List<MetroRecord> listPublishedMetros() {
-        LocalDate today = LocalDate.now();
+        LocalDate today = today();
         return metrosByKey.values().stream()
                 .filter(metro -> metro.isPublishable(today))
                 .sorted(Comparator.comparing(MetroRecord::title))
@@ -230,13 +235,13 @@ public class BackflowRegistryService {
         if (state == null || state.isBlank() || metroSlug == null || metroSlug.isBlank()) {
             return Optional.empty();
         }
-        LocalDate today = LocalDate.now();
+        LocalDate today = today();
         return Optional.ofNullable(metrosByKey.get(key(state, metroSlug)))
                 .filter(metro -> metro.isPublishable(today));
     }
 
     public List<MetroRecord> listPublishedMetrosForUtility(String utilityId) {
-        LocalDate today = LocalDate.now();
+        LocalDate today = today();
         return metrosByKey.values().stream()
                 .filter(metro -> metro.isPublishable(today))
                 .filter(metro -> metro.utilityIds().stream().anyMatch(id -> id.equalsIgnoreCase(utilityId)))
@@ -245,7 +250,7 @@ public class BackflowRegistryService {
     }
 
     public List<UtilityRecord> featuredUtilitiesForMetro(MetroRecord metro) {
-        LocalDate today = LocalDate.now();
+        LocalDate today = today();
         return metro.utilityIds().stream()
                 .map(utilitiesById::get)
                 .filter(java.util.Objects::nonNull)
@@ -279,9 +284,10 @@ public class BackflowRegistryService {
         if (state == null || state.isBlank()) {
             return Optional.empty();
         }
+        LocalDate today = today();
         return Optional.ofNullable(stateGuidesByState.get(state.trim().toLowerCase(Locale.US)))
-                .filter(guide -> guide.isPublishable(LocalDate.now()))
-                .filter(guide -> !opsIssueService.hasBlockingIssue(guide, LocalDate.now()))
+                .filter(guide -> guide.isPublishable(today))
+                .filter(guide -> !opsIssueService.hasBlockingIssue(guide, today))
                 .filter(guide -> !sourceEvidenceService.hasBlockingIssue(guide));
     }
 
@@ -292,7 +298,7 @@ public class BackflowRegistryService {
     }
 
     public List<StateGuideRecord> listPublishedStateGuides() {
-        LocalDate today = LocalDate.now();
+        LocalDate today = today();
         return stateGuidesByState.values().stream()
                 .filter(guide -> guide.isPublishable(today))
                 .filter(guide -> !opsIssueService.hasBlockingIssue(guide, today))
@@ -302,7 +308,7 @@ public class BackflowRegistryService {
     }
 
     public List<UtilityRecord> featuredUtilitiesForStateGuide(StateGuideRecord stateGuide) {
-        LocalDate today = LocalDate.now();
+        LocalDate today = today();
         return stateGuide.featuredUtilityIds().stream()
                 .map(utilitiesById::get)
                 .filter(java.util.Objects::nonNull)
@@ -313,7 +319,7 @@ public class BackflowRegistryService {
     }
 
     public List<GuideRecord> listPublishedGuides() {
-        LocalDate today = LocalDate.now();
+        LocalDate today = today();
         return guidesBySlug.values().stream()
                 .filter(guide -> guide.isPublishable(today))
                 .filter(guide -> !opsIssueService.hasBlockingIssue(guide, today))
@@ -332,11 +338,15 @@ public class BackflowRegistryService {
         if (slug == null || slug.isBlank()) {
             return Optional.empty();
         }
-        LocalDate today = LocalDate.now();
+        LocalDate today = today();
         return Optional.ofNullable(guidesBySlug.get(slug.trim().toLowerCase(Locale.US)))
                 .filter(guide -> guide.isPublishable(today))
                 .filter(guide -> !opsIssueService.hasBlockingIssue(guide, today))
                 .filter(guide -> !sourceEvidenceService.hasBlockingIssue(guide));
+    }
+
+    private LocalDate today() {
+        return OpsDates.today(opsProperties);
     }
 
     private List<UtilityRecord> loadUtilities(Path utilitiesRoot) {

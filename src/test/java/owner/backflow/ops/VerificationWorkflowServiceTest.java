@@ -17,17 +17,52 @@ class VerificationWorkflowServiceTest {
 
     @Test
     void verificationWorkflowReloadsDataAndWritesReportArtifacts() throws Exception {
+        WorkflowContext context = workflowContext("2026-06-29");
+
+        VerificationReport report = context.verificationWorkflowService().run("TL", "manual verification");
+
+        Assertions.assertEquals("warning", report.status());
+        Assertions.assertTrue(report.summary().publishedUtilityCount() >= 13);
+        Assertions.assertTrue(report.summary().publishedGuideCount() >= 6);
+        Assertions.assertTrue(report.summary().publishedStateGuideCount() >= 1);
+        Assertions.assertEquals(0, report.summary().errorCount());
+        Assertions.assertTrue(report.summary().warningCount() >= 1);
+        Assertions.assertTrue(report.findings().stream()
+                .anyMatch(finding -> "broken_source_links".equals(finding.code())));
+        Assertions.assertTrue(Files.exists(Path.of(context.opsProperties().freshnessReportPath())));
+        Assertions.assertTrue(Files.exists(Path.of(context.opsProperties().verificationReportPath())));
+        Assertions.assertTrue(
+                Files.readString(context.dataRoot().resolve("ops").resolve("change_log.jsonl")).contains("\"action\":\"verification_run\"")
+        );
+        Assertions.assertTrue(context.verificationWorkflowService().latestReport().isPresent());
+    }
+
+    @Test
+    void staleSuppressedRegistryRequiresReview() throws Exception {
+        WorkflowContext context = workflowContext("2026-09-01");
+
+        VerificationReport report = context.verificationWorkflowService().run("TL", "stale regression");
+
+        Assertions.assertEquals("needs-review", report.status());
+        Assertions.assertEquals(0, report.summary().publishedUtilityCount());
+        Assertions.assertTrue(report.summary().errorCount() >= 1);
+        Assertions.assertTrue(report.findings().stream()
+                .anyMatch(finding -> "no_published_utilities".equals(finding.code())));
+    }
+
+    private WorkflowContext workflowContext(String currentDate) throws IOException {
         Path tempWorkspaceRoot = prepareWorkspace();
         Path tempDataRoot = tempWorkspaceRoot.resolve("data");
         AppDataProperties dataProperties = new AppDataProperties(tempDataRoot.toString());
         AppOpsProperties opsProperties = new AppOpsProperties(
-                tempDir.resolve("build").resolve("ops").resolve("freshness_report.json").toString(),
+                tempDir.resolve("build").resolve("ops").resolve(currentDate).resolve("freshness_report.json").toString(),
                 "0 15 3 * * *",
                 false,
-                tempDir.resolve("build").resolve("ops").resolve("verification_report.json").toString(),
+                tempDir.resolve("build").resolve("ops").resolve(currentDate).resolve("verification_report.json").toString(),
                 true,
                 "",
-                7
+                7,
+                currentDate
         );
 
         ChangeLogService changeLogService = new ChangeLogService(dataProperties);
@@ -37,7 +72,8 @@ class VerificationWorkflowServiceTest {
         BackflowRegistryService registryService = new BackflowRegistryService(
                 dataProperties,
                 opsIssueService,
-                sourceEvidenceService
+                sourceEvidenceService,
+                opsProperties
         );
         registryService.reload();
 
@@ -55,22 +91,7 @@ class VerificationWorkflowServiceTest {
                 sourceEvidenceService,
                 opsProperties
         );
-
-        VerificationReport report = verificationWorkflowService.run("TL", "manual verification");
-
-        Assertions.assertEquals("ok", report.status());
-        Assertions.assertTrue(report.summary().publishedUtilityCount() >= 13);
-        Assertions.assertTrue(report.summary().publishedGuideCount() >= 6);
-        Assertions.assertTrue(report.summary().publishedStateGuideCount() >= 1);
-        Assertions.assertEquals(0, report.summary().errorCount());
-        Assertions.assertEquals(0, report.summary().warningCount());
-        Assertions.assertTrue(report.findings().isEmpty());
-        Assertions.assertTrue(Files.exists(Path.of(opsProperties.freshnessReportPath())));
-        Assertions.assertTrue(Files.exists(Path.of(opsProperties.verificationReportPath())));
-        Assertions.assertTrue(
-                Files.readString(tempDataRoot.resolve("ops").resolve("change_log.jsonl")).contains("\"action\":\"verification_run\"")
-        );
-        Assertions.assertTrue(verificationWorkflowService.latestReport().isPresent());
+        return new WorkflowContext(tempDataRoot, opsProperties, verificationWorkflowService);
     }
 
     private Path prepareWorkspace() throws IOException {
@@ -99,5 +120,12 @@ class VerificationWorkflowServiceTest {
         } catch (IOException exception) {
             throw new IllegalStateException("Failed to copy test data from " + sourcePath + " to " + targetPath, exception);
         }
+    }
+
+    private record WorkflowContext(
+            Path dataRoot,
+            AppOpsProperties opsProperties,
+            VerificationWorkflowService verificationWorkflowService
+    ) {
     }
 }

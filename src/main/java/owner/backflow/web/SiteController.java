@@ -1339,10 +1339,8 @@ public class SiteController {
                 latest = guide.lastReviewed();
             }
         }
-        for (StateGuideRecord stateGuide : registryService.listAllStateGuides()) {
-            if (stateGuide.isPublishable(LocalDate.now())
-                    && stateGuide.lastVerified() != null
-                    && stateGuide.lastVerified().isAfter(latest)) {
+        for (StateGuideRecord stateGuide : registryService.listPublishedStateGuides()) {
+            if (stateGuide.lastVerified() != null && stateGuide.lastVerified().isAfter(latest)) {
                 latest = stateGuide.lastVerified();
             }
         }

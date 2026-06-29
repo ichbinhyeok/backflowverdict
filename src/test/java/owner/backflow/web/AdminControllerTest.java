@@ -33,6 +33,7 @@ import owner.backflow.service.LeadSubmissionGuardService;
         "app.admin.username=admin",
         "app.admin.password=tlsgur3108",
         "app.ops.verification-token=test-ops-token",
+        "app.ops.current-date=2026-06-29",
         "app.ops.write-freshness-report-on-startup=false"
 })
 @AutoConfigureMockMvc

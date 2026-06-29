@@ -11,6 +11,19 @@ public record AppOpsProperties(
         @DefaultValue("./build/ops/verification_report.json") String verificationReportPath,
         @DefaultValue("false") boolean allowLocalRequests,
         @DefaultValue("") String verificationToken,
-        @DefaultValue("7") int brokenLinkSuppressionDays
+        @DefaultValue("7") int brokenLinkSuppressionDays,
+        @DefaultValue("") String currentDate
 ) {
+    public static AppOpsProperties defaults() {
+        return new AppOpsProperties(
+                "./build/ops/freshness_report.json",
+                "0 15 3 * * *",
+                true,
+                "./build/ops/verification_report.json",
+                false,
+                "",
+                7,
+                ""
+        );
+    }
 }

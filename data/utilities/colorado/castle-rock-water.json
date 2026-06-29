@@ -56,7 +56,7 @@
   "reviewerInitials": "TL",
   "staleAfterDays": 45,
   "pageStatus": "PUBLISH",
-  "lastVerified": "2026-04-05",
+  "lastVerified": "2026-06-29",
   "verdictSummary": "Castle Rock is a strong Colorado page because annual testing, tester certification, and the live town tester list all line up on the same utility workflow.",
   "whoIsAffected": "Castle Rock Water customers with irrigation, fire suppression, and other protected assemblies that require certified annual testing.",
   "residentialNotes": [
@@ -98,7 +98,7 @@
     "highlights": [
       "Fire suppression assemblies sit inside the town's annual-testing logic.",
       "Town-certified testers are public.",
-    "Certification, calibration, and insurance are part of the accepted tester standard."
+      "Certification, calibration, and insurance are part of the accepted tester standard."
     ],
     "workflowSteps": [
       "Confirm the fire protection assembly class.",

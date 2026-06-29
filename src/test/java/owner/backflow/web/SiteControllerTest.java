@@ -21,6 +21,7 @@ import owner.backflow.service.LeadRoutingService;
 
 @SpringBootTest(properties = {
         "app.ops.verification-token=test-ops-token",
+        "app.ops.current-date=2026-06-29",
         "app.site.ga-measurement-id=G-TEST123",
         "app.site.support-email=support@backflowpath.com",
         "app.site.support-phone=+1-555-0100"
@@ -1202,6 +1203,7 @@ class SiteControllerTest {
                             return request;
                         }))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("\"status\":\"ok\"")));
+                .andExpect(content().string(containsString("\"status\":\"warning\"")))
+                .andExpect(content().string(containsString("\"code\":\"broken_source_links\"")));
     }
 }

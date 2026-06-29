@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
         "app.admin.username=",
         "app.admin.password=",
         "app.ops.verification-token=test-ops-token",
+        "app.ops.current-date=2026-06-29",
         "app.ops.write-freshness-report-on-startup=false"
 })
 @AutoConfigureMockMvc

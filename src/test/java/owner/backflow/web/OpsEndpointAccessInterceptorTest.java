@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest(properties = {
         "app.ops.allow-local-requests=true",
         "app.ops.verification-token=test-ops-token",
+        "app.ops.current-date=2026-06-29",
         "app.ops.write-freshness-report-on-startup=false"
 })
 @AutoConfigureMockMvc
@@ -40,11 +41,11 @@ class OpsEndpointAccessInterceptorTest {
         mockMvc.perform(post("/ops/verification/run")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"reviewerInitials\":\"TL\",\"note\":\"loopback\"}")
-                        .with(request -> {
-                            request.setRemoteAddr("127.0.0.1");
-                            return request;
-                        }))
+                .with(request -> {
+                    request.setRemoteAddr("127.0.0.1");
+                    return request;
+                }))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("\"status\":\"ok\"")));
+                .andExpect(content().string(containsString("\"status\":\"warning\"")));
     }
 }

@@ -62,7 +62,7 @@
   "reviewerInitials": "TL",
   "staleAfterDays": 45,
   "pageStatus": "PUBLISH",
-  "lastVerified": "2026-04-05",
+  "lastVerified": "2026-06-29",
   "verdictSummary": "JEA is a flagship Florida utility because it publishes a qualified tester list, annual commercial rules, and a real residential irrigation workflow.",
   "whoIsAffected": "JEA commercial customers, residential irrigation customers, reclaimed-water users, and certain fire-line services that require backflow protection or testing.",
   "residentialNotes": [
@@ -146,4 +146,3 @@
     }
   ]
 }
-

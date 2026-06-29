@@ -7,7 +7,7 @@
   "sourceExcerpt": "Many utilities now route compliance through BSI, SwiftComply, or utility-managed customer portals. The practical mistake is assuming the field test alone closes the loop.",
   "sourceSnapshotPath": "storage/snapshots/guides/backflow-reporting-portals.html",
   "reviewerInitials": "TL",
-  "lastReviewed": "2026-04-05",
+  "lastReviewed": "2026-06-29",
   "published": true,
   "sections": [
     {
@@ -58,4 +58,3 @@
     }
   ]
 }
-

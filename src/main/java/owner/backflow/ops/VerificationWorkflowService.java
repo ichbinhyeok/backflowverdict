@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import owner.backflow.config.AppOpsProperties;
@@ -48,28 +48,36 @@ public class VerificationWorkflowService {
         registryService.reload();
         FreshnessAuditReport freshnessReport = freshnessAuditService.writeReport();
 
-        List<VerificationFinding> findings = sourceEvidenceService.findings(
+        List<VerificationFinding> findings = new ArrayList<>(sourceEvidenceService.findings(
                 registryService.listAllUtilities(),
                 registryService.listAllGuides(),
                 registryService.listAllStateGuides()
+        ));
+        VerificationSummary summary = new VerificationSummary(
+                registryService.listPublishedUtilities().size(),
+                registryService.listPublishedGuides().size(),
+                (int) registryService.listAllStateGuides().stream()
+                        .filter(guide -> registryService.findPublishedStateGuide(guide.state()).isPresent())
+                        .count(),
+                0,
+                0
         );
+        findings.addAll(operationalFindings(freshnessReport.summary(), summary));
 
         VerificationReport report = new VerificationReport(
-                LocalDate.now(),
+                freshnessReport.generatedAt(),
                 status(findings),
                 normalize(reviewerInitials),
                 normalize(note),
                 freshnessReport.summary(),
                 new VerificationSummary(
-                        registryService.listPublishedUtilities().size(),
-                        registryService.listPublishedGuides().size(),
-                        (int) registryService.listAllStateGuides().stream()
-                                .filter(guide -> registryService.findPublishedStateGuide(guide.state()).isPresent())
-                                .count(),
+                        summary.publishedUtilityCount(),
+                        summary.publishedGuideCount(),
+                        summary.publishedStateGuideCount(),
                         count(findings, "error"),
                         count(findings, "warning")
                 ),
-                findings
+                List.copyOf(findings)
         );
 
         writeReport(report);
@@ -111,6 +119,75 @@ public class VerificationWorkflowService {
             return "warning";
         }
         return "ok";
+    }
+
+    private List<VerificationFinding> operationalFindings(FreshnessAuditSummary freshness, VerificationSummary summary) {
+        List<VerificationFinding> findings = new ArrayList<>();
+        if (summary.publishedUtilityCount() == 0) {
+            findings.add(error(
+                    "ops",
+                    "registry",
+                    "no_published_utilities",
+                    "No utility pages are currently publishable. Check stale utility counts, broken links, and source evidence."
+            ));
+        }
+        if (summary.publishedStateGuideCount() == 0) {
+            findings.add(error(
+                    "ops",
+                    "registry",
+                    "no_published_state_guides",
+                    "No state guide pages are currently publishable. Check state guide freshness and source evidence."
+            ));
+        }
+        if (freshness.staleUtilityCount() > 0) {
+            findings.add(warning(
+                    "ops",
+                    "freshness-report",
+                    "stale_utilities",
+                    freshness.staleUtilityCount() + " utility pages are stale and suppressed."
+            ));
+        }
+        if (freshness.staleGuideCount() > 0) {
+            findings.add(warning(
+                    "ops",
+                    "freshness-report",
+                    "stale_guides",
+                    freshness.staleGuideCount() + " guide pages are stale and suppressed."
+            ));
+        }
+        if (freshness.staleStateGuideCount() > 0) {
+            findings.add(warning(
+                    "ops",
+                    "freshness-report",
+                    "stale_state_guides",
+                    freshness.staleStateGuideCount() + " state guide pages are stale and suppressed."
+            ));
+        }
+        if (freshness.brokenLinkCount() > 0) {
+            findings.add(warning(
+                    "ops",
+                    "freshness-report",
+                    "broken_source_links",
+                    freshness.brokenLinkCount() + " source links are tracked in ops/broken_links.csv."
+            ));
+        }
+        if (freshness.conflictCount() > 0) {
+            findings.add(error(
+                    "ops",
+                    "freshness-report",
+                    "source_conflicts",
+                    freshness.conflictCount() + " source conflicts are tracked in ops/conflicts.csv."
+            ));
+        }
+        return findings;
+    }
+
+    private VerificationFinding error(String pageType, String pageId, String code, String message) {
+        return new VerificationFinding("error", pageType, pageId, code, message);
+    }
+
+    private VerificationFinding warning(String pageType, String pageId, String code, String message) {
+        return new VerificationFinding("warning", pageType, pageId, code, message);
     }
 
     private String normalize(String value) {

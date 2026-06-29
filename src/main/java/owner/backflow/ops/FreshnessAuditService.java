@@ -46,7 +46,7 @@ public class FreshnessAuditService {
     }
 
     public synchronized FreshnessAuditReport buildReport() {
-        LocalDate today = LocalDate.now();
+        LocalDate today = OpsDates.today(opsProperties);
         List<FreshnessAuditEntry> staleUtilities = registryService.listAllUtilities().stream()
                 .filter(utility -> !utility.isFresh(today))
                 .map(utility -> new FreshnessAuditEntry(

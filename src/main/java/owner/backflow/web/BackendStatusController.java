@@ -41,7 +41,7 @@ public class BackendStatusController {
     @GetMapping("/healthz")
     public BackendHealthResponse healthz() {
         FreshnessAuditReport report = freshnessAuditService.buildReport();
-        LocalDate today = LocalDate.now();
+        LocalDate today = report.generatedAt();
 
         int totalUtilityCount = registryService.listAllUtilities().size();
         int totalGuideCount = registryService.listAllGuides().size();
