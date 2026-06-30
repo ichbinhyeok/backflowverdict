@@ -1,4 +1,5 @@
 @import owner.backflow.web.PageMeta
+@import owner.backflow.data.model.CityAliasRecord
 @import owner.backflow.data.model.GuideRecord
 @import owner.backflow.data.model.StateGuideRecord
 @import owner.backflow.data.model.UtilityRecord
@@ -6,6 +7,7 @@
 @param StateGuideRecord stateGuide
 @param java.util.List<UtilityRecord> featuredUtilities
 @param java.util.List<UtilityRecord> allUtilities
+@param java.util.List<CityAliasRecord> cityAliases = java.util.List.of()
 @param java.util.List<GuideRecord> guides
 
 @template.layouts.app(page = page, content = @`
@@ -66,6 +68,30 @@
             </article>
         </div>
     </section>
+
+    @if (!cityAliases.isEmpty())
+        <section class="section section--tight">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">City routes</span>
+                    <h2>City backflow testing pages in this state</h2>
+                    <p class="lede">Use city routes when the search starts with a local place name. Each page still maps back to the governing utility workflow.</p>
+                </div>
+                <div class="card-grid card-grid--three">
+                    @for (var alias : cityAliases)
+                        <article class="detail-card detail-card--quiet">
+                            <span class="pill">${alias.state()}</span>
+                            <h3>${alias.city()} backflow testing</h3>
+                            <p>${alias.justification()}</p>
+                            <div class="card-actions">
+                                <a class="button button--secondary" href="/cities/${alias.state()}/${alias.aliasSlug()}/backflow-testing">Open city route</a>
+                            </div>
+                        </article>
+                    @endfor
+                </div>
+            </div>
+        </section>
+    @endif
 
     <section class="section">
         <div class="container">

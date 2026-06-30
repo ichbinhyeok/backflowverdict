@@ -986,10 +986,12 @@ class SiteControllerTest {
     }
 
     @Test
-    void cityAliasRedirectsOrBridgesBasedOnMode() throws Exception {
+    void cityAliasPagesRenderIndexableRoutesExceptNoindexBridges() throws Exception {
         mockMvc.perform(get("/cities/texas/grand-prairie/backflow-testing"))
-                .andExpect(status().isMovedPermanently())
-                .andExpect(redirectedUrl("/utilities/texas/grand-prairie-water-utilities/"));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Grand Prairie backflow testing routes through")))
+                .andExpect(content().string(containsString("index,follow")))
+                .andExpect(content().string(not(containsString("noindex,follow"))));
 
         mockMvc.perform(get("/cities/texas/arlington/backflow-testing"))
                 .andExpect(status().isOk())
@@ -997,56 +999,58 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("noindex,follow")));
 
         mockMvc.perform(get("/cities/california/sacramento/backflow-testing"))
-                .andExpect(status().isMovedPermanently())
-                .andExpect(redirectedUrl("/utilities/california/sacramento-water-quality/"));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Sacramento backflow testing routes through")))
+                .andExpect(content().string(containsString("approved backflow testers")));
 
         mockMvc.perform(get("/cities/colorado/longmont/backflow-testing"))
-                .andExpect(status().isMovedPermanently())
-                .andExpect(redirectedUrl("/utilities/colorado/longmont-water-utilities/"));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Longmont backflow testing routes through")));
 
         mockMvc.perform(get("/cities/florida/orlando/backflow-testing"))
-                .andExpect(status().isMovedPermanently())
-                .andExpect(redirectedUrl("/utilities/florida/orlando-utilities-commission/"));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Orlando backflow testing routes through")));
 
         mockMvc.perform(get("/cities/california/san-francisco/backflow-testing"))
-                .andExpect(status().isMovedPermanently())
-                .andExpect(redirectedUrl("/utilities/california/san-francisco-public-utilities-commission/"));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("San Francisco backflow testing routes through")));
 
         mockMvc.perform(get("/cities/colorado/castle-rock/backflow-testing"))
-                .andExpect(status().isMovedPermanently())
-                .andExpect(redirectedUrl("/utilities/colorado/castle-rock-water/"));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Castle Rock backflow testing routes through")));
 
         mockMvc.perform(get("/cities/florida/jacksonville/backflow-testing"))
-                .andExpect(status().isMovedPermanently())
-                .andExpect(redirectedUrl("/utilities/florida/jea-backflow-program/"));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Jacksonville backflow testing routes through")));
 
         mockMvc.perform(get("/cities/california/anaheim/backflow-testing"))
-                .andExpect(status().isMovedPermanently())
-                .andExpect(redirectedUrl("/utilities/california/anaheim-cross-connection-control/"));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Anaheim backflow testing routes through")));
 
         mockMvc.perform(get("/cities/colorado/aspen/backflow-testing"))
-                .andExpect(status().isMovedPermanently())
-                .andExpect(redirectedUrl("/utilities/colorado/aspen-cross-connection-control-program/"));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Aspen backflow testing routes through")));
 
         mockMvc.perform(get("/cities/arizona/prescott/backflow-testing"))
-                .andExpect(status().isMovedPermanently())
-                .andExpect(redirectedUrl("/utilities/arizona/prescott-backflow-prevention/"));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Prescott backflow testing routes through")));
 
         mockMvc.perform(get("/cities/california/pasadena/backflow-testing"))
-                .andExpect(status().isMovedPermanently())
-                .andExpect(redirectedUrl("/utilities/california/pasadena-water-and-power/"));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Pasadena backflow testing routes through")));
 
         mockMvc.perform(get("/cities/colorado/parker/backflow-testing"))
-                .andExpect(status().isMovedPermanently())
-                .andExpect(redirectedUrl("/utilities/colorado/parker-water-and-sanitation-district/"));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Parker backflow testing routes through")))
+                .andExpect(content().string(containsString("reporting portal")));
 
         mockMvc.perform(get("/cities/florida/fort-myers/backflow-testing"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("noindex,follow")));
 
         mockMvc.perform(get("/cities/florida/jupiter/backflow-testing"))
-                .andExpect(status().isMovedPermanently())
-                .andExpect(redirectedUrl("/utilities/florida/jupiter-backflow-prevention-details/"));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Jupiter backflow testing routes through")));
     }
 
     @Test
@@ -1066,6 +1070,10 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("/backflow-reporting-portals/bsi")))
                 .andExpect(content().string(containsString("/backflow-reporting-portals/weirs")))
                 .andExpect(content().string(containsString("/backflow-reporting-portals/swiftcomply")))
+                .andExpect(content().string(containsString("/cities/colorado/aurora/backflow-testing")))
+                .andExpect(content().string(containsString("/cities/colorado/parker/backflow-testing")))
+                .andExpect(content().string(containsString("/cities/california/irvine/backflow-testing")))
+                .andExpect(content().string(not(containsString("/cities/texas/arlington/backflow-testing"))))
                 .andExpect(content().string(containsString("/states/texas/backflow-testing")))
                 .andExpect(content().string(containsString("/states/arizona/backflow-testing")))
                 .andExpect(content().string(containsString("/states/california/backflow-testing")))

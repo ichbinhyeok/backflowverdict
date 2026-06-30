@@ -23,13 +23,11 @@ import owner.backflow.data.model.UtilityRecord;
 import owner.backflow.files.BackflowRegistryService;
 import owner.backflow.service.LeadRoutingService;
 import org.springframework.http.MediaType;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -366,6 +364,7 @@ public class SiteController {
         model.addAttribute("stateGuide", stateGuide);
         model.addAttribute("featuredUtilities", registryService.featuredUtilitiesForStateGuide(stateGuide));
         model.addAttribute("allUtilities", utilities);
+        model.addAttribute("cityAliases", publishedCityAliasesForState(stateGuide.state()));
         model.addAttribute("guides", supportGuidesForStateGuide(stateGuide));
         return "pages/state-guide";
     }
@@ -701,7 +700,7 @@ public class SiteController {
     }
 
     @GetMapping("/cities/{state}/{citySlug}/backflow-testing")
-    public Object cityAliasPage(
+    public String cityAliasPage(
             @PathVariable String state,
             @PathVariable String citySlug,
             Model model
@@ -711,25 +710,34 @@ public class SiteController {
         UtilityRecord utility = registryService.findUtilityById(alias.utilityId())
                 .orElseThrow(() -> new NotFoundException("Mapped utility is not available."));
 
-        if (alias.aliasMode() == AliasMode.REDIRECT) {
-            RedirectView redirectView = new RedirectView(utilityPath(utility));
-            redirectView.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
-            redirectView.setExposeModelAttributes(false);
-            return redirectView;
-        }
-
+        String path = cityPath(alias);
         model.addAttribute("page", new PageMeta(
-                alias.city() + " backflow testing | BackflowPath",
-                "City alias bridge page routing " + alias.city() + " searches to the governing utility.",
-                canonical("/cities/" + state + "/" + citySlug + "/backflow-testing"),
+                cityPageTitle(alias, utility),
+                cityPageDescription(alias, utility),
+                canonical(path),
                 alias.aliasMode() == AliasMode.NOINDEX_BRIDGE,
                 breadcrumbStructuredData(List.of(
                         new BreadcrumbItem("Home", canonical("/")),
-                        new BreadcrumbItem(alias.city(), canonical("/cities/" + state + "/" + citySlug + "/backflow-testing"))
+                        new BreadcrumbItem(stateLabel(utility.state()), canonical("/states/" + utility.state() + "/backflow-testing")),
+                        new BreadcrumbItem(alias.city(), canonical(path))
                 ))
-        ));
+        ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
+                utility.utilityId(),
+                path,
+                "general-testing",
+                "city"
+        )));
         model.addAttribute("alias", alias);
         model.addAttribute("utility", utility);
+        model.addAttribute("annualTestingPath", utility.supportsAnnualTestingPage() ? utilityPath(utility) + "annual-testing" : null);
+        model.addAttribute("irrigationPath", utility.supportsIrrigationPage() ? utilityPath(utility) + "irrigation" : null);
+        model.addAttribute("fireLinePath", utility.supportsFireLinePage() ? utilityPath(utility) + "fire-line" : null);
+        model.addAttribute("failedTestPath", utilityPath(utility) + "failed-test");
+        model.addAttribute("testerPath", testerPath(utility));
+        model.addAttribute("testerLabel", testerLabel(utility));
+        model.addAttribute("usesPortalWorkflow", usesPortalWorkflow(utility));
+        model.addAttribute("providers", registryService.findProvidersForUtility(utility.utilityId()));
+        model.addAttribute("relatedGuides", utilitySupportGuides(utility));
         return "pages/city-bridge";
     }
 
@@ -769,6 +777,12 @@ public class SiteController {
                 canonical("/states/" + state + "/approved-backflow-testers"),
                 latestUtilityModified(utilities)
         )));
+        for (CityAliasRecord alias : registryService.listCityAliases()) {
+            if (alias.aliasMode() == AliasMode.NOINDEX_BRIDGE || registryService.findUtilityById(alias.utilityId()).isEmpty()) {
+                continue;
+            }
+            urls.add(new SitemapEntry(canonical(cityPath(alias)), alias.lastReviewed()));
+        }
         registryService.listPublishedStateGuides()
                 .forEach(guide -> urls.add(new SitemapEntry(
                         canonical("/states/" + guide.state() + "/backflow-testing"),
@@ -991,6 +1005,48 @@ public class SiteController {
 
     private String providerPath(ProviderRecord provider) {
         return "/providers/" + provider.providerId() + "/";
+    }
+
+    private String cityPath(CityAliasRecord alias) {
+        return "/cities/" + alias.state() + "/" + alias.aliasSlug() + "/backflow-testing";
+    }
+
+    private String cityPageTitle(CityAliasRecord alias, UtilityRecord utility) {
+        if (utility.supportsApprovedTestersPage() && usesPortalWorkflow(utility)) {
+            return alias.city() + " backflow testing, reporting portal, and approved testers | BackflowPath";
+        }
+        if (utility.supportsApprovedTestersPage()) {
+            return alias.city() + " backflow testing and approved tester list | BackflowPath";
+        }
+        if (usesPortalWorkflow(utility)) {
+            return alias.city() + " backflow testing and reporting portal | BackflowPath";
+        }
+        return alias.city() + " backflow testing and prevention requirements | BackflowPath";
+    }
+
+    private String cityPageDescription(CityAliasRecord alias, UtilityRecord utility) {
+        StringBuilder description = new StringBuilder();
+        description.append(alias.city())
+                .append(" backflow testing route mapped to ")
+                .append(utility.utilityName())
+                .append(": ")
+                .append(utility.testingFrequency())
+                .append(" ")
+                .append(utility.dueBasis());
+        if (utility.supportsApprovedTestersPage()) {
+            description.append(" Includes the official tester list route.");
+        }
+        if (usesPortalWorkflow(utility)) {
+            description.append(" Includes reporting portal context.");
+        }
+        return description.toString();
+    }
+
+    private List<CityAliasRecord> publishedCityAliasesForState(String state) {
+        return registryService.listCityAliasesForState(state).stream()
+                .filter(alias -> alias.aliasMode() != AliasMode.NOINDEX_BRIDGE)
+                .filter(alias -> registryService.findUtilityById(alias.utilityId()).isPresent())
+                .toList();
     }
 
     private LocalDate latestUtilityModified(List<UtilityRecord> utilities) {

@@ -167,6 +167,18 @@ public class BackflowRegistryService {
         return Optional.ofNullable(aliasesByKey.get(key(state, aliasSlug)));
     }
 
+    public List<CityAliasRecord> listCityAliases() {
+        return aliasesByKey.values().stream()
+                .sorted(Comparator.comparing(CityAliasRecord::state).thenComparing(CityAliasRecord::city))
+                .toList();
+    }
+
+    public List<CityAliasRecord> listCityAliasesForState(String state) {
+        return listCityAliases().stream()
+                .filter(alias -> alias.state().equalsIgnoreCase(state))
+                .toList();
+    }
+
     public List<ProviderRecord> findProvidersForUtility(String utilityId) {
         return sortProviders(providers.stream()
                 .filter(ProviderRecord::isPublicListing)

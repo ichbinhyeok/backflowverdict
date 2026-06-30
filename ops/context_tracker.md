@@ -26,6 +26,9 @@
 - Added a regression test proving a fully stale registry stays published but returns re-verification warnings.
 - Added official tester-list and reporting-portal hub routes for higher-intent search demand.
 - Restored `/claim-listing` as a public provider correction and source-update path.
+- Converted direct city aliases from 301 utility redirects into indexable city landing pages that still route users to the governing utility workflow.
+- Kept county/weak authority city bridge aliases noindex and excluded them from sitemap.
+- Added city route reindex and 100 clicks/day strategy files under `ops/`.
 - Added the Gradle Foojay toolchain resolver convention plugin so Java 21 toolchain auto-provisioning no longer emits the Gradle 10 deprecation warning.
 
 ## Next recommended tasks
@@ -33,7 +36,7 @@
 2. Replace or remove dead official URLs, then mark resolved rows with `ok`, `resolved`, `fixed`, `200`, `301`, or `302`.
 3. Re-run `/ops/verification/run` after broken-link cleanup; status should return to `ok` once source URL issues are resolved.
 4. Keep widening source-backed utility coverage and public provider inventory where official lists support it.
-5. Keep hardening manual review, freshness, and indexing controls on the public owner-facing surface.
+5. Expand next by city and task query families, not by generic guide volume.
 
 ## Open questions
 - Whether legacy internal provider-status fields should be renamed in code and data files after the public cleanup is complete.
