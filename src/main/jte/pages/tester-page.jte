@@ -13,16 +13,19 @@
         <div class="container page-frame page-frame--hero">
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">${official ? "Official authority list" : "Non-official directory"}</span>
-                <h1>${official ? utility.utilityName() + " approved testers" : utility.utilityName() + " find a tester"}</h1>
+                <h1>${official ? utility.utilityName() + " official backflow tester list" : utility.utilityName() + " find a tester"}</h1>
                 <p class="lede">
                     @if (official)
-                        This page mirrors cached entries from the governing authority's published tester list. Public provider profiles stay clearly separate from the official list.
+                        This page mirrors cached entries from the governing authority's published approved, registered, or certified tester list. Public provider profiles stay clearly separate from the official list.
                     @else
                         This is a provider discovery page, not an authority list. Use the official utility page for the compliance rule and reporting workflow first.
                     @endif
                 </p>
                 <div class="hero__actions">
                     <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Back to utility requirements</a>
+                    @if (official)
+                        <a class="button button--secondary" href="/official-backflow-tester-lists">All official tester lists</a>
+                    @endif
                     @if (official)
                         <a class="button button--primary" href="${utility.approvedTesterListUrl()}">${utility.officialListLabel()}</a>
                     @endif

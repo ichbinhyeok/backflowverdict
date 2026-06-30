@@ -5,15 +5,16 @@
 - The public site centers on utility, state, metro, guide, tester, failed-test, provider, and request-help pages.
 - Lead capture remains file-backed and manually reviewed through `/admin`.
 - Public provider browse remains secondary to the governing utility workflow.
-- As of 2026-06-29, 80 utility pages, 5 state guides, 13 metro pages, and 10 evergreen guides are fresh again and publishable.
-- `/readyz` returns `ready` locally with `publishedUtilityCount=80`, `blockedUtilityCount=0`, and `staleUtilityCount=0`.
+- As of 2026-06-30, 80 utility pages, 5 state guides, 13 metro pages, and 10 evergreen guides are publishable.
+- `/readyz` must stay `ready` as long as utility pages are explicitly published and not blocked, even when freshness warnings exist.
 
 ## Latest decisions
 - Keep the governing utility or water authority as the canonical entity.
 - Keep official guidance and public provider directories visibly separate.
 - Do not reintroduce private setup or internal routing surfaces into the published experience.
 - Manual request review is allowed; private internal routing workflows are not part of the active product.
-- Freshness, verification, and source clarity outrank conversion experiments.
+- Freshness, verification, source clarity, and stable crawlable URLs outrank conversion experiments.
+- Freshness and broken-link warnings no longer remove explicitly published pages from public routes; missing source evidence or explicit conflict blocks still can.
 - Verification must surface operational freshness and link-health failures; a registry with zero published utility or state-guide pages is `needs-review`, not `ok`.
 - Automated source URL audits can refresh freshness dates only when unresolved URLs are also recorded in `data/ops/broken_links.csv` for follow-up suppression.
 
@@ -22,7 +23,9 @@
 - Ran an automated source URL audit across 215 unique official/support URLs; 119 passed and 96 unresolved URLs were recorded in `data/ops/broken_links.csv`.
 - Added `app.ops.current-date` so tests and manual verification can use a fixed freshness date without changing production behavior.
 - Changed verification reports to include freshness, broken-link, conflict, and zero-published-registry findings.
-- Added a regression test proving a fully stale registry returns `needs-review` instead of `ok`.
+- Added a regression test proving a fully stale registry stays published but returns re-verification warnings.
+- Added official tester-list and reporting-portal hub routes for higher-intent search demand.
+- Restored `/claim-listing` as a public provider correction and source-update path.
 - Added the Gradle Foojay toolchain resolver convention plugin so Java 21 toolchain auto-provisioning no longer emits the Gradle 10 deprecation warning.
 
 ## Next recommended tasks

@@ -62,7 +62,7 @@ public record UtilityRecord(
     }
 
     public boolean isPublishable(LocalDate today) {
-        return pageStatus == PageStatus.PUBLISH && isFresh(today);
+        return pageStatus == PageStatus.PUBLISH;
     }
 
     public boolean isFresh(LocalDate today) {

@@ -1,10 +1,10 @@
 {
   "slug": "how-we-verify-backflow-rules",
   "title": "How we verify local backflow rules",
-  "description": "What counts as an official source, how local utility pages override generic assumptions, and why stale pages are suppressed.",
+  "description": "What counts as an official source, how local utility pages override generic assumptions, and how stale pages are re-verified.",
   "intro": "The fastest way to publish junk in this category is to paraphrase generic plumbing advice and pretend it applies to every utility. This site works only if the local program page stays canonical.",
   "callout": "We verify utility pages against the governing authority first, then use statewide and evergreen sources only to explain the workflow around that local rule.",
-  "sourceExcerpt": "The local utility or district page stays canonical. Statewide and evergreen sources support comprehension, but stale or weakly sourced local pages must be suppressed.",
+  "sourceExcerpt": "The local utility or district page stays canonical. Statewide and evergreen sources support comprehension, and stale or weakly sourced local pages must be re-verified before claims expand.",
   "sourceSnapshotPath": "storage/snapshots/guides/how-we-verify-backflow-rules.html",
   "reviewerInitials": "TL",
   "lastReviewed": "2026-06-29",
@@ -28,10 +28,10 @@
     },
     {
       "heading": "Freshness matters more than page count",
-      "body": "If a local rule page goes stale, the safer behavior is to suppress it from public routes and sitemap generation until it is re-verified.",
+      "body": "If a local rule page goes stale, the safer behavior is to keep the URL stable while operations flags it for re-verification. If the source no longer supports the page, noindexing or removal is still available.",
       "bullets": [
         "Each utility JSON stores its own last-verified date and stale window.",
-        "A thin but current site is better than a large site filled with expired rules."
+        "A stable but actively reviewed site is better than a large site filled with expired or unsupported rules."
       ]
     }
   ],

@@ -126,6 +126,41 @@ class SiteControllerTest {
     }
 
     @Test
+    void highIntentSeoHubPagesLoad() throws Exception {
+        mockMvc.perform(get("/claim-listing"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Claim or correct a BackflowPath provider listing")));
+
+        mockMvc.perform(get("/official-backflow-tester-lists"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Official backflow tester lists by utility")))
+                .andExpect(content().string(containsString("Austin Water Cross-Connection Control")));
+
+        mockMvc.perform(get("/states/texas/approved-backflow-testers"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Texas approved backflow tester lists by utility")))
+                .andExpect(content().string(containsString("Austin Water Cross-Connection Control")));
+
+        mockMvc.perform(get("/backflow-reporting-portals"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Backflow reporting portals for backflow testing")))
+                .andExpect(content().string(containsString("BSI backflow reporting")))
+                .andExpect(content().string(containsString("SwiftComply and C3Swift reporting")));
+
+        mockMvc.perform(get("/backflow-reporting-portals/bsi"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("BSI for backflow testing")));
+
+        mockMvc.perform(get("/backflow-reporting-portals/weirs"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("WEIRS for backflow testing")));
+
+        mockMvc.perform(get("/backflow-reporting-portals/swiftcomply"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("SwiftComply for backflow testing")));
+    }
+
+    @Test
     void providerPageEncodesTrackedAuthoritySourceLinks() throws Exception {
         mockMvc.perform(get("/providers/austin-1st-home-commercial-services/"))
                 .andExpect(status().isOk())
@@ -1024,6 +1059,13 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("/editorial-standards")))
                 .andExpect(content().string(containsString("/corrections")))
                 .andExpect(content().string(containsString("/contact")))
+                .andExpect(content().string(containsString("/claim-listing")))
+                .andExpect(content().string(containsString("/official-backflow-tester-lists")))
+                .andExpect(content().string(containsString("/states/texas/approved-backflow-testers")))
+                .andExpect(content().string(containsString("/backflow-reporting-portals")))
+                .andExpect(content().string(containsString("/backflow-reporting-portals/bsi")))
+                .andExpect(content().string(containsString("/backflow-reporting-portals/weirs")))
+                .andExpect(content().string(containsString("/backflow-reporting-portals/swiftcomply")))
                 .andExpect(content().string(containsString("/states/texas/backflow-testing")))
                 .andExpect(content().string(containsString("/states/arizona/backflow-testing")))
                 .andExpect(content().string(containsString("/states/california/backflow-testing")))

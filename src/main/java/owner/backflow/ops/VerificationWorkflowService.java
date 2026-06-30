@@ -144,7 +144,7 @@ public class VerificationWorkflowService {
                     "ops",
                     "freshness-report",
                     "stale_utilities",
-                    freshness.staleUtilityCount() + " utility pages are stale and suppressed."
+                    freshness.staleUtilityCount() + " utility pages are stale and need re-verification."
             ));
         }
         if (freshness.staleGuideCount() > 0) {
@@ -152,7 +152,7 @@ public class VerificationWorkflowService {
                     "ops",
                     "freshness-report",
                     "stale_guides",
-                    freshness.staleGuideCount() + " guide pages are stale and suppressed."
+                    freshness.staleGuideCount() + " guide pages are stale and need re-verification."
             ));
         }
         if (freshness.staleStateGuideCount() > 0) {
@@ -160,7 +160,7 @@ public class VerificationWorkflowService {
                     "ops",
                     "freshness-report",
                     "stale_state_guides",
-                    freshness.staleStateGuideCount() + " state guide pages are stale and suppressed."
+                    freshness.staleStateGuideCount() + " state guide pages are stale and need re-verification."
             ));
         }
         if (freshness.brokenLinkCount() > 0) {

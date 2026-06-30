@@ -38,16 +38,18 @@ class VerificationWorkflowServiceTest {
     }
 
     @Test
-    void staleSuppressedRegistryRequiresReview() throws Exception {
+    void staleRegistryStaysPublishedAndRequiresReverification() throws Exception {
         WorkflowContext context = workflowContext("2026-09-01");
 
         VerificationReport report = context.verificationWorkflowService().run("TL", "stale regression");
 
-        Assertions.assertEquals("needs-review", report.status());
-        Assertions.assertEquals(0, report.summary().publishedUtilityCount());
-        Assertions.assertTrue(report.summary().errorCount() >= 1);
+        Assertions.assertEquals("warning", report.status());
+        Assertions.assertTrue(report.summary().publishedUtilityCount() >= 80);
+        Assertions.assertEquals(0, report.summary().errorCount());
         Assertions.assertTrue(report.findings().stream()
-                .anyMatch(finding -> "no_published_utilities".equals(finding.code())));
+                .anyMatch(finding -> "stale_utilities".equals(finding.code())));
+        Assertions.assertTrue(report.findings().stream()
+                .noneMatch(finding -> "no_published_utilities".equals(finding.code())));
     }
 
     private WorkflowContext workflowContext(String currentDate) throws IOException {

@@ -14,7 +14,7 @@ import owner.backflow.data.model.UtilityRecord;
 class OpsIssueServiceTest {
 
     @Test
-    void oldBrokenLinkBlocksUtility() {
+    void oldBrokenLinkDoesNotHidePublishedUtility() {
         OpsIssueService service = OpsIssueService.forTest(
                 List.of(new OpsCsvEntry(Map.of(
                         "checkedAt", "2026-03-20",
@@ -26,7 +26,7 @@ class OpsIssueServiceTest {
                 7
         );
 
-        Assertions.assertTrue(service.hasBlockingIssue(sampleUtility(), LocalDate.of(2026, 4, 4)));
+        Assertions.assertFalse(service.hasBlockingIssue(sampleUtility(), LocalDate.of(2026, 4, 4)));
     }
 
     @Test

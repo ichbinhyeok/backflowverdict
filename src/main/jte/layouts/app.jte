@@ -292,6 +292,7 @@
                     <a href="/states">States</a>
                     <a href="/metros">Metros</a>
                     <a href="/guides">Guides</a>
+                    <a href="/official-backflow-tester-lists">Tester lists</a>
                 </nav>
                 <div class="site-header__actions">
                     <a class="button button--primary button--compact" href="${page.requestHelpPathOrDefault()}">Request help</a>
@@ -308,6 +309,7 @@
                         <a href="/states">States</a>
                         <a href="/metros">Metros</a>
                         <a href="/guides">Guides</a>
+                        <a href="/official-backflow-tester-lists">Tester lists</a>
                     </nav>
                     <a class="button button--primary button--compact site-menu__cta" href="${page.requestHelpPathOrDefault()}">Request help</a>
                 </div>
@@ -330,9 +332,12 @@
                 <a href="/states">Browse state guides</a>
                 <a href="/metros">Browse metro pages</a>
                 <a href="/guides">Browse all guides</a>
+                <a href="/official-backflow-tester-lists">Official tester lists</a>
             </div>
             <div class="footer-column">
                 <span class="footer-column__label">Popular help</span>
+                <a href="/backflow-reporting-portals">Reporting portal hub</a>
+                <a href="/official-backflow-tester-lists">Official tester list hub</a>
                 <a href="/guides/approved-testers-vs-find-a-tester">Approved vs directory</a>
                 <a href="/guides/backflow-reporting-portals">Reporting portals</a>
                 <a href="/guides/residential-vs-commercial-backflow-rules">Residential vs commercial</a>
@@ -340,6 +345,7 @@
             <div class="footer-column">
                 <span class="footer-column__label">Get help</span>
                 <a href="${page.requestHelpPathOrDefault()}">Request help</a>
+                <a href="/claim-listing">Claim listing</a>
                 <a href="/contact">Contact</a>
                 <a href="/privacy">Privacy</a>
             </div>

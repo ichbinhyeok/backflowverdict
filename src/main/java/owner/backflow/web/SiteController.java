@@ -69,8 +69,8 @@ public class SiteController {
             }
         }
         model.addAttribute("page", page(
-                "BackflowPath | Find local backflow testing requirements",
-                "Find utility-specific backflow testing requirements, annual testing steps, failed-test guidance, and clearly labeled tester routes.",
+                "BackflowPath | Official backflow tester lists, portals, and local rules",
+                "Find utility-specific backflow testing requirements, annual testing steps, reporting portals, failed-test guidance, and official tester list routes.",
                 "/",
                 breadcrumbStructuredData(List.of(new BreadcrumbItem("Home", canonical("/"))))
         ));
@@ -167,6 +167,91 @@ public class SiteController {
         return "pages/guides-index";
     }
 
+    @GetMapping("/official-backflow-tester-lists")
+    public String officialTesterListsPage(Model model) {
+        List<UtilityRecord> utilities = officialTesterUtilities();
+        Map<String, List<UtilityRecord>> utilitiesByState = utilitiesByState(utilities);
+        model.addAttribute("page", page(
+                "Official backflow tester lists by utility | BackflowPath",
+                "Browse utility-published approved, registered, and certified backflow tester list routes without mixing them into non-official directories.",
+                "/official-backflow-tester-lists",
+                breadcrumbStructuredData(List.of(
+                        new BreadcrumbItem("Home", canonical("/")),
+                        new BreadcrumbItem("Official tester lists", canonical("/official-backflow-tester-lists"))
+                ))
+        ));
+        model.addAttribute("utilities", utilities);
+        model.addAttribute("utilitiesByState", utilitiesByState);
+        model.addAttribute("stateLabels", stateLabelsFor(utilitiesByState.keySet()));
+        model.addAttribute("stateGuides", registryService.listPublishedStateGuides());
+        model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
+                "approved-testers-vs-find-a-tester",
+                "county-certified-vs-utility-approved-testers",
+                "how-we-verify-backflow-rules"
+        ), 3, null));
+        return "pages/official-tester-lists";
+    }
+
+    @GetMapping("/backflow-reporting-portals")
+    public String reportingPortalsPage(Model model) {
+        List<UtilityRecord> utilities = portalUtilities("all");
+        model.addAttribute("page", page(
+                "Backflow reporting portals by utility | BackflowPath",
+                "Find utility backflow reporting portal routes, including BSI, WEIRS, SwiftComply, and local online submission workflows.",
+                "/backflow-reporting-portals",
+                breadcrumbStructuredData(List.of(
+                        new BreadcrumbItem("Home", canonical("/")),
+                        new BreadcrumbItem("Reporting portals", canonical("/backflow-reporting-portals"))
+                ))
+        ));
+        model.addAttribute("portalName", "Backflow reporting portals");
+        model.addAttribute("portalSlug", "all");
+        model.addAttribute("intro", "Use this page when a notice says the tester must submit through a portal, customer account, or utility reporting workflow.");
+        model.addAttribute("overview", true);
+        model.addAttribute("utilities", utilities);
+        model.addAttribute("portalCounts", portalCounts());
+        model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
+                "backflow-reporting-portals",
+                "anniversary-date-vs-calendar-deadline",
+                "approved-testers-vs-find-a-tester"
+        ), 3, null));
+        return "pages/portal-hub";
+    }
+
+    @GetMapping("/backflow-reporting-portals/{portalSlug}")
+    public String reportingPortalDetailPage(@PathVariable String portalSlug, Model model) {
+        if (!isSupportedPortalSlug(portalSlug)) {
+            throw new NotFoundException("Reporting portal page not found.");
+        }
+        List<UtilityRecord> utilities = portalUtilities(portalSlug);
+        if (utilities.isEmpty()) {
+            throw new NotFoundException("Reporting portal page not available.");
+        }
+        String portalName = portalName(portalSlug);
+        model.addAttribute("page", page(
+                portalName + " backflow reporting utilities | BackflowPath",
+                portalDescription(portalSlug),
+                "/backflow-reporting-portals/" + portalSlug,
+                breadcrumbStructuredData(List.of(
+                        new BreadcrumbItem("Home", canonical("/")),
+                        new BreadcrumbItem("Reporting portals", canonical("/backflow-reporting-portals")),
+                        new BreadcrumbItem(portalName, canonical("/backflow-reporting-portals/" + portalSlug))
+                ))
+        ));
+        model.addAttribute("portalName", portalName);
+        model.addAttribute("portalSlug", portalSlug);
+        model.addAttribute("intro", portalDescription(portalSlug));
+        model.addAttribute("overview", false);
+        model.addAttribute("utilities", utilities);
+        model.addAttribute("portalCounts", portalCounts());
+        model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
+                "backflow-reporting-portals",
+                "how-we-verify-backflow-rules",
+                "approved-testers-vs-find-a-tester"
+        ), 3, null));
+        return "pages/portal-hub";
+    }
+
     @GetMapping("/privacy")
     public String privacyPage(Model model) {
         model.addAttribute("page", new PageMeta(
@@ -248,6 +333,22 @@ public class SiteController {
         return "pages/contact";
     }
 
+    @GetMapping("/claim-listing")
+    public String claimListingPage(Model model) {
+        model.addAttribute("page", page(
+                "Claim or correct a BackflowPath provider listing | BackflowPath",
+                "Request a public provider listing correction, claim context, or official source update without changing the utility rule layer.",
+                "/claim-listing",
+                breadcrumbStructuredData(List.of(
+                        new BreadcrumbItem("Home", canonical("/")),
+                        new BreadcrumbItem("Claim listing", canonical("/claim-listing"))
+                ))
+        ));
+        model.addAttribute("publicProviderCount", registryService.listPublicProviders().size());
+        model.addAttribute("publishedUtilityCount", registryService.listPublishedUtilities().size());
+        return "pages/claim-listing";
+    }
+
     @GetMapping("/states/{state}/backflow-testing")
     public String stateGuidePage(@PathVariable String state, Model model) {
         StateGuideRecord stateGuide = registryService.findPublishedStateGuide(state)
@@ -267,6 +368,38 @@ public class SiteController {
         model.addAttribute("allUtilities", utilities);
         model.addAttribute("guides", supportGuidesForStateGuide(stateGuide));
         return "pages/state-guide";
+    }
+
+    @GetMapping("/states/{state}/approved-backflow-testers")
+    public String stateApprovedTesterListsPage(@PathVariable String state, Model model) {
+        StateGuideRecord stateGuide = registryService.findPublishedStateGuide(state)
+                .orElseThrow(() -> new NotFoundException("State guide not found."));
+        List<UtilityRecord> utilities = officialTesterUtilities().stream()
+                .filter(utility -> utility.state().equalsIgnoreCase(state))
+                .toList();
+        if (utilities.isEmpty()) {
+            throw new NotFoundException("State approved tester page not available.");
+        }
+        String label = stateLabel(stateGuide.state());
+        model.addAttribute("page", page(
+                label + " approved backflow tester lists by utility | BackflowPath",
+                "Browse " + label + " utility pages with official approved, certified, or registered backflow tester list routes.",
+                "/states/" + stateGuide.state() + "/approved-backflow-testers",
+                breadcrumbStructuredData(List.of(
+                        new BreadcrumbItem("Home", canonical("/")),
+                        new BreadcrumbItem(label, canonical("/states/" + stateGuide.state() + "/backflow-testing")),
+                        new BreadcrumbItem("Approved tester lists", canonical("/states/" + stateGuide.state() + "/approved-backflow-testers"))
+                ))
+        ));
+        model.addAttribute("stateGuide", stateGuide);
+        model.addAttribute("stateLabel", label);
+        model.addAttribute("utilities", utilities);
+        model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
+                "approved-testers-vs-find-a-tester",
+                "county-certified-vs-utility-approved-testers",
+                "backflow-reporting-portals"
+        ), 3, null));
+        return "pages/state-approved-testers";
     }
 
     @GetMapping("/guides/{slug}")
@@ -374,8 +507,8 @@ public class SiteController {
                 .orElseThrow(() -> new NotFoundException("Utility page not found."));
         List<FaqItem> faqItems = utilityFaqItems(utility);
         model.addAttribute("page", page(
-                utility.utilityName() + " backflow testing requirements | BackflowPath",
-                utility.verdictSummary(),
+                utilityPageTitle(utility),
+                utilityPageDescription(utility),
                 utilityPath(utility),
                 combineStructuredData(
                         breadcrumbStructuredData(List.of(
@@ -471,8 +604,8 @@ public class SiteController {
                 .orElseThrow(() -> new NotFoundException("Approved tester page not available for this utility."));
         List<ProviderRecord> providers = registryService.findProvidersForUtility(utility.utilityId());
         model.addAttribute("page", page(
-                utility.utilityName() + " approved testers | BackflowPath",
-                "Official tester list and clearly labeled non-official directory options for " + utility.utilityName() + ".",
+                officialTesterPageTitle(utility) + " | BackflowPath",
+                officialTesterPageDescription(utility),
                 utilityPath(utility) + "approved-testers",
                 breadcrumbStructuredData(List.of(
                         new BreadcrumbItem("Home", canonical("/")),
@@ -613,6 +746,29 @@ public class SiteController {
         urls.add(new SitemapEntry(canonical("/editorial-standards"), homeLastModified()));
         urls.add(new SitemapEntry(canonical("/corrections"), homeLastModified()));
         urls.add(new SitemapEntry(canonical("/contact"), homeLastModified()));
+        urls.add(new SitemapEntry(canonical("/claim-listing"), homeLastModified()));
+        List<UtilityRecord> officialTesterUtilities = officialTesterUtilities();
+        urls.add(new SitemapEntry(
+                canonical("/official-backflow-tester-lists"),
+                latestUtilityModified(officialTesterUtilities)
+        ));
+        urls.add(new SitemapEntry(
+                canonical("/backflow-reporting-portals"),
+                latestUtilityModified(portalUtilities("all"))
+        ));
+        for (String portalSlug : List.of("bsi", "weirs", "swiftcomply")) {
+            List<UtilityRecord> portalUtilities = portalUtilities(portalSlug);
+            if (!portalUtilities.isEmpty()) {
+                urls.add(new SitemapEntry(
+                        canonical("/backflow-reporting-portals/" + portalSlug),
+                        latestUtilityModified(portalUtilities)
+                ));
+            }
+        }
+        utilitiesByState(officialTesterUtilities).forEach((state, utilities) -> urls.add(new SitemapEntry(
+                canonical("/states/" + state + "/approved-backflow-testers"),
+                latestUtilityModified(utilities)
+        )));
         registryService.listPublishedStateGuides()
                 .forEach(guide -> urls.add(new SitemapEntry(
                         canonical("/states/" + guide.state() + "/backflow-testing"),
@@ -688,6 +844,123 @@ public class SiteController {
         return new PageMeta(title, description, canonical(path), false, structuredDataJson);
     }
 
+    private List<UtilityRecord> officialTesterUtilities() {
+        return registryService.listPublishedUtilities().stream()
+                .filter(UtilityRecord::supportsApprovedTestersPage)
+                .sorted(Comparator.comparing(UtilityRecord::state).thenComparing(UtilityRecord::utilityName))
+                .toList();
+    }
+
+    private Map<String, List<UtilityRecord>> utilitiesByState(List<UtilityRecord> utilities) {
+        return utilities.stream()
+                .sorted(Comparator.comparing(UtilityRecord::state).thenComparing(UtilityRecord::utilityName))
+                .collect(Collectors.groupingBy(
+                        UtilityRecord::state,
+                        LinkedHashMap::new,
+                        Collectors.toList()
+                ));
+    }
+
+    private Map<String, String> stateLabelsFor(Set<String> states) {
+        Map<String, String> labels = new LinkedHashMap<>();
+        states.stream()
+                .sorted()
+                .forEach(state -> labels.put(state, stateLabel(state)));
+        return labels;
+    }
+
+    private List<UtilityRecord> portalUtilities(String portalSlug) {
+        return registryService.listPublishedUtilities().stream()
+                .filter(utility -> switch (portalSlug.toLowerCase(Locale.US)) {
+                    case "all" -> usesPortalWorkflow(utility);
+                    case "bsi" -> utilityContainsAny(utility, "bsi", "backflow solutions", "backflowtest.com", "bsi online");
+                    case "weirs" -> utilityContainsAny(utility, "weirs", "water environmental inspection reporting system");
+                    case "swiftcomply" -> utilityContainsAny(utility, "swiftcomply", "c3swift", "swift comply");
+                    default -> false;
+                })
+                .sorted(Comparator.comparing(UtilityRecord::state).thenComparing(UtilityRecord::utilityName))
+                .toList();
+    }
+
+    private Map<String, Integer> portalCounts() {
+        Map<String, Integer> counts = new LinkedHashMap<>();
+        counts.put("bsi", portalUtilities("bsi").size());
+        counts.put("weirs", portalUtilities("weirs").size());
+        counts.put("swiftcomply", portalUtilities("swiftcomply").size());
+        return counts;
+    }
+
+    private boolean isSupportedPortalSlug(String portalSlug) {
+        return "bsi".equalsIgnoreCase(portalSlug)
+                || "weirs".equalsIgnoreCase(portalSlug)
+                || "swiftcomply".equalsIgnoreCase(portalSlug);
+    }
+
+    private String portalName(String portalSlug) {
+        return switch (portalSlug.toLowerCase(Locale.US)) {
+            case "bsi" -> "BSI";
+            case "weirs" -> "WEIRS";
+            case "swiftcomply" -> "SwiftComply";
+            default -> "Backflow reporting portals";
+        };
+    }
+
+    private String portalDescription(String portalSlug) {
+        return switch (portalSlug.toLowerCase(Locale.US)) {
+            case "bsi" -> "Utility pages where BSI or Backflow Solutions appears in the official backflow testing, tester, or report submission workflow.";
+            case "weirs" -> "Utility pages where WEIRS appears in the official backflow tester lookup or report submission workflow.";
+            case "swiftcomply" -> "Utility pages where SwiftComply or C3Swift appears in the official backflow report submission workflow.";
+            default -> "Find utility backflow reporting portal routes and online submission workflows.";
+        };
+    }
+
+    private String utilityPageTitle(UtilityRecord utility) {
+        if (utility.supportsApprovedTestersPage() && usesPortalWorkflow(utility)) {
+            return utility.utilityName() + " backflow testing, portal, and official tester list | BackflowPath";
+        }
+        if (utility.supportsApprovedTestersPage()) {
+            return utility.utilityName() + " backflow testing and official tester list | BackflowPath";
+        }
+        if (usesPortalWorkflow(utility)) {
+            return utility.utilityName() + " backflow testing and reporting portal | BackflowPath";
+        }
+        return utility.utilityName() + " backflow testing requirements | BackflowPath";
+    }
+
+    private String utilityPageDescription(UtilityRecord utility) {
+        StringBuilder description = new StringBuilder(utility.verdictSummary());
+        if (usesPortalWorkflow(utility)) {
+            description.append(" Includes reporting portal and submission workflow context.");
+        }
+        if (utility.supportsApprovedTestersPage()) {
+            description.append(" Includes the official tester list route.");
+        } else if (utility.supportsFindATesterPage()) {
+            description.append(" Includes a clearly labeled non-official tester route when provider inventory is available.");
+        }
+        return description.toString();
+    }
+
+    private String officialTesterPageTitle(UtilityRecord utility) {
+        if (utilityContainsAny(utility, "weirs")) {
+            return utility.utilityName() + " WEIRS registered backflow tester list";
+        }
+        if (utilityContainsAny(utility, "bsi", "backflowtest.com", "backflow solutions")) {
+            return utility.utilityName() + " BSI backflow tester route";
+        }
+        if (utilityContainsAny(utility, "certified")) {
+            return utility.utilityName() + " certified backflow tester list";
+        }
+        if (utilityContainsAny(utility, "registered")) {
+            return utility.utilityName() + " registered backflow tester list";
+        }
+        return utility.utilityName() + " official backflow tester list";
+    }
+
+    private String officialTesterPageDescription(UtilityRecord utility) {
+        return "Open the utility-published tester route for " + utility.utilityName()
+                + " and keep it separate from non-official provider directory options.";
+    }
+
     private String testerPath(UtilityRecord utility) {
         if (utility.supportsApprovedTestersPage()) {
             return utilityPath(utility) + "approved-testers";
@@ -718,6 +991,14 @@ public class SiteController {
 
     private String providerPath(ProviderRecord provider) {
         return "/providers/" + provider.providerId() + "/";
+    }
+
+    private LocalDate latestUtilityModified(List<UtilityRecord> utilities) {
+        return utilities.stream()
+                .map(UtilityRecord::lastVerified)
+                .filter(java.util.Objects::nonNull)
+                .max(LocalDate::compareTo)
+                .orElse(homeLastModified());
     }
 
     private String renderUtilityFocusPage(
@@ -1174,20 +1455,7 @@ public class SiteController {
     }
 
     private boolean usesPortalWorkflow(UtilityRecord utility) {
-        StringBuilder text = new StringBuilder();
-        append(text, utility.utilityUrl());
-        append(text, utility.approvedTesterListUrl());
-        append(text, utility.dueBasis());
-        append(text, utility.verdictSummary());
-        for (String step : utility.workflowSteps()) {
-            append(text, step);
-        }
-        utility.submissionMethods().forEach(method -> {
-            append(text, method.label());
-            append(text, method.url());
-            append(text, method.kind());
-        });
-        String value = text.toString().toLowerCase(Locale.US);
+        String value = utilitySearchText(utility).toLowerCase(Locale.US);
         return value.contains("portal")
                 || value.contains("swift")
                 || value.contains("bsi")
@@ -1195,6 +1463,37 @@ public class SiteController {
                 || value.contains("customerportal")
                 || value.contains("c3swift")
                 || value.contains("online submission");
+    }
+
+    private boolean utilityContainsAny(UtilityRecord utility, String... keywords) {
+        return pathContainsAny(utilitySearchText(utility), keywords);
+    }
+
+    private String utilitySearchText(UtilityRecord utility) {
+        StringBuilder text = new StringBuilder();
+        append(text, utility.utilityUrl());
+        append(text, utility.approvedTesterListUrl());
+        append(text, utility.officialListLabel());
+        append(text, utility.dueBasis());
+        append(text, utility.verdictSummary());
+        append(text, utility.sourceExcerpt());
+        for (String step : utility.workflowSteps()) {
+            append(text, step);
+        }
+        for (String alias : utility.searchAliases()) {
+            append(text, alias);
+        }
+        utility.sources().forEach(source -> {
+            append(text, source.label());
+            append(text, source.url());
+            append(text, source.kind());
+        });
+        utility.submissionMethods().forEach(method -> {
+            append(text, method.label());
+            append(text, method.url());
+            append(text, method.kind());
+        });
+        return text.toString();
     }
 
     private boolean hasDateSpecificWorkflow(UtilityRecord utility) {

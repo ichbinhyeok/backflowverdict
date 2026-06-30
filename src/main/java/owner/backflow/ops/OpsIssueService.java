@@ -73,15 +73,15 @@ public class OpsIssueService {
     }
 
     public boolean hasBlockingIssue(UtilityRecord utility, LocalDate today) {
-        return hasBlockingConflict(utility.utilityId()) || hasBlockingBrokenLink(utilityUrls(utility), today);
+        return hasBlockingConflict(utility.utilityId());
     }
 
     public boolean hasBlockingIssue(GuideRecord guide, LocalDate today) {
-        return hasBlockingBrokenLink(sourceUrls(guide.sources()), today);
+        return false;
     }
 
     public boolean hasBlockingIssue(StateGuideRecord guide, LocalDate today) {
-        return hasBlockingBrokenLink(sourceUrls(guide.sources()), today);
+        return false;
     }
 
     public long blockingUtilityCount(List<UtilityRecord> utilities, LocalDate today) {

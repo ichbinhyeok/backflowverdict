@@ -89,7 +89,7 @@
                 <ul class="detail-list">
                     <li>Inventing approval or certification status for a tester</li>
                     <li>Mixing directory placement into the official source block</li>
-                    <li>Keeping stale pages indexed after source evidence breaks or ages out</li>
+                    <li>Ignoring stale-page warnings after source evidence breaks or ages out</li>
                     <li>Replacing the utility's own rule page with generic educational copy</li>
                 </ul>
             </article>
@@ -123,7 +123,7 @@
             <article class="detail-card">
                 <span class="eyebrow">Scope decisions</span>
                 <h2>Why some pages are indexed and others are not</h2>
-                <p>BackflowPath does not treat every generated route as worthy of indexing. Thin city bridges, stale records, or pages that fail to add real local compliance value should be canonicalized, noindexed, or removed until they earn a stronger public record.</p>
+                <p>BackflowPath does not treat every generated route as worthy of indexing. Thin city bridges, unsupported records, or pages that fail to add real local compliance value should be canonicalized, noindexed, or removed until they earn a stronger public record.</p>
             </article>
 
             <article class="detail-card">

@@ -7,12 +7,12 @@
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Methodology</span>
                 <h1>How BackflowPath verifies local rules</h1>
-                <p class="lede">Each published page is built from source-backed utility or authority material, normalized into the file registry, reviewed on a freshness window, and updated or suppressed when the source record no longer supports the public page. The method is intentionally conservative because local compliance pages can create expensive or safety-sensitive mistakes when they drift.</p>
+                <p class="lede">Each published page is built from source-backed utility or authority material, normalized into the file registry, reviewed on a freshness window, and re-verified when the source record ages. The method is intentionally conservative because local compliance pages can create expensive or safety-sensitive mistakes when they drift.</p>
             </div>
             <aside class="panel panel--hero">
                 <span class="stat-card__label" style="color: rgba(141, 224, 196, 0.9);">Review model</span>
                 <div class="stat-card__value" style="color: #ffffff; font-size: clamp(2rem, 4vw, 2.7rem);">Source -> verify -> publish</div>
-                <p class="stat-card__meta" style="color: rgba(239, 241, 243, 0.74);">The public page is only as strong as the current source evidence. When source evidence weakens, the page should be refreshed, downgraded, or removed from indexing.</p>
+                <p class="stat-card__meta" style="color: rgba(239, 241, 243, 0.74);">The public page is only as strong as the current source evidence. When source evidence weakens, the page should be refreshed, noindexed, or removed from indexing.</p>
             </aside>
         </div>
     </section>
@@ -34,7 +34,7 @@
             <article class="detail-card">
                 <span class="eyebrow">Step 3</span>
                 <h2>Apply freshness thresholds</h2>
-                <p>Utilities and guides carry freshness windows in the registry. When the source is broken, the rule changes, or the review window expires, the page should be re-verified or suppressed from indexing rather than left to drift.</p>
+                <p>Utilities and guides carry freshness windows in the registry. When the review window expires, the route stays crawlable while operations flags it for re-verification; broken or contradicted source evidence can still trigger noindexing or removal.</p>
             </article>
         </div>
     </section>
@@ -66,7 +66,7 @@
             <article class="detail-card">
                 <span class="eyebrow">Update discipline</span>
                 <h2>Why freshness is part of the method</h2>
-                <p>This site is not trying to win by volume. It wins by staying more legible and more current than a thin programmatic page set. That means source decay is a publishing issue, not a cosmetic issue.</p>
+                <p>This site is not trying to win by volume. It wins by staying more legible and more current than a thin programmatic page set. That means source decay is an operations issue first, and a publishing issue when evidence no longer supports the page.</p>
             </article>
         </div>
     </section>
@@ -89,6 +89,7 @@
                 <ul class="detail-list">
                     <li>Utilities carry short freshness windows because local program rules can change quickly.</li>
                     <li>Guides carry longer windows because they summarize repeated patterns, not one utility's current rule.</li>
+                    <li>If a page ages past its freshness window, it remains accessible while re-verification is queued.</li>
                     <li>If a page loses source support, the correct action is refresh, noindex, or removal, not silent drift.</li>
                 </ul>
             </article>
@@ -115,7 +116,7 @@
                     <li>The source no longer supports the field claims shown on-page.</li>
                     <li>The route becomes a thin bridge with little utility-specific value.</li>
                     <li>The official tester route classification is no longer defensible.</li>
-                    <li>Freshness thresholds expire without re-verification.</li>
+                    <li>Freshness thresholds expire and re-verification repeatedly fails.</li>
                 </ul>
             </article>
         </div>

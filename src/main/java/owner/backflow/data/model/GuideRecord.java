@@ -26,7 +26,7 @@ public record GuideRecord(
     }
 
     public boolean isPublishable(LocalDate today) {
-        return published && isFresh(today);
+        return published;
     }
 
     public boolean isFresh(LocalDate today) {
