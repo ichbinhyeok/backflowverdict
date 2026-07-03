@@ -1,0 +1,65 @@
+{
+  "slug": "backflow-test-notice-next-steps",
+  "title": "Backflow test notice: what to do next",
+  "description": "What to check when a city, utility, BSI, SwiftComply, VEPO, or water district sends a backflow test notice.",
+  "intro": "A backflow test notice is not just a reminder to call the nearest plumber. It usually tells you which utility is enforcing the rule, when the test is due, who can test, how the report must be filed, and what happens if the device fails.",
+  "callout": "Use this page as the top-of-funnel checklist, then open the exact utility page before scheduling or submitting a report.",
+  "sourceExcerpt": "Strong official examples show the same notice workflow: confirm the utility, use an accepted tester, submit through the required portal or report path, handle failed tests quickly, and keep proof of filing.",
+  "sourceSnapshotPath": "storage/snapshots/guides/backflow-test-notice-next-steps.html",
+  "reviewerInitials": "TL",
+  "lastReviewed": "2026-07-03",
+  "published": true,
+  "sections": [
+    {
+      "heading": "Read the notice like a workflow",
+      "body": "The notice usually contains more than a due date. Look for the utility name, property address, assembly serial number, due date, portal name, tester requirement, and fee language before choosing the next action.",
+      "bullets": [
+        "If the notice names BSI, SwiftComply, VEPO, Envirotrax, or a local portal, the tester may need a registered account before the report can be accepted.",
+        "If the notice references a hard deadline, the useful question is not just test price; it is whether the tester can complete and file before the due date."
+      ]
+    },
+    {
+      "heading": "Match the tester to the filing path",
+      "body": "Good commercial pages win because they promise the full chain: certified testing, repair if needed, report filing, proof to the owner, and reminders. BackflowPath keeps that chain tied to the governing utility instead of turning it into a generic provider claim.",
+      "bullets": [
+        "Registered tester, certified tester, approved tester, and county-certified tester can mean different things.",
+        "A passed test still leaves the owner exposed if the report is filed late, filed through the wrong portal, or rejected for missing credentials."
+      ]
+    },
+    {
+      "heading": "Plan for failure before it happens",
+      "body": "Many official pages treat failed tests differently from passed tests. Some require faster notice, a repair and retest window, or different fee handling. The right tester is the one who can close the failed-test loop, not only run the first test.",
+      "bullets": [
+        "Ask whether the tester can repair, retest, and submit the corrected report.",
+        "Keep the failed-test timeline on the same utility workflow as the original notice."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "Dallas Water Utilities SwiftComply backflow reports",
+      "url": "https://dallascityhall.com/departments/waterutilities/Pages/Backflow-Test-Reports.aspx",
+      "kind": "official utility example"
+    },
+    {
+      "label": "Tampa backflow testing and SwiftComply enrollment",
+      "url": "https://www.tampa.gov/water/water-quality/backflow-testing",
+      "kind": "official utility example"
+    },
+    {
+      "label": "Queen Creek BSI filing fee and credential rules",
+      "url": "https://www.queencreekaz.gov/government/utilities/water/backflow-information",
+      "kind": "official utility example"
+    },
+    {
+      "label": "Hillsborough County backflow BMP portal and failed-test notice",
+      "url": "https://hcfl.gov/residents/property-owners-and-renters/water-and-sewer/backflow-and-cross-connection-service-testing",
+      "kind": "official county example"
+    },
+    {
+      "label": "Fort Worth VEPO and registered BPAT workflow",
+      "url": "https://www.fortworthtexas.gov/departments/water/backflow",
+      "kind": "official utility example"
+    }
+  ]
+}

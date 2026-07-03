@@ -80,6 +80,70 @@
         </div>
     </section>
 
+    @if (guide.slug().equals("backflow-test-notice-next-steps"))
+        <section class="section section--tight">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Notice funnel</span>
+                    <h2>Turn the notice into the right next page</h2>
+                    <p class="lede">Start with the word or problem named in the notice. Then open the exact utility page before scheduling or filing.</p>
+                </div>
+                <div class="card-grid card-grid--three">
+                    <article class="detail-card detail-card--key">
+                        <span class="pill">Deadline</span>
+                        <h3>Notice says annual test or due date</h3>
+                        <p>Use the due-date guide when the notice is about timing, annual testing, a calendar window, or an anniversary date.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/guides/anniversary-date-vs-calendar-deadline">Open due-date guide</a>
+                        </div>
+                    </article>
+                    <article class="detail-card detail-card--quiet">
+                        <span class="pill">Portal</span>
+                        <h3>Notice names BSI, SwiftComply, WEIRS, or VEPO</h3>
+                        <p>Use the portal guide when the report has to be entered through a named online system or tester account.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/guides/backflow-reporting-portals">Open portal guide</a>
+                        </div>
+                    </article>
+                    <article class="detail-card detail-card--quiet">
+                        <span class="pill">Tester</span>
+                        <h3>Notice says certified, registered, or approved tester</h3>
+                        <p>Use the tester guide when the issue is whether the provider is accepted by the city, county, utility, or portal.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/guides/approved-testers-vs-find-a-tester">Open tester guide</a>
+                        </div>
+                    </article>
+                    <article class="detail-card detail-card--warm">
+                        <span class="pill">Failed test</span>
+                        <h3>Device failed or needs repair</h3>
+                        <p>Use the failed-test guide when the next step is repair, retest, report correction, or a short compliance window.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/guides/failed-backflow-test-next-steps">Open failed-test guide</a>
+                        </div>
+                    </article>
+                    <article class="detail-card">
+                        <span class="pill">Cost</span>
+                        <h3>Notice creates a pricing question</h3>
+                        <p>Use the cost guide when the owner needs to separate tester pricing, filing fees, repair exposure, and retest costs.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/guides/backflow-test-cost">Open cost guide</a>
+                        </div>
+                    </article>
+                    <article class="detail-card">
+                        <span class="pill">Utility</span>
+                        <h3>Notice names a city or water provider</h3>
+                        <p>Use the mapped utility page for the exact phone, source trail, submission method, tester route, and local rule.</p>
+                        @if (!relatedUtilities.isEmpty())
+                            <div class="card-actions">
+                                <a class="button button--primary" href="/utilities/${relatedUtilities.get(0).state()}/${relatedUtilities.get(0).canonicalSlug()}/">Open mapped utility</a>
+                            </div>
+                        @endif
+                    </article>
+                </div>
+            </div>
+        </section>
+    @endif
+
     @if (guide.slug().equals("backflow-reporting-portals"))
         <section class="section section--tight">
             <div class="container">
@@ -88,7 +152,7 @@
                     <h2>Jump to the portal family named in the notice</h2>
                     <p class="lede">These hub pages group utilities by the reporting system named in the public workflow, then send the user back to the exact authority page.</p>
                 </div>
-                <div class="card-grid card-grid--three">
+                <div class="card-grid">
                     <article class="detail-card detail-card--quiet">
                         <span class="pill">BSI Online</span>
                         <h3>BSI backflow reporting</h3>
@@ -111,6 +175,14 @@
                         <p>Use this route when the local workflow references WEIRS for tester lookup, inspection, or report submission.</p>
                         <div class="card-actions">
                             <a class="button button--secondary" href="/backflow-reporting-portals/weirs">Open WEIRS utilities</a>
+                        </div>
+                    </article>
+                    <article class="detail-card detail-card--quiet">
+                        <span class="pill">VEPO Envirotrax</span>
+                        <h3>VEPO tester registration and reports</h3>
+                        <p>Use this route when the utility names VEPO or Envirotrax for BPAT registration, credential verification, approved-list status, or report submission.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/backflow-reporting-portals/vepo">Open VEPO utilities</a>
                         </div>
                     </article>
                 </div>

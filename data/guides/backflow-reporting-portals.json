@@ -1,28 +1,30 @@
 {
   "slug": "backflow-reporting-portals",
-  "title": "Backflow reporting portals: BSI, SwiftComply, and WEIRS",
-  "description": "Find how BSI Online, SwiftComply, WEIRS, and utility customer portals affect backflow test report submission after the field test.",
-  "intro": "A passed test is not the same thing as a completed compliance cycle. Many utilities now care as much about BSI, SwiftComply, WEIRS, or a customer portal as they do about the field result.",
+  "title": "Backflow reporting portals: BSI, SwiftComply, WEIRS, and VEPO",
+  "description": "Find how BSI Online, SwiftComply, WEIRS, VEPO, Envirotrax, and utility customer portals affect backflow test report submission after the field test.",
+  "intro": "A passed test is not the same thing as a completed compliance cycle. Many utilities now care as much about BSI, SwiftComply, WEIRS, VEPO, Envirotrax, or a customer portal as they do about the field result.",
   "callout": "Use the local utility page to confirm the exact portal, timing, fee, and tester status. This guide exists to make those portal patterns easier to recognize before you act.",
-  "sourceExcerpt": "Many utilities now route compliance through BSI, SwiftComply, or utility-managed customer portals. The practical mistake is assuming the field test alone closes the loop.",
+  "sourceExcerpt": "Many utilities now route compliance through BSI, SwiftComply, WEIRS, VEPO, Envirotrax, or utility-managed customer portals. The practical mistake is assuming the field test alone closes the loop.",
   "sourceSnapshotPath": "storage/snapshots/guides/backflow-reporting-portals.html",
   "reviewerInitials": "TL",
-  "lastReviewed": "2026-06-29",
+  "lastReviewed": "2026-07-03",
   "published": true,
   "sections": [
     {
       "heading": "A portal changes the real next action",
-      "body": "Utilities that use BSI, SwiftComply, or county customer portals shift risk from the wrench work to the reporting sequence. Owners and testers can still fall out of compliance even when the assembly passes if the result is not entered correctly.",
+      "body": "Utilities that use BSI, SwiftComply, WEIRS, VEPO, Envirotrax, or county customer portals shift risk from the wrench work to the reporting sequence. Owners and testers can still fall out of compliance even when the assembly passes if the result is not entered correctly.",
       "bullets": [
         "Dallas and Colorado Springs push testers into portal-first result submission workflows.",
+        "Fort Worth shows how VEPO/Envirotrax can combine tester registration, credential verification, approved-list status, and online reporting.",
         "Lee County and Tampa show how customer or contractor portals become part of the actual compliance path."
       ]
     },
     {
       "heading": "Portal workflows are not interchangeable",
-      "body": "A BSI route, a SwiftComply route, and a utility customer portal each imply different registration, fee, and tester-enrollment assumptions. Treating them as one generic online submission step is how people lose time.",
+      "body": "A BSI route, a SwiftComply route, a WEIRS route, a VEPO/Envirotrax route, and a utility customer portal each imply different registration, fee, credential, and tester-enrollment assumptions. Treating them as one generic online submission step is how people lose time.",
       "bullets": [
         "Some programs want the tester enrolled before the report can be accepted.",
+        "Some programs block submission if tester license, insurance, or gauge accuracy documents are stale.",
         "Some county and utility portals tie the record to an existing account or hazard ID."
       ]
     },
@@ -55,6 +57,16 @@
       "label": "Lee County BSI Online tester instructions",
       "url": "https://www.leegov.com/utilities/Documents/Cross%20Connection%20Control/BSI_Online_Tester_Instructions_Water_Purveyor_Testers.pdf",
       "kind": "official tester reporting instructions"
+    },
+    {
+      "label": "Fort Worth VEPO Envirotrax backflow workflow",
+      "url": "https://www.fortworthtexas.gov/departments/water/backflow",
+      "kind": "official utility workflow"
+    },
+    {
+      "label": "VEPO Envirotrax registered tester search",
+      "url": "https://www.envirotrax.com/registrations.aspx?at=1",
+      "kind": "portal tester search"
     }
   ]
 }

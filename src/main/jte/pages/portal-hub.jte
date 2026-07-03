@@ -28,14 +28,14 @@
                 </div>
                 <div class="hero__stats">
                     <span>${utilities.size()} mapped utility workflows</span>
-                    <span>${portalSlug.equals("all") ? "BSI, WEIRS, and SwiftComply families" : portalName + " utility examples"}</span>
+                    <span>${portalSlug.equals("all") ? "BSI, WEIRS, SwiftComply, and VEPO families" : portalName + " utility examples"}</span>
                     <span>Reports follow utility rules</span>
                     <span>Tester action comes after the local page</span>
                 </div>
             </div>
             <aside class="panel panel--hero">
                 <span class="stat-card__label" style="color: rgba(141, 224, 196, 0.9);">Portal context</span>
-                <div class="stat-card__value" style="color: #ffffff; font-size: clamp(2rem, 4vw, 2.7rem);">${portalSlug.equals("all") ? "BSI / WEIRS / SwiftComply" : portalName}</div>
+                <div class="stat-card__value" style="color: #ffffff; font-size: clamp(2rem, 4vw, 2.7rem);">${portalSlug.equals("all") ? "BSI / WEIRS / SwiftComply / VEPO" : portalName}</div>
                 <p class="stat-card__meta" style="color: rgba(239, 241, 243, 0.74);">Portal names are discovery signals. The local utility page still controls deadlines, tester status, fees, and report acceptance.</p>
             </aside>
         </div>
@@ -49,7 +49,7 @@
                     <h2>Open the portal family, then confirm the utility workflow</h2>
                     <p class="lede">These pages group the strongest recurring portal names without pretending the portal itself replaces the local rule.</p>
                 </div>
-                <div class="card-grid card-grid--three">
+                <div class="card-grid">
                     <article class="detail-card detail-card--quiet">
                         <span class="pill">${portalCounts.getOrDefault("bsi", 0)} utilities</span>
                         <h3>BSI backflow reporting</h3>
@@ -72,6 +72,14 @@
                         <p>Utilities where SwiftComply or C3Swift appears in the official report submission path.</p>
                         <div class="card-actions">
                             <a class="button button--secondary" href="/backflow-reporting-portals/swiftcomply">Open SwiftComply utilities</a>
+                        </div>
+                    </article>
+                    <article class="detail-card detail-card--quiet">
+                        <span class="pill">${portalCounts.getOrDefault("vepo", 0)} utilities</span>
+                        <h3>VEPO Envirotrax reporting</h3>
+                        <p>Utilities where VEPO or Envirotrax appears in tester registration, credential review, or report submission context.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/backflow-reporting-portals/vepo">Open VEPO utilities</a>
                         </div>
                     </article>
                 </div>

@@ -194,8 +194,8 @@ public class SiteController {
     public String reportingPortalsPage(Model model) {
         List<UtilityRecord> utilities = portalUtilities("all");
         model.addAttribute("page", page(
-                "Backflow reporting portals: BSI, SwiftComply, WEIRS | BackflowPath",
-                "Find which utilities route backflow test reports through BSI, SwiftComply, WEIRS, or local online submission portals.",
+                "Backflow reporting portals: BSI, SwiftComply, WEIRS, VEPO | BackflowPath",
+                "Find which utilities route backflow test reports through BSI, SwiftComply, WEIRS, VEPO, Envirotrax, or local online submission portals.",
                 "/backflow-reporting-portals",
                 breadcrumbStructuredData(List.of(
                         new BreadcrumbItem("Home", canonical("/")),
@@ -204,12 +204,13 @@ public class SiteController {
         ));
         model.addAttribute("portalName", "Backflow reporting portals");
         model.addAttribute("portalSlug", "all");
-        model.addAttribute("intro", "Use this page when a notice mentions BSI, SwiftComply, WEIRS, a customer account, or another online report submission workflow.");
+        model.addAttribute("intro", "Use this page when a notice mentions BSI, SwiftComply, WEIRS, VEPO, Envirotrax, a customer account, or another online report submission workflow.");
         model.addAttribute("overview", true);
         model.addAttribute("utilities", utilities);
         model.addAttribute("portalCounts", portalCounts());
         model.addAttribute("cityAliasesByUtility", publishedCityAliasesByUtility(utilities));
         model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
+                "backflow-test-notice-next-steps",
                 "backflow-reporting-portals",
                 "anniversary-date-vs-calendar-deadline",
                 "approved-testers-vs-find-a-tester"
@@ -245,6 +246,7 @@ public class SiteController {
         model.addAttribute("portalCounts", portalCounts());
         model.addAttribute("cityAliasesByUtility", publishedCityAliasesByUtility(utilities));
         model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
+                "backflow-test-notice-next-steps",
                 "backflow-reporting-portals",
                 "how-we-verify-backflow-rules",
                 "approved-testers-vs-find-a-tester"
@@ -749,6 +751,62 @@ public class SiteController {
         return "pages/city-bridge";
     }
 
+    @GetMapping("/cities/{state}/{citySlug}/{intentSlug}")
+    public String cityIntentPage(
+            @PathVariable String state,
+            @PathVariable String citySlug,
+            @PathVariable String intentSlug,
+            Model model
+    ) {
+        CityAliasRecord alias = registryService.findCityAlias(state, citySlug)
+                .orElseThrow(() -> new NotFoundException("City intent page not found."));
+        UtilityRecord utility = registryService.findUtilityById(alias.utilityId())
+                .orElseThrow(() -> new NotFoundException("Mapped utility is not available."));
+        CityIntentConfig intent = cityIntentConfig(intentSlug, alias, utility);
+        if (intent == null) {
+            throw new NotFoundException("City intent page not available.");
+        }
+
+        String path = cityIntentPath(alias, intent.slug());
+        model.addAttribute("page", new PageMeta(
+                intent.title(),
+                intent.description(),
+                canonical(path),
+                alias.aliasMode() == AliasMode.NOINDEX_BRIDGE,
+                combineStructuredData(
+                        breadcrumbStructuredData(List.of(
+                                new BreadcrumbItem("Home", canonical("/")),
+                                new BreadcrumbItem(stateLabel(utility.state()), canonical("/states/" + utility.state() + "/backflow-testing")),
+                                new BreadcrumbItem(alias.city(), canonical(cityPath(alias))),
+                                new BreadcrumbItem(intent.heading(), canonical(path))
+                        )),
+                        faqStructuredData(utilityFaqItems(utility))
+                )
+        ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
+                utility.utilityId(),
+                path,
+                intent.slug(),
+                "city-intent"
+        )));
+        model.addAttribute("alias", alias);
+        model.addAttribute("utility", utility);
+        model.addAttribute("eyebrow", intent.eyebrow());
+        model.addAttribute("heading", intent.heading());
+        model.addAttribute("intro", intent.intro());
+        model.addAttribute("highlights", intent.highlights());
+        model.addAttribute("workflowSteps", intent.workflowSteps());
+        model.addAttribute("primaryPath", intent.primaryPath());
+        model.addAttribute("primaryLabel", intent.primaryLabel());
+        model.addAttribute("utilityPath", utilityPath(utility));
+        model.addAttribute("failedTestPath", utilityPath(utility) + "failed-test");
+        model.addAttribute("testerPath", testerPath(utility));
+        model.addAttribute("testerLabel", testerLabel(utility));
+        model.addAttribute("portalHubPath", portalHubPath(utility));
+        model.addAttribute("portalHubLabel", portalHubLabel(utility));
+        model.addAttribute("relatedGuides", guidesByPreferredSlugs(intent.guideSlugs(), 4, null));
+        return "pages/city-intent-page";
+    }
+
     @GetMapping(value = "/sitemap.xml", produces = MediaType.APPLICATION_XML_VALUE)
     @ResponseBody
     public String sitemap(HttpServletRequest request) {
@@ -772,7 +830,7 @@ public class SiteController {
                 canonical("/backflow-reporting-portals"),
                 latestUtilityModified(portalUtilities("all"))
         ));
-        for (String portalSlug : List.of("bsi", "weirs", "swiftcomply")) {
+        for (String portalSlug : List.of("bsi", "weirs", "swiftcomply", "vepo")) {
             List<UtilityRecord> portalUtilities = portalUtilities(portalSlug);
             if (!portalUtilities.isEmpty()) {
                 urls.add(new SitemapEntry(
@@ -790,6 +848,12 @@ public class SiteController {
                 continue;
             }
             urls.add(new SitemapEntry(canonical(cityPath(alias)), alias.lastReviewed()));
+            registryService.findUtilityById(alias.utilityId()).ifPresent(utility ->
+                    cityIntentConfigs(alias, utility).forEach(intent -> urls.add(new SitemapEntry(
+                            canonical(cityIntentPath(alias, intent.slug())),
+                            latestDate(alias.lastReviewed(), utility.lastVerified())
+                    )))
+            );
         }
         registryService.listPublishedStateGuides()
                 .forEach(guide -> urls.add(new SitemapEntry(
@@ -898,6 +962,7 @@ public class SiteController {
                     case "bsi" -> utilityContainsAny(utility, "bsi", "backflow solutions", "backflowtest.com", "bsi online");
                     case "weirs" -> utilityContainsAny(utility, "weirs", "water environmental inspection reporting system");
                     case "swiftcomply" -> utilityContainsAny(utility, "swiftcomply", "c3swift", "swift comply");
+                    case "vepo" -> utilityContainsAny(utility, "vepo", "envirotrax");
                     default -> false;
                 })
                 .sorted(Comparator.comparing(UtilityRecord::state).thenComparing(UtilityRecord::utilityName))
@@ -909,6 +974,7 @@ public class SiteController {
         counts.put("bsi", portalUtilities("bsi").size());
         counts.put("weirs", portalUtilities("weirs").size());
         counts.put("swiftcomply", portalUtilities("swiftcomply").size());
+        counts.put("vepo", portalUtilities("vepo").size());
         return counts;
     }
 
@@ -942,7 +1008,8 @@ public class SiteController {
     private boolean isSupportedPortalSlug(String portalSlug) {
         return "bsi".equalsIgnoreCase(portalSlug)
                 || "weirs".equalsIgnoreCase(portalSlug)
-                || "swiftcomply".equalsIgnoreCase(portalSlug);
+                || "swiftcomply".equalsIgnoreCase(portalSlug)
+                || "vepo".equalsIgnoreCase(portalSlug);
     }
 
     private String portalName(String portalSlug) {
@@ -950,6 +1017,7 @@ public class SiteController {
             case "bsi" -> "BSI";
             case "weirs" -> "WEIRS";
             case "swiftcomply" -> "SwiftComply";
+            case "vepo" -> "VEPO/Envirotrax";
             default -> "Backflow reporting portals";
         };
     }
@@ -959,6 +1027,7 @@ public class SiteController {
             case "bsi" -> "Find utility pages where BSI Online or Backflow Solutions appears in the official backflow test report, tester enrollment, or submission workflow.";
             case "weirs" -> "Find utility pages where WEIRS appears in the official backflow tester lookup, water inspection, or report submission workflow.";
             case "swiftcomply" -> "Find utility pages where SwiftComply or C3Swift appears in the official backflow report submission workflow.";
+            case "vepo" -> "Find utility pages where VEPO or Envirotrax appears in the official backflow tester registration, credential verification, or report submission workflow.";
             default -> "Find utility backflow reporting portal routes and online submission workflows.";
         };
     }
@@ -982,6 +1051,9 @@ public class SiteController {
         }
         if (utilityContainsAny(utility, "swiftcomply", "c3swift", "swift comply")) {
             return "swiftcomply";
+        }
+        if (utilityContainsAny(utility, "vepo", "envirotrax")) {
+            return "vepo";
         }
         if (utilityContainsAny(utility, "bsi", "backflow solutions", "backflowtest.com", "bsi online")) {
             return "bsi";
@@ -1021,6 +1093,9 @@ public class SiteController {
         }
         if (utilityContainsAny(utility, "bsi", "backflowtest.com", "backflow solutions")) {
             return utility.utilityName() + " BSI backflow tester route";
+        }
+        if (utilityContainsAny(utility, "vepo", "envirotrax")) {
+            return utility.utilityName() + " VEPO registered backflow tester list";
         }
         if (utilityContainsAny(utility, "certified")) {
             return utility.utilityName() + " certified backflow tester list";
@@ -1072,6 +1147,10 @@ public class SiteController {
         return "/cities/" + alias.state() + "/" + alias.aliasSlug() + "/backflow-testing";
     }
 
+    private String cityIntentPath(CityAliasRecord alias, String intentSlug) {
+        return "/cities/" + alias.state() + "/" + alias.aliasSlug() + "/" + intentSlug;
+    }
+
     private String cityPageTitle(CityAliasRecord alias, UtilityRecord utility) {
         if (utility.supportsApprovedTestersPage() && usesPortalWorkflow(utility)) {
             return alias.city() + " backflow testing, reporting portal, and approved testers | BackflowPath";
@@ -1103,6 +1182,168 @@ public class SiteController {
         return description.toString();
     }
 
+    private List<CityIntentConfig> cityIntentConfigs(CityAliasRecord alias, UtilityRecord utility) {
+        return List.of(
+                        "annual-backflow-testing",
+                        "backflow-reporting-portal",
+                        "approved-backflow-testers",
+                        "failed-backflow-test",
+                        "irrigation-backflow-testing",
+                        "fire-line-backflow-testing"
+                )
+                .stream()
+                .map(slug -> cityIntentConfig(slug, alias, utility))
+                .filter(java.util.Objects::nonNull)
+                .toList();
+    }
+
+    private CityIntentConfig cityIntentConfig(String intentSlug, CityAliasRecord alias, UtilityRecord utility) {
+        String slug = intentSlug == null ? "" : intentSlug.toLowerCase(Locale.US);
+        return switch (slug) {
+            case "annual-backflow-testing" -> annualCityIntent(alias, utility);
+            case "backflow-reporting-portal" -> portalCityIntent(alias, utility);
+            case "approved-backflow-testers" -> approvedTesterCityIntent(alias, utility);
+            case "failed-backflow-test" -> failedTestCityIntent(alias, utility);
+            case "irrigation-backflow-testing" -> irrigationCityIntent(alias, utility);
+            case "fire-line-backflow-testing" -> fireLineCityIntent(alias, utility);
+            default -> null;
+        };
+    }
+
+    private CityIntentConfig annualCityIntent(CityAliasRecord alias, UtilityRecord utility) {
+        if (!utility.supportsAnnualTestingPage()) {
+            return null;
+        }
+        UtilityFocusContent focus = utility.resolvedAnnualTesting();
+        String heading = alias.city() + " annual backflow testing";
+        return new CityIntentConfig(
+                "annual-backflow-testing",
+                alias.city() + " annual backflow testing and due dates | BackflowPath",
+                alias.city() + " annual backflow testing route mapped to " + utility.utilityName() + ": " + focus.summary(),
+                "Annual city route",
+                heading,
+                focus.summary(),
+                focus.highlights(),
+                focus.workflowSteps(),
+                utilityPath(utility) + "annual-testing",
+                "Open annual testing workflow",
+                List.of("backflow-test-notice-next-steps", "anniversary-date-vs-calendar-deadline", "backflow-test-cost", "how-we-verify-backflow-rules")
+        );
+    }
+
+    private CityIntentConfig portalCityIntent(CityAliasRecord alias, UtilityRecord utility) {
+        if (!usesPortalWorkflow(utility)) {
+            return null;
+        }
+        List<String> highlights = new ArrayList<>();
+        utility.submissionMethods().forEach(method -> highlights.add(method.label() + " - " + method.kind()));
+        highlights.add("Due basis: " + utility.dueBasis());
+        highlights.add("Program phone: " + utility.phone());
+        String portalLabel = portalSlugForUtility(utility) == null ? "reporting portal" : portalName(portalSlugForUtility(utility));
+        String heading = alias.city() + " backflow reporting portal";
+        return new CityIntentConfig(
+                "backflow-reporting-portal",
+                alias.city() + " backflow reporting portal and test reports | BackflowPath",
+                "Find the " + alias.city() + " backflow report submission route through " + utility.utilityName() + ", including " + portalLabel + " context when the utility workflow names a portal.",
+                "Portal city route",
+                heading,
+                "Use this page when a notice for " + alias.city() + " mentions BSI, SwiftComply, WEIRS, VEPO, a customer portal, or online backflow test report submission.",
+                highlights,
+                utility.workflowSteps(),
+                portalHubPath(utility) == null ? utilityPath(utility) : portalHubPath(utility),
+                portalHubLabel(utility) == null ? "Open utility submission workflow" : portalHubLabel(utility),
+                List.of("backflow-test-notice-next-steps", "backflow-reporting-portals", "approved-testers-vs-find-a-tester", "backflow-test-cost")
+        );
+    }
+
+    private CityIntentConfig approvedTesterCityIntent(CityAliasRecord alias, UtilityRecord utility) {
+        if (!utility.supportsApprovedTestersPage()) {
+            return null;
+        }
+        List<String> highlights = new ArrayList<>();
+        if (utility.officialListLabel() != null && !utility.officialListLabel().isBlank()) {
+            highlights.add(utility.officialListLabel());
+        }
+        highlights.add("Confirm tester status on the governing list before treating a provider as approved.");
+        highlights.add("Use the utility workflow for deadlines, report acceptance, and submission requirements.");
+        String heading = alias.city() + " approved backflow testers";
+        return new CityIntentConfig(
+                "approved-backflow-testers",
+                alias.city() + " approved backflow testers and utility list | BackflowPath",
+                "Find the " + alias.city() + " approved backflow tester route mapped to " + utility.utilityName() + " without mixing official lists with non-official directories.",
+                "Tester city route",
+                heading,
+                "Use this page when the search or notice says approved, certified, registered, or authorized backflow tester for " + alias.city() + ".",
+                highlights,
+                utility.workflowSteps(),
+                testerPath(utility),
+                testerLabel(utility),
+                List.of("backflow-test-notice-next-steps", "approved-testers-vs-find-a-tester", "county-certified-vs-utility-approved-testers", "how-we-verify-backflow-rules")
+        );
+    }
+
+    private CityIntentConfig failedTestCityIntent(CityAliasRecord alias, UtilityRecord utility) {
+        if (utility.failureHighlights().isEmpty()) {
+            return null;
+        }
+        String heading = alias.city() + " failed backflow test";
+        return new CityIntentConfig(
+                "failed-backflow-test",
+                alias.city() + " failed backflow test repair and retest | BackflowPath",
+                "Repair, retest, and report-submission route for a failed backflow test in " + alias.city() + " through " + utility.utilityName() + ".",
+                "Failed-test city route",
+                heading,
+                "Use this page when the assembly already failed and the next step is repair, retest, and accepted report submission.",
+                utility.failureHighlights(),
+                utility.workflowSteps(),
+                utilityPath(utility) + "failed-test",
+                "Open failed-test workflow",
+                List.of("backflow-test-notice-next-steps", "failed-backflow-test-next-steps", "backflow-test-cost", "backflow-reporting-portals")
+        );
+    }
+
+    private CityIntentConfig irrigationCityIntent(CityAliasRecord alias, UtilityRecord utility) {
+        if (!utility.supportsIrrigationPage()) {
+            return null;
+        }
+        UtilityFocusContent focus = utility.irrigation();
+        String heading = alias.city() + " irrigation backflow testing";
+        return new CityIntentConfig(
+                "irrigation-backflow-testing",
+                alias.city() + " irrigation backflow testing rules | BackflowPath",
+                "Irrigation backflow testing route for " + alias.city() + " mapped to " + utility.utilityName() + ": " + focus.summary(),
+                "Irrigation city route",
+                heading,
+                focus.summary(),
+                focus.highlights(),
+                focus.workflowSteps(),
+                utilityPath(utility) + "irrigation",
+                "Open irrigation workflow",
+                List.of("backflow-test-notice-next-steps", "rpz-vs-dcva-vs-pvb", "residential-vs-commercial-backflow-rules", "backflow-test-cost")
+        );
+    }
+
+    private CityIntentConfig fireLineCityIntent(CityAliasRecord alias, UtilityRecord utility) {
+        if (!utility.supportsFireLinePage()) {
+            return null;
+        }
+        UtilityFocusContent focus = utility.fireLine();
+        String heading = alias.city() + " fire-line backflow testing";
+        return new CityIntentConfig(
+                "fire-line-backflow-testing",
+                alias.city() + " fire-line backflow testing rules | BackflowPath",
+                "Fire-line backflow testing route for " + alias.city() + " mapped to " + utility.utilityName() + ": " + focus.summary(),
+                "Fire-line city route",
+                heading,
+                focus.summary(),
+                focus.highlights(),
+                focus.workflowSteps(),
+                utilityPath(utility) + "fire-line",
+                "Open fire-line workflow",
+                List.of("backflow-test-notice-next-steps", "rpz-vs-dcva-vs-pvb", "failed-backflow-test-next-steps", "backflow-test-cost")
+        );
+    }
+
     private List<CityAliasRecord> publishedCityAliasesForState(String state) {
         return registryService.listCityAliasesForState(state).stream()
                 .filter(alias -> alias.aliasMode() != AliasMode.NOINDEX_BRIDGE)
@@ -1124,6 +1365,16 @@ public class SiteController {
                 .filter(java.util.Objects::nonNull)
                 .max(LocalDate::compareTo)
                 .orElse(homeLastModified());
+    }
+
+    private LocalDate latestDate(LocalDate left, LocalDate right) {
+        if (left == null) {
+            return right == null ? homeLastModified() : right;
+        }
+        if (right == null) {
+            return left;
+        }
+        return left.isAfter(right) ? left : right;
     }
 
     private String renderUtilityFocusPage(
@@ -1172,7 +1423,10 @@ public class SiteController {
     }
 
     private List<GuideRecord> utilitySupportGuides(UtilityRecord utility) {
-        List<String> preferred = new ArrayList<>(List.of("how-we-verify-backflow-rules"));
+        List<String> preferred = new ArrayList<>(List.of(
+                "backflow-test-notice-next-steps",
+                "how-we-verify-backflow-rules"
+        ));
         if (usesPortalWorkflow(utility)) {
             preferred.add("backflow-reporting-portals");
         }
@@ -1374,6 +1628,7 @@ public class SiteController {
             return guidesByPreferredSlugs(metro.guideSlugs(), 5, null);
         }
         return guidesByPreferredSlugs(List.of(
+                "backflow-test-notice-next-steps",
                 "how-we-verify-backflow-rules",
                 "backflow-reporting-portals",
                 "anniversary-date-vs-calendar-deadline",
@@ -1384,6 +1639,7 @@ public class SiteController {
 
     private List<GuideRecord> supportGuidesForStateGuide(StateGuideRecord stateGuide) {
         return guidesByPreferredSlugs(List.of(
+                "backflow-test-notice-next-steps",
                 "how-we-verify-backflow-rules",
                 "residential-vs-commercial-backflow-rules",
                 "anniversary-date-vs-calendar-deadline",
@@ -1395,6 +1651,7 @@ public class SiteController {
 
     private List<GuideRecord> relatedGuidesForGuide(GuideRecord guide) {
         return guidesByPreferredSlugs(List.of(
+                "backflow-test-notice-next-steps",
                 "how-we-verify-backflow-rules",
                 "failed-backflow-test-next-steps",
                 "approved-testers-vs-find-a-tester",
@@ -1416,6 +1673,12 @@ public class SiteController {
                     .toList();
             case "backflow-reporting-portals" -> utilities.stream()
                     .filter(this::usesPortalWorkflow)
+                    .toList();
+            case "backflow-test-notice-next-steps" -> utilities.stream()
+                    .filter(utility -> usesPortalWorkflow(utility)
+                            || hasDateSpecificWorkflow(utility)
+                            || !utility.submissionMethods().isEmpty()
+                            || utility.supportsApprovedTestersPage())
                     .toList();
             case "anniversary-date-vs-calendar-deadline" -> utilities.stream()
                     .filter(this::hasDateSpecificWorkflow)
@@ -1638,6 +1901,8 @@ public class SiteController {
                 || value.contains("backflowtest")
                 || value.contains("customerportal")
                 || value.contains("c3swift")
+                || value.contains("vepo")
+                || value.contains("envirotrax")
                 || value.contains("online submission");
     }
 
@@ -1826,6 +2091,21 @@ public class SiteController {
     }
 
     private record BreadcrumbItem(String name, String url) {
+    }
+
+    private record CityIntentConfig(
+            String slug,
+            String title,
+            String description,
+            String eyebrow,
+            String heading,
+            String intro,
+            List<String> highlights,
+            List<String> workflowSteps,
+            String primaryPath,
+            String primaryLabel,
+            List<String> guideSlugs
+    ) {
     }
 
 }

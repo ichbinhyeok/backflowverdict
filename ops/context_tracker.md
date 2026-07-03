@@ -32,6 +32,16 @@
 - Added `ops/winning_pattern_research_2026-07-03.md` after reviewing official and commercial examples from Holly Hill, SwiftComply, Dallas, Tampa, Queen Creek, Fort Worth, Accuracy Backflow, and Backflow Paradise.
 - Replicated the strongest visible patterns into the site: above-fold test/tester/portal/fee checklist, owner-vs-tester action split, portal credential checklist, utility-to-city route links, metro high-intent path cards, and FAQ entries for portal, scheduling, and cost questions.
 - Verified the replicated patterns on a fresh local server at `http://localhost:8096` across Tampa utility, Dallas city, BSI portal, and DFW metro pages.
+- Added `ops/funnel_pattern_research_2026-07-03.md` after expanding research into official and commercial notice-first funnel examples such as Dallas, Tampa, Queen Creek, Hillsborough County, Fort Worth, Pittsburgh Backflow Testing, City Certified Backflow, David's Plumbing, H2O & Backflow Tests, and A Plus Backflow.
+- Added a new top-of-funnel guide at `/guides/backflow-test-notice-next-steps` with a notice-routing section for deadline, portal, tester, failed-test, cost, and utility workflows.
+- Added the new notice guide to utility support guides, state support guides, metro guide selection, portal related guides, sitemap, tests, and the 50-URL GSC priority reindex file.
+- Verified the notice guide and sitemap on a fresh local server at `http://localhost:8097`.
+- Added daily-click expansion work in `ops/daily_100_click_expansion_2026-07-03.md` after the goal was clarified from monthly 100 clicks to daily 100 clicks.
+- Added evidence-gated city intent routes for annual testing, reporting portals, approved testers, failed tests, irrigation testing, and fire-line testing; unsupported city/intent combinations return 404 and noindex bridge aliases stay out of the sitemap.
+- Added `src/main/jte/pages/city-intent-page.jte` plus controller/sitemap/test coverage for the new route family.
+- Updated the GSC priority reindex file to include high-intent city URLs such as Dallas portal/annual/failed-test, Queen Creek portal/approved-testers, Tampa portal/annual, Fort Worth portal, and Aurora portal.
+- Verified representative city-intent pages and sitemap output on `http://localhost:8098`; local sitemap now renders 970 URLs.
+- Added VEPO/Envirotrax as a source-backed reporting portal family after reviewing official Fort Worth/VEPO workflow language; added `/backflow-reporting-portals/vepo`, guide links, sitemap coverage, and GSC priority URLs without generating unsupported city combinations.
 - Refreshed `lastVerified` / `lastReviewed` dates to 2026-06-29 for utility, state, metro, and guide JSON records.
 - Ran an automated source URL audit across 215 unique official/support URLs; 119 passed and 96 unresolved URLs were recorded in `data/ops/broken_links.csv`.
 - Added `app.ops.current-date` so tests and manual verification can use a fixed freshness date without changing production behavior.
