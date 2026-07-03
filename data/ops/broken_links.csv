@@ -60,8 +60,8 @@ checkedAt,url,status,note
 2026-06-29,https://www.leandertx.gov/784/Commercial-Irrigation-Inspection-Program,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.leandertx.gov/DocumentCenter/View/4606/Qualified-Irrigation-Inspectors-in-Leander,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.leandertx.gov/DocumentCenter/View/4608/Backflow-Prevention-Presentation-PDF,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
-2026-06-29,https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
-2026-06-29,https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention/customerportal,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
+2026-06-29,https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention,fixed,Replaced in registry on 2026-07-03 with official Lee County Utilities cross-connection control policy PDF.
+2026-06-29,https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention/customerportal,fixed,Replaced in registry on 2026-07-03 with official Lee County BSI instructions and customer portal URL.
 2026-06-29,https://www.mckinneytexas.org/513/Backflow,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.mckinneytexas.org/514/Irrigation,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.mckinneytexas.org/DocumentCenter/View/132/Backflow-Registration-Form-General?bidId=,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."

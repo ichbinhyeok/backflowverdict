@@ -1,4 +1,5 @@
 @import owner.backflow.web.PageMeta
+@import owner.backflow.data.model.CityAliasRecord
 @import owner.backflow.data.model.UtilityRecord
 @import owner.backflow.data.model.GuideRecord
 @import owner.backflow.data.model.MetroRecord
@@ -11,7 +12,10 @@
 @param String fireLinePath = null
 @param String testerPath = null
 @param String testerLabel = null
+@param String portalHubPath = null
+@param String portalHubLabel = null
 @param java.util.List<owner.backflow.web.FaqItem> faqItems
+@param java.util.List<CityAliasRecord> cityAliases = java.util.List.of()
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 @param java.util.List<MetroRecord> metros = java.util.List.of()
 @param StateGuideRecord stateGuide = null
@@ -26,6 +30,7 @@
                 <p class="detail-meta">Use this page to confirm the governing rule, then open the focused page that matches your exact situation.</p>
                 <div class="hero__stats">
                     <span>Testing cadence: ${utility.testingFrequency()}</span>
+                    <span>Submission: ${utility.submissionMethods().isEmpty() ? "Confirm with utility" : utility.submissionMethods().get(0).kind()}</span>
                     <span>Last verified: ${utility.lastVerified().toString()}</span>
                     <span>Verification code: <a href="/methodology#verification-code-${utility.reviewerInitials().toLowerCase()}">${utility.reviewerInitials()}</a></span>
                     <span>Freshness window: ${utility.staleAfterDays()} days</span>
@@ -50,6 +55,46 @@
                     </div>
                 </div>
             </aside>
+        </div>
+    </section>
+
+    <section class="section section--tight">
+        <div class="container content-grid">
+            <article class="detail-card detail-card--key">
+                <span class="eyebrow">Before scheduling</span>
+                <h2>Confirm the test, tester, portal, and fee path first</h2>
+                <p>The strongest local backflow pages answer these questions before the user calls anyone. This utility record keeps them together so the next step is not just a generic backflow testing search.</p>
+                <ul class="detail-list">
+                    <li><strong>Due basis:</strong> ${utility.dueBasis()}</li>
+                    <li><strong>Tester route:</strong> ${testerPath != null && testerLabel != null ? testerLabel : "Confirm tester status with the utility before scheduling."}</li>
+                    <li><strong>Submission path:</strong> ${utility.submissionMethods().isEmpty() ? "Confirm the current report path with the program contact." : utility.submissionMethods().get(0).label()}</li>
+                    <li><strong>Cost signal:</strong> ${utility.costBand().testingRange()}</li>
+                </ul>
+                <div class="card-actions">
+                    @if (annualTestingPath != null)
+                        <a class="button button--secondary" href="${annualTestingPath}">Annual testing</a>
+                    @endif
+                    @if (portalHubPath != null && portalHubLabel != null)
+                        <a class="button button--secondary" href="${portalHubPath}">${portalHubLabel}</a>
+                    @endif
+                </div>
+            </article>
+
+            <article class="detail-card">
+                <span class="eyebrow">Owner vs tester</span>
+                <h2>Know who has to act</h2>
+                <div class="metadata-grid">
+                    <div class="metadata-block">
+                        <strong>Property owner</strong>
+                        <span>Match the notice, address, device type, due date, and utility record before hiring or approving work.</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Tester</strong>
+                        <span>Confirm certification, registration, gauge calibration, and the required submission portal before filing the report.</span>
+                    </div>
+                </div>
+                <p class="detail-meta">This split matters because many utility pages reject reports when the tester, credentials, portal entry, or fee path is wrong.</p>
+            </article>
         </div>
     </section>
 
@@ -192,6 +237,9 @@
                         </div>
                         <p class="detail-meta"><strong>Official program page:</strong> <a href="${utility.utilityUrl()}">${utility.utilityUrl()}</a></p>
                         <p class="detail-meta"><strong>Program phone:</strong> ${utility.phone()}</p>
+                        @if (portalHubPath != null && portalHubLabel != null)
+                            <p class="detail-meta"><strong>Portal family:</strong> <a href="${portalHubPath}">${portalHubLabel}</a></p>
+                        @endif
                         <p class="detail-meta"><a href="/methodology">See review methodology</a> and <a href="/editorial-standards">editorial standards</a>.</p>
                     </article>
                 </div>
@@ -373,6 +421,25 @@
                         </div>
                     @endif
                 </article>
+
+                @if (!cityAliases.isEmpty())
+                    <article class="detail-card">
+                        <span class="eyebrow">City routes</span>
+                        <h2>Local city searches mapped here</h2>
+                        <p>These city pages preserve the local search term while keeping the governing utility workflow intact.</p>
+                        <div class="support-links">
+                            @for (var alias : cityAliases)
+                                <a class="support-link" href="/cities/${alias.state()}/${alias.aliasSlug()}/backflow-testing">
+                                    <div>
+                                        <strong>${alias.city()} backflow testing</strong>
+                                        <span>${alias.justification()}</span>
+                                    </div>
+                                    <span class="material-symbols-outlined">arrow_forward</span>
+                                </a>
+                            @endfor
+                        </div>
+                    </article>
+                @endif
 
                 <article class="panel panel--dark">
                     <span class="eyebrow" style="color: rgba(197, 234, 223, 0.92);">Technical help</span>

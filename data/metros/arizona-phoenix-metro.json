@@ -1,6 +1,6 @@
 {
   "metroId": "phoenix-metro",
-  "title": "Phoenix metro backflow testing",
+  "title": "Phoenix metro backflow testing, portals, and tester lists",
   "state": "arizona",
   "metroSlug": "phoenix-metro",
   "cityNames": [
@@ -33,14 +33,15 @@
     "queen-creek-water"
   ],
   "guideSlugs": [
+    "backflow-reporting-portals",
     "approved-testers-vs-find-a-tester",
     "anniversary-date-vs-calendar-deadline",
     "county-certified-vs-utility-approved-testers",
     "backflow-test-cost",
     "rpz-vs-dcva-vs-pvb"
   ],
-  "description": "Phoenix-area support page for the East Valley and West Valley utility cluster where approved-list and fire-line rules vary by city.",
-  "summary": "The Phoenix cluster works well as a metro support layer because many neighboring cities publish different tester-list, anniversary-date, and fire-line workflows. This page groups those routes without flattening them into a fake single authority.",
+  "description": "Phoenix-area backflow testing page for Mesa, Chandler, Tempe, Queen Creek, and nearby utilities with BSI, approved-list, annual-test, and fire-line workflows.",
+  "summary": "The Phoenix cluster works well as a metro support layer because many neighboring cities publish different BSI, tester-list, anniversary-date, and fire-line workflows. This page groups those routes without flattening them into a fake single authority.",
   "reviewerInitials": "TL",
   "staleAfterDays": 60,
   "pageStatus": "PUBLISH",

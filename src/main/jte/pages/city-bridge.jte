@@ -12,6 +12,8 @@
 @param String failedTestPath
 @param String testerPath = null
 @param String testerLabel = null
+@param String portalHubPath = null
+@param String portalHubLabel = null
 @param boolean usesPortalWorkflow
 @param java.util.List<ProviderRecord> providers = java.util.List.of()
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
@@ -83,6 +85,9 @@
                         <p>Use the utility page to confirm whether reports go through BSI, WEIRS, SwiftComply, a city portal, or another official submission path.</p>
                         <div class="card-actions">
                             <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Portal and submission steps</a>
+                            @if (portalHubPath != null && portalHubLabel != null)
+                                <a class="button button--secondary" href="${portalHubPath}">${portalHubLabel}</a>
+                            @endif
                         </div>
                     </article>
                 @endif
@@ -129,6 +134,41 @@
                     </article>
                 @endif
             </div>
+        </div>
+    </section>
+
+    <section class="section section--tight">
+        <div class="container content-grid">
+            <article class="detail-card detail-card--key">
+                <span class="eyebrow">Before scheduling in ${alias.city()}</span>
+                <h2>Check the local rule before treating this as a generic tester search</h2>
+                <ul class="detail-list">
+                    <li><strong>Cadence:</strong> ${utility.testingFrequency()}</li>
+                    <li><strong>Due basis:</strong> ${utility.dueBasis()}</li>
+                    <li><strong>Submission:</strong> ${utility.submissionMethods().isEmpty() ? "Confirm the current report path with the utility." : utility.submissionMethods().get(0).label()}</li>
+                    @if (utility.costBand() != null)
+                        <li><strong>Cost signal:</strong> ${utility.costBand().testingRange()}</li>
+                    @endif
+                </ul>
+            </article>
+
+            <article class="detail-card">
+                <span class="eyebrow">Owner vs tester</span>
+                <h2>${alias.city()} action split</h2>
+                <div class="metadata-grid">
+                    <div class="metadata-block">
+                        <strong>Owner</strong>
+                        <span>Confirm the notice, address, device, due date, and utility before choosing a provider.</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Tester</strong>
+                        <span>Confirm registration, certification, gauge calibration, and whether the report must go through a portal.</span>
+                    </div>
+                </div>
+                @if (portalHubPath != null && portalHubLabel != null)
+                    <p class="detail-meta">Portal family: <a href="${portalHubPath}">${portalHubLabel}</a></p>
+                @endif
+            </article>
         </div>
     </section>
 

@@ -18,11 +18,12 @@
     "fort myers backflow testing",
     "lee county cross connection control"
   ],
-  "utilityUrl": "https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention",
+  "utilityUrl": "https://www.leegov.com/utilities/Documents/Cross%20Connection%20Control/LCU_CCCPolicy_REVISED_05_2024.pdf",
   "officialProgramUrls": [
-    "https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention",
-    "https://ccclink.floridawaterstar.com/",
-    "https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention/customerportal"
+    "https://www.leegov.com/utilities/Documents/Cross%20Connection%20Control/LCU_CCCPolicy_REVISED_05_2024.pdf",
+    "https://www.leegov.com/utilities/Documents/Cross%20Connection%20Control/BSI_Online_Tester_Instructions_Water_Purveyor_Testers.pdf",
+    "https://myutilities.leegov.com/",
+    "https://ccclink.floridawaterstar.com/"
   ],
   "testingFrequency": "At installation and annually thereafter",
   "dueBasis": "Lee County Utilities says required devices are tested at installation and every year after that. The county uses a cross-connection portal, gives customers portal access tied to the account, and expects approved reports to keep the account in compliance.",
@@ -43,13 +44,18 @@
   "officialListLabel": "",
   "submissionMethods": [
     {
-      "label": "Lee County Utilities cross-connection control and backflow prevention",
-      "url": "https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention",
-      "kind": "program page"
+      "label": "Lee County Utilities cross-connection control policy",
+      "url": "https://www.leegov.com/utilities/Documents/Cross%20Connection%20Control/LCU_CCCPolicy_REVISED_05_2024.pdf",
+      "kind": "official policy pdf"
     },
     {
-      "label": "Lee County customer portal",
-      "url": "https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention/customerportal",
+      "label": "Lee County BSI Online tester instructions",
+      "url": "https://www.leegov.com/utilities/Documents/Cross%20Connection%20Control/BSI_Online_Tester_Instructions_Water_Purveyor_Testers.pdf",
+      "kind": "official tester reporting instructions"
+    },
+    {
+      "label": "Lee County Utilities customer portal",
+      "url": "https://myutilities.leegov.com/",
       "kind": "customer portal"
     },
     {
@@ -60,7 +66,7 @@
   ],
   "phone": "239-533-8845",
   "penalties": "Lee County Utilities keeps customers inside its cross-connection control program and portal workflow. Missing installation or annual testing leaves the account out of compliance until the accepted report is posted.",
-  "sourceExcerpt": "Lee County is a useful Southwest Florida utility because it publishes installation-plus-annual testing, a county customer portal, and a real cross-connection workflow instead of generic water-quality copy.",
+  "sourceExcerpt": "Lee County is a useful Southwest Florida utility because its policy and BSI instructions document installation-plus-annual testing, customer responsibility, online tester reporting, and real cross-connection workflow instead of generic water-quality copy.",
   "sourceSnapshotPath": "storage/snapshots/lee-county-backflow.html",
   "reviewerInitials": "TL",
   "staleAfterDays": 45,
@@ -120,13 +126,18 @@
   },
   "sources": [
     {
-      "label": "Lee County Utilities cross-connection control and backflow prevention",
-      "url": "https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention",
-      "kind": "official program page"
+      "label": "Lee County Utilities cross-connection control policy",
+      "url": "https://www.leegov.com/utilities/Documents/Cross%20Connection%20Control/LCU_CCCPolicy_REVISED_05_2024.pdf",
+      "kind": "official policy pdf"
     },
     {
-      "label": "Lee County customer portal",
-      "url": "https://www.leegov.com/utilities/customer-service/cross-connection-control-and-backflow-prevention/customerportal",
+      "label": "Lee County BSI Online tester instructions",
+      "url": "https://www.leegov.com/utilities/Documents/Cross%20Connection%20Control/BSI_Online_Tester_Instructions_Water_Purveyor_Testers.pdf",
+      "kind": "official tester reporting instructions"
+    },
+    {
+      "label": "Lee County Utilities customer portal",
+      "url": "https://myutilities.leegov.com/",
       "kind": "official customer portal"
     },
     {

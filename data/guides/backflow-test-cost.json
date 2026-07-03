@@ -1,8 +1,8 @@
 {
   "slug": "backflow-test-cost",
-  "title": "Backflow test cost",
-  "description": "How to think about annual testing, repair, and retest pricing without confusing a market quote with the compliance rule.",
-  "intro": "Utilities rarely publish clean consumer pricing. What they do publish are deadlines, registration rules, reporting fees, and enforcement exposure if you miss the process.",
+  "title": "Backflow test cost: annual testing, repairs, and portal fees",
+  "description": "How annual backflow test cost changes when the utility requires registered testers, repairs, retests, BSI fees, or online reporting.",
+  "intro": "Utilities rarely publish clean consumer pricing. What they do publish are deadlines, tester registration rules, reporting fees, portal steps, and enforcement exposure if you miss the process.",
   "callout": "Treat public pricing signals as floor-and-penalty clues. Use the local utility page to confirm the workflow before you compare private quotes.",
   "sourceExcerpt": "Utilities rarely publish clean retail pricing, but they do publish filing fees, intervention fees, and enforcement paths that frame the real cost exposure around a backflow test.",
   "sourceSnapshotPath": "storage/snapshots/guides/backflow-test-cost.html",

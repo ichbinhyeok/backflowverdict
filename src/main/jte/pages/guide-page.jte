@@ -80,6 +80,44 @@
         </div>
     </section>
 
+    @if (guide.slug().equals("backflow-reporting-portals"))
+        <section class="section section--tight">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Portal lookup</span>
+                    <h2>Jump to the portal family named in the notice</h2>
+                    <p class="lede">These hub pages group utilities by the reporting system named in the public workflow, then send the user back to the exact authority page.</p>
+                </div>
+                <div class="card-grid card-grid--three">
+                    <article class="detail-card detail-card--quiet">
+                        <span class="pill">BSI Online</span>
+                        <h3>BSI backflow reporting</h3>
+                        <p>Use this route when the notice mentions BSI Online, Backflow Solutions, a CCN, or online test report entry through BSI.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/backflow-reporting-portals/bsi">Open BSI utilities</a>
+                        </div>
+                    </article>
+                    <article class="detail-card detail-card--quiet">
+                        <span class="pill">SwiftComply</span>
+                        <h3>SwiftComply test reports</h3>
+                        <p>Use this route when the utility uses SwiftComply or C3Swift for tester registration and report submission.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/backflow-reporting-portals/swiftcomply">Open SwiftComply utilities</a>
+                        </div>
+                    </article>
+                    <article class="detail-card detail-card--quiet">
+                        <span class="pill">WEIRS</span>
+                        <h3>WEIRS tester and report routes</h3>
+                        <p>Use this route when the local workflow references WEIRS for tester lookup, inspection, or report submission.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/backflow-reporting-portals/weirs">Open WEIRS utilities</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    @endif
+
     <section class="section">
         <div class="container card-grid">
             @for (var section : guide.sections())

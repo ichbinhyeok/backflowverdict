@@ -1,5 +1,6 @@
 @import owner.backflow.web.PageMeta
 @import owner.backflow.data.model.MetroRecord
+@import owner.backflow.data.model.CityAliasRecord
 @import owner.backflow.data.model.GuideRecord
 @import owner.backflow.data.model.ProviderRecord
 @import owner.backflow.data.model.UtilityRecord
@@ -7,6 +8,7 @@
 @param MetroRecord metro
 @param java.util.List<UtilityRecord> utilities
 @param java.util.List<ProviderRecord> providers
+@param java.util.Map<String, CityAliasRecord> cityAliasesByName = java.util.Map.of()
 @param java.util.Map<String, Integer> providerCoverageCounts = java.util.Map.of()
 @param java.util.List<GuideRecord> guides = java.util.List.of()
 
@@ -66,7 +68,11 @@
                     @for (var city : metro.cityNames())
                         <div class="metadata-block">
                             <strong>City</strong>
-                            <span>${city}</span>
+                            @if (cityAliasesByName.containsKey(city))
+                                <span><a href="/cities/${cityAliasesByName.get(city).state()}/${cityAliasesByName.get(city).aliasSlug()}/backflow-testing">${city} backflow testing</a></span>
+                            @else
+                                <span>${city}</span>
+                            @endif
                         </div>
                     @endfor
                     @for (var county : metro.countyNames())
@@ -74,6 +80,39 @@
                             <strong>County</strong>
                             <span>${county}</span>
                         </div>
+                    @endfor
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="section section--tight">
+        <div class="container content-grid">
+            <article class="detail-card detail-card--key">
+                <span class="eyebrow">High-intent paths</span>
+                <h2>Common ${metro.title()} searches to route correctly</h2>
+                <ul class="detail-list">
+                    <li>Annual backflow testing and due-date notices</li>
+                    <li>Approved or registered backflow tester lists</li>
+                    <li>BSI, SwiftComply, WEIRS, VEPO, or local portal submission</li>
+                    <li>Failed-test repair, retest, and filing order</li>
+                </ul>
+            </article>
+
+            <article class="detail-card">
+                <span class="eyebrow">City route links</span>
+                <h2>Open the city page, then the utility workflow</h2>
+                <div class="support-links">
+                    @for (var city : metro.cityNames())
+                        @if (cityAliasesByName.containsKey(city) && metro.cityNames().indexOf(city) < 8)
+                            <a class="support-link" href="/cities/${cityAliasesByName.get(city).state()}/${cityAliasesByName.get(city).aliasSlug()}/backflow-testing">
+                                <div>
+                                    <strong>${city} backflow testing</strong>
+                                    <span>${cityAliasesByName.get(city).justification()}</span>
+                                </div>
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </a>
+                        @endif
                     @endfor
                 </div>
             </article>

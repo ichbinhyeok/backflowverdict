@@ -1,7 +1,7 @@
 {
   "slug": "anniversary-date-vs-calendar-deadline",
-  "title": "Anniversary date vs calendar deadline",
-  "description": "Why some utilities track backflow tests by anniversary date, while others push owners into a calendar-season or hard-date deadline.",
+  "title": "Backflow test due dates: anniversary date vs calendar deadline",
+  "description": "Why some utilities track annual backflow tests by anniversary date, while others use a calendar window, notice date, or hard deadline.",
   "intro": "The backflow testing cadence is often described as annual, but the real due logic is more specific. The site needs to explain whether a utility uses an anniversary cycle, a seasonal window, or a fixed date.",
   "callout": "Annual does not tell the whole story. The exact due basis is what drives reminder content, local page wording, and lead timing.",
   "sourceExcerpt": "Annual backflow testing can still mean very different things in practice. Utilities split between anniversary-date programs, fixed deadlines, and reminder-driven seasonal windows.",

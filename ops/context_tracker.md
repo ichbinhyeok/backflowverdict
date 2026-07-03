@@ -19,6 +19,19 @@
 - Automated source URL audits can refresh freshness dates only when unresolved URLs are also recorded in `data/ops/broken_links.csv` for follow-up suppression.
 
 ## What changed this session
+- Ran a 2026-07-03 search/SEO audit using Google Search Console, live crawl checks, Lighthouse, and public web source checks.
+- Added `ops/click_100_audit_2026-07-03.md` with the current search score, 50 official-source cases, technical findings, and a one-month plan to reach 100 monthly organic clicks.
+- Confirmed the latest 28-day GSC window, ending 2026-06-30, shows 17 clicks, 2,031 impressions, 0.84% CTR, and average position 12.0.
+- Confirmed live sitemap exposure at 643 URLs and Lighthouse home scores of Performance 73, Accessibility 100, Best Practices 100, and SEO 100.
+- Found one definite source issue in the 50-case URL spot check: the stored Lee County Utilities official program URL returned 404, then replaced it with official Lee County Utilities cross-connection policy and BSI instruction PDFs.
+- Strengthened portal search landing pages with sharper BSI, WEIRS, and SwiftComply title/meta copy plus utility-page and city-page internal links back to the relevant portal hub.
+- Rewrote current high-impression guide and metro labels for reporting portals, backflow test cost, due-date intent, Phoenix metro, and Dallas-Fort Worth metro.
+- Added `ops/gsc_priority_reindex_urls_2026-07-03.txt` with 50 priority BackflowPath URLs for manual Search Console indexing requests.
+- Added stronger crawl paths from portal hub pages to matching city pages, from metro city lists to city landing pages, and from the reporting-portals guide to BSI, SwiftComply, and WEIRS hub pages.
+- Added regression coverage for the new portal, guide, and metro internal links.
+- Added `ops/winning_pattern_research_2026-07-03.md` after reviewing official and commercial examples from Holly Hill, SwiftComply, Dallas, Tampa, Queen Creek, Fort Worth, Accuracy Backflow, and Backflow Paradise.
+- Replicated the strongest visible patterns into the site: above-fold test/tester/portal/fee checklist, owner-vs-tester action split, portal credential checklist, utility-to-city route links, metro high-intent path cards, and FAQ entries for portal, scheduling, and cost questions.
+- Verified the replicated patterns on a fresh local server at `http://localhost:8096` across Tampa utility, Dallas city, BSI portal, and DFW metro pages.
 - Refreshed `lastVerified` / `lastReviewed` dates to 2026-06-29 for utility, state, metro, and guide JSON records.
 - Ran an automated source URL audit across 215 unique official/support URLs; 119 passed and 96 unresolved URLs were recorded in `data/ops/broken_links.csv`.
 - Added `app.ops.current-date` so tests and manual verification can use a fixed freshness date without changing production behavior.
@@ -32,11 +45,11 @@
 - Added the Gradle Foojay toolchain resolver convention plugin so Java 21 toolchain auto-provisioning no longer emits the Gradle 10 deprecation warning.
 
 ## Next recommended tasks
-1. Work through the 96 rows in `data/ops/broken_links.csv`, starting with true 404s before likely bot-protected 403s.
-2. Replace or remove dead official URLs, then mark resolved rows with `ok`, `resolved`, `fixed`, `200`, `301`, or `302`.
-3. Re-run `/ops/verification/run` after broken-link cleanup; status should return to `ok` once source URL issues are resolved.
-4. Keep widening source-backed utility coverage and public provider inventory where official lists support it.
-5. Expand next by city and task query families, not by generic guide volume.
+1. Continue working through the unresolved rows in `data/ops/broken_links.csv`, starting with true 404s before likely bot-protected 403s.
+2. Submit the sitemap plus URLs from `ops/gsc_priority_reindex_urls_2026-07-03.txt` in Search Console, then measure movement against the 2026-08-03 100-click monthly target.
+3. Manually recheck Greeley and JEA because the 2026-07-03 URL spot check errored under automation.
+4. Keep strengthening `/backflow-reporting-portals/swiftcomply`, `/bsi`, and `/weirs` as search landing pages as more portal utilities are added.
+5. Re-run `/ops/verification/run` after broken-link cleanup; status should return to `ok` once source URL issues are resolved.
 
 ## Open questions
 - Whether legacy internal provider-status fields should be renamed in code and data files after the public cleanup is complete.
