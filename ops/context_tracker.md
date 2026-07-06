@@ -42,6 +42,8 @@
 - Updated the GSC priority reindex file to include high-intent city URLs such as Dallas portal/annual/failed-test, Queen Creek portal/approved-testers, Tampa portal/annual, Fort Worth portal, and Aurora portal.
 - Verified representative city-intent pages and sitemap output on `http://localhost:8098`; local sitemap now renders 970 URLs.
 - Added VEPO/Envirotrax as a source-backed reporting portal family after reviewing official Fort Worth/VEPO workflow language; added `/backflow-reporting-portals/vepo`, guide links, sitemap coverage, and GSC priority URLs without generating unsupported city combinations.
+- Added 7 official-source VEPO/Envirotrax Texas utility records for Southlake, Bedford, Mansfield, Cleburne, Marble Falls, Taylor, and Buda, plus city aliases, source snapshots, DFW/Central Texas metro membership, and refreshed GSC priority URLs for the strongest new city-intent pages.
+- Added portal comparison tables to reporting portal hubs and 4 additional official-source Texas utilities: League City BSI, Irving Envirotrax, Baytown Envirotrax/CSI, and Liberty City WSC VEPO. Added city aliases, source snapshots, a Texas Gulf Coast metro page, and refreshed GSC priority URLs for the new high-intent routes.
 - Refreshed `lastVerified` / `lastReviewed` dates to 2026-06-29 for utility, state, metro, and guide JSON records.
 - Ran an automated source URL audit across 215 unique official/support URLs; 119 passed and 96 unresolved URLs were recorded in `data/ops/broken_links.csv`.
 - Added `app.ops.current-date` so tests and manual verification can use a fixed freshness date without changing production behavior.
@@ -56,9 +58,9 @@
 
 ## Next recommended tasks
 1. Continue working through the unresolved rows in `data/ops/broken_links.csv`, starting with true 404s before likely bot-protected 403s.
-2. Submit the sitemap plus URLs from `ops/gsc_priority_reindex_urls_2026-07-03.txt` in Search Console, then measure movement against the 2026-08-03 100-click monthly target.
+2. Submit the sitemap plus URLs from `ops/gsc_priority_reindex_urls_2026-07-03.txt` in Search Console, then measure movement against the daily-click target with weekly GSC rewrites.
 3. Manually recheck Greeley and JEA because the 2026-07-03 URL spot check errored under automation.
-4. Keep strengthening `/backflow-reporting-portals/swiftcomply`, `/bsi`, and `/weirs` as search landing pages as more portal utilities are added.
+4. Keep strengthening `/backflow-reporting-portals/vepo`, `/swiftcomply`, `/bsi`, and `/weirs` as search landing pages as more portal utilities are added.
 5. Re-run `/ops/verification/run` after broken-link cleanup; status should return to `ok` once source URL issues are resolved.
 
 ## Open questions

@@ -12,7 +12,12 @@
     "Mesquite",
     "Lewisville",
     "McKinney",
-    "Frisco"
+    "Frisco",
+    "Southlake",
+    "Bedford",
+    "Mansfield",
+    "Cleburne",
+    "Irving"
   ],
   "countyNames": [
     "Dallas County",
@@ -30,7 +35,12 @@
     "lewisville-water",
     "mckinney-water",
     "frisco-water",
-    "talty-sud"
+    "talty-sud",
+    "southlake-water",
+    "bedford-water",
+    "mansfield-water",
+    "cleburne-water",
+    "irving-water"
   ],
   "guideSlugs": [
     "backflow-reporting-portals",

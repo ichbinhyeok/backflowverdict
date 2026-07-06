@@ -1,0 +1,140 @@
+{
+  "utilityId": "league-city-water",
+  "utilityName": "City of League City Backflow Testing Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "league-city-backflow-testing-program",
+  "state": "texas",
+  "serviceAreaCities": [
+    "League City"
+  ],
+  "serviceAreaCounties": [
+    "Galveston County",
+    "Harris County"
+  ],
+  "searchAliases": [
+    "league city backflow testing",
+    "league city bsi backflow",
+    "league city backflow ccn"
+  ],
+  "utilityUrl": "https://www.leaguecitytx.gov/3672/Backflow-Testing-Program",
+  "officialProgramUrls": [
+    "https://www.leaguecitytx.gov/3672/Backflow-Testing-Program",
+    "https://www.bsionlinetracking.com/"
+  ],
+  "testingFrequency": "Upon installation and at least annually",
+  "dueBasis": "League City says TCEQ requires backflow devices or assemblies to be tested upon installation and at least once annually, with BSI mailing official annual certification notices and maintaining electronic records.",
+  "coveredPropertyTypes": [
+    "High hazard commercial and residential connections",
+    "Apartments",
+    "Restaurants and commercial kitchens",
+    "Medical and dental facilities",
+    "Schools",
+    "Septic system locations",
+    "Well water and outside-water-source locations"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Replacement backflow devices",
+    "High hazard devices"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.leaguecitytx.gov/3672/Backflow-Testing-Program",
+  "officialListLabel": "Open League City BSI and certified tester instructions",
+  "submissionMethods": [
+    {
+      "label": "League City backflow testing program page",
+      "url": "https://www.leaguecitytx.gov/3672/Backflow-Testing-Program",
+      "kind": "official program page"
+    },
+    {
+      "label": "BSI Online Backflow Tracking System",
+      "url": "https://www.bsionlinetracking.com/",
+      "kind": "submission portal"
+    }
+  ],
+  "phone": "281-554-1429",
+  "penalties": "League City says failure to perform and report annual backflow testing through BSI Online can escalate to termination of water service and a $40 processing fee.",
+  "sourceExcerpt": "League City uses BSI for annual notices and electronic records, requires certified testers to submit reports online within 48 hours, and tells testers to obtain the CCN from the customer's reminder or overdue letter.",
+  "sourceSnapshotPath": "storage/snapshots/league-city-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-07-06",
+  "verdictSummary": "League City is a strong BSI page because it combines annual testing, CCN-based notice lookup, a one-time device registration fee, online tester reporting, and water-service enforcement.",
+  "whoIsAffected": "League City customers with backflow prevention devices or assemblies, especially high hazard locations receiving BSI annual certification notices.",
+  "residentialNotes": [
+    "Residential owners with high hazard connections or septic/outside-water-source conditions can receive BSI notice-driven annual requirements.",
+    "If a customer receives an overdue notice after testing, League City points them to BSI with the CCN to confirm whether results were submitted."
+  ],
+  "commercialNotes": [
+    "Commercial high hazard sites are central to the program and carry owner responsibility for annual proof of compliance.",
+    "Testing companies must submit reports within 48 hours through BSI and need the customer's CCN from the reminder or overdue letter."
+  ],
+  "annualTesting": {
+    "summary": "League City requires annual backflow testing and routes official notices and electronic records through BSI.",
+    "highlights": [
+      "Devices or assemblies are tested upon installation and at least annually.",
+      "BSI sends official due and overdue notices.",
+      "Customer Confirmation Number access is needed for BSI record lookup."
+    ],
+    "workflowSteps": [
+      "Confirm the BSI notice, device, and CCN.",
+      "Use a certified backflow prevention assembly tester.",
+      "Have the tester submit the report through BSI Online within 48 hours."
+    ]
+  },
+  "irrigation": {
+    "summary": "League City's high hazard list includes outside water sources and septic locations, so irrigation and outside-water contexts should be checked against the BSI annual record.",
+    "highlights": [
+      "Septic system locations are named as high hazard examples.",
+      "Water connections from outside water sources are named as high hazard examples.",
+      "Annual BSI notice and CCN workflow controls the practical action."
+    ],
+    "workflowSteps": [
+      "Confirm whether the irrigation or outside-water condition appears in the BSI notice.",
+      "Give the CCN to the certified tester.",
+      "Verify the submitted report in BSI if an overdue notice arrives."
+    ]
+  },
+  "fireLine": {
+    "summary": "League City's page centers on high hazard devices and BSI reporting rather than a separate public fire-line section.",
+    "highlights": [
+      "High hazard classification controls the strongest annual signal.",
+      "Repairs and replacements must be done by a licensed tester and permitted by the City.",
+      "BSI Online remains the accepted reporting path."
+    ],
+    "workflowSteps": [
+      "Confirm whether the assembly is high hazard or part of a replacement/permitted job.",
+      "Use a licensed certified tester.",
+      "Submit through BSI Online and keep the CCN tied to the report."
+    ]
+  },
+  "workflowSteps": [
+    "Use the League City page and BSI notice to identify the device and CCN.",
+    "Hire a certified tester who can submit through BSI Online.",
+    "Make sure reports are submitted within 48 hours of the test date.",
+    "If an overdue notice arrives, use BSI and the CCN to verify submission status."
+  ],
+  "failureHighlights": [
+    "Failure to report annual testing through BSI Online can escalate to water service termination.",
+    "Testing companies must submit reports within 48 hours or the customer can receive enforcement notification.",
+    "The CCN from the reminder or overdue letter is needed to access BSI records."
+  ],
+  "costBand": {
+    "testingRange": "Private testing prices are market-based, but League City publishes a one-time $35 registration fee for each backflow device.",
+    "repairRetestRange": "Repairs, replacements, and overhauls must be performed by a licensed tester and permitted by the City.",
+    "pricingNotes": "League City also publishes a $75 nonrefundable annual tester registration fee and a $40 processing fee risk when enforcement escalates."
+  },
+  "sources": [
+    {
+      "label": "League City backflow testing program",
+      "url": "https://www.leaguecitytx.gov/3672/Backflow-Testing-Program",
+      "kind": "official program page"
+    },
+    {
+      "label": "BSI Online tracking",
+      "url": "https://www.bsionlinetracking.com/",
+      "kind": "official portal"
+    }
+  ]
+}

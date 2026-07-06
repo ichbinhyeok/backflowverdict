@@ -148,12 +148,14 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("SwiftComply and C3Swift reporting")))
                 .andExpect(content().string(containsString("VEPO Envirotrax reporting")))
                 .andExpect(content().string(containsString("Owner checklist")))
+                .andExpect(content().string(containsString("Portal comparison")))
                 .andExpect(content().string(containsString("Portal access still depends on accepted credentials")));
 
         mockMvc.perform(get("/backflow-reporting-portals/bsi"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("BSI for backflow testing")))
-                .andExpect(content().string(containsString("/cities/arizona/queen-creek/backflow-testing")));
+                .andExpect(content().string(containsString("/cities/arizona/queen-creek/backflow-testing")))
+                .andExpect(content().string(containsString("City of League City Backflow Testing Program")));
 
         mockMvc.perform(get("/backflow-reporting-portals/weirs"))
                 .andExpect(status().isOk())
@@ -166,7 +168,8 @@ class SiteControllerTest {
         mockMvc.perform(get("/backflow-reporting-portals/vepo"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("VEPO/Envirotrax for backflow testing")))
-                .andExpect(content().string(containsString("City of Fort Worth Water Backflow Program")));
+                .andExpect(content().string(containsString("City of Fort Worth Water Backflow Program")))
+                .andExpect(content().string(containsString("City of Irving Cross Connections and Backflow")));
     }
 
     @Test

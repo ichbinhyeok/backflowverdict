@@ -42,6 +42,29 @@ Added surfaces:
 - `/cities/texas/fort-worth/backflow-reporting-portal`
 - Fort Worth city-intent crawl paths for annual and fire-line searches
 
+### Added VEPO city cluster
+Added 7 more official-source Texas utilities where public pages name VEPO, Envirotrax, online tester submission, registered BPAT search, or credential verification:
+
+- Southlake
+- Bedford
+- Mansfield
+- Cleburne
+- Marble Falls
+- Taylor
+- Buda
+
+These records create new utility pages, city pages, city-intent pages, portal hub entries, approved-tester routes, and metro links without creating unsupported combinations. The GSC priority list now favors the highest-intent new routes such as `city + backflow reporting portal`, `city + annual backflow testing`, and `city + approved backflow testers`.
+
+### Added BSI and Envirotrax comparison cluster
+Added 4 more official-source Texas utilities where public pages expose high-intent portal details:
+
+- League City: BSI, CCN, 48-hour submission, device registration fee, enforcement risk.
+- Irving: Envirotrax, 10-day submission, failed-test customer notice, permit verification.
+- Baytown: Envirotrax online test reports and CSI report submission.
+- Liberty City WSC: VEPO records and annual testing for septic plus irrigation properties.
+
+The portal hub now includes a comparison table so BSI, SwiftComply, WEIRS, and VEPO pages behave more like decision tools instead of thin lists.
+
 ## Quality Guardrails
 - Intent routes are generated from existing utility evidence.
 - Routes are not created for unsupported utility conditions.
@@ -60,7 +83,7 @@ Added surfaces:
 ## Remaining Growth Needed For Daily 100
 This materially increases the indexed surface, but daily 100 likely still requires:
 
-- Expanding utility data beyond the current 80 utilities.
+- Expanding utility data beyond the current 91 utilities.
 - Continuing to add more portal families and utilities only when the source text names the workflow.
 - Building county and metro intent routes where authority mapping is strong.
 - Adding real provider inventory where official tester/source support exists.

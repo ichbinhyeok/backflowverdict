@@ -1,0 +1,134 @@
+{
+  "utilityId": "cleburne-water",
+  "utilityName": "City of Cleburne Backflow Prevention Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "cleburne-backflow-prevention",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Cleburne"
+  ],
+  "serviceAreaCounties": [
+    "Johnson County"
+  ],
+  "searchAliases": [
+    "cleburne backflow testing",
+    "cleburne vepo backflow",
+    "cleburne registered bpat"
+  ],
+  "utilityUrl": "https://www.cleburne.net/1364/Backflow-Prevention-Cross-Connection-Con",
+  "officialProgramUrls": [
+    "https://www.cleburne.net/1364/Backflow-Prevention-Cross-Connection-Con",
+    "https://www.vepollc.com/save_bpats.aspx"
+  ],
+  "testingFrequency": "Upon installation, repair, or relocation; annual thereafter",
+  "dueBasis": "Cleburne says all backflow protection assemblies must be tested upon installation, repair, or relocation and that all backflow assemblies should be tested annually.",
+  "coveredPropertyTypes": [
+    "Properties with backflow protection assemblies",
+    "Annual testing customers",
+    "Fire protection sprinkler systems"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Fire protection sprinkler assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.vepollc.com/save_bpats.aspx",
+  "officialListLabel": "Find BPAT testers registered to work in Cleburne",
+  "submissionMethods": [
+    {
+      "label": "Cleburne backflow prevention program page",
+      "url": "https://www.cleburne.net/1364/Backflow-Prevention-Cross-Connection-Con",
+      "kind": "official program page"
+    },
+    {
+      "label": "VEPO Envirotrax online report submission",
+      "url": "https://www.vepollc.com/save_bpats.aspx",
+      "kind": "submission portal"
+    }
+  ],
+  "phone": "817-556-8869",
+  "penalties": "Cleburne says BPAT testers no longer submit paper reports directly to the City; registration and approved-list status are handled through VEPO after credential verification.",
+  "sourceExcerpt": "Cleburne uses VEPO Envirotrax for online backflow test reports, annual testing context, registered BPAT lookup, and license/insurance/test-accuracy verification.",
+  "sourceSnapshotPath": "storage/snapshots/cleburne-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-07-03",
+  "verdictSummary": "Cleburne is a strong VEPO intent page because it explicitly combines annual testing, no-paper report submission, registered BPAT search, and verified tester approval.",
+  "whoIsAffected": "Cleburne customers with backflow assemblies, annual testing obligations, and fire protection sprinkler assemblies.",
+  "residentialNotes": [
+    "Residential users should confirm whether a device is in Cleburne's assembly record before scheduling.",
+    "The registered BPAT route is safer than treating a generic provider as City-approved."
+  ],
+  "commercialNotes": [
+    "Commercial and higher-risk assemblies should keep the annual test and Envirotrax submission sequence together.",
+    "Fire protection sprinkler systems require the fire-company employment overlay."
+  ],
+  "annualTesting": {
+    "summary": "Cleburne states all backflow assemblies should be tested annually after installation, repair, or relocation triggers.",
+    "highlights": [
+      "Annual testing is explicitly stated.",
+      "VEPO Envirotrax handles online report submission.",
+      "Registered BPAT lookup is linked from the City page."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly and annual due status with Cleburne's backflow program.",
+      "Use a BPAT registered to work in Cleburne.",
+      "Have the tester submit through VEPO Envirotrax instead of paper."
+    ]
+  },
+  "irrigation": {
+    "summary": "Cleburne's cross-connection examples include irrigation, so irrigation users should confirm whether the assembly is tracked and reportable under the same VEPO flow.",
+    "highlights": [
+      "Irrigation is named as a potential backflow source.",
+      "Assembly status determines the compliance action.",
+      "VEPO reporting remains the report route."
+    ],
+    "workflowSteps": [
+      "Confirm whether the irrigation system has a reportable assembly.",
+      "Use a registered Cleburne BPAT.",
+      "Submit the result in VEPO Envirotrax."
+    ]
+  },
+  "fireLine": {
+    "summary": "Cleburne states fire protection sprinkler assemblies must be tested or repaired by a BPAT who is a full-time employee of a licensed fire protection sprinkler company.",
+    "highlights": [
+      "Fire protection sprinkler assemblies have a separate rule.",
+      "State Fire Marshal licensing context matters.",
+      "The BPAT still needs the Cleburne/VEPO registration path."
+    ],
+    "workflowSteps": [
+      "Confirm whether the assembly serves fire protection sprinklers.",
+      "Use a BPAT employed by a licensed fire protection sprinkler company.",
+      "Make sure the Cleburne report is submitted through VEPO."
+    ]
+  },
+  "workflowSteps": [
+    "Use Cleburne's program page to identify the assembly and test trigger.",
+    "Select a BPAT registered to work in Cleburne.",
+    "Have the tester enter the report in VEPO Envirotrax.",
+    "Keep fire sprinkler constraints separate from ordinary domestic or irrigation assemblies."
+  ],
+  "failureHighlights": [
+    "Paper reports are not the current Cleburne submission path.",
+    "Registration and approval depend on license, insurance, and test accuracy verification.",
+    "Fire protection assemblies require a full-time employee of a licensed fire protection sprinkler company."
+  ],
+  "costBand": {
+    "testingRange": "Private Cleburne testing prices vary by assembly and access.",
+    "repairRetestRange": "Repair and retest prices depend on device condition and fire-line status.",
+    "pricingNotes": "The source-backed cost risk is wasted time from the wrong tester or paper-only submission."
+  },
+  "sources": [
+    {
+      "label": "Cleburne backflow prevention and cross-connection program",
+      "url": "https://www.cleburne.net/1364/Backflow-Prevention-Cross-Connection-Con",
+      "kind": "official program page"
+    },
+    {
+      "label": "VEPO registered backflow tester search",
+      "url": "https://www.vepollc.com/save_bpats.aspx",
+      "kind": "official portal"
+    }
+  ]
+}

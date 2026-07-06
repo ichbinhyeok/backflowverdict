@@ -1,0 +1,136 @@
+{
+  "utilityId": "buda-water",
+  "utilityName": "City of Buda Cross-Connection Control",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "buda-cross-connection-control",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Buda"
+  ],
+  "serviceAreaCounties": [
+    "Hays County"
+  ],
+  "searchAliases": [
+    "buda backflow testing",
+    "buda registered bpat",
+    "buda vepo backflow"
+  ],
+  "utilityUrl": "https://www.budatx.gov/222/Cross-Connection-Control",
+  "officialProgramUrls": [
+    "https://www.budatx.gov/222/Cross-Connection-Control",
+    "https://www.vepollc.com/save_bpats.aspx"
+  ],
+  "testingFrequency": "Installation testing; annual testing for high-hazard water connections",
+  "dueBasis": "Buda says BPAT testing and maintenance reports must be submitted online through a Vepo-hosted site, new construction devices must be installed and tested, and high-hazard water connections are subject to annual testing.",
+  "coveredPropertyTypes": [
+    "New construction",
+    "Commercial high-hazard water connections",
+    "Industrial high-hazard water connections",
+    "Residential high-hazard water connections"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "High-hazard backflow devices",
+    "Sprinkler system backflow devices"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.budatx.gov/222/Cross-Connection-Control",
+  "officialListLabel": "Open Buda registered BPAT route",
+  "submissionMethods": [
+    {
+      "label": "Buda cross-connection control page",
+      "url": "https://www.budatx.gov/222/Cross-Connection-Control",
+      "kind": "official program page"
+    },
+    {
+      "label": "Vepo BPAT testing and maintenance reports",
+      "url": "https://www.vepollc.com/save_bpats.aspx",
+      "kind": "submission portal"
+    }
+  ],
+  "phone": "512-312-2876",
+  "penalties": "Buda's public workflow requires online BPAT report submission through Vepo and City registration for BPATs wishing to perform testing.",
+  "sourceExcerpt": "Buda requires Vepo-hosted online BPAT report submission, City registration for BPATs, new-construction device testing, and annual testing for high-hazard connections.",
+  "sourceSnapshotPath": "storage/snapshots/buda-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-07-03",
+  "verdictSummary": "Buda is a strong Central Texas portal page because it combines Vepo-hosted online report submission, registered BPAT handling, new-construction testing, and high-hazard annual testing.",
+  "whoIsAffected": "Buda new construction, high-hazard commercial, industrial, and residential water connections, and BPATs submitting test and maintenance reports.",
+  "residentialNotes": [
+    "Residential users matter when a high-hazard water connection or sprinkler-related backflow device is present.",
+    "Buda recommends annual checks and requires annual testing for high-hazard water connections."
+  ],
+  "commercialNotes": [
+    "Commercial and industrial high-hazard connections are explicitly listed in Buda's annual testing enforcement group.",
+    "BPAT report submission is not just a paper form; it runs through the Vepo-hosted route."
+  ],
+  "annualTesting": {
+    "summary": "Buda enforces annual testing on high-hazard water connections and requires online report submission through Vepo.",
+    "highlights": [
+      "High-hazard commercial, industrial, and residential connections are annual.",
+      "New construction backflow devices must be installed and tested.",
+      "BPAT reports must be submitted through the Vepo-hosted site."
+    ],
+    "workflowSteps": [
+      "Confirm whether the connection is high hazard or tied to new construction.",
+      "Use a BPAT registered with the City of Buda.",
+      "Submit the BPAT testing and maintenance report through Vepo."
+    ]
+  },
+  "irrigation": {
+    "summary": "Buda specifically recommends backflow protection on sprinkler systems and requires installation and testing for covered assemblies.",
+    "highlights": [
+      "Sprinkler systems are called out in Buda's backflow prevention guidance.",
+      "New construction devices must be tested.",
+      "High-hazard status determines annual enforcement."
+    ],
+    "workflowSteps": [
+      "Confirm whether the sprinkler or irrigation assembly is covered by Buda's high-hazard or new-construction rule.",
+      "Use a City-registered BPAT.",
+      "Submit through the Vepo-hosted report path."
+    ]
+  },
+  "fireLine": {
+    "summary": "Buda's page does not publish a separate fire-line section, so fire-related assemblies should be checked through the City and handled by an appropriately qualified BPAT.",
+    "highlights": [
+      "The public page centers on high-hazard and registered BPAT rules.",
+      "Fire-related devices should be verified with the City before scheduling.",
+      "Vepo submission remains the report route when a test is required."
+    ],
+    "workflowSteps": [
+      "Ask Buda whether the fire-related assembly is handled under the high-hazard testing rule.",
+      "Use an appropriately licensed and City-registered BPAT.",
+      "Submit the result through the Vepo-hosted workflow."
+    ]
+  },
+  "workflowSteps": [
+    "Use Buda's cross-connection page to classify high-hazard, new construction, or sprinkler context.",
+    "Use a BPAT registered with the City of Buda.",
+    "Submit test and maintenance reports through the Vepo-hosted workflow.",
+    "Keep annual high-hazard and new-construction testing rules separate."
+  ],
+  "failureHighlights": [
+    "BPATs must be registered with the City of Buda to perform testing.",
+    "The report workflow is online through Vepo, not an informal local submission.",
+    "High-hazard status controls annual enforcement."
+  ],
+  "costBand": {
+    "testingRange": "Private Buda pricing varies by device type and whether the connection is high hazard.",
+    "repairRetestRange": "Repair and retest costs depend on assembly condition and access.",
+    "pricingNotes": "The public page is stronger on submission and registration workflow than on retail quote ranges."
+  },
+  "sources": [
+    {
+      "label": "Buda cross-connection control",
+      "url": "https://www.budatx.gov/222/Cross-Connection-Control",
+      "kind": "official program page"
+    },
+    {
+      "label": "VEPO registered backflow tester search",
+      "url": "https://www.vepollc.com/save_bpats.aspx",
+      "kind": "official portal"
+    }
+  ]
+}

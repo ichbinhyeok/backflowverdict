@@ -1,0 +1,136 @@
+{
+  "utilityId": "bedford-water",
+  "utilityName": "City of Bedford Cross Connection and Backflow",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "bedford-cross-connection-backflow",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Bedford"
+  ],
+  "serviceAreaCounties": [
+    "Tarrant County"
+  ],
+  "searchAliases": [
+    "bedford tx backflow testing",
+    "bedford registered bpat",
+    "bedford vepo backflow"
+  ],
+  "utilityUrl": "https://bedfordtx.gov/226/Cross-Connection-Backflow",
+  "officialProgramUrls": [
+    "https://bedfordtx.gov/226/Cross-Connection-Backflow",
+    "https://www.vepollc.com/save_bpats.aspx"
+  ],
+  "testingFrequency": "Upon installation, replacement, repair, or relocation; annual for commercial assemblies",
+  "dueBasis": "Bedford says all backflow assemblies must be tested upon installation, replacement, repair, or relocation, while commercial facilities must have backflow protection assemblies tested annually.",
+  "coveredPropertyTypes": [
+    "Commercial facilities",
+    "Irrigation systems",
+    "Properties with installed, replaced, repaired, or relocated assemblies",
+    "Fire protection sprinkler systems"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Irrigation backflow devices",
+    "Fire protection sprinkler assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.vepollc.com/save_bpats.aspx",
+  "officialListLabel": "Open Bedford registered BPAT search through VEPO",
+  "submissionMethods": [
+    {
+      "label": "Bedford cross connection and backflow page",
+      "url": "https://bedfordtx.gov/226/Cross-Connection-Backflow",
+      "kind": "official program page"
+    },
+    {
+      "label": "VEPO Envirotrax tester and report workflow",
+      "url": "https://www.vepollc.com/save_bpats.aspx",
+      "kind": "submission portal"
+    }
+  ],
+  "phone": "817-952-2200",
+  "penalties": "Bedford no longer accepts paper test reports directly to the City for this workflow; accepted submission depends on the tester entering the report into Envirotrax and maintaining approved registration.",
+  "sourceExcerpt": "Bedford requires installation, replacement, repair, relocation, and commercial annual testing, then routes reports and tester approval through VEPO's Envirotrax system.",
+  "sourceSnapshotPath": "storage/snapshots/bedford-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-07-03",
+  "verdictSummary": "Bedford is a strong DFW VEPO page because it combines event-triggered testing, commercial annual testing, online Envirotrax submission, and credential-verified tester approval.",
+  "whoIsAffected": "Bedford commercial facilities, irrigation systems, and any property with a backflow assembly installed, replaced, repaired, or relocated.",
+  "residentialNotes": [
+    "Residential users are most likely to enter through irrigation installation, replacement, repair, or relocation.",
+    "Commercial annual rules should not be copied onto every residential assembly without checking the device trigger."
+  ],
+  "commercialNotes": [
+    "Commercial facilities must have all backflow protection assemblies tested annually.",
+    "Paper submission is not the accepted workflow after Bedford's VEPO transition."
+  ],
+  "annualTesting": {
+    "summary": "Bedford annual testing is strongest for commercial facilities; event-based testing still applies when assemblies are installed, replaced, repaired, or relocated.",
+    "highlights": [
+      "Commercial facilities are annual.",
+      "All assemblies are tested on installation, replacement, repair, or relocation.",
+      "Envirotrax submission replaces direct paper reports."
+    ],
+    "workflowSteps": [
+      "Confirm whether the property is a Bedford commercial facility or has an event-triggered assembly.",
+      "Use a BPAT registered through VEPO.",
+      "Have the tester submit the report in Envirotrax."
+    ]
+  },
+  "irrigation": {
+    "summary": "Bedford says irrigation systems must have a backflow device installed, with commercial irrigation facilities tested annually and other irrigation work tied to the event trigger.",
+    "highlights": [
+      "Irrigation systems are specifically called out.",
+      "Commercial irrigation facilities are annual.",
+      "Installation, replacement, repair, or relocation still triggers testing."
+    ],
+    "workflowSteps": [
+      "Confirm whether the irrigation device is commercial or event-triggered.",
+      "Use a VEPO-registered BPAT.",
+      "Make sure the Envirotrax report matches the irrigation assembly."
+    ]
+  },
+  "fireLine": {
+    "summary": "Bedford states fire protection sprinkler assemblies must be tested or repaired by a BPAT who is a full-time employee of a licensed fire protection sprinkler company.",
+    "highlights": [
+      "Fire protection sprinkler systems are treated separately.",
+      "State Fire Marshal licensing and employment context matters.",
+      "VEPO registration remains part of the Bedford workflow."
+    ],
+    "workflowSteps": [
+      "Identify whether the assembly serves a fire protection sprinkler system.",
+      "Use a BPAT who satisfies the State Fire Marshal employment requirement.",
+      "Keep the report in Envirotrax rather than a paper-only path."
+    ]
+  },
+  "workflowSteps": [
+    "Use Bedford's official page to classify the assembly trigger.",
+    "Choose a BPAT registered through VEPO/Envirotrax.",
+    "Have the tester submit the report through the online password-protected system.",
+    "Keep commercial annual and event-triggered paths separate."
+  ],
+  "failureHighlights": [
+    "Direct paper reporting to Bedford is not the accepted path.",
+    "Tester approval depends on license, insurance, and test gauge accuracy verification.",
+    "Fire sprinkler assemblies have a separate State Fire Marshal tester requirement."
+  ],
+  "costBand": {
+    "testingRange": "Private Bedford test quotes vary by assembly and commercial status.",
+    "repairRetestRange": "Repair and retest costs depend on device type and whether fire protection rules apply.",
+    "pricingNotes": "The clearest public cost signal is avoiding rejected paper or unregistered-tester reporting."
+  },
+  "sources": [
+    {
+      "label": "Bedford cross connection and backflow prevention",
+      "url": "https://bedfordtx.gov/226/Cross-Connection-Backflow",
+      "kind": "official program page"
+    },
+    {
+      "label": "VEPO registered backflow tester search",
+      "url": "https://www.vepollc.com/save_bpats.aspx",
+      "kind": "official portal"
+    }
+  ]
+}

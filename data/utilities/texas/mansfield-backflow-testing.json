@@ -1,0 +1,135 @@
+{
+  "utilityId": "mansfield-water",
+  "utilityName": "City of Mansfield Water Utilities Backflow Testing",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "mansfield-backflow-testing",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Mansfield"
+  ],
+  "serviceAreaCounties": [
+    "Tarrant County",
+    "Johnson County"
+  ],
+  "searchAliases": [
+    "mansfield tx backflow testing",
+    "mansfield vepo backflow",
+    "mansfield licensed backflow inspectors"
+  ],
+  "utilityUrl": "https://www.mansfieldtexas.gov/416/Backflow-Testing",
+  "officialProgramUrls": [
+    "https://www.mansfieldtexas.gov/416/Backflow-Testing",
+    "https://www.vepollc.com/save_bpats.aspx"
+  ],
+  "testingFrequency": "Upon installation, repair, or relocation; annual testing expected for assemblies",
+  "dueBasis": "Mansfield says all backflow protection assemblies must be tested upon installation, repair, or relocation and that assemblies should be tested annually to ensure they are working.",
+  "coveredPropertyTypes": [
+    "Properties with backflow prevention assemblies",
+    "Properties requiring licensed backflow inspector reporting",
+    "Fire protection sprinkler systems"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Fire protection sprinkler assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.vepollc.com/save_bpats.aspx",
+  "officialListLabel": "Search Mansfield licensed backflow inspectors through VEPO",
+  "submissionMethods": [
+    {
+      "label": "Mansfield Water Utilities backflow testing page",
+      "url": "https://www.mansfieldtexas.gov/416/Backflow-Testing",
+      "kind": "official program page"
+    },
+    {
+      "label": "VEPO backflow management portal",
+      "url": "https://www.vepollc.com/save_bpats.aspx",
+      "kind": "submission portal"
+    }
+  ],
+  "phone": "817-276-4230",
+  "penalties": "Mansfield routes accepted reporting through the online VEPO system and adds testers to the approved list only after license, insurance, and test accuracy verification.",
+  "sourceExcerpt": "Mansfield publishes installation, repair, relocation, and annual testing language, then sends tester submission and licensed inspector lookup through VEPO.",
+  "sourceSnapshotPath": "storage/snapshots/mansfield-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-07-03",
+  "verdictSummary": "Mansfield is a source-backed VEPO city because its public Water Utilities page connects annual/device testing, licensed inspector lookup, online VEPO submission, and verified tester approval.",
+  "whoIsAffected": "Mansfield properties with backflow prevention assemblies, especially installations, repairs, relocations, annual test cycles, and fire protection sprinkler assemblies.",
+  "residentialNotes": [
+    "Residential impact usually appears when a tracked assembly is installed, repaired, relocated, or due for annual testing.",
+    "Use the licensed inspector route instead of a generic search when the City workflow matters."
+  ],
+  "commercialNotes": [
+    "Commercial owners need a licensed inspector who can use Mansfield's VEPO reporting path.",
+    "Fire sprinkler assemblies need a qualified BPAT tied to a licensed fire protection sprinkler company."
+  ],
+  "annualTesting": {
+    "summary": "Mansfield states assemblies should be tested annually and also tested on installation, repair, or relocation.",
+    "highlights": [
+      "Annual testing is directly stated.",
+      "Installation, repair, and relocation are also testing triggers.",
+      "VEPO controls the online test report workflow."
+    ],
+    "workflowSteps": [
+      "Confirm the Mansfield assembly and annual or event trigger.",
+      "Use a licensed backflow inspector in the VEPO route.",
+      "Have the tester submit through Mansfield's online VEPO workflow."
+    ]
+  },
+  "irrigation": {
+    "summary": "Mansfield's public page describes irrigation as a backflow risk example, so irrigation users should verify whether the assembly is tracked and due under the same VEPO workflow.",
+    "highlights": [
+      "Irrigation is identified as a potential backflow source.",
+      "Assembly status controls whether the test is due.",
+      "Licensed inspector lookup is still the practical route."
+    ],
+    "workflowSteps": [
+      "Confirm whether the irrigation assembly is tracked by Mansfield.",
+      "Use the VEPO licensed inspector route.",
+      "Keep the submission tied to the correct assembly record."
+    ]
+  },
+  "fireLine": {
+    "summary": "Mansfield repeats the State Fire Marshal constraint for fire protection sprinkler assemblies.",
+    "highlights": [
+      "Fire protection sprinkler assemblies are separately called out.",
+      "A BPAT must be a full-time employee of a licensed fire protection sprinkler company.",
+      "VEPO portal access still matters for the report path."
+    ],
+    "workflowSteps": [
+      "Check whether the assembly is tied to a fire sprinkler system.",
+      "Use a BPAT who satisfies the fire sprinkler employment rule.",
+      "Submit through the Mansfield VEPO route."
+    ]
+  },
+  "workflowSteps": [
+    "Open Mansfield's official backflow testing page.",
+    "Use the VEPO route to find a licensed inspector.",
+    "Have the tester submit through the online password-protected VEPO system.",
+    "Verify fire sprinkler or annual constraints before treating the report as complete."
+  ],
+  "failureHighlights": [
+    "A tester must be verified for license, insurance, and test accuracy before approved-list addition.",
+    "The online VEPO submission path is the practical acceptance point.",
+    "Fire sprinkler assemblies require the State Fire Marshal employment overlay."
+  ],
+  "costBand": {
+    "testingRange": "Private Mansfield pricing varies by assembly and access.",
+    "repairRetestRange": "Repair and retest pricing widens for larger or fire-related assemblies.",
+    "pricingNotes": "Mansfield's strongest public signal is tester eligibility and VEPO reporting rather than retail price."
+  },
+  "sources": [
+    {
+      "label": "Mansfield Water Utilities backflow testing",
+      "url": "https://www.mansfieldtexas.gov/416/Backflow-Testing",
+      "kind": "official program page"
+    },
+    {
+      "label": "VEPO registered backflow tester search",
+      "url": "https://www.vepollc.com/save_bpats.aspx",
+      "kind": "official portal"
+    }
+  ]
+}

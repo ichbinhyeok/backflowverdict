@@ -1,0 +1,135 @@
+{
+  "utilityId": "marble-falls-water",
+  "utilityName": "City of Marble Falls Backflow Prevention and Cross Connection",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "marble-falls-backflow-prevention",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Marble Falls"
+  ],
+  "serviceAreaCounties": [
+    "Burnet County"
+  ],
+  "searchAliases": [
+    "marble falls backflow testing",
+    "marble falls vepo backflow",
+    "marble falls registered backflow tester"
+  ],
+  "utilityUrl": "https://marblefallstx.gov/839/Backflow-Prevention-and-Cross-Connection",
+  "officialProgramUrls": [
+    "https://marblefallstx.gov/839/Backflow-Prevention-and-Cross-Connection",
+    "https://marblefallstx.gov/842/Finding-or-Becoming-a-Registered-Backflo",
+    "https://www.vepollc.com/save_bpats.aspx"
+  ],
+  "testingFrequency": "Annual for high health hazard devices",
+  "dueBasis": "Marble Falls says high health hazard devices must be tested annually and that BPAT testers submit reports online through Envirotrax rather than paper reports to the City.",
+  "coveredPropertyTypes": [
+    "Non-residential high health hazard sites",
+    "Hospitals, restaurants, and industries",
+    "Residential pools with auto-fill high hazard devices"
+  ],
+  "coveredDeviceTypes": [
+    "High health hazard backflow prevention devices",
+    "Backflow prevention assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://marblefallstx.gov/842/Finding-or-Becoming-a-Registered-Backflo",
+  "officialListLabel": "Open Marble Falls registered backflow tester route",
+  "submissionMethods": [
+    {
+      "label": "Marble Falls backflow prevention page",
+      "url": "https://marblefallstx.gov/839/Backflow-Prevention-and-Cross-Connection",
+      "kind": "official program page"
+    },
+    {
+      "label": "VEPO Envirotrax online submission",
+      "url": "https://www.vepollc.com/save_bpats.aspx",
+      "kind": "submission portal"
+    }
+  ],
+  "phone": "830-798-7095",
+  "penalties": "Marble Falls says BPAT testers can no longer submit paper test reports directly to the City; accepted reporting runs through the online Envirotrax system.",
+  "sourceExcerpt": "Marble Falls moved BPAT report submission to VEPO Envirotrax, rejects the old paper-direct path, and requires annual testing for high health hazard devices.",
+  "sourceSnapshotPath": "storage/snapshots/marble-falls-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-07-03",
+  "verdictSummary": "Marble Falls is a strong Central Texas VEPO page because it has a dated portal transition, high-health-hazard annual testing, paperless submission, and registered-tester workflow.",
+  "whoIsAffected": "Marble Falls non-residential high-hazard sites, residential pools with auto-fill high-hazard devices, and testers submitting annual reports.",
+  "residentialNotes": [
+    "Residential impact is strongest when a pool with auto-fill or another high hazard device creates a reportable assembly.",
+    "The City points annual questions to Development Services and the Envirotrax flow."
+  ],
+  "commercialNotes": [
+    "Hospitals, restaurants, industries, and other non-residential high-hazard sites are the clearest annual testing cases.",
+    "BPAT report submission must follow the VEPO/Envirotrax process."
+  ],
+  "annualTesting": {
+    "summary": "Marble Falls requires annual testing for high health hazard devices and routes BPAT reports through Envirotrax.",
+    "highlights": [
+      "High health hazard devices are annual.",
+      "The City names restaurants, hospitals, industries, and auto-fill pools.",
+      "BPAT testers use the online Envirotrax submission path."
+    ],
+    "workflowSteps": [
+      "Confirm whether the device is a high health hazard device.",
+      "Use the Marble Falls registered tester route.",
+      "Have the BPAT submit through Envirotrax."
+    ]
+  },
+  "irrigation": {
+    "summary": "Marble Falls does not flatten every residential device into annual testing; the stronger public trigger is high health hazard status, including auto-fill pool examples.",
+    "highlights": [
+      "Auto-fill pools are named as a residential high-hazard example.",
+      "High-hazard classification controls annual testing.",
+      "Envirotrax controls BPAT report submission."
+    ],
+    "workflowSteps": [
+      "Confirm whether the residential or irrigation-related device is high hazard.",
+      "Use a registered BPAT route.",
+      "Keep the Envirotrax report tied to the correct assembly."
+    ]
+  },
+  "fireLine": {
+    "summary": "Marble Falls centers its page on high health hazard devices and BPAT submission rather than a separate public fire-line rule.",
+    "highlights": [
+      "Fire-line specifics should be verified with Development Services.",
+      "High-hazard classification is the public annual signal.",
+      "The VEPO/Envirotrax path still controls report submission."
+    ],
+    "workflowSteps": [
+      "Ask Development Services whether the fire-related assembly is tracked as high hazard.",
+      "Use an appropriately licensed BPAT.",
+      "Submit through the Marble Falls Envirotrax route."
+    ]
+  },
+  "workflowSteps": [
+    "Use the Marble Falls page to determine whether annual high-hazard testing applies.",
+    "Use the registered tester route rather than a generic provider search.",
+    "Have the BPAT submit the test into Envirotrax.",
+    "Do not rely on direct paper submission to the City."
+  ],
+  "failureHighlights": [
+    "The old paper-direct submission path is no longer accepted for BPAT reports.",
+    "High health hazard classification determines the strongest annual duty.",
+    "Registered tester status matters before treating a test as complete."
+  ],
+  "costBand": {
+    "testingRange": "Private Marble Falls quotes vary by device hazard level and property type.",
+    "repairRetestRange": "Repair and retest ranges widen for high hazard commercial devices.",
+    "pricingNotes": "The strongest cost-control point is using a BPAT who can complete the Envirotrax submission."
+  },
+  "sources": [
+    {
+      "label": "Marble Falls backflow prevention and cross connection",
+      "url": "https://marblefallstx.gov/839/Backflow-Prevention-and-Cross-Connection",
+      "kind": "official program page"
+    },
+    {
+      "label": "Marble Falls finding or becoming a registered backflow tester",
+      "url": "https://marblefallstx.gov/842/Finding-or-Becoming-a-Registered-Backflo",
+      "kind": "official tester route"
+    }
+  ]
+}

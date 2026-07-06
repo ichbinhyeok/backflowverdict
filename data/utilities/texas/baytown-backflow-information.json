@@ -1,0 +1,136 @@
+{
+  "utilityId": "baytown-water",
+  "utilityName": "City of Baytown Backflow Information",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "baytown-backflow-information",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Baytown"
+  ],
+  "serviceAreaCounties": [
+    "Harris County",
+    "Chambers County"
+  ],
+  "searchAliases": [
+    "baytown backflow testing",
+    "baytown envirotrax backflow",
+    "baytown registered backflow testers"
+  ],
+  "utilityUrl": "https://www.baytown.org/1322/Backflow-Information",
+  "officialProgramUrls": [
+    "https://www.baytown.org/1322/Backflow-Information",
+    "https://www.envirotrax.com/registrations.aspx?at=1"
+  ],
+  "testingFrequency": "Online submission required for backflow test reports",
+  "dueBasis": "Baytown requires online submission of Backflow Prevention Assembly Test and Maintenance Reports through Envirotrax, with testing information entered directly by the tester into the online system.",
+  "coveredPropertyTypes": [
+    "Properties with backflow prevention assemblies",
+    "Commercial properties needing CSI reports",
+    "Fire protection sprinkler systems"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Customer Service Inspection records",
+    "Fire protection sprinkler assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.envirotrax.com/registrations.aspx?at=1",
+  "officialListLabel": "View Baytown testers registered with Envirotrax",
+  "submissionMethods": [
+    {
+      "label": "Baytown backflow information page",
+      "url": "https://www.baytown.org/1322/Backflow-Information",
+      "kind": "official program page"
+    },
+    {
+      "label": "Envirotrax online backflow and CSI submission",
+      "url": "https://www.envirotrax.com/registrations.aspx?at=1",
+      "kind": "submission portal"
+    }
+  ],
+  "phone": "281-420-5300",
+  "penalties": "Baytown says testers no longer submit paper test reports directly to the City; backflow and CSI reporting are routed through Envirotrax.",
+  "sourceExcerpt": "Baytown requires online Envirotrax submission for backflow test reports, provides an Envirotrax registered tester route, and also routes licensed CSI inspector reports to Envirotrax.",
+  "sourceSnapshotPath": "storage/snapshots/baytown-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-07-06",
+  "verdictSummary": "Baytown is a strong Envirotrax utility because both backflow test reports and CSI reports run through the online system instead of paper submission.",
+  "whoIsAffected": "Baytown customers with backflow prevention assemblies, commercial CSI requirements, and fire protection sprinkler assemblies.",
+  "residentialNotes": [
+    "Residential owners should confirm whether a backflow assembly is on file before scheduling.",
+    "If testing is required, the tester submits through Envirotrax rather than direct paper delivery."
+  ],
+  "commercialNotes": [
+    "Commercial customers may also need CSI reports, which Baytown routes through Envirotrax.",
+    "Fire protection sprinkler assemblies require BPATs who satisfy the State Fire Marshal employment rule."
+  ],
+  "annualTesting": {
+    "summary": "Baytown's public page is strongest on the accepted submission path: backflow test and maintenance reports must be entered in Envirotrax.",
+    "highlights": [
+      "Online Envirotrax submission is required.",
+      "Paper reports are no longer submitted directly to the City.",
+      "Registered tester lookup is tied to Envirotrax."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly and report requirement with Baytown.",
+      "Use a tester registered with Envirotrax.",
+      "Have the tester submit the report through the online system."
+    ]
+  },
+  "irrigation": {
+    "summary": "Baytown's public page does not isolate irrigation rules, so irrigation users should verify whether the assembly is reportable and then follow the Envirotrax submission path.",
+    "highlights": [
+      "Assembly status controls the action.",
+      "Envirotrax is the submission route.",
+      "A registered tester should complete the report."
+    ],
+    "workflowSteps": [
+      "Confirm whether the irrigation assembly is on file.",
+      "Use the registered tester route.",
+      "Submit through Envirotrax if testing is required."
+    ]
+  },
+  "fireLine": {
+    "summary": "Baytown states fire protection sprinkler assemblies must be tested or repaired by a BPAT who is a full-time employee of a licensed fire protection sprinkler company.",
+    "highlights": [
+      "Fire protection sprinkler assemblies are called out separately.",
+      "State Fire Marshal licensing context matters.",
+      "Envirotrax remains the backflow reporting route."
+    ],
+    "workflowSteps": [
+      "Identify whether the assembly serves a fire protection sprinkler system.",
+      "Use a BPAT who satisfies the fire sprinkler employment rule.",
+      "Submit the report through Envirotrax."
+    ]
+  },
+  "workflowSteps": [
+    "Use Baytown's official page to confirm whether the assembly or CSI record is required.",
+    "Find a tester registered with Envirotrax.",
+    "Have the tester or licensed CSI inspector submit through Envirotrax.",
+    "Do not rely on paper reports submitted directly to the City."
+  ],
+  "failureHighlights": [
+    "Paper test reports are no longer the direct City submission route.",
+    "Licensed CSI reports also go through Envirotrax.",
+    "Fire protection sprinkler assemblies need the State Fire Marshal employment overlay."
+  ],
+  "costBand": {
+    "testingRange": "Private Baytown pricing varies by assembly and whether CSI is involved.",
+    "repairRetestRange": "Repair and retest costs depend on assembly type and fire-line status.",
+    "pricingNotes": "The practical cost risk is using a tester or CSI inspector who does not complete the Envirotrax submission."
+  },
+  "sources": [
+    {
+      "label": "Baytown backflow information",
+      "url": "https://www.baytown.org/1322/Backflow-Information",
+      "kind": "official program page"
+    },
+    {
+      "label": "Envirotrax registered tester search",
+      "url": "https://www.envirotrax.com/registrations.aspx?at=1",
+      "kind": "official portal"
+    }
+  ]
+}

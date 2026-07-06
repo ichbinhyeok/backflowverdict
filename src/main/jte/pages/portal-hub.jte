@@ -111,6 +111,76 @@
         </div>
     </section>
 
+    @if (!utilities.isEmpty())
+        <section class="section">
+            <div class="container">
+                <article class="table-card">
+                    <div class="section-heading">
+                        <span class="eyebrow">Portal comparison</span>
+                        <h2>${portalSlug.equals("all") ? "Compare portal workflows before choosing the next route" : "Compare " + portalName + " utility workflows"}</h2>
+                        <p>Use this table to spot the acceptance gates that usually decide whether a backflow report is actually complete: portal submission, approved tester status, due basis, and failed-test handling.</p>
+                    </div>
+                    <div class="table-wrap">
+                        <table class="data-table data-table--responsive">
+                            <thead>
+                            <tr>
+                                <th>Utility and city</th>
+                                <th>Portal evidence</th>
+                                <th>Tester gate</th>
+                                <th>Timing or fee clue</th>
+                                <th>Failed-test clue</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @for (var utility : utilities)
+                                <tr>
+                                    <td data-label="Utility and city">
+                                        <strong>${utility.utilityName()}</strong>
+                                        @if (!cityAliasesByUtility.getOrDefault(utility.utilityId(), java.util.List.of()).isEmpty())
+                                            <div class="detail-meta">
+                                                @for (var alias : cityAliasesByUtility.getOrDefault(utility.utilityId(), java.util.List.of()))
+                                                    <a href="/cities/${alias.state()}/${alias.aliasSlug()}/backflow-testing">${alias.city()}</a>
+                                                @endfor
+                                            </div>
+                                        @else
+                                            <div class="detail-meta">${utility.state()}</div>
+                                        @endif
+                                    </td>
+                                    <td data-label="Portal evidence">
+                                        @for (var method : utility.submissionMethods())
+                                            <div>${method.label()}</div>
+                                        @endfor
+                                    </td>
+                                    <td data-label="Tester gate">
+                                        @if (utility.supportsApprovedTestersPage())
+                                            <strong>${utility.officialListLabel()}</strong>
+                                        @else
+                                            <span>Confirm accepted tester status with the utility.</span>
+                                        @endif
+                                    </td>
+                                    <td data-label="Timing or fee clue">
+                                        <span>${utility.testingFrequency()}</span>
+                                        @if (utility.costBand() != null && utility.costBand().pricingNotes() != null && !utility.costBand().pricingNotes().isBlank())
+                                            <div class="detail-meta">${utility.costBand().pricingNotes()}</div>
+                                        @endif
+                                    </td>
+                                    <td data-label="Failed-test clue">
+                                        @if (!utility.failureHighlights().isEmpty())
+                                            <span>${utility.failureHighlights().get(0)}</span>
+                                        @else
+                                            <span>Open the utility workflow before repair, retest, or resubmission.</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endfor
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </div>
+        </section>
+    @endif
+
     <section class="section">
         <div class="container">
             <div class="section-heading">

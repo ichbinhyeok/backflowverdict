@@ -8,7 +8,10 @@
     "Round Rock",
     "Leander",
     "San Antonio",
-    "College Station"
+    "College Station",
+    "Marble Falls",
+    "Taylor",
+    "Buda"
   ],
   "countyNames": [
     "Travis County",
@@ -21,7 +24,10 @@
     "round-rock-water",
     "leander-water",
     "saws-backflow",
-    "college-station-water"
+    "college-station-water",
+    "marble-falls-water",
+    "taylor-water",
+    "buda-water"
   ],
   "guideSlugs": [
     "who-needs-a-backflow-preventer",

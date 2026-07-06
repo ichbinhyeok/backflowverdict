@@ -1,0 +1,38 @@
+{
+  "metroId": "texas-gulf-coast-water-corridor",
+  "title": "Texas Gulf Coast backflow testing portals",
+  "state": "texas",
+  "metroSlug": "texas-gulf-coast-water-corridor",
+  "cityNames": [
+    "Houston area",
+    "League City",
+    "Baytown",
+    "Sugar Land",
+    "Liberty City"
+  ],
+  "countyNames": [
+    "Harris County",
+    "Galveston County",
+    "Chambers County",
+    "Gregg County"
+  ],
+  "utilityIds": [
+    "league-city-water",
+    "baytown-water",
+    "sugar-land-water",
+    "liberty-city-wsc"
+  ],
+  "guideSlugs": [
+    "backflow-reporting-portals",
+    "backflow-test-notice-next-steps",
+    "failed-backflow-test-next-steps",
+    "backflow-test-cost",
+    "how-we-verify-backflow-rules"
+  ],
+  "description": "Utility-first Texas Gulf Coast backflow testing page covering BSI, Envirotrax, VEPO, annual testing, and city-specific reporting workflows.",
+  "summary": "The Texas Gulf Coast cluster is useful because nearby cities and water providers use different reporting systems: League City routes annual notices through BSI, Baytown uses Envirotrax, Sugar Land uses BSI, and Liberty City WSC uses VEPO for a narrow septic-plus-irrigation trigger.",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 60,
+  "pageStatus": "PUBLISH",
+  "lastReviewed": "2026-07-06"
+}

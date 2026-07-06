@@ -1,0 +1,135 @@
+{
+  "utilityId": "taylor-water",
+  "utilityName": "City of Taylor Cross Connection Control Backflow",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "taylor-cross-connection-control",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Taylor"
+  ],
+  "serviceAreaCounties": [
+    "Williamson County"
+  ],
+  "searchAliases": [
+    "taylor tx backflow testing",
+    "taylor vepo backflow",
+    "taylor registered bpat"
+  ],
+  "utilityUrl": "https://taylortx.gov/1021/Cross-Connection-Control-Backflow",
+  "officialProgramUrls": [
+    "https://taylortx.gov/1021/Cross-Connection-Control-Backflow",
+    "https://www.vepollc.com/save_bpats.aspx"
+  ],
+  "testingFrequency": "Upon installation, repair, or relocation; annual thereafter",
+  "dueBasis": "Taylor says all backflow protection assemblies must be tested upon installation, repair, or relocation and that all backflow assemblies should be tested annually.",
+  "coveredPropertyTypes": [
+    "Properties with backflow protection assemblies",
+    "Irrigation systems",
+    "Fire protection sprinkler systems"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Irrigation backflow assemblies",
+    "Fire protection sprinkler assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.vepollc.com/save_bpats.aspx",
+  "officialListLabel": "Find BPAT registered to work in Taylor",
+  "submissionMethods": [
+    {
+      "label": "Taylor cross connection control page",
+      "url": "https://taylortx.gov/1021/Cross-Connection-Control-Backflow",
+      "kind": "official program page"
+    },
+    {
+      "label": "VEPO Envirotrax backflow submission",
+      "url": "https://www.vepollc.com/save_bpats.aspx",
+      "kind": "submission portal"
+    }
+  ],
+  "phone": "512-352-3675",
+  "penalties": "Taylor says testers no longer submit paper reports directly to the City; accepted reporting and BPAT registration run through VEPO/Envirotrax.",
+  "sourceExcerpt": "Taylor publishes annual and event-triggered assembly testing, online VEPO submission, BPAT registration in Envirotrax, and fire sprinkler tester constraints.",
+  "sourceSnapshotPath": "storage/snapshots/taylor-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-07-03",
+  "verdictSummary": "Taylor is a useful Central Texas VEPO page because it explicitly connects annual testing, irrigation context, paperless reporting, registered BPAT lookup, and fire sprinkler rules.",
+  "whoIsAffected": "Taylor properties with backflow protection assemblies, irrigation systems, and fire protection sprinkler assemblies.",
+  "residentialNotes": [
+    "Taylor names garden hoses and irrigation systems as common residential backflow concerns.",
+    "Irrigation users should confirm installation testing and any annual local code overlay before scheduling."
+  ],
+  "commercialNotes": [
+    "Commercial owners should treat annual testing and VEPO submission as a single workflow.",
+    "Fire sprinkler assemblies need the State Fire Marshal employment overlay."
+  ],
+  "annualTesting": {
+    "summary": "Taylor says all assemblies should be tested annually after installation, repair, or relocation trigger testing.",
+    "highlights": [
+      "Annual testing is stated directly.",
+      "VEPO handles online submission.",
+      "BPAT approval follows license, insurance, and test accuracy verification."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly and due basis with Taylor's official page.",
+      "Find a BPAT registered to work in Taylor.",
+      "Have the BPAT submit the report through VEPO/Envirotrax."
+    ]
+  },
+  "irrigation": {
+    "summary": "Taylor gives specific irrigation guidance: TCEQ requires a licensed BPA tester to check the BPA when installed on an irrigation system, and local rules may require annual testing.",
+    "highlights": [
+      "Irrigation systems are explicitly discussed.",
+      "Installation testing is a direct TCEQ-linked trigger.",
+      "Taylor warns that water providers may add annual testing rules."
+    ],
+    "workflowSteps": [
+      "Confirm whether the irrigation BPA is newly installed or locally due.",
+      "Use a licensed BPA tester registered for Taylor.",
+      "Submit through the VEPO route when the assembly is reportable."
+    ]
+  },
+  "fireLine": {
+    "summary": "Taylor states fire protection sprinkler assemblies must be tested or repaired by a BPAT who is a full-time employee of a licensed fire protection sprinkler company.",
+    "highlights": [
+      "Fire sprinkler assemblies are named separately.",
+      "The State Fire Marshal overlay controls tester eligibility.",
+      "The Taylor VEPO route still controls registered BPAT status."
+    ],
+    "workflowSteps": [
+      "Identify whether the assembly serves fire protection sprinklers.",
+      "Use a BPAT employed by a licensed fire protection sprinkler company.",
+      "Have the report submitted through the accepted Taylor VEPO path."
+    ]
+  },
+  "workflowSteps": [
+    "Use Taylor's cross-connection page to classify annual, irrigation, or fire-line context.",
+    "Find a BPAT registered to work in Taylor.",
+    "Use VEPO/Envirotrax for online reporting.",
+    "Do not treat a paper report as the accepted City workflow."
+  ],
+  "failureHighlights": [
+    "Paper reports are not the current Taylor reporting path.",
+    "A BPAT must clear license, insurance, and test accuracy verification before approved-list addition.",
+    "Irrigation and fire-line rules have separate eligibility details."
+  ],
+  "costBand": {
+    "testingRange": "Private Taylor test prices vary by assembly type and whether irrigation or fire-line work is involved.",
+    "repairRetestRange": "Repair and retest pricing depends on device condition and fire-line requirements.",
+    "pricingNotes": "The practical cost risk is using a tester who cannot complete the Taylor VEPO submission."
+  },
+  "sources": [
+    {
+      "label": "Taylor cross connection control and backflow",
+      "url": "https://taylortx.gov/1021/Cross-Connection-Control-Backflow",
+      "kind": "official program page"
+    },
+    {
+      "label": "VEPO registered backflow tester search",
+      "url": "https://www.vepollc.com/save_bpats.aspx",
+      "kind": "official portal"
+    }
+  ]
+}

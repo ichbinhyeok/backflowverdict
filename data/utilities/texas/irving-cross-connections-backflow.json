@@ -1,0 +1,135 @@
+{
+  "utilityId": "irving-water",
+  "utilityName": "City of Irving Cross Connections and Backflow",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "irving-cross-connections-backflow",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Irving"
+  ],
+  "serviceAreaCounties": [
+    "Dallas County"
+  ],
+  "searchAliases": [
+    "irving backflow testing",
+    "irving envirotrax backflow",
+    "irving registered backflow tester"
+  ],
+  "utilityUrl": "https://irvingtx.gov/water-cross-connections",
+  "officialProgramUrls": [
+    "https://irvingtx.gov/water-cross-connections",
+    "https://www.envirotrax.com/"
+  ],
+  "testingFrequency": "Periodic and event-driven testing with online report submission",
+  "dueBasis": "Irving requires backflow test reports to be submitted online through Envirotrax within 10 days of the test date, with permit verification needed for newly replaced or installed assemblies before testing.",
+  "coveredPropertyTypes": [
+    "Properties with newly installed or replaced assemblies",
+    "Customers with assemblies requiring backflow test reports",
+    "Fire protection sprinkler systems"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Replacement assemblies",
+    "Fire protection sprinkler assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.envirotrax.com/registrations.aspx?at=1",
+  "officialListLabel": "Open Envirotrax registered tester search for Irving",
+  "submissionMethods": [
+    {
+      "label": "Irving cross connections and backflow page",
+      "url": "https://irvingtx.gov/water-cross-connections",
+      "kind": "official program page"
+    },
+    {
+      "label": "Envirotrax online backflow report submission",
+      "url": "https://www.envirotrax.com/",
+      "kind": "submission portal"
+    }
+  ],
+  "phone": "972-721-2104",
+  "penalties": "Irving's public instructions make online Envirotrax submission the accepted path, and tester credentials, test kit calibration forms, and registration fees must stay updated in the tester profile.",
+  "sourceExcerpt": "Irving requires online Envirotrax report submission within 10 days, customer copies for every test, failed-test customer notification, permit verification for new or replacement assemblies, and current tester credentials.",
+  "sourceSnapshotPath": "storage/snapshots/irving-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-07-06",
+  "verdictSummary": "Irving is a strong Envirotrax page because it publishes a 10-day online submission rule, failed-test customer notice requirement, permit verification for replacements, and tester credential maintenance.",
+  "whoIsAffected": "Irving customers with reportable backflow assemblies, newly installed or replaced assemblies, failed tests, and testers submitting through Envirotrax.",
+  "residentialNotes": [
+    "Residential impact usually appears when a device is newly installed, replaced, or due for a reportable test.",
+    "The customer should receive a copy of the backflow test form for every test performed."
+  ],
+  "commercialNotes": [
+    "Commercial owners should keep the 10-day Envirotrax reporting window visible to the tester.",
+    "Replacement assemblies need permit verification before testing."
+  ],
+  "annualTesting": {
+    "summary": "Irving's strongest public timing rule is not a generic annual statement; it is online Envirotrax submission within 10 days of the test date.",
+    "highlights": [
+      "Reports must be submitted online through Envirotrax within 10 days.",
+      "Physical copies are not required for the City submission.",
+      "Tester credentials and test kit calibration forms must stay current."
+    ],
+    "workflowSteps": [
+      "Confirm whether the assembly requires a reportable test.",
+      "Use a tester with current Envirotrax profile credentials.",
+      "Make sure the report is submitted online within 10 days."
+    ]
+  },
+  "irrigation": {
+    "summary": "Irving's public page focuses on assembly reporting and replacement/installation permit verification, so irrigation users should first confirm whether the device is newly installed, replaced, or otherwise reportable.",
+    "highlights": [
+      "Newly installed or replaced assemblies need plumbing permit verification before testing.",
+      "Replacement assemblies require the old serial number to be noted on the report.",
+      "Envirotrax is the accepted report path."
+    ],
+    "workflowSteps": [
+      "Confirm installation or replacement status for the irrigation assembly.",
+      "Verify the plumbing permit before testing when required.",
+      "Submit the test through Envirotrax within the Irving window."
+    ]
+  },
+  "fireLine": {
+    "summary": "Irving includes fire protection sprinkler assembly context through the same report and tester-profile workflow.",
+    "highlights": [
+      "Use the correct assembly type for the hazard.",
+      "Ask the Backflow Specialist if the assembly appears to be the wrong type.",
+      "Keep tester credentials and calibration documents current."
+    ],
+    "workflowSteps": [
+      "Confirm fire assembly hazard classification before testing.",
+      "Use a properly credentialed tester.",
+      "Submit the report online through Envirotrax."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm whether the assembly is new, replaced, failed, or otherwise due for reporting.",
+    "Use a tester with current license, test kit calibration, and Envirotrax registration.",
+    "Have the tester submit online through Envirotrax within 10 days.",
+    "If the test failed, make sure the customer is notified that repair or replacement and retesting are required."
+  ],
+  "failureHighlights": [
+    "In the event of a failed test, Irving says the customer must be notified that repair or replacement and retesting are required.",
+    "Reports must be submitted online through Envirotrax within 10 days of the test date.",
+    "Replacement assemblies should include the old serial number on the test report."
+  ],
+  "costBand": {
+    "testingRange": "Private Irving prices vary by assembly and permit context.",
+    "repairRetestRange": "Repair and retest pricing depends on the failed assembly and whether replacement permitting is involved.",
+    "pricingNotes": "Irving's public cost signal is more about avoiding late or incomplete Envirotrax reporting than retail test price."
+  },
+  "sources": [
+    {
+      "label": "Irving cross connections and backflow",
+      "url": "https://irvingtx.gov/water-cross-connections",
+      "kind": "official program page"
+    },
+    {
+      "label": "Envirotrax registered tester search",
+      "url": "https://www.envirotrax.com/registrations.aspx?at=1",
+      "kind": "official portal"
+    }
+  ]
+}

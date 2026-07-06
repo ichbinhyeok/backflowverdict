@@ -1,0 +1,134 @@
+{
+  "utilityId": "liberty-city-wsc",
+  "utilityName": "Liberty City Water Supply Corporation Backflow Program",
+  "governingEntityType": "water supply corporation",
+  "canonicalSlug": "liberty-city-wsc-backflow",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Liberty City"
+  ],
+  "serviceAreaCounties": [
+    "Gregg County"
+  ],
+  "searchAliases": [
+    "liberty city wsc backflow",
+    "liberty city backflow testing",
+    "liberty city vepo backflow"
+  ],
+  "utilityUrl": "https://libertycitywsc.com/cross-connection-control-backflow",
+  "officialProgramUrls": [
+    "https://libertycitywsc.com/cross-connection-control-backflow",
+    "https://www.vepollc.com/"
+  ],
+  "testingFrequency": "Annual testing required when both septic and irrigation conditions apply",
+  "dueBasis": "Liberty City WSC says it uses VEPO for backflow test records, licensed BPAT testers submit reports to VEPO, and annual testing is required for properties that include both a septic system and an irrigation system connected to the corporation's water supply.",
+  "coveredPropertyTypes": [
+    "Properties with both septic and irrigation connected to Liberty City WSC water",
+    "Customers with backflow prevention assemblies",
+    "Customers whose licensed BPAT submits through VEPO"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Irrigation assemblies"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.vepollc.com/",
+  "officialListLabel": "Open Liberty City WSC VEPO registered tester route",
+  "submissionMethods": [
+    {
+      "label": "Liberty City WSC cross connection control page",
+      "url": "https://libertycitywsc.com/cross-connection-control-backflow",
+      "kind": "official program page"
+    },
+    {
+      "label": "VEPO backflow test records",
+      "url": "https://www.vepollc.com/",
+      "kind": "submission portal"
+    }
+  ],
+  "phone": "903-984-0541",
+  "penalties": "Liberty City WSC frames annual testing as a TCEQ requirement for the septic-plus-irrigation condition and routes test records through VEPO.",
+  "sourceExcerpt": "Liberty City WSC uses VEPO for backflow test records, says licensed BPAT testers submit tests to VEPO, and states annual testing applies to properties with both septic and irrigation connected to the water supply.",
+  "sourceSnapshotPath": "storage/snapshots/liberty-city-wsc-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-07-06",
+  "verdictSummary": "Liberty City WSC is a narrow but useful VEPO page because the annual testing trigger is specific: septic plus irrigation connected to the water supply.",
+  "whoIsAffected": "Liberty City WSC customers with both septic and irrigation systems connected to the corporation's water supply and a reportable backflow assembly.",
+  "residentialNotes": [
+    "The strongest residential trigger is having both septic and irrigation connected to Liberty City WSC water.",
+    "The licensed BPAT submits the test to VEPO rather than relying on informal proof."
+  ],
+  "commercialNotes": [
+    "Commercial users should still verify assembly records and tester submission status through the WSC and VEPO path.",
+    "The public source is strongest on septic-plus-irrigation annual testing rather than broad commercial categories."
+  ],
+  "annualTesting": {
+    "summary": "Liberty City WSC's annual testing rule is specific to properties that include both septic and irrigation connected to the corporation's water supply.",
+    "highlights": [
+      "Annual testing is required for the septic plus irrigation condition.",
+      "VEPO holds backflow test records.",
+      "A licensed BPAT tester submits the test to VEPO."
+    ],
+    "workflowSteps": [
+      "Confirm whether the property has both septic and irrigation connected to Liberty City WSC water.",
+      "Use a licensed BPAT tester.",
+      "Have the tester submit the result to VEPO."
+    ]
+  },
+  "irrigation": {
+    "summary": "Irrigation is central to Liberty City WSC's public rule, but the annual requirement is tied to irrigation plus septic.",
+    "highlights": [
+      "Irrigation alone should be checked against the WSC record.",
+      "The published annual trigger is both septic and irrigation.",
+      "VEPO records control the practical submission path."
+    ],
+    "workflowSteps": [
+      "Confirm whether irrigation is connected to Liberty City WSC water.",
+      "Confirm whether a septic system is also present.",
+      "Use a licensed BPAT and VEPO submission if annual testing applies."
+    ]
+  },
+  "fireLine": {
+    "summary": "Liberty City WSC's public page does not publish a separate fire-line workflow.",
+    "highlights": [
+      "The published rule is strongest for septic-plus-irrigation annual testing.",
+      "Fire-line questions should be verified directly with the WSC.",
+      "VEPO is still the named record path for backflow tests."
+    ],
+    "workflowSteps": [
+      "Ask Liberty City WSC whether the fire-related assembly is in the backflow record.",
+      "Use a properly licensed BPAT.",
+      "Submit through VEPO when a report is required."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the property condition: septic, irrigation, and WSC water connection.",
+    "Use a licensed BPAT tester.",
+    "Have the tester submit the annual report to VEPO.",
+    "Use the WSC page and VEPO record path to confirm compliance."
+  ],
+  "failureHighlights": [
+    "The source-backed annual trigger is septic plus irrigation connected to the water supply.",
+    "Test records should be submitted to VEPO by a licensed BPAT tester.",
+    "Do not generalize this narrow WSC rule to every nearby city without checking the governing water provider."
+  ],
+  "costBand": {
+    "testingRange": "Private Liberty City WSC test quotes vary by assembly and property access.",
+    "repairRetestRange": "Repair and retest pricing depends on device condition and irrigation setup.",
+    "pricingNotes": "The practical cost risk is missing the septic-plus-irrigation annual trigger or failing to submit through VEPO."
+  },
+  "sources": [
+    {
+      "label": "Liberty City WSC cross connection control and backflow",
+      "url": "https://libertycitywsc.com/cross-connection-control-backflow",
+      "kind": "official program page"
+    },
+    {
+      "label": "VEPO backflow records",
+      "url": "https://www.vepollc.com/",
+      "kind": "official portal"
+    }
+  ]
+}
