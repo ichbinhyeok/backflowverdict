@@ -41,6 +41,10 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("backflow testing rules before you schedule the work.")))
                 .andExpect(content().string(containsString("Browse state guides")))
                 .andExpect(content().string(containsString("See utility examples")))
+                .andExpect(content().string(containsString("High-intent routes Google should discover quickly")))
+                .andExpect(content().string(containsString("/backflow-reporting-portals/aqua")))
+                .andExpect(content().string(containsString("/cities/texas/euless/backflow-reporting-portal")))
+                .andExpect(content().string(containsString("/backflow-reporting-portals/tokay")))
                 .andExpect(content().string(containsString("What stays official")))
                 .andExpect(content().string(not(containsString("Request a quote"))))
                 .andExpect(content().string(not(containsString("Protocol v4.2 compliance engine"))))
@@ -624,7 +628,11 @@ class SiteControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Turn a backflow notice into the right next page")))
                 .andExpect(content().string(containsString("Euless TrackMyBackflow Hazard ID")))
-                .andExpect(content().string(containsString("Jump to a named portal family")));
+                .andExpect(content().string(containsString("Jump to a named portal family")))
+                .andExpect(content().string(containsString("Popular notice routes")))
+                .andExpect(content().string(containsString("/cities/texas/euless/backflow-reporting-portal")))
+                .andExpect(content().string(containsString("/cities/california/oxnard/backflow-reporting-portal")))
+                .andExpect(content().string(containsString("/cities/texas/fort-worth/backflow-reporting-portal")));
 
         mockMvc.perform(get("/notice-finder").queryParam("q", "Euless TrackMyBackflow Hazard ID"))
                 .andExpect(status().isOk())
@@ -1283,9 +1291,21 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("/utilities/texas/san-antonio-water-system/failed-test")))
                 .andExpect(content().string(org.hamcrest.Matchers.not(containsString("/utilities/texas/arlington-water-utilities/find-a-tester"))));
 
+        mockMvc.perform(get("/sitemap-priority.xml"))
+                .andExpect(status().isOk())
+                .andExpect(header().string("Content-Type", containsString("application/xml")))
+                .andExpect(content().string(containsString("https://backflowpath.com/notice-finder")))
+                .andExpect(content().string(containsString("https://backflowpath.com/backflow-reporting-portals/aqua")))
+                .andExpect(content().string(containsString("https://backflowpath.com/backflow-reporting-portals/tokay")))
+                .andExpect(content().string(containsString("https://backflowpath.com/cities/texas/euless/backflow-reporting-portal")))
+                .andExpect(content().string(containsString("https://backflowpath.com/cities/california/oxnard/backflow-reporting-portal")))
+                .andExpect(content().string(containsString("https://backflowpath.com/cities/california/dublin/backflow-reporting-portal")))
+                .andExpect(content().string(not(containsString("/cities/texas/arlington/backflow-testing"))));
+
         mockMvc.perform(get("/robots.txt"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Sitemap: https://backflowpath.com/sitemap.xml")));
+                .andExpect(content().string(containsString("Sitemap: https://backflowpath.com/sitemap.xml")))
+                .andExpect(content().string(containsString("Sitemap: https://backflowpath.com/sitemap-priority.xml")));
     }
 
     @Test

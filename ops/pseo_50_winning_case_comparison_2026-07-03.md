@@ -11,6 +11,7 @@ BackflowPath's current state after the latest data expansion:
 - Local sitemap validation: 1,168 URLs.
 - GSC priority URL list: 50 URLs.
 - Indexable `/notice-finder` route that maps notice, city, portal, tester, due-date, and failed-test phrases to source-backed routes.
+- Priority crawl sitemap at `/sitemap-priority.xml` for high-intent notice, portal, and city-intent URLs.
 
 ## 50 Cases Reviewed
 
@@ -160,7 +161,7 @@ BackflowPath status: good. Internal links are much better after city-intent and 
 | Price/cost utility | 3/10 | Cost guide exists, but city pages rarely have hard numbers. | Add sourced fee and market price fields where available. |
 | Provider proof | 3/10 | Provider pages exist but inventory is limited. | Add provider listings only with public evidence and coverage. |
 | Conversion action | 4/10 | Request-help exists, but not as strong as schedule/upload notice. | Add "paste notice details" or "identify portal" form path. |
-| External authority/citations | 2/10 | Current growth is mostly onsite. | Get provider/directory/partner links after deploy. |
+| External authority/citations | 2/10 | Current growth is mostly onsite; priority crawl discovery is improved, but offsite citations are still thin. | Get provider/directory/partner links after deploy. |
 | Data scale for daily 100 | 4/10 | 96 utilities and 1,168 URLs are materially better, but daily 100 likely needs 250-500 high-quality utility records. | Continue official-source expansion in clusters. |
 
 ## Gaps That Matter Most
@@ -168,11 +169,11 @@ BackflowPath status: good. Internal links are much better after city-intent and 
 1. **Not enough high-quality source records yet.**
    Daily 100 clicks is not a 1,168 URL problem; it is a coverage and authority problem. The safest path is adding source-backed utility clusters, not generating unsupported pages.
 
-2. **Portal pages are still list hubs, not decision tools.**
-   The winning version of `/backflow-reporting-portals/vepo` should show a matrix: city, portal, annual rule, approved tester route, submission window, fee, failed-test rule.
+2. **Crawl discovery for new URLs is still young.**
+   Search Console inspection showed the newest portal/city URLs were not yet known to Google. `/sitemap-priority.xml` and direct home/notice-finder links now reduce that bottleneck, but the URLs still need manual submission and recrawl time.
 
-3. **No "notice interpreter" action.**
-   Many winning pages start from the notice. BackflowPath should let a user identify the utility/portal from notice text, even if the output is just the right BackflowPath page.
+3. **Notice interpreter is still keyword-based.**
+   Many winning pages start from the notice. BackflowPath now has the minimum keyword router; the next version should parse notice fields more explicitly.
 
 4. **Provider and price proof is thin.**
    Commercial winners win clicks because they say what happens next and what it costs. BackflowPath must add that only where sourced, but it is currently a gap.
@@ -185,6 +186,7 @@ BackflowPath status: good. Internal links are much better after city-intent and 
 ### P0 - Deploy and index what already exists
 - Deploy the latest utility/city expansion.
 - Submit `https://backflowpath.com/sitemap.xml`.
+- Submit `https://backflowpath.com/sitemap-priority.xml`.
 - Submit the 50 URLs in `ops/gsc_priority_reindex_urls_2026-07-03.txt`.
 
 ### P1 - Keep upgrading portal hubs into harder comparison tools

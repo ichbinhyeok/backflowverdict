@@ -944,6 +944,34 @@ public class SiteController {
                 provider.lastReviewed()
         )));
 
+        return sitemapXml(urls);
+    }
+
+    @GetMapping(value = "/sitemap-priority.xml", produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
+    public String prioritySitemap(HttpServletRequest request) {
+        if (siteVisibilityService.shouldForceNoindex(request)) {
+            return emptySitemap();
+        }
+        List<SitemapEntry> urls = prioritySitemapPaths().stream()
+                .map(path -> new SitemapEntry(canonical(path), priorityLastModified(path)))
+                .toList();
+        return sitemapXml(urls);
+    }
+
+    @GetMapping(value = "/robots.txt", produces = MediaType.TEXT_PLAIN_VALUE)
+    @ResponseBody
+    public String robots(HttpServletRequest request) {
+        if (siteVisibilityService.shouldForceNoindex(request)) {
+            return siteVisibilityService.stagingRobotsTxt();
+        }
+        return "User-agent: *\n"
+                + "Allow: /\n\n"
+                + "Sitemap: " + canonical("/sitemap.xml") + "\n"
+                + "Sitemap: " + canonical("/sitemap-priority.xml") + "\n";
+    }
+
+    private String sitemapXml(List<SitemapEntry> urls) {
         StringBuilder xml = new StringBuilder();
         xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
         xml.append("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">");
@@ -958,20 +986,63 @@ public class SiteController {
         return xml.toString();
     }
 
-    @GetMapping(value = "/robots.txt", produces = MediaType.TEXT_PLAIN_VALUE)
-    @ResponseBody
-    public String robots(HttpServletRequest request) {
-        if (siteVisibilityService.shouldForceNoindex(request)) {
-            return siteVisibilityService.stagingRobotsTxt();
-        }
-        return "User-agent: *\n"
-                + "Allow: /\n\n"
-                + "Sitemap: " + canonical("/sitemap.xml") + "\n";
-    }
-
     private String emptySitemap() {
         return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
                 + "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"></urlset>";
+    }
+
+    private List<String> prioritySitemapPaths() {
+        return List.of(
+                "/notice-finder",
+                "/guides/backflow-test-notice-next-steps",
+                "/backflow-reporting-portals",
+                "/backflow-reporting-portals/aqua",
+                "/backflow-reporting-portals/tokay",
+                "/backflow-reporting-portals/vepo",
+                "/backflow-reporting-portals/bsi",
+                "/backflow-reporting-portals/swiftcomply",
+                "/cities/texas/euless/backflow-reporting-portal",
+                "/cities/california/buena-park/backflow-reporting-portal",
+                "/cities/california/oxnard/backflow-reporting-portal",
+                "/cities/california/pleasanton/backflow-reporting-portal",
+                "/cities/california/dublin/backflow-reporting-portal",
+                "/cities/california/san-ramon/backflow-reporting-portal",
+                "/cities/texas/dallas/backflow-reporting-portal",
+                "/cities/texas/dallas/failed-backflow-test",
+                "/cities/texas/fort-worth/backflow-reporting-portal",
+                "/cities/texas/irving/backflow-reporting-portal",
+                "/cities/arizona/queen-creek/backflow-reporting-portal",
+                "/cities/florida/tampa/backflow-reporting-portal"
+        );
+    }
+
+    private LocalDate priorityLastModified(String path) {
+        for (UtilityRecord utility : registryService.listPublishedUtilities()) {
+            if (path.startsWith(utilityPath(utility))) {
+                return utility.lastVerified();
+            }
+        }
+        for (CityAliasRecord alias : registryService.listCityAliases()) {
+            if (path.equals(cityPath(alias)) || path.startsWith("/cities/" + alias.state() + "/" + alias.aliasSlug() + "/")) {
+                return registryService.findUtilityById(alias.utilityId())
+                        .map(utility -> latestDate(alias.lastReviewed(), utility.lastVerified()))
+                        .orElse(alias.lastReviewed());
+            }
+        }
+        if (path.startsWith("/backflow-reporting-portals/")) {
+            String portalSlug = path.substring("/backflow-reporting-portals/".length());
+            return latestUtilityModified(portalUtilities(portalSlug));
+        }
+        if (path.equals("/backflow-reporting-portals")) {
+            return latestUtilityModified(portalUtilities("all"));
+        }
+        if (path.startsWith("/guides/")) {
+            String slug = path.substring("/guides/".length());
+            return registryService.findPublishedGuide(slug)
+                    .map(GuideRecord::lastReviewed)
+                    .orElse(homeLastModified());
+        }
+        return homeLastModified();
     }
 
     private PageMeta page(String title, String description, String path) {

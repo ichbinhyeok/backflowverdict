@@ -49,6 +49,7 @@
 - Added `/notice-finder` as an indexable notice-to-route tool, wired it into header, home, footer, sitemap, and GSC priority URLs. It matches city, utility, portal, tester, due-date, failed-test, irrigation, and fire-line clues to source-backed routes.
 - Added above-fold notice checklists to utility, city bridge, and city-intent pages, and strengthened portal comparison tables with notice/device ID and report-acceptance columns.
 - Verified the notice finder and checklist expansion on `http://localhost:8103`; local sitemap now renders 1,168 URLs and includes `/notice-finder`.
+- Search Console inspection showed `/notice-finder` had been crawled but not indexed, while new Aqua/Tokay city and portal URLs were still unknown to Google. Added `/sitemap-priority.xml`, exposed it in `robots.txt`, and added direct home plus notice-finder links to the highest-intent notice routes.
 - Refreshed `lastVerified` / `lastReviewed` dates to 2026-06-29 for utility, state, metro, and guide JSON records.
 - Ran an automated source URL audit across 215 unique official/support URLs; 119 passed and 96 unresolved URLs were recorded in `data/ops/broken_links.csv`.
 - Added `app.ops.current-date` so tests and manual verification can use a fixed freshness date without changing production behavior.
@@ -63,7 +64,7 @@
 
 ## Next recommended tasks
 1. Continue working through the unresolved rows in `data/ops/broken_links.csv`, starting with true 404s before likely bot-protected 403s.
-2. Submit the sitemap plus URLs from `ops/gsc_priority_reindex_urls_2026-07-03.txt` in Search Console, then measure movement against the daily-click target with weekly GSC rewrites.
+2. Submit `/sitemap.xml` and `/sitemap-priority.xml` in Search Console, then use URL inspection for the 50 URLs in `ops/gsc_priority_reindex_urls_2026-07-03.txt`.
 3. Manually recheck Greeley and JEA because the 2026-07-03 URL spot check errored under automation.
 4. Add sourced fee, deadline, and rejection-risk fields to more utilities so the notice finder and portal matrices can expose harder facts above the fold.
 5. Re-run `/ops/verification/run` after broken-link cleanup; status should return to `ok` once source URL issues are resolved.

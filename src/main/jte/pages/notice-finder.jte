@@ -150,6 +150,58 @@
                     </div>
                 </section>
 
+                <section class="section section--tight">
+                    <div class="section-heading">
+                        <span class="eyebrow">Popular notice routes</span>
+                        <h2>Open source-backed routes without searching</h2>
+                        <p>These are the priority notice and portal paths to crawl first because they combine city, portal, tester, and report-submission intent.</p>
+                    </div>
+                    <div class="support-links">
+                        <a class="support-link" href="/cities/texas/euless/backflow-reporting-portal">
+                            <div>
+                                <strong>Euless TrackMyBackflow reporting portal</strong>
+                                <span>Hazard ID, Site ID, Aqua Backflow, and tester registration context.</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                        <a class="support-link" href="/cities/california/buena-park/backflow-reporting-portal">
+                            <div>
+                                <strong>Buena Park Aqua Backflow reporting portal</strong>
+                                <span>Annual notice, customer record lookup, and online report upload context.</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                        <a class="support-link" href="/cities/california/oxnard/backflow-reporting-portal">
+                            <div>
+                                <strong>Oxnard Tokay WebTest reporting portal</strong>
+                                <span>Tokay online test entry, approved tester, and credential maintenance context.</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                        <a class="support-link" href="/cities/california/dublin/backflow-reporting-portal">
+                            <div>
+                                <strong>Dublin DSRSD Tokay reporting portal</strong>
+                                <span>DSRSD test entry, repair, retest, and approved tester route.</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                        <a class="support-link" href="/cities/texas/fort-worth/backflow-reporting-portal">
+                            <div>
+                                <strong>Fort Worth VEPO Envirotrax reporting portal</strong>
+                                <span>Registered BPAT, Envirotrax report submission, and failed paperwork risk.</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                        <a class="support-link" href="/cities/texas/dallas/backflow-reporting-portal">
+                            <div>
+                                <strong>Dallas SwiftComply reporting portal</strong>
+                                <span>SwiftComply annual testing, failed-test, and report submission workflow.</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    </div>
+                </section>
+
                 <article class="detail-card detail-card--key">
                     <span class="eyebrow">Featured utility records</span>
                     <h2>Open a utility workflow when the notice names the authority</h2>

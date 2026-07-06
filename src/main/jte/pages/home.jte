@@ -84,6 +84,44 @@
     </section>
 
     <section class="section section--tight">
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">Notice and portal shortcuts</span>
+                <h2>High-intent routes Google should discover quickly</h2>
+                <p class="lede">These pages answer the same words that appear on real backflow notices: portal name, city, due date, tester route, and report submission.</p>
+            </div>
+            <div class="card-grid card-grid--three">
+                <article class="detail-card detail-card--key">
+                    <span class="pill">Finder</span>
+                    <h3>Backflow notice finder</h3>
+                    <p>Use city, utility, portal, tester, failed-test, or notice ID clues to open the most specific source-backed route.</p>
+                    <div class="card-actions">
+                        <a class="button button--secondary" href="/notice-finder">Open notice finder</a>
+                    </div>
+                </article>
+                <article class="detail-card">
+                    <span class="pill">Aqua</span>
+                    <h3>TrackMyBackflow notice routes</h3>
+                    <p>Euless, Buena Park, and Pleasanton-style workflows where Aqua Backflow or TrackMyBackflow appears in official reporting context.</p>
+                    <div class="card-actions">
+                        <a class="button button--secondary" href="/backflow-reporting-portals/aqua">Aqua portal hub</a>
+                        <a class="button button--secondary" href="/cities/texas/euless/backflow-reporting-portal">Euless portal</a>
+                    </div>
+                </article>
+                <article class="detail-card">
+                    <span class="pill">Tokay</span>
+                    <h3>Tokay WebTest notice routes</h3>
+                    <p>Oxnard and Dublin San Ramon workflows where Tokay/WebTest appears in online backflow test entry or tester credential context.</p>
+                    <div class="card-actions">
+                        <a class="button button--secondary" href="/backflow-reporting-portals/tokay">Tokay portal hub</a>
+                        <a class="button button--secondary" href="/cities/california/oxnard/backflow-reporting-portal">Oxnard portal</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--tight">
         <div class="container content-grid">
             <article class="detail-card">
                 <div class="section-heading">
