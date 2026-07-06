@@ -292,6 +292,7 @@
                     <a href="/states">States</a>
                     <a href="/metros">Metros</a>
                     <a href="/guides">Guides</a>
+                    <a href="/notice-finder">Notice finder</a>
                     <a href="/official-backflow-tester-lists">Tester lists</a>
                 </nav>
                 <div class="site-header__actions">
@@ -309,6 +310,7 @@
                         <a href="/states">States</a>
                         <a href="/metros">Metros</a>
                         <a href="/guides">Guides</a>
+                        <a href="/notice-finder">Notice finder</a>
                         <a href="/official-backflow-tester-lists">Tester lists</a>
                     </nav>
                     <a class="button button--primary button--compact site-menu__cta" href="${page.requestHelpPathOrDefault()}">Request help</a>
@@ -332,6 +334,7 @@
                 <a href="/states">Browse state guides</a>
                 <a href="/metros">Browse metro pages</a>
                 <a href="/guides">Browse all guides</a>
+                <a href="/notice-finder">Notice finder</a>
                 <a href="/official-backflow-tester-lists">Official tester lists</a>
             </div>
             <div class="footer-column">
@@ -345,6 +348,7 @@
             <div class="footer-column">
                 <span class="footer-column__label">Get help</span>
                 <a href="${page.requestHelpPathOrDefault()}">Request help</a>
+                <a href="/notice-finder">Find from notice</a>
                 <a href="/claim-listing">Claim listing</a>
                 <a href="/contact">Contact</a>
                 <a href="/privacy">Privacy</a>

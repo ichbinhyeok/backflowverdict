@@ -10,6 +10,8 @@
 @param java.util.List<UtilityRecord> utilities
 @param java.util.Map<String, Integer> portalCounts
 @param java.util.Map<String, java.util.List<CityAliasRecord>> cityAliasesByUtility = java.util.Map.of()
+@param java.util.Map<String, String> noticeIdentifierHints = java.util.Map.of()
+@param java.util.Map<String, String> reportAcceptanceHints = java.util.Map.of()
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 
 @template.layouts.app(page = page, content = @`
@@ -28,14 +30,14 @@
                 </div>
                 <div class="hero__stats">
                     <span>${utilities.size()} mapped utility workflows</span>
-                    <span>${portalSlug.equals("all") ? "BSI, WEIRS, SwiftComply, and VEPO families" : portalName + " utility examples"}</span>
+                    <span>${portalSlug.equals("all") ? "BSI, WEIRS, SwiftComply, VEPO, Aqua, and Tokay families" : portalName + " utility examples"}</span>
                     <span>Reports follow utility rules</span>
                     <span>Tester action comes after the local page</span>
                 </div>
             </div>
             <aside class="panel panel--hero">
                 <span class="stat-card__label" style="color: rgba(141, 224, 196, 0.9);">Portal context</span>
-                <div class="stat-card__value" style="color: #ffffff; font-size: clamp(2rem, 4vw, 2.7rem);">${portalSlug.equals("all") ? "BSI / WEIRS / SwiftComply / VEPO" : portalName}</div>
+                <div class="stat-card__value" style="color: #ffffff; font-size: clamp(2rem, 4vw, 2.7rem);">${portalSlug.equals("all") ? "BSI / WEIRS / SwiftComply / VEPO / Aqua / Tokay" : portalName}</div>
                 <p class="stat-card__meta" style="color: rgba(239, 241, 243, 0.74);">Portal names are discovery signals. The local utility page still controls deadlines, tester status, fees, and report acceptance.</p>
             </aside>
         </div>
@@ -82,6 +84,22 @@
                             <a class="button button--secondary" href="/backflow-reporting-portals/vepo">Open VEPO utilities</a>
                         </div>
                     </article>
+                    <article class="detail-card detail-card--quiet">
+                        <span class="pill">${portalCounts.getOrDefault("aqua", 0)} utilities</span>
+                        <h3>Aqua and TrackMyBackflow reporting</h3>
+                        <p>Utilities where Aqua Backflow or TrackMyBackflow appears in official filing, customer notice, or tester registration context.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/backflow-reporting-portals/aqua">Open Aqua utilities</a>
+                        </div>
+                    </article>
+                    <article class="detail-card detail-card--quiet">
+                        <span class="pill">${portalCounts.getOrDefault("tokay", 0)} utilities</span>
+                        <h3>Tokay WebTest reporting</h3>
+                        <p>Utilities where Tokay or Tokay WebTest appears in official online test report entry, tester approval, or credential maintenance context.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/backflow-reporting-portals/tokay">Open Tokay utilities</a>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -118,7 +136,7 @@
                     <div class="section-heading">
                         <span class="eyebrow">Portal comparison</span>
                         <h2>${portalSlug.equals("all") ? "Compare portal workflows before choosing the next route" : "Compare " + portalName + " utility workflows"}</h2>
-                        <p>Use this table to spot the acceptance gates that usually decide whether a backflow report is actually complete: portal submission, approved tester status, due basis, and failed-test handling.</p>
+                        <p>Use this table to spot the acceptance gates that usually decide whether a backflow report is actually complete: portal submission, notice or device identifiers, approved tester status, report acceptance, and failed-test handling.</p>
                     </div>
                     <div class="table-wrap">
                         <table class="data-table data-table--responsive">
@@ -126,7 +144,9 @@
                             <tr>
                                 <th>Utility and city</th>
                                 <th>Portal evidence</th>
+                                <th>Notice or device ID</th>
                                 <th>Tester gate</th>
+                                <th>Report acceptance</th>
                                 <th>Timing or fee clue</th>
                                 <th>Failed-test clue</th>
                             </tr>
@@ -151,12 +171,18 @@
                                             <div>${method.label()}</div>
                                         @endfor
                                     </td>
+                                    <td data-label="Notice or device ID">
+                                        <span>${noticeIdentifierHints.getOrDefault(utility.utilityId(), "Look for the account, notice, device, or assembly identifier on the utility notice.")}</span>
+                                    </td>
                                     <td data-label="Tester gate">
                                         @if (utility.supportsApprovedTestersPage())
                                             <strong>${utility.officialListLabel()}</strong>
                                         @else
                                             <span>Confirm accepted tester status with the utility.</span>
                                         @endif
+                                    </td>
+                                    <td data-label="Report acceptance">
+                                        <span>${reportAcceptanceHints.getOrDefault(utility.utilityId(), "Confirm the current submission path with the utility before filing.")}</span>
                                     </td>
                                     <td data-label="Timing or fee clue">
                                         <span>${utility.testingFrequency()}</span>

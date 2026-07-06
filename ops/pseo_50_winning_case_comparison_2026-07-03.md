@@ -5,11 +5,12 @@ Find repeatable winning patterns from 50 strong examples and compare them agains
 
 BackflowPath's current state after the latest data expansion:
 
-- 91 publishable utility records.
+- 96 publishable utility records.
 - Source-backed city intent pages for annual testing, reporting portals, approved testers, failed tests, irrigation, and fire-line testing.
-- Source-backed portal families for BSI, SwiftComply, WEIRS, and VEPO/Envirotrax.
-- Local sitemap validation: 1,062 URLs.
+- Source-backed portal families for BSI, SwiftComply, WEIRS, VEPO/Envirotrax, Aqua/TrackMyBackflow, and Tokay WebTest.
+- Local sitemap validation: 1,168 URLs.
 - GSC priority URL list: 50 URLs.
+- Indexable `/notice-finder` route that maps notice, city, portal, tester, due-date, and failed-test phrases to source-backed routes.
 
 ## 50 Cases Reviewed
 
@@ -66,6 +67,17 @@ BackflowPath's current state after the latest data expansion:
 | 49 | Commercial | Atlas Backflow notice article | Explains reasons for a water department notice and the practical next action. | Our notice guide exists; could be more diagnostic with notice-type branches. |
 | 50 | Commercial | FlowCert certification/report tooling | City-specific submission instructions and auto-filled report workflow as a product. | BackflowPath could later become a notice/report-routing tool, not only an SEO directory. |
 
+## Latest Same-Keyword Competitor Cluster Added
+The follow-up implementation reviewed 5 additional official pages competing on the same reporting-portal and city backflow terms:
+
+- Euless, TX: Aqua Backflow/TrackMyBackflow, Hazard ID/Site ID, tester registration, credential upload, and a published $10.95 filing fee.
+- Buena Park, CA: Aqua Backflow/TrackMyBackflow inventory, tester upload, customer record lookup, and annual-notice framing.
+- Pleasanton, CA: Aqua Backflow plan language around tester qualifications, online reporting, expired credentials, and removal from the approved list.
+- Oxnard, CA: Tokay software/WebTest online reporting, approved tester credential requirements, and suspended logins for expired certifications.
+- Dublin San Ramon Services District, CA: Tokay test entry website, approved tester route, electronic reporting, repair, and retest flow.
+
+These cases reinforced the same winning pattern: a page wins when it names the portal, names the notice or device identifier, explains tester credential gating, and routes the owner or tester to the next action without mixing unsupported cities.
+
 ## Winning Patterns
 
 ### 1. The best pages are task pages, not information pages
@@ -77,7 +89,7 @@ Winning pages start from the user's job:
 - "How much does the test cost?"
 - "What happens if it failed?"
 
-BackflowPath status: partially strong. The new notice guide and city-intent routes are right, but the first screen still often reads as guidance rather than a direct task resolver.
+BackflowPath status: stronger. The notice guide, city-intent routes, and `/notice-finder` now give users a direct task resolver before they need to read a generic guide.
 
 ### 2. Every scalable winner has a clean data axis
 pSEO winners scale because they have repeatable axes:
@@ -88,15 +100,15 @@ pSEO winners scale because they have repeatable axes:
 - Portal x utility.
 - Device x trigger.
 
-BackflowPath status: strong foundation. We now have `city x intent` and `portal x utility`. The next axis should be `portal x city x requirement`, especially for BSI, SwiftComply, and VEPO.
+BackflowPath status: strong foundation. We now have `city x intent` and `portal x utility`. The next axis should be `portal x city x requirement`, especially for BSI, SwiftComply, VEPO, Aqua/TrackMyBackflow, and Tokay.
 
 ### 3. Thin city pages do not win; unique local facts do
 The good pages use unique facts: fees, deadlines, account numbers, portal names, tester credential rules, failed-test windows, and approved list links.
 
-BackflowPath status: improving. Utility records already hold local facts, but templates do not yet surface all of them in a scannable comparison block.
+BackflowPath status: improving. Utility, city, and portal templates now surface notice/device ID clues and report-acceptance rules; the remaining gap is adding more hard fee, deadline, and rejection-risk facts to the underlying utility records.
 
 ### 4. Portal pages win when they explain credentials and acceptance
-SwiftComply, VEPO, BSI, and city pages repeatedly mention:
+SwiftComply, VEPO, BSI, Aqua/TrackMyBackflow, Tokay, and city pages repeatedly mention:
 
 - Account setup.
 - License/certification upload.
@@ -106,7 +118,7 @@ SwiftComply, VEPO, BSI, and city pages repeatedly mention:
 - Passed vs failed report handling.
 - Customer notice number such as CCN/TRAC.
 
-BackflowPath status: medium. Portal families exist, but we need portal-specific detail matrices and city examples above the fold.
+BackflowPath status: medium-high. Portal families now include comparison matrices with notice/device ID clues, tester gates, report acceptance, timing/fee clues, and failed-test clues. The next gap is more structured values per city.
 
 ### 5. Commercial winners remove anxiety with proof
 Commercial pages use:
@@ -124,7 +136,7 @@ BackflowPath status: weak by design. We preserve authority separation, but daily
 ### 6. Notice-first funnels beat generic education
 The best official and commercial pages turn the notice into a checklist: due date, notice ID, device record, approved tester, portal, fee, submitted report proof.
 
-BackflowPath status: medium-high. The notice guide exists, but city/utility pages need a reusable "notice checklist" block above fold.
+BackflowPath status: strong. The notice guide exists, `/notice-finder` routes notice terms, and city/utility pages now have reusable notice checklist blocks above fold.
 
 ### 7. Failed-test intent is separate
 Good sources separate failed devices from passed reports. Some require faster repair, different report timing, or no passed-test fee.
@@ -142,19 +154,19 @@ BackflowPath status: good. Internal links are much better after city-intent and 
 | --- | ---: | --- | --- |
 | Utility authority trust | 9/10 | Source-backed records and official links are a real moat. | Keep adding official-source utilities. |
 | City x intent pSEO structure | 8/10 | Evidence-gated pages avoid thin-scale risk. | Add more cities from official sources. |
-| Portal family pages | 8/10 | BSI, SwiftComply, WEIRS, VEPO exist, link back to utilities, and now include comparison tables. | Add richer structured fields by portal: fee, credentials, notice ID, pass/fail rule. |
-| Notice-first funnel | 7/10 | Notice guide exists and appears in related links. | Put notice checklist on utility/city pages above fold. |
+| Portal family pages | 8.5/10 | BSI, SwiftComply, WEIRS, VEPO, Aqua/TrackMyBackflow, and Tokay exist, link back to utilities, and now include comparison tables with notice/device ID and report-acceptance columns. | Add harder structured values by portal: exact fee, credential artifact, submission window, pass/fail rule. |
+| Notice-first funnel | 8/10 | Notice guide, `/notice-finder`, utility checklist, and city checklist now work together as a task path. | Add a richer notice parser or guided form after more utility facts are structured. |
 | Failed-test handling | 7/10 | Separate route family exists. | Add local timing and report acceptance rules. |
 | Price/cost utility | 3/10 | Cost guide exists, but city pages rarely have hard numbers. | Add sourced fee and market price fields where available. |
 | Provider proof | 3/10 | Provider pages exist but inventory is limited. | Add provider listings only with public evidence and coverage. |
 | Conversion action | 4/10 | Request-help exists, but not as strong as schedule/upload notice. | Add "paste notice details" or "identify portal" form path. |
 | External authority/citations | 2/10 | Current growth is mostly onsite. | Get provider/directory/partner links after deploy. |
-| Data scale for daily 100 | 4/10 | 87 utilities and 1,062 URLs are materially better, but daily 100 likely needs 250-500 high-quality utility records. | Continue official-source expansion in clusters. |
+| Data scale for daily 100 | 4/10 | 96 utilities and 1,168 URLs are materially better, but daily 100 likely needs 250-500 high-quality utility records. | Continue official-source expansion in clusters. |
 
 ## Gaps That Matter Most
 
 1. **Not enough high-quality source records yet.**
-   Daily 100 clicks is not a 1,062 URL problem; it is a coverage and authority problem. The safest path is adding source-backed utility clusters, not generating unsupported pages.
+   Daily 100 clicks is not a 1,168 URL problem; it is a coverage and authority problem. The safest path is adding source-backed utility clusters, not generating unsupported pages.
 
 2. **Portal pages are still list hubs, not decision tools.**
    The winning version of `/backflow-reporting-portals/vepo` should show a matrix: city, portal, annual rule, approved tester route, submission window, fee, failed-test rule.
@@ -175,8 +187,8 @@ BackflowPath status: good. Internal links are much better after city-intent and 
 - Submit `https://backflowpath.com/sitemap.xml`.
 - Submit the 50 URLs in `ops/gsc_priority_reindex_urls_2026-07-03.txt`.
 
-### P1 - Turn portal hubs into comparison tools
-Add portal comparison tables for BSI, SwiftComply, WEIRS, and VEPO:
+### P1 - Keep upgrading portal hubs into harder comparison tools
+Portal comparison tables now exist for BSI, SwiftComply, WEIRS, VEPO, Aqua/TrackMyBackflow, and Tokay. Keep filling these fields with harder sourced values:
 
 - Utility/city.
 - Portal name.
@@ -203,8 +215,8 @@ Best next targets from this pass:
 - Tampa, FL deeper SwiftComply detail.
 - Queen Creek and League City as BSI fee/CCN templates.
 
-### P1 - Add notice checklist to utility/city templates
-Above the fold, show:
+### P1 - Deepen the notice checklist fields
+Utility and city templates now show the checklist above the fold. Keep replacing generic hints with source-specific values:
 
 - Confirm utility.
 - Confirm due date.
@@ -222,20 +234,22 @@ Only source-backed:
 - Provider starting price.
 - Provider certification/review evidence.
 
-### P2 - Build a simple portal/notice finder
-Minimum version:
+### P2 - Upgrade the simple portal/notice finder
+The minimum `/notice-finder` version is live:
 
 - User selects state/city or enters portal name.
 - Tool routes to city intent, portal hub, or utility page.
 - No unsupported legal/compliance advice; just route to source-backed pages.
+
+Next version should add guided chips for due date, notice ID, failed test, approved tester, and filing fee once more utility records expose those fields.
 
 ## Bottom Line
 BackflowPath is now structurally aligned with good pSEO: source data, repeatable templates, city intent pages, and portal families. The remaining gap is not architecture. The gap is depth:
 
 - More official records.
 - More source-specific facts surfaced above fold.
-- Stronger portal comparison tables.
-- A notice-first action path.
+- More structured values inside portal comparison tables.
+- A richer notice-first action path beyond keyword routing.
 - Provider/price evidence where safely sourced.
 
 The next practical push should be adding the next 30 official-source utilities and upgrading portal pages from hubs into comparison tools.
@@ -256,3 +270,8 @@ The next practical push should be adding the next 30 official-source utilities a
 - https://trianglebackflow.com/backflow/
 - https://austinsprinklerservice.com/services/backflow-testing/
 - https://qrpbackflowtesting.com/covington-backflow-testing.html
+- https://www.eulesstx.gov/departments/planning-and-economic-development/cross-connection-control-program
+- https://www.buenapark.com/city_departments/public_works/utilities/water/backflow_reporting.php
+- https://www.cityofpleasantonca.gov/assets/our-government/public-works/city-of-pleasanton-cross-connection-control-plan.pdf
+- https://www.oxnard.gov/public-works/water/backflow-prevention
+- https://www.dsrsd.com/Businesses/Water-Customers-CII/Backflow-Testing

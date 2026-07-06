@@ -44,6 +44,11 @@
 - Added VEPO/Envirotrax as a source-backed reporting portal family after reviewing official Fort Worth/VEPO workflow language; added `/backflow-reporting-portals/vepo`, guide links, sitemap coverage, and GSC priority URLs without generating unsupported city combinations.
 - Added 7 official-source VEPO/Envirotrax Texas utility records for Southlake, Bedford, Mansfield, Cleburne, Marble Falls, Taylor, and Buda, plus city aliases, source snapshots, DFW/Central Texas metro membership, and refreshed GSC priority URLs for the strongest new city-intent pages.
 - Added portal comparison tables to reporting portal hubs and 4 additional official-source Texas utilities: League City BSI, Irving Envirotrax, Baytown Envirotrax/CSI, and Liberty City WSC VEPO. Added city aliases, source snapshots, a Texas Gulf Coast metro page, and refreshed GSC priority URLs for the new high-intent routes.
+- Added Aqua/TrackMyBackflow and Tokay WebTest as source-backed reporting portal families after reviewing official Euless, Buena Park, Pleasanton, Oxnard, and DSRSD workflow language; added `/backflow-reporting-portals/aqua`, `/backflow-reporting-portals/tokay`, 5 utility records, 6 city aliases, source snapshots, metro membership, guide links, sitemap coverage, and GSC priority URLs.
+- Verified the Aqua/Tokay expansion on `http://localhost:8102`; local sitemap now renders 1,167 URLs and includes the new portal hubs plus Euless and Oxnard city-intent routes.
+- Added `/notice-finder` as an indexable notice-to-route tool, wired it into header, home, footer, sitemap, and GSC priority URLs. It matches city, utility, portal, tester, due-date, failed-test, irrigation, and fire-line clues to source-backed routes.
+- Added above-fold notice checklists to utility, city bridge, and city-intent pages, and strengthened portal comparison tables with notice/device ID and report-acceptance columns.
+- Verified the notice finder and checklist expansion on `http://localhost:8103`; local sitemap now renders 1,168 URLs and includes `/notice-finder`.
 - Refreshed `lastVerified` / `lastReviewed` dates to 2026-06-29 for utility, state, metro, and guide JSON records.
 - Ran an automated source URL audit across 215 unique official/support URLs; 119 passed and 96 unresolved URLs were recorded in `data/ops/broken_links.csv`.
 - Added `app.ops.current-date` so tests and manual verification can use a fixed freshness date without changing production behavior.
@@ -60,7 +65,7 @@
 1. Continue working through the unresolved rows in `data/ops/broken_links.csv`, starting with true 404s before likely bot-protected 403s.
 2. Submit the sitemap plus URLs from `ops/gsc_priority_reindex_urls_2026-07-03.txt` in Search Console, then measure movement against the daily-click target with weekly GSC rewrites.
 3. Manually recheck Greeley and JEA because the 2026-07-03 URL spot check errored under automation.
-4. Keep strengthening `/backflow-reporting-portals/vepo`, `/swiftcomply`, `/bsi`, and `/weirs` as search landing pages as more portal utilities are added.
+4. Add sourced fee, deadline, and rejection-risk fields to more utilities so the notice finder and portal matrices can expose harder facts above the fold.
 5. Re-run `/ops/verification/run` after broken-link cleanup; status should return to `ok` once source URL issues are resolved.
 
 ## Open questions

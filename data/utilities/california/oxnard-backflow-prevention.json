@@ -1,0 +1,104 @@
+{
+  "utilityId": "oxnard-water",
+  "utilityName": "City of Oxnard Water Division Backflow Prevention",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "oxnard-backflow-prevention",
+  "state": "california",
+  "serviceAreaCities": [
+    "Oxnard"
+  ],
+  "serviceAreaCounties": [
+    "Ventura County"
+  ],
+  "searchAliases": [
+    "oxnard backflow testing",
+    "oxnard tokay",
+    "oxnard backflow test reporting"
+  ],
+  "utilityUrl": "https://www.oxnard.gov/public-works/water/backflow-prevention",
+  "officialProgramUrls": [
+    "https://www.oxnard.gov/public-works/water/backflow-prevention"
+  ],
+  "testingFrequency": "Annual certification requirements enforced through web-based Tokay reporting",
+  "dueBasis": "Oxnard says all approved backflow testing companies and testers are required to submit test results online through web-based backflow test reporting using Tokay software.",
+  "coveredPropertyTypes": [
+    "Oxnard water customers with backflow prevention assemblies",
+    "Approved backflow testing companies",
+    "Approved backflow testers",
+    "Sites subject to annual certification requirements"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Assemblies requiring annual certification",
+    "Devices tested by approved companies or testers"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.oxnard.gov/public-works/water/backflow-prevention",
+  "officialListLabel": "Open Oxnard Tokay tester credential instructions",
+  "submissionMethods": [
+    {
+      "label": "Oxnard backflow prevention page",
+      "url": "https://www.oxnard.gov/public-works/water/backflow-prevention",
+      "kind": "program page"
+    },
+    {
+      "label": "Oxnard Tokay software online reporting",
+      "url": "https://www.oxnard.gov/public-works/water/backflow-prevention",
+      "kind": "Tokay WebTest reporting workflow"
+    }
+  ],
+  "phone": "805-385-8136",
+  "penalties": "Oxnard says no tests submitted to the City will be accepted without the required tester information, and expired certificates can suspend login credentials until renewed certificates are received.",
+  "sourceExcerpt": "Oxnard is a strong Tokay WebTest page because the City names Tokay software, requires approved testers to submit online, asks for tester certification and business license information, and suspends credentials when certificates expire.",
+  "sourceSnapshotPath": "storage/snapshots/oxnard-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-07-06",
+  "verdictSummary": "Oxnard is a strong Southern California Tokay page because the city moved approved tester report submission into web-based Tokay reporting and ties access to current credentials.",
+  "whoIsAffected": "Oxnard water customers with required assemblies and approved backflow testing companies or testers submitting annual certification results.",
+  "residentialNotes": [
+    "Residential scope depends on whether the property has a required assembly in Oxnard's program.",
+    "Customers should make sure the tester can submit through Oxnard's Tokay workflow."
+  ],
+  "commercialNotes": [
+    "Commercial and managed properties should confirm the tester is approved and has active Tokay access before scheduling.",
+    "Expired tester credentials can interrupt report acceptance."
+  ],
+  "annualTesting": {
+    "summary": "Oxnard uses Tokay software to enforce online annual certification reporting.",
+    "highlights": [
+      "Approved testers must submit results online.",
+      "Required tester information must be provided before tests are accepted.",
+      "Expired certificates can suspend portal login credentials."
+    ],
+    "workflowSteps": [
+      "Confirm the assembly is due under Oxnard's annual certification process.",
+      "Use an approved tester with current required information on file.",
+      "Submit the test result through the Tokay workflow."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm whether the assembly is due under Oxnard's annual certification requirements.",
+    "Make sure the tester has provided valid tester information to the City.",
+    "Use the Tokay online reporting workflow for the completed test.",
+    "Renew expired certificates before expecting login access or report acceptance."
+  ],
+  "failureHighlights": [
+    "Oxnard says tests will not be accepted without required tester information.",
+    "Expired certificates suspend login credentials.",
+    "Online submission is required for approved testers."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced by approved testers.",
+    "repairRetestRange": "Repair and retest costs depend on device type and whether another accepted Tokay entry is required.",
+    "pricingNotes": "Oxnard's public friction is credentialed Tokay reporting rather than a published retail test price."
+  },
+  "sources": [
+    {
+      "label": "Oxnard backflow prevention",
+      "url": "https://www.oxnard.gov/public-works/water/backflow-prevention",
+      "kind": "official program page"
+    }
+  ]
+}

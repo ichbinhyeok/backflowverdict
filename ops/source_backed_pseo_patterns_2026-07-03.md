@@ -13,6 +13,8 @@ The target changed from monthly 100 clicks to daily 100 clicks. That requires mo
 - VEPO's public copy says Envirotrax checks BPAT licenses, insurance policies, and gauge test-for-accuracy reports before testers can submit.
 - Southlake, Bedford, Mansfield, Cleburne, Marble Falls, Taylor, Buda, Irving, Baytown, Liberty City WSC, Kyle, Porter SUD, and other public utility pages repeat the same VEPO/Envirotrax language around registration, credential verification, approved tester search, and online reporting.
 - BSI examples such as League City repeat annual due dates, CCN/notice identifiers, tester credentials, calibration documents, electronic filing, short submission windows, and filing or enforcement fees.
+- Euless and Buena Park show the Aqua Backflow/TrackMyBackflow pattern: third-party inventory management, tester registration, online report upload, customer record lookup, and explicit filing fees.
+- Pleasanton, Oxnard, and Dublin San Ramon Services District show the Tokay/WebTest pattern: tester credential gating, online test entry, approved tester list routing, and suspended credentials when certifications expire.
 
 ## Pattern copied into BackflowPath
 The site now treats named portal families as a pSEO axis:
@@ -22,8 +24,9 @@ The site now treats named portal families as a pSEO axis:
 - `city + failed backflow test`
 - `city + fire line backflow testing`
 - `portal family + backflow test reports`
+- `notice clue + city/portal/utility route`
 
-VEPO/Envirotrax was added only as a source-backed portal family, not as broad inferred content. Current generated utility coverage is limited to records where BackflowPath has explicit VEPO, Envirotrax, online submission, or registered BPAT workflow text.
+VEPO/Envirotrax, Aqua/TrackMyBackflow, and Tokay WebTest were added only as source-backed portal families, not as broad inferred content. Current generated utility coverage is limited to records where BackflowPath has explicit portal, online submission, credential, tester-list, or filing-fee workflow text.
 
 ## Implemented from this pass
 - Added `/backflow-reporting-portals/vepo`.
@@ -33,6 +36,11 @@ VEPO/Envirotrax was added only as a source-backed portal family, not as broad in
 - Added VEPO and Fort Worth high-intent URLs to the GSC priority reindex list.
 - Added Southlake, Bedford, Mansfield, Cleburne, Marble Falls, Taylor, and Buda as official-source utility records with city aliases and metro membership.
 - Added League City, Irving, Baytown, and Liberty City WSC as official-source utility records and upgraded portal hubs with comparison tables.
+- Added `/backflow-reporting-portals/aqua` and `/backflow-reporting-portals/tokay`.
+- Added Euless, Buena Park, Pleasanton, Oxnard, and Dublin San Ramon Services District as official-source utility records with city aliases, source snapshots, metro membership, and city-intent route coverage.
+- Added Aqua/TrackMyBackflow and Tokay WebTest detection to utility portal routing, sitemap generation, portal hub cards, reporting portal guide cards, and GSC priority URLs.
+- Added `/notice-finder` so notice, city, portal, approved tester, due-date, failed-test, irrigation, and fire-line phrases route to the best source-backed page.
+- Added notice/device ID and report-acceptance hints to utility pages, city pages, and portal comparison matrices.
 
 ## Source URLs
 - https://zapier.com/blog/programmatic-seo/
@@ -54,3 +62,8 @@ VEPO/Envirotrax was added only as a source-backed portal family, not as broad in
 - https://libertycitywsc.com/cross-connection-control-backflow
 - https://portersud.com/backflow-prevention-csi
 - https://backflow.com/2023/05/15/bsi-above-the-competition/
+- https://www.eulesstx.gov/departments/planning-and-economic-development/cross-connection-control-program
+- https://www.buenapark.com/city_departments/public_works/utilities/water/backflow_reporting.php
+- https://www.cityofpleasantonca.gov/assets/our-government/public-works/city-of-pleasanton-cross-connection-control-plan.pdf
+- https://www.oxnard.gov/public-works/water/backflow-prevention
+- https://www.dsrsd.com/Businesses/Water-Customers-CII/Backflow-Testing

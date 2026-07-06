@@ -1,0 +1,122 @@
+{
+  "utilityId": "euless-water",
+  "utilityName": "City of Euless Cross-Connection Control Program",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "euless-cross-connection-control",
+  "state": "texas",
+  "serviceAreaCities": [
+    "Euless"
+  ],
+  "serviceAreaCounties": [
+    "Tarrant County"
+  ],
+  "searchAliases": [
+    "euless backflow testing",
+    "euless trackmybackflow",
+    "euless aqua backflow"
+  ],
+  "utilityUrl": "https://www.eulesstx.gov/departments/planning-and-economic-development/cross-connection-control-program",
+  "officialProgramUrls": [
+    "https://www.eulesstx.gov/departments/planning-and-economic-development/cross-connection-control-program",
+    "https://www.aquabackflow.com/trackmybackflow/"
+  ],
+  "testingFrequency": "Test results must be submitted through TrackMyBackflow when the City program requires testing",
+  "dueBasis": "Euless says Aqua Backflow contacts customers when testing is due, all backflow test results must be submitted on TrackMyBackflow.com, and tests should no longer be forwarded to the City.",
+  "coveredPropertyTypes": [
+    "Water customers contacted by Aqua Backflow",
+    "Sites with backflow hazards tracked by Hazard ID or Site ID",
+    "Testers submitting reports for the Euless cross-connection program"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies tracked by Hazard ID",
+    "Cross-connection control devices",
+    "Irrigation-related backflow devices when assigned to the program"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.eulesstx.gov/departments/planning-and-economic-development/cross-connection-control-program",
+  "officialListLabel": "Open Euless TrackMyBackflow tester registration details",
+  "submissionMethods": [
+    {
+      "label": "Euless cross-connection control program",
+      "url": "https://www.eulesstx.gov/departments/planning-and-economic-development/cross-connection-control-program",
+      "kind": "program page"
+    },
+    {
+      "label": "TrackMyBackflow.com",
+      "url": "https://www.aquabackflow.com/trackmybackflow/",
+      "kind": "Aqua Backflow reporting portal"
+    }
+  ],
+  "phone": "817-685-1400",
+  "penalties": "Euless says test reports forwarded to the City will be returned. The practical compliance risk is missing the TrackMyBackflow submission, filing fee, or required Hazard ID/Site ID path.",
+  "sourceExcerpt": "Euless is a strong Aqua Backflow page because the City names Aqua Backflow, TrackMyBackflow.com, tester registration, licensing and calibration upkeep, Hazard ID/Site ID entry, and a $10.95 filing fee.",
+  "sourceSnapshotPath": "storage/snapshots/euless-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-07-06",
+  "verdictSummary": "Euless is a strong DFW TrackMyBackflow page because the City moved reports into Aqua Backflow's portal and tells testers not to forward reports to the City.",
+  "whoIsAffected": "Euless water customers and testers whose backflow assemblies are tracked by the City's Aqua Backflow/TrackMyBackflow program.",
+  "residentialNotes": [
+    "Residential visibility depends on whether the customer receives an Aqua Backflow notice or has a tracked hazard.",
+    "The customer's Hazard ID or Site ID matters because the tester uses it for online entry."
+  ],
+  "commercialNotes": [
+    "Commercial and managed properties should treat the portal submission as part of the test, not an afterthought.",
+    "Credential and test kit calibration records must stay current for tester access."
+  ],
+  "annualTesting": {
+    "summary": "Euless routes due notices and report submission through Aqua Backflow and TrackMyBackflow.",
+    "highlights": [
+      "Aqua Backflow contacts customers when backflow testing is due.",
+      "All backflow test results must be submitted on TrackMyBackflow.com.",
+      "Euless publishes a $10.95 filing fee."
+    ],
+    "workflowSteps": [
+      "Confirm the Euless notice and the Hazard ID or Site ID.",
+      "Use a tester registered with TrackMyBackflow for the Euless program.",
+      "Submit the report and filing fee through TrackMyBackflow instead of sending the report to the City."
+    ]
+  },
+  "irrigation": {
+    "summary": "Euless does not split irrigation into a separate public workflow on the stored page, but irrigation assemblies can still enter the same Hazard ID/Site ID reporting path when the City tracks them.",
+    "highlights": [
+      "The TrackMyBackflow record controls submission.",
+      "Hazard ID or Site ID should be obtained from the customer notice.",
+      "Tester credentials and calibration records must remain current."
+    ],
+    "workflowSteps": [
+      "Confirm the irrigation assembly is tracked by Euless.",
+      "Use the Hazard ID or Site ID from the notice.",
+      "Submit the result through TrackMyBackflow."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the notice came from the Euless/Aqua Backflow program.",
+    "Keep the Hazard ID or Site ID available for the tester.",
+    "Register or verify tester access at TrackMyBackflow.com.",
+    "Submit the completed report and filing fee through TrackMyBackflow."
+  ],
+  "failureHighlights": [
+    "Reports forwarded to Euless instead of TrackMyBackflow will be returned.",
+    "Tester access depends on current licensing, certification, and test kit calibration information.",
+    "A missing Hazard ID or Site ID can slow data entry."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced by the tester.",
+    "repairRetestRange": "Repair and retest costs depend on the assembly and whether a follow-up report must be filed.",
+    "pricingNotes": "Euless publishes a $10.95 TrackMyBackflow filing fee."
+  },
+  "sources": [
+    {
+      "label": "Euless cross-connection control program",
+      "url": "https://www.eulesstx.gov/departments/planning-and-economic-development/cross-connection-control-program",
+      "kind": "official program page"
+    },
+    {
+      "label": "Aqua Backflow TrackMyBackflow product page",
+      "url": "https://www.aquabackflow.com/trackmybackflow/",
+      "kind": "portal product page"
+    }
+  ]
+}

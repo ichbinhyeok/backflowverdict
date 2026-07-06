@@ -185,6 +185,22 @@
                             <a class="button button--secondary" href="/backflow-reporting-portals/vepo">Open VEPO utilities</a>
                         </div>
                     </article>
+                    <article class="detail-card detail-card--quiet">
+                        <span class="pill">Aqua Backflow</span>
+                        <h3>TrackMyBackflow filing routes</h3>
+                        <p>Use this route when the notice mentions Aqua Backflow, TrackMyBackflow, a filing fee, or a hazard/site ID for online report entry.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/backflow-reporting-portals/aqua">Open Aqua utilities</a>
+                        </div>
+                    </article>
+                    <article class="detail-card detail-card--quiet">
+                        <span class="pill">Tokay WebTest</span>
+                        <h3>Tokay online test entry</h3>
+                        <p>Use this route when the utility requires Tokay WebTest, tester credentials, test kit calibration records, or online report entry through a Tokay portal.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/backflow-reporting-portals/tokay">Open Tokay utilities</a>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>

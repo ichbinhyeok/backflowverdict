@@ -14,6 +14,8 @@
 @param String testerLabel = null
 @param String portalHubPath = null
 @param String portalHubLabel = null
+@param String noticeIdentifierHint
+@param String reportAcceptanceHint
 @param boolean usesPortalWorkflow
 @param java.util.List<ProviderRecord> providers = java.util.List.of()
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
@@ -27,6 +29,7 @@
                 <p class="lede">${alias.justification()} This page keeps the city search term visible while routing the actual compliance work to the governing utility record.</p>
                 <div class="hero__actions">
                     <a class="button button--primary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Open utility requirements</a>
+                    <a class="button button--secondary" href="/notice-finder?q=${alias.aliasSlug()}">Find from notice</a>
                     @if (annualTestingPath != null)
                         <a class="button button--secondary" href="${annualTestingPath}">Annual testing</a>
                     @endif
@@ -145,7 +148,9 @@
                 <ul class="detail-list">
                     <li><strong>Cadence:</strong> ${utility.testingFrequency()}</li>
                     <li><strong>Due basis:</strong> ${utility.dueBasis()}</li>
+                    <li><strong>Notice or device clue:</strong> ${noticeIdentifierHint}</li>
                     <li><strong>Submission:</strong> ${utility.submissionMethods().isEmpty() ? "Confirm the current report path with the utility." : utility.submissionMethods().get(0).label()}</li>
+                    <li><strong>Acceptance rule:</strong> ${reportAcceptanceHint}</li>
                     @if (utility.costBand() != null)
                         <li><strong>Cost signal:</strong> ${utility.costBand().testingRange()}</li>
                     @endif

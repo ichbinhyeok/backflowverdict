@@ -36,7 +36,7 @@ class SiteControllerStalePublishabilityTest {
         mockMvc.perform(get("/readyz"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("\"status\":\"ready\"")))
-                .andExpect(content().string(containsString("\"publishedUtilityCount\":91")))
-                .andExpect(content().string(containsString("\"staleUtilityCount\":91")));
+                .andExpect(content().string(containsString("\"publishedUtilityCount\":96")))
+                .andExpect(content().string(containsString("\"staleUtilityCount\":96")));
     }
 }

@@ -1,27 +1,29 @@
 {
   "slug": "backflow-reporting-portals",
-  "title": "Backflow reporting portals: BSI, SwiftComply, WEIRS, and VEPO",
-  "description": "Find how BSI Online, SwiftComply, WEIRS, VEPO, Envirotrax, and utility customer portals affect backflow test report submission after the field test.",
-  "intro": "A passed test is not the same thing as a completed compliance cycle. Many utilities now care as much about BSI, SwiftComply, WEIRS, VEPO, Envirotrax, or a customer portal as they do about the field result.",
+  "title": "Backflow reporting portals: BSI, SwiftComply, WEIRS, VEPO, Aqua, and Tokay",
+  "description": "Find how BSI Online, SwiftComply, WEIRS, VEPO, Envirotrax, Aqua Backflow, TrackMyBackflow, Tokay WebTest, and utility customer portals affect backflow test report submission after the field test.",
+  "intro": "A passed test is not the same thing as a completed compliance cycle. Many utilities now care as much about BSI, SwiftComply, WEIRS, VEPO, Envirotrax, Aqua Backflow, TrackMyBackflow, Tokay WebTest, or a customer portal as they do about the field result.",
   "callout": "Use the local utility page to confirm the exact portal, timing, fee, and tester status. This guide exists to make those portal patterns easier to recognize before you act.",
-  "sourceExcerpt": "Many utilities now route compliance through BSI, SwiftComply, WEIRS, VEPO, Envirotrax, or utility-managed customer portals. The practical mistake is assuming the field test alone closes the loop.",
+  "sourceExcerpt": "Many utilities now route compliance through BSI, SwiftComply, WEIRS, VEPO, Envirotrax, Aqua Backflow, TrackMyBackflow, Tokay WebTest, or utility-managed customer portals. The practical mistake is assuming the field test alone closes the loop.",
   "sourceSnapshotPath": "storage/snapshots/guides/backflow-reporting-portals.html",
   "reviewerInitials": "TL",
-  "lastReviewed": "2026-07-03",
+  "lastReviewed": "2026-07-06",
   "published": true,
   "sections": [
     {
       "heading": "A portal changes the real next action",
-      "body": "Utilities that use BSI, SwiftComply, WEIRS, VEPO, Envirotrax, or county customer portals shift risk from the wrench work to the reporting sequence. Owners and testers can still fall out of compliance even when the assembly passes if the result is not entered correctly.",
+      "body": "Utilities that use BSI, SwiftComply, WEIRS, VEPO, Envirotrax, Aqua Backflow, TrackMyBackflow, Tokay WebTest, or county customer portals shift risk from the wrench work to the reporting sequence. Owners and testers can still fall out of compliance even when the assembly passes if the result is not entered correctly.",
       "bullets": [
         "Dallas and Colorado Springs push testers into portal-first result submission workflows.",
         "Fort Worth shows how VEPO/Envirotrax can combine tester registration, credential verification, approved-list status, and online reporting.",
+        "Euless and Buena Park show how Aqua/TrackMyBackflow can add filing fees, hazard IDs, customer notices, and tester registration to the workflow.",
+        "Oxnard and Dublin San Ramon show how Tokay WebTest can control approved tester credentials and online test entry.",
         "Lee County and Tampa show how customer or contractor portals become part of the actual compliance path."
       ]
     },
     {
       "heading": "Portal workflows are not interchangeable",
-      "body": "A BSI route, a SwiftComply route, a WEIRS route, a VEPO/Envirotrax route, and a utility customer portal each imply different registration, fee, credential, and tester-enrollment assumptions. Treating them as one generic online submission step is how people lose time.",
+      "body": "A BSI route, a SwiftComply route, a WEIRS route, a VEPO/Envirotrax route, an Aqua/TrackMyBackflow route, a Tokay WebTest route, and a utility customer portal each imply different registration, fee, credential, and tester-enrollment assumptions. Treating them as one generic online submission step is how people lose time.",
       "bullets": [
         "Some programs want the tester enrolled before the report can be accepted.",
         "Some programs block submission if tester license, insurance, or gauge accuracy documents are stale.",
@@ -67,6 +69,26 @@
       "label": "VEPO Envirotrax registered tester search",
       "url": "https://www.envirotrax.com/registrations.aspx?at=1",
       "kind": "portal tester search"
+    },
+    {
+      "label": "Euless TrackMyBackflow official workflow",
+      "url": "https://www.eulesstx.gov/departments/planning-and-economic-development/cross-connection-control-program",
+      "kind": "official utility workflow"
+    },
+    {
+      "label": "Buena Park Aqua Backflow official workflow",
+      "url": "https://www.buenapark.com/city_departments/public_works/utilities/water/backflow_reporting.php",
+      "kind": "official utility workflow"
+    },
+    {
+      "label": "Oxnard Tokay software official workflow",
+      "url": "https://www.oxnard.gov/public-works/water/backflow-prevention",
+      "kind": "official utility workflow"
+    },
+    {
+      "label": "Dublin San Ramon Tokay test entry workflow",
+      "url": "https://www.dsrsd.com/Businesses/Water-Customers-CII/Backflow-Testing",
+      "kind": "official utility workflow"
     }
   ]
 }

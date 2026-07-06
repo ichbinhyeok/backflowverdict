@@ -18,6 +18,8 @@
 @param String testerLabel = null
 @param String portalHubPath = null
 @param String portalHubLabel = null
+@param String noticeIdentifierHint
+@param String reportAcceptanceHint
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 
 @template.layouts.app(page = page, content = @`
@@ -30,6 +32,7 @@
                 <div class="hero__actions">
                     <a class="button button--primary" href="${primaryPath}">${primaryLabel}</a>
                     <a class="button button--secondary" href="${utilityPath}">Utility requirements</a>
+                    <a class="button button--secondary" href="/notice-finder?q=${alias.aliasSlug()}">Find from notice</a>
                     <a class="button button--secondary" href="${page.requestHelpPathOrDefault()}">Request local help</a>
                 </div>
                 <div class="hero__stats">
@@ -55,7 +58,9 @@
                 <p>${intro}</p>
                 <ul class="detail-list">
                     <li><strong>Due basis:</strong> ${utility.dueBasis()}</li>
+                    <li><strong>Notice or device clue:</strong> ${noticeIdentifierHint}</li>
                     <li><strong>Who is affected:</strong> ${utility.whoIsAffected()}</li>
+                    <li><strong>Acceptance rule:</strong> ${reportAcceptanceHint}</li>
                     <li><strong>Program phone:</strong> ${utility.phone()}</li>
                 </ul>
             </article>

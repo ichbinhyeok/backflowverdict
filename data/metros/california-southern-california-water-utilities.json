@@ -6,6 +6,8 @@
   "cityNames": [
     "Pasadena",
     "Anaheim",
+    "Buena Park",
+    "Oxnard",
     "Irvine",
     "Riverside",
     "San Diego"
@@ -13,12 +15,15 @@
   "countyNames": [
     "Los Angeles County",
     "Orange County",
+    "Ventura County",
     "Riverside County",
     "San Diego County"
   ],
   "utilityIds": [
     "pasadena-water",
     "anaheim-water",
+    "buena-park-water",
+    "oxnard-water",
     "irwd-backflow",
     "riverside-water",
     "san-diego-water"
@@ -31,7 +36,7 @@
     "backflow-test-cost"
   ],
   "description": "Southern California support page for utility-first backflow routes across Pasadena, Orange County, the Inland Empire, and San Diego.",
-  "summary": "This cluster matters commercially because some utilities publish official tester lists, others point users to county-certified tester directories or city portals, and the device expectations differ by irrigation, fire, and service-connection context. The metro page groups those routes without pretending Southern California is one authority.",
+  "summary": "This cluster matters commercially because some utilities publish official tester lists, others point users to county-certified tester directories, Aqua Backflow or Tokay portals, and the device expectations differ by irrigation, fire, and service-connection context. The metro page groups those routes without pretending Southern California is one authority.",
   "reviewerInitials": "TL",
   "staleAfterDays": 60,
   "pageStatus": "PUBLISH",

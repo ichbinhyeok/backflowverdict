@@ -1,0 +1,108 @@
+{
+  "utilityId": "dsrsd-backflow",
+  "utilityName": "Dublin San Ramon Services District Backflow Testing",
+  "governingEntityType": "water district",
+  "canonicalSlug": "dublin-san-ramon-services-district-backflow",
+  "state": "california",
+  "serviceAreaCities": [
+    "Dublin",
+    "San Ramon"
+  ],
+  "serviceAreaCounties": [
+    "Alameda County",
+    "Contra Costa County"
+  ],
+  "searchAliases": [
+    "dublin san ramon backflow testing",
+    "dsrsd tokay",
+    "dublin backflow testing",
+    "san ramon backflow testing"
+  ],
+  "utilityUrl": "https://www.dsrsd.com/Businesses/Water-Customers-CII/Backflow-Testing",
+  "officialProgramUrls": [
+    "https://www.dsrsd.com/Businesses/Water-Customers-CII/Backflow-Testing"
+  ],
+  "testingFrequency": "Existing backflow devices use Tokay test entry; damaged, leaking, or failed assemblies must be repaired and retested without delay",
+  "dueBasis": "DSRSD says the Tokay test entry website must be used for existing backflow devices and that district-approved testers are required to enter tests electronically.",
+  "coveredPropertyTypes": [
+    "Business water customers",
+    "CII water customers",
+    "Customers with existing backflow devices",
+    "District-approved backflow testers"
+  ],
+  "coveredDeviceTypes": [
+    "Existing backflow devices",
+    "New backflow prevention devices",
+    "Assemblies requiring repair and retest"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.dsrsd.com/Businesses/Water-Customers-CII/Backflow-Testing",
+  "officialListLabel": "Open DSRSD approved backflow tester list route",
+  "submissionMethods": [
+    {
+      "label": "DSRSD backflow testing page",
+      "url": "https://www.dsrsd.com/Businesses/Water-Customers-CII/Backflow-Testing",
+      "kind": "program page"
+    },
+    {
+      "label": "DSRSD Tokay test entry website",
+      "url": "https://www.dsrsd.com/Businesses/Water-Customers-CII/Backflow-Testing",
+      "kind": "Tokay WebTest reporting workflow"
+    }
+  ],
+  "phone": "925-828-0515",
+  "penalties": "DSRSD says damaged, leaking, or failed assemblies must be repaired and retested without delay. Existing device reports must use Tokay test entry.",
+  "sourceExcerpt": "DSRSD is a strong Tokay page because the district requires existing device tests to use the Tokay test entry website, provides approved tester routing, and states that failed, damaged, or leaking assemblies require repair and retest without delay.",
+  "sourceSnapshotPath": "storage/snapshots/dsrsd-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-07-06",
+  "verdictSummary": "DSRSD is a strong Bay Area Tokay page because district-approved testers enter existing backflow device tests electronically through the Tokay workflow.",
+  "whoIsAffected": "Dublin San Ramon Services District business and CII water customers with new or existing backflow devices, plus district-approved testers submitting reports.",
+  "residentialNotes": [
+    "The strongest public path is business/CII, so residential pages should not imply broad routine coverage without a district notice.",
+    "San Ramon or Dublin searches should map to the district workflow when the account is served by DSRSD."
+  ],
+  "commercialNotes": [
+    "Business and CII water customers are the clearest fit for this page.",
+    "Existing device reports must go through Tokay, and failed assemblies need repair and retest without delay."
+  ],
+  "annualTesting": {
+    "summary": "DSRSD uses Tokay test entry for existing backflow devices and requires district-approved testers to enter tests electronically.",
+    "highlights": [
+      "Existing device reports use the Tokay test entry website.",
+      "The district provides an approved tester route.",
+      "Failed, damaged, or leaking assemblies must be repaired and retested without delay."
+    ],
+    "workflowSteps": [
+      "Confirm whether the device is new or existing.",
+      "Use a district-approved backflow tester.",
+      "Have the tester enter the result electronically through Tokay."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the property is served by DSRSD and the device is in the district workflow.",
+    "Use a district-approved backflow tester.",
+    "Use the blank district form only for new backflow device installations when applicable.",
+    "Use Tokay test entry for existing backflow devices.",
+    "Repair and retest failed, damaged, or leaking assemblies without delay."
+  ],
+  "failureHighlights": [
+    "Failed, damaged, or leaking assemblies must be repaired and retested without delay.",
+    "Existing device reports must use Tokay test entry.",
+    "The district maintains an approved tester route."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced by district-approved testers.",
+    "repairRetestRange": "Repair and retest costs depend on the device issue and whether district inspection or permit handling applies.",
+    "pricingNotes": "DSRSD's public friction is the split between new-device forms and existing-device Tokay entry."
+  },
+  "sources": [
+    {
+      "label": "DSRSD backflow testing",
+      "url": "https://www.dsrsd.com/Businesses/Water-Customers-CII/Backflow-Testing",
+      "kind": "official district program page"
+    }
+  ]
+}

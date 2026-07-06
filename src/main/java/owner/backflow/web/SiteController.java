@@ -27,12 +27,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Controller
 public class SiteController {
+    private static final List<String> PORTAL_SLUGS = List.of("bsi", "weirs", "swiftcomply", "vepo", "aqua", "tokay");
+
     private final BackflowRegistryService registryService;
     private final AppSiteProperties siteProperties;
     private final SiteVisibilityService siteVisibilityService;
@@ -209,6 +212,8 @@ public class SiteController {
         model.addAttribute("utilities", utilities);
         model.addAttribute("portalCounts", portalCounts());
         model.addAttribute("cityAliasesByUtility", publishedCityAliasesByUtility(utilities));
+        model.addAttribute("noticeIdentifierHints", noticeIdentifierHintsFor(utilities));
+        model.addAttribute("reportAcceptanceHints", reportAcceptanceHintsFor(utilities));
         model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
                 "backflow-test-notice-next-steps",
                 "backflow-reporting-portals",
@@ -245,6 +250,8 @@ public class SiteController {
         model.addAttribute("utilities", utilities);
         model.addAttribute("portalCounts", portalCounts());
         model.addAttribute("cityAliasesByUtility", publishedCityAliasesByUtility(utilities));
+        model.addAttribute("noticeIdentifierHints", noticeIdentifierHintsFor(utilities));
+        model.addAttribute("reportAcceptanceHints", reportAcceptanceHintsFor(utilities));
         model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
                 "backflow-test-notice-next-steps",
                 "backflow-reporting-portals",
@@ -252,6 +259,44 @@ public class SiteController {
                 "approved-testers-vs-find-a-tester"
         ), 3, null));
         return "pages/portal-hub";
+    }
+
+    @GetMapping("/notice-finder")
+    public String noticeFinderPage(
+            @RequestParam(name = "q", required = false, defaultValue = "") String query,
+            Model model
+    ) {
+        String trimmedQuery = query == null ? "" : query.trim();
+        List<NoticeFinderResult> results = noticeFinderResults(trimmedQuery);
+        model.addAttribute("page", page(
+                "Backflow notice finder: city, portal, tester, and failed-test routes | BackflowPath",
+                "Paste a city, utility, portal name, notice identifier, or failed-test phrase to find the best source-backed BackflowPath route.",
+                "/notice-finder",
+                breadcrumbStructuredData(List.of(
+                        new BreadcrumbItem("Home", canonical("/")),
+                        new BreadcrumbItem("Notice finder", canonical("/notice-finder"))
+                ))
+        ));
+        model.addAttribute("query", trimmedQuery);
+        model.addAttribute("results", results);
+        model.addAttribute("popularPortals", PORTAL_SLUGS.stream()
+                .map(slug -> new NoticeFinderResult(
+                        portalName(slug),
+                        "/backflow-reporting-portals/" + slug,
+                        "Portal family",
+                        portalDescription(slug),
+                        List.of("Portal comparison", "Tester credential gate", "Utility examples"),
+                        0
+                ))
+                .toList());
+        model.addAttribute("featuredUtilities", balancedUtilities(registryService.listPublishedUtilities(), 6));
+        model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
+                "backflow-test-notice-next-steps",
+                "backflow-reporting-portals",
+                "failed-backflow-test-next-steps",
+                "approved-testers-vs-find-a-tester"
+        ), 4, null));
+        return "pages/notice-finder";
     }
 
     @GetMapping("/privacy")
@@ -536,6 +581,8 @@ public class SiteController {
         model.addAttribute("testerLabel", testerLabel(utility));
         model.addAttribute("portalHubPath", portalHubPath(utility));
         model.addAttribute("portalHubLabel", portalHubLabel(utility));
+        model.addAttribute("noticeIdentifierHint", noticeIdentifierHint(utility));
+        model.addAttribute("reportAcceptanceHint", reportAcceptanceHint(utility));
         model.addAttribute("cityAliases", publishedCityAliasesForUtility(utility.utilityId()));
         model.addAttribute("faqItems", faqItems);
         model.addAttribute("stateGuide", registryService.findPublishedStateGuide(utility.state()).orElse(null));
@@ -745,6 +792,8 @@ public class SiteController {
         model.addAttribute("testerLabel", testerLabel(utility));
         model.addAttribute("portalHubPath", portalHubPath(utility));
         model.addAttribute("portalHubLabel", portalHubLabel(utility));
+        model.addAttribute("noticeIdentifierHint", noticeIdentifierHint(utility));
+        model.addAttribute("reportAcceptanceHint", reportAcceptanceHint(utility));
         model.addAttribute("usesPortalWorkflow", usesPortalWorkflow(utility));
         model.addAttribute("providers", registryService.findProvidersForUtility(utility.utilityId()));
         model.addAttribute("relatedGuides", utilitySupportGuides(utility));
@@ -803,6 +852,8 @@ public class SiteController {
         model.addAttribute("testerLabel", testerLabel(utility));
         model.addAttribute("portalHubPath", portalHubPath(utility));
         model.addAttribute("portalHubLabel", portalHubLabel(utility));
+        model.addAttribute("noticeIdentifierHint", noticeIdentifierHint(utility));
+        model.addAttribute("reportAcceptanceHint", reportAcceptanceHint(utility));
         model.addAttribute("relatedGuides", guidesByPreferredSlugs(intent.guideSlugs(), 4, null));
         return "pages/city-intent-page";
     }
@@ -821,6 +872,7 @@ public class SiteController {
         urls.add(new SitemapEntry(canonical("/corrections"), homeLastModified()));
         urls.add(new SitemapEntry(canonical("/contact"), homeLastModified()));
         urls.add(new SitemapEntry(canonical("/claim-listing"), homeLastModified()));
+        urls.add(new SitemapEntry(canonical("/notice-finder"), homeLastModified()));
         List<UtilityRecord> officialTesterUtilities = officialTesterUtilities();
         urls.add(new SitemapEntry(
                 canonical("/official-backflow-tester-lists"),
@@ -830,7 +882,7 @@ public class SiteController {
                 canonical("/backflow-reporting-portals"),
                 latestUtilityModified(portalUtilities("all"))
         ));
-        for (String portalSlug : List.of("bsi", "weirs", "swiftcomply", "vepo")) {
+        for (String portalSlug : PORTAL_SLUGS) {
             List<UtilityRecord> portalUtilities = portalUtilities(portalSlug);
             if (!portalUtilities.isEmpty()) {
                 urls.add(new SitemapEntry(
@@ -963,6 +1015,8 @@ public class SiteController {
                     case "weirs" -> utilityContainsAny(utility, "weirs", "water environmental inspection reporting system");
                     case "swiftcomply" -> utilityContainsAny(utility, "swiftcomply", "c3swift", "swift comply");
                     case "vepo" -> utilityContainsAny(utility, "vepo", "envirotrax");
+                    case "aqua" -> utilityContainsAny(utility, "aqua backflow", "aquabackflow", "trackmybackflow", "track my backflow");
+                    case "tokay" -> utilityContainsAny(utility, "tokay", "webtest", "web test");
                     default -> false;
                 })
                 .sorted(Comparator.comparing(UtilityRecord::state).thenComparing(UtilityRecord::utilityName))
@@ -975,7 +1029,394 @@ public class SiteController {
         counts.put("weirs", portalUtilities("weirs").size());
         counts.put("swiftcomply", portalUtilities("swiftcomply").size());
         counts.put("vepo", portalUtilities("vepo").size());
+        counts.put("aqua", portalUtilities("aqua").size());
+        counts.put("tokay", portalUtilities("tokay").size());
         return counts;
+    }
+
+    private List<NoticeFinderResult> noticeFinderResults(String query) {
+        String normalizedQuery = normalizeSearch(query);
+        if (normalizedQuery.isBlank()) {
+            return List.of();
+        }
+
+        Map<String, NoticeFinderResult> resultsByPath = new LinkedHashMap<>();
+        if (isPortalNoticeQuery(normalizedQuery)) {
+            addNoticeFinderResult(resultsByPath, new NoticeFinderResult(
+                    "All reporting portal workflows",
+                    "/backflow-reporting-portals",
+                    "Portal hub",
+                    "Compare source-backed portal families before choosing a tester or report route.",
+                    List.of("BSI", "SwiftComply", "VEPO", "Aqua/TrackMyBackflow", "Tokay"),
+                    82
+            ));
+        }
+        for (String portalSlug : PORTAL_SLUGS) {
+            int portalScore = portalQueryScore(portalSlug, normalizedQuery);
+            if (portalScore > 0) {
+                addNoticeFinderResult(resultsByPath, new NoticeFinderResult(
+                        portalName(portalSlug) + " backflow reporting portal",
+                        "/backflow-reporting-portals/" + portalSlug,
+                        "Portal family",
+                        portalDescription(portalSlug),
+                        List.of("Portal comparison", "Tester credential gate", "Utility examples"),
+                        portalScore
+                ));
+            }
+        }
+
+        for (CityAliasRecord alias : registryService.listCityAliases()) {
+            if (alias.aliasMode() == AliasMode.NOINDEX_BRIDGE) {
+                continue;
+            }
+            registryService.findUtilityById(alias.utilityId()).ifPresent(utility -> {
+                int score = scoreCandidate(normalizedQuery, candidateText(alias, utility));
+                if (alias.city() != null && normalizeSearch(alias.city()).equals(normalizedQuery)) {
+                    score += 60;
+                }
+                score += intentBoost(normalizedQuery, utility);
+                if (score > 0) {
+                    addNoticeFinderResult(resultsByPath, new NoticeFinderResult(
+                            alias.city() + " backflow notice route",
+                            selectCityNoticePath(alias, utility, normalizedQuery),
+                            "City route",
+                            alias.city() + " maps to " + utility.utilityName() + ". " + reportAcceptanceHint(utility),
+                            noticeSignals(utility),
+                            score + 12
+                    ));
+                }
+            });
+        }
+
+        for (UtilityRecord utility : registryService.listPublishedUtilities()) {
+            int score = scoreCandidate(normalizedQuery, candidateText(utility));
+            if (utility.utilityName() != null && normalizeSearch(utility.utilityName()).contains(normalizedQuery)) {
+                score += 40;
+            }
+            score += intentBoost(normalizedQuery, utility);
+            if (score > 0) {
+                addNoticeFinderResult(resultsByPath, new NoticeFinderResult(
+                        utility.utilityName() + " workflow",
+                        selectUtilityNoticePath(utility, normalizedQuery),
+                        "Utility workflow",
+                        utility.verdictSummary(),
+                        noticeSignals(utility),
+                        score
+                ));
+            }
+        }
+
+        return resultsByPath.values().stream()
+                .sorted(Comparator.comparingInt(NoticeFinderResult::score).reversed()
+                        .thenComparing(NoticeFinderResult::label))
+                .limit(12)
+                .toList();
+    }
+
+    private void addNoticeFinderResult(Map<String, NoticeFinderResult> resultsByPath, NoticeFinderResult result) {
+        NoticeFinderResult existing = resultsByPath.get(result.path());
+        if (existing == null || result.score() > existing.score()) {
+            resultsByPath.put(result.path(), result);
+        }
+    }
+
+    private int portalQueryScore(String portalSlug, String normalizedQuery) {
+        int score = 0;
+        for (String term : portalSearchTerms(portalSlug)) {
+            if (queryContains(normalizedQuery, term)) {
+                score += 95;
+            }
+        }
+        if (isPortalNoticeQuery(normalizedQuery) && !portalUtilities(portalSlug).isEmpty()) {
+            score += 15;
+        }
+        return score;
+    }
+
+    private List<String> portalSearchTerms(String portalSlug) {
+        return switch (portalSlug.toLowerCase(Locale.US)) {
+            case "bsi" -> List.of("bsi", "backflow solutions", "backflowtest", "ccn");
+            case "weirs" -> List.of("weirs", "water environmental inspection reporting system");
+            case "swiftcomply" -> List.of("swiftcomply", "swift comply", "c3swift");
+            case "vepo" -> List.of("vepo", "envirotrax", "bpat");
+            case "aqua" -> List.of("aqua backflow", "trackmybackflow", "track my backflow", "hazard id", "site id");
+            case "tokay" -> List.of("tokay", "webtest", "web test");
+            default -> List.of();
+        };
+    }
+
+    private int scoreCandidate(String normalizedQuery, String candidateText) {
+        String normalizedCandidate = normalizeSearch(candidateText);
+        if (normalizedCandidate.isBlank()) {
+            return 0;
+        }
+        int score = normalizedCandidate.contains(normalizedQuery) ? 72 : 0;
+        for (String token : searchTokens(normalizedQuery)) {
+            if (normalizedCandidate.contains(token)) {
+                score += 12;
+            }
+        }
+        return score;
+    }
+
+    private int intentBoost(String normalizedQuery, UtilityRecord utility) {
+        int boost = 0;
+        if (isPortalNoticeQuery(normalizedQuery) && usesPortalWorkflow(utility)) {
+            boost += 32;
+        }
+        if (isTesterNoticeQuery(normalizedQuery) && (utility.supportsApprovedTestersPage() || utility.supportsFindATesterPage())) {
+            boost += 24;
+        }
+        if (isFailedNoticeQuery(normalizedQuery) && !utility.failureHighlights().isEmpty()) {
+            boost += 24;
+        }
+        if (isAnnualNoticeQuery(normalizedQuery) && utility.supportsAnnualTestingPage()) {
+            boost += 18;
+        }
+        if (isFireLineNoticeQuery(normalizedQuery) && utility.supportsFireLinePage()) {
+            boost += 18;
+        }
+        if (isIrrigationNoticeQuery(normalizedQuery) && utility.supportsIrrigationPage()) {
+            boost += 18;
+        }
+        return boost;
+    }
+
+    private String candidateText(CityAliasRecord alias, UtilityRecord utility) {
+        return List.of(
+                alias.city(),
+                alias.aliasSlug(),
+                stateLabel(alias.state()),
+                alias.justification(),
+                candidateText(utility)
+        ).stream()
+                .filter(value -> value != null && !value.isBlank())
+                .collect(Collectors.joining(" "));
+    }
+
+    private String candidateText(UtilityRecord utility) {
+        List<String> values = new ArrayList<>();
+        values.add(utility.utilityName());
+        values.add(utility.utilityId());
+        values.add(utility.canonicalSlug());
+        values.add(stateLabel(utility.state()));
+        values.addAll(utility.serviceAreaCities());
+        values.addAll(utility.serviceAreaCounties());
+        values.addAll(utility.searchAliases());
+        values.add(utility.verdictSummary());
+        values.add(utility.whoIsAffected());
+        values.add(utility.testingFrequency());
+        values.add(utility.dueBasis());
+        values.add(utility.officialListLabel());
+        utility.submissionMethods().forEach(method -> {
+            values.add(method.label());
+            values.add(method.kind());
+        });
+        values.addAll(utility.workflowSteps());
+        values.addAll(utility.failureHighlights());
+        values.add(utility.sourceExcerpt());
+        if (utility.costBand() != null) {
+            values.add(utility.costBand().testingRange());
+            values.add(utility.costBand().repairRetestRange());
+            values.add(utility.costBand().pricingNotes());
+        }
+        return values.stream()
+                .filter(value -> value != null && !value.isBlank())
+                .collect(Collectors.joining(" "));
+    }
+
+    private String selectCityNoticePath(CityAliasRecord alias, UtilityRecord utility, String normalizedQuery) {
+        if (isFailedNoticeQuery(normalizedQuery) && cityIntentConfig("failed-backflow-test", alias, utility) != null) {
+            return cityIntentPath(alias, "failed-backflow-test");
+        }
+        if (isPortalNoticeQuery(normalizedQuery) && cityIntentConfig("backflow-reporting-portal", alias, utility) != null) {
+            return cityIntentPath(alias, "backflow-reporting-portal");
+        }
+        if (isTesterNoticeQuery(normalizedQuery) && cityIntentConfig("approved-backflow-testers", alias, utility) != null) {
+            return cityIntentPath(alias, "approved-backflow-testers");
+        }
+        if (isFireLineNoticeQuery(normalizedQuery) && cityIntentConfig("fire-line-backflow-testing", alias, utility) != null) {
+            return cityIntentPath(alias, "fire-line-backflow-testing");
+        }
+        if (isIrrigationNoticeQuery(normalizedQuery) && cityIntentConfig("irrigation-backflow-testing", alias, utility) != null) {
+            return cityIntentPath(alias, "irrigation-backflow-testing");
+        }
+        if (isAnnualNoticeQuery(normalizedQuery) && cityIntentConfig("annual-backflow-testing", alias, utility) != null) {
+            return cityIntentPath(alias, "annual-backflow-testing");
+        }
+        return cityPath(alias);
+    }
+
+    private String selectUtilityNoticePath(UtilityRecord utility, String normalizedQuery) {
+        if (isFailedNoticeQuery(normalizedQuery)) {
+            return utilityPath(utility) + "failed-test";
+        }
+        if (isTesterNoticeQuery(normalizedQuery) && testerPath(utility) != null) {
+            return testerPath(utility);
+        }
+        if (isFireLineNoticeQuery(normalizedQuery) && utility.supportsFireLinePage()) {
+            return utilityPath(utility) + "fire-line";
+        }
+        if (isIrrigationNoticeQuery(normalizedQuery) && utility.supportsIrrigationPage()) {
+            return utilityPath(utility) + "irrigation";
+        }
+        if (isAnnualNoticeQuery(normalizedQuery) && utility.supportsAnnualTestingPage()) {
+            return utilityPath(utility) + "annual-testing";
+        }
+        return utilityPath(utility);
+    }
+
+    private List<String> noticeSignals(UtilityRecord utility) {
+        List<String> signals = new ArrayList<>();
+        String portalSlug = portalSlugForUtility(utility);
+        if (portalSlug != null) {
+            signals.add("Portal: " + portalName(portalSlug));
+        }
+        if (utility.supportsApprovedTestersPage()) {
+            signals.add("Tester gate: official list");
+        } else if (utility.supportsFindATesterPage()) {
+            signals.add("Tester gate: non-official directory");
+        }
+        if (utility.dueBasis() != null && !utility.dueBasis().isBlank()) {
+            signals.add("Due basis: " + utility.dueBasis());
+        }
+        if (utility.costBand() != null && utility.costBand().pricingNotes() != null && !utility.costBand().pricingNotes().isBlank()) {
+            signals.add("Fee clue: " + utility.costBand().pricingNotes());
+        } else if (utility.costBand() != null && utility.costBand().testingRange() != null && !utility.costBand().testingRange().isBlank()) {
+            signals.add("Cost clue: " + utility.costBand().testingRange());
+        }
+        if (!utility.failureHighlights().isEmpty()) {
+            signals.add("Failed-test clue: " + utility.failureHighlights().get(0));
+        }
+        return signals.stream().limit(4).toList();
+    }
+
+    private String noticeIdentifierHint(UtilityRecord utility) {
+        String portalSlug = portalSlugForUtility(utility);
+        if (portalSlug == null) {
+            return "Look for the utility name, service address, assembly serial number, account or notice ID, and due date.";
+        }
+        return switch (portalSlug) {
+            case "bsi" -> "Look for the CCN, account number, BSI record, device ID, or assembly serial from the reminder.";
+            case "weirs" -> "Look for the WEIRS route, service address, tester record, or assembly identifier.";
+            case "swiftcomply" -> "Look for the SwiftComply or C3Swift account, device, address, or notice record.";
+            case "vepo" -> "Look for the BPAT/tester registration context, Envirotrax record, service address, or assembly identifier.";
+            case "aqua" -> "Look for the Hazard ID, Site ID, device record, or TrackMyBackflow customer record.";
+            case "tokay" -> "Look for the Tokay/WebTest entry, tester login context, device record, or assembly identifier.";
+            default -> "Look for the utility name, service address, assembly serial number, account or notice ID, and due date.";
+        };
+    }
+
+    private String reportAcceptanceHint(UtilityRecord utility) {
+        if (usesPortalWorkflow(utility) && utility.supportsApprovedTestersPage()) {
+            return "Report acceptance depends on the named portal and the utility-approved tester route; keep proof that the report was submitted.";
+        }
+        if (usesPortalWorkflow(utility)) {
+            return "Report acceptance depends on using the named portal or online submission path; keep proof that the report was submitted.";
+        }
+        if (utility.supportsApprovedTestersPage()) {
+            return "Report acceptance depends on the governing tester route and the utility's submission method; confirm status before scheduling.";
+        }
+        if (!utility.submissionMethods().isEmpty()) {
+            return "Use the listed submission method and keep proof that the report was filed with the utility.";
+        }
+        return "Confirm the current submission path with the utility before scheduling, repair, or retest work.";
+    }
+
+    private Map<String, String> noticeIdentifierHintsFor(List<UtilityRecord> utilities) {
+        return utilities.stream()
+                .collect(Collectors.toMap(
+                        UtilityRecord::utilityId,
+                        this::noticeIdentifierHint,
+                        (left, right) -> left,
+                        LinkedHashMap::new
+                ));
+    }
+
+    private Map<String, String> reportAcceptanceHintsFor(List<UtilityRecord> utilities) {
+        return utilities.stream()
+                .collect(Collectors.toMap(
+                        UtilityRecord::utilityId,
+                        this::reportAcceptanceHint,
+                        (left, right) -> left,
+                        LinkedHashMap::new
+                ));
+    }
+
+    private boolean isFailedNoticeQuery(String normalizedQuery) {
+        return queryContains(normalizedQuery, "failed")
+                || queryContains(normalizedQuery, "fail")
+                || queryContains(normalizedQuery, "repair")
+                || queryContains(normalizedQuery, "retest");
+    }
+
+    private boolean isPortalNoticeQuery(String normalizedQuery) {
+        return queryContains(normalizedQuery, "portal")
+                || queryContains(normalizedQuery, "report")
+                || queryContains(normalizedQuery, "upload")
+                || queryContains(normalizedQuery, "submit")
+                || queryContains(normalizedQuery, "submission")
+                || PORTAL_SLUGS.stream().anyMatch(slug -> portalSearchTerms(slug).stream().anyMatch(term -> queryContains(normalizedQuery, term)));
+    }
+
+    private boolean isTesterNoticeQuery(String normalizedQuery) {
+        return queryContains(normalizedQuery, "tester")
+                || queryContains(normalizedQuery, "approved")
+                || queryContains(normalizedQuery, "certified")
+                || queryContains(normalizedQuery, "registered")
+                || queryContains(normalizedQuery, "credential")
+                || queryContains(normalizedQuery, "license")
+                || queryContains(normalizedQuery, "calibration");
+    }
+
+    private boolean isAnnualNoticeQuery(String normalizedQuery) {
+        return queryContains(normalizedQuery, "annual")
+                || queryContains(normalizedQuery, "notice")
+                || queryContains(normalizedQuery, "reminder")
+                || queryContains(normalizedQuery, "due")
+                || queryContains(normalizedQuery, "deadline")
+                || queryContains(normalizedQuery, "anniversary");
+    }
+
+    private boolean isIrrigationNoticeQuery(String normalizedQuery) {
+        return queryContains(normalizedQuery, "irrigation")
+                || queryContains(normalizedQuery, "sprinkler")
+                || queryContains(normalizedQuery, "reclaimed")
+                || queryContains(normalizedQuery, "landscape");
+    }
+
+    private boolean isFireLineNoticeQuery(String normalizedQuery) {
+        return queryContains(normalizedQuery, "fire line")
+                || queryContains(normalizedQuery, "fireline")
+                || queryContains(normalizedQuery, "fire protection")
+                || queryContains(normalizedQuery, "fire sprinkler");
+    }
+
+    private boolean queryContains(String normalizedQuery, String term) {
+        String normalizedTerm = normalizeSearch(term);
+        return !normalizedTerm.isBlank() && normalizedQuery.contains(normalizedTerm);
+    }
+
+    private List<String> searchTokens(String normalizedQuery) {
+        Set<String> stopWords = Set.of(
+                "backflow", "test", "testing", "report", "reports", "notice",
+                "annual", "city", "water", "utility", "utilities", "program"
+        );
+        return List.of(normalizedQuery.split(" ")).stream()
+                .filter(token -> token.length() > 2)
+                .filter(token -> !stopWords.contains(token))
+                .distinct()
+                .toList();
+    }
+
+    private String normalizeSearch(String value) {
+        if (value == null) {
+            return "";
+        }
+        return value.toLowerCase(Locale.US)
+                .replaceAll("[^a-z0-9]+", " ")
+                .replaceAll("\\s+", " ")
+                .trim();
     }
 
     private Map<String, List<CityAliasRecord>> publishedCityAliasesByUtility(List<UtilityRecord> utilities) {
@@ -1006,10 +1447,7 @@ public class SiteController {
     }
 
     private boolean isSupportedPortalSlug(String portalSlug) {
-        return "bsi".equalsIgnoreCase(portalSlug)
-                || "weirs".equalsIgnoreCase(portalSlug)
-                || "swiftcomply".equalsIgnoreCase(portalSlug)
-                || "vepo".equalsIgnoreCase(portalSlug);
+        return portalSlug != null && PORTAL_SLUGS.contains(portalSlug.toLowerCase(Locale.US));
     }
 
     private String portalName(String portalSlug) {
@@ -1018,6 +1456,8 @@ public class SiteController {
             case "weirs" -> "WEIRS";
             case "swiftcomply" -> "SwiftComply";
             case "vepo" -> "VEPO/Envirotrax";
+            case "aqua" -> "Aqua/TrackMyBackflow";
+            case "tokay" -> "Tokay WebTest";
             default -> "Backflow reporting portals";
         };
     }
@@ -1028,6 +1468,8 @@ public class SiteController {
             case "weirs" -> "Find utility pages where WEIRS appears in the official backflow tester lookup, water inspection, or report submission workflow.";
             case "swiftcomply" -> "Find utility pages where SwiftComply or C3Swift appears in the official backflow report submission workflow.";
             case "vepo" -> "Find utility pages where VEPO or Envirotrax appears in the official backflow tester registration, credential verification, or report submission workflow.";
+            case "aqua" -> "Find utility pages where Aqua Backflow or TrackMyBackflow appears in the official backflow test reporting, filing-fee, or tester registration workflow.";
+            case "tokay" -> "Find utility pages where Tokay or Tokay WebTest appears in the official backflow tester approval, credential, or online test report entry workflow.";
             default -> "Find utility backflow reporting portal routes and online submission workflows.";
         };
     }
@@ -1054,6 +1496,12 @@ public class SiteController {
         }
         if (utilityContainsAny(utility, "vepo", "envirotrax")) {
             return "vepo";
+        }
+        if (utilityContainsAny(utility, "aqua backflow", "aquabackflow", "trackmybackflow", "track my backflow")) {
+            return "aqua";
+        }
+        if (utilityContainsAny(utility, "tokay", "webtest", "web test")) {
+            return "tokay";
         }
         if (utilityContainsAny(utility, "bsi", "backflow solutions", "backflowtest.com", "bsi online")) {
             return "bsi";
@@ -1903,6 +2351,11 @@ public class SiteController {
                 || value.contains("c3swift")
                 || value.contains("vepo")
                 || value.contains("envirotrax")
+                || value.contains("aqua backflow")
+                || value.contains("aquabackflow")
+                || value.contains("trackmybackflow")
+                || value.contains("tokay")
+                || value.contains("webtest")
                 || value.contains("online submission");
     }
 

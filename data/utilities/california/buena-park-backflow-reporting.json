@@ -1,0 +1,110 @@
+{
+  "utilityId": "buena-park-water",
+  "utilityName": "City of Buena Park Water Backflow Reporting",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "buena-park-backflow-reporting",
+  "state": "california",
+  "serviceAreaCities": [
+    "Buena Park"
+  ],
+  "serviceAreaCounties": [
+    "Orange County"
+  ],
+  "searchAliases": [
+    "buena park backflow testing",
+    "buena park aqua backflow",
+    "buena park trackmybackflow"
+  ],
+  "utilityUrl": "https://www.buenapark.com/city_departments/public_works/utilities/water/backflow_reporting.php",
+  "officialProgramUrls": [
+    "https://www.buenapark.com/city_departments/public_works/utilities/water/backflow_reporting.php",
+    "https://www.aquabackflow.com/trackmybackflow/"
+  ],
+  "testingFrequency": "Upon installation and annually as customers are notified by the City Utilities Division",
+  "dueBasis": "Buena Park says backflow prevention devices are tested upon installation and on an annual basis as customers are notified by the City. The city uses Aqua Backflow for backflow inventory management and web-based report upload.",
+  "coveredPropertyTypes": [
+    "Commercial facilities",
+    "Industrial facilities",
+    "Higher-health-hazard facilities",
+    "Customers notified by the City Utilities Division"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention devices",
+    "Cross-connection control assemblies",
+    "Commercial and industrial assemblies"
+  ],
+  "approvedTesterMode": "NONE",
+  "approvedTesterListUrl": "",
+  "officialListLabel": "",
+  "submissionMethods": [
+    {
+      "label": "Buena Park backflow reporting page",
+      "url": "https://www.buenapark.com/city_departments/public_works/utilities/water/backflow_reporting.php",
+      "kind": "program page"
+    },
+    {
+      "label": "Aqua Backflow TrackMyBackflow portal",
+      "url": "https://www.aquabackflow.com/trackmybackflow/",
+      "kind": "Aqua Backflow reporting portal"
+    }
+  ],
+  "phone": "714-562-3655",
+  "penalties": "The city frames Aqua Backflow as the inventory and reporting workflow. A test is not operationally complete if the required portal record is not uploaded.",
+  "sourceExcerpt": "Buena Park is a strong Aqua Backflow page because the city says devices are tested on installation and annually, Aqua Backflow manages inventory, testers upload data through the web portal, and customers can access records.",
+  "sourceSnapshotPath": "storage/snapshots/buena-park-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-07-06",
+  "verdictSummary": "Buena Park is a strong Southern California Aqua Backflow page because annual notices, inventory management, report upload, and customer record access all route through the portal workflow.",
+  "whoIsAffected": "Buena Park water customers notified by the Utilities Division, especially commercial and industrial facilities with higher cross-connection hazard potential.",
+  "residentialNotes": [
+    "The strongest public language is commercial and industrial, so residential pages should avoid overstating routine homeowner coverage.",
+    "A residential user should follow the city notice if Aqua Backflow contacts the account."
+  ],
+  "commercialNotes": [
+    "Commercial and industrial facilities are the clearest fit for Buena Park's published cross-connection control program.",
+    "The portal record is important because Aqua Backflow manages inventory and test data."
+  ],
+  "annualTesting": {
+    "summary": "Buena Park says devices are tested on installation and annually as customers are notified by the City.",
+    "highlights": [
+      "Annual testing is tied to City Utilities Division notices.",
+      "Aqua Backflow manages the inventory workflow.",
+      "Testers record and upload testing data through the web-based portal."
+    ],
+    "workflowSteps": [
+      "Confirm the Buena Park notice and device record.",
+      "Use a tester who can work with the Aqua Backflow portal.",
+      "Make sure the test data is uploaded through the city-supported portal."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the account is inside Buena Park Water Agency's cross-connection program.",
+    "Follow the City notice and due timing.",
+    "Have the tester upload the report through Aqua Backflow's portal.",
+    "Use the customer record access path to confirm the submission if needed."
+  ],
+  "failureHighlights": [
+    "Buena Park's value is the reporting workflow, not just the field test.",
+    "The public page emphasizes annual notices and online data upload.",
+    "Commercial and industrial hazards are the clearest program fit."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced by the tester.",
+    "repairRetestRange": "Repair and retest costs depend on the assembly and whether another accepted upload is required.",
+    "pricingNotes": "Buena Park's public page emphasizes Aqua Backflow inventory and record access rather than a public retail test price."
+  },
+  "sources": [
+    {
+      "label": "Buena Park backflow reporting",
+      "url": "https://www.buenapark.com/city_departments/public_works/utilities/water/backflow_reporting.php",
+      "kind": "official program page"
+    },
+    {
+      "label": "Aqua Backflow TrackMyBackflow product page",
+      "url": "https://www.aquabackflow.com/trackmybackflow/",
+      "kind": "portal product page"
+    }
+  ]
+}

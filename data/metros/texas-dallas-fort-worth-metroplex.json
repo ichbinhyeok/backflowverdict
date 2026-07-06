@@ -17,7 +17,8 @@
     "Bedford",
     "Mansfield",
     "Cleburne",
-    "Irving"
+    "Irving",
+    "Euless"
   ],
   "countyNames": [
     "Dallas County",
@@ -40,7 +41,8 @@
     "bedford-water",
     "mansfield-water",
     "cleburne-water",
-    "irving-water"
+    "irving-water",
+    "euless-water"
   ],
   "guideSlugs": [
     "backflow-reporting-portals",

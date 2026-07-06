@@ -1,0 +1,110 @@
+{
+  "utilityId": "pleasanton-water",
+  "utilityName": "City of Pleasanton Cross-Connection Control Plan",
+  "governingEntityType": "municipal utility",
+  "canonicalSlug": "pleasanton-cross-connection-control-plan",
+  "state": "california",
+  "serviceAreaCities": [
+    "Pleasanton"
+  ],
+  "serviceAreaCounties": [
+    "Alameda County"
+  ],
+  "searchAliases": [
+    "pleasanton backflow testing",
+    "pleasanton aqua backflow",
+    "pleasanton approved backflow testers"
+  ],
+  "utilityUrl": "https://www.cityofpleasantonca.gov/assets/our-government/public-works/city-of-pleasanton-cross-connection-control-plan.pdf",
+  "officialProgramUrls": [
+    "https://www.cityofpleasantonca.gov/assets/our-government/public-works/city-of-pleasanton-cross-connection-control-plan.pdf",
+    "https://www.aquabackflow.com/trackmybackflow/"
+  ],
+  "testingFrequency": "Annual testing and event-driven follow-up under the City's cross-connection control plan",
+  "dueBasis": "Pleasanton's official cross-connection control plan says testers submit qualifications and completed test reports through an online portal held by the City's third-party backflow service provider, currently Aqua Backflow.",
+  "coveredPropertyTypes": [
+    "Customers with required backflow assemblies",
+    "Cross-connection hazards identified by the City",
+    "Testers submitting qualifications and reports",
+    "Accounts receiving reminder or past-due notices"
+  ],
+  "coveredDeviceTypes": [
+    "Backflow prevention assemblies",
+    "Cross-connection control assemblies",
+    "Assemblies tied to tester certification and gauge calibration records"
+  ],
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.cityofpleasantonca.gov/assets/our-government/public-works/city-of-pleasanton-cross-connection-control-plan.pdf",
+  "officialListLabel": "Open Pleasanton Aqua Backflow tester qualification rules",
+  "submissionMethods": [
+    {
+      "label": "Pleasanton cross-connection control plan",
+      "url": "https://www.cityofpleasantonca.gov/assets/our-government/public-works/city-of-pleasanton-cross-connection-control-plan.pdf",
+      "kind": "official plan"
+    },
+    {
+      "label": "Aqua Backflow online portal",
+      "url": "https://www.aquabackflow.com/trackmybackflow/",
+      "kind": "Aqua Backflow reporting portal"
+    }
+  ],
+  "phone": "925-931-5500",
+  "penalties": "Pleasanton's plan says testers can be removed from the approved list if certification, gauge calibration, or business license expires, or if completed test reports are not entered online.",
+  "sourceExcerpt": "Pleasanton is a strong Aqua Backflow example because its official control plan ties tester qualification, completed report submission, online reminders, past-due notices, and approved-list removal rules to the Aqua Backflow workflow.",
+  "sourceSnapshotPath": "storage/snapshots/pleasanton-backflow.html",
+  "reviewerInitials": "TL",
+  "staleAfterDays": 45,
+  "pageStatus": "PUBLISH",
+  "lastVerified": "2026-07-06",
+  "verdictSummary": "Pleasanton is a strong Northern California Aqua Backflow page because the official city plan connects tester qualifications, completed report submission, notices, and approved-list discipline to the portal.",
+  "whoIsAffected": "Pleasanton customers with required backflow assemblies and testers who must keep certification, gauge calibration, and business license records current.",
+  "residentialNotes": [
+    "Residential visibility depends on whether the City identifies a required assembly or cross-connection hazard.",
+    "Customers should follow the City or Aqua Backflow notice rather than a generic annual-testing assumption."
+  ],
+  "commercialNotes": [
+    "Commercial and managed properties should treat tester approval and online report entry as part of the compliance workflow.",
+    "Expired tester credentials or gauge records can affect report acceptance."
+  ],
+  "annualTesting": {
+    "summary": "Pleasanton's official plan uses Aqua Backflow for online tester qualification and report submission.",
+    "highlights": [
+      "Tester qualifications go through the online portal.",
+      "Completed test reports are submitted through Aqua Backflow.",
+      "Reminder and past-due notices are sent through the City's contracted online backflow software vendor."
+    ],
+    "workflowSteps": [
+      "Confirm the device or hazard is tracked by Pleasanton.",
+      "Use a tester whose certification, gauge calibration, and business license are current.",
+      "Submit the completed report through Aqua Backflow."
+    ]
+  },
+  "workflowSteps": [
+    "Confirm the Pleasanton record and due notice.",
+    "Verify the tester can submit through the Aqua Backflow workflow.",
+    "Complete the test and enter the report online.",
+    "Resolve expired certification, calibration, or business license issues before expecting acceptance."
+  ],
+  "failureHighlights": [
+    "Failure to enter completed test reports online can remove a tester from the approved list.",
+    "Expired certification, gauge calibration, or business license can remove a tester from the approved list.",
+    "The City's reminder and past-due notices run through the contracted online backflow software system."
+  ],
+  "costBand": {
+    "testingRange": "Testing is market-priced by the tester.",
+    "repairRetestRange": "Repair and retest cost depends on assembly type and whether another accepted portal entry is needed.",
+    "pricingNotes": "Pleasanton's strongest cost signal is the administrative risk around accepted online reporting and tester credential upkeep."
+  },
+  "sources": [
+    {
+      "label": "Pleasanton cross-connection control plan",
+      "url": "https://www.cityofpleasantonca.gov/assets/our-government/public-works/city-of-pleasanton-cross-connection-control-plan.pdf",
+      "kind": "official plan pdf"
+    },
+    {
+      "label": "Aqua Backflow TrackMyBackflow product page",
+      "url": "https://www.aquabackflow.com/trackmybackflow/",
+      "kind": "portal product page"
+    }
+  ]
+}

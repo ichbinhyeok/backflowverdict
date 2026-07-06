@@ -14,6 +14,8 @@
 @param String testerLabel = null
 @param String portalHubPath = null
 @param String portalHubLabel = null
+@param String noticeIdentifierHint
+@param String reportAcceptanceHint
 @param java.util.List<owner.backflow.web.FaqItem> faqItems
 @param java.util.List<CityAliasRecord> cityAliases = java.util.List.of()
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
@@ -37,6 +39,7 @@
                 </div>
                 <div class="hero__actions">
                     <a class="button button--primary" href="${utility.utilityUrl()}">Official program page</a>
+                    <a class="button button--secondary" href="/notice-finder?q=${utility.canonicalSlug()}">Find from notice</a>
                     <a class="button button--secondary" href="#next-step-paths">Choose your situation</a>
                 </div>
             </div>
@@ -62,12 +65,14 @@
         <div class="container content-grid">
             <article class="detail-card detail-card--key">
                 <span class="eyebrow">Before scheduling</span>
-                <h2>Confirm the test, tester, portal, and fee path first</h2>
-                <p>The strongest local backflow pages answer these questions before the user calls anyone. This utility record keeps them together so the next step is not just a generic backflow testing search.</p>
+                <h2>Notice checklist before you call or file</h2>
+                <p>The strongest local backflow pages answer these questions before the user calls anyone. This utility record keeps the notice clues and acceptance gates together so the next step is not just a generic backflow testing search.</p>
                 <ul class="detail-list">
                     <li><strong>Due basis:</strong> ${utility.dueBasis()}</li>
+                    <li><strong>Notice or device clue:</strong> ${noticeIdentifierHint}</li>
                     <li><strong>Tester route:</strong> ${testerPath != null && testerLabel != null ? testerLabel : "Confirm tester status with the utility before scheduling."}</li>
                     <li><strong>Submission path:</strong> ${utility.submissionMethods().isEmpty() ? "Confirm the current report path with the program contact." : utility.submissionMethods().get(0).label()}</li>
+                    <li><strong>Acceptance rule:</strong> ${reportAcceptanceHint}</li>
                     <li><strong>Cost signal:</strong> ${utility.costBand().testingRange()}</li>
                 </ul>
                 <div class="card-actions">
