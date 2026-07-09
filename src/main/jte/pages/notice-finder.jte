@@ -30,6 +30,13 @@
                         <a class="button button--secondary" href="/guides/backflow-test-notice-next-steps">Notice guide</a>
                     </div>
                 </form>
+                @if (!query.isBlank() && !results.isEmpty())
+                    <article class="notice-hero-result">
+                        <span>Top route</span>
+                        <strong>${results.get(0).label()}</strong>
+                        <a class="button button--primary button--compact" href="${results.get(0).path()}" aria-label="Open top route from notice finder hero for ${results.get(0).label()}">Open top route</a>
+                    </article>
+                @endif
                 @if (query.isBlank())
                     <div class="hero__stats">
                         <span>City and utility matching</span>

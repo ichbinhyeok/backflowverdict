@@ -1,5 +1,6 @@
 package owner.backflow.web;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -16,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import owner.backflow.data.model.UtilityRecord;
 import owner.backflow.files.BackflowRegistryService;
 import owner.backflow.ops.FreshnessAuditService;
@@ -797,6 +799,46 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("href=\"/cities/texas/dallas/annual-backflow-testing\" aria-label=\"Open top route for Dallas backflow notice route\"")))
                 .andExpect(content().string(containsString("/cities/texas/dallas/annual-backflow-testing")))
                 .andExpect(content().string(containsString("Show all matched routes")));
+    }
+
+    @Test
+    void noticeFinderTopRouteMatchesHighIntentQueryMatrix() throws Exception {
+        String[][] cases = {
+                {"Dallas SwiftComply annual notice", "/cities/texas/dallas/annual-backflow-testing"},
+                {"Dallas SwiftComply submit report", "/cities/texas/dallas/submit-backflow-report"},
+                {"Dallas failed backflow retest", "/cities/texas/dallas/failed-backflow-test"},
+                {"Dallas irrigation backflow testing", "/cities/texas/dallas/irrigation-backflow-testing"},
+                {"Dallas fire line backflow testing", "/cities/texas/dallas/fire-line-backflow-testing"},
+                {"Austin WEIRS submit test report", "/cities/texas/austin/submit-backflow-report"},
+                {"Austin WEIRS approved tester", "/cities/texas/austin/approved-backflow-testers"},
+                {"Austin annual backflow notice", "/cities/texas/austin/annual-backflow-testing"},
+                {"Euless TrackMyBackflow Hazard ID", "/cities/texas/euless/backflow-reporting-portal"},
+                {"Euless submit backflow report", "/cities/texas/euless/submit-backflow-report"},
+                {"Fort Worth Envirotrax submit report", "/cities/texas/fort-worth/submit-backflow-report"},
+                {"Fort Worth annual backflow testing", "/cities/texas/fort-worth/annual-backflow-testing"},
+                {"Fort Worth failed backflow test", "/cities/texas/fort-worth/failed-backflow-test"},
+                {"Irving Envirotrax failed test", "/cities/texas/irving/failed-backflow-test"},
+                {"Irving Envirotrax submit report", "/cities/texas/irving/submit-backflow-report"},
+                {"Oxnard Tokay approved tester", "/cities/california/oxnard/approved-backflow-testers"},
+                {"Oxnard Tokay submit report", "/cities/california/oxnard/submit-backflow-report"},
+                {"Anaheim SwiftComply approved tester", "/cities/california/anaheim/approved-backflow-testers"},
+                {"Anaheim SwiftComply annual notice", "/cities/california/anaheim/annual-backflow-testing"},
+                {"Aurora SpryBackflow", "/cities/colorado/aurora/backflow-reporting-portal"},
+                {"Aurora SpryBackflow submit report", "/cities/colorado/aurora/submit-backflow-report"},
+                {"Aurora fire line backflow testing", "/cities/colorado/aurora/backflow-testing"},
+                {"Longmont SwiftComply submit report", "/cities/colorado/longmont/submit-backflow-report"},
+                {"Buena Park Aqua Hazard ID", "/cities/california/buena-park/backflow-reporting-portal"},
+                {"Pleasanton Aqua approved tester", "/cities/california/pleasanton/approved-backflow-testers"},
+                {"Phoenix approved backflow tester", "/cities/arizona/phoenix/approved-backflow-testers"},
+                {"Tempe annual backflow notice", "/cities/arizona/tempe/annual-backflow-testing"},
+                {"Tampa annual backflow testing", "/cities/florida/tampa/annual-backflow-testing"},
+                {"Fort Lauderdale failed backflow test", "/cities/florida/fort-lauderdale/failed-backflow-test"},
+                {"Seminole County approved backflow tester", "/utilities/florida/seminole-county-cross-connection-control-program/approved-testers"}
+        };
+
+        for (String[] item : cases) {
+            assertNoticeFinderTopRoute(item[0], item[1]);
+        }
     }
 
     @Test
@@ -1697,5 +1739,18 @@ class SiteControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("\"status\":\"warning\"")))
                 .andExpect(content().string(containsString("\"code\":\"broken_source_links\"")));
+    }
+
+    private void assertNoticeFinderTopRoute(String query, String expectedPath) throws Exception {
+        MvcResult result = mockMvc.perform(get("/notice-finder").queryParam("q", query))
+                .andExpect(status().isOk())
+                .andReturn();
+        String body = result.getResponse().getContentAsString();
+        String expectedTopRoute = "href=\"" + expectedPath + "\" aria-label=\"Open top route";
+        assertTrue(
+                body.contains(expectedTopRoute),
+                () -> "Expected top route for query [" + query + "] to be [" + expectedPath + "]."
+                        + " Could not find [" + expectedTopRoute + "] in notice finder response."
+        );
     }
 }

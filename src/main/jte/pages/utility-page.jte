@@ -25,24 +25,24 @@
 @param StateGuideRecord stateGuide = null
 
 @template.layouts.app(page = page, content = @`
-    <section class="page-hero page-hero--utility">
+    <section class="page-hero page-hero--utility page-hero--compact-mobile">
         <div class="container page-frame">
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">${utility.governingEntityType()}</span>
                 <h1>${utility.utilityName()} backflow testing requirements</h1>
                 <p class="lede">${utility.verdictSummary()}</p>
                 <p class="detail-meta">Use this page to confirm the governing rule, then open the focused page that matches your exact situation.</p>
+                <div class="hero__actions">
+                    <a class="button button--primary" href="${utility.utilityUrl()}">Official program page</a>
+                    <a class="button button--secondary" href="/notice-finder?q=${utility.canonicalSlug()}">Find from notice</a>
+                    <a class="button button--secondary" href="#next-step-paths">Choose your situation</a>
+                </div>
                 <div class="hero__stats">
                     <span>Testing cadence: ${utility.testingFrequency()}</span>
                     <span>Submission: ${utility.submissionMethods().isEmpty() ? "Confirm with utility" : utility.submissionMethods().get(0).kind()}</span>
                     <span>Last verified: ${utility.lastVerified().toString()}</span>
                     <span>Verification code: <a href="/methodology#verification-code-${utility.reviewerInitials().toLowerCase()}">${utility.reviewerInitials()}</a></span>
                     <span>Freshness window: ${utility.staleAfterDays()} days</span>
-                </div>
-                <div class="hero__actions">
-                    <a class="button button--primary" href="${utility.utilityUrl()}">Official program page</a>
-                    <a class="button button--secondary" href="/notice-finder?q=${utility.canonicalSlug()}">Find from notice</a>
-                    <a class="button button--secondary" href="#next-step-paths">Choose your situation</a>
                 </div>
             </div>
             <aside class="panel panel--status">

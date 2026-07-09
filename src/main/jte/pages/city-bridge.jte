@@ -25,7 +25,7 @@
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 
 @template.layouts.app(page = page, content = @`
-    <section class="page-hero">
+    <section class="page-hero page-hero--compact-mobile">
         <div class="container page-frame page-frame--hero">
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">City backflow route</span>

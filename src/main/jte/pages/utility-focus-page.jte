@@ -21,21 +21,21 @@
 @param StateGuideRecord stateGuide = null
 
 @template.layouts.app(page = page, content = @`
-    <section class="page-hero page-hero--focus">
+    <section class="page-hero page-hero--focus page-hero--compact-mobile">
         <div class="container page-frame page-frame--hero">
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">${eyebrow}</span>
                 <h1>${heading}</h1>
                 <p class="lede">${intro}</p>
-                <div class="hero__stats">
-                    <span>Utility: ${utility.utilityName()}</span>
-                    <span>Last verified: ${utility.lastVerified().toString()}</span>
-                    <span>Due basis: ${utility.dueBasis()}</span>
-                </div>
                 <div class="hero__actions">
                     <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Back to utility requirements</a>
                     <a class="button button--primary" href="${utility.utilityUrl()}">Open the official program page</a>
                     <a class="button button--secondary" href="#local-follow-up">Local follow-up options</a>
+                </div>
+                <div class="hero__stats">
+                    <span>Utility: ${utility.utilityName()}</span>
+                    <span>Last verified: ${utility.lastVerified().toString()}</span>
+                    <span>Due basis: ${utility.dueBasis()}</span>
                 </div>
             </div>
             <aside class="panel panel--status">
