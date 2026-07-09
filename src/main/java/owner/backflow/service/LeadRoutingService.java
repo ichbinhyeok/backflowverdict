@@ -3,9 +3,11 @@ package owner.backflow.service;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.Base64;
+import java.util.Set;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import owner.backflow.config.AppOpsProperties;
+import owner.backflow.data.model.CityAliasRecord;
 import owner.backflow.data.model.MetroRecord;
 import owner.backflow.data.model.UtilityRecord;
 import owner.backflow.files.BackflowRegistryService;
@@ -15,6 +17,16 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Service
 public class LeadRoutingService {
     private static volatile String signingSecret = "";
+    private static final Set<String> CITY_SOURCE_SLUGS = Set.of(
+            "backflow-testing",
+            "annual-backflow-testing",
+            "backflow-reporting-portal",
+            "submit-backflow-report",
+            "approved-backflow-testers",
+            "failed-backflow-test",
+            "irrigation-backflow-testing",
+            "fire-line-backflow-testing"
+    );
 
     private final BackflowRegistryService registryService;
 
@@ -115,6 +127,11 @@ public class LeadRoutingService {
             return directUtility;
         }
 
+        UtilityRecord cityUtility = resolveCityPage(utilityId, sourcePage);
+        if (cityUtility != null) {
+            return cityUtility;
+        }
+
         UtilityRecord metroUtility = resolveMetroPage(utilityId, sourcePage);
         if (metroUtility != null) {
             return metroUtility;
@@ -134,6 +151,23 @@ public class LeadRoutingService {
         return registryService.findPublishedUtility(state, utilitySlug)
                 .filter(utility -> utility.utilityId().equalsIgnoreCase(utilityId))
                 .orElse(null);
+    }
+
+    private UtilityRecord resolveCityPage(String utilityId, String sourcePage) {
+        String trimmedSource = trimTrailingSlash(sourcePage);
+        String[] segments = trimmedSource.split("/");
+        if (segments.length != 5
+                || !"cities".equals(segments[1])
+                || !CITY_SOURCE_SLUGS.contains(segments[4])) {
+            return null;
+        }
+        String state = segments[2];
+        String citySlug = segments[3];
+        CityAliasRecord alias = registryService.findCityAlias(state, citySlug).orElse(null);
+        if (alias == null || !alias.utilityId().equalsIgnoreCase(utilityId)) {
+            return null;
+        }
+        return registryService.findUtilityById(utilityId).orElse(null);
     }
 
     private UtilityRecord resolveMetroPage(String utilityId, String sourcePage) {

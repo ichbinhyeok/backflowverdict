@@ -105,7 +105,67 @@
   "costBand": {
     "testingRange": "Testing is market-priced by the tester.",
     "repairRetestRange": "Repair and retest costs depend on the assembly and whether a follow-up report must be filed.",
-    "pricingNotes": "Euless publishes a $10.95 TrackMyBackflow filing fee."
+    "pricingNotes": "Euless publishes a $10.95 TrackMyBackflow filing fee.",
+    "filingFee": {
+      "amount": "$10.95",
+      "currency": "USD",
+      "appliesTo": "TrackMyBackflow filing fee",
+      "sourceRefs": [
+        "Euless cross-connection control program"
+      ]
+    },
+    "sourceRefs": [
+      "Euless cross-connection control program"
+    ]
+  },
+  "reportWorkflow": {
+    "portalVendor": "Aqua Backflow",
+    "portalName": "TrackMyBackflow.com",
+    "portalUrl": "https://www.aquabackflow.com/trackmybackflow/",
+    "submitter": "Tester registered with TrackMyBackflow for the Euless program",
+    "paperAccepted": false,
+    "requiredIdentifiers": [
+      "Hazard ID",
+      "Site ID",
+      "Tester licensing or certification information",
+      "Test kit calibration information"
+    ],
+    "acceptanceProof": "Keep the TrackMyBackflow submission record; reports forwarded to the City are returned.",
+    "filingFee": {
+      "amount": "$10.95",
+      "currency": "USD",
+      "appliesTo": "TrackMyBackflow filing fee",
+      "sourceRefs": [
+        "Euless cross-connection control program"
+      ]
+    },
+    "sourceRefs": [
+      "Euless cross-connection control program",
+      "Aqua Backflow TrackMyBackflow product page"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Tester licensing or certification information",
+      "Test kit calibration information"
+    ],
+    "deviceScopeLimit": "TrackMyBackflow requires the Euless Hazard ID or Site ID before a tester can submit the result cleanly.",
+    "sourceRefs": [
+      "Euless cross-connection control program",
+      "Aqua Backflow TrackMyBackflow product page"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Aqua Backflow contacts customers when Euless testing is due.",
+      "All backflow test results must be submitted on TrackMyBackflow.com."
+    ],
+    "sourceRefs": [
+      "Euless cross-connection control program"
+    ]
   },
   "sources": [
     {

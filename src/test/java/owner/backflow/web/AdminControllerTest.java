@@ -345,6 +345,33 @@ class AdminControllerTest {
     }
 
     @Test
+    void autoRoutingVerifiesCityIntentSourcePages() throws Exception {
+        String sourcePage = "/cities/texas/dallas/submit-backflow-report";
+
+        mockMvc.perform(post("/leads")
+                        .param("fullName", "City Intent Lead")
+                        .param("phone", "555-404-5050")
+                        .param("city", "Dallas")
+                        .param("utilityId", "dallas-water")
+                        .param("utilityName", "Dallas Water Utilities")
+                        .param("pageFamily", "city-intent")
+                        .param("sourcePage", sourcePage)
+                        .param("rt", LeadRoutingService.issueToken(
+                                "dallas-water",
+                                sourcePage,
+                                "city-intent"
+                        ))
+                        .param("consentToRouting", "yes"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/leads/thanks"));
+
+        String leadJson = Files.readString(LEADS_ROOT.resolve("leads.jsonl"));
+        org.junit.jupiter.api.Assertions.assertTrue(leadJson.contains("\"routingStatus\":\"VERIFIED_UTILITY_CONTEXT\""));
+        org.junit.jupiter.api.Assertions.assertTrue(leadJson.contains("\"sourcePage\":\"/cities/texas/dallas/submit-backflow-report\""));
+        org.junit.jupiter.api.Assertions.assertTrue(leadJson.contains("\"utilityId\":\"dallas-water\""));
+    }
+
+    @Test
     void sourceOnlyRoutingTokenPreservesVerifiedPageContextWithoutAutoRoute() throws Exception {
         MockHttpSession session = adminSession();
 

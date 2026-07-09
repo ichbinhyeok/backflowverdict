@@ -122,7 +122,60 @@
   "costBand": {
     "testingRange": "Testing is market-priced, but the city fine and reporting workflow create more urgency than a typical informational page.",
     "repairRetestRange": "Repair and retest costs vary by whether the device serves residential irrigation, a commercial site, or a higher-hazard protected service.",
-    "pricingNotes": "The strongest local cost pressure is the risk of fines and missed reporting windows."
+    "pricingNotes": "The strongest local cost pressure is the risk of fines and missed reporting windows.",
+    "fineMin": {
+      "amount": "$250",
+      "currency": "USD",
+      "appliesTo": "Fine after 90 days for failure to submit a backflow test report",
+      "sourceRefs": [
+        "Fort Lauderdale backflow and cross-connection page"
+      ]
+    },
+    "sourceRefs": [
+      "Fort Lauderdale backflow and cross-connection page",
+      "Fort Lauderdale annual backflow report form"
+    ]
+  },
+  "reportWorkflow": {
+    "portalVendor": "BSI",
+    "portalName": "Fort Lauderdale BSI backflow compliance workflow",
+    "portalUrl": "https://www.fortlauderdale.gov/government/departments-i-z/parks-recreation/sustainability/environmental-regulatory-affairs/backflow-cross-connection",
+    "submitter": "Certified tester",
+    "requiredIdentifiers": [
+      "Fort Lauderdale annual backflow report form",
+      "Service or assembly information",
+      "Tester certification context"
+    ],
+    "acceptanceProof": "Keep the submitted annual report form and BSI compliance confirmation before the 90-day fine window is reached.",
+    "sourceRefs": [
+      "Fort Lauderdale backflow and cross-connection page",
+      "Fort Lauderdale annual backflow report form"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "credentialDocuments": [
+      "Certified tester status",
+      "Annual report form completion"
+    ],
+    "deviceScopeLimit": "Commercial, industrial, hazardous, residential irrigation, and temporary-water use cases follow different city cycles.",
+    "sourceRefs": [
+      "Fort Lauderdale backflow and cross-connection page",
+      "Fort Lauderdale annual backflow report form"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Commercial, industrial, and hazardous assemblies: annual",
+      "Residential irrigation devices: every two years"
+    ],
+    "pastDueLadder": [
+      "Failure to submit a backflow test report can lead to a $250 fine after 90 days."
+    ],
+    "sourceRefs": [
+      "Fort Lauderdale backflow and cross-connection page",
+      "Fort Lauderdale annual backflow report form"
+    ]
   },
   "sources": [
     {

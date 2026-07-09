@@ -613,6 +613,10 @@ class SiteControllerTest {
                 html.indexOf("Submission methods and utility contact") < html.indexOf("Public provider direction"),
                 "Submission path should appear before the provider layer."
         );
+        org.junit.jupiter.api.Assertions.assertTrue(html.contains("\"@type\":\"WebPage\""));
+        org.junit.jupiter.api.Assertions.assertTrue(html.contains("\"dateModified\":\"2026-06-29\""));
+        org.junit.jupiter.api.Assertions.assertTrue(html.contains("\"citation\""));
+        org.junit.jupiter.api.Assertions.assertTrue(html.contains("Dallas Water Utilities backflow test reports page"));
     }
 
     @Test
@@ -773,6 +777,8 @@ class SiteControllerTest {
                 .andExpect(content().string(not(containsString("Office staff: create annual brief"))))
                 .andExpect(content().string(not(containsString("Create annual customer brief"))))
                 .andExpect(content().string(containsString("BreadcrumbList")))
+                .andExpect(content().string(containsString("\"@type\":\"WebPage\"")))
+                .andExpect(content().string(containsString("\"dateModified\":\"2026-06-29\"")))
                 .andExpect(content().string(containsString("\"item\":{\"@id\":\"https://backflowpath.com/\"")))
                 .andExpect(content().string(containsString("\"name\":\"Dallas Water Utilities Backflow Prevention Program\"")));
 
@@ -1290,6 +1296,8 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("What the report needs before it can count")))
                 .andExpect(content().string(containsString("Keep acceptance proof")))
                 .andExpect(content().string(containsString("HowTo")))
+                .andExpect(content().string(containsString("\"@type\":\"WebPage\"")))
+                .andExpect(content().string(containsString("\"citation\"")))
                 .andExpect(content().string(containsString("How do I submit a backflow test report for Dallas")))
                 .andExpect(content().string(containsString("proof of submission")))
                 .andExpect(content().string(containsString("FAQPage")));

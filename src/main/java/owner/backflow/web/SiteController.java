@@ -17,6 +17,7 @@ import owner.backflow.data.model.CityAliasRecord;
 import owner.backflow.data.model.GuideRecord;
 import owner.backflow.data.model.MetroRecord;
 import owner.backflow.data.model.ProviderRecord;
+import owner.backflow.data.model.SourceLink;
 import owner.backflow.data.model.StateGuideRecord;
 import owner.backflow.data.model.UtilityFocusContent;
 import owner.backflow.data.model.UtilityRecord;
@@ -620,21 +621,25 @@ public class SiteController {
         UtilityRecord utility = registryService.findPublishedUtility(state, utilitySlug)
                 .orElseThrow(() -> new NotFoundException("Utility page not found."));
         List<FaqItem> faqItems = utilityFaqItems(utility);
+        String title = utilityPageTitle(utility);
+        String description = utilityPageDescription(utility);
+        String path = utilityPath(utility);
         model.addAttribute("page", page(
-                utilityPageTitle(utility),
-                utilityPageDescription(utility),
-                utilityPath(utility),
+                title,
+                description,
+                path,
                 combineStructuredData(
                         breadcrumbStructuredData(List.of(
                                 new BreadcrumbItem("Home", canonical("/")),
                                 new BreadcrumbItem(stateLabel(utility.state()), canonical("/states/" + utility.state() + "/backflow-testing")),
-                                new BreadcrumbItem(utility.utilityName(), canonical(utilityPath(utility)))
+                                new BreadcrumbItem(utility.utilityName(), canonical(path))
                         )),
+                        webPageStructuredData(title, description, path, utility.lastVerified(), utilityAbout(utility), utility.sources()),
                         faqStructuredData(faqItems)
                 )
         ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
                 utility.utilityId(),
-                utilityPath(utility),
+                path,
                 "general-testing",
                 "utility"
         )));
@@ -685,21 +690,25 @@ public class SiteController {
     ) {
         UtilityRecord utility = registryService.findPublishedUtility(state, utilitySlug)
                 .orElseThrow(() -> new NotFoundException("Failed-test page not found."));
+        String title = utility.utilityName() + " failed backflow test | BackflowPath";
+        String description = "Repair, retest, and submission next steps for a failed backflow test in " + utility.utilityName() + ".";
+        String path = utilityPath(utility) + "failed-test";
         model.addAttribute("page", page(
-                utility.utilityName() + " failed backflow test | BackflowPath",
-                "Repair, retest, and submission next steps for a failed backflow test in " + utility.utilityName() + ".",
-                utilityPath(utility) + "failed-test",
+                title,
+                description,
+                path,
                 combineStructuredData(
                         breadcrumbStructuredData(List.of(
                                 new BreadcrumbItem("Home", canonical("/")),
                                 new BreadcrumbItem(stateLabel(utility.state()), canonical("/states/" + utility.state() + "/backflow-testing")),
                                 new BreadcrumbItem(utility.utilityName(), canonical(utilityPath(utility))),
-                                new BreadcrumbItem("Failed test", canonical(utilityPath(utility) + "failed-test"))
+                                new BreadcrumbItem("Failed test", canonical(path))
                         )),
+                        webPageStructuredData(title, description, path, utility.lastVerified(), utilityAbout(utility), utility.sources()),
                         workflowHowToStructuredData(
                                 utility.utilityName() + " failed backflow test repair and retest",
-                                "Repair, retest, and accepted report submission steps for a failed backflow test in " + utility.utilityName() + ".",
-                                utilityPath(utility) + "failed-test",
+                                description,
+                                path,
                                 List.of(
                                         "Repair the failed backflow assembly or blocked components first.",
                                         "Schedule and complete a passing retest before the utility deadline slips.",
@@ -709,7 +718,7 @@ public class SiteController {
                 )
         ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
                 utility.utilityId(),
-                utilityPath(utility) + "failed-test",
+                path,
                 "failed-test-repair",
                 "failed-test"
         )));
@@ -737,19 +746,25 @@ public class SiteController {
                 .filter(UtilityRecord::supportsApprovedTestersPage)
                 .orElseThrow(() -> new NotFoundException("Approved tester page not available for this utility."));
         List<ProviderRecord> providers = registryService.findProvidersForUtility(utility.utilityId());
+        String title = officialTesterPageTitle(utility) + " | BackflowPath";
+        String description = officialTesterPageDescription(utility);
+        String path = utilityPath(utility) + "approved-testers";
         model.addAttribute("page", page(
-                officialTesterPageTitle(utility) + " | BackflowPath",
-                officialTesterPageDescription(utility),
-                utilityPath(utility) + "approved-testers",
-                breadcrumbStructuredData(List.of(
-                        new BreadcrumbItem("Home", canonical("/")),
-                        new BreadcrumbItem(stateLabel(utility.state()), canonical("/states/" + utility.state() + "/backflow-testing")),
-                        new BreadcrumbItem(utility.utilityName(), canonical(utilityPath(utility))),
-                        new BreadcrumbItem("Approved testers", canonical(utilityPath(utility) + "approved-testers"))
-                ))
+                title,
+                description,
+                path,
+                combineStructuredData(
+                        breadcrumbStructuredData(List.of(
+                                new BreadcrumbItem("Home", canonical("/")),
+                                new BreadcrumbItem(stateLabel(utility.state()), canonical("/states/" + utility.state() + "/backflow-testing")),
+                                new BreadcrumbItem(utility.utilityName(), canonical(utilityPath(utility))),
+                                new BreadcrumbItem("Approved testers", canonical(path))
+                        )),
+                        webPageStructuredData(title, description, path, utility.lastVerified(), utilityAbout(utility), utility.sources())
+                )
         ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
                 utility.utilityId(),
-                utilityPath(utility) + "approved-testers",
+                path,
                 "tester-search",
                 "tester-directory"
         )));
@@ -772,19 +787,25 @@ public class SiteController {
         if (providers.isEmpty()) {
             throw new NotFoundException("Find-a-tester page not available for this utility.");
         }
+        String title = utility.utilityName() + " find a tester | BackflowPath";
+        String description = "Non-official provider directory for " + utility.utilityName() + ", kept separate from authority guidance.";
+        String path = utilityPath(utility) + "find-a-tester";
         model.addAttribute("page", page(
-                utility.utilityName() + " find a tester | BackflowPath",
-                "Non-official provider directory for " + utility.utilityName() + ", kept separate from authority guidance.",
-                utilityPath(utility) + "find-a-tester",
-                breadcrumbStructuredData(List.of(
-                        new BreadcrumbItem("Home", canonical("/")),
-                        new BreadcrumbItem(stateLabel(utility.state()), canonical("/states/" + utility.state() + "/backflow-testing")),
-                        new BreadcrumbItem(utility.utilityName(), canonical(utilityPath(utility))),
-                        new BreadcrumbItem("Find a tester", canonical(utilityPath(utility) + "find-a-tester"))
-                ))
+                title,
+                description,
+                path,
+                combineStructuredData(
+                        breadcrumbStructuredData(List.of(
+                                new BreadcrumbItem("Home", canonical("/")),
+                                new BreadcrumbItem(stateLabel(utility.state()), canonical("/states/" + utility.state() + "/backflow-testing")),
+                                new BreadcrumbItem(utility.utilityName(), canonical(utilityPath(utility))),
+                                new BreadcrumbItem("Find a tester", canonical(path))
+                        )),
+                        webPageStructuredData(title, description, path, utility.lastVerified(), utilityAbout(utility), utility.sources())
+                )
         ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
                 utility.utilityId(),
-                utilityPath(utility) + "find-a-tester",
+                path,
                 "tester-search",
                 "tester-directory"
         )));
@@ -846,16 +867,28 @@ public class SiteController {
                 .orElseThrow(() -> new NotFoundException("Mapped utility is not available."));
 
         String path = cityPath(alias);
+        String title = cityPageTitle(alias, utility);
+        String description = cityPageDescription(alias, utility);
         model.addAttribute("page", new PageMeta(
-                cityPageTitle(alias, utility),
-                cityPageDescription(alias, utility),
+                title,
+                description,
                 canonical(path),
                 alias.aliasMode() == AliasMode.NOINDEX_BRIDGE,
-                breadcrumbStructuredData(List.of(
-                        new BreadcrumbItem("Home", canonical("/")),
-                        new BreadcrumbItem(stateLabel(utility.state()), canonical("/states/" + utility.state() + "/backflow-testing")),
-                        new BreadcrumbItem(alias.city(), canonical(path))
-                ))
+                combineStructuredData(
+                        breadcrumbStructuredData(List.of(
+                                new BreadcrumbItem("Home", canonical("/")),
+                                new BreadcrumbItem(stateLabel(utility.state()), canonical("/states/" + utility.state() + "/backflow-testing")),
+                                new BreadcrumbItem(alias.city(), canonical(path))
+                        )),
+                        webPageStructuredData(
+                                title,
+                                description,
+                                path,
+                                latestDate(alias.lastReviewed(), utility.lastVerified()),
+                                cityAbout(alias, utility, "City backflow testing route"),
+                                utility.sources()
+                        )
+                )
         ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
                 utility.utilityId(),
                 path,
@@ -914,6 +947,14 @@ public class SiteController {
                                 new BreadcrumbItem(alias.city(), canonical(cityPath(alias))),
                                 new BreadcrumbItem(intent.heading(), canonical(path))
                         )),
+                        webPageStructuredData(
+                                intent.title(),
+                                intent.description(),
+                                path,
+                                latestDate(alias.lastReviewed(), utility.lastVerified()),
+                                cityAbout(alias, utility, intent.heading()),
+                                utility.sources()
+                        ),
                         cityIntentHowToStructuredData(alias, intent),
                         faqStructuredData(faqItems)
                 )
@@ -1110,16 +1151,17 @@ public class SiteController {
     private List<SitemapEntry> cityIntentSitemapEntries() {
         List<SitemapEntry> urls = new ArrayList<>();
         for (CityAliasRecord alias : registryService.listCityAliases()) {
-            if (alias.aliasMode() == AliasMode.NOINDEX_BRIDGE || registryService.findUtilityById(alias.utilityId()).isEmpty()) {
+            UtilityRecord utility = registryService.findUtilityById(alias.utilityId()).orElse(null);
+            if (!canIndexCityAlias(alias, utility)) {
                 continue;
             }
             urls.add(new SitemapEntry(canonical(cityPath(alias)), alias.lastReviewed()));
-            registryService.findUtilityById(alias.utilityId()).ifPresent(utility ->
-                    cityIntentConfigs(alias, utility).forEach(intent -> urls.add(new SitemapEntry(
+            cityIntentConfigs(alias, utility).stream()
+                    .filter(intent -> canIndexCityIntent(alias, utility, intent))
+                    .forEach(intent -> urls.add(new SitemapEntry(
                             canonical(cityIntentPath(alias, intent.slug())),
                             latestDate(alias.lastReviewed(), utility.lastVerified())
-                    )))
-            );
+                    )));
         }
         return urls;
     }
@@ -1147,20 +1189,23 @@ public class SiteController {
     private List<SitemapEntry> utilitySitemapEntries() {
         List<SitemapEntry> urls = new ArrayList<>();
         for (UtilityRecord utility : registryService.listPublishedUtilities()) {
+            if (!canIndexUtility(utility)) {
+                continue;
+            }
             urls.add(new SitemapEntry(canonical(utilityPath(utility)), utility.lastVerified()));
-            if (utility.supportsAnnualTestingPage()) {
+            if (utility.supportsAnnualTestingPage() && utility.supportsCityIntent("annual-backflow-testing")) {
                 urls.add(new SitemapEntry(canonical(utilityPath(utility) + "annual-testing"), utility.lastVerified()));
             }
-            if (utility.supportsFailedTestPage()) {
+            if (utility.supportsFailedTestPage() && utility.supportsCityIntent("failed-backflow-test")) {
                 urls.add(new SitemapEntry(canonical(utilityPath(utility) + "failed-test"), utility.lastVerified()));
             }
-            if (utility.supportsIrrigationPage()) {
+            if (utility.supportsIrrigationPage() && utility.supportsCityIntent("irrigation-backflow-testing")) {
                 urls.add(new SitemapEntry(canonical(utilityPath(utility) + "irrigation"), utility.lastVerified()));
             }
-            if (utility.supportsFireLinePage()) {
+            if (utility.supportsFireLinePage() && utility.supportsCityIntent("fire-line-backflow-testing")) {
                 urls.add(new SitemapEntry(canonical(utilityPath(utility) + "fire-line"), utility.lastVerified()));
             }
-            if (utility.supportsApprovedTestersPage()) {
+            if (utility.supportsApprovedTestersPage() && utility.supportsCityIntent("approved-backflow-testers")) {
                 urls.add(new SitemapEntry(canonical(utilityPath(utility) + "approved-testers"), utility.lastVerified()));
             }
             if (utility.supportsFindATesterPage() && !registryService.findProvidersForUtility(utility.utilityId()).isEmpty()) {
@@ -1255,6 +1300,7 @@ public class SiteController {
                 .map(slug -> "/backflow-reporting-portals/" + slug)
                 .forEach(paths::add);
         registryService.listPublishedUtilities().stream()
+                .filter(this::canIndexUtility)
                 .filter(utility -> utility.hasReportWorkflow() || usesPortalWorkflow(utility) || utility.hasTesterGate())
                 .forEach(utility -> {
                     paths.add(utilityPath(utility));
@@ -1265,17 +1311,19 @@ public class SiteController {
                         paths.add(utilityPath(utility) + "annual-testing");
                     }
                     publishedCityAliasesForUtility(utility.utilityId()).stream()
+                            .filter(alias -> canIndexCityAlias(alias, utility))
                             .limit(4)
                             .forEach(alias -> {
                                 paths.add(cityPath(alias));
                                 cityIntentConfigs(alias, utility).stream()
                                         .filter(intent -> Set.of(
                                                 "backflow-reporting-portal",
-                                                "submit-backflow-report",
-                                                "approved-backflow-testers",
-                                                "annual-backflow-testing",
-                                                "failed-backflow-test"
+                                        "submit-backflow-report",
+                                        "approved-backflow-testers",
+                                        "annual-backflow-testing",
+                                        "failed-backflow-test"
                                         ).contains(intent.slug()))
+                                        .filter(intent -> canIndexCityIntent(alias, utility, intent))
                                         .forEach(intent -> paths.add(cityIntentPath(alias, intent.slug())));
                             });
                 });
@@ -2113,7 +2161,7 @@ public class SiteController {
 
     private CityIntentConfig cityIntentConfig(String intentSlug, CityAliasRecord alias, UtilityRecord utility) {
         String slug = intentSlug == null ? "" : intentSlug.toLowerCase(Locale.US);
-        return switch (slug) {
+        CityIntentConfig intent = switch (slug) {
             case "annual-backflow-testing" -> annualCityIntent(alias, utility);
             case "backflow-reporting-portal" -> portalCityIntent(alias, utility);
             case "submit-backflow-report" -> submitReportCityIntent(alias, utility);
@@ -2123,6 +2171,10 @@ public class SiteController {
             case "fire-line-backflow-testing" -> fireLineCityIntent(alias, utility);
             default -> null;
         };
+        if (intent == null || !utility.supportsCityIntent(intent.slug())) {
+            return null;
+        }
+        return intent;
     }
 
     private CityIntentConfig annualCityIntent(CityAliasRecord alias, UtilityRecord utility) {
@@ -2292,17 +2344,37 @@ public class SiteController {
 
     private List<CityAliasRecord> publishedCityAliasesForState(String state) {
         return registryService.listCityAliasesForState(state).stream()
-                .filter(alias -> alias.aliasMode() != AliasMode.NOINDEX_BRIDGE)
-                .filter(alias -> registryService.findUtilityById(alias.utilityId()).isPresent())
+                .filter(alias -> canIndexCityAlias(alias, registryService.findUtilityById(alias.utilityId()).orElse(null)))
                 .toList();
     }
 
     private List<CityAliasRecord> publishedCityAliasesForUtility(String utilityId) {
         return registryService.listCityAliases().stream()
-                .filter(alias -> alias.aliasMode() != AliasMode.NOINDEX_BRIDGE)
                 .filter(alias -> alias.utilityId().equals(utilityId))
-                .filter(alias -> registryService.findUtilityById(alias.utilityId()).isPresent())
+                .filter(alias -> canIndexCityAlias(alias, registryService.findUtilityById(alias.utilityId()).orElse(null)))
                 .toList();
+    }
+
+    private boolean canIndexUtility(UtilityRecord utility) {
+        return utility != null && utility.meetsIndexQualityFloor();
+    }
+
+    private boolean canIndexCityAlias(CityAliasRecord alias, UtilityRecord utility) {
+        return alias != null
+                && utility != null
+                && alias.aliasMode() != AliasMode.NOINDEX_BRIDGE
+                && alias.lastReviewed() != null
+                && alias.city() != null
+                && !alias.city().isBlank()
+                && alias.aliasSlug() != null
+                && !alias.aliasSlug().isBlank()
+                && canIndexUtility(utility);
+    }
+
+    private boolean canIndexCityIntent(CityAliasRecord alias, UtilityRecord utility, CityIntentConfig intent) {
+        return intent != null
+                && canIndexCityAlias(alias, utility)
+                && utility.supportsCityIntent(intent.slug());
     }
 
     private LocalDate latestUtilityModified(List<UtilityRecord> utilities) {
@@ -2349,6 +2421,7 @@ public class SiteController {
                                 new BreadcrumbItem(utility.utilityName(), canonical(utilityPath(utility))),
                                 new BreadcrumbItem(titleStem, canonical(path))
                         )),
+                        webPageStructuredData(titleStem + " | BackflowPath", description, path, utility.lastVerified(), utilityAbout(utility), utility.sources()),
                         workflowHowToStructuredData(titleStem, description, path, focus.workflowSteps()),
                         faqStructuredData(utilityFaqItems(utility))
                 )
@@ -3035,6 +3108,20 @@ public class SiteController {
         append(text, utility.dueBasis());
         append(text, utility.verdictSummary());
         append(text, utility.sourceExcerpt());
+        append(text, utility.reportWorkflow().portalVendor());
+        append(text, utility.reportWorkflow().portalName());
+        append(text, utility.reportWorkflow().portalUrl());
+        append(text, utility.reportWorkflow().submitter());
+        append(text, utility.reportWorkflow().acceptanceProof());
+        utility.reportWorkflow().requiredIdentifiers().forEach(value -> append(text, value));
+        utility.reportWorkflow().sourceRefs().forEach(value -> append(text, value));
+        append(text, utility.testerGate().deviceScopeLimit());
+        utility.testerGate().credentialDocuments().forEach(value -> append(text, value));
+        utility.testerGate().sourceRefs().forEach(value -> append(text, value));
+        utility.deadlinePolicy().cadenceByPropertyType().forEach(value -> append(text, value));
+        utility.deadlinePolicy().pastDueLadder().forEach(value -> append(text, value));
+        append(text, utility.deadlinePolicy().calendarWindow());
+        utility.failedTestPolicy().sourceRefs().forEach(value -> append(text, value));
         for (String step : utility.workflowSteps()) {
             append(text, step);
         }
@@ -3102,6 +3189,90 @@ public class SiteController {
         }
     }
 
+    private String webPageStructuredData(
+            String name,
+            String description,
+            String path,
+            LocalDate dateModified,
+            List<String> about,
+            List<SourceLink> citations
+    ) {
+        String canonicalUrl = canonical(path);
+        StringBuilder json = new StringBuilder();
+        json.append("{\"@context\":\"https://schema.org\",\"@type\":\"WebPage\"")
+                .append(",\"@id\":\"").append(jsonEscape(canonicalUrl)).append("#webpage\"")
+                .append(",\"url\":\"").append(jsonEscape(canonicalUrl)).append("\"")
+                .append(",\"name\":\"").append(jsonEscape(name)).append("\"")
+                .append(",\"description\":\"").append(jsonEscape(description)).append("\"")
+                .append(",\"isPartOf\":{\"@type\":\"WebSite\",\"name\":\"BackflowPath\",\"url\":\"")
+                .append(jsonEscape(canonical("/")))
+                .append("\"}")
+                .append(",\"reviewedBy\":{\"@type\":\"Organization\",\"name\":\"BackflowPath editorial review\"}");
+        if (dateModified != null) {
+            json.append(",\"dateModified\":\"").append(dateModified).append("\"");
+        }
+        List<String> aboutItems = about == null ? List.of() : about.stream()
+                .filter(value -> value != null && !value.isBlank())
+                .distinct()
+                .limit(8)
+                .toList();
+        if (!aboutItems.isEmpty()) {
+            json.append(",\"about\":[");
+            for (int i = 0; i < aboutItems.size(); i++) {
+                if (i > 0) {
+                    json.append(',');
+                }
+                json.append("{\"@type\":\"Thing\",\"name\":\"")
+                        .append(jsonEscape(aboutItems.get(i)))
+                        .append("\"}");
+            }
+            json.append(']');
+        }
+        List<SourceLink> citedSources = citations == null ? List.of() : citations.stream()
+                .filter(source -> source != null && source.url() != null && !source.url().isBlank())
+                .limit(6)
+                .toList();
+        if (!citedSources.isEmpty()) {
+            json.append(",\"citation\":[");
+            for (int i = 0; i < citedSources.size(); i++) {
+                SourceLink source = citedSources.get(i);
+                if (i > 0) {
+                    json.append(',');
+                }
+                json.append("{\"@type\":\"CreativeWork\",\"name\":\"")
+                        .append(jsonEscape(source.label() == null || source.label().isBlank() ? source.url() : source.label()))
+                        .append("\",\"url\":\"")
+                        .append(jsonEscape(source.url()))
+                        .append("\"}");
+            }
+            json.append(']');
+        }
+        json.append('}');
+        return json.toString();
+    }
+
+    private List<String> utilityAbout(UtilityRecord utility) {
+        List<String> about = new ArrayList<>();
+        about.add("Backflow testing");
+        about.add("Cross-connection control");
+        about.add(utility.utilityName());
+        about.add(stateLabel(utility.state()));
+        if (usesPortalWorkflow(utility)) {
+            about.add(portalDisplayName(utility));
+        }
+        if (utility.supportsApprovedTestersPage()) {
+            about.add("Approved backflow testers");
+        }
+        return about;
+    }
+
+    private List<String> cityAbout(CityAliasRecord alias, UtilityRecord utility, String intentName) {
+        List<String> about = new ArrayList<>(utilityAbout(utility));
+        about.add(alias.city());
+        about.add(intentName);
+        return about;
+    }
+
     private String faqStructuredData(List<FaqItem> faqItems) {
         StringBuilder json = new StringBuilder();
         json.append("{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[");
@@ -3158,18 +3329,22 @@ public class SiteController {
                     canonical(utilityPath(utility))
             );
             for (CityAliasRecord alias : publishedCityAliasesForUtility(utility.utilityId())) {
-                addStructuredListItem(
-                        items,
-                        seenUrls,
-                        alias.city() + " submit backflow report",
-                        canonical(cityIntentPath(alias, "submit-backflow-report"))
-                );
-                addStructuredListItem(
-                        items,
-                        seenUrls,
-                        alias.city() + " backflow reporting portal",
-                        canonical(cityIntentPath(alias, "backflow-reporting-portal"))
-                );
+                if (cityIntentConfig("submit-backflow-report", alias, utility) != null) {
+                    addStructuredListItem(
+                            items,
+                            seenUrls,
+                            alias.city() + " submit backflow report",
+                            canonical(cityIntentPath(alias, "submit-backflow-report"))
+                    );
+                }
+                if (cityIntentConfig("backflow-reporting-portal", alias, utility) != null) {
+                    addStructuredListItem(
+                            items,
+                            seenUrls,
+                            alias.city() + " backflow reporting portal",
+                            canonical(cityIntentPath(alias, "backflow-reporting-portal"))
+                    );
+                }
             }
         }
         if (items.isEmpty()) {

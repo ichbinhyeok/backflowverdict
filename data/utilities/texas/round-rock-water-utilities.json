@@ -103,7 +103,70 @@
   "costBand": {
     "testingRange": "Private quotes vary; if the City has to arrange a missed test it can add a $75 fee plus the actual test cost.",
     "repairRetestRange": "Repair and retest cost depends on the assembly and contractor, and can be billed back if the City had to intervene.",
-    "pricingNotes": "Use private quotes for market pricing, but do not ignore the City fee exposure in missed-test situations."
+    "pricingNotes": "Use private quotes for market pricing, but do not ignore the City fee exposure in missed-test situations.",
+    "lateFee": {
+      "amount": "$75",
+      "currency": "USD",
+      "appliesTo": "City-arranged missed-test fee, plus actual test cost",
+      "sourceRefs": [
+        "Round Rock backflow prevention program"
+      ]
+    },
+    "sourceRefs": [
+      "Round Rock backflow prevention program"
+    ]
+  },
+  "reportWorkflow": {
+    "portalVendor": "BSI",
+    "portalName": "BSI Online tracking",
+    "portalUrl": "https://www.bsionlinetracking.com/",
+    "submitter": "Registered BPAT or licensed tester registered with the City",
+    "requiredIdentifiers": [
+      "BSI notice or confirmation context",
+      "Hazard class",
+      "Registered BPAT status"
+    ],
+    "acceptanceProof": "Keep the BSI Online submission confirmation and repair/retest evidence if the device fails.",
+    "sourceRefs": [
+      "Round Rock backflow prevention program",
+      "Round Rock registered tester list"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Registered BPAT status",
+      "City tester registration"
+    ],
+    "deviceScopeLimit": "High-hazard devices are annual; low-hazard residential irrigation devices follow the seven-year track unless another hazard applies.",
+    "sourceRefs": [
+      "Round Rock backflow prevention program",
+      "Round Rock registered tester list"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "High-hazard devices: annual",
+      "Low-hazard residential irrigation devices: every 7 years"
+    ],
+    "noticeLeadDays": 30,
+    "pastDueLadder": [
+      "If the owner misses testing, the City may test the device and add a $75 fee plus actual test cost to the water bill.",
+      "Failed devices get a 30-day repair and retest window."
+    ],
+    "sourceRefs": [
+      "Round Rock backflow prevention program"
+    ]
+  },
+  "failedTestPolicy": {
+    "repairDeadlineDays": 30,
+    "retestRequired": true,
+    "failedReportMustBeSubmitted": true,
+    "sourceRefs": [
+      "Round Rock backflow prevention program"
+    ]
   },
   "sources": [
     {

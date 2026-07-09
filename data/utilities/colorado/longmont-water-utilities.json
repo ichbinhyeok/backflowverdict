@@ -115,7 +115,86 @@
   "costBand": {
     "testingRange": "Testing is market-priced, but Longmont adds a $10 passing-test portal charge and escalating late-compliance costs.",
     "repairRetestRange": "Repair and retest costs rise quickly on irrigation upgrades and failed assemblies.",
-    "pricingNotes": "The main cost pressure is avoiding late fees, civil penalties, and shutoff scheduling."
+    "pricingNotes": "The main cost pressure is avoiding late fees, civil penalties, and shutoff scheduling.",
+    "portalFee": {
+      "amount": "$10",
+      "currency": "USD",
+      "appliesTo": "Passing-test portal charge",
+      "sourceRefs": [
+        "Longmont backflow prevention program"
+      ]
+    },
+    "fineMax": {
+      "amount": "$500",
+      "currency": "USD",
+      "appliesTo": "Civil penalties per assembly after escalation",
+      "sourceRefs": [
+        "Longmont backflow prevention program"
+      ]
+    },
+    "sourceRefs": [
+      "Longmont backflow prevention program"
+    ]
+  },
+  "reportWorkflow": {
+    "portalVendor": "SwiftComply",
+    "portalName": "Longmont SwiftComply backflow test submission workflow",
+    "portalUrl": "https://longmontcolorado.gov/water/drinking-water/backflow-prevention/",
+    "submitter": "Certified tester",
+    "requiredIdentifiers": [
+      "Longmont due date",
+      "Certified tester information",
+      "Assembly or property record"
+    ],
+    "acceptanceProof": "Keep the accepted SwiftComply or city submission record before the enforcement ladder advances.",
+    "filingFee": {
+      "amount": "$10",
+      "currency": "USD",
+      "appliesTo": "Passing-test portal charge",
+      "sourceRefs": [
+        "Longmont backflow prevention program"
+      ]
+    },
+    "sourceRefs": [
+      "Longmont backflow prevention program"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Certified tester status"
+    ],
+    "deviceScopeLimit": "Annual tests and new or replacement assemblies must be handled by certified testers.",
+    "sourceRefs": [
+      "Longmont backflow prevention program"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Annual testing by certified testers",
+      "New and replacement assemblies tested after installation"
+    ],
+    "initialTestRequired": true,
+    "noticeLeadDays": 45,
+    "pastDueLadder": [
+      "31 days past due: fee and city-contracted outreach",
+      "61 days past due: escalated civil enforcement warning",
+      "91 days past due: civil penalties up to $500 per assembly and service interruption can be scheduled"
+    ],
+    "calendarWindow": "Utility due dates between April and September",
+    "sourceRefs": [
+      "Longmont backflow prevention program"
+    ]
+  },
+  "failedTestPolicy": {
+    "repairDeadlineDays": 60,
+    "retestRequired": true,
+    "failedReportMustBeSubmitted": true,
+    "shutoffRisk": true,
+    "sourceRefs": [
+      "Longmont backflow prevention program"
+    ]
   },
   "sources": [
     {

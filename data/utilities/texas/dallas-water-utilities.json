@@ -118,7 +118,77 @@
   "costBand": {
     "testingRange": "Dallas does not publish retail test pricing, but passed SwiftComply submissions carry a $10 filing fee in addition to the tester's market rate.",
     "repairRetestRange": "Repair and retest pricing depends on device type and whether the follow-up touches permitting or irrigation replacement work.",
-    "pricingNotes": "Dallas is clearer on compliance workflow and portal fees than on consumer-facing quote ranges."
+    "pricingNotes": "Dallas is clearer on compliance workflow and portal fees than on consumer-facing quote ranges.",
+    "filingFee": {
+      "amount": "$10",
+      "currency": "USD",
+      "appliesTo": "Passed SwiftComply backflow test submissions",
+      "sourceRefs": [
+        "Dallas Water Utilities backflow test reports page"
+      ]
+    },
+    "sourceRefs": [
+      "Dallas Water Utilities backflow test reports page"
+    ]
+  },
+  "reportWorkflow": {
+    "portalVendor": "SwiftComply",
+    "portalName": "Dallas SwiftComply backflow reporting workflow",
+    "portalUrl": "https://dallas.gov/departments/waterutilities/Pages/Backflow-Test-Reports.aspx",
+    "submitter": "Licensed tester registered with the City of Dallas",
+    "requiredIdentifiers": [
+      "City of Dallas registered tester status",
+      "Assembly or annual-program notice context",
+      "Permit or Building Inspections context when a new or replacement assembly applies"
+    ],
+    "acceptanceProof": "Keep the accepted SwiftComply submission or accepted city form when the Building Inspections path applies.",
+    "filingFee": {
+      "amount": "$10",
+      "currency": "USD",
+      "appliesTo": "Passed SwiftComply backflow test submissions",
+      "sourceRefs": [
+        "Dallas Water Utilities backflow test reports page"
+      ]
+    },
+    "sourceRefs": [
+      "Dallas Water Utilities backflow test reports page",
+      "Dallas printable backflow test report form"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "City of Dallas registered tester status",
+      "Backflow tester license"
+    ],
+    "deviceScopeLimit": "High-hazard annual assemblies and permitted new or replacement assemblies need the Dallas-specific workflow.",
+    "sourceRefs": [
+      "Dallas Water Utilities backflow test reports page",
+      "Dallas printable backflow test report form"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "High-hazard assemblies: annual",
+      "Irrigation devices: tested when newly installed, repaired, or replaced"
+    ],
+    "initialTestRequired": true,
+    "pastDueLadder": [
+      "Failed devices must be repaired and retested within 30 days."
+    ],
+    "sourceRefs": [
+      "Dallas Water Utilities backflow test reports page"
+    ]
+  },
+  "failedTestPolicy": {
+    "repairDeadlineDays": 30,
+    "retestRequired": true,
+    "failedReportMustBeSubmitted": true,
+    "sourceRefs": [
+      "Dallas Water Utilities backflow test reports page"
+    ]
   },
   "sources": [
     {
