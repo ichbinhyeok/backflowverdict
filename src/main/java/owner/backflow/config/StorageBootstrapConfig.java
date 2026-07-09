@@ -28,6 +28,7 @@ public class StorageBootstrapConfig {
         createDirectory(Path.of(leadsProperties.root()));
         createParentDirectory(opsProperties.freshnessReportPath());
         createParentDirectory(opsProperties.verificationReportPath());
+        createParentDirectory(opsProperties.searchConsolePagesPath());
     }
 
     private void createParentDirectory(String filePath) {

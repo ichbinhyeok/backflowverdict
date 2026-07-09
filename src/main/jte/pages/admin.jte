@@ -156,18 +156,71 @@
                                 </ul>
                             </article>
 
+                            <article class="detail-card">
+                                <h3>Search Console snapshot</h3>
+                                @if (seoScorecard.summary().searchConsoleAvailable())
+                                    <p><strong>${seoScorecard.summary().searchConsoleTotalClicks()}</strong> clicks from ${seoScorecard.summary().searchConsoleTotalImpressions()} impressions.</p>
+                                    <ul class="detail-list">
+                                        <li>${seoScorecard.summary().searchConsoleMatchedRouteCount()} utility routes matched (${seoScorecard.summary().searchConsoleMatchedRoutePercent()}%)</li>
+                                        <li>${seoScorecard.summary().searchConsoleCtrBottleneckCount()} CTR bottlenecks</li>
+                                        <li>${seoScorecard.summary().searchConsoleRankingBottleneckCount()} ranking/content bottlenecks</li>
+                                        <li>${seoScorecard.summary().searchConsoleDiscoveryBottleneckCount()} discovery/indexing bottlenecks</li>
+                                        <li>${seoScorecard.summary().searchConsoleNoDataRouteCount()} routes still missing page rows</li>
+                                    </ul>
+                                @else
+                                    <p>No Search Console page export is loaded yet.</p>
+                                    <p class="detail-meta">Expected CSV path: <code>${seoScorecard.summary().searchConsoleSourcePath()}</code></p>
+                                @endif
+                            </article>
+
                             <article class="detail-card detail-card--warm">
                                 <h3>Next internal SEO actions</h3>
                                 <ul class="detail-list">
                                     <li>${seoScorecard.summary().highScoreRouteCount()} routes score 80+ in the internal model</li>
                                     <li>${seoScorecard.summary().improvementCandidateCount()} improvement candidates are visible below</li>
-                                    <li>Use the candidate gaps to decide the next utility JSON facts to verify.</li>
+                                    <li>Use candidate gaps and Search Console bottlenecks to decide the next utility JSON facts to verify.</li>
                                 </ul>
                                 <div class="hero__actions">
                                     <a class="button button--secondary" href="/admin/seo-scorecard.json">Download SEO JSON</a>
                                 </div>
                             </article>
                         </div>
+
+                        @if (seoScorecard.searchConsole().available() && !seoScorecard.searchConsole().topBottlenecks().isEmpty())
+                            <div class="section-heading">
+                                <span class="eyebrow">Search Console bottlenecks</span>
+                                <h2>Live query-side friction</h2>
+                            </div>
+                            <div class="table-wrap">
+                                <table class="data-table data-table--responsive">
+                                    <thead>
+                                    <tr>
+                                        <th>Page</th>
+                                        <th>Bottleneck</th>
+                                        <th>Performance</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @for (var metric : seoScorecard.searchConsole().topBottlenecks())
+                                        <tr>
+                                            <td data-label="Page">
+                                                <a href="${metric.path()}">${metric.path()}</a>
+                                                <div class="detail-meta">${metric.page()}</div>
+                                            </td>
+                                            <td data-label="Bottleneck">
+                                                <strong>${metric.bottleneckLabel()}</strong>
+                                                <div class="detail-meta">Opportunity score: ${metric.opportunityScore()}</div>
+                                            </td>
+                                            <td data-label="Performance">
+                                                <div>${metric.clicks()} clicks, ${metric.impressions()} impressions</div>
+                                                <div class="detail-meta">${metric.displayCtr()} CTR, position ${metric.displayPosition()}</div>
+                                            </td>
+                                        </tr>
+                                    @endfor
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
 
                         <div class="section-heading">
                             <span class="eyebrow">Strongest routes</span>
@@ -179,6 +232,7 @@
                                 <tr>
                                     <th>Route</th>
                                     <th>Score</th>
+                                    <th>Performance</th>
                                     <th>Strengths</th>
                                 </tr>
                                 </thead>
@@ -192,6 +246,15 @@
                                         <td data-label="Score">
                                             <strong>${item.displayScore()}</strong>
                                             <div class="detail-meta">Index facts: ${item.indexQualityScore()}</div>
+                                        </td>
+                                        <td data-label="Performance">
+                                            <strong>${item.searchConsoleBottleneckLabel()}</strong>
+                                            @if (item.searchConsolePerformance() != null)
+                                                <div class="detail-meta">${item.searchConsolePerformance().clicks()} clicks, ${item.searchConsolePerformance().impressions()} impressions</div>
+                                                <div class="detail-meta">${item.searchConsolePerformance().displayCtr()} CTR, position ${item.searchConsolePerformance().displayPosition()}</div>
+                                            @else
+                                                <div class="detail-meta">No page row in the loaded Search Console export.</div>
+                                            @endif
                                         </td>
                                         <td data-label="Strengths">
                                             <ul class="detail-list">
@@ -221,6 +284,7 @@
                                     <thead>
                                     <tr>
                                         <th>Candidate</th>
+                                        <th>Performance</th>
                                         <th>Gap</th>
                                         <th>Next action</th>
                                     </tr>
@@ -231,6 +295,15 @@
                                             <td data-label="Candidate">
                                                 <a href="${item.path()}">${item.utilityName()}</a>
                                                 <div class="detail-meta">${item.displayScore()} SEO score, ${item.opportunityScore()} opportunity score</div>
+                                            </td>
+                                            <td data-label="Performance">
+                                                <strong>${item.searchConsoleBottleneckLabel()}</strong>
+                                                @if (item.searchConsolePerformance() != null)
+                                                    <div class="detail-meta">${item.searchConsolePerformance().clicks()} clicks, ${item.searchConsolePerformance().impressions()} impressions</div>
+                                                    <div class="detail-meta">${item.searchConsolePerformance().displayCtr()} CTR, position ${item.searchConsolePerformance().displayPosition()}</div>
+                                                @else
+                                                    <div class="detail-meta">No page row in the loaded Search Console export.</div>
+                                                @endif
                                             </td>
                                             <td data-label="Gap">
                                                 <ul class="detail-list">

@@ -12,7 +12,8 @@ public record AppOpsProperties(
         @DefaultValue("false") boolean allowLocalRequests,
         @DefaultValue("") String verificationToken,
         @DefaultValue("7") int brokenLinkSuppressionDays,
-        @DefaultValue("") String currentDate
+        @DefaultValue("") String currentDate,
+        @DefaultValue("./storage/search-console/pages.csv") String searchConsolePagesPath
 ) {
     public static AppOpsProperties defaults() {
         return new AppOpsProperties(
@@ -23,7 +24,8 @@ public record AppOpsProperties(
                 false,
                 "",
                 7,
-                ""
+                "",
+                "./storage/search-console/pages.csv"
         );
     }
 }

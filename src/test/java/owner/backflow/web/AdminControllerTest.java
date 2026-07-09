@@ -34,11 +34,13 @@ import owner.backflow.service.LeadSubmissionGuardService;
         "app.admin.password=tlsgur3108",
         "app.ops.verification-token=test-ops-token",
         "app.ops.current-date=2026-06-29",
-        "app.ops.write-freshness-report-on-startup=false"
+        "app.ops.write-freshness-report-on-startup=false",
+        "app.ops.search-console-pages-path=build/test-data/admin-ui/search-console/pages.csv"
 })
 @AutoConfigureMockMvc
 class AdminControllerTest {
     private static final Path LEADS_ROOT = Path.of("build", "test-data", "admin-ui", "leads");
+    private static final Path SEARCH_CONSOLE_PATH = Path.of("build", "test-data", "admin-ui", "search-console", "pages.csv");
 
     @Autowired
     private MockMvc mockMvc;
@@ -58,6 +60,7 @@ class AdminControllerTest {
     @BeforeEach
     void resetLeadsRoot() throws IOException {
         leadSubmissionGuardService.clear();
+        Files.deleteIfExists(SEARCH_CONSOLE_PATH);
         if (!Files.exists(LEADS_ROOT)) {
             registryService.reload();
             return;
@@ -100,6 +103,7 @@ class AdminControllerTest {
                 .andExpect(redirectedUrl("/admin?error=1"));
 
         MockHttpSession session = adminSession();
+        writeSearchConsoleSnapshot();
 
         mockMvc.perform(get("/admin").session(session))
                 .andExpect(status().isOk())
@@ -108,6 +112,9 @@ class AdminControllerTest {
                 .andExpect(content().string(containsString("Coverage watch")))
                 .andExpect(content().string(containsString("SEO scorecard")))
                 .andExpect(content().string(containsString("structured workflow coverage")))
+                .andExpect(content().string(containsString("Search Console snapshot")))
+                .andExpect(content().string(containsString("CTR bottlenecks")))
+                .andExpect(content().string(containsString("CTR/title bottleneck")))
                 .andExpect(content().string(containsString("Next internal SEO actions")))
                 .andExpect(content().string(containsString("/admin/seo-scorecard.json")))
                 .andExpect(content().string(containsString("Improvement candidates")))
@@ -185,7 +192,8 @@ class AdminControllerTest {
         mockMvc.perform(get("/admin/seo-scorecard.json").session(session))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("\"strongestRoutes\"")))
-                .andExpect(content().string(containsString("\"improvementCandidates\"")));
+                .andExpect(content().string(containsString("\"improvementCandidates\"")))
+                .andExpect(content().string(containsString("\"searchConsole\"")));
     }
 
     @Test
@@ -457,5 +465,17 @@ class AdminControllerTest {
 
     private String csrf(MockHttpSession session) {
         return adminCsrfService.ensureToken(session);
+    }
+
+    private void writeSearchConsoleSnapshot() throws IOException {
+        Files.createDirectories(SEARCH_CONSOLE_PATH.getParent());
+        Files.writeString(
+                SEARCH_CONSOLE_PATH,
+                """
+                Top pages,Clicks,Impressions,CTR,Position
+                https://backflowpath.com/utilities/texas/dallas-water-utilities/,0,180,0.4%,9.8
+                https://backflowpath.com/utilities/texas/garland-water-utilities/,1,42,2.4%,13.2
+                """
+        );
     }
 }

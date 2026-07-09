@@ -10,6 +10,8 @@ import owner.backflow.data.model.SourceLink;
 import owner.backflow.data.model.SubmissionMethod;
 import owner.backflow.data.model.UtilityRecord;
 import owner.backflow.files.BackflowRegistryService;
+import owner.backflow.ops.SearchConsolePerformanceService.SearchConsolePageMetric;
+import owner.backflow.ops.SearchConsolePerformanceService.SearchConsoleSnapshot;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -27,15 +29,21 @@ public class SeoScorecardService {
     );
 
     private final BackflowRegistryService registryService;
+    private final SearchConsolePerformanceService searchConsolePerformanceService;
 
-    public SeoScorecardService(BackflowRegistryService registryService) {
+    public SeoScorecardService(
+            BackflowRegistryService registryService,
+            SearchConsolePerformanceService searchConsolePerformanceService
+    ) {
         this.registryService = registryService;
+        this.searchConsolePerformanceService = searchConsolePerformanceService;
     }
 
     public SeoScorecardReport buildReport() {
         List<UtilityRecord> utilities = registryService.listPublishedUtilities();
+        SearchConsoleSnapshot searchConsole = searchConsolePerformanceService.loadSnapshot();
         List<SeoScorecardItem> items = utilities.stream()
-                .map(this::scoreUtility)
+                .map(utility -> scoreUtility(utility, searchConsole))
                 .toList();
 
         List<SeoScorecardItem> strongestRoutes = items.stream()
@@ -65,18 +73,31 @@ public class SeoScorecardService {
                         count(utilities.stream().filter(UtilityRecord::hasFailedTestPolicy).toList()),
                         count(utilities.stream().filter(this::hasStructuredFees).toList()),
                         count(items.stream().filter(item -> item.score() >= 80).toList()),
-                        improvementCandidates.size()
+                        improvementCandidates.size(),
+                        searchConsole.available(),
+                        searchConsole.sourcePath(),
+                        searchConsole.totalClicks(),
+                        searchConsole.totalImpressions(),
+                        count(items.stream().filter(item -> item.searchConsolePerformance() != null).toList()),
+                        count(items.stream().filter(item -> "ctr_bottleneck".equals(item.searchConsoleBottleneckCode())).toList()),
+                        count(items.stream().filter(item -> "ranking_bottleneck".equals(item.searchConsoleBottleneckCode())).toList()),
+                        count(items.stream().filter(item -> "discovery_bottleneck".equals(item.searchConsoleBottleneckCode())
+                                || "no_impressions".equals(item.searchConsoleBottleneckCode())).toList()),
+                        count(items.stream().filter(item -> item.searchConsolePerformance() == null).toList())
                 ),
                 strongestRoutes,
-                improvementCandidates
+                improvementCandidates,
+                searchConsole
         );
     }
 
-    private SeoScorecardItem scoreUtility(UtilityRecord utility) {
+    private SeoScorecardItem scoreUtility(UtilityRecord utility, SearchConsoleSnapshot searchConsole) {
         List<String> strengths = new ArrayList<>();
         List<String> gaps = new ArrayList<>();
         List<String> nextActions = new ArrayList<>();
         String evidence = evidenceText(utility);
+        String path = utilityPath(utility);
+        SearchConsolePageMetric searchConsolePerformance = searchConsole.metricForPath(path);
 
         int score = utility.indexQualityScore() * 3;
         int opportunityScore = utility.meetsIndexQualityFloor() ? 18 : 8;
@@ -187,6 +208,37 @@ public class SeoScorecardService {
             strengths.add("Portal or online submission signal");
         }
 
+        if (searchConsolePerformance != null) {
+            score += searchConsolePerformance.clicks() > 0 ? Math.min(searchConsolePerformance.clicks() * 2, 10) : 0;
+            score += searchConsolePerformance.impressions() > 0 ? 4 : 0;
+            strengths.add(searchConsolePerformance.clicks() + " clicks / "
+                    + searchConsolePerformance.impressions() + " impressions in Search Console");
+            opportunityScore += searchConsolePerformance.opportunityScore();
+            switch (searchConsolePerformance.bottleneckCode()) {
+                case "ctr_bottleneck" -> {
+                    gaps.add("Search Console shows impressions but weak CTR");
+                    nextActions.add("Rewrite title/meta around the query family and put the deadline, portal, or approved-tester hook first.");
+                }
+                case "ranking_bottleneck" -> {
+                    gaps.add("Search Console shows ranking/content depth bottleneck");
+                    nextActions.add("Add source-backed utility details, internal links, and city-intent variants before asking for reindexing.");
+                }
+                case "discovery_bottleneck", "no_impressions" -> {
+                    gaps.add("Search Console shows low or no impressions");
+                    nextActions.add("Keep the URL in the priority sitemap and add more internal links from state, hub, and related guide pages.");
+                }
+                default -> {
+                    if (searchConsolePerformance.clicks() > 0) {
+                        strengths.add("Already earning organic clicks");
+                    }
+                }
+            }
+        } else if (searchConsole.available()) {
+            gaps.add("No Search Console page row for this route yet");
+            nextActions.add("Confirm the URL is indexed, then add internal links or request indexing if it remains invisible.");
+            opportunityScore += utility.meetsIndexQualityFloor() ? 10 : 4;
+        }
+
         if (nextActions.isEmpty()) {
             nextActions.add("Keep this route in the priority sitemap and watch Search Console impressions by query family.");
         }
@@ -195,10 +247,11 @@ public class SeoScorecardService {
                 utility.utilityId(),
                 utility.utilityName(),
                 utility.state(),
-                utilityPath(utility),
+                path,
                 Math.min(score, 100),
                 utility.indexQualityScore(),
                 opportunityScore,
+                searchConsolePerformance,
                 strengths,
                 gaps,
                 distinct(nextActions)
@@ -398,11 +451,13 @@ public class SeoScorecardService {
     public record SeoScorecardReport(
             SeoScorecardSummary summary,
             List<SeoScorecardItem> strongestRoutes,
-            List<SeoScorecardItem> improvementCandidates
+            List<SeoScorecardItem> improvementCandidates,
+            SearchConsoleSnapshot searchConsole
     ) {
         public SeoScorecardReport {
             strongestRoutes = strongestRoutes == null ? List.of() : List.copyOf(strongestRoutes);
             improvementCandidates = improvementCandidates == null ? List.of() : List.copyOf(improvementCandidates);
+            searchConsole = searchConsole == null ? SearchConsoleSnapshot.missing("") : searchConsole;
         }
     }
 
@@ -416,7 +471,16 @@ public class SeoScorecardService {
             int failedTestPolicyCount,
             int structuredFeeCount,
             int highScoreRouteCount,
-            int improvementCandidateCount
+            int improvementCandidateCount,
+            boolean searchConsoleAvailable,
+            String searchConsoleSourcePath,
+            int searchConsoleTotalClicks,
+            int searchConsoleTotalImpressions,
+            int searchConsoleMatchedRouteCount,
+            int searchConsoleCtrBottleneckCount,
+            int searchConsoleRankingBottleneckCount,
+            int searchConsoleDiscoveryBottleneckCount,
+            int searchConsoleNoDataRouteCount
     ) {
         public int indexReadyCoveragePercent() {
             return percent(indexReadyUtilityCount, publishedUtilityCount);
@@ -446,6 +510,10 @@ public class SeoScorecardService {
             return percent(structuredFeeCount, publishedUtilityCount);
         }
 
+        public int searchConsoleMatchedRoutePercent() {
+            return percent(searchConsoleMatchedRouteCount, publishedUtilityCount);
+        }
+
         private static int percent(int numerator, int denominator) {
             if (denominator <= 0) {
                 return 0;
@@ -462,6 +530,7 @@ public class SeoScorecardService {
             int score,
             int indexQualityScore,
             int opportunityScore,
+            SearchConsolePageMetric searchConsolePerformance,
             List<String> strengths,
             List<String> gaps,
             List<String> nextActions
@@ -474,6 +543,14 @@ public class SeoScorecardService {
 
         public String displayScore() {
             return score + "/100";
+        }
+
+        public String searchConsoleBottleneckCode() {
+            return searchConsolePerformance == null ? "no_data" : searchConsolePerformance.bottleneckCode();
+        }
+
+        public String searchConsoleBottleneckLabel() {
+            return searchConsolePerformance == null ? "No Search Console row" : searchConsolePerformance.bottleneckLabel();
         }
     }
 }
