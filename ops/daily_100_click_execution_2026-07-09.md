@@ -51,6 +51,12 @@ Top page signals:
    - Added BreadcrumbList, ItemList, and FAQPage structured data so the route reads as a submission-path directory rather than a generic article.
    - Added primary navigation, mobile navigation, footer, and home-card links plus `report_submission_route_click` tracking.
 
+7. Raised the procedure-density lever on existing high-intent pages.
+   - Added a `Notice-to-closeout map` to city intent pages so annual, portal, submit-report, approved-tester, failed-test, irrigation, and fire-line routes expose authority, notice trigger, tester gate, submission route, proof to keep, and failed-test branch.
+   - Added `Procedure facts` to utility focus pages so annual, irrigation, and fire-line pages show the same source-backed closeout logic above the workflow.
+   - Added `Failure closeout facts` to failed-test utility pages so repair, retest, accepted submission, proof, cost exposure, and source trail are visible before provider routing.
+   - Expanded HowTo structured data from submit-report city pages to all city intent pages with workflow steps, plus utility focus and failed-test pages.
+
 ## Verification
 
 - `.\gradlew.bat test --rerun-tasks`: passed.
@@ -68,6 +74,15 @@ Top page signals:
 - Latest local HTTP checks on `http://localhost:8107`: passed.
   - `/submit-backflow-report` returns 200 and includes ItemList, FAQPage, Austin, and Dallas city submission links.
   - `/sitemap.xml` and `/sitemap-priority.xml` include `https://backflowpath.com/submit-backflow-report`.
+- Latest procedure-density tests:
+  - City intent pages include `Notice-to-closeout map` and HowTo schema.
+  - Utility focus pages include `Procedure facts` and HowTo schema.
+  - Failed-test utility pages include `Failure closeout facts` and HowTo schema.
+- Latest local HTTP checks on `http://localhost:8108`: passed.
+  - `/cities/texas/dallas/annual-backflow-testing`
+  - `/cities/texas/dallas/backflow-reporting-portal`
+  - `/utilities/texas/dallas-water-utilities/annual-testing`
+  - `/utilities/texas/fort-worth-water-utilities/failed-test`
 
 ## Next Pressure Point
 

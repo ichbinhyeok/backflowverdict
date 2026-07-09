@@ -8,6 +8,8 @@
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 @param String testerPath = null
 @param String testerLabel = null
+@param String noticeIdentifierHint
+@param String reportAcceptanceHint
 
 @template.layouts.app(page = page, content = @`
     <div class="failure-workflow-surface">
@@ -71,6 +73,48 @@
                         <h3 style="color: #ffffff;">Submit report</h3>
                         <p style="color: rgba(239, 241, 243, 0.72);">The corrected report and proof of acceptance are what actually restore compliance.</p>
                     </article>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="section section--tight">
+        <div class="container">
+            <article class="detail-card detail-card--key">
+                <div class="section-heading">
+                    <span class="eyebrow">Failure closeout facts</span>
+                    <h2>Repair is not the closeout event</h2>
+                    <p>The failed assembly is not closed until the corrected result reaches the governing utility workflow and the owner keeps proof that the report was accepted.</p>
+                </div>
+                <div class="metadata-grid metadata-grid--three">
+                    <div class="metadata-block">
+                        <strong>Notice trigger</strong>
+                        <span>${noticeIdentifierHint}</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Tester or repair gate</strong>
+                        <span>${testerPath != null && testerLabel != null ? testerLabel : "Confirm accepted tester and repair eligibility with the utility."}</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Submission route</strong>
+                        @if (utility.submissionMethods().isEmpty())
+                            <span>Confirm the current failed-test report path with the program contact.</span>
+                        @else
+                            <span>${utility.submissionMethods().get(0).label()} (${utility.submissionMethods().get(0).kind()})</span>
+                        @endif
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Proof to keep</strong>
+                        <span>${reportAcceptanceHint}</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Cost exposure</strong>
+                        <span>${utility.costBand().repairRetestRange()}</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Official source trail</strong>
+                        <span>${utility.sources().size()} stored source links, last verified ${utility.lastVerified().toString()}.</span>
+                    </div>
                 </div>
             </article>
         </div>

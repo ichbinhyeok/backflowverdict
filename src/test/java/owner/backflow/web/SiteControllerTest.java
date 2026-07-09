@@ -647,6 +647,10 @@ class SiteControllerTest {
         mockMvc.perform(get("/utilities/texas/fort-worth-water-utilities/failed-test"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Fort Worth Water Backflow Program failed backflow test next steps")))
+                .andExpect(content().string(containsString("Failure closeout facts")))
+                .andExpect(content().string(containsString("Repair is not the closeout event")))
+                .andExpect(content().string(containsString("Proof to keep")))
+                .andExpect(content().string(containsString("HowTo")))
                 .andExpect(content().string(containsString("What the failed notice means")))
                 .andExpect(content().string(containsString("Need repair, retest, or provider coordination?")))
                 .andExpect(content().string(not(containsString("Create failed-test brief"))))
@@ -707,6 +711,10 @@ class SiteControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Dallas Water Utilities Backflow Prevention Program annual backflow testing")))
                 .andExpect(content().string(containsString("SwiftComply")))
+                .andExpect(content().string(containsString("Procedure facts")))
+                .andExpect(content().string(containsString("What has to line up before this item is closed")))
+                .andExpect(content().string(containsString("Proof to keep")))
+                .andExpect(content().string(containsString("HowTo")))
                 .andExpect(content().string(containsString("source=/utilities/texas/dallas-water-utilities/annual-testing")))
                 .andExpect(content().string(containsString("State compliance layer")))
                 .andExpect(content().string(not(containsString("Office staff: create annual brief"))))
@@ -1195,7 +1203,11 @@ class SiteControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Dallas annual backflow testing")))
                 .andExpect(content().string(containsString("Open annual testing workflow")))
-                .andExpect(content().string(containsString("SwiftComply")));
+                .andExpect(content().string(containsString("SwiftComply")))
+                .andExpect(content().string(containsString("Notice-to-closeout map")))
+                .andExpect(content().string(containsString("Source-backed procedure before the record is treated as closed")))
+                .andExpect(content().string(containsString("Proof to keep")))
+                .andExpect(content().string(containsString("HowTo")));
 
         mockMvc.perform(get("/cities/texas/dallas/backflow-reporting-portal"))
                 .andExpect(status().isOk())
@@ -1203,6 +1215,9 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("SwiftComply")))
                 .andExpect(content().string(containsString("Notice or device clue")))
                 .andExpect(content().string(containsString("Acceptance rule")))
+                .andExpect(content().string(containsString("Submission route")))
+                .andExpect(content().string(containsString("Failure branch")))
+                .andExpect(content().string(containsString("HowTo")))
                 .andExpect(content().string(containsString("Use the governing utility workflow")))
                 .andExpect(content().string(containsString("City FAQ")))
                 .andExpect(content().string(containsString("Which backflow reporting portal should Dallas use")))
@@ -1227,7 +1242,9 @@ class SiteControllerTest {
         mockMvc.perform(get("/cities/texas/dallas/failed-backflow-test"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Dallas failed backflow test")))
-                .andExpect(content().string(containsString("repair, retest")));
+                .andExpect(content().string(containsString("repair, retest")))
+                .andExpect(content().string(containsString("Notice-to-closeout map")))
+                .andExpect(content().string(containsString("HowTo")));
 
         mockMvc.perform(get("/cities/texas/dallas/irrigation-backflow-testing"))
                 .andExpect(status().isOk())

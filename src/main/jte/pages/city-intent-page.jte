@@ -86,6 +86,48 @@
     </section>
 
     <section class="section section--tight">
+        <div class="container">
+            <article class="detail-card detail-card--key">
+                <div class="section-heading">
+                    <span class="eyebrow">Notice-to-closeout map</span>
+                    <h2>Source-backed procedure before the record is treated as closed</h2>
+                    <p>This is the working path for ${alias.city()} notices: match the authority, confirm the tester gate, use the accepted submission route, and keep proof that the report was accepted.</p>
+                </div>
+                <div class="metadata-grid metadata-grid--three">
+                    <div class="metadata-block">
+                        <strong>Authority</strong>
+                        <span>${utility.utilityName()}</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Notice trigger</strong>
+                        <span>${noticeIdentifierHint}</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Tester gate</strong>
+                        <span>${testerPath != null && testerLabel != null ? testerLabel : "Confirm tester eligibility with the governing utility before scheduling."}</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Submission route</strong>
+                        @if (utility.submissionMethods().isEmpty())
+                            <span>Confirm the current report path with the program contact before filing.</span>
+                        @else
+                            <span>${utility.submissionMethods().get(0).label()} (${utility.submissionMethods().get(0).kind()})</span>
+                        @endif
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Proof to keep</strong>
+                        <span>${reportAcceptanceHint}</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Failure branch</strong>
+                        <span><a href="${failedTestPath}">Open failed-test workflow</a> before treating repair, retest, or resubmission as complete.</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="section section--tight">
         <div class="container page-frame">
             <div class="stack">
                 @if (!highlights.isEmpty())

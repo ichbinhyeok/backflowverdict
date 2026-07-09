@@ -13,6 +13,8 @@
 @param java.util.List<String> commercialNotes
 @param String testerPath = null
 @param String testerLabel = null
+@param String noticeIdentifierHint
+@param String reportAcceptanceHint
 @param String requestHelpPath
 @param java.util.List<owner.backflow.web.FaqItem> faqItems
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
@@ -75,6 +77,44 @@
                         </ul>
                     </article>
                 </div>
+
+                <article class="detail-card detail-card--key">
+                    <div class="section-heading">
+                        <span class="eyebrow">Procedure facts</span>
+                        <h2>What has to line up before this item is closed</h2>
+                        <p>Use this as the source-backed check before treating the ${eyebrow.toLowerCase()} route as a completed compliance item.</p>
+                    </div>
+                    <div class="metadata-grid metadata-grid--three">
+                        <div class="metadata-block">
+                            <strong>Notice trigger</strong>
+                            <span>${noticeIdentifierHint}</span>
+                        </div>
+                        <div class="metadata-block">
+                            <strong>Tester gate</strong>
+                            <span>${testerPath != null && testerLabel != null ? testerLabel : "Confirm tester eligibility with the utility before scheduling."}</span>
+                        </div>
+                        <div class="metadata-block">
+                            <strong>Submission route</strong>
+                            @if (utility.submissionMethods().isEmpty())
+                                <span>Confirm the current report path with the utility contact before filing.</span>
+                            @else
+                                <span>${utility.submissionMethods().get(0).label()} (${utility.submissionMethods().get(0).kind()})</span>
+                            @endif
+                        </div>
+                        <div class="metadata-block">
+                            <strong>Proof to keep</strong>
+                            <span>${reportAcceptanceHint}</span>
+                        </div>
+                        <div class="metadata-block">
+                            <strong>Failed-test branch</strong>
+                            <span><a href="/utilities/${utility.state()}/${utility.canonicalSlug()}/failed-test">Open failed-test steps</a> if the assembly does not pass.</span>
+                        </div>
+                        <div class="metadata-block">
+                            <strong>Official source trail</strong>
+                            <span>${utility.sources().size()} stored source links, last verified ${utility.lastVerified().toString()}.</span>
+                        </div>
+                    </div>
+                </article>
 
                 <article class="panel panel--dark">
                     <div class="section-heading">

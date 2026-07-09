@@ -674,12 +674,24 @@ public class SiteController {
                 utility.utilityName() + " failed backflow test | BackflowPath",
                 "Repair, retest, and submission next steps for a failed backflow test in " + utility.utilityName() + ".",
                 utilityPath(utility) + "failed-test",
-                breadcrumbStructuredData(List.of(
-                        new BreadcrumbItem("Home", canonical("/")),
-                        new BreadcrumbItem(stateLabel(utility.state()), canonical("/states/" + utility.state() + "/backflow-testing")),
-                        new BreadcrumbItem(utility.utilityName(), canonical(utilityPath(utility))),
-                        new BreadcrumbItem("Failed test", canonical(utilityPath(utility) + "failed-test"))
-                ))
+                combineStructuredData(
+                        breadcrumbStructuredData(List.of(
+                                new BreadcrumbItem("Home", canonical("/")),
+                                new BreadcrumbItem(stateLabel(utility.state()), canonical("/states/" + utility.state() + "/backflow-testing")),
+                                new BreadcrumbItem(utility.utilityName(), canonical(utilityPath(utility))),
+                                new BreadcrumbItem("Failed test", canonical(utilityPath(utility) + "failed-test"))
+                        )),
+                        workflowHowToStructuredData(
+                                utility.utilityName() + " failed backflow test repair and retest",
+                                "Repair, retest, and accepted report submission steps for a failed backflow test in " + utility.utilityName() + ".",
+                                utilityPath(utility) + "failed-test",
+                                List.of(
+                                        "Repair the failed backflow assembly or blocked components first.",
+                                        "Schedule and complete a passing retest before the utility deadline slips.",
+                                        "Submit the corrected report through the accepted utility workflow and keep proof of acceptance."
+                                )
+                        )
+                )
         ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
                 utility.utilityId(),
                 utilityPath(utility) + "failed-test",
@@ -690,6 +702,8 @@ public class SiteController {
         model.addAttribute("failedGuide", registryService.findPublishedGuide("failed-backflow-test-next-steps").orElse(null));
         model.addAttribute("testerPath", testerPath(utility));
         model.addAttribute("testerLabel", testerLabel(utility));
+        model.addAttribute("noticeIdentifierHint", noticeIdentifierHint(utility));
+        model.addAttribute("reportAcceptanceHint", reportAcceptanceHint(utility));
         model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
                 "failed-backflow-test-next-steps",
                 "backflow-test-cost",
@@ -881,7 +895,7 @@ public class SiteController {
                                 new BreadcrumbItem(alias.city(), canonical(cityPath(alias))),
                                 new BreadcrumbItem(intent.heading(), canonical(path))
                         )),
-                        submitReportHowToStructuredData(alias, utility, intent),
+                        cityIntentHowToStructuredData(alias, intent),
                         faqStructuredData(faqItems)
                 )
         ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
@@ -2078,6 +2092,7 @@ public class SiteController {
                                 new BreadcrumbItem(utility.utilityName(), canonical(utilityPath(utility))),
                                 new BreadcrumbItem(titleStem, canonical(path))
                         )),
+                        workflowHowToStructuredData(titleStem, description, path, focus.workflowSteps()),
                         faqStructuredData(utilityFaqItems(utility))
                 )
         ).withRequestHelpPath(requestHelpPath));
@@ -2090,6 +2105,8 @@ public class SiteController {
         model.addAttribute("commercialNotes", utility.commercialNotes());
         model.addAttribute("testerPath", testerPath(utility));
         model.addAttribute("testerLabel", testerLabel(utility));
+        model.addAttribute("noticeIdentifierHint", noticeIdentifierHint(utility));
+        model.addAttribute("reportAcceptanceHint", reportAcceptanceHint(utility));
         model.addAttribute("requestHelpPath", requestHelpPath);
         model.addAttribute("faqItems", utilityFaqItems(utility));
         model.addAttribute("stateGuide", registryService.findPublishedStateGuide(utility.state()).orElse(null));
@@ -2936,19 +2953,27 @@ public class SiteController {
         items.add(new StructuredListItem(name, url));
     }
 
-    private String submitReportHowToStructuredData(CityAliasRecord alias, UtilityRecord utility, CityIntentConfig intent) {
-        if (!"submit-backflow-report".equals(intent.slug())) {
+    private String cityIntentHowToStructuredData(CityAliasRecord alias, CityIntentConfig intent) {
+        return workflowHowToStructuredData(
+                intent.heading(),
+                intent.description(),
+                cityIntentPath(alias, intent.slug()),
+                intent.workflowSteps()
+        );
+    }
+
+    private String workflowHowToStructuredData(String name, String description, String path, List<String> steps) {
+        if (steps == null || steps.isEmpty()) {
             return null;
         }
-        String path = cityIntentPath(alias, intent.slug());
         StringBuilder json = new StringBuilder();
         json.append("{\"@context\":\"https://schema.org\",\"@type\":\"HowTo\"")
-                .append(",\"name\":\"").append(jsonEscape(intent.heading())).append("\"")
-                .append(",\"description\":\"").append(jsonEscape(intent.description())).append("\"")
+                .append(",\"name\":\"").append(jsonEscape(name)).append("\"")
+                .append(",\"description\":\"").append(jsonEscape(description)).append("\"")
                 .append(",\"url\":\"").append(jsonEscape(canonical(path))).append("\"")
                 .append(",\"step\":[");
-        for (int i = 0; i < intent.workflowSteps().size(); i++) {
-            String step = intent.workflowSteps().get(i);
+        for (int i = 0; i < steps.size(); i++) {
+            String step = steps.get(i);
             if (i > 0) {
                 json.append(',');
             }
