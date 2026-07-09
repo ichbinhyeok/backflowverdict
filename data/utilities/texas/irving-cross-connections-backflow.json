@@ -120,6 +120,57 @@
     "repairRetestRange": "Repair and retest pricing depends on the failed assembly and whether replacement permitting is involved.",
     "pricingNotes": "Irving's public cost signal is more about avoiding late or incomplete Envirotrax reporting than retail test price."
   },
+  "reportWorkflow": {
+    "portalVendor": "VEPO",
+    "portalName": "Envirotrax online backflow report submission",
+    "portalUrl": "https://www.envirotrax.com/",
+    "submissionDeadlineDaysAfterTest": 10,
+    "submitter": "Tester with current Envirotrax profile credentials",
+    "paperAccepted": false,
+    "requiredIdentifiers": [
+      "Envirotrax tester profile",
+      "Permit verification for newly installed or replaced assemblies",
+      "Old serial number for replacement assemblies"
+    ],
+    "acceptanceProof": "Keep the Envirotrax online submission record and the customer copy of the test form.",
+    "sourceRefs": [
+      "Irving cross connections and backflow",
+      "Envirotrax registered tester search"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Tester credentials",
+      "Test kit calibration forms",
+      "Envirotrax registration"
+    ],
+    "deviceScopeLimit": "Newly replaced or installed assemblies need permit verification before testing.",
+    "sourceRefs": [
+      "Irving cross connections and backflow",
+      "Envirotrax registered tester search"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Reportable tests: online Envirotrax submission within 10 days of the test date",
+      "Newly installed or replaced assemblies: permit verification before testing"
+    ],
+    "reportDueDaysAfterTest": 10,
+    "initialTestRequired": true,
+    "sourceRefs": [
+      "Irving cross connections and backflow"
+    ]
+  },
+  "failedTestPolicy": {
+    "retestRequired": true,
+    "failedReportMustBeSubmitted": true,
+    "sourceRefs": [
+      "Irving cross connections and backflow"
+    ]
+  },
   "sources": [
     {
       "label": "Irving cross connections and backflow",

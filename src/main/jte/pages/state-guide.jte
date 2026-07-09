@@ -1,4 +1,5 @@
 @import owner.backflow.web.PageMeta
+@import owner.backflow.web.PriorityRoute
 @import owner.backflow.data.model.CityAliasRecord
 @import owner.backflow.data.model.GuideRecord
 @import owner.backflow.data.model.StateGuideRecord
@@ -9,6 +10,7 @@
 @param java.util.List<UtilityRecord> allUtilities
 @param java.util.List<CityAliasRecord> cityAliases = java.util.List.of()
 @param java.util.List<GuideRecord> guides
+@param java.util.List<PriorityRoute> priorityRoutes = java.util.List.of()
 
 @template.layouts.app(page = page, content = @`
     <section class="page-hero">
@@ -87,6 +89,29 @@
                                 <a class="button button--secondary" href="/cities/${alias.state()}/${alias.aliasSlug()}/backflow-testing">Open city route</a>
                             </div>
                         </article>
+                    @endfor
+                </div>
+            </div>
+        </section>
+    @endif
+
+    @if (!priorityRoutes.isEmpty())
+        <section class="section section--tight">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Best local drops</span>
+                    <h2>High-evidence ${stateGuide.state()} routes to open next</h2>
+                    <p class="lede">These links are selected from structured portal, deadline, tester, fee, and failed-test evidence in this state.</p>
+                </div>
+                <div class="support-links">
+                    @for (var route : priorityRoutes)
+                        <a class="support-link" href="${route.path()}">
+                            <div>
+                                <strong>${route.label()}</strong>
+                                <span>${route.eyebrow()} · ${route.description()}</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
                     @endfor
                 </div>
             </div>

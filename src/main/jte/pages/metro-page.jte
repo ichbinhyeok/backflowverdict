@@ -1,4 +1,5 @@
 @import owner.backflow.web.PageMeta
+@import owner.backflow.web.PriorityRoute
 @import owner.backflow.data.model.MetroRecord
 @import owner.backflow.data.model.CityAliasRecord
 @import owner.backflow.data.model.GuideRecord
@@ -11,6 +12,7 @@
 @param java.util.Map<String, CityAliasRecord> cityAliasesByName = java.util.Map.of()
 @param java.util.Map<String, Integer> providerCoverageCounts = java.util.Map.of()
 @param java.util.List<GuideRecord> guides = java.util.List.of()
+@param java.util.List<PriorityRoute> priorityRoutes = java.util.List.of()
 
 @template.layouts.app(page = page, content = @`
     <section class="page-hero">
@@ -118,6 +120,29 @@
             </article>
         </div>
     </section>
+
+    @if (!priorityRoutes.isEmpty())
+        <section class="section section--tight">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Metro priority routes</span>
+                    <h2>Open the strongest local pages inside this metro</h2>
+                    <p class="lede">These routes are ranked from the mapped utility records, not from a generic statewide list.</p>
+                </div>
+                <div class="support-links">
+                    @for (var route : priorityRoutes)
+                        <a class="support-link" href="${route.path()}">
+                            <div>
+                                <strong>${route.label()}</strong>
+                                <span>${route.eyebrow()} · ${route.description()}</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    @endfor
+                </div>
+            </div>
+        </section>
+    @endif
 
     <section class="section" id="mapped-utilities">
         <div class="container">

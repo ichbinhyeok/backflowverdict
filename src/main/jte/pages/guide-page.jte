@@ -1,4 +1,5 @@
 @import owner.backflow.web.PageMeta
+@import owner.backflow.web.PriorityRoute
 @import owner.backflow.data.model.GuideRecord
 @import owner.backflow.data.model.StateGuideRecord
 @import owner.backflow.data.model.MetroRecord
@@ -9,6 +10,7 @@
 @param java.util.List<MetroRecord> relatedMetros = java.util.List.of()
 @param java.util.List<UtilityRecord> relatedUtilities = java.util.List.of()
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
+@param java.util.List<PriorityRoute> priorityRoutes = java.util.List.of()
 
 @template.layouts.app(page = page, content = @`
     <section class="page-hero">
@@ -79,6 +81,29 @@
             </article>
         </div>
     </section>
+
+    @if (!priorityRoutes.isEmpty())
+        <section class="section section--tight">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Best next local pages</span>
+                    <h2>Apply this guide to a source-backed city or utility route</h2>
+                    <p class="lede">These pages are selected from the utility records most relevant to this guide and ranked by structured evidence.</p>
+                </div>
+                <div class="support-links">
+                    @for (var route : priorityRoutes)
+                        <a class="support-link" href="${route.path()}">
+                            <div>
+                                <strong>${route.label()}</strong>
+                                <span>${route.eyebrow()} · ${route.description()}</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    @endfor
+                </div>
+            </div>
+        </section>
+    @endif
 
     @if (guide.slug().equals("backflow-test-notice-next-steps"))
         <section class="section section--tight">

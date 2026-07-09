@@ -123,7 +123,55 @@
   "costBand": {
     "testingRange": "The City does not publish consumer testing price bands, so retail cost remains market-based.",
     "repairRetestRange": "Repair and retest price depends on the assembly and contractor; City materials focus on procedure rather than consumer pricing.",
-    "pricingNotes": "The published $50 annual registration fee applies to tester companies, not directly to the property owner."
+    "pricingNotes": "The published $50 annual registration fee applies to tester companies, not directly to the property owner.",
+    "feeNotes": "$50 annual company registration fee applies to tester companies, not directly to the property owner.",
+    "sourceRefs": [
+      "College Station drinking water and backflow page",
+      "College Station registered tester list"
+    ]
+  },
+  "reportWorkflow": {
+    "portalName": "College Station Water Services report delivery workflow",
+    "portalUrl": "https://www.cstx.gov/media/x5opl1q0/backflowtestform.pdf",
+    "submissionDeadlineDaysAfterTest": 30,
+    "submitter": "TCEQ-certified BPAT registered with the City of College Station",
+    "paperAccepted": true,
+    "requiredIdentifiers": [
+      "City report form",
+      "City-registered BPAT status",
+      "Water Services delivery within 30 days"
+    ],
+    "acceptanceProof": "Keep proof that the original report reached Water Services within 30 days of testing.",
+    "sourceRefs": [
+      "College Station drinking water and backflow page",
+      "College Station backflow test report form"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "credentialDocuments": [
+      "TCEQ-certified BPAT status",
+      "City of College Station tester registration",
+      "Fireline or general tester category when applicable"
+    ],
+    "deviceScopeLimit": "The City list separates fireline testers from general testers.",
+    "sourceRefs": [
+      "College Station drinking water and backflow page",
+      "College Station registered tester list"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Installation testing is required when a backflow prevention device is installed",
+      "Original reports must reach Water Services within 30 days of testing"
+    ],
+    "initialTestRequired": true,
+    "reportDueDaysAfterTest": 30,
+    "sourceRefs": [
+      "College Station drinking water and backflow page",
+      "College Station backflow test report form"
+    ]
   },
   "sources": [
     {

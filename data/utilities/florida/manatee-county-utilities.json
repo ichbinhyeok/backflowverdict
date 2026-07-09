@@ -117,7 +117,78 @@
   "costBand": {
     "testingRange": "Testing is market-priced when handled through a registered provider, but the county fallback adds at least $50 per assembly.",
     "repairRetestRange": "Repair and retest cost rises quickly if the device fails and the county case is already escalated.",
-    "pricingNotes": "The strongest local monetary signal is the county-contractor fallback and fee pressure."
+    "pricingNotes": "The strongest local monetary signal is the county-contractor fallback and fee pressure.",
+    "fineMin": {
+      "amount": "$50",
+      "currency": "USD",
+      "appliesTo": "Minimum county contract tester charge per backflow preventer when the county has to step in",
+      "sourceRefs": [
+        "Manatee County cross connection control program"
+      ]
+    },
+    "sourceRefs": [
+      "Manatee County cross connection control program"
+    ]
+  },
+  "reportWorkflow": {
+    "portalName": "Manatee County contractor filing workflow",
+    "portalUrl": "https://www.mymanatee.org/departments/utilities-department/backflow-division",
+    "submitter": "County-registered tester",
+    "requiredIdentifiers": [
+      "County annual testing letter",
+      "Backflow preventer or assembly record",
+      "Registered tester status"
+    ],
+    "acceptanceProof": "Keep proof that the county-registered tester filed the result before the case rolls into county-managed non-compliance.",
+    "sourceRefs": [
+      "Manatee County cross connection control program",
+      "Manatee County provider registration rules"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "County potable tester registration",
+      "State Fire Marshal credentials for fireline preventers"
+    ],
+    "deviceScopeLimit": "Fireline backflow preventers require State Fire Marshal credentials in addition to county registration.",
+    "sourceRefs": [
+      "Manatee County cross connection control program",
+      "Manatee County provider registration rules"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Annual testing within 30 days of the county letter",
+      "Final notices leave seven days before the county contract tester is scheduled"
+    ],
+    "pastDueLadder": [
+      "30-day annual testing letter",
+      "Final notice with a seven-day response window",
+      "County contract tester fallback with at least $50 charged per assembly"
+    ],
+    "sourceRefs": [
+      "Manatee County cross connection control program"
+    ]
+  },
+  "failedTestPolicy": {
+    "repairDeadlineDays": 30,
+    "retestRequired": true,
+    "failedReportMustBeSubmitted": true,
+    "penaltyAmount": {
+      "amount": "$50",
+      "currency": "USD",
+      "appliesTo": "Minimum county contract tester fallback charge per assembly",
+      "sourceRefs": [
+        "Manatee County cross connection control program"
+      ]
+    },
+    "sourceRefs": [
+      "Manatee County cross connection control program",
+      "Manatee County provider registration rules"
+    ]
   },
   "sources": [
     {

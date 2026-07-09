@@ -127,6 +127,55 @@
     "repairRetestRange": "Repair and retest costs widen materially for fireline and larger commercial assemblies.",
     "pricingNotes": "Fort Worth's public materials are clearer on tester registration, permit sequencing, Development Services permit-cost routing, and inspection failure causes than public retail test pricing."
   },
+  "reportWorkflow": {
+    "portalVendor": "VEPO",
+    "portalName": "VEPO Envirotrax",
+    "portalUrl": "https://www.vepollc.com/",
+    "submitter": "Licensed BPAT registered with the City of Fort Worth",
+    "requiredIdentifiers": [
+      "City of Fort Worth registered BPAT status",
+      "Permit or inspection context when installation, replacement, relocation, or removal applies",
+      "VEPO Envirotrax report entry"
+    ],
+    "acceptanceProof": "Keep the accepted VEPO Envirotrax record and onsite paperwork when permit inspection is involved.",
+    "sourceRefs": [
+      "Fort Worth backflow and cross-connection control"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "BPAT license",
+      "City of Fort Worth tester registration",
+      "License, insurance, and test-for-accuracy reports",
+      "State Fire Marshal employment requirement for fire protection sprinkler assemblies"
+    ],
+    "deviceScopeLimit": "Fire protection sprinkler backflows must be tested or repaired by a BPAT who is a full-time employee of a licensed fire protection sprinkler company.",
+    "sourceRefs": [
+      "Fort Worth backflow and cross-connection control"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "All backflow protection assemblies: installation, repair, relocation, and annually thereafter",
+      "Commercial-property assemblies and health-hazard assemblies: annual testing"
+    ],
+    "initialTestRequired": true,
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "Fort Worth backflow and cross-connection control"
+    ]
+  },
+  "failedTestPolicy": {
+    "retestRequired": true,
+    "failedReportMustBeSubmitted": true,
+    "inspectionRequired": true,
+    "sourceRefs": [
+      "Fort Worth backflow and cross-connection control"
+    ]
+  },
   "sources": [
     {
       "label": "Fort Worth backflow and cross-connection control",

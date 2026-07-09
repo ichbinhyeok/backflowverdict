@@ -482,6 +482,7 @@ public class SiteController {
         model.addAttribute("allUtilities", utilities);
         model.addAttribute("cityAliases", publishedCityAliasesForState(stateGuide.state()));
         model.addAttribute("guides", supportGuidesForStateGuide(stateGuide));
+        model.addAttribute("priorityRoutes", priorityRoutesForState(stateGuide.state(), 8));
         return "pages/state-guide";
     }
 
@@ -539,6 +540,7 @@ public class SiteController {
         model.addAttribute("relatedUtilities", relatedUtilities);
         model.addAttribute("relatedMetros", relatedMetros);
         model.addAttribute("relatedGuides", relatedGuidesForGuide(guide));
+        model.addAttribute("priorityRoutes", priorityRoutesForGuide(guide, relatedUtilities, 8));
         return "pages/guide-page";
     }
 
@@ -551,6 +553,7 @@ public class SiteController {
         MetroRecord metro = registryService.findPublishedMetro(state, metroSlug)
                 .orElseThrow(() -> new NotFoundException("Metro page not found."));
         List<ProviderRecord> providers = registryService.findProvidersForMetro(metro);
+        List<UtilityRecord> utilities = registryService.featuredUtilitiesForMetro(metro);
         model.addAttribute("page", page(
                 metro.title() + " | BackflowPath",
                 metro.description(),
@@ -562,11 +565,12 @@ public class SiteController {
                 ))
         ));
         model.addAttribute("metro", metro);
-        model.addAttribute("utilities", registryService.featuredUtilitiesForMetro(metro));
+        model.addAttribute("utilities", utilities);
         model.addAttribute("providers", providers);
         model.addAttribute("cityAliasesByName", publishedCityAliasesByNameForState(metro.state()));
         model.addAttribute("providerCoverageCounts", providerCoverageCounts(metro, providers));
         model.addAttribute("guides", metroGuides(metro));
+        model.addAttribute("priorityRoutes", priorityRoutesForUtilities(utilities, PRIORITY_INTENT_SLUGS, true, true, 8));
         return "pages/metro-page";
     }
 
@@ -1320,6 +1324,29 @@ public class SiteController {
         );
     }
 
+    private List<PriorityRoute> priorityRoutesForState(String state, int limit) {
+        return priorityRoutesForUtilities(
+                registryService.listPublishedUtilitiesForState(state),
+                PRIORITY_INTENT_SLUGS,
+                true,
+                true,
+                limit
+        );
+    }
+
+    private List<PriorityRoute> priorityRoutesForGuide(GuideRecord guide, List<UtilityRecord> relatedUtilities, int limit) {
+        List<UtilityRecord> utilities = relatedUtilities == null || relatedUtilities.isEmpty()
+                ? registryService.listPublishedUtilities()
+                : relatedUtilities;
+        return priorityRoutesForUtilities(
+                utilities,
+                priorityIntentSlugsForGuide(guide),
+                true,
+                true,
+                limit
+        );
+    }
+
     private List<PriorityRoute> priorityRoutesForPortal(String portalSlug, int limit) {
         return priorityRoutesForUtilities(
                 portalUtilities(portalSlug),
@@ -1328,6 +1355,19 @@ public class SiteController {
                 true,
                 limit
         );
+    }
+
+    private Set<String> priorityIntentSlugsForGuide(GuideRecord guide) {
+        String slug = guide == null || guide.slug() == null ? "" : guide.slug();
+        return switch (slug) {
+            case "backflow-reporting-portals" -> Set.of("backflow-reporting-portal", "submit-backflow-report", "failed-backflow-test");
+            case "backflow-test-notice-next-steps" -> Set.of("annual-backflow-testing", "submit-backflow-report", "backflow-reporting-portal", "failed-backflow-test");
+            case "failed-backflow-test-next-steps" -> Set.of("failed-backflow-test", "submit-backflow-report", "backflow-reporting-portal");
+            case "approved-testers-vs-find-a-tester", "county-certified-vs-utility-approved-testers" -> Set.of("approved-backflow-testers", "submit-backflow-report");
+            case "anniversary-date-vs-calendar-deadline" -> Set.of("annual-backflow-testing", "submit-backflow-report");
+            case "residential-vs-commercial-backflow-rules", "rpz-vs-dcva-vs-pvb" -> Set.of("annual-backflow-testing", "irrigation-backflow-testing", "fire-line-backflow-testing");
+            default -> PRIORITY_INTENT_SLUGS;
+        };
     }
 
     private List<PriorityRoute> priorityRoutesForUtilities(

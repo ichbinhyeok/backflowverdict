@@ -123,7 +123,80 @@
   "costBand": {
     "testingRange": "Private testing prices are market-based, but League City publishes a one-time $35 registration fee for each backflow device.",
     "repairRetestRange": "Repairs, replacements, and overhauls must be performed by a licensed tester and permitted by the City.",
-    "pricingNotes": "League City also publishes a $75 nonrefundable annual tester registration fee and a $40 processing fee risk when enforcement escalates."
+    "pricingNotes": "League City also publishes a $75 nonrefundable annual tester registration fee and a $40 processing fee risk when enforcement escalates.",
+    "filingFee": {
+      "amount": "$35",
+      "currency": "USD",
+      "appliesTo": "One-time registration fee for each backflow device",
+      "sourceRefs": [
+        "League City backflow testing program"
+      ]
+    },
+    "lateFee": {
+      "amount": "$40",
+      "currency": "USD",
+      "appliesTo": "Processing fee risk when enforcement escalates",
+      "sourceRefs": [
+        "League City backflow testing program"
+      ]
+    },
+    "feeNotes": "$75 nonrefundable annual tester registration fee applies to testing companies.",
+    "sourceRefs": [
+      "League City backflow testing program"
+    ]
+  },
+  "reportWorkflow": {
+    "portalVendor": "BSI",
+    "portalName": "BSI Online Backflow Tracking System",
+    "portalUrl": "https://www.bsionlinetracking.com/",
+    "submitter": "Certified backflow prevention assembly tester",
+    "requiredIdentifiers": [
+      "Customer Confirmation Number from the BSI reminder or overdue letter",
+      "Device or assembly record",
+      "48-hour online report submission window"
+    ],
+    "acceptanceProof": "Keep the BSI Online submission record tied to the CCN so an overdue notice can be resolved quickly.",
+    "sourceRefs": [
+      "League City backflow testing program",
+      "BSI Online tracking"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Certified tester status",
+      "League City tester registration",
+      "BSI Online access"
+    ],
+    "deviceScopeLimit": "Repairs, replacements, and overhauls must be performed by a licensed tester and permitted by the City.",
+    "sourceRefs": [
+      "League City backflow testing program",
+      "BSI Online tracking"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Backflow devices or assemblies: upon installation and at least annually",
+      "Testing companies: submit reports through BSI Online within 48 hours"
+    ],
+    "initialTestRequired": true,
+    "pastDueLadder": [
+      "BSI sends official due and overdue notices.",
+      "Failure to perform and report annual testing through BSI Online can escalate to termination of water service and a $40 processing fee."
+    ],
+    "sourceRefs": [
+      "League City backflow testing program"
+    ]
+  },
+  "failedTestPolicy": {
+    "retestRequired": true,
+    "failedReportMustBeSubmitted": true,
+    "shutoffRisk": true,
+    "sourceRefs": [
+      "League City backflow testing program"
+    ]
   },
   "sources": [
     {

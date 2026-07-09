@@ -16,6 +16,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import owner.backflow.data.model.UtilityRecord;
+import owner.backflow.files.BackflowRegistryService;
 import owner.backflow.ops.FreshnessAuditService;
 import owner.backflow.service.LeadRoutingService;
 
@@ -33,6 +35,9 @@ class SiteControllerTest {
 
     @Autowired
     private FreshnessAuditService freshnessAuditService;
+
+    @Autowired
+    private BackflowRegistryService registryService;
 
     @Test
     void homePageLoads() throws Exception {
@@ -632,6 +637,7 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Texas backflow testing requirements")))
                 .andExpect(content().string(containsString("Fort Worth")))
                 .andExpect(content().string(containsString("All live utilities")))
+                .andExpect(content().string(containsString("Best local drops")))
                 .andExpect(content().string(containsString("BreadcrumbList")));
 
         mockMvc.perform(get("/states/arizona/backflow-testing"))
@@ -644,6 +650,7 @@ class SiteControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Failed backflow test next steps")))
                 .andExpect(content().string(containsString("Use this guide with local utility pages")))
+                .andExpect(content().string(containsString("Best next local pages")))
                 .andExpect(content().string(containsString("BreadcrumbList")))
                 .andExpect(content().string(containsString("/methodology#verification-code-tl")))
                 .andExpect(content().string(containsString("/editorial-standards")))
@@ -1532,6 +1539,23 @@ class SiteControllerTest {
     }
 
     @Test
+    void structuredFactCoverageSupportsPriorityRoutes() {
+        long reportWorkflowCount = registryService.listPublishedUtilities().stream()
+                .filter(UtilityRecord::hasReportWorkflow)
+                .count();
+        long testerGateCount = registryService.listPublishedUtilities().stream()
+                .filter(UtilityRecord::hasTesterGate)
+                .count();
+        long deadlinePolicyCount = registryService.listPublishedUtilities().stream()
+                .filter(UtilityRecord::hasDeadlinePolicy)
+                .count();
+
+        org.junit.jupiter.api.Assertions.assertTrue(reportWorkflowCount >= 17);
+        org.junit.jupiter.api.Assertions.assertTrue(testerGateCount >= 17);
+        org.junit.jupiter.api.Assertions.assertTrue(deadlinePolicyCount >= 17);
+    }
+
+    @Test
     void metroAndProviderPagesLoad() throws Exception {
         mockMvc.perform(get("/metros/texas/dallas-fort-worth-metroplex/backflow-testing"))
                 .andExpect(status().isOk())
@@ -1539,6 +1563,7 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("/cities/texas/dallas/backflow-testing")))
                 .andExpect(content().string(containsString("/cities/texas/frisco/backflow-testing")))
                 .andExpect(content().string(containsString("High-intent paths")))
+                .andExpect(content().string(containsString("Metro priority routes")))
                 .andExpect(content().string(org.hamcrest.Matchers.not(containsString("Next Day Backflow Testing"))));
 
         mockMvc.perform(get("/metros/arizona/phoenix-metro/backflow-testing"))
