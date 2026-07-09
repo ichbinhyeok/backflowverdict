@@ -83,25 +83,46 @@
                                 <a class="button button--secondary" href="/leads/new?source=/notice-finder&amp;pageFamily=notice-finder">Request help</a>
                             </div>
                         </article>
-                        <div class="card-grid">
-                            @for (var result : results)
-                                <article class="detail-card detail-card--quiet">
-                                    <span class="pill">${result.resultType()}</span>
-                                    <h3>${result.label()}</h3>
-                                    <p>${result.summary()}</p>
-                                    @if (!result.signals().isEmpty())
-                                        <ul class="detail-list">
-                                            @for (var signal : result.signals())
-                                                <li>${signal}</li>
-                                            @endfor
-                                        </ul>
+                        @if (results.size() > 1)
+                            <article class="detail-card detail-card--quiet">
+                                <span class="eyebrow">If the first match is not it</span>
+                                <h3>Try the next closest route</h3>
+                                <p>Notices often mix a city, portal vendor, tester credential, and due-date clue. These are the next strongest matches without scrolling through the full page.</p>
+                                <div class="card-actions">
+                                    <a class="button button--secondary" href="${results.get(1).path()}">${results.get(1).label()}</a>
+                                    @if (results.size() > 2)
+                                        <a class="button button--secondary" href="${results.get(2).path()}">${results.get(2).label()}</a>
                                     @endif
-                                    <div class="card-actions">
-                                        <a class="button button--secondary" href="${result.path()}">Open route</a>
-                                    </div>
-                                </article>
-                            @endfor
-                        </div>
+                                    @if (results.size() > 3)
+                                        <a class="button button--secondary" href="${results.get(3).path()}">${results.get(3).label()}</a>
+                                    @endif
+                                </div>
+                            </article>
+
+                            <div class="section-heading">
+                                <span class="eyebrow">More matches</span>
+                                <h2>Other routes that matched the notice</h2>
+                            </div>
+                            <div class="card-grid">
+                                @for (var result : results.subList(1, results.size()))
+                                    <article class="detail-card detail-card--quiet">
+                                        <span class="pill">${result.resultType()}</span>
+                                        <h3>${result.label()}</h3>
+                                        <p>${result.summary()}</p>
+                                        @if (!result.signals().isEmpty())
+                                            <ul class="detail-list">
+                                                @for (var signal : result.signals())
+                                                    <li>${signal}</li>
+                                                @endfor
+                                            </ul>
+                                        @endif
+                                        <div class="card-actions">
+                                            <a class="button button--secondary" href="${result.path()}">Open route</a>
+                                        </div>
+                                    </article>
+                                @endfor
+                            </div>
+                        @endif
                     @endif
                 </article>
             @else

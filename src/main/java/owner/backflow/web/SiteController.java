@@ -1605,6 +1605,7 @@ public class SiteController {
         }
 
         Map<String, NoticeFinderResult> resultsByPath = new LinkedHashMap<>();
+        boolean hasLocalityHint = hasLocalityHint(normalizedQuery);
         if (isPortalNoticeQuery(normalizedQuery)) {
             addNoticeFinderResult(resultsByPath, new NoticeFinderResult(
                     "All reporting portal workflows",
@@ -1612,11 +1613,14 @@ public class SiteController {
                     "Portal hub",
                     "Compare source-backed portal families before choosing a tester or report route.",
                     List.of("BSI", "SwiftComply", "VEPO", "Aqua/TrackMyBackflow", "Tokay", "SpryBackflow"),
-                    82
+                    hasLocalityHint ? 42 : 82
             ));
         }
         for (String portalSlug : PORTAL_SLUGS) {
             int portalScore = portalQueryScore(portalSlug, normalizedQuery);
+            if (hasLocalityHint) {
+                portalScore -= 42;
+            }
             if (portalScore > 0) {
                 addNoticeFinderResult(resultsByPath, new NoticeFinderResult(
                         portalName(portalSlug) + " backflow reporting portal",
@@ -1635,9 +1639,7 @@ public class SiteController {
             }
             registryService.findUtilityById(alias.utilityId()).ifPresent(utility -> {
                 int score = scoreCandidate(normalizedQuery, candidateText(alias, utility));
-                if (alias.city() != null && normalizeSearch(alias.city()).equals(normalizedQuery)) {
-                    score += 60;
-                }
+                score += localityBoost(normalizedQuery, alias);
                 score += intentBoost(normalizedQuery, utility);
                 if (score > 0) {
                     addNoticeFinderResult(resultsByPath, new NoticeFinderResult(
@@ -1657,6 +1659,7 @@ public class SiteController {
             if (utility.utilityName() != null && normalizeSearch(utility.utilityName()).contains(normalizedQuery)) {
                 score += 40;
             }
+            score += localityBoost(normalizedQuery, utility);
             score += intentBoost(normalizedQuery, utility);
             if (score > 0) {
                 addNoticeFinderResult(resultsByPath, new NoticeFinderResult(
@@ -1724,19 +1727,63 @@ public class SiteController {
         return score;
     }
 
+    private boolean hasLocalityHint(String normalizedQuery) {
+        for (CityAliasRecord alias : registryService.listCityAliases()) {
+            if (alias.aliasMode() == AliasMode.NOINDEX_BRIDGE) {
+                continue;
+            }
+            if ((alias.city() != null && queryContains(normalizedQuery, alias.city()))
+                    || (alias.aliasSlug() != null && queryContains(normalizedQuery, alias.aliasSlug()))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private int localityBoost(String normalizedQuery, CityAliasRecord alias) {
+        int boost = 0;
+        if (alias.city() != null && queryContains(normalizedQuery, alias.city())) {
+            boost += 72;
+        }
+        if (alias.aliasSlug() != null && queryContains(normalizedQuery, alias.aliasSlug())) {
+            boost += 24;
+        }
+        if (alias.state() != null && queryContains(normalizedQuery, stateLabel(alias.state()))) {
+            boost += 8;
+        }
+        return boost;
+    }
+
+    private int localityBoost(String normalizedQuery, UtilityRecord utility) {
+        int boost = 0;
+        for (String city : utility.serviceAreaCities()) {
+            if (queryContains(normalizedQuery, city)) {
+                boost += 48;
+                break;
+            }
+        }
+        if (utility.state() != null && queryContains(normalizedQuery, stateLabel(utility.state()))) {
+            boost += 8;
+        }
+        return boost;
+    }
+
     private int intentBoost(String normalizedQuery, UtilityRecord utility) {
         int boost = 0;
+        if (isSubmitReportNoticeQuery(normalizedQuery) && (utility.hasReportWorkflow() || usesPortalWorkflow(utility))) {
+            boost += 38;
+        }
         if (isPortalNoticeQuery(normalizedQuery) && usesPortalWorkflow(utility)) {
             boost += 32;
         }
         if (isTesterNoticeQuery(normalizedQuery) && (utility.supportsApprovedTestersPage() || utility.supportsFindATesterPage())) {
-            boost += 24;
+            boost += 34;
         }
         if (isFailedNoticeQuery(normalizedQuery) && !utility.failureHighlights().isEmpty()) {
             boost += 24;
         }
         if (isAnnualNoticeQuery(normalizedQuery) && utility.supportsAnnualTestingPage()) {
-            boost += 18;
+            boost += 30;
         }
         if (isFireLineNoticeQuery(normalizedQuery) && utility.supportsFireLinePage()) {
             boost += 18;
@@ -1797,9 +1844,6 @@ public class SiteController {
         if (isSubmitReportNoticeQuery(normalizedQuery) && cityIntentConfig("submit-backflow-report", alias, utility) != null) {
             return cityIntentPath(alias, "submit-backflow-report");
         }
-        if (isPortalNoticeQuery(normalizedQuery) && cityIntentConfig("backflow-reporting-portal", alias, utility) != null) {
-            return cityIntentPath(alias, "backflow-reporting-portal");
-        }
         if (isTesterNoticeQuery(normalizedQuery) && cityIntentConfig("approved-backflow-testers", alias, utility) != null) {
             return cityIntentPath(alias, "approved-backflow-testers");
         }
@@ -1811,6 +1855,9 @@ public class SiteController {
         }
         if (isAnnualNoticeQuery(normalizedQuery) && cityIntentConfig("annual-backflow-testing", alias, utility) != null) {
             return cityIntentPath(alias, "annual-backflow-testing");
+        }
+        if (isPortalNoticeQuery(normalizedQuery) && cityIntentConfig("backflow-reporting-portal", alias, utility) != null) {
+            return cityIntentPath(alias, "backflow-reporting-portal");
         }
         return cityPath(alias);
     }

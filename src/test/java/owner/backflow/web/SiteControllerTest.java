@@ -760,6 +760,8 @@ class SiteControllerTest {
         mockMvc.perform(get("/notice-finder").queryParam("q", "Euless TrackMyBackflow Hazard ID"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Routes for")))
+                .andExpect(content().string(containsString("Best first")))
+                .andExpect(content().string(containsString("If the first match is not it")))
                 .andExpect(content().string(containsString("Euless backflow notice route")))
                 .andExpect(content().string(containsString("/cities/texas/euless/backflow-reporting-portal")))
                 .andExpect(content().string(containsString("Aqua/TrackMyBackflow")));
@@ -767,13 +769,15 @@ class SiteControllerTest {
         mockMvc.perform(get("/notice-finder").queryParam("q", "Austin WEIRS submit test report"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Austin backflow notice route")))
+                .andExpect(content().string(containsString("href=\"/cities/texas/austin/submit-backflow-report\" aria-label=\"Open top route for Austin backflow notice route\"")))
                 .andExpect(content().string(containsString("/cities/texas/austin/submit-backflow-report")))
                 .andExpect(content().string(containsString("WEIRS")));
 
         mockMvc.perform(get("/notice-finder").queryParam("q", "Oxnard Tokay approved tester"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Oxnard backflow notice route")))
-                .andExpect(content().string(containsString("/cities/california/oxnard/backflow-reporting-portal")))
+                .andExpect(content().string(containsString("href=\"/cities/california/oxnard/approved-backflow-testers\" aria-label=\"Open top route for Oxnard backflow notice route\"")))
+                .andExpect(content().string(containsString("/cities/california/oxnard/approved-backflow-testers")))
                 .andExpect(content().string(containsString("Tokay WebTest")));
 
         mockMvc.perform(get("/notice-finder").queryParam("q", "Aurora SpryBackflow"))
@@ -786,6 +790,13 @@ class SiteControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Dallas backflow notice route")))
                 .andExpect(content().string(containsString("/cities/texas/dallas/failed-backflow-test")));
+
+        mockMvc.perform(get("/notice-finder").queryParam("q", "Dallas SwiftComply annual notice"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Dallas backflow notice route")))
+                .andExpect(content().string(containsString("href=\"/cities/texas/dallas/annual-backflow-testing\" aria-label=\"Open top route for Dallas backflow notice route\"")))
+                .andExpect(content().string(containsString("/cities/texas/dallas/annual-backflow-testing")))
+                .andExpect(content().string(containsString("More matches")));
     }
 
     @Test
