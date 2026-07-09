@@ -1,5 +1,6 @@
 @import owner.backflow.web.PageMeta
 @import owner.backflow.web.FaqItem
+@import owner.backflow.web.PriorityRoute
 @import owner.backflow.data.model.CityAliasRecord
 @import owner.backflow.data.model.GuideRecord
 @import owner.backflow.data.model.UtilityRecord
@@ -14,6 +15,7 @@
 @param java.util.Map<String, String> noticeIdentifierHints = java.util.Map.of()
 @param java.util.Map<String, String> reportAcceptanceHints = java.util.Map.of()
 @param java.util.List<FaqItem> faqItems = java.util.List.of()
+@param java.util.List<PriorityRoute> priorityRoutes = java.util.List.of()
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 
 @template.layouts.app(page = page, content = @`
@@ -110,6 +112,29 @@
                             <a class="button button--secondary" href="/backflow-reporting-portals/sprybackflow">Open SpryBackflow utilities</a>
                         </div>
                     </article>
+                </div>
+            </div>
+        </section>
+    @endif
+
+    @if (!priorityRoutes.isEmpty())
+        <section class="section section--tight">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Priority portal routes</span>
+                    <h2>Local portal pages with the strongest supporting evidence</h2>
+                    <p class="lede">These links prioritize city routes backed by structured portal, tester, fee, deadline, and report-acceptance facts.</p>
+                </div>
+                <div class="support-links">
+                    @for (var route : priorityRoutes)
+                        <a class="support-link" href="${route.path()}">
+                            <div>
+                                <strong>${route.label()}</strong>
+                                <span>${route.eyebrow()} · ${route.description()}</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    @endfor
                 </div>
             </div>
         </section>

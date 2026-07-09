@@ -1,4 +1,5 @@
 @import owner.backflow.web.PageMeta
+@import owner.backflow.web.PriorityRoute
 @import owner.backflow.data.model.GuideRecord
 @import owner.backflow.data.model.MetroRecord
 @import owner.backflow.data.model.StateGuideRecord
@@ -12,6 +13,7 @@
 @param java.util.List<UtilityRecord> featuredUtilities = java.util.List.of()
 @param java.util.Map<String, String> testerPaths
 @param java.util.Map<String, String> testerLabels
+@param java.util.List<PriorityRoute> priorityRoutes = java.util.List.of()
 @param StateGuideRecord featuredStateGuide = null
 @param int publishedUtilityCount
 @param int publishedStateCount
@@ -121,6 +123,29 @@
             </div>
         </div>
     </section>
+
+    @if (!priorityRoutes.isEmpty())
+        <section class="section section--tight">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Priority crawl paths</span>
+                    <h2>Strong local pages to crawl from the homepage</h2>
+                    <p class="lede">These links are selected from structured utility facts, city intent evidence, portal workflow depth, deadline rules, and fee data.</p>
+                </div>
+                <div class="support-links">
+                    @for (var route : priorityRoutes)
+                        <a class="support-link" href="${route.path()}">
+                            <div>
+                                <strong>${route.label()}</strong>
+                                <span>${route.eyebrow()} · ${route.description()}</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    @endfor
+                </div>
+            </div>
+        </section>
+    @endif
 
     <section class="section section--tight">
         <div class="container content-grid">

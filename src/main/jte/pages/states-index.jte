@@ -1,4 +1,5 @@
 @import owner.backflow.web.PageMeta
+@import owner.backflow.web.PriorityRoute
 @import owner.backflow.data.model.StateGuideRecord
 @import owner.backflow.data.model.UtilityRecord
 @param PageMeta page
@@ -6,6 +7,7 @@
 @param java.util.Map<String, Integer> utilityCounts
 @param int publishedUtilityCount
 @param java.util.List<UtilityRecord> featuredUtilities
+@param java.util.List<PriorityRoute> priorityRoutes = java.util.List.of()
 
 @template.layouts.app(page = page, content = @`
     <section class="page-hero">
@@ -96,6 +98,29 @@
             </article>
         </div>
     </section>
+
+    @if (!priorityRoutes.isEmpty())
+        <section class="section section--tight">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Fastest local drops</span>
+                    <h2>Skip from state context into high-evidence local routes</h2>
+                    <p class="lede">These routes are selected from the same quality score used by the priority sitemap, so state browsing points toward deeper pages with real source support.</p>
+                </div>
+                <div class="support-links">
+                    @for (var route : priorityRoutes)
+                        <a class="support-link" href="${route.path()}">
+                            <div>
+                                <strong>${route.label()}</strong>
+                                <span>${route.eyebrow()} · ${route.description()}</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    @endfor
+                </div>
+            </div>
+        </section>
+    @endif
 
     <section class="section section--muted">
         <div class="container">

@@ -36,6 +36,15 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Controller
 public class SiteController {
     private static final List<String> PORTAL_SLUGS = List.of("bsi", "weirs", "swiftcomply", "vepo", "aqua", "tokay", "sprybackflow");
+    private static final Set<String> PRIORITY_INTENT_SLUGS = Set.of(
+            "backflow-reporting-portal",
+            "submit-backflow-report",
+            "approved-backflow-testers",
+            "annual-backflow-testing",
+            "failed-backflow-test",
+            "irrigation-backflow-testing",
+            "fire-line-backflow-testing"
+    );
 
     private final BackflowRegistryService registryService;
     private final AppSiteProperties siteProperties;
@@ -84,6 +93,7 @@ public class SiteController {
         model.addAttribute("metros", metros);
         model.addAttribute("testerPaths", testerPaths);
         model.addAttribute("testerLabels", testerLabels);
+        model.addAttribute("priorityRoutes", priorityRoutes(9));
         model.addAttribute("featuredStateGuide", stateGuides.isEmpty() ? null : stateGuides.get(0));
         model.addAttribute("publishedUtilityCount", utilities.size());
         model.addAttribute("publishedStateCount", stateGuides.size());
@@ -118,6 +128,7 @@ public class SiteController {
         model.addAttribute("utilityCounts", utilityCounts);
         model.addAttribute("publishedUtilityCount", publishedUtilityCount);
         model.addAttribute("featuredUtilities", balancedUtilities(registryService.listPublishedUtilities(), 6));
+        model.addAttribute("priorityRoutes", priorityRoutes(6));
         return "pages/states-index";
     }
 
@@ -221,6 +232,7 @@ public class SiteController {
         model.addAttribute("noticeIdentifierHints", noticeIdentifierHintsFor(utilities));
         model.addAttribute("reportAcceptanceHints", reportAcceptanceHintsFor(utilities));
         model.addAttribute("faqItems", faqItems);
+        model.addAttribute("priorityRoutes", priorityRoutesForPortal("all", 10));
         model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
                 "backflow-test-notice-next-steps",
                 "backflow-reporting-portals",
@@ -265,6 +277,7 @@ public class SiteController {
         model.addAttribute("noticeIdentifierHints", noticeIdentifierHintsFor(utilities));
         model.addAttribute("reportAcceptanceHints", reportAcceptanceHintsFor(utilities));
         model.addAttribute("faqItems", faqItems);
+        model.addAttribute("priorityRoutes", priorityRoutesForPortal(portalSlug, 10));
         model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
                 "backflow-test-notice-next-steps",
                 "backflow-reporting-portals",
@@ -297,6 +310,7 @@ public class SiteController {
         ));
         model.addAttribute("query", trimmedQuery);
         model.addAttribute("results", results);
+        model.addAttribute("priorityRoutes", priorityRoutes(12));
         model.addAttribute("popularPortals", PORTAL_SLUGS.stream()
                 .map(slug -> new NoticeFinderResult(
                         portalName(slug),
@@ -342,6 +356,7 @@ public class SiteController {
         model.addAttribute("portalNamesByUtility", portalNamesFor(utilities));
         model.addAttribute("portalHubPathsByUtility", portalHubPathsFor(utilities));
         model.addAttribute("faqItems", faqItems);
+        model.addAttribute("priorityRoutes", priorityRoutesForIntent("submit-backflow-report", 12));
         model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
                 "backflow-reporting-portals",
                 "backflow-test-notice-next-steps",
@@ -1285,6 +1300,125 @@ public class SiteController {
                 + "<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"></sitemapindex>";
     }
 
+    private List<PriorityRoute> priorityRoutes(int limit) {
+        return priorityRoutesForUtilities(
+                registryService.listPublishedUtilities(),
+                PRIORITY_INTENT_SLUGS,
+                true,
+                true,
+                limit
+        );
+    }
+
+    private List<PriorityRoute> priorityRoutesForIntent(String intentSlug, int limit) {
+        return priorityRoutesForUtilities(
+                registryService.listPublishedUtilities(),
+                Set.of(intentSlug),
+                false,
+                false,
+                limit
+        );
+    }
+
+    private List<PriorityRoute> priorityRoutesForPortal(String portalSlug, int limit) {
+        return priorityRoutesForUtilities(
+                portalUtilities(portalSlug),
+                Set.of("backflow-reporting-portal", "submit-backflow-report", "annual-backflow-testing", "failed-backflow-test"),
+                !portalSlug.equals("all"),
+                true,
+                limit
+        );
+    }
+
+    private List<PriorityRoute> priorityRoutesForUtilities(
+            List<UtilityRecord> utilities,
+            Set<String> intentSlugs,
+            boolean includeUtilityRoutes,
+            boolean includeCityRoutes,
+            int limit
+    ) {
+        Map<String, PriorityRoute> routesByPath = new LinkedHashMap<>();
+        Set<String> allowedIntentSlugs = intentSlugs == null || intentSlugs.isEmpty()
+                ? PRIORITY_INTENT_SLUGS
+                : intentSlugs;
+        for (UtilityRecord utility : utilities) {
+            if (!canIndexUtility(utility)) {
+                continue;
+            }
+            int baseScore = utility.indexQualityScore();
+            if (includeUtilityRoutes && (utility.hasReportWorkflow() || utility.hasTesterGate() || utility.hasDeadlinePolicy())) {
+                addPriorityRoute(routesByPath, new PriorityRoute(
+                        "Utility workflow",
+                        utility.utilityName(),
+                        utility.verdictSummary(),
+                        utilityPath(utility),
+                        baseScore + structuredFactBoost(utility)
+                ));
+            }
+            for (CityAliasRecord alias : publishedCityAliasesForUtility(utility.utilityId()).stream().limit(4).toList()) {
+                if (includeCityRoutes) {
+                    addPriorityRoute(routesByPath, new PriorityRoute(
+                            "City route",
+                            alias.city() + " backflow testing",
+                            cityPageDescription(alias, utility),
+                            cityPath(alias),
+                            baseScore + structuredFactBoost(utility) + 4
+                    ));
+                }
+                cityIntentConfigs(alias, utility).stream()
+                        .filter(intent -> allowedIntentSlugs.contains(intent.slug()))
+                        .filter(intent -> canIndexCityIntent(alias, utility, intent))
+                        .forEach(intent -> addPriorityRoute(routesByPath, new PriorityRoute(
+                                intent.eyebrow(),
+                                intent.heading(),
+                                intent.description(),
+                                cityIntentPath(alias, intent.slug()),
+                                baseScore
+                                        + structuredFactBoost(utility)
+                                        + utility.cityIntentEvidenceScore(intent.slug()) * 3
+                                        + intentPriorityBoost(intent.slug())
+                        )));
+            }
+        }
+        return routesByPath.values().stream()
+                .sorted(Comparator.comparingInt(PriorityRoute::score).reversed()
+                        .thenComparing(PriorityRoute::label))
+                .limit(Math.max(0, limit))
+                .toList();
+    }
+
+    private void addPriorityRoute(Map<String, PriorityRoute> routesByPath, PriorityRoute route) {
+        if (route == null || route.path() == null || route.path().isBlank()) {
+            return;
+        }
+        PriorityRoute existing = routesByPath.get(route.path());
+        if (existing == null || route.score() > existing.score()) {
+            routesByPath.put(route.path(), route);
+        }
+    }
+
+    private int structuredFactBoost(UtilityRecord utility) {
+        int score = 0;
+        score += utility.hasReportWorkflow() ? 4 : 0;
+        score += utility.hasTesterGate() ? 3 : 0;
+        score += utility.hasDeadlinePolicy() ? 3 : 0;
+        score += utility.hasFailedTestPolicy() ? 2 : 0;
+        score += utility.costBand() != null && utility.costBand().hasStructuredFees() ? 2 : 0;
+        return score;
+    }
+
+    private int intentPriorityBoost(String slug) {
+        return switch (slug) {
+            case "submit-backflow-report" -> 9;
+            case "backflow-reporting-portal" -> 8;
+            case "annual-backflow-testing" -> 6;
+            case "failed-backflow-test" -> 5;
+            case "approved-backflow-testers" -> 4;
+            case "irrigation-backflow-testing", "fire-line-backflow-testing" -> 2;
+            default -> 0;
+        };
+    }
+
     private List<String> prioritySitemapPaths() {
         Set<String> paths = new LinkedHashSet<>(List.of(
                 "/notice-finder",
@@ -1298,6 +1432,9 @@ public class SiteController {
         PORTAL_SLUGS.stream()
                 .filter(slug -> !portalUtilities(slug).isEmpty())
                 .map(slug -> "/backflow-reporting-portals/" + slug)
+                .forEach(paths::add);
+        priorityRoutes(80).stream()
+                .map(PriorityRoute::path)
                 .forEach(paths::add);
         registryService.listPublishedUtilities().stream()
                 .filter(this::canIndexUtility)
@@ -1318,10 +1455,10 @@ public class SiteController {
                                 cityIntentConfigs(alias, utility).stream()
                                         .filter(intent -> Set.of(
                                                 "backflow-reporting-portal",
-                                        "submit-backflow-report",
-                                        "approved-backflow-testers",
-                                        "annual-backflow-testing",
-                                        "failed-backflow-test"
+                                                "submit-backflow-report",
+                                                "approved-backflow-testers",
+                                                "annual-backflow-testing",
+                                                "failed-backflow-test"
                                         ).contains(intent.slug()))
                                         .filter(intent -> canIndexCityIntent(alias, utility, intent))
                                         .forEach(intent -> paths.add(cityIntentPath(alias, intent.slug())));

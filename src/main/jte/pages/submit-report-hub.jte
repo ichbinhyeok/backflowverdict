@@ -1,5 +1,6 @@
 @import owner.backflow.web.PageMeta
 @import owner.backflow.web.FaqItem
+@import owner.backflow.web.PriorityRoute
 @import owner.backflow.data.model.CityAliasRecord
 @import owner.backflow.data.model.GuideRecord
 @import owner.backflow.data.model.UtilityRecord
@@ -11,6 +12,7 @@
 @param java.util.Map<String, String> portalNamesByUtility = java.util.Map.of()
 @param java.util.Map<String, String> portalHubPathsByUtility = java.util.Map.of()
 @param java.util.List<FaqItem> faqItems = java.util.List.of()
+@param java.util.List<PriorityRoute> priorityRoutes = java.util.List.of()
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 
 @template.layouts.app(page = page, content = @`
@@ -63,6 +65,29 @@
             </article>
         </div>
     </section>
+
+    @if (!priorityRoutes.isEmpty())
+        <section class="section section--tight">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Submit-report priority routes</span>
+                    <h2>City report pages with enough evidence to act on</h2>
+                    <p class="lede">These routes are ranked by accepted submission workflow, portal/vendor signal, tester gate, identifiers, filing fees, and deadline proof.</p>
+                </div>
+                <div class="support-links">
+                    @for (var route : priorityRoutes)
+                        <a class="support-link" href="${route.path()}">
+                            <div>
+                                <strong>${route.label()}</strong>
+                                <span>${route.eyebrow()} · ${route.description()}</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    @endfor
+                </div>
+            </div>
+        </section>
+    @endif
 
     <section class="section">
         <div class="container">

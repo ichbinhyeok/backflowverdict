@@ -1,12 +1,14 @@
 @import owner.backflow.web.PageMeta
 @import owner.backflow.web.FaqItem
 @import owner.backflow.web.NoticeFinderResult
+@import owner.backflow.web.PriorityRoute
 @import owner.backflow.data.model.GuideRecord
 @import owner.backflow.data.model.UtilityRecord
 @param PageMeta page
 @param String query = ""
 @param java.util.List<NoticeFinderResult> results = java.util.List.of()
 @param java.util.List<NoticeFinderResult> popularPortals = java.util.List.of()
+@param java.util.List<PriorityRoute> priorityRoutes = java.util.List.of()
 @param java.util.List<UtilityRecord> featuredUtilities = java.util.List.of()
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 @param java.util.List<FaqItem> faqItems = java.util.List.of()
@@ -210,6 +212,27 @@
                         </article>
                     </div>
                 </section>
+
+                @if (!priorityRoutes.isEmpty())
+                    <section class="section section--tight">
+                        <div class="section-heading">
+                            <span class="eyebrow">Highest-evidence routes</span>
+                            <h2>Open the strongest local answers first</h2>
+                            <p>These routes are selected from structured deadline, portal, tester, fee, and failed-test facts rather than static city lists.</p>
+                        </div>
+                        <div class="support-links">
+                            @for (var route : priorityRoutes)
+                                <a class="support-link" href="${route.path()}">
+                                    <div>
+                                        <strong>${route.label()}</strong>
+                                        <span>${route.eyebrow()} · ${route.description()}</span>
+                                    </div>
+                                    <span class="material-symbols-outlined">arrow_forward</span>
+                                </a>
+                            @endfor
+                        </div>
+                    </section>
+                @endif
 
                 <section class="section section--tight">
                     <div class="section-heading">
