@@ -45,6 +45,12 @@ Top page signals:
    - Added ItemList structured data to portal hubs so Google sees the utility and city report-submission route collection.
    - Added visible portal-hub links directly into the city submit-report routes.
 
+6. Added a top-level `/submit-backflow-report` hub.
+   - Targets the broader `submit backflow report`, `upload backflow test`, `file backflow report`, and portal-specific report-submission intent that does not always name a city first.
+   - Links into source-gated city submission routes, utility workflows, portal hubs, notice-finder searches, and related guides.
+   - Added BreadcrumbList, ItemList, and FAQPage structured data so the route reads as a submission-path directory rather than a generic article.
+   - Added primary navigation, mobile navigation, footer, and home-card links plus `report_submission_route_click` tracking.
+
 ## Verification
 
 - `.\gradlew.bat test --rerun-tasks`: passed.
@@ -59,6 +65,9 @@ Top page signals:
   - `/cities/texas/dallas/submit-backflow-report` includes HowTo schema and Submission packet content.
   - `/backflow-reporting-portals` includes ItemList schema and city submit-report links.
   - `/backflow-reporting-portals/swiftcomply` includes ItemList schema and Dallas submit-report links.
+- Latest local HTTP checks on `http://localhost:8107`: passed.
+  - `/submit-backflow-report` returns 200 and includes ItemList, FAQPage, Austin, and Dallas city submission links.
+  - `/sitemap.xml` and `/sitemap-priority.xml` include `https://backflowpath.com/submit-backflow-report`.
 
 ## Next Pressure Point
 

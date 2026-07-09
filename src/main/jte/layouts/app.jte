@@ -117,6 +117,16 @@
                             };
                         }
 
+                        if (sameOrigin && (url.pathname === '/submit-backflow-report' || url.pathname.indexOf('/submit-backflow-report') >= 0)) {
+                            return {
+                                eventName: 'report_submission_route_click',
+                                params: {
+                                    destination_path: url.pathname,
+                                    cta_text: text
+                                }
+                            };
+                        }
+
                         if (anchor.classList.contains('resource-item')) {
                             return {
                                 eventName: 'submission_method_click',
@@ -300,6 +310,7 @@
                     <a href="/metros">Metros</a>
                     <a href="/guides">Guides</a>
                     <a href="/notice-finder">Notice finder</a>
+                    <a href="/submit-backflow-report">Submit reports</a>
                     <a href="/official-backflow-tester-lists">Tester lists</a>
                 </nav>
                 <div class="site-header__actions">
@@ -318,6 +329,7 @@
                         <a href="/metros">Metros</a>
                         <a href="/guides">Guides</a>
                         <a href="/notice-finder">Notice finder</a>
+                        <a href="/submit-backflow-report">Submit reports</a>
                         <a href="/official-backflow-tester-lists">Tester lists</a>
                     </nav>
                     <a class="button button--primary button--compact site-menu__cta" href="${page.requestHelpPathOrDefault()}">Request help</a>
@@ -347,6 +359,7 @@
             <div class="footer-column">
                 <span class="footer-column__label">Popular help</span>
                 <a href="/backflow-reporting-portals">Reporting portal hub</a>
+                <a href="/submit-backflow-report">Submit report hub</a>
                 <a href="/official-backflow-tester-lists">Official tester list hub</a>
                 <a href="/guides/approved-testers-vs-find-a-tester">Approved vs directory</a>
                 <a href="/guides/backflow-reporting-portals">Reporting portals</a>

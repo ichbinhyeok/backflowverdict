@@ -63,7 +63,9 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("request_help_click")))
                 .andExpect(content().string(containsString("provider_website_click")))
                 .andExpect(content().string(containsString("tester_route_click")))
+                .andExpect(content().string(containsString("report_submission_route_click")))
                 .andExpect(content().string(containsString("lead_form_submit")))
+                .andExpect(content().string(containsString("href=\"/submit-backflow-report\"")))
                 .andExpect(content().string(containsString("href=\"/about\"")))
                 .andExpect(content().string(containsString("href=\"/methodology\"")))
                 .andExpect(content().string(containsString("href=\"/editorial-standards\"")))
@@ -201,6 +203,17 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Tokay WebTest for backflow testing")))
                 .andExpect(content().string(containsString("City of Oxnard Water Division Backflow Prevention")))
                 .andExpect(content().string(containsString("Dublin San Ramon Services District Backflow Testing")));
+
+        mockMvc.perform(get("/submit-backflow-report"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Submit backflow test reports through the right city, utility, and portal route.")))
+                .andExpect(content().string(containsString("Passed is not always filed")))
+                .andExpect(content().string(containsString("City and utility report-submission paths")))
+                .andExpect(content().string(containsString("/cities/texas/austin/submit-backflow-report")))
+                .andExpect(content().string(containsString("/cities/texas/dallas/submit-backflow-report")))
+                .andExpect(content().string(containsString("Submission FAQ")))
+                .andExpect(content().string(containsString("ItemList")))
+                .andExpect(content().string(containsString("FAQPage")));
     }
 
     @Test
@@ -1261,6 +1274,7 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("/contact")))
                 .andExpect(content().string(containsString("/claim-listing")))
                 .andExpect(content().string(containsString("/notice-finder")))
+                .andExpect(content().string(containsString("/submit-backflow-report")))
                 .andExpect(content().string(containsString("/official-backflow-tester-lists")))
                 .andExpect(content().string(containsString("/states/texas/approved-backflow-testers")))
                 .andExpect(content().string(containsString("/backflow-reporting-portals")))
@@ -1355,6 +1369,7 @@ class SiteControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(header().string("Content-Type", containsString("application/xml")))
                 .andExpect(content().string(containsString("https://backflowpath.com/notice-finder")))
+                .andExpect(content().string(containsString("https://backflowpath.com/submit-backflow-report")))
                 .andExpect(content().string(containsString("https://backflowpath.com/guides/backflow-reporting-portals")))
                 .andExpect(content().string(containsString("https://backflowpath.com/guides/backflow-test-cost")))
                 .andExpect(content().string(containsString("https://backflowpath.com/backflow-reporting-portals/weirs")))

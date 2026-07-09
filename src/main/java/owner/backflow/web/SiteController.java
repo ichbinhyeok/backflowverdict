@@ -317,6 +317,39 @@ public class SiteController {
         return "pages/notice-finder";
     }
 
+    @GetMapping("/submit-backflow-report")
+    public String submitBackflowReportHubPage(Model model) {
+        List<UtilityRecord> utilities = portalUtilities("all");
+        List<FaqItem> faqItems = submitReportHubFaqItems();
+        model.addAttribute("page", page(
+                "Submit backflow test reports by city and portal | BackflowPath",
+                "Find city and utility routes for submitting backflow test reports through BSI, WEIRS, SwiftComply, VEPO, Aqua/TrackMyBackflow, Tokay, and online portals.",
+                "/submit-backflow-report",
+                combineStructuredData(
+                        breadcrumbStructuredData(List.of(
+                                new BreadcrumbItem("Home", canonical("/")),
+                                new BreadcrumbItem("Submit backflow report", canonical("/submit-backflow-report"))
+                        )),
+                        portalItemListStructuredData("Backflow test report submission routes by city and portal", utilities),
+                        faqStructuredData(faqItems)
+                )
+        ));
+        model.addAttribute("utilities", utilities);
+        model.addAttribute("cityAliasesByUtility", publishedCityAliasesByUtility(utilities));
+        model.addAttribute("noticeIdentifierHints", noticeIdentifierHintsFor(utilities));
+        model.addAttribute("reportAcceptanceHints", reportAcceptanceHintsFor(utilities));
+        model.addAttribute("portalNamesByUtility", portalNamesFor(utilities));
+        model.addAttribute("portalHubPathsByUtility", portalHubPathsFor(utilities));
+        model.addAttribute("faqItems", faqItems);
+        model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
+                "backflow-reporting-portals",
+                "backflow-test-notice-next-steps",
+                "approved-testers-vs-find-a-tester",
+                "backflow-test-cost"
+        ), 4, null));
+        return "pages/submit-report-hub";
+    }
+
     @GetMapping("/privacy")
     public String privacyPage(Model model) {
         model.addAttribute("page", new PageMeta(
@@ -895,6 +928,7 @@ public class SiteController {
         urls.add(new SitemapEntry(canonical("/contact"), homeLastModified()));
         urls.add(new SitemapEntry(canonical("/claim-listing"), homeLastModified()));
         urls.add(new SitemapEntry(canonical("/notice-finder"), homeLastModified()));
+        urls.add(new SitemapEntry(canonical("/submit-backflow-report"), latestUtilityModified(portalUtilities("all"))));
         List<UtilityRecord> officialTesterUtilities = officialTesterUtilities();
         urls.add(new SitemapEntry(
                 canonical("/official-backflow-tester-lists"),
@@ -1016,6 +1050,7 @@ public class SiteController {
     private List<String> prioritySitemapPaths() {
         return List.of(
                 "/notice-finder",
+                "/submit-backflow-report",
                 "/guides/backflow-test-notice-next-steps",
                 "/guides/backflow-reporting-portals",
                 "/guides/backflow-test-cost",
@@ -1455,6 +1490,27 @@ public class SiteController {
                 .collect(Collectors.toMap(
                         UtilityRecord::utilityId,
                         this::reportAcceptanceHint,
+                        (left, right) -> left,
+                        LinkedHashMap::new
+                ));
+    }
+
+    private Map<String, String> portalNamesFor(List<UtilityRecord> utilities) {
+        return utilities.stream()
+                .collect(Collectors.toMap(
+                        UtilityRecord::utilityId,
+                        this::portalDisplayName,
+                        (left, right) -> left,
+                        LinkedHashMap::new
+                ));
+    }
+
+    private Map<String, String> portalHubPathsFor(List<UtilityRecord> utilities) {
+        return utilities.stream()
+                .filter(utility -> portalHubPath(utility) != null)
+                .collect(Collectors.toMap(
+                        UtilityRecord::utilityId,
+                        this::portalHubPath,
                         (left, right) -> left,
                         LinkedHashMap::new
                 ));
@@ -2455,6 +2511,27 @@ public class SiteController {
                 new FaqItem(
                         "Can any backflow tester submit through " + portalName + "?",
                         "Do not assume that. Many portals still require accepted tester credentials, current certification, license, insurance, gauge calibration, or separate utility approval before reports are accepted."
+                )
+        );
+    }
+
+    private List<FaqItem> submitReportHubFaqItems() {
+        return List.of(
+                new FaqItem(
+                        "How do I know where to submit a backflow test report?",
+                        "Start with the city or utility named on the notice, then match the portal name, device or account clue, accepted tester route, and report acceptance rule before filing."
+                ),
+                new FaqItem(
+                        "Is a passed backflow test enough to close the compliance cycle?",
+                        "No. Many utilities require the report to be entered through a named portal or online submission path. Keep proof that the report was submitted and accepted."
+                ),
+                new FaqItem(
+                        "Which backflow report portals appear in BackflowPath?",
+                        "BackflowPath currently groups source-backed routes for BSI, WEIRS, SwiftComply, VEPO, Envirotrax, Aqua Backflow, TrackMyBackflow, Tokay WebTest, and utility-run online submission workflows."
+                ),
+                new FaqItem(
+                        "What should the owner keep after the tester files a report?",
+                        "Keep the notice, due date, service address, device identifier, tester name, portal confirmation, accepted report receipt, or account history showing the submission was accepted."
                 )
         );
     }

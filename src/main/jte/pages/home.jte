@@ -97,6 +97,7 @@
                     <p>Use city, utility, portal, tester, failed-test, or notice ID clues to open the most specific source-backed route.</p>
                     <div class="card-actions">
                         <a class="button button--secondary" href="/notice-finder">Open notice finder</a>
+                        <a class="button button--secondary" href="/submit-backflow-report">Submit report hub</a>
                     </div>
                 </article>
                 <article class="detail-card">
