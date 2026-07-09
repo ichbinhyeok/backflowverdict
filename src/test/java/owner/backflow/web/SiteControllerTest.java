@@ -796,7 +796,7 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Dallas backflow notice route")))
                 .andExpect(content().string(containsString("href=\"/cities/texas/dallas/annual-backflow-testing\" aria-label=\"Open top route for Dallas backflow notice route\"")))
                 .andExpect(content().string(containsString("/cities/texas/dallas/annual-backflow-testing")))
-                .andExpect(content().string(containsString("More matches")));
+                .andExpect(content().string(containsString("Show all matched routes")));
     }
 
     @Test

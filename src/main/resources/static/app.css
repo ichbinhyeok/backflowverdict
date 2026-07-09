@@ -2148,6 +2148,44 @@ p {
     word-break: break-word;
 }
 
+.notice-match-drawer {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.34);
+    border-radius: 0.8rem;
+    background: rgba(255, 255, 255, 0.94);
+}
+
+.notice-match-drawer summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    cursor: pointer;
+    color: var(--primary);
+    font-family: var(--font-headline);
+    font-weight: 800;
+}
+
+.notice-match-drawer summary::-webkit-details-marker {
+    display: none;
+}
+
+.notice-match-drawer summary small {
+    flex: 0 0 auto;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.notice-match-drawer[open] summary {
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.92);
+}
+
 .visual-card {
     position: relative;
     overflow: hidden;

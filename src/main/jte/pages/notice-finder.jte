@@ -30,18 +30,22 @@
                         <a class="button button--secondary" href="/guides/backflow-test-notice-next-steps">Notice guide</a>
                     </div>
                 </form>
-                <div class="hero__stats">
-                    <span>City and utility matching</span>
-                    <span>Portal family routing</span>
-                    <span>Failed-test and tester intent</span>
-                    <span>Official-source pages first</span>
-                </div>
+                @if (query.isBlank())
+                    <div class="hero__stats">
+                        <span>City and utility matching</span>
+                        <span>Portal family routing</span>
+                        <span>Failed-test and tester intent</span>
+                        <span>Official-source pages first</span>
+                    </div>
+                @endif
             </div>
-            <aside class="panel panel--hero">
-                <span class="stat-card__label" style="color: rgba(141, 224, 196, 0.9);">What to paste</span>
-                <div class="stat-card__value" style="color: #ffffff; font-size: clamp(2rem, 4vw, 2.7rem);">City + clue</div>
-                <p class="stat-card__meta" style="color: rgba(239, 241, 243, 0.74);">Good clues include BSI, SwiftComply, VEPO, TrackMyBackflow, Tokay, CCN, Hazard ID, Site ID, approved tester, annual notice, failed test, or retest.</p>
-            </aside>
+            @if (query.isBlank())
+                <aside class="panel panel--hero">
+                    <span class="stat-card__label" style="color: rgba(141, 224, 196, 0.9);">What to paste</span>
+                    <div class="stat-card__value" style="color: #ffffff; font-size: clamp(2rem, 4vw, 2.7rem);">City + clue</div>
+                    <p class="stat-card__meta" style="color: rgba(239, 241, 243, 0.74);">Good clues include BSI, SwiftComply, VEPO, TrackMyBackflow, Tokay, CCN, Hazard ID, Site ID, approved tester, annual notice, failed test, or retest.</p>
+                </aside>
+            @endif
         </div>
     </section>
 
@@ -71,6 +75,10 @@
                             <span class="eyebrow">Best first</span>
                             <h3>${results.get(0).label()}</h3>
                             <p>${results.get(0).summary()}</p>
+                            <div class="hero__actions">
+                                <a class="button button--primary" href="${results.get(0).path()}" aria-label="Open top route for ${results.get(0).label()}">Open top route</a>
+                                <a class="button button--secondary" href="/leads/new?source=/notice-finder&amp;pageFamily=notice-finder">Request help</a>
+                            </div>
                             @if (!results.get(0).signals().isEmpty())
                                 <ul class="detail-list">
                                     @for (var signal : results.get(0).signals())
@@ -78,10 +86,6 @@
                                     @endfor
                                 </ul>
                             @endif
-                            <div class="hero__actions">
-                                <a class="button button--primary" href="${results.get(0).path()}" aria-label="Open top route for ${results.get(0).label()}">Open top route</a>
-                                <a class="button button--secondary" href="/leads/new?source=/notice-finder&amp;pageFamily=notice-finder">Request help</a>
-                            </div>
                         </article>
                         @if (results.size() > 1)
                             <article class="detail-card detail-card--quiet">
@@ -99,29 +103,23 @@
                                 </div>
                             </article>
 
-                            <div class="section-heading">
-                                <span class="eyebrow">More matches</span>
-                                <h2>Other routes that matched the notice</h2>
-                            </div>
-                            <div class="card-grid">
-                                @for (var result : results.subList(1, results.size()))
-                                    <article class="detail-card detail-card--quiet">
-                                        <span class="pill">${result.resultType()}</span>
-                                        <h3>${result.label()}</h3>
-                                        <p>${result.summary()}</p>
-                                        @if (!result.signals().isEmpty())
-                                            <ul class="detail-list">
-                                                @for (var signal : result.signals())
-                                                    <li>${signal}</li>
-                                                @endfor
-                                            </ul>
-                                        @endif
-                                        <div class="card-actions">
-                                            <a class="button button--secondary" href="${result.path()}">Open route</a>
-                                        </div>
-                                    </article>
-                                @endfor
-                            </div>
+                            <details class="notice-match-drawer">
+                                <summary>
+                                    <span>Show all matched routes</span>
+                                    <small>${results.size() - 1} more</small>
+                                </summary>
+                                <div class="support-links">
+                                    @for (var result : results.subList(1, results.size()))
+                                        <a class="support-link" href="${result.path()}">
+                                            <div>
+                                                <strong>${result.label()}</strong>
+                                                <span>${result.resultType()} · ${result.summary()}</span>
+                                            </div>
+                                            <span class="material-symbols-outlined">arrow_forward</span>
+                                        </a>
+                                    @endfor
+                                </div>
+                            </details>
                         @endif
                     @endif
                 </article>
@@ -191,9 +189,10 @@
         </div>
     </section>
 
-    <section class="section">
-        <div class="container page-frame">
-            <div class="stack">
+    @if (query.isBlank())
+        <section class="section">
+            <div class="container page-frame">
+                <div class="stack">
                 <section class="section section--tight">
                     <div class="section-heading">
                         <span class="eyebrow">Portal shortcuts</span>
@@ -366,29 +365,53 @@
                         @endfor
                     </div>
                 </article>
-            </div>
+                </div>
 
-            <aside class="side-stack">
-                <article class="detail-card">
-                    <span class="eyebrow">Related guides</span>
-                    <h2>Read if the notice is unclear</h2>
-                    <div class="support-links">
-                        @for (var guide : relatedGuides)
-                            <a class="support-link" href="/guides/${guide.slug()}">
-                                <div>
-                                    <strong>${guide.title()}</strong>
-                                    <span>${guide.description()}</span>
-                                </div>
-                                <span class="material-symbols-outlined">arrow_forward</span>
-                            </a>
-                        @endfor
+                <aside class="side-stack">
+                    <article class="detail-card">
+                        <span class="eyebrow">Related guides</span>
+                        <h2>Read if the notice is unclear</h2>
+                        <div class="support-links">
+                            @for (var guide : relatedGuides)
+                                <a class="support-link" href="/guides/${guide.slug()}">
+                                    <div>
+                                        <strong>${guide.title()}</strong>
+                                        <span>${guide.description()}</span>
+                                    </div>
+                                    <span class="material-symbols-outlined">arrow_forward</span>
+                                </a>
+                            @endfor
+                        </div>
+                    </article>
+                </aside>
+            </div>
+        </section>
+    @else
+        <section class="section section--tight">
+            <div class="container content-grid">
+                <article class="detail-card detail-card--warm">
+                    <span class="eyebrow">Still unsure?</span>
+                    <h2>Use the next safest step</h2>
+                    <p>If the first route does not match the notice, use the compact alternatives above or ask for help with the city, due date, portal name, and device clue included.</p>
+                    <div class="hero__actions">
+                        <a class="button button--primary" href="/leads/new?source=/notice-finder&amp;pageFamily=notice-finder">Request help</a>
+                        <a class="button button--secondary" href="/guides/backflow-test-notice-next-steps">Notice guide</a>
                     </div>
                 </article>
-            </aside>
-        </div>
-    </section>
+                <article class="detail-card">
+                    <span class="eyebrow">Common fallback</span>
+                    <h2>When the notice only names software</h2>
+                    <p>Open the portal hub only when the notice names a vendor but does not clearly identify the city or utility workflow.</p>
+                    <div class="card-actions">
+                        <a class="button button--secondary" href="/backflow-reporting-portals">Portal hub</a>
+                        <a class="button button--secondary" href="/official-backflow-tester-lists">Tester-list hub</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    @endif
 
-    @if (!faqItems.isEmpty())
+    @if (query.isBlank() && !faqItems.isEmpty())
         <section class="section section--tight">
             <div class="container">
                 <div class="section-heading">
