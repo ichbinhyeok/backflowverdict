@@ -349,6 +349,18 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Garland")))
                 .andExpect(content().string(containsString("10 days of the test")));
 
+        mockMvc.perform(get("/utilities/texas/irving-cross-connections-backflow/"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("VEPO/Envirotrax reports, tester gate, 10-day report deadline")))
+                .andExpect(content().string(containsString("within 10 days after testing")))
+                .andExpect(content().string(containsString("Tester gate: Tester credentials, Test kit calibration forms, Envirotrax registration")));
+
+        mockMvc.perform(get("/utilities/texas/college-station-water-utilities/"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("report submission, tester gate, 30-day report deadline")))
+                .andExpect(content().string(containsString("within 30 days after testing")))
+                .andExpect(content().string(containsString("Tester gate: TCEQ-certified BPAT status, City of College Station tester registration, Fireline or general tester category when applicable")));
+
         mockMvc.perform(get("/utilities/arizona/phoenix-water-services/"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("City of Phoenix Backflow Prevention Program")))
@@ -1260,6 +1272,12 @@ class SiteControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Parker backflow testing routes through")))
                 .andExpect(content().string(containsString("reporting portal")));
+
+        mockMvc.perform(get("/cities/texas/irving/backflow-testing"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Irving VEPO/Envirotrax reports and 10-day report deadline")))
+                .andExpect(content().string(containsString("within 10 days after testing")))
+                .andExpect(content().string(containsString("Tester gate: Tester credentials, Test kit calibration forms, Envirotrax registration")));
 
         mockMvc.perform(get("/cities/florida/fort-myers/backflow-testing"))
                 .andExpect(status().isOk())

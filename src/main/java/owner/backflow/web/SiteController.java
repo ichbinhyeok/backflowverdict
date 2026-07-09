@@ -2120,14 +2120,21 @@ public class SiteController {
     }
 
     private String utilityPageTitle(UtilityRecord utility) {
-        String reportPhrase = portalReportTitlePhrase(utility);
-        if (utility.supportsApprovedTestersPage() && usesPortalWorkflow(utility)) {
+        String reportPhrase = reportWorkflowTitlePhrase(utility);
+        String deadlinePhrase = reportDeadlineTitlePhrase(utility);
+        if (utility.hasReportWorkflow() && !deadlinePhrase.isBlank()) {
+            if (utility.supportsApprovedTestersPage() || utility.hasTesterGate()) {
+                return utility.utilityName() + ": " + reportPhrase + ", tester gate, " + deadlinePhrase + " | BackflowPath";
+            }
+            return utility.utilityName() + ": " + reportPhrase + " and " + deadlinePhrase + " | BackflowPath";
+        }
+        if (utility.supportsApprovedTestersPage() && (usesPortalWorkflow(utility) || utility.hasReportWorkflow())) {
             return utility.utilityName() + ": official testers, " + reportPhrase + ", due dates | BackflowPath";
         }
         if (utility.supportsApprovedTestersPage()) {
             return utility.utilityName() + ": official testers, due dates, report steps | BackflowPath";
         }
-        if (usesPortalWorkflow(utility)) {
+        if (usesPortalWorkflow(utility) || utility.hasReportWorkflow()) {
             return utility.utilityName() + ": " + reportPhrase + ", due dates, failed tests | BackflowPath";
         }
         return utility.utilityName() + ": backflow due dates and report steps | BackflowPath";
@@ -2144,11 +2151,22 @@ public class SiteController {
             description.append(". Includes ")
                     .append(portalReportRoutingPhrase(utility))
                     .append(" and notice/device clues");
+        } else if (utility.hasReportWorkflow()) {
+            description.append(". Includes report submission proof and notice/device clues");
         }
         if (utility.supportsApprovedTestersPage()) {
             description.append(". Includes the official tester list route");
         } else if (utility.supportsFindATesterPage()) {
             description.append(". Includes a clearly labeled non-official tester route when provider inventory is available");
+        }
+        if (!reportDeadlineMetaPhrase(utility).isBlank()) {
+            description.append(". ").append(reportDeadlineMetaPhrase(utility));
+        }
+        if (utility.reportWorkflow().filingFee() != null && utility.reportWorkflow().filingFee().hasContent()) {
+            description.append(". Filing fee: ").append(utility.reportWorkflow().filingFee().display());
+        }
+        if (utility.hasTesterGate()) {
+            description.append(". Tester gate: ").append(utility.testerGate().credentialSummary());
         }
         description.append(". ").append(reportAcceptanceHint(utility));
         return description.toString();
@@ -2165,6 +2183,41 @@ public class SiteController {
     private String portalReportTitlePhrase(UtilityRecord utility) {
         String portalSlug = portalSlugForUtility(utility);
         return portalSlug == null ? "online reports" : portalName(portalSlug) + " reports";
+    }
+
+    private String reportWorkflowTitlePhrase(UtilityRecord utility) {
+        String portalSlug = portalSlugForUtility(utility);
+        if (portalSlug != null) {
+            return portalName(portalSlug) + " reports";
+        }
+        if (utility.hasReportWorkflow()) {
+            return "report submission";
+        }
+        return portalReportTitlePhrase(utility);
+    }
+
+    private String reportDeadlineTitlePhrase(UtilityRecord utility) {
+        Integer days = utility.reportWorkflow().submissionDeadlineDaysAfterTest();
+        if (days == null) {
+            days = utility.deadlinePolicy().reportDueDaysAfterTest();
+        }
+        if (days == null) {
+            return "";
+        }
+        if (days == 1) {
+            return "1-day report deadline";
+        }
+        return days + "-day report deadline";
+    }
+
+    private String reportDeadlineMetaPhrase(UtilityRecord utility) {
+        if (utility.reportWorkflow().submissionDeadlineDaysAfterTest() != null) {
+            return utility.reportWorkflow().deadlineLabel();
+        }
+        if (utility.deadlinePolicy().reportDueDaysAfterTest() != null) {
+            return utility.deadlinePolicy().reportDueLabel();
+        }
+        return "";
     }
 
     private String portalReportRoutingPhrase(UtilityRecord utility) {
@@ -2289,6 +2342,10 @@ public class SiteController {
 
     private String cityPageTitle(CityAliasRecord alias, UtilityRecord utility) {
         String portalName = portalDisplayName(utility);
+        String deadlinePhrase = reportDeadlineTitlePhrase(utility);
+        if (!deadlinePhrase.isBlank() && (usesPortalWorkflow(utility) || utility.hasReportWorkflow())) {
+            return alias.city() + " " + portalName + " reports and " + deadlinePhrase + " | BackflowPath";
+        }
         if (utility.supportsApprovedTestersPage() && usesPortalWorkflow(utility)) {
             return alias.city() + " " + portalName + " backflow portal and approved testers | BackflowPath";
         }
@@ -2315,6 +2372,12 @@ public class SiteController {
         }
         if (usesPortalWorkflow(utility)) {
             description.append(" Includes ").append(portalDisplayName(utility)).append(" reporting portal context.");
+        }
+        if (!reportDeadlineMetaPhrase(utility).isBlank()) {
+            description.append(" ").append(reportDeadlineMetaPhrase(utility));
+        }
+        if (utility.hasTesterGate()) {
+            description.append(" Tester gate: ").append(utility.testerGate().credentialSummary()).append(".");
         }
         description.append(" ").append(noticeIdentifierHint(utility));
         return description.toString();
