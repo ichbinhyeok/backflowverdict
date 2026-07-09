@@ -2539,9 +2539,11 @@ public class SiteController {
                     .append(i + 1)
                     .append(",\"name\":\"")
                     .append(jsonEscape(item.name()))
-                    .append("\",\"item\":\"")
+                    .append("\",\"item\":{\"@id\":\"")
                     .append(jsonEscape(item.url()))
-                    .append("\"}");
+                    .append("\",\"name\":\"")
+                    .append(jsonEscape(item.name()))
+                    .append("\"}}");
         }
         json.append("]}");
         return json.toString();

@@ -666,7 +666,9 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("State compliance layer")))
                 .andExpect(content().string(not(containsString("Office staff: create annual brief"))))
                 .andExpect(content().string(not(containsString("Create annual customer brief"))))
-                .andExpect(content().string(containsString("BreadcrumbList")));
+                .andExpect(content().string(containsString("BreadcrumbList")))
+                .andExpect(content().string(containsString("\"item\":{\"@id\":\"https://backflowpath.com/\"")))
+                .andExpect(content().string(containsString("\"name\":\"Dallas Water Utilities Backflow Prevention Program\"")));
 
         mockMvc.perform(get("/utilities/texas/lewisville-water-utilities/irrigation"))
                 .andExpect(status().isOk())
