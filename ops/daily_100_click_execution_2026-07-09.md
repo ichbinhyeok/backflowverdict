@@ -63,6 +63,11 @@ Top page signals:
    - Upgraded provider pages from static public profiles into booking-decision pages with call/website/help CTAs, primary-utility booking checks, and utility-card proof/submission details.
    - This targets the current GSC pattern where Aurora, Hillsborough, Anaheim, and provider pages have impressions or early clicks but still need stronger CTR and action confidence.
 
+9. Added a sitemap index for discovery hygiene.
+   - Added `/sitemap-index.xml` with standard `<sitemapindex>` output for `/sitemap.xml` and `/sitemap-priority.xml`.
+   - Exposed the sitemap index in `robots.txt` while keeping preview hosts empty/no-discovery.
+   - This gives Search Console one stable sitemap entry point while preserving the priority sitemap for high-intent URL resubmission.
+
 ## Verification
 
 - `.\gradlew.bat test --rerun-tasks`: passed.

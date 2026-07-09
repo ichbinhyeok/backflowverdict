@@ -275,6 +275,12 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("<urlset")))
                 .andExpect(content().string(not(containsString("<url><loc>"))))
                 .andExpect(content().string(not(containsString("/states/texas/backflow-testing"))));
+
+        mockMvc.perform(get("/sitemap-index.xml").header("Host", "review.backflow.test"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("<sitemapindex")))
+                .andExpect(content().string(not(containsString("<sitemap><loc>"))))
+                .andExpect(content().string(not(containsString("/sitemap.xml"))));
     }
 
     @Test
@@ -1406,8 +1412,17 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("https://backflowpath.com/cities/california/dublin/backflow-reporting-portal")))
                 .andExpect(content().string(not(containsString("/cities/texas/arlington/backflow-testing"))));
 
+        mockMvc.perform(get("/sitemap-index.xml"))
+                .andExpect(status().isOk())
+                .andExpect(header().string("Content-Type", containsString("application/xml")))
+                .andExpect(content().string(containsString("<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">")))
+                .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemap.xml</loc>")))
+                .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemap-priority.xml</loc>")))
+                .andExpect(content().string(containsString("<lastmod>")));
+
         mockMvc.perform(get("/robots.txt"))
                 .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Sitemap: https://backflowpath.com/sitemap-index.xml")))
                 .andExpect(content().string(containsString("Sitemap: https://backflowpath.com/sitemap.xml")))
                 .andExpect(content().string(containsString("Sitemap: https://backflowpath.com/sitemap-priority.xml")));
     }

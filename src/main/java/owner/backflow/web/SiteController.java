@@ -1043,6 +1043,18 @@ public class SiteController {
         return sitemapXml(urls);
     }
 
+    @GetMapping(value = "/sitemap-index.xml", produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
+    public String sitemapIndex(HttpServletRequest request) {
+        if (siteVisibilityService.shouldForceNoindex(request)) {
+            return emptySitemapIndex();
+        }
+        return sitemapIndexXml(List.of(
+                new SitemapEntry(canonical("/sitemap.xml"), homeLastModified()),
+                new SitemapEntry(canonical("/sitemap-priority.xml"), homeLastModified())
+        ));
+    }
+
     @GetMapping(value = "/robots.txt", produces = MediaType.TEXT_PLAIN_VALUE)
     @ResponseBody
     public String robots(HttpServletRequest request) {
@@ -1051,6 +1063,7 @@ public class SiteController {
         }
         return "User-agent: *\n"
                 + "Allow: /\n\n"
+                + "Sitemap: " + canonical("/sitemap-index.xml") + "\n"
                 + "Sitemap: " + canonical("/sitemap.xml") + "\n"
                 + "Sitemap: " + canonical("/sitemap-priority.xml") + "\n";
     }
@@ -1070,9 +1083,29 @@ public class SiteController {
         return xml.toString();
     }
 
+    private String sitemapIndexXml(List<SitemapEntry> sitemaps) {
+        StringBuilder xml = new StringBuilder();
+        xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+        xml.append("<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">");
+        for (SitemapEntry entry : sitemaps) {
+            xml.append("<sitemap><loc>")
+                    .append(entry.url())
+                    .append("</loc><lastmod>")
+                    .append(entry.lastModified())
+                    .append("</lastmod></sitemap>");
+        }
+        xml.append("</sitemapindex>");
+        return xml.toString();
+    }
+
     private String emptySitemap() {
         return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
                 + "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"></urlset>";
+    }
+
+    private String emptySitemapIndex() {
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+                + "<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"></sitemapindex>";
     }
 
     private List<String> prioritySitemapPaths() {
