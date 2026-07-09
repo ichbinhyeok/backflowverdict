@@ -632,6 +632,9 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Popular notice routes")))
                 .andExpect(content().string(containsString("/cities/texas/euless/backflow-reporting-portal")))
                 .andExpect(content().string(containsString("/cities/california/oxnard/backflow-reporting-portal")))
+                .andExpect(content().string(containsString("/cities/california/pleasanton/backflow-reporting-portal")))
+                .andExpect(content().string(containsString("/cities/california/san-ramon/backflow-reporting-portal")))
+                .andExpect(content().string(containsString("/cities/texas/irving/backflow-reporting-portal")))
                 .andExpect(content().string(containsString("/cities/texas/fort-worth/backflow-reporting-portal")));
 
         mockMvc.perform(get("/notice-finder").queryParam("q", "Euless TrackMyBackflow Hazard ID"))

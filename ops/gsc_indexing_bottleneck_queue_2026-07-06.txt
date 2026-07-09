@@ -3,24 +3,31 @@
 # Search Console API inspection worked for sc-domain:backflowpath.com, but sitemap
 # submit calls returned permission denied. Submit the sitemap URLs manually, then
 # inspect/request indexing for the unknown URLs below.
+#
+# 2026-07-09 recheck:
+# - robots.txt now exposes sitemap-priority.xml without the cache-bypass query.
+# - /notice-finder, Aqua hub, Tokay hub, Euless, Oxnard, and Buena Park are indexed.
+# - Performance data is still delayed through 2026-07-06: 7-day total was 5 clicks,
+#   785 impressions, 0.64% CTR, average position 14.64.
+# - Remaining unknown URLs are live 200 pages and present in sitemap-priority.xml.
 
 ## Submit in GSC > Sitemaps
 https://backflowpath.com/sitemap.xml
 https://backflowpath.com/sitemap-priority.xml
 
-## Already indexed as of 2026-07-06 inspection
+## Already indexed as of 2026-07-09 inspection
 https://backflowpath.com/notice-finder
-https://backflowpath.com/cities/texas/dallas/backflow-reporting-portal
-https://backflowpath.com/cities/texas/fort-worth/backflow-reporting-portal
-https://backflowpath.com/cities/arizona/queen-creek/backflow-reporting-portal
-https://backflowpath.com/cities/florida/tampa/backflow-reporting-portal
-
-## Unknown to Google: inspect and request indexing first
 https://backflowpath.com/backflow-reporting-portals/aqua
 https://backflowpath.com/backflow-reporting-portals/tokay
 https://backflowpath.com/cities/texas/euless/backflow-reporting-portal
 https://backflowpath.com/cities/california/oxnard/backflow-reporting-portal
 https://backflowpath.com/cities/california/buena-park/backflow-reporting-portal
+https://backflowpath.com/cities/texas/dallas/backflow-reporting-portal
+https://backflowpath.com/cities/texas/fort-worth/backflow-reporting-portal
+https://backflowpath.com/cities/arizona/queen-creek/backflow-reporting-portal
+https://backflowpath.com/cities/florida/tampa/backflow-reporting-portal
+
+## Unknown to Google on 2026-07-09: inspect and request indexing first
 https://backflowpath.com/cities/california/pleasanton/backflow-reporting-portal
 https://backflowpath.com/cities/california/dublin/backflow-reporting-portal
 https://backflowpath.com/cities/california/san-ramon/backflow-reporting-portal
@@ -28,5 +35,5 @@ https://backflowpath.com/cities/texas/irving/backflow-reporting-portal
 
 ## Live crawl notes
 - https://backflowpath.com/sitemap-priority.xml returns 200, application/xml, with 20 URLs.
-- https://backflowpath.com/robots.txt?fresh=1 shows sitemap-priority.xml.
-- Bare https://backflowpath.com/robots.txt may lag because Cloudflare cached the previous response with max-age=14400.
+- https://backflowpath.com/robots.txt now shows sitemap-priority.xml.
+- 2026-07-09 change: added direct /notice-finder links to Pleasanton, San Ramon, and Irving because indexed URLs were discovered through /notice-finder referrals.

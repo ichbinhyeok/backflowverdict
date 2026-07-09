@@ -171,6 +171,13 @@
                             </div>
                             <span class="material-symbols-outlined">arrow_forward</span>
                         </a>
+                        <a class="support-link" href="/cities/california/pleasanton/backflow-reporting-portal">
+                            <div>
+                                <strong>Pleasanton Aqua Backflow tester reporting</strong>
+                                <span>Aqua Backflow plan language, tester qualification, and online reporting context.</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
                         <a class="support-link" href="/cities/california/oxnard/backflow-reporting-portal">
                             <div>
                                 <strong>Oxnard Tokay WebTest reporting portal</strong>
@@ -185,10 +192,24 @@
                             </div>
                             <span class="material-symbols-outlined">arrow_forward</span>
                         </a>
+                        <a class="support-link" href="/cities/california/san-ramon/backflow-reporting-portal">
+                            <div>
+                                <strong>San Ramon DSRSD Tokay reporting portal</strong>
+                                <span>DSRSD Tokay test entry, approved tester, repair, and retest route.</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
                         <a class="support-link" href="/cities/texas/fort-worth/backflow-reporting-portal">
                             <div>
                                 <strong>Fort Worth VEPO Envirotrax reporting portal</strong>
                                 <span>Registered BPAT, Envirotrax report submission, and failed paperwork risk.</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                        <a class="support-link" href="/cities/texas/irving/backflow-reporting-portal">
+                            <div>
+                                <strong>Irving Envirotrax reporting portal</strong>
+                                <span>Online Envirotrax submission, report window, and failed-test customer notice context.</span>
                             </div>
                             <span class="material-symbols-outlined">arrow_forward</span>
                         </a>
