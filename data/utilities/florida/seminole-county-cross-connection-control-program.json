@@ -116,6 +116,59 @@
     "repairRetestRange": "Repair and retest cost varies by device and whether the job is a residential irrigation install or a broader commercial assembly.",
     "pricingNotes": "The county's value as a lead surface comes from the official list and the explicit enforcement timeline, not a public price chart."
   },
+  "reportWorkflow": {
+    "portalName": "Seminole County approved-tester report workflow",
+    "portalUrl": "https://www.seminolecountyfl.gov/departments-services/utilities/water/ccc-program",
+    "submitter": "Seminole County approved tester",
+    "requiredIdentifiers": [
+      "Seminole County approved tester status",
+      "Residential irrigation meter context when applicable",
+      "Final repair or replacement report after failed-device correction"
+    ],
+    "acceptanceProof": "Keep the county-approved tester result and final repair or replacement report when a failed device is corrected.",
+    "sourceRefs": [
+      "Seminole County cross connection control program",
+      "Seminole County certified tester list",
+      "Seminole County residential irrigation meter guide"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "credentialDocuments": [
+      "Seminole County approved tester status",
+      "Domestic or fire capability marker from the county list"
+    ],
+    "deviceScopeLimit": "The county tester list separates domestic and fire capability markers, which affects routing for fire-capable assemblies.",
+    "sourceRefs": [
+      "Seminole County cross connection control program",
+      "Seminole County certified tester list"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Required assemblies: annual testing by county-approved testers",
+      "Residential irrigation meter assemblies: initial test and annual testing afterward",
+      "Failed devices: repair and retest within 20 days"
+    ],
+    "initialTestRequired": true,
+    "pastDueLadder": [
+      "Failure to install, repair, retest, and maintain required assemblies can lead to water service disconnection."
+    ],
+    "sourceRefs": [
+      "Seminole County cross connection control program",
+      "Seminole County residential irrigation meter guide"
+    ]
+  },
+  "failedTestPolicy": {
+    "repairDeadlineDays": 20,
+    "retestRequired": true,
+    "failedReportMustBeSubmitted": true,
+    "shutoffRisk": true,
+    "sourceRefs": [
+      "Seminole County cross connection control program"
+    ]
+  },
   "sources": [
     {
       "label": "Seminole County cross connection control program",

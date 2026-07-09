@@ -127,6 +127,56 @@
     "repairRetestRange": "Repair and retest costs vary by assembly and scope, but paperwork handling is stricter than many BSI-managed cities.",
     "pricingNotes": "In McKinney, process friction matters almost as much as the raw test quote because the City still wants signed originals and approved forms."
   },
+  "reportWorkflow": {
+    "portalName": "McKinney Public Works signed-original report workflow",
+    "portalUrl": "https://www.mckinneytexas.org/DocumentCenter/View/133/BPAT-Test-Report?bidId=",
+    "submitter": "BPAT registered with the City of McKinney",
+    "paperAccepted": true,
+    "requiredIdentifiers": [
+      "City-approved BPAT test report form",
+      "City BPAT registration",
+      "Signed and dated original report",
+      "Fireline registration form when the assembly scope requires it"
+    ],
+    "acceptanceProof": "Keep proof that the signed original reached the Public Works recordkeeping process.",
+    "sourceRefs": [
+      "McKinney backflow program",
+      "McKinney BPAT registration form",
+      "McKinney fireline BPAT registration form",
+      "McKinney BPAT test report form"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "credentialDocuments": [
+      "City BPAT registration",
+      "Gauge calibration that keeps registration current",
+      "Fireline BPAT registration form when the tester works on fireline assemblies"
+    ],
+    "deviceScopeLimit": "McKinney separates fireline BPAT registration from general tester registration and rejects electronic signatures on City forms.",
+    "sourceRefs": [
+      "McKinney backflow program",
+      "McKinney BPAT registration form",
+      "McKinney fireline BPAT registration form",
+      "McKinney BPAT test report form"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Tester registration: expires with the gauge calibration expiration date",
+      "Irrigation work: CSS permit and inspection path must stay aligned with the backflow paperwork",
+      "Fireline work: use the dedicated fireline registration path when scope requires it"
+    ],
+    "pastDueLadder": [
+      "Wrong form, stale registration, or missing signed original can block report acceptance even after the field test is complete."
+    ],
+    "sourceRefs": [
+      "McKinney backflow program",
+      "McKinney irrigation portal page",
+      "McKinney BPAT test report form"
+    ]
+  },
   "sources": [
     {
       "label": "McKinney backflow program",

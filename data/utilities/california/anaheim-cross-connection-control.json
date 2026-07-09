@@ -133,6 +133,60 @@
     "repairRetestRange": "Repair and retest cost depends on the device type and whether the issue arose during annual testing, relocation, or installation.",
     "pricingNotes": "The real Anaheim friction is the approved-tester requirement plus the city's submission rules."
   },
+  "reportWorkflow": {
+    "portalVendor": "SwiftComply",
+    "portalName": "Anaheim SwiftComply electronic report submission",
+    "portalUrl": "https://www.sc-tester.com/",
+    "submitter": "Orange County Health Care Agency certified tester with a valid City of Anaheim business license",
+    "paperAccepted": false,
+    "requiredIdentifiers": [
+      "Anaheim approved tester status",
+      "Orange County Health Care Agency certification",
+      "Valid City of Anaheim business license",
+      "Photo of the assembly during the test"
+    ],
+    "acceptanceProof": "Keep the SwiftComply electronic submission record and assembly photo evidence from the test.",
+    "sourceRefs": [
+      "Anaheim cross connection control",
+      "Anaheim SwiftComply tester registration"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Orange County Health Care Agency tester certification",
+      "City of Anaheim business license",
+      "Anaheim approved tester status",
+      "SwiftComply tester registration"
+    ],
+    "deviceScopeLimit": "Anaheim requires approved testers for annual testing, installation, relocation, repair, irrigation, and fireline-related assembly workflows.",
+    "sourceRefs": [
+      "Anaheim cross connection control",
+      "Anaheim SwiftComply tester registration",
+      "Anaheim water services standard specifications"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Backflow devices: at least annually thereafter",
+      "Newly installed, relocated, or repaired devices: test immediately after the triggering work",
+      "Defective devices: repair and retest before treating the device as compliant"
+    ],
+    "initialTestRequired": true,
+    "sourceRefs": [
+      "Anaheim cross connection control",
+      "Anaheim water services standard specifications"
+    ]
+  },
+  "failedTestPolicy": {
+    "retestRequired": true,
+    "failedReportMustBeSubmitted": true,
+    "sourceRefs": [
+      "Anaheim cross connection control"
+    ]
+  },
   "sources": [
     {
       "label": "Anaheim cross connection control",

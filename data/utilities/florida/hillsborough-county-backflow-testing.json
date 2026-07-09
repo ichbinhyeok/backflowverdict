@@ -105,6 +105,64 @@
     "repairRetestRange": "Repair and retest cost depends on the device and whether the issue happened during an installation, replacement, relocation, or annual cycle.",
     "pricingNotes": "The strongest commercial signal is the county's operational discipline rather than a posted utility fee schedule."
   },
+  "reportWorkflow": {
+    "portalVendor": "Backflow BMP",
+    "portalName": "Hillsborough County Backflow BMP test result portal",
+    "portalUrl": "https://app.backflowbmp.com/",
+    "submitter": "Registered Hillsborough County certified tester",
+    "requiredIdentifiers": [
+      "County registered tester status",
+      "Current testing certification",
+      "Current test-kit calibration certification",
+      "Permit, inspection, or assembly context when installation, replacement, or relocation applies"
+    ],
+    "acceptanceProof": "Keep the accepted Backflow BMP result and permit closeout record when the work is tied to installation, replacement, or relocation.",
+    "sourceRefs": [
+      "Hillsborough County backflow program",
+      "Hillsborough County certified backflow testers",
+      "Backflow BMP portal"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Hillsborough County certified tester registration",
+      "Current testing certification",
+      "Current test-kit calibration certification",
+      "Backflow BMP portal enrollment"
+    ],
+    "deviceScopeLimit": "Only registered Hillsborough County certified testers are accepted for the county annual and permitted assembly workflows.",
+    "sourceRefs": [
+      "Hillsborough County backflow program",
+      "Hillsborough County certified backflow testers",
+      "Backflow BMP portal"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "All property owners with a backflow assembly: annual testing",
+      "Installations, replacements, or relocations: permit plus field inspection and completed test report",
+      "Failed assemblies: report to the county within 48 hours"
+    ],
+    "initialTestRequired": true,
+    "pastDueLadder": [
+      "Permit closure depends on inspection approval and the completed backflow test report."
+    ],
+    "sourceRefs": [
+      "Hillsborough County backflow program",
+      "Hillsborough County certified backflow testers"
+    ]
+  },
+  "failedTestPolicy": {
+    "failedReportDeadlineHours": 48,
+    "failedReportMustBeSubmitted": true,
+    "inspectionRequired": true,
+    "sourceRefs": [
+      "Hillsborough County backflow program"
+    ]
+  },
   "sources": [
     {
       "label": "Hillsborough County backflow program",

@@ -125,6 +125,61 @@
     "repairRetestRange": "Repair and retest costs depend on whether the issue is on an external or internal assembly and whether permitting is implicated.",
     "pricingNotes": "Use the SAWS program for compliance path and BSI for tester discovery rather than assuming one standard retail price."
   },
+  "reportWorkflow": {
+    "portalVendor": "BSI",
+    "portalName": "SAWS BSI customer and tester tracking workflow",
+    "portalUrl": "https://www.bsionlinetracking.com/customer",
+    "submitter": "Registered SAWS testing company through the BSI workflow",
+    "requiredIdentifiers": [
+      "SAWS annual testing notice or compliance record",
+      "Registered testing company in BSI",
+      "Internal or external assembly context"
+    ],
+    "acceptanceProof": "Keep the BSI customer compliance record showing the passing result reached the SAWS workflow.",
+    "sourceRefs": [
+      "SAWS cross-connection control and backflow prevention program",
+      "SAWS annual testing of backflow prevention assemblies",
+      "BSI customer portal"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Registered testing company in the SAWS BSI workflow",
+      "Licensed BPAT status",
+      "Licensed fireline tester status when testing fireline assemblies"
+    ],
+    "deviceScopeLimit": "SAWS separates internal, external, customer-side, and fireline assembly context, so tester scope matters.",
+    "sourceRefs": [
+      "SAWS cross-connection control and backflow prevention program",
+      "SAWS annual testing of backflow prevention assemblies",
+      "BSI customer portal"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Backflow assemblies in the SAWS program: annual testing",
+      "Large-landscape irrigation checkup: separate annual checkup path when site thresholds apply",
+      "Failed annual test forms: delinquent until the assembly passes"
+    ],
+    "pastDueLadder": [
+      "BSI handles SAWS due and past-due notice operations."
+    ],
+    "sourceRefs": [
+      "SAWS cross-connection control and backflow prevention program",
+      "SAWS annual testing of backflow prevention assemblies",
+      "SAWS annual irrigation checkup program"
+    ]
+  },
+  "failedTestPolicy": {
+    "retestRequired": true,
+    "failedReportMustBeSubmitted": true,
+    "sourceRefs": [
+      "SAWS annual testing of backflow prevention assemblies"
+    ]
+  },
   "sources": [
     {
       "label": "SAWS cross-connection control and backflow prevention program",

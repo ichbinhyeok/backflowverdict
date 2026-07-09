@@ -124,6 +124,49 @@
     "repairRetestRange": "Repair and retest cost depends on the assembly and whether the corrective work delays county compliance.",
     "pricingNotes": "Lee County's local friction is the portal-driven compliance step, not just getting a device tested."
   },
+  "reportWorkflow": {
+    "portalVendor": "BSI / Florida Water Star CCCLink",
+    "portalName": "Lee County CCC portal reporting workflow",
+    "portalUrl": "https://ccclink.floridawaterstar.com/",
+    "submitter": "Tester or account user following Lee County's BSI and CCC portal workflow",
+    "requiredIdentifiers": [
+      "Lee County Utilities account or assembly context",
+      "BSI Online tester instruction workflow",
+      "CCC portal login context"
+    ],
+    "acceptanceProof": "Keep the accepted county portal record so the utility account stays current.",
+    "sourceRefs": [
+      "Lee County Utilities cross-connection control policy",
+      "Lee County BSI Online tester instructions",
+      "Lee County Utilities customer portal",
+      "Lee County CCC portal login"
+    ]
+  },
+  "testerGate": {
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Lee County BSI Online tester instructions",
+      "CCC portal access for the county reporting workflow"
+    ],
+    "deviceScopeLimit": "Lee County's friction is the county-controlled portal record, not only the field test itself.",
+    "sourceRefs": [
+      "Lee County Utilities cross-connection control policy",
+      "Lee County BSI Online tester instructions",
+      "Lee County CCC portal login"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Required devices: tested at installation and annually thereafter",
+      "Portal recordkeeping: the county-side record remains incomplete until the accepted report is posted"
+    ],
+    "initialTestRequired": true,
+    "sourceRefs": [
+      "Lee County Utilities cross-connection control policy",
+      "Lee County BSI Online tester instructions"
+    ]
+  },
   "sources": [
     {
       "label": "Lee County Utilities cross-connection control policy",

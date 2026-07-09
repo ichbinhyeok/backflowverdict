@@ -126,7 +126,66 @@
   "costBand": {
     "testingRange": "Private testing price is market-based, but Garland layers permit and registration steps around the work.",
     "repairRetestRange": "Repair and retest cost varies by device type, especially once irrigation permitting or fire line registration enters the job.",
-    "pricingNotes": "Garland publishes a $88 irrigation permit fee, a $75 annual tester-registration fee, and a $25 test-form booklet fee on the official workflow. The tester-side fees matter even if the property owner only sees the final quote."
+    "pricingNotes": "Garland publishes a $88 irrigation permit fee, a $75 annual tester-registration fee, and a $25 test-form booklet fee on the official workflow. The tester-side fees matter even if the property owner only sees the final quote.",
+    "filingFee": {
+      "amount": "$88",
+      "currency": "USD",
+      "appliesTo": "Irrigation permit fee in Garland's irrigation workflow",
+      "sourceRefs": [
+        "Garland irrigation installation page"
+      ]
+    },
+    "feeNotes": "$75 annual tester-registration fee and $25 test-form booklet fee are tester-side workflow costs.",
+    "sourceRefs": [
+      "Garland irrigation installation page",
+      "Garland tester registration page"
+    ]
+  },
+  "reportWorkflow": {
+    "portalName": "Garland Water Utilities report delivery workflow",
+    "portalUrl": "https://www.garlandtx.gov/3335/Water-Supply-Protection-Backflow",
+    "submissionDeadlineDaysAfterTest": 10,
+    "submitter": "TCEQ-licensed tester registered with Garland Water Utilities",
+    "paperAccepted": true,
+    "requiredIdentifiers": [
+      "Garland Water Utilities assembly registration",
+      "Garland registered tester status",
+      "Irrigation permit context when the assembly is tied to permitted irrigation work"
+    ],
+    "acceptanceProof": "Keep proof that Garland Water Utilities received the completed report within 10 days of the test.",
+    "sourceRefs": [
+      "Garland water supply protection page",
+      "Garland irrigation installation page",
+      "Garland tester registration page"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "credentialDocuments": [
+      "TCEQ backflow tester license",
+      "Garland Water Utilities tester registration",
+      "SCR, RME, and letter-of-employment documents for fire line tester registration"
+    ],
+    "deviceScopeLimit": "Fire line testers have extra Garland registration documents beyond the standard BPAT registration path.",
+    "sourceRefs": [
+      "Garland water supply protection page",
+      "Garland tester registration page",
+      "Garland tester list"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Assemblies: before permanent activation and annually thereafter",
+      "Test reports: submit to Garland Water Utilities within 10 days of testing",
+      "Irrigation work: passing test results must reach the Water Department and permit office before final inspection"
+    ],
+    "initialTestRequired": true,
+    "reportDueDaysAfterTest": 10,
+    "sourceRefs": [
+      "Garland water supply protection page",
+      "Garland irrigation installation page"
+    ]
   },
   "sources": [
     {
