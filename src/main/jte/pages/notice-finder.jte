@@ -67,6 +67,22 @@
                             </article>
                         </div>
                     @else
+                        <article class="detail-card detail-card--key">
+                            <span class="eyebrow">Best first</span>
+                            <h3>${results.get(0).label()}</h3>
+                            <p>${results.get(0).summary()}</p>
+                            @if (!results.get(0).signals().isEmpty())
+                                <ul class="detail-list">
+                                    @for (var signal : results.get(0).signals())
+                                        <li>${signal}</li>
+                                    @endfor
+                                </ul>
+                            @endif
+                            <div class="hero__actions">
+                                <a class="button button--primary" href="${results.get(0).path()}" aria-label="Open top route for ${results.get(0).label()}">Open top route</a>
+                                <a class="button button--secondary" href="/leads/new?source=/notice-finder&amp;pageFamily=notice-finder">Request help</a>
+                            </div>
+                        </article>
                         <div class="card-grid">
                             @for (var result : results)
                                 <article class="detail-card detail-card--quiet">
