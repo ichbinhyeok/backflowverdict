@@ -11,6 +11,7 @@ import owner.backflow.data.model.CostBand;
 import owner.backflow.data.model.GuideRecord;
 import owner.backflow.data.model.GuideSection;
 import owner.backflow.data.model.PageStatus;
+import owner.backflow.data.model.ReportWorkflow;
 import owner.backflow.data.model.SourceLink;
 import owner.backflow.data.model.StateGuideRecord;
 import owner.backflow.data.model.UtilityRecord;
@@ -41,7 +42,34 @@ class SourceEvidenceServiceTest {
         Assertions.assertFalse(service.hasBlockingIssue(sampleStateGuide("storage/snapshots/states/state.html")));
     }
 
+    @Test
+    void structuredUtilityFactsNeedSourceRefs() {
+        SourceEvidenceService service = new SourceEvidenceService(new AppDataProperties(tempDir.resolve("data").toString()));
+
+        UtilityRecord utility = sampleUtility(
+                "",
+                new ReportWorkflow(
+                        "BSI",
+                        "BSI Online",
+                        "https://example.gov/portal",
+                        10,
+                        "registered tester",
+                        false,
+                        List.of("assembly id"),
+                        "portal confirmation",
+                        null,
+                        List.of()
+                )
+        );
+
+        Assertions.assertTrue(service.hasBlockingIssue(utility));
+    }
+
     private UtilityRecord sampleUtility(String snapshotPath) {
+        return sampleUtility(snapshotPath, null);
+    }
+
+    private UtilityRecord sampleUtility(String snapshotPath, ReportWorkflow reportWorkflow) {
         return new UtilityRecord(
                 "sample-utility",
                 "Sample Utility",
@@ -79,7 +107,11 @@ class SourceEvidenceServiceTest {
                 List.of("Do the test"),
                 List.of("Failure matters"),
                 new CostBand("test", "repair", "notes"),
-                List.of(new SourceLink("Official page", "https://example.gov/backflow", "official page"))
+                List.of(new SourceLink("Official page", "https://example.gov/backflow", "official page")),
+                reportWorkflow,
+                null,
+                null,
+                null
         );
     }
 

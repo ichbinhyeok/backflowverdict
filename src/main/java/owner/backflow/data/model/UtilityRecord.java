@@ -41,7 +41,11 @@ public record UtilityRecord(
         List<String> workflowSteps,
         List<String> failureHighlights,
         CostBand costBand,
-        List<SourceLink> sources
+        List<SourceLink> sources,
+        ReportWorkflow reportWorkflow,
+        TesterGate testerGate,
+        DeadlinePolicy deadlinePolicy,
+        FailedTestPolicy failedTestPolicy
 ) {
     public UtilityRecord {
         serviceAreaCities = defaultList(serviceAreaCities);
@@ -56,6 +60,10 @@ public record UtilityRecord(
         workflowSteps = defaultList(workflowSteps);
         failureHighlights = defaultList(failureHighlights);
         sources = defaultList(sources);
+        reportWorkflow = reportWorkflow == null ? ReportWorkflow.empty() : reportWorkflow;
+        testerGate = testerGate == null ? TesterGate.empty() : testerGate;
+        deadlinePolicy = deadlinePolicy == null ? DeadlinePolicy.empty() : deadlinePolicy;
+        failedTestPolicy = failedTestPolicy == null ? FailedTestPolicy.empty() : failedTestPolicy;
         approvedTesterMode = approvedTesterMode == null ? ApprovedTesterMode.NONE : approvedTesterMode;
         pageStatus = pageStatus == null ? PageStatus.HOLD : pageStatus;
         staleAfterDays = staleAfterDays == null ? 45 : staleAfterDays;
@@ -93,6 +101,26 @@ public record UtilityRecord(
 
     public boolean supportsFireLinePage() {
         return fireLine != null && fireLine.hasContent();
+    }
+
+    public boolean supportsFailedTestPage() {
+        return !failureHighlights.isEmpty() || failedTestPolicy.hasContent();
+    }
+
+    public boolean hasReportWorkflow() {
+        return reportWorkflow.hasContent();
+    }
+
+    public boolean hasTesterGate() {
+        return testerGate.hasContent();
+    }
+
+    public boolean hasDeadlinePolicy() {
+        return deadlinePolicy.hasContent();
+    }
+
+    public boolean hasFailedTestPolicy() {
+        return failedTestPolicy.hasContent();
     }
 
     public UtilityFocusContent resolvedAnnualTesting() {

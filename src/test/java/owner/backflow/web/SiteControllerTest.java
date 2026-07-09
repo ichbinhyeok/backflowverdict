@@ -164,6 +164,9 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Portal comparison")))
                 .andExpect(content().string(containsString("Notice or device ID")))
                 .andExpect(content().string(containsString("Report acceptance")))
+                .andExpect(content().string(containsString("WEIRS database")))
+                .andExpect(content().string(containsString("within 5 days after testing")))
+                .andExpect(content().string(containsString("Gauge calibration within 12 months")))
                 .andExpect(content().string(containsString("Portal access still depends on accepted credentials")))
                 .andExpect(content().string(containsString("Questions to answer before filing a report")))
                 .andExpect(content().string(containsString("Can any backflow tester submit through Backflow reporting portals")))
@@ -180,7 +183,9 @@ class SiteControllerTest {
 
         mockMvc.perform(get("/backflow-reporting-portals/weirs"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("WEIRS for backflow testing")));
+                .andExpect(content().string(containsString("WEIRS for backflow testing")))
+                .andExpect(content().string(containsString("WEIRS database")))
+                .andExpect(content().string(containsString("Complete online Test and Maintenance Report submitted through WEIRS")));
 
         mockMvc.perform(get("/backflow-reporting-portals/swiftcomply"))
                 .andExpect(status().isOk())
@@ -216,6 +221,8 @@ class SiteControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Submit backflow test reports through the right city, utility, and portal route.")))
                 .andExpect(content().string(containsString("SpryBackflow")))
+                .andExpect(content().string(containsString("WEIRS database")))
+                .andExpect(content().string(containsString("$25 - City filing fee per test submission")))
                 .andExpect(content().string(containsString("Passed is not always filed")))
                 .andExpect(content().string(containsString("City and utility report-submission paths")))
                 .andExpect(content().string(containsString("/cities/texas/austin/submit-backflow-report")))
@@ -1241,6 +1248,13 @@ class SiteControllerTest {
         mockMvc.perform(get("/cities/florida/jupiter/backflow-testing"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Jupiter backflow testing routes through")));
+
+        mockMvc.perform(get("/cities/texas/austin/backflow-testing"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("City intent map")))
+                .andExpect(content().string(containsString("href=\"/cities/texas/austin/backflow-reporting-portal\"")))
+                .andExpect(content().string(containsString("href=\"/cities/texas/austin/submit-backflow-report\"")))
+                .andExpect(content().string(containsString("href=\"/cities/texas/austin/approved-backflow-testers\"")));
     }
 
     @Test
@@ -1283,7 +1297,10 @@ class SiteControllerTest {
         mockMvc.perform(get("/cities/texas/austin/submit-backflow-report"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Submit Austin WEIRS backflow test reports")))
-                .andExpect(content().string(containsString("WEIRS")));
+                .andExpect(content().string(containsString("WEIRS")))
+                .andExpect(content().string(containsString("WEIRS database")))
+                .andExpect(content().string(containsString("Report due within 5 days after testing")))
+                .andExpect(content().string(containsString("TCEQ BPAT license")));
 
         mockMvc.perform(get("/cities/texas/dallas/failed-backflow-test"))
                 .andExpect(status().isOk())
@@ -1463,7 +1480,24 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">")))
                 .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemap.xml</loc>")))
                 .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemap-priority.xml</loc>")))
+                .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemaps/utilities.xml</loc>")))
+                .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemaps/city-intents.xml</loc>")))
+                .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemaps/portals.xml</loc>")))
+                .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemaps/providers.xml</loc>")))
                 .andExpect(content().string(containsString("<lastmod>")));
+
+        mockMvc.perform(get("/sitemaps/city-intents.xml"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("https://backflowpath.com/cities/texas/austin/submit-backflow-report")))
+                .andExpect(content().string(not(containsString("/cities/texas/arlington/backflow-testing"))));
+
+        mockMvc.perform(get("/sitemaps/portals.xml"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("https://backflowpath.com/backflow-reporting-portals/weirs")));
+
+        mockMvc.perform(get("/sitemaps/providers.xml"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("https://backflowpath.com/providers/phoenix-western-backflow/")));
 
         mockMvc.perform(get("/robots.txt"))
                 .andExpect(status().isOk())

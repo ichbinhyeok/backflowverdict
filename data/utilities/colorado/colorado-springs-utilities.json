@@ -109,6 +109,45 @@
     "repairRetestRange": "Repair and retest costs vary depending on whether the assembly record is already accurate in the utility system.",
     "pricingNotes": "The value is in understanding the portal and survey gate, not in a public price schedule."
   },
+  "reportWorkflow": {
+    "portalVendor": "SwiftComply",
+    "portalName": "Colorado Springs Utilities SwiftComply workflow",
+    "portalUrl": "https://www.csu.org/safety/backflow-prevention-professionals",
+    "submissionDeadlineDaysAfterTest": 5,
+    "submitter": "Certified backflow tester registered in the utility workflow",
+    "requiredIdentifiers": [
+      "Tester certification",
+      "Test-kit information",
+      "Surveyed assembly record",
+      "Record correction or replacement notes when needed"
+    ],
+    "acceptanceProof": "Test result entered into the Colorado Springs Utilities workflow within five days.",
+    "sourceRefs": [
+      "Colorado Springs Utilities backflow professionals",
+      "Colorado Springs Utilities rules and regulations"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Certification information",
+      "Test-kit information"
+    ],
+    "sourceRefs": [
+      "Colorado Springs Utilities backflow professionals"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Annual compliance testing after the assembly is in the program",
+      "Survey-first review for newly installed assemblies"
+    ],
+    "reportDueDaysAfterTest": 5,
+    "sourceRefs": [
+      "Colorado Springs Utilities backflow professionals"
+    ]
+  },
   "sources": [
     {
       "label": "Colorado Springs Utilities backflow professionals",

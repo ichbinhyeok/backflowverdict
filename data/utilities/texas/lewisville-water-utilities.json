@@ -126,7 +126,102 @@
   "costBand": {
     "testingRange": "Consumer testing price is market-based, but Lewisville adds a $25 City filing fee per test submission.",
     "repairRetestRange": "Repair and retest pricing depends on assembly type, especially when fire assemblies or larger commercial systems are involved.",
-    "pricingNotes": "Lewisville is unusually transparent about the City fee layered on top of the private tester invoice."
+    "pricingNotes": "Lewisville is unusually transparent about the City fee layered on top of the private tester invoice.",
+    "filingFee": {
+      "amount": "$25",
+      "currency": "USD",
+      "appliesTo": "City filing fee per test submission",
+      "sourceRefs": [
+        "Lewisville backflow testing page"
+      ]
+    },
+    "fineMin": {
+      "amount": "$100",
+      "currency": "USD",
+      "appliesTo": "Daily misdemeanor fine exposure cited by the City page",
+      "sourceRefs": [
+        "Lewisville backflow testing page"
+      ]
+    },
+    "fineMax": {
+      "amount": "$1,000",
+      "currency": "USD",
+      "appliesTo": "Daily misdemeanor fine exposure cited by the City page",
+      "sourceRefs": [
+        "Lewisville backflow testing page"
+      ]
+    },
+    "sourceRefs": [
+      "Lewisville backflow testing page"
+    ]
+  },
+  "reportWorkflow": {
+    "portalVendor": "BSI",
+    "portalName": "BSI Online submission portal",
+    "portalUrl": "https://www.bsionlinetracking.com/",
+    "submissionDeadlineDaysAfterTest": 10,
+    "submitter": "Texas-licensed tester registered with the City of Lewisville",
+    "paperAccepted": false,
+    "requiredIdentifiers": [
+      "Registered tester",
+      "Correct assembly type",
+      "Completed test report",
+      "BSI Online submission"
+    ],
+    "acceptanceProof": "Electronic BSI Online submission within ten days of the test date.",
+    "filingFee": {
+      "amount": "$25",
+      "currency": "USD",
+      "appliesTo": "City filing fee per test submission",
+      "sourceRefs": [
+        "Lewisville backflow testing page"
+      ]
+    },
+    "sourceRefs": [
+      "Lewisville backflow testing page",
+      "BSI Online for Lewisville submissions"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Texas tester license",
+      "City of Lewisville tester registration"
+    ],
+    "deviceScopeLimit": "Not every registered tester is licensed for every assembly type.",
+    "sourceRefs": [
+      "Lewisville backflow testing page",
+      "Lewisville tester list"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "At installation",
+      "At least once per year thereafter"
+    ],
+    "initialTestRequired": true,
+    "reportDueDaysAfterTest": 10,
+    "sourceRefs": [
+      "Lewisville backflow testing page"
+    ]
+  },
+  "failedTestPolicy": {
+    "retestRequired": true,
+    "failedReportMustBeSubmitted": true,
+    "shutoffRisk": true,
+    "penaltyAmount": {
+      "amount": "$100 to $1,000",
+      "currency": "USD",
+      "appliesTo": "Daily fine exposure cited by the City page",
+      "sourceRefs": [
+        "Lewisville backflow testing page"
+      ]
+    },
+    "sourceRefs": [
+      "Lewisville backflow testing page"
+    ]
   },
   "sources": [
     {

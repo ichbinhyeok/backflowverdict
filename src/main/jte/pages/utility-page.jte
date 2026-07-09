@@ -1,5 +1,6 @@
 @import owner.backflow.web.PageMeta
 @import owner.backflow.data.model.CityAliasRecord
+@import owner.backflow.data.model.ProviderRecord
 @import owner.backflow.data.model.UtilityRecord
 @import owner.backflow.data.model.GuideRecord
 @import owner.backflow.data.model.MetroRecord
@@ -18,6 +19,7 @@
 @param String reportAcceptanceHint
 @param java.util.List<owner.backflow.web.FaqItem> faqItems
 @param java.util.List<CityAliasRecord> cityAliases = java.util.List.of()
+@param java.util.List<ProviderRecord> providers = java.util.List.of()
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 @param java.util.List<MetroRecord> metros = java.util.List.of()
 @param StateGuideRecord stateGuide = null
@@ -70,19 +72,31 @@
                 <div class="metadata-grid">
                     <div class="metadata-block">
                         <strong>Deadline trigger</strong>
-                        <span>${utility.testingFrequency()} - ${utility.dueBasis()}</span>
+                        @if (utility.deadlinePolicy().reportDueDaysAfterTest() != null)
+                            <span>${utility.deadlinePolicy().reportDueLabel()}</span>
+                        @else
+                            <span>${utility.testingFrequency()} - ${utility.dueBasis()}</span>
+                        @endif
                     </div>
                     <div class="metadata-block">
                         <strong>Tester gate</strong>
-                        <span>${testerPath != null && testerLabel != null ? testerLabel : "Confirm tester status with the utility before scheduling."}</span>
+                        @if (utility.testerGate().hasContent())
+                            <span>${utility.testerGate().credentialSummary()}</span>
+                        @else
+                            <span>${testerPath != null && testerLabel != null ? testerLabel : "Confirm tester status with the utility before scheduling."}</span>
+                        @endif
                     </div>
                     <div class="metadata-block">
                         <strong>Report route</strong>
-                        <span>${utility.submissionMethods().isEmpty() ? "Confirm the current utility filing path before the test." : utility.submissionMethods().get(0).label()}</span>
+                        @if (utility.reportWorkflow().hasContent())
+                            <span>${utility.reportWorkflow().portalName() != null && !utility.reportWorkflow().portalName().isBlank() ? utility.reportWorkflow().portalName() : "Utility reporting workflow"}</span>
+                        @else
+                            <span>${utility.submissionMethods().isEmpty() ? "Confirm the current utility filing path before the test." : utility.submissionMethods().get(0).label()}</span>
+                        @endif
                     </div>
                     <div class="metadata-block">
                         <strong>Proof to keep</strong>
-                        <span>${reportAcceptanceHint}</span>
+                        <span>${utility.reportWorkflow().acceptanceProof() != null && !utility.reportWorkflow().acceptanceProof().isBlank() ? utility.reportWorkflow().acceptanceProof() : reportAcceptanceHint}</span>
                     </div>
                     <div class="metadata-block">
                         <strong>Failed-test branch</strong>
@@ -113,6 +127,20 @@
                 <span class="eyebrow">Report packet</span>
                 <h2>What has to be ready before the filing is complete</h2>
                 <ul class="detail-list">
+                    @if (utility.reportWorkflow().submissionDeadlineDaysAfterTest() != null)
+                        <li><strong>Submission deadline:</strong> ${utility.reportWorkflow().deadlineLabel()}</li>
+                    @endif
+                    @if (utility.reportWorkflow().paperAccepted() != null)
+                        <li><strong>Paper reports:</strong> ${utility.reportWorkflow().paperAcceptedLabel()}</li>
+                    @endif
+                    @if (utility.reportWorkflow().filingFee() != null && utility.reportWorkflow().filingFee().hasContent())
+                        <li><strong>Filing fee:</strong> ${utility.reportWorkflow().filingFee().display()}</li>
+                    @endif
+                    @if (!utility.reportWorkflow().requiredIdentifiers().isEmpty())
+                        @for (var requiredIdentifier : utility.reportWorkflow().requiredIdentifiers())
+                            <li><strong>Report field:</strong> ${requiredIdentifier}</li>
+                        @endfor
+                    @endif
                     @for (var step : utility.workflowSteps())
                         <li>${step}</li>
                     @endfor
@@ -123,6 +151,18 @@
                 <span class="eyebrow">Rejection risk</span>
                 <h2>What can keep the account out of compliance</h2>
                 <ul class="detail-list">
+                    @if (utility.testerGate().gaugeCalibrationWindowMonths() != null)
+                        <li>${utility.testerGate().calibrationLabel()}</li>
+                    @endif
+                    @if (utility.testerGate().deviceScopeLimit() != null && !utility.testerGate().deviceScopeLimit().isBlank())
+                        <li>${utility.testerGate().deviceScopeLimit()}</li>
+                    @endif
+                    @if (utility.failedTestPolicy().failedReportDeadlineHours() != null)
+                        <li>${utility.failedTestPolicy().failedReportDeadlineLabel()}</li>
+                    @endif
+                    @if (utility.failedTestPolicy().repairDeadlineDays() != null)
+                        <li>${utility.failedTestPolicy().repairDeadlineLabel()}</li>
+                    @endif
                     @for (var failureHighlight : utility.failureHighlights())
                         <li>${failureHighlight}</li>
                     @endfor
@@ -427,22 +467,43 @@
                         <h2>Public provider direction</h2>
                         <p>Provider routing stays clearly labeled below the official workflow. This block exists to frame public provider discovery without implying authority status.</p>
                     </div>
-                    <div class="card-grid">
-                        <div class="mini-provider">
-                            <img src="/images/design/utility-provider-1.jpg" alt="Backflow technician inspecting an industrial assembly">
-                            <div>
-                                <strong>Local testing profiles</strong>
-                                <span>Use provider profiles and metro pages only after confirming the utility workflow and list rules above.</span>
+                    @if (providers.isEmpty())
+                        <div class="card-grid">
+                            <div class="mini-provider">
+                                <img src="/images/design/utility-provider-1.jpg" alt="Backflow technician inspecting an industrial assembly">
+                                <div>
+                                    <strong>Local testing profiles</strong>
+                                    <span>Use provider profiles and metro pages only after confirming the utility workflow and list rules above.</span>
+                                </div>
+                            </div>
+                            <div class="mini-provider">
+                                <img src="/images/design/utility-provider-2.jpg" alt="Pressure vacuum breaker on an exterior wall">
+                                <div>
+                                    <strong>Public directory stays separate</strong>
+                                    <span>Provider help is reviewed separately from the official utility workflow and never replaces the authority guidance above.</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="mini-provider">
-                            <img src="/images/design/utility-provider-2.jpg" alt="Pressure vacuum breaker on an exterior wall">
-                            <div>
-                                <strong>Public directory stays separate</strong>
-                                <span>Provider help is reviewed separately from the official utility workflow and never replaces the authority guidance above.</span>
-                            </div>
+                    @else
+                        <div class="card-grid card-grid--three">
+                            @for (var provider : providers)
+                                <article class="detail-card detail-card--quiet">
+                                    <span class="pill">Mapped provider</span>
+                                    <h3>${provider.providerName()}</h3>
+                                    <p>${provider.pageLabel()}</p>
+                                    <div class="card-actions">
+                                        @if (provider.phone() != null && !provider.phone().isBlank())
+                                            <a class="button button--primary" href="tel:${provider.phone().replace(" ", "")}">Call</a>
+                                        @endif
+                                        <a class="button button--secondary" href="/providers/${provider.providerId()}/">Profile</a>
+                                        @if (provider.officialApprovalSourceUrl() != null && !provider.officialApprovalSourceUrl().isBlank())
+                                            <a class="button button--secondary" href="${provider.officialApprovalSourceUrl()}">Authority source</a>
+                                        @endif
+                                    </div>
+                                </article>
+                            @endfor
                         </div>
-                    </div>
+                    @endif
                 </article>
             </div>
 

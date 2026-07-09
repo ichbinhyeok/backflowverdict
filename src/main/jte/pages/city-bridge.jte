@@ -1,4 +1,5 @@
 @import owner.backflow.web.PageMeta
+@import owner.backflow.web.CityIntentLink
 @import owner.backflow.data.model.CityAliasRecord
 @import owner.backflow.data.model.GuideRecord
 @import owner.backflow.data.model.ProviderRecord
@@ -7,6 +8,8 @@
 @param CityAliasRecord alias
 @param UtilityRecord utility
 @param String annualTestingPath = null
+@param String portalCityPath = null
+@param String submitReportPath = null
 @param String irrigationPath = null
 @param String fireLinePath = null
 @param String failedTestPath
@@ -17,6 +20,7 @@
 @param String noticeIdentifierHint
 @param String reportAcceptanceHint
 @param boolean usesPortalWorkflow
+@param java.util.List<CityIntentLink> cityIntentLinks = java.util.List.of()
 @param java.util.List<ProviderRecord> providers = java.util.List.of()
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 
@@ -32,6 +36,9 @@
                     <a class="button button--secondary" href="/notice-finder?q=${alias.aliasSlug()}">Find from notice</a>
                     @if (annualTestingPath != null)
                         <a class="button button--secondary" href="${annualTestingPath}">Annual testing</a>
+                    @endif
+                    @if (submitReportPath != null)
+                        <a class="button button--secondary" href="${submitReportPath}">Submit report</a>
                     @endif
                     @if (testerPath != null)
                         <a class="button button--secondary" href="${testerPath}">${testerLabel}</a>
@@ -87,7 +94,10 @@
                         <h3>${alias.city()} backflow reporting portal</h3>
                         <p>Use the utility page to confirm whether reports go through BSI, WEIRS, SwiftComply, a city portal, or another official submission path.</p>
                         <div class="card-actions">
-                            <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Portal and submission steps</a>
+                            <a class="button button--secondary" href="${portalCityPath != null ? portalCityPath : "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/"}">Portal and submission steps</a>
+                            @if (submitReportPath != null)
+                                <a class="button button--secondary" href="${submitReportPath}">Submit report route</a>
+                            @endif
                             @if (portalHubPath != null && portalHubLabel != null)
                                 <a class="button button--secondary" href="${portalHubPath}">${portalHubLabel}</a>
                             @endif
@@ -139,6 +149,29 @@
             </div>
         </div>
     </section>
+
+    @if (!cityIntentLinks.isEmpty())
+        <section class="section section--tight">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">City intent map</span>
+                    <h2>${alias.city()} pages linked from this hub</h2>
+                    <p class="lede">These routes keep local searches connected to the exact city, while each page still routes back to the governing utility record.</p>
+                </div>
+                <div class="support-links">
+                    @for (var intentLink : cityIntentLinks)
+                        <a class="support-link" href="${intentLink.path()}">
+                            <div>
+                                <strong>${intentLink.label()}</strong>
+                                <span>${intentLink.summary()}</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    @endfor
+                </div>
+            </div>
+        </section>
+    @endif
 
     <section class="section section--tight">
         <div class="container content-grid">
@@ -226,7 +259,13 @@
                                 <h3>${provider.providerName()}</h3>
                                 <p>${provider.pageLabel()}</p>
                                 <div class="card-actions">
+                                    @if (provider.phone() != null && !provider.phone().isBlank())
+                                        <a class="button button--primary" href="tel:${provider.phone().replace(" ", "")}">Call</a>
+                                    @endif
                                     <a class="button button--secondary" href="/providers/${provider.providerId()}/">Open provider profile</a>
+                                    @if (provider.officialApprovalSourceUrl() != null && !provider.officialApprovalSourceUrl().isBlank())
+                                        <a class="button button--secondary" href="${provider.officialApprovalSourceUrl()}">Authority source</a>
+                                    @endif
                                 </div>
                             </article>
                         @endif

@@ -21,7 +21,8 @@
   "utilityUrl": "https://www.sswd.org/services/cross-connection-control-program",
   "officialProgramUrls": [
     "https://www.sswd.org/services/cross-connection-control-program",
-    "https://www.sswd.org/departments/water-quality"
+    "https://www.sswd.org/departments/water-quality",
+    "https://www.sswd.org/departments/water-quality/backflow-prevention-assembly-test-entry-portal"
   ],
   "testingFrequency": "Upon installation and at least annually thereafter",
   "dueBasis": "SSWD says commercial, irrigation, institutional, industrial, and multifamily service connections require approved assemblies and approved tester portal entry.",
@@ -51,6 +52,11 @@
       "label": "SSWD water quality page",
       "url": "https://www.sswd.org/departments/water-quality",
       "kind": "utility page"
+    },
+    {
+      "label": "SSWD backflow test entry portal",
+      "url": "https://www.sswd.org/departments/water-quality/backflow-prevention-assembly-test-entry-portal",
+      "kind": "test entry portal"
     }
   ],
   "phone": "916-972-7171",
@@ -126,6 +132,53 @@
     "repairRetestRange": "Repair and retest cost depends on the device and service class.",
     "pricingNotes": "The biggest local value is the district's operational workflow and covered-class clarity."
   },
+  "reportWorkflow": {
+    "portalVendor": "SSWD",
+    "portalName": "SSWD backflow prevention assembly test entry portal",
+    "portalUrl": "https://www.sswd.org/departments/water-quality/backflow-prevention-assembly-test-entry-portal",
+    "submissionDeadlineDaysAfterTest": 2,
+    "submitter": "SSWD-approved tester",
+    "requiredIdentifiers": [
+      "Approved tester access",
+      "Assembly test result",
+      "Passed or failed status"
+    ],
+    "acceptanceProof": "Tester-entered result retained from the SSWD test entry portal.",
+    "sourceRefs": [
+      "SSWD cross-connection control FAQs",
+      "SSWD backflow test entry portal"
+    ]
+  },
+  "testerGate": {
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "SSWD approved tester status"
+    ],
+    "sourceRefs": [
+      "SSWD cross-connection control FAQs",
+      "SSWD backflow test entry portal"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Upon installation",
+      "At least annually thereafter"
+    ],
+    "initialTestRequired": true,
+    "reportDueDaysAfterTest": 2,
+    "sourceRefs": [
+      "SSWD cross-connection control FAQs",
+      "SSWD backflow test entry portal"
+    ]
+  },
+  "failedTestPolicy": {
+    "failedReportDeadlineHours": 24,
+    "failedReportMustBeSubmitted": true,
+    "sourceRefs": [
+      "SSWD backflow test entry portal"
+    ]
+  },
   "sources": [
     {
       "label": "SSWD cross-connection control FAQs",
@@ -136,6 +189,11 @@
       "label": "SSWD water quality page",
       "url": "https://www.sswd.org/departments/water-quality",
       "kind": "official district utility page"
+    },
+    {
+      "label": "SSWD backflow test entry portal",
+      "url": "https://www.sswd.org/departments/water-quality/backflow-prevention-assembly-test-entry-portal",
+      "kind": "official district test entry portal"
     }
   ]
 }

@@ -649,6 +649,7 @@ public class SiteController {
         model.addAttribute("noticeIdentifierHint", noticeIdentifierHint(utility));
         model.addAttribute("reportAcceptanceHint", reportAcceptanceHint(utility));
         model.addAttribute("cityAliases", publishedCityAliasesForUtility(utility.utilityId()));
+        model.addAttribute("providers", registryService.findProvidersForUtility(utility.utilityId()).stream().limit(4).toList());
         model.addAttribute("faqItems", faqItems);
         model.addAttribute("stateGuide", registryService.findPublishedStateGuide(utility.state()).orElse(null));
         model.addAttribute("metros", registryService.listPublishedMetrosForUtility(utility.utilityId()));
@@ -863,12 +864,16 @@ public class SiteController {
         )));
         model.addAttribute("alias", alias);
         model.addAttribute("utility", utility);
-        model.addAttribute("annualTestingPath", utility.supportsAnnualTestingPage() ? utilityPath(utility) + "annual-testing" : null);
-        model.addAttribute("irrigationPath", utility.supportsIrrigationPage() ? utilityPath(utility) + "irrigation" : null);
-        model.addAttribute("fireLinePath", utility.supportsFireLinePage() ? utilityPath(utility) + "fire-line" : null);
-        model.addAttribute("failedTestPath", utilityPath(utility) + "failed-test");
-        model.addAttribute("testerPath", testerPath(utility));
-        model.addAttribute("testerLabel", testerLabel(utility));
+        Map<String, String> cityIntentPaths = cityIntentPathsBySlug(alias, utility);
+        model.addAttribute("cityIntentLinks", cityIntentLinks(alias, utility));
+        model.addAttribute("annualTestingPath", cityIntentPaths.get("annual-backflow-testing"));
+        model.addAttribute("portalCityPath", cityIntentPaths.get("backflow-reporting-portal"));
+        model.addAttribute("submitReportPath", cityIntentPaths.get("submit-backflow-report"));
+        model.addAttribute("irrigationPath", cityIntentPaths.get("irrigation-backflow-testing"));
+        model.addAttribute("fireLinePath", cityIntentPaths.get("fire-line-backflow-testing"));
+        model.addAttribute("failedTestPath", cityIntentPaths.getOrDefault("failed-backflow-test", utilityPath(utility) + "failed-test"));
+        model.addAttribute("testerPath", cityIntentPaths.getOrDefault("approved-backflow-testers", testerPath(utility)));
+        model.addAttribute("testerLabel", cityIntentPaths.containsKey("approved-backflow-testers") ? alias.city() + " approved tester route" : testerLabel(utility));
         model.addAttribute("portalHubPath", portalHubPath(utility));
         model.addAttribute("portalHubLabel", portalHubLabel(utility));
         model.addAttribute("noticeIdentifierHint", noticeIdentifierHint(utility));
@@ -934,6 +939,7 @@ public class SiteController {
         model.addAttribute("testerLabel", testerLabel(utility));
         model.addAttribute("portalHubPath", portalHubPath(utility));
         model.addAttribute("portalHubLabel", portalHubLabel(utility));
+        model.addAttribute("cityIntentLinks", cityIntentLinks(alias, utility));
         model.addAttribute("noticeIdentifierHint", noticeIdentifierHint(utility));
         model.addAttribute("reportAcceptanceHint", reportAcceptanceHint(utility));
         model.addAttribute("faqItems", faqItems);
@@ -947,88 +953,7 @@ public class SiteController {
         if (siteVisibilityService.shouldForceNoindex(request)) {
             return emptySitemap();
         }
-        List<SitemapEntry> urls = new ArrayList<>();
-        urls.add(new SitemapEntry(canonical("/"), homeLastModified()));
-        urls.add(new SitemapEntry(canonical("/about"), homeLastModified()));
-        urls.add(new SitemapEntry(canonical("/methodology"), homeLastModified()));
-        urls.add(new SitemapEntry(canonical("/editorial-standards"), homeLastModified()));
-        urls.add(new SitemapEntry(canonical("/corrections"), homeLastModified()));
-        urls.add(new SitemapEntry(canonical("/contact"), homeLastModified()));
-        urls.add(new SitemapEntry(canonical("/claim-listing"), homeLastModified()));
-        urls.add(new SitemapEntry(canonical("/notice-finder"), homeLastModified()));
-        urls.add(new SitemapEntry(canonical("/submit-backflow-report"), latestUtilityModified(portalUtilities("all"))));
-        List<UtilityRecord> officialTesterUtilities = officialTesterUtilities();
-        urls.add(new SitemapEntry(
-                canonical("/official-backflow-tester-lists"),
-                latestUtilityModified(officialTesterUtilities)
-        ));
-        urls.add(new SitemapEntry(
-                canonical("/backflow-reporting-portals"),
-                latestUtilityModified(portalUtilities("all"))
-        ));
-        for (String portalSlug : PORTAL_SLUGS) {
-            List<UtilityRecord> portalUtilities = portalUtilities(portalSlug);
-            if (!portalUtilities.isEmpty()) {
-                urls.add(new SitemapEntry(
-                        canonical("/backflow-reporting-portals/" + portalSlug),
-                        latestUtilityModified(portalUtilities)
-                ));
-            }
-        }
-        utilitiesByState(officialTesterUtilities).forEach((state, utilities) -> urls.add(new SitemapEntry(
-                canonical("/states/" + state + "/approved-backflow-testers"),
-                latestUtilityModified(utilities)
-        )));
-        for (CityAliasRecord alias : registryService.listCityAliases()) {
-            if (alias.aliasMode() == AliasMode.NOINDEX_BRIDGE || registryService.findUtilityById(alias.utilityId()).isEmpty()) {
-                continue;
-            }
-            urls.add(new SitemapEntry(canonical(cityPath(alias)), alias.lastReviewed()));
-            registryService.findUtilityById(alias.utilityId()).ifPresent(utility ->
-                    cityIntentConfigs(alias, utility).forEach(intent -> urls.add(new SitemapEntry(
-                            canonical(cityIntentPath(alias, intent.slug())),
-                            latestDate(alias.lastReviewed(), utility.lastVerified())
-                    )))
-            );
-        }
-        registryService.listPublishedStateGuides()
-                .forEach(guide -> urls.add(new SitemapEntry(
-                        canonical("/states/" + guide.state() + "/backflow-testing"),
-                        guide.lastVerified()
-                )));
-        registryService.listPublishedGuides().forEach(guide -> urls.add(new SitemapEntry(
-                canonical("/guides/" + guide.slug()),
-                guide.lastReviewed()
-        )));
-        registryService.listPublishedMetros().forEach(metro -> urls.add(new SitemapEntry(
-                canonical(metroPath(metro)),
-                metro.lastReviewed()
-        )));
-        for (UtilityRecord utility : registryService.listPublishedUtilities()) {
-            urls.add(new SitemapEntry(canonical(utilityPath(utility)), utility.lastVerified()));
-            if (utility.supportsAnnualTestingPage()) {
-                urls.add(new SitemapEntry(canonical(utilityPath(utility) + "annual-testing"), utility.lastVerified()));
-            }
-            urls.add(new SitemapEntry(canonical(utilityPath(utility) + "failed-test"), utility.lastVerified()));
-            if (utility.supportsIrrigationPage()) {
-                urls.add(new SitemapEntry(canonical(utilityPath(utility) + "irrigation"), utility.lastVerified()));
-            }
-            if (utility.supportsFireLinePage()) {
-                urls.add(new SitemapEntry(canonical(utilityPath(utility) + "fire-line"), utility.lastVerified()));
-            }
-            if (utility.supportsApprovedTestersPage()) {
-                urls.add(new SitemapEntry(canonical(utilityPath(utility) + "approved-testers"), utility.lastVerified()));
-            }
-            if (utility.supportsFindATesterPage() && !registryService.findProvidersForUtility(utility.utilityId()).isEmpty()) {
-                urls.add(new SitemapEntry(canonical(utilityPath(utility) + "find-a-tester"), utility.lastVerified()));
-            }
-        }
-        registryService.listPublicProviders().forEach(provider -> urls.add(new SitemapEntry(
-                canonical(providerPath(provider)),
-                provider.lastReviewed()
-        )));
-
-        return sitemapXml(urls);
+        return sitemapXml(allSitemapEntries());
     }
 
     @GetMapping(value = "/sitemap-priority.xml", produces = MediaType.APPLICATION_XML_VALUE)
@@ -1037,10 +962,70 @@ public class SiteController {
         if (siteVisibilityService.shouldForceNoindex(request)) {
             return emptySitemap();
         }
-        List<SitemapEntry> urls = prioritySitemapPaths().stream()
-                .map(path -> new SitemapEntry(canonical(path), priorityLastModified(path)))
-                .toList();
-        return sitemapXml(urls);
+        return sitemapXml(prioritySitemapEntries());
+    }
+
+    @GetMapping(value = "/sitemaps/core.xml", produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
+    public String coreSitemap(HttpServletRequest request) {
+        if (siteVisibilityService.shouldForceNoindex(request)) {
+            return emptySitemap();
+        }
+        return sitemapXml(coreSitemapEntries());
+    }
+
+    @GetMapping(value = "/sitemaps/utilities.xml", produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
+    public String utilitiesSitemap(HttpServletRequest request) {
+        if (siteVisibilityService.shouldForceNoindex(request)) {
+            return emptySitemap();
+        }
+        return sitemapXml(utilitySitemapEntries());
+    }
+
+    @GetMapping(value = "/sitemaps/city-intents.xml", produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
+    public String cityIntentsSitemap(HttpServletRequest request) {
+        if (siteVisibilityService.shouldForceNoindex(request)) {
+            return emptySitemap();
+        }
+        return sitemapXml(cityIntentSitemapEntries());
+    }
+
+    @GetMapping(value = "/sitemaps/portals.xml", produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
+    public String portalsSitemap(HttpServletRequest request) {
+        if (siteVisibilityService.shouldForceNoindex(request)) {
+            return emptySitemap();
+        }
+        return sitemapXml(portalSitemapEntries());
+    }
+
+    @GetMapping(value = "/sitemaps/providers.xml", produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
+    public String providersSitemap(HttpServletRequest request) {
+        if (siteVisibilityService.shouldForceNoindex(request)) {
+            return emptySitemap();
+        }
+        return sitemapXml(providerSitemapEntries());
+    }
+
+    @GetMapping(value = "/sitemaps/guides.xml", produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
+    public String guidesSitemap(HttpServletRequest request) {
+        if (siteVisibilityService.shouldForceNoindex(request)) {
+            return emptySitemap();
+        }
+        return sitemapXml(guideSitemapEntries());
+    }
+
+    @GetMapping(value = "/sitemaps/metros.xml", produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
+    public String metrosSitemap(HttpServletRequest request) {
+        if (siteVisibilityService.shouldForceNoindex(request)) {
+            return emptySitemap();
+        }
+        return sitemapXml(metroSitemapEntries());
     }
 
     @GetMapping(value = "/sitemap-index.xml", produces = MediaType.APPLICATION_XML_VALUE)
@@ -1051,7 +1036,14 @@ public class SiteController {
         }
         return sitemapIndexXml(List.of(
                 new SitemapEntry(canonical("/sitemap.xml"), homeLastModified()),
-                new SitemapEntry(canonical("/sitemap-priority.xml"), homeLastModified())
+                new SitemapEntry(canonical("/sitemap-priority.xml"), latestSitemapModified(prioritySitemapEntries())),
+                new SitemapEntry(canonical("/sitemaps/core.xml"), latestSitemapModified(coreSitemapEntries())),
+                new SitemapEntry(canonical("/sitemaps/utilities.xml"), latestSitemapModified(utilitySitemapEntries())),
+                new SitemapEntry(canonical("/sitemaps/city-intents.xml"), latestSitemapModified(cityIntentSitemapEntries())),
+                new SitemapEntry(canonical("/sitemaps/portals.xml"), latestSitemapModified(portalSitemapEntries())),
+                new SitemapEntry(canonical("/sitemaps/providers.xml"), latestSitemapModified(providerSitemapEntries())),
+                new SitemapEntry(canonical("/sitemaps/guides.xml"), latestSitemapModified(guideSitemapEntries())),
+                new SitemapEntry(canonical("/sitemaps/metros.xml"), latestSitemapModified(metroSitemapEntries()))
         ));
     }
 
@@ -1066,6 +1058,146 @@ public class SiteController {
                 + "Sitemap: " + canonical("/sitemap-index.xml") + "\n"
                 + "Sitemap: " + canonical("/sitemap.xml") + "\n"
                 + "Sitemap: " + canonical("/sitemap-priority.xml") + "\n";
+    }
+
+    private List<SitemapEntry> allSitemapEntries() {
+        List<SitemapEntry> entries = new ArrayList<>();
+        entries.addAll(coreSitemapEntries());
+        entries.addAll(portalSitemapEntries());
+        entries.addAll(cityIntentSitemapEntries());
+        entries.addAll(guideSitemapEntries());
+        entries.addAll(metroSitemapEntries());
+        entries.addAll(utilitySitemapEntries());
+        entries.addAll(providerSitemapEntries());
+        return dedupeSitemapEntries(entries);
+    }
+
+    private List<SitemapEntry> coreSitemapEntries() {
+        List<SitemapEntry> urls = new ArrayList<>();
+        urls.add(new SitemapEntry(canonical("/"), homeLastModified()));
+        urls.add(new SitemapEntry(canonical("/about"), homeLastModified()));
+        urls.add(new SitemapEntry(canonical("/methodology"), homeLastModified()));
+        urls.add(new SitemapEntry(canonical("/editorial-standards"), homeLastModified()));
+        urls.add(new SitemapEntry(canonical("/corrections"), homeLastModified()));
+        urls.add(new SitemapEntry(canonical("/contact"), homeLastModified()));
+        urls.add(new SitemapEntry(canonical("/claim-listing"), homeLastModified()));
+        urls.add(new SitemapEntry(canonical("/notice-finder"), homeLastModified()));
+        return urls;
+    }
+
+    private List<SitemapEntry> portalSitemapEntries() {
+        List<SitemapEntry> urls = new ArrayList<>();
+        List<UtilityRecord> officialTesterUtilities = officialTesterUtilities();
+        urls.add(new SitemapEntry(canonical("/submit-backflow-report"), latestUtilityModified(portalUtilities("all"))));
+        urls.add(new SitemapEntry(canonical("/official-backflow-tester-lists"), latestUtilityModified(officialTesterUtilities)));
+        urls.add(new SitemapEntry(canonical("/backflow-reporting-portals"), latestUtilityModified(portalUtilities("all"))));
+        for (String portalSlug : PORTAL_SLUGS) {
+            List<UtilityRecord> portalUtilities = portalUtilities(portalSlug);
+            if (!portalUtilities.isEmpty()) {
+                urls.add(new SitemapEntry(
+                        canonical("/backflow-reporting-portals/" + portalSlug),
+                        latestUtilityModified(portalUtilities)
+                ));
+            }
+        }
+        utilitiesByState(officialTesterUtilities).forEach((state, utilities) -> urls.add(new SitemapEntry(
+                canonical("/states/" + state + "/approved-backflow-testers"),
+                latestUtilityModified(utilities)
+        )));
+        return urls;
+    }
+
+    private List<SitemapEntry> cityIntentSitemapEntries() {
+        List<SitemapEntry> urls = new ArrayList<>();
+        for (CityAliasRecord alias : registryService.listCityAliases()) {
+            if (alias.aliasMode() == AliasMode.NOINDEX_BRIDGE || registryService.findUtilityById(alias.utilityId()).isEmpty()) {
+                continue;
+            }
+            urls.add(new SitemapEntry(canonical(cityPath(alias)), alias.lastReviewed()));
+            registryService.findUtilityById(alias.utilityId()).ifPresent(utility ->
+                    cityIntentConfigs(alias, utility).forEach(intent -> urls.add(new SitemapEntry(
+                            canonical(cityIntentPath(alias, intent.slug())),
+                            latestDate(alias.lastReviewed(), utility.lastVerified())
+                    )))
+            );
+        }
+        return urls;
+    }
+
+    private List<SitemapEntry> guideSitemapEntries() {
+        List<SitemapEntry> urls = new ArrayList<>();
+        registryService.listPublishedStateGuides()
+                .forEach(guide -> urls.add(new SitemapEntry(
+                        canonical("/states/" + guide.state() + "/backflow-testing"),
+                        guide.lastVerified()
+                )));
+        registryService.listPublishedGuides().forEach(guide -> urls.add(new SitemapEntry(
+                canonical("/guides/" + guide.slug()),
+                guide.lastReviewed()
+        )));
+        return urls;
+    }
+
+    private List<SitemapEntry> metroSitemapEntries() {
+        return registryService.listPublishedMetros().stream()
+                .map(metro -> new SitemapEntry(canonical(metroPath(metro)), metro.lastReviewed()))
+                .toList();
+    }
+
+    private List<SitemapEntry> utilitySitemapEntries() {
+        List<SitemapEntry> urls = new ArrayList<>();
+        for (UtilityRecord utility : registryService.listPublishedUtilities()) {
+            urls.add(new SitemapEntry(canonical(utilityPath(utility)), utility.lastVerified()));
+            if (utility.supportsAnnualTestingPage()) {
+                urls.add(new SitemapEntry(canonical(utilityPath(utility) + "annual-testing"), utility.lastVerified()));
+            }
+            if (utility.supportsFailedTestPage()) {
+                urls.add(new SitemapEntry(canonical(utilityPath(utility) + "failed-test"), utility.lastVerified()));
+            }
+            if (utility.supportsIrrigationPage()) {
+                urls.add(new SitemapEntry(canonical(utilityPath(utility) + "irrigation"), utility.lastVerified()));
+            }
+            if (utility.supportsFireLinePage()) {
+                urls.add(new SitemapEntry(canonical(utilityPath(utility) + "fire-line"), utility.lastVerified()));
+            }
+            if (utility.supportsApprovedTestersPage()) {
+                urls.add(new SitemapEntry(canonical(utilityPath(utility) + "approved-testers"), utility.lastVerified()));
+            }
+            if (utility.supportsFindATesterPage() && !registryService.findProvidersForUtility(utility.utilityId()).isEmpty()) {
+                urls.add(new SitemapEntry(canonical(utilityPath(utility) + "find-a-tester"), utility.lastVerified()));
+            }
+        }
+        return urls;
+    }
+
+    private List<SitemapEntry> providerSitemapEntries() {
+        return registryService.listPublicProviders().stream()
+                .map(provider -> new SitemapEntry(canonical(providerPath(provider)), provider.lastReviewed()))
+                .toList();
+    }
+
+    private List<SitemapEntry> prioritySitemapEntries() {
+        return prioritySitemapPaths().stream()
+                .map(path -> new SitemapEntry(canonical(path), priorityLastModified(path)))
+                .toList();
+    }
+
+    private List<SitemapEntry> dedupeSitemapEntries(List<SitemapEntry> entries) {
+        Map<String, LocalDate> latestByUrl = new LinkedHashMap<>();
+        for (SitemapEntry entry : entries) {
+            latestByUrl.merge(entry.url(), entry.lastModified(), this::latestDate);
+        }
+        return latestByUrl.entrySet().stream()
+                .map(entry -> new SitemapEntry(entry.getKey(), entry.getValue()))
+                .toList();
+    }
+
+    private LocalDate latestSitemapModified(List<SitemapEntry> entries) {
+        return entries.stream()
+                .map(SitemapEntry::lastModified)
+                .filter(java.util.Objects::nonNull)
+                .max(LocalDate::compareTo)
+                .orElse(homeLastModified());
     }
 
     private String sitemapXml(List<SitemapEntry> urls) {
@@ -1109,51 +1241,45 @@ public class SiteController {
     }
 
     private List<String> prioritySitemapPaths() {
-        return List.of(
+        Set<String> paths = new LinkedHashSet<>(List.of(
                 "/notice-finder",
                 "/submit-backflow-report",
                 "/guides/backflow-test-notice-next-steps",
                 "/guides/backflow-reporting-portals",
                 "/guides/backflow-test-cost",
                 "/official-backflow-tester-lists",
-                "/backflow-reporting-portals",
-                "/backflow-reporting-portals/aqua",
-                "/backflow-reporting-portals/tokay",
-                "/backflow-reporting-portals/sprybackflow",
-                "/backflow-reporting-portals/vepo",
-                "/backflow-reporting-portals/bsi",
-                "/backflow-reporting-portals/weirs",
-                "/backflow-reporting-portals/swiftcomply",
-                "/cities/texas/austin/backflow-reporting-portal",
-                "/cities/texas/austin/submit-backflow-report",
-                "/cities/texas/austin/approved-backflow-testers",
-                "/cities/colorado/aurora/backflow-reporting-portal",
-                "/cities/colorado/aurora/submit-backflow-report",
-                "/cities/california/anaheim/backflow-testing",
-                "/utilities/california/anaheim-cross-connection-control/",
-                "/cities/arizona/goodyear/backflow-testing",
-                "/utilities/florida/hillsborough-county-backflow-testing/",
-                "/cities/texas/euless/backflow-reporting-portal",
-                "/cities/texas/euless/submit-backflow-report",
-                "/cities/california/buena-park/backflow-reporting-portal",
-                "/cities/california/oxnard/backflow-reporting-portal",
-                "/cities/california/oxnard/submit-backflow-report",
-                "/cities/california/pleasanton/backflow-reporting-portal",
-                "/cities/california/dublin/backflow-reporting-portal",
-                "/cities/california/san-ramon/backflow-reporting-portal",
-                "/cities/texas/dallas/backflow-reporting-portal",
-                "/cities/texas/dallas/submit-backflow-report",
-                "/cities/texas/dallas/failed-backflow-test",
-                "/cities/texas/fort-worth/backflow-reporting-portal",
-                "/cities/texas/fort-worth/submit-backflow-report",
-                "/cities/texas/fort-worth/annual-backflow-testing",
-                "/cities/texas/fort-worth/failed-backflow-test",
-                "/cities/texas/irving/backflow-reporting-portal",
-                "/cities/texas/irving/submit-backflow-report",
-                "/cities/arizona/queen-creek/backflow-reporting-portal",
-                "/cities/florida/tampa/backflow-reporting-portal",
-                "/cities/florida/tampa/submit-backflow-report"
-        );
+                "/backflow-reporting-portals"
+        ));
+        PORTAL_SLUGS.stream()
+                .filter(slug -> !portalUtilities(slug).isEmpty())
+                .map(slug -> "/backflow-reporting-portals/" + slug)
+                .forEach(paths::add);
+        registryService.listPublishedUtilities().stream()
+                .filter(utility -> utility.hasReportWorkflow() || usesPortalWorkflow(utility) || utility.hasTesterGate())
+                .forEach(utility -> {
+                    paths.add(utilityPath(utility));
+                    if (utility.supportsApprovedTestersPage()) {
+                        paths.add(utilityPath(utility) + "approved-testers");
+                    }
+                    if (utility.supportsAnnualTestingPage() && utility.hasDeadlinePolicy()) {
+                        paths.add(utilityPath(utility) + "annual-testing");
+                    }
+                    publishedCityAliasesForUtility(utility.utilityId()).stream()
+                            .limit(4)
+                            .forEach(alias -> {
+                                paths.add(cityPath(alias));
+                                cityIntentConfigs(alias, utility).stream()
+                                        .filter(intent -> Set.of(
+                                                "backflow-reporting-portal",
+                                                "submit-backflow-report",
+                                                "approved-backflow-testers",
+                                                "annual-backflow-testing",
+                                                "failed-backflow-test"
+                                        ).contains(intent.slug()))
+                                        .forEach(intent -> paths.add(cityIntentPath(alias, intent.slug())));
+                            });
+                });
+        return List.copyOf(paths);
     }
 
     private LocalDate priorityLastModified(String path) {
@@ -1913,6 +2039,27 @@ public class SiteController {
 
     private String cityIntentPath(CityAliasRecord alias, String intentSlug) {
         return "/cities/" + alias.state() + "/" + alias.aliasSlug() + "/" + intentSlug;
+    }
+
+    private Map<String, String> cityIntentPathsBySlug(CityAliasRecord alias, UtilityRecord utility) {
+        return cityIntentConfigs(alias, utility).stream()
+                .collect(Collectors.toMap(
+                        CityIntentConfig::slug,
+                        intent -> cityIntentPath(alias, intent.slug()),
+                        (left, right) -> left,
+                        LinkedHashMap::new
+                ));
+    }
+
+    private List<CityIntentLink> cityIntentLinks(CityAliasRecord alias, UtilityRecord utility) {
+        return cityIntentConfigs(alias, utility).stream()
+                .map(intent -> new CityIntentLink(
+                        intent.slug(),
+                        cityIntentPath(alias, intent.slug()),
+                        intent.heading(),
+                        intent.description()
+                ))
+                .toList();
     }
 
     private String cityPageTitle(CityAliasRecord alias, UtilityRecord utility) {

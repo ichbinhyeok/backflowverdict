@@ -1,5 +1,6 @@
 @import owner.backflow.web.PageMeta
 @import owner.backflow.web.FaqItem
+@import owner.backflow.web.CityIntentLink
 @import owner.backflow.data.model.CityAliasRecord
 @import owner.backflow.data.model.GuideRecord
 @import owner.backflow.data.model.UtilityRecord
@@ -23,6 +24,7 @@
 @param String noticeIdentifierHint
 @param String reportAcceptanceHint
 @param java.util.List<FaqItem> faqItems = java.util.List.of()
+@param java.util.List<CityIntentLink> cityIntentLinks = java.util.List.of()
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 
 @template.layouts.app(page = page, content = @`
@@ -64,6 +66,15 @@
                     <li><strong>Notice or device clue:</strong> ${noticeIdentifierHint}</li>
                     <li><strong>Who is affected:</strong> ${utility.whoIsAffected()}</li>
                     <li><strong>Acceptance rule:</strong> ${reportAcceptanceHint}</li>
+                    @if (utility.reportWorkflow().hasContent())
+                        <li><strong>Report workflow:</strong> ${utility.reportWorkflow().portalName() != null && !utility.reportWorkflow().portalName().isBlank() ? utility.reportWorkflow().portalName() : "Utility reporting workflow"}</li>
+                    @endif
+                    @if (utility.deadlinePolicy().reportDueDaysAfterTest() != null)
+                        <li><strong>Report timing:</strong> ${utility.deadlinePolicy().reportDueLabel()}</li>
+                    @endif
+                    @if (utility.testerGate().hasContent())
+                        <li><strong>Credential gate:</strong> ${utility.testerGate().credentialSummary()}</li>
+                    @endif
                     <li><strong>Program phone:</strong> ${utility.phone()}</li>
                 </ul>
             </article>
@@ -110,6 +121,8 @@
                         <strong>Submission route</strong>
                         @if (utility.submissionMethods().isEmpty())
                             <span>Confirm the current report path with the program contact before filing.</span>
+                        @elseif (utility.reportWorkflow().hasContent())
+                            <span>${utility.reportWorkflow().portalName() != null && !utility.reportWorkflow().portalName().isBlank() ? utility.reportWorkflow().portalName() : utility.submissionMethods().get(0).label()}</span>
                         @else
                             <span>${utility.submissionMethods().get(0).label()} (${utility.submissionMethods().get(0).kind()})</span>
                         @endif
@@ -187,6 +200,26 @@
                             </article>
                         </div>
                     </section>
+                @endif
+
+                @if (!cityIntentLinks.isEmpty())
+                    <article class="detail-card">
+                        <span class="eyebrow">Other ${alias.city()} routes</span>
+                        <h2>Stay inside the city intent cluster</h2>
+                        <div class="support-links">
+                            @for (var intentLink : cityIntentLinks)
+                                @if (!intentLink.slug().equals(intentSlug))
+                                    <a class="support-link" href="${intentLink.path()}">
+                                        <div>
+                                            <strong>${intentLink.label()}</strong>
+                                            <span>${intentLink.summary()}</span>
+                                        </div>
+                                        <span class="material-symbols-outlined">arrow_forward</span>
+                                    </a>
+                                @endif
+                            @endfor
+                        </div>
+                    </article>
                 @endif
 
                 @if (!workflowSteps.isEmpty())

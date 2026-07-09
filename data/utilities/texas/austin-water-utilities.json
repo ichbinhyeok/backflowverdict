@@ -133,6 +133,65 @@
     "repairRetestRange": "Repair and retest cost widens for fire hydrant, fire sprinkler, and larger commercial hazard cases.",
     "pricingNotes": "Austin is strong on compliance detail and less public on retail pricing, so use the ordinance and WEIRS workflow as the anchor before comparing quotes."
   },
+  "reportWorkflow": {
+    "portalVendor": "WEIRS",
+    "portalName": "WEIRS database",
+    "portalUrl": "https://services.austintexas.gov/weirs/",
+    "submissionDeadlineDaysAfterTest": 5,
+    "submitter": "TCEQ-licensed BPAT registered with Austin Water",
+    "paperAccepted": false,
+    "requiredIdentifiers": [
+      "Assembly address and location",
+      "Cause for testing",
+      "Manufacturer, size, model, and serial number",
+      "Test, repair, and retest results when applicable",
+      "Owner details",
+      "BPAT license details",
+      "Gauge serial number",
+      "Test date"
+    ],
+    "acceptanceProof": "Complete online Test and Maintenance Report submitted through WEIRS.",
+    "sourceRefs": [
+      "Austin BPAT registration and WEIRS instructions",
+      "Austin ordinance 20250410-002"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "TCEQ BPAT license",
+      "Austin Water BPAT registration",
+      "Gauge calibration certificate"
+    ],
+    "gaugeCalibrationWindowMonths": 12,
+    "sourceRefs": [
+      "Austin BPAT registration and WEIRS instructions",
+      "Austin ordinance 20250410-002"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Annual testing for many listed health-hazard assemblies",
+      "Annual testing for specified non-health hazard assemblies",
+      "Initial testing on installation"
+    ],
+    "initialTestRequired": true,
+    "reportDueDaysAfterTest": 5,
+    "sourceRefs": [
+      "Austin Water cross-connection control program",
+      "Austin ordinance 20250410-002"
+    ]
+  },
+  "failedTestPolicy": {
+    "retestRequired": true,
+    "failedReportMustBeSubmitted": true,
+    "sourceRefs": [
+      "Austin BPAT registration and WEIRS instructions",
+      "Austin ordinance 20250410-002"
+    ]
+  },
   "sources": [
     {
       "label": "Austin Water cross-connection control program",

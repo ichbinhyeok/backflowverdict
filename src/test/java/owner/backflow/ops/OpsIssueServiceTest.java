@@ -99,7 +99,11 @@ class OpsIssueServiceTest {
                 List.of("Do the test"),
                 List.of("Failure matters"),
                 new CostBand("test", "repair", "notes"),
-                List.of(new SourceLink("Official page", "https://example.gov/backflow", "official page"))
+                List.of(new SourceLink("Official page", "https://example.gov/backflow", "official page")),
+                null,
+                null,
+                null,
+                null
         );
     }
 }

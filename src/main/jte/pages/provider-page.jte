@@ -97,7 +97,11 @@
                         </div>
                         <div class="metadata-block">
                             <strong>Due trigger</strong>
-                            <span>${primaryUtility.testingFrequency()} - ${primaryUtility.dueBasis()}</span>
+                            @if (primaryUtility.deadlinePolicy().reportDueDaysAfterTest() != null)
+                                <span>${primaryUtility.deadlinePolicy().reportDueLabel()}</span>
+                            @else
+                                <span>${primaryUtility.testingFrequency()} - ${primaryUtility.dueBasis()}</span>
+                            @endif
                         </div>
                         <div class="metadata-block">
                             <strong>Notice clue</strong>
@@ -109,8 +113,24 @@
                         </div>
                         <div class="metadata-block">
                             <strong>Submission route</strong>
-                            <span>${primaryUtility.submissionMethods().isEmpty() ? "Confirm the filing path before booking." : primaryUtility.submissionMethods().get(0).label()}</span>
+                            @if (primaryUtility.reportWorkflow().hasContent())
+                                <span>${primaryUtility.reportWorkflow().portalName() != null && !primaryUtility.reportWorkflow().portalName().isBlank() ? primaryUtility.reportWorkflow().portalName() : "Utility reporting workflow"}</span>
+                            @else
+                                <span>${primaryUtility.submissionMethods().isEmpty() ? "Confirm the filing path before booking." : primaryUtility.submissionMethods().get(0).label()}</span>
+                            @endif
                         </div>
+                        @if (primaryUtility.testerGate().hasContent())
+                            <div class="metadata-block">
+                                <strong>Credential gate</strong>
+                                <span>${primaryUtility.testerGate().credentialSummary()}</span>
+                            </div>
+                        @endif
+                        @if (primaryUtility.reportWorkflow().filingFee() != null && primaryUtility.reportWorkflow().filingFee().hasContent())
+                            <div class="metadata-block">
+                                <strong>Filing fee</strong>
+                                <span>${primaryUtility.reportWorkflow().filingFee().display()}</span>
+                            </div>
+                        @endif
                         <div class="metadata-block">
                             <strong>Failed-test branch</strong>
                             <span>Ask whether repair, retest, and final submission are all handled under the same utility workflow.</span>

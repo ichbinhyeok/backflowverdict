@@ -122,7 +122,67 @@
   "costBand": {
     "testingRange": "Testing is market-priced, but Queen Creek adds a $14.95 filing fee per report in the regular cycle.",
     "repairRetestRange": "Repair and retest costs rise if the first tester cannot get accepted or if the report is rejected for credential issues.",
-    "pricingNotes": "The strongest local cost signal is avoiding rejected BSI submissions and repeated test fees."
+    "pricingNotes": "The strongest local cost signal is avoiding rejected BSI submissions and repeated test fees.",
+    "filingFee": {
+      "amount": "$14.95",
+      "currency": "USD",
+      "appliesTo": "Filing fee per report in the regular BSI cycle",
+      "sourceRefs": [
+        "Queen Creek backflow information"
+      ]
+    },
+    "sourceRefs": [
+      "Queen Creek backflow information"
+    ]
+  },
+  "reportWorkflow": {
+    "portalVendor": "BSI",
+    "portalName": "BSI Online reporting cycle",
+    "portalUrl": "https://www.queencreekaz.gov/government/utilities/water/backflow-information",
+    "submitter": "Approved tester or accepted off-list tester",
+    "requiredIdentifiers": [
+      "Assembly in the Queen Creek BSI cycle",
+      "Current tester license",
+      "Current test kit calibration certificate",
+      "Accepted report and filing fee"
+    ],
+    "acceptanceProof": "Accepted BSI report with current tester credentials and the required filing fee.",
+    "filingFee": {
+      "amount": "$14.95",
+      "currency": "USD",
+      "appliesTo": "Filing fee per report in the regular BSI cycle",
+      "sourceRefs": [
+        "Queen Creek backflow information"
+      ]
+    },
+    "sourceRefs": [
+      "Queen Creek backflow information",
+      "Queen Creek contractor information"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Current tester license",
+      "Current test kit calibration certificate"
+    ],
+    "offListAllowedIfAccepted": true,
+    "sourceRefs": [
+      "Queen Creek backflow information",
+      "Queen Creek contractor information"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Annual test reports through BSI Online",
+      "New assemblies entering the town workflow"
+    ],
+    "initialTestRequired": true,
+    "sourceRefs": [
+      "Queen Creek backflow information"
+    ]
   },
   "sources": [
     {

@@ -117,6 +117,46 @@
     "repairRetestRange": "Repair and retest costs vary by service type and whether temporary or outdoor water-use protection is involved.",
     "pricingNotes": "Aurora's value is the clear annual workflow and owner-responsibility language, not a published test-price table."
   },
+  "reportWorkflow": {
+    "portalVendor": "SpryBackflow",
+    "portalName": "Aurora SpryBackflow online submission",
+    "portalUrl": "https://sprybackflow.aurorawater.org/",
+    "submitter": "Certified backflow technician",
+    "requiredIdentifiers": [
+      "Responsible water customer or property owner",
+      "Annual due date",
+      "Assembly record",
+      "Hydrant-meter RP test data when applicable"
+    ],
+    "acceptanceProof": "Online result posted through Aurora Water's SpryBackflow site before the annual due date.",
+    "sourceRefs": [
+      "Aurora Water backflow prevention",
+      "Aurora SpryBackflow online submission"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Certified technician status",
+      "Test equipment make, model, and serial number",
+      "Calibration certificate"
+    ],
+    "sourceRefs": [
+      "Aurora Water backflow prevention",
+      "Aurora SpryBackflow online submission"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Upon installation",
+      "At least annually thereafter"
+    ],
+    "initialTestRequired": true,
+    "sourceRefs": [
+      "Aurora Water backflow prevention"
+    ]
+  },
   "sources": [
     {
       "label": "Aurora Water backflow prevention",

@@ -108,6 +108,45 @@
     "repairRetestRange": "Repair and retest cost depends on assembly type and whether the site is residential or commercial.",
     "pricingNotes": "The strongest local cost signal is the recurring cadence plus the seven-day reporting discipline."
   },
+  "reportWorkflow": {
+    "portalVendor": "SwiftComply",
+    "portalName": "Tampa SwiftComply portal",
+    "portalUrl": "https://tampafl.c3swift.com/",
+    "submissionDeadlineDaysAfterTest": 7,
+    "submitter": "Certified tester enrolled through Tampa's workflow",
+    "requiredIdentifiers": [
+      "Residential or commercial cadence",
+      "Certified test result",
+      "SwiftComply tester enrollment"
+    ],
+    "acceptanceProof": "Certified result delivered to the Water Department within seven calendar days.",
+    "sourceRefs": [
+      "Tampa backflow prevention program",
+      "Tampa SwiftComply portal"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Certified tester status",
+      "SwiftComply enrollment"
+    ],
+    "sourceRefs": [
+      "Tampa backflow prevention program",
+      "Tampa SwiftComply portal"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Commercial properties: annual",
+      "Residential properties: every two years"
+    ],
+    "reportDueDaysAfterTest": 7,
+    "sourceRefs": [
+      "Tampa backflow prevention program"
+    ]
+  },
   "sources": [
     {
       "label": "Tampa backflow prevention program",

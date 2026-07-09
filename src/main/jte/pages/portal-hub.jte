@@ -177,6 +177,15 @@
                                         @endif
                                     </td>
                                     <td data-label="Portal evidence">
+                                        @if (utility.reportWorkflow().hasContent())
+                                            <strong>${utility.reportWorkflow().portalName() != null && !utility.reportWorkflow().portalName().isBlank() ? utility.reportWorkflow().portalName() : portalName}</strong>
+                                            @if (utility.reportWorkflow().submissionDeadlineDaysAfterTest() != null)
+                                                <div class="detail-meta">${utility.reportWorkflow().deadlineLabel()}</div>
+                                            @endif
+                                            @if (utility.reportWorkflow().paperAccepted() != null)
+                                                <div class="detail-meta">${utility.reportWorkflow().paperAcceptedLabel()}</div>
+                                            @endif
+                                        @endif
                                         @for (var method : utility.submissionMethods())
                                             <div>${method.label()}</div>
                                         @endfor
@@ -185,23 +194,52 @@
                                         <span>${noticeIdentifierHints.getOrDefault(utility.utilityId(), "Look for the account, notice, device, or assembly identifier on the utility notice.")}</span>
                                     </td>
                                     <td data-label="Tester gate">
-                                        @if (utility.supportsApprovedTestersPage())
+                                        @if (utility.testerGate().hasContent())
+                                            <strong>${utility.testerGate().credentialSummary()}</strong>
+                                            @if (utility.testerGate().gaugeCalibrationWindowMonths() != null)
+                                                <div class="detail-meta">${utility.testerGate().calibrationLabel()}</div>
+                                            @endif
+                                            @if (utility.testerGate().deviceScopeLimit() != null && !utility.testerGate().deviceScopeLimit().isBlank())
+                                                <div class="detail-meta">${utility.testerGate().deviceScopeLimit()}</div>
+                                            @endif
+                                        @elseif (utility.supportsApprovedTestersPage())
                                             <strong>${utility.officialListLabel()}</strong>
                                         @else
                                             <span>Confirm accepted tester status with the utility.</span>
                                         @endif
                                     </td>
                                     <td data-label="Report acceptance">
-                                        <span>${reportAcceptanceHints.getOrDefault(utility.utilityId(), "Confirm the current submission path with the utility before filing.")}</span>
+                                        @if (utility.reportWorkflow().acceptanceProof() != null && !utility.reportWorkflow().acceptanceProof().isBlank())
+                                            <span>${utility.reportWorkflow().acceptanceProof()}</span>
+                                        @else
+                                            <span>${reportAcceptanceHints.getOrDefault(utility.utilityId(), "Confirm the current submission path with the utility before filing.")}</span>
+                                        @endif
                                     </td>
                                     <td data-label="Timing or fee clue">
-                                        <span>${utility.testingFrequency()}</span>
+                                        @if (utility.deadlinePolicy().reportDueDaysAfterTest() != null)
+                                            <span>${utility.deadlinePolicy().reportDueLabel()}</span>
+                                        @else
+                                            <span>${utility.testingFrequency()}</span>
+                                        @endif
+                                        @if (utility.reportWorkflow().filingFee() != null && utility.reportWorkflow().filingFee().hasContent())
+                                            <div class="detail-meta">${utility.reportWorkflow().filingFee().display()}</div>
+                                        @elseif (utility.costBand() != null && utility.costBand().filingFee() != null && utility.costBand().filingFee().hasContent())
+                                            <div class="detail-meta">${utility.costBand().filingFee().display()}</div>
+                                        @endif
                                         @if (utility.costBand() != null && utility.costBand().pricingNotes() != null && !utility.costBand().pricingNotes().isBlank())
                                             <div class="detail-meta">${utility.costBand().pricingNotes()}</div>
                                         @endif
                                     </td>
                                     <td data-label="Failed-test clue">
-                                        @if (!utility.failureHighlights().isEmpty())
+                                        @if (utility.failedTestPolicy().hasContent())
+                                            @if (utility.failedTestPolicy().failedReportDeadlineHours() != null)
+                                                <span>${utility.failedTestPolicy().failedReportDeadlineLabel()}</span>
+                                            @elseif (utility.failedTestPolicy().repairDeadlineDays() != null)
+                                                <span>${utility.failedTestPolicy().repairDeadlineLabel()}</span>
+                                            @else
+                                                <span>Retest and accepted report submission are part of the closeout path.</span>
+                                            @endif
+                                        @elseif (!utility.failureHighlights().isEmpty())
                                             <span>${utility.failureHighlights().get(0)}</span>
                                         @else
                                             <span>Open the utility workflow before repair, retest, or resubmission.</span>

@@ -99,7 +99,13 @@
                                     @endif
                                 </td>
                                 <td data-label="Portal or submission route">
-                                    <strong>${portalNamesByUtility.getOrDefault(utility.utilityId(), "Online submission")}</strong>
+                                    <strong>${utility.reportWorkflow().portalName() != null && !utility.reportWorkflow().portalName().isBlank() ? utility.reportWorkflow().portalName() : portalNamesByUtility.getOrDefault(utility.utilityId(), "Online submission")}</strong>
+                                    @if (utility.reportWorkflow().submissionDeadlineDaysAfterTest() != null)
+                                        <div class="detail-meta">${utility.reportWorkflow().deadlineLabel()}</div>
+                                    @endif
+                                    @if (utility.reportWorkflow().filingFee() != null && utility.reportWorkflow().filingFee().hasContent())
+                                        <div class="detail-meta">${utility.reportWorkflow().filingFee().display()}</div>
+                                    @endif
                                     @if (!utility.submissionMethods().isEmpty())
                                         @for (var method : utility.submissionMethods())
                                             <div class="detail-meta">${method.label()}</div>
@@ -107,7 +113,12 @@
                                     @endif
                                 </td>
                                 <td data-label="Notice clue">${noticeIdentifierHints.getOrDefault(utility.utilityId(), "Look for the account, notice, device, or assembly identifier.")}</td>
-                                <td data-label="Acceptance proof">${reportAcceptanceHints.getOrDefault(utility.utilityId(), "Keep proof that the report was submitted and accepted.")}</td>
+                                <td data-label="Acceptance proof">
+                                    ${utility.reportWorkflow().acceptanceProof() != null && !utility.reportWorkflow().acceptanceProof().isBlank() ? utility.reportWorkflow().acceptanceProof() : reportAcceptanceHints.getOrDefault(utility.utilityId(), "Keep proof that the report was submitted and accepted.")}
+                                    @if (utility.testerGate().hasContent())
+                                        <div class="detail-meta">${utility.testerGate().credentialSummary()}</div>
+                                    @endif
+                                </td>
                                 <td data-label="Open route">
                                     <div class="card-actions">
                                         <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Utility workflow</a>
