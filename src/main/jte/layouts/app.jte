@@ -199,6 +199,13 @@
                     }
                     var form = event.target;
                     var action = clean(form.getAttribute('action'));
+                    if (action === '/notice-finder') {
+                        var finderData = new FormData(form);
+                        track('notice_finder_search', {
+                            search_term: clean(finderData.get('q'))
+                        });
+                        return;
+                    }
                     if (action !== '/leads') {
                         return;
                     }

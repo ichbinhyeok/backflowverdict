@@ -83,6 +83,11 @@ public class SiteRuntimeConfig {
                 .append(",\"inLanguage\":\"en-US\"")
                 .append(",\"publisher\":{\"@id\":\"").append(jsonEscape(siteBaseUrl)).append("/#organization\"}")
                 .append(",\"about\":{\"@type\":\"WebPage\",\"url\":\"").append(jsonEscape(siteBaseUrl + "/about")).append("\"}")
+                .append(",\"potentialAction\":{")
+                .append("\"@type\":\"SearchAction\"")
+                .append(",\"target\":\"").append(jsonEscape(siteBaseUrl + "/notice-finder?q={search_term_string}")).append("\"")
+                .append(",\"query-input\":\"required name=search_term_string\"")
+                .append("}")
                 .append("}")
                 .toString();
     }

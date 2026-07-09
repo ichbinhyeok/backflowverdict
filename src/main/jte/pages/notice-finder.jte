@@ -1,4 +1,5 @@
 @import owner.backflow.web.PageMeta
+@import owner.backflow.web.FaqItem
 @import owner.backflow.web.NoticeFinderResult
 @import owner.backflow.data.model.GuideRecord
 @import owner.backflow.data.model.UtilityRecord
@@ -8,6 +9,7 @@
 @param java.util.List<NoticeFinderResult> popularPortals = java.util.List.of()
 @param java.util.List<UtilityRecord> featuredUtilities = java.util.List.of()
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
+@param java.util.List<FaqItem> faqItems = java.util.List.of()
 
 @template.layouts.app(page = page, content = @`
     <section class="page-hero">
@@ -111,6 +113,27 @@
                                 </div>
                                 <span class="material-symbols-outlined">arrow_forward</span>
                             </a>
+                            <a class="support-link" href="/notice-finder?q=Austin%20WEIRS%20approved%20tester">
+                                <div>
+                                    <strong>Austin WEIRS approved tester</strong>
+                                    <span>Portal plus tester credential and city intent.</span>
+                                </div>
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </a>
+                            <a class="support-link" href="/notice-finder?q=Fort%20Worth%20annual%20backflow%20testing">
+                                <div>
+                                    <strong>Fort Worth annual backflow testing</strong>
+                                    <span>Annual notice plus city route.</span>
+                                </div>
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </a>
+                            <a class="support-link" href="/notice-finder?q=Irving%20Envirotrax%20failed%20test">
+                                <div>
+                                    <strong>Irving Envirotrax failed test</strong>
+                                    <span>Portal plus failed-test and report acceptance intent.</span>
+                                </div>
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </a>
                         </div>
                     </article>
 
@@ -147,6 +170,43 @@
                                 </div>
                             </article>
                         @endfor
+                    </div>
+                </section>
+
+                <section class="section section--tight">
+                    <div class="section-heading">
+                        <span class="eyebrow">Notice clue routes</span>
+                        <h2>Use the exact clue instead of a broad search</h2>
+                        <p>These shortcuts mirror the repeated winning pattern: city plus portal, city plus tester gate, city plus failed-test or annual notice.</p>
+                    </div>
+                    <div class="card-grid card-grid--three">
+                        <article class="detail-card detail-card--quiet">
+                            <span class="pill">Portal</span>
+                            <h3>Portal or upload wording</h3>
+                            <p>Use this when the notice mentions BSI, SwiftComply, WEIRS, VEPO, Envirotrax, TrackMyBackflow, or Tokay WebTest.</p>
+                            <div class="card-actions">
+                                <a class="button button--secondary" href="/notice-finder?q=SwiftComply%20portal">SwiftComply portal</a>
+                                <a class="button button--secondary" href="/notice-finder?q=TrackMyBackflow%20Hazard%20ID">TrackMyBackflow Hazard ID</a>
+                            </div>
+                        </article>
+                        <article class="detail-card detail-card--quiet">
+                            <span class="pill">Tester</span>
+                            <h3>Approved tester wording</h3>
+                            <p>Use this when the notice says approved, certified, registered, credential, license, insurance, or gauge calibration.</p>
+                            <div class="card-actions">
+                                <a class="button button--secondary" href="/notice-finder?q=approved%20backflow%20tester">Approved tester</a>
+                                <a class="button button--secondary" href="/official-backflow-tester-lists">Tester-list hub</a>
+                            </div>
+                        </article>
+                        <article class="detail-card detail-card--quiet">
+                            <span class="pill">Urgency</span>
+                            <h3>Due date or failed-test wording</h3>
+                            <p>Use this when the notice mentions annual, due, deadline, anniversary, failed, repair, or retest.</p>
+                            <div class="card-actions">
+                                <a class="button button--secondary" href="/notice-finder?q=annual%20backflow%20notice">Annual notice</a>
+                                <a class="button button--secondary" href="/notice-finder?q=failed%20backflow%20retest">Failed retest</a>
+                            </div>
+                        </article>
                     </div>
                 </section>
 
@@ -259,4 +319,23 @@
             </aside>
         </div>
     </section>
+
+    @if (!faqItems.isEmpty())
+        <section class="section section--tight">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Notice FAQ</span>
+                    <h2>What to read from a backflow notice</h2>
+                </div>
+                <div class="faq-list">
+                    @for (var faqItem : faqItems)
+                        <details class="faq-item">
+                            <summary>${faqItem.question()}</summary>
+                            <p>${faqItem.answer()}</p>
+                        </details>
+                    @endfor
+                </div>
+            </div>
+        </section>
+    @endif
 `)

@@ -1,4 +1,5 @@
 @import owner.backflow.web.PageMeta
+@import owner.backflow.web.FaqItem
 @import owner.backflow.data.model.CityAliasRecord
 @import owner.backflow.data.model.GuideRecord
 @import owner.backflow.data.model.UtilityRecord
@@ -12,6 +13,7 @@
 @param java.util.Map<String, java.util.List<CityAliasRecord>> cityAliasesByUtility = java.util.Map.of()
 @param java.util.Map<String, String> noticeIdentifierHints = java.util.Map.of()
 @param java.util.Map<String, String> reportAcceptanceHints = java.util.Map.of()
+@param java.util.List<FaqItem> faqItems = java.util.List.of()
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 
 @template.layouts.app(page = page, content = @`
@@ -278,4 +280,23 @@
             </article>
         </div>
     </section>
+
+    @if (!faqItems.isEmpty())
+        <section class="section section--tight">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Portal FAQ</span>
+                    <h2>Questions to answer before filing a report</h2>
+                </div>
+                <div class="faq-list">
+                    @for (var faqItem : faqItems)
+                        <details class="faq-item">
+                            <summary>${faqItem.question()}</summary>
+                            <p>${faqItem.answer()}</p>
+                        </details>
+                    @endfor
+                </div>
+            </div>
+        </section>
+    @endif
 `)

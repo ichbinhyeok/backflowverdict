@@ -196,14 +196,18 @@ public class SiteController {
     @GetMapping("/backflow-reporting-portals")
     public String reportingPortalsPage(Model model) {
         List<UtilityRecord> utilities = portalUtilities("all");
+        List<FaqItem> faqItems = portalFaqItems("all", "Backflow reporting portals", utilities);
         model.addAttribute("page", page(
-                "Backflow reporting portals: BSI, SwiftComply, WEIRS, VEPO | BackflowPath",
-                "Find which utilities route backflow test reports through BSI, SwiftComply, WEIRS, VEPO, Envirotrax, or local online submission portals.",
+                "Backflow reporting portals: BSI, SwiftComply, WEIRS, VEPO, Aqua, Tokay | BackflowPath",
+                "Compare BSI, SwiftComply, WEIRS, VEPO, Envirotrax, Aqua/TrackMyBackflow, Tokay WebTest, and utility online backflow report routes.",
                 "/backflow-reporting-portals",
-                breadcrumbStructuredData(List.of(
-                        new BreadcrumbItem("Home", canonical("/")),
-                        new BreadcrumbItem("Reporting portals", canonical("/backflow-reporting-portals"))
-                ))
+                combineStructuredData(
+                        breadcrumbStructuredData(List.of(
+                                new BreadcrumbItem("Home", canonical("/")),
+                                new BreadcrumbItem("Reporting portals", canonical("/backflow-reporting-portals"))
+                        )),
+                        faqStructuredData(faqItems)
+                )
         ));
         model.addAttribute("portalName", "Backflow reporting portals");
         model.addAttribute("portalSlug", "all");
@@ -214,6 +218,7 @@ public class SiteController {
         model.addAttribute("cityAliasesByUtility", publishedCityAliasesByUtility(utilities));
         model.addAttribute("noticeIdentifierHints", noticeIdentifierHintsFor(utilities));
         model.addAttribute("reportAcceptanceHints", reportAcceptanceHintsFor(utilities));
+        model.addAttribute("faqItems", faqItems);
         model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
                 "backflow-test-notice-next-steps",
                 "backflow-reporting-portals",
@@ -233,15 +238,19 @@ public class SiteController {
             throw new NotFoundException("Reporting portal page not available.");
         }
         String portalName = portalName(portalSlug);
+        List<FaqItem> faqItems = portalFaqItems(portalSlug, portalName, utilities);
         model.addAttribute("page", page(
-                portalName + " backflow portal utilities and tester reports | BackflowPath",
+                portalName + " backflow portal, tester reports, and utility routes | BackflowPath",
                 portalDescription(portalSlug),
                 "/backflow-reporting-portals/" + portalSlug,
-                breadcrumbStructuredData(List.of(
-                        new BreadcrumbItem("Home", canonical("/")),
-                        new BreadcrumbItem("Reporting portals", canonical("/backflow-reporting-portals")),
-                        new BreadcrumbItem(portalName, canonical("/backflow-reporting-portals/" + portalSlug))
-                ))
+                combineStructuredData(
+                        breadcrumbStructuredData(List.of(
+                                new BreadcrumbItem("Home", canonical("/")),
+                                new BreadcrumbItem("Reporting portals", canonical("/backflow-reporting-portals")),
+                                new BreadcrumbItem(portalName, canonical("/backflow-reporting-portals/" + portalSlug))
+                        )),
+                        faqStructuredData(faqItems)
+                )
         ));
         model.addAttribute("portalName", portalName);
         model.addAttribute("portalSlug", portalSlug);
@@ -252,6 +261,7 @@ public class SiteController {
         model.addAttribute("cityAliasesByUtility", publishedCityAliasesByUtility(utilities));
         model.addAttribute("noticeIdentifierHints", noticeIdentifierHintsFor(utilities));
         model.addAttribute("reportAcceptanceHints", reportAcceptanceHintsFor(utilities));
+        model.addAttribute("faqItems", faqItems);
         model.addAttribute("relatedGuides", guidesByPreferredSlugs(List.of(
                 "backflow-test-notice-next-steps",
                 "backflow-reporting-portals",
@@ -268,14 +278,18 @@ public class SiteController {
     ) {
         String trimmedQuery = query == null ? "" : query.trim();
         List<NoticeFinderResult> results = noticeFinderResults(trimmedQuery);
+        List<FaqItem> faqItems = noticeFinderFaqItems();
         model.addAttribute("page", page(
-                "Backflow notice finder: city, portal, tester, and failed-test routes | BackflowPath",
-                "Paste a city, utility, portal name, notice identifier, or failed-test phrase to find the best source-backed BackflowPath route.",
+                "Backflow notice finder: portal, Hazard ID, tester, failed-test route | BackflowPath",
+                "Paste a city, utility, BSI, SwiftComply, TrackMyBackflow, Tokay, notice ID, Hazard ID, approved tester, or failed-test phrase.",
                 "/notice-finder",
-                breadcrumbStructuredData(List.of(
-                        new BreadcrumbItem("Home", canonical("/")),
-                        new BreadcrumbItem("Notice finder", canonical("/notice-finder"))
-                ))
+                combineStructuredData(
+                        breadcrumbStructuredData(List.of(
+                                new BreadcrumbItem("Home", canonical("/")),
+                                new BreadcrumbItem("Notice finder", canonical("/notice-finder"))
+                        )),
+                        faqStructuredData(faqItems)
+                )
         ));
         model.addAttribute("query", trimmedQuery);
         model.addAttribute("results", results);
@@ -296,6 +310,7 @@ public class SiteController {
                 "failed-backflow-test-next-steps",
                 "approved-testers-vs-find-a-tester"
         ), 4, null));
+        model.addAttribute("faqItems", faqItems);
         return "pages/notice-finder";
     }
 
@@ -817,6 +832,7 @@ public class SiteController {
         }
 
         String path = cityIntentPath(alias, intent.slug());
+        List<FaqItem> faqItems = cityIntentFaqItems(alias, utility, intent);
         model.addAttribute("page", new PageMeta(
                 intent.title(),
                 intent.description(),
@@ -829,7 +845,7 @@ public class SiteController {
                                 new BreadcrumbItem(alias.city(), canonical(cityPath(alias))),
                                 new BreadcrumbItem(intent.heading(), canonical(path))
                         )),
-                        faqStructuredData(utilityFaqItems(utility))
+                        faqStructuredData(faqItems)
                 )
         ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
                 utility.utilityId(),
@@ -854,6 +870,7 @@ public class SiteController {
         model.addAttribute("portalHubLabel", portalHubLabel(utility));
         model.addAttribute("noticeIdentifierHint", noticeIdentifierHint(utility));
         model.addAttribute("reportAcceptanceHint", reportAcceptanceHint(utility));
+        model.addAttribute("faqItems", faqItems);
         model.addAttribute("relatedGuides", guidesByPreferredSlugs(intent.guideSlugs(), 4, null));
         return "pages/city-intent-page";
     }
@@ -995,12 +1012,18 @@ public class SiteController {
         return List.of(
                 "/notice-finder",
                 "/guides/backflow-test-notice-next-steps",
+                "/guides/backflow-reporting-portals",
+                "/guides/backflow-test-cost",
+                "/official-backflow-tester-lists",
                 "/backflow-reporting-portals",
                 "/backflow-reporting-portals/aqua",
                 "/backflow-reporting-portals/tokay",
                 "/backflow-reporting-portals/vepo",
                 "/backflow-reporting-portals/bsi",
+                "/backflow-reporting-portals/weirs",
                 "/backflow-reporting-portals/swiftcomply",
+                "/cities/texas/austin/backflow-reporting-portal",
+                "/cities/texas/austin/approved-backflow-testers",
                 "/cities/texas/euless/backflow-reporting-portal",
                 "/cities/california/buena-park/backflow-reporting-portal",
                 "/cities/california/oxnard/backflow-reporting-portal",
@@ -1010,6 +1033,8 @@ public class SiteController {
                 "/cities/texas/dallas/backflow-reporting-portal",
                 "/cities/texas/dallas/failed-backflow-test",
                 "/cities/texas/fort-worth/backflow-reporting-portal",
+                "/cities/texas/fort-worth/annual-backflow-testing",
+                "/cities/texas/fort-worth/failed-backflow-test",
                 "/cities/texas/irving/backflow-reporting-portal",
                 "/cities/arizona/queen-creek/backflow-reporting-portal",
                 "/cities/florida/tampa/backflow-reporting-portal"
@@ -1533,6 +1558,11 @@ public class SiteController {
         };
     }
 
+    private String portalDisplayName(UtilityRecord utility) {
+        String portalSlug = portalSlugForUtility(utility);
+        return portalSlug == null ? "reporting portal" : portalName(portalSlug);
+    }
+
     private String portalDescription(String portalSlug) {
         return switch (portalSlug.toLowerCase(Locale.US)) {
             case "bsi" -> "Find utility pages where BSI Online or Backflow Solutions appears in the official backflow test report, tester enrollment, or submission workflow.";
@@ -1581,14 +1611,15 @@ public class SiteController {
     }
 
     private String utilityPageTitle(UtilityRecord utility) {
+        String portalName = portalDisplayName(utility);
         if (utility.supportsApprovedTestersPage() && usesPortalWorkflow(utility)) {
-            return utility.utilityName() + " backflow testing, portal, and official tester list | BackflowPath";
+            return utility.utilityName() + " " + portalName + " portal and official tester list | BackflowPath";
         }
         if (utility.supportsApprovedTestersPage()) {
             return utility.utilityName() + " backflow testing and official tester list | BackflowPath";
         }
         if (usesPortalWorkflow(utility)) {
-            return utility.utilityName() + " backflow testing and reporting portal | BackflowPath";
+            return utility.utilityName() + " " + portalName + " backflow reporting portal | BackflowPath";
         }
         return utility.utilityName() + " backflow testing requirements | BackflowPath";
     }
@@ -1596,13 +1627,16 @@ public class SiteController {
     private String utilityPageDescription(UtilityRecord utility) {
         StringBuilder description = new StringBuilder(utility.verdictSummary());
         if (usesPortalWorkflow(utility)) {
-            description.append(" Includes reporting portal and submission workflow context.");
+            description.append(" Includes ")
+                    .append(portalDisplayName(utility))
+                    .append(", notice/device clues, and report submission context.");
         }
         if (utility.supportsApprovedTestersPage()) {
             description.append(" Includes the official tester list route.");
         } else if (utility.supportsFindATesterPage()) {
             description.append(" Includes a clearly labeled non-official tester route when provider inventory is available.");
         }
+        description.append(" ").append(reportAcceptanceHint(utility));
         return description.toString();
     }
 
@@ -1671,14 +1705,15 @@ public class SiteController {
     }
 
     private String cityPageTitle(CityAliasRecord alias, UtilityRecord utility) {
+        String portalName = portalDisplayName(utility);
         if (utility.supportsApprovedTestersPage() && usesPortalWorkflow(utility)) {
-            return alias.city() + " backflow testing, reporting portal, and approved testers | BackflowPath";
+            return alias.city() + " " + portalName + " backflow portal and approved testers | BackflowPath";
         }
         if (utility.supportsApprovedTestersPage()) {
             return alias.city() + " backflow testing and approved tester list | BackflowPath";
         }
         if (usesPortalWorkflow(utility)) {
-            return alias.city() + " backflow testing and reporting portal | BackflowPath";
+            return alias.city() + " " + portalName + " backflow reporting portal | BackflowPath";
         }
         return alias.city() + " backflow testing and prevention requirements | BackflowPath";
     }
@@ -1696,8 +1731,9 @@ public class SiteController {
             description.append(" Includes the official tester list route.");
         }
         if (usesPortalWorkflow(utility)) {
-            description.append(" Includes reporting portal context.");
+            description.append(" Includes ").append(portalDisplayName(utility)).append(" reporting portal context.");
         }
+        description.append(" ").append(noticeIdentifierHint(utility));
         return description.toString();
     }
 
@@ -1737,8 +1773,8 @@ public class SiteController {
         String heading = alias.city() + " annual backflow testing";
         return new CityIntentConfig(
                 "annual-backflow-testing",
-                alias.city() + " annual backflow testing and due dates | BackflowPath",
-                alias.city() + " annual backflow testing route mapped to " + utility.utilityName() + ": " + focus.summary(),
+                alias.city() + " annual backflow testing notice and due dates | BackflowPath",
+                alias.city() + " annual backflow testing notice route mapped to " + utility.utilityName() + ": " + focus.summary(),
                 "Annual city route",
                 heading,
                 focus.summary(),
@@ -1759,14 +1795,14 @@ public class SiteController {
         highlights.add("Due basis: " + utility.dueBasis());
         highlights.add("Program phone: " + utility.phone());
         String portalLabel = portalSlugForUtility(utility) == null ? "reporting portal" : portalName(portalSlugForUtility(utility));
-        String heading = alias.city() + " backflow reporting portal";
+        String heading = alias.city() + " " + portalLabel + " backflow reporting portal";
         return new CityIntentConfig(
                 "backflow-reporting-portal",
-                alias.city() + " backflow reporting portal and test reports | BackflowPath",
-                "Find the " + alias.city() + " backflow report submission route through " + utility.utilityName() + ", including " + portalLabel + " context when the utility workflow names a portal.",
+                alias.city() + " " + portalLabel + " backflow portal and test reports | BackflowPath",
+                "Find the " + alias.city() + " backflow report route through " + utility.utilityName() + ", including " + portalLabel + ", notice/device clues, tester gate, and report acceptance context.",
                 "Portal city route",
                 heading,
-                "Use this page when a notice for " + alias.city() + " mentions BSI, SwiftComply, WEIRS, VEPO, a customer portal, or online backflow test report submission.",
+                "Use this page when a notice for " + alias.city() + " mentions BSI, SwiftComply, WEIRS, VEPO, Aqua/TrackMyBackflow, Tokay WebTest, a customer portal, or online backflow test report submission.",
                 highlights,
                 utility.workflowSteps(),
                 portalHubPath(utility) == null ? utilityPath(utility) : portalHubPath(utility),
@@ -1808,8 +1844,8 @@ public class SiteController {
         String heading = alias.city() + " failed backflow test";
         return new CityIntentConfig(
                 "failed-backflow-test",
-                alias.city() + " failed backflow test repair and retest | BackflowPath",
-                "Repair, retest, and report-submission route for a failed backflow test in " + alias.city() + " through " + utility.utilityName() + ".",
+                alias.city() + " failed backflow test repair, retest, and report submission | BackflowPath",
+                "Repair, retest, and accepted report-submission route for a failed backflow test in " + alias.city() + " through " + utility.utilityName() + ".",
                 "Failed-test city route",
                 heading,
                 "Use this page when the assembly already failed and the next step is repair, retest, and accepted report submission.",
@@ -2308,6 +2344,113 @@ public class SiteController {
         ));
         items.add(new FaqItem(
                 "What costs or portal fees should I expect for " + utility.utilityName() + "?",
+                costAnswer(utility)
+        ));
+        return items;
+    }
+
+    private List<FaqItem> noticeFinderFaqItems() {
+        return List.of(
+                new FaqItem(
+                        "What should I paste into the BackflowPath notice finder?",
+                        "Paste the city, utility, portal name, notice identifier, account clue, device clue, approved-tester wording, due-date wording, or failed-test phrase from the notice."
+                ),
+                new FaqItem(
+                        "Which portal names can the notice finder route?",
+                        "The finder recognizes BSI, Backflow Solutions, SwiftComply, C3Swift, WEIRS, VEPO, Envirotrax, Aqua Backflow, TrackMyBackflow, Tokay, and Tokay WebTest when those terms match source-backed pages."
+                ),
+                new FaqItem(
+                        "What notice identifiers matter before scheduling a tester?",
+                        "Keep the due date, service address, account number, CCN, Hazard ID, Site ID, device ID, assembly serial, or portal record visible so the tester can match the utility workflow."
+                ),
+                new FaqItem(
+                        "What should I do if the notice says failed backflow test?",
+                        "Open the failed-test route first. A failed assembly usually needs repair, retest, and accepted report submission, not only a generic annual testing appointment."
+                )
+        );
+    }
+
+    private List<FaqItem> portalFaqItems(String portalSlug, String portalName, List<UtilityRecord> utilities) {
+        String utilityCount = utilities.size() == 1 ? "1 mapped utility" : utilities.size() + " mapped utilities";
+        String familyNames = "all".equals(portalSlug)
+                ? "BSI, SwiftComply, WEIRS, VEPO, Envirotrax, Aqua/TrackMyBackflow, Tokay WebTest, and local online portals"
+                : portalName;
+        return List.of(
+                new FaqItem(
+                        "Is " + portalName + " the same thing as the local backflow rule?",
+                        "No. The portal may handle report submission, but the city, county, water district, or utility still controls deadlines, tester acceptance, fees, and failed-test handling."
+                ),
+                new FaqItem(
+                        "What should I compare before using " + portalName + " for a backflow report?",
+                        "Compare the utility name, service address, notice or device identifier, approved tester gate, report acceptance rule, filing fee, due window, and failed-test instructions."
+                ),
+                new FaqItem(
+                        "How many BackflowPath utility workflows mention " + familyNames + "?",
+                        "This portal view currently groups " + utilityCount + " with source-backed portal or online submission evidence."
+                ),
+                new FaqItem(
+                        "Can any backflow tester submit through " + portalName + "?",
+                        "Do not assume that. Many portals still require accepted tester credentials, current certification, license, insurance, gauge calibration, or separate utility approval before reports are accepted."
+                )
+        );
+    }
+
+    private List<FaqItem> cityIntentFaqItems(CityAliasRecord alias, UtilityRecord utility, CityIntentConfig intent) {
+        List<FaqItem> items = new ArrayList<>();
+        if ("backflow-reporting-portal".equals(intent.slug())) {
+            items.add(new FaqItem(
+                    "Which backflow reporting portal should " + alias.city() + " use?",
+                    alias.city() + " maps to " + utility.utilityName() + ". The stored portal context is " + portalDisplayName(utility) + ". " + reportAcceptanceHint(utility)
+            ));
+            items.add(new FaqItem(
+                    "What notice or device ID should I keep for " + alias.city() + "?",
+                    noticeIdentifierHint(utility)
+            ));
+        } else if ("annual-backflow-testing".equals(intent.slug())) {
+            items.add(new FaqItem(
+                    "Does " + alias.city() + " require annual backflow testing?",
+                    utility.testingFrequency() + " " + utility.dueBasis()
+            ));
+            items.add(new FaqItem(
+                    "What should I check on an annual notice for " + alias.city() + "?",
+                    "Check the due date, service address, device record, accepted tester route, and submission method before scheduling."
+            ));
+        } else if ("approved-backflow-testers".equals(intent.slug())) {
+            items.add(new FaqItem(
+                    "Where should I find approved backflow testers for " + alias.city() + "?",
+                    testerAnswer(utility)
+            ));
+            items.add(new FaqItem(
+                    "Can I use a generic backflow tester search for " + alias.city() + "?",
+                    "Use generic provider discovery only after the governing utility workflow is clear. Approval, reporting, and credential rules can be utility-specific."
+            ));
+        } else if ("failed-backflow-test".equals(intent.slug())) {
+            items.add(new FaqItem(
+                    "What should I do after a failed backflow test in " + alias.city() + "?",
+                    utility.failureHighlights().isEmpty()
+                            ? "Confirm repair, retest, and accepted report submission with " + utility.utilityName() + " before assuming the issue is closed."
+                            : utility.failureHighlights().get(0)
+            ));
+            items.add(new FaqItem(
+                    "Does a failed test still need report submission in " + alias.city() + "?",
+                    reportAcceptanceHint(utility)
+            ));
+        } else {
+            items.add(new FaqItem(
+                    "Which utility controls this " + alias.city() + " backflow route?",
+                    alias.city() + " maps to " + utility.utilityName() + ". " + alias.justification()
+            ));
+            items.add(new FaqItem(
+                    "What should I verify before scheduling in " + alias.city() + "?",
+                    schedulingChecklistAnswer(utility)
+            ));
+        }
+        items.add(new FaqItem(
+                "Who controls the rule for " + alias.city() + "?",
+                alias.city() + " search demand is routed to " + utility.utilityName() + ". " + utility.whoIsAffected()
+        ));
+        items.add(new FaqItem(
+                "What costs or fees should I expect for " + alias.city() + "?",
                 costAnswer(utility)
         ));
         return items;
