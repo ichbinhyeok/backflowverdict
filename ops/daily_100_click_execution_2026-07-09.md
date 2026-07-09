@@ -68,6 +68,13 @@ Top page signals:
    - Exposed the sitemap index in `robots.txt` while keeping preview hosts empty/no-discovery.
    - This gives Search Console one stable sitemap entry point while preserving the priority sitemap for high-intent URL resubmission.
 
+10. Added public-source hard facts to the highest-pressure portal workflows.
+   - Added SpryBackflow as a first-class portal family after checking Aurora and existing Greeley source data.
+   - Deepened Aurora, Anaheim, Hillsborough, Austin, and Fort Worth records with actual closeout blockers: SpryBackflow due-date submission, SwiftComply assembly photo, Backflow BMP plus test-kit calibration records, WEIRS TMR packet fields, gauge serial/calibration, and VEPO inspection-failure risk.
+   - Added a `Report packet` / `Rejection risk` block to utility pages so existing indexed utility pages now expose the exact evidence needed before filing is treated as complete.
+   - Added `/backflow-reporting-portals/sprybackflow` and Aurora reporting-portal paths into priority discovery.
+   - Documented the source review in `ops/public_source_fact_research_2026-07-09.md`.
+
 ## Verification
 
 - `.\gradlew.bat test --rerun-tasks`: passed.
@@ -100,6 +107,15 @@ Top page signals:
   - `/utilities/california/anaheim-cross-connection-control/`
   - `/providers/prescott-arizona-backflow-care/`
   - `/providers/phoenix-western-backflow/`
+- Latest public-source hard-fact local HTTP checks on `http://localhost:8111`: passed.
+  - `/backflow-reporting-portals/sprybackflow`
+  - `/notice-finder?q=Aurora%20SpryBackflow`
+  - `/utilities/colorado/aurora-water/`
+  - `/utilities/california/anaheim-cross-connection-control/`
+  - `/utilities/florida/hillsborough-county-backflow-testing/`
+  - `/utilities/texas/austin-water-utilities/`
+  - `/utilities/texas/fort-worth-water-utilities/`
+  - `/sitemap-priority.xml`
 
 ## Next Pressure Point
 

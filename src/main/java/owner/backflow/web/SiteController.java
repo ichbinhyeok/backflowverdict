@@ -34,7 +34,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @Controller
 public class SiteController {
-    private static final List<String> PORTAL_SLUGS = List.of("bsi", "weirs", "swiftcomply", "vepo", "aqua", "tokay");
+    private static final List<String> PORTAL_SLUGS = List.of("bsi", "weirs", "swiftcomply", "vepo", "aqua", "tokay", "sprybackflow");
 
     private final BackflowRegistryService registryService;
     private final AppSiteProperties siteProperties;
@@ -1119,6 +1119,7 @@ public class SiteController {
                 "/backflow-reporting-portals",
                 "/backflow-reporting-portals/aqua",
                 "/backflow-reporting-portals/tokay",
+                "/backflow-reporting-portals/sprybackflow",
                 "/backflow-reporting-portals/vepo",
                 "/backflow-reporting-portals/bsi",
                 "/backflow-reporting-portals/weirs",
@@ -1227,6 +1228,7 @@ public class SiteController {
                     case "vepo" -> utilityContainsAny(utility, "vepo", "envirotrax");
                     case "aqua" -> utilityContainsAny(utility, "aqua backflow", "aquabackflow", "trackmybackflow", "track my backflow");
                     case "tokay" -> utilityContainsAny(utility, "tokay", "webtest", "web test");
+                    case "sprybackflow" -> utilityContainsAny(utility, "sprybackflow", "spry backflow", "sprybackflow.aurorawater.org", "sprybackflow.com");
                     default -> false;
                 })
                 .sorted(Comparator.comparing(UtilityRecord::state).thenComparing(UtilityRecord::utilityName))
@@ -1241,6 +1243,7 @@ public class SiteController {
         counts.put("vepo", portalUtilities("vepo").size());
         counts.put("aqua", portalUtilities("aqua").size());
         counts.put("tokay", portalUtilities("tokay").size());
+        counts.put("sprybackflow", portalUtilities("sprybackflow").size());
         return counts;
     }
 
@@ -1257,7 +1260,7 @@ public class SiteController {
                     "/backflow-reporting-portals",
                     "Portal hub",
                     "Compare source-backed portal families before choosing a tester or report route.",
-                    List.of("BSI", "SwiftComply", "VEPO", "Aqua/TrackMyBackflow", "Tokay"),
+                    List.of("BSI", "SwiftComply", "VEPO", "Aqua/TrackMyBackflow", "Tokay", "SpryBackflow"),
                     82
             ));
         }
@@ -1351,6 +1354,7 @@ public class SiteController {
             case "vepo" -> List.of("vepo", "envirotrax", "bpat");
             case "aqua" -> List.of("aqua backflow", "trackmybackflow", "track my backflow", "hazard id", "site id");
             case "tokay" -> List.of("tokay", "webtest", "web test");
+            case "sprybackflow" -> List.of("sprybackflow", "spry backflow", "aurora water backflow site", "greeley spry backflow");
             default -> List.of();
         };
     }
@@ -1516,6 +1520,7 @@ public class SiteController {
             case "vepo" -> "Look for the BPAT/tester registration context, Envirotrax record, service address, or assembly identifier.";
             case "aqua" -> "Look for the Hazard ID, Site ID, device record, or TrackMyBackflow customer record.";
             case "tokay" -> "Look for the Tokay/WebTest entry, tester login context, device record, or assembly identifier.";
+            case "sprybackflow" -> "Look for the utility service address, responsible party or customer record, assembly record, and annual due-date clue before opening SpryBackflow.";
             default -> "Look for the utility name, service address, assembly serial number, account or notice ID, and due date.";
         };
     }
@@ -1702,6 +1707,7 @@ public class SiteController {
             case "vepo" -> "VEPO/Envirotrax";
             case "aqua" -> "Aqua/TrackMyBackflow";
             case "tokay" -> "Tokay WebTest";
+            case "sprybackflow" -> "SpryBackflow";
             default -> "Backflow reporting portals";
         };
     }
@@ -1719,6 +1725,7 @@ public class SiteController {
             case "vepo" -> "Find utility pages where VEPO or Envirotrax appears in the official backflow tester registration, credential verification, or report submission workflow.";
             case "aqua" -> "Find utility pages where Aqua Backflow or TrackMyBackflow appears in the official backflow test reporting, filing-fee, or tester registration workflow.";
             case "tokay" -> "Find utility pages where Tokay or Tokay WebTest appears in the official backflow tester approval, credential, or online test report entry workflow.";
+            case "sprybackflow" -> "Find utility pages where SpryBackflow appears in the official backflow test report submission workflow.";
             default -> "Find utility backflow reporting portal routes and online submission workflows.";
         };
     }
@@ -1751,6 +1758,9 @@ public class SiteController {
         }
         if (utilityContainsAny(utility, "tokay", "webtest", "web test")) {
             return "tokay";
+        }
+        if (utilityContainsAny(utility, "sprybackflow", "spry backflow", "sprybackflow.aurorawater.org")) {
+            return "sprybackflow";
         }
         if (utilityContainsAny(utility, "bsi", "backflow solutions", "backflowtest.com", "bsi online")) {
             return "bsi";
@@ -2644,7 +2654,7 @@ public class SiteController {
                 ),
                 new FaqItem(
                         "Which backflow report portals appear in BackflowPath?",
-                        "BackflowPath currently groups source-backed routes for BSI, WEIRS, SwiftComply, VEPO, Envirotrax, Aqua Backflow, TrackMyBackflow, Tokay WebTest, and utility-run online submission workflows."
+                        "BackflowPath currently groups source-backed routes for BSI, WEIRS, SwiftComply, VEPO, Envirotrax, Aqua Backflow, TrackMyBackflow, Tokay WebTest, SpryBackflow, and utility-run online submission workflows."
                 ),
                 new FaqItem(
                         "What should the owner keep after the tester files a report?",

@@ -183,10 +183,11 @@
                         <article class="detail-card detail-card--quiet">
                             <span class="pill">Portal</span>
                             <h3>Portal or upload wording</h3>
-                            <p>Use this when the notice mentions BSI, SwiftComply, WEIRS, VEPO, Envirotrax, TrackMyBackflow, or Tokay WebTest.</p>
+                            <p>Use this when the notice mentions BSI, SwiftComply, WEIRS, VEPO, Envirotrax, TrackMyBackflow, Tokay WebTest, or SpryBackflow.</p>
                             <div class="card-actions">
                                 <a class="button button--secondary" href="/notice-finder?q=SwiftComply%20portal">SwiftComply portal</a>
                                 <a class="button button--secondary" href="/notice-finder?q=TrackMyBackflow%20Hazard%20ID">TrackMyBackflow Hazard ID</a>
+                                <a class="button button--secondary" href="/notice-finder?q=Aurora%20SpryBackflow">Aurora SpryBackflow</a>
                             </div>
                         </article>
                         <article class="detail-card detail-card--quiet">
@@ -277,6 +278,13 @@
                             <div>
                                 <strong>Dallas SwiftComply reporting portal</strong>
                                 <span>SwiftComply annual testing, failed-test, and report submission workflow.</span>
+                            </div>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                        <a class="support-link" href="/cities/colorado/aurora/backflow-reporting-portal">
+                            <div>
+                                <strong>Aurora SpryBackflow reporting portal</strong>
+                                <span>Certified technician testing, SpryBackflow online submission, and annual due-date proof.</span>
                             </div>
                             <span class="material-symbols-outlined">arrow_forward</span>
                         </a>

@@ -32,14 +32,14 @@
                 </div>
                 <div class="hero__stats">
                     <span>${utilities.size()} mapped utility workflows</span>
-                    <span>${portalSlug.equals("all") ? "BSI, WEIRS, SwiftComply, VEPO, Aqua, and Tokay families" : portalName + " utility examples"}</span>
+                    <span>${portalSlug.equals("all") ? "BSI, WEIRS, SwiftComply, VEPO, Aqua, Tokay, and SpryBackflow families" : portalName + " utility examples"}</span>
                     <span>Reports follow utility rules</span>
                     <span>Tester action comes after the local page</span>
                 </div>
             </div>
             <aside class="panel panel--hero">
                 <span class="stat-card__label" style="color: rgba(141, 224, 196, 0.9);">Portal context</span>
-                <div class="stat-card__value" style="color: #ffffff; font-size: clamp(2rem, 4vw, 2.7rem);">${portalSlug.equals("all") ? "BSI / WEIRS / SwiftComply / VEPO / Aqua / Tokay" : portalName}</div>
+                <div class="stat-card__value" style="color: #ffffff; font-size: clamp(2rem, 4vw, 2.7rem);">${portalSlug.equals("all") ? "BSI / WEIRS / SwiftComply / VEPO / Aqua / Tokay / SpryBackflow" : portalName}</div>
                 <p class="stat-card__meta" style="color: rgba(239, 241, 243, 0.74);">Portal names are discovery signals. The local utility page still controls deadlines, tester status, fees, and report acceptance.</p>
             </aside>
         </div>
@@ -100,6 +100,14 @@
                         <p>Utilities where Tokay or Tokay WebTest appears in official online test report entry, tester approval, or credential maintenance context.</p>
                         <div class="card-actions">
                             <a class="button button--secondary" href="/backflow-reporting-portals/tokay">Open Tokay utilities</a>
+                        </div>
+                    </article>
+                    <article class="detail-card detail-card--quiet">
+                        <span class="pill">${portalCounts.getOrDefault("sprybackflow", 0)} utilities</span>
+                        <h3>SpryBackflow reporting</h3>
+                        <p>Utilities where SpryBackflow appears in official online backflow test submission context.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/backflow-reporting-portals/sprybackflow">Open SpryBackflow utilities</a>
                         </div>
                     </article>
                 </div>

@@ -201,6 +201,14 @@
                             <a class="button button--secondary" href="/backflow-reporting-portals/tokay">Open Tokay utilities</a>
                         </div>
                     </article>
+                    <article class="detail-card detail-card--quiet">
+                        <span class="pill">SpryBackflow</span>
+                        <h3>SpryBackflow online submission</h3>
+                        <p>Use this route when the official workflow names SpryBackflow or a utility-specific Spry backflow site for online test result submission.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/backflow-reporting-portals/sprybackflow">Open SpryBackflow utilities</a>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>

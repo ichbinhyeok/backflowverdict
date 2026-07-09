@@ -15,7 +15,9 @@
   "searchAliases": [
     "hillsborough county backflow testing",
     "hillsborough county certified backflow testers",
-    "hillsborough county backflow permit"
+    "hillsborough county backflow permit",
+    "hillsborough backflow bmp portal",
+    "hillsborough county failed backflow 48 hours"
   ],
   "utilityUrl": "https://hcfl.gov/backflow",
   "officialProgramUrls": [
@@ -47,11 +49,16 @@
       "label": "Hillsborough County certified tester page",
       "url": "https://hcfl.gov/residents/property-owners-and-renters/water-and-sewer/certified-backflow-testers",
       "kind": "official tester page"
+    },
+    {
+      "label": "Backflow BMP portal",
+      "url": "https://app.backflowbmp.com/",
+      "kind": "test result portal"
     }
   ],
   "phone": "813-307-1000",
-  "penalties": "Hillsborough County's workflow is not casual. Failed assemblies must be reported within 48 hours, permit closure depends on inspection approval and a completed backflow test report, and only county-registered testers are accepted.",
-  "sourceExcerpt": "Hillsborough County ties annual testing, tester registration, permit closure, failed-test notice timing, and county-run submission tooling into one operational workflow.",
+  "penalties": "Hillsborough County's workflow is not casual. Failed assemblies must be reported within 48 hours, permit closure depends on inspection approval and a completed backflow test report, and only county-registered testers with current certification and test-kit calibration records are accepted.",
+  "sourceExcerpt": "Hillsborough County ties annual testing, tester registration, certification and test-kit calibration proof, permit closure, failed-test notice timing, and Backflow BMP submission into one operational workflow.",
   "sourceSnapshotPath": "storage/snapshots/hillsborough-backflow.html",
   "reviewerInitials": "TL",
   "staleAfterDays": 45,
@@ -72,7 +79,8 @@
     "highlights": [
       "Annual testing is explicit on the official page.",
       "Only a registered Hillsborough County certified tester can perform the test.",
-      "The county has a dedicated tester page and portal-linked workflow."
+      "The county requires certification and test-kit calibration copies for portal enrollment.",
+      "The county has a dedicated tester page and Backflow BMP portal workflow."
     ],
     "workflowSteps": [
       "Confirm the property's assembly is due under the county's annual cycle.",
@@ -82,12 +90,13 @@
   },
   "workflowSteps": [
     "Confirm the service connection is under the Hillsborough County Public Utilities program.",
-    "Choose a tester from the county-certified list.",
+    "Choose a tester from the county-certified list and confirm current test-kit calibration proof.",
     "Complete the annual test or permitted installation workflow.",
     "If the device fails, notify the county within 48 hours and finish the repair path quickly."
   ],
   "failureHighlights": [
     "Only county-registered testers are accepted.",
+    "Tester portal enrollment depends on current testing certifications and test-kit calibration certifications.",
     "Failed assemblies must be reported within 48 hours.",
     "Permit closure depends on inspection approval and the completed test report."
   ],
@@ -106,6 +115,11 @@
       "label": "Hillsborough County certified backflow testers",
       "url": "https://hcfl.gov/residents/property-owners-and-renters/water-and-sewer/certified-backflow-testers",
       "kind": "official tester page"
+    },
+    {
+      "label": "Backflow BMP portal",
+      "url": "https://app.backflowbmp.com/",
+      "kind": "officially referenced reporting portal"
     }
   ]
 }

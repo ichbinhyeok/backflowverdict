@@ -110,12 +110,12 @@
                     </div>
                 </article>
                 <article class="detail-card">
-                    <span class="pill">Tokay</span>
-                    <h3>Tokay WebTest notice routes</h3>
-                    <p>Oxnard and Dublin San Ramon workflows where Tokay/WebTest appears in online backflow test entry or tester credential context.</p>
+                    <span class="pill">Named portals</span>
+                    <h3>Tokay and SpryBackflow notice routes</h3>
+                    <p>Oxnard, Dublin San Ramon, and Aurora-style workflows where the official page names Tokay/WebTest or SpryBackflow for online report entry.</p>
                     <div class="card-actions">
                         <a class="button button--secondary" href="/backflow-reporting-portals/tokay">Tokay portal hub</a>
-                        <a class="button button--secondary" href="/cities/california/oxnard/backflow-reporting-portal">Oxnard portal</a>
+                        <a class="button button--secondary" href="/backflow-reporting-portals/sprybackflow">SpryBackflow hub</a>
                     </div>
                 </article>
             </div>

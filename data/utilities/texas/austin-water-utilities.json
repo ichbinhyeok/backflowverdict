@@ -12,7 +12,10 @@
   ],
   "searchAliases": [
     "austin backflow testing",
-    "austin water backflow prevention"
+    "austin water backflow prevention",
+    "austin weirs tmr",
+    "austin backflow gauge calibration",
+    "austin water protection technician registration"
   ],
   "utilityUrl": "https://www.austintexas.gov/my-mm/water/cross-connection-control-water-protection-program",
   "officialProgramUrls": [
@@ -55,8 +58,8 @@
     }
   ],
   "phone": "512-972-1060",
-  "penalties": "Austin Water reviews records, investigates compliance, and can issue violations or suspend City registration for repeated tester violations. Falsified records can trigger criminal prosecution.",
-  "sourceExcerpt": "Austin requires annual testing for many backflow assemblies, online TMR submission through WEIRS, and City registration for BPATs in addition to TCEQ licensing.",
+  "penalties": "Austin Water reviews records, investigates compliance, and can issue violations or suspend City registration for repeated tester violations. Falsified records can trigger criminal prosecution, and three notices of violation within two years can suspend a tester's City registration for one year.",
+  "sourceExcerpt": "Austin requires annual testing for many backflow assemblies, online TMR submission through WEIRS, City registration for BPATs in addition to TCEQ licensing, current gauge calibration, and complete TMR packet details.",
   "sourceSnapshotPath": "storage/snapshots/austin-backflow.html",
   "reviewerInitials": "TL",
   "staleAfterDays": 45,
@@ -77,6 +80,7 @@
     "highlights": [
       "Many listed assemblies require at least annual testing.",
       "Austin requires City registration for BPATs in addition to TCEQ licensing.",
+      "Each TMR needs address/location, cause, assembly identifiers, test results, repair and retest results when applicable, owner details, BPAT license details, gauge serial number, and test date.",
       "Paper reports are no longer accepted."
     ],
     "workflowSteps": [
@@ -114,13 +118,15 @@
   "workflowSteps": [
     "Confirm whether the site falls under Austin Water's annual testing categories in the current ordinance.",
     "Use a TCEQ-licensed BPAT registered with Austin Water.",
-    "Submit each complete Test and Maintenance Report online through WEIRS within five calendar days.",
+    "Submit each complete Test and Maintenance Report online through WEIRS within five calendar days, including assembly address, cause, manufacturer, size, model, serial number, test results, repair and retest results when applicable, owner details, BPAT license, gauge serial, and test date.",
     "If the assembly is removed, replaced, or tied to a removed hazard, report that status to Austin Water so the record is updated."
   ],
   "failureHighlights": [
     "Paper TMRs are no longer accepted.",
     "Austin requires more than state licensing alone; tester registration with the utility matters too.",
-    "False or incomplete records can trigger City enforcement and even criminal exposure."
+    "Each tester gauge must have a calibration certificate showing it passed within the last 12 months.",
+    "Incomplete or unsigned registration forms will not be processed.",
+    "False or incomplete records can trigger City enforcement, criminal exposure, and a one-year City registration suspension after repeated notices."
   ],
   "costBand": {
     "testingRange": "Private Austin quotes vary by assembly, hazard class, and whether the tester is already registered with Austin Water.",

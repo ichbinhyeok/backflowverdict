@@ -12,14 +12,17 @@
   ],
   "searchAliases": [
     "fort worth backflow testing",
-    "fort worth bpat"
+    "fort worth bpat",
+    "fort worth vepo envirotrax",
+    "fort worth backflow permit",
+    "fort worth registered backflow tester"
   ],
   "utilityUrl": "https://www.fortworthtexas.gov/departments/water/backflow",
   "officialProgramUrls": [
     "https://www.fortworthtexas.gov/departments/water/backflow"
   ],
   "testingFrequency": "Upon installation, repair, or relocation; and annually thereafter",
-  "dueBasis": "All backflow protection assemblies must be tested on installation, repair, or relocation and annually after that. Commercial-class irrigation backflows are also tested annually.",
+  "dueBasis": "All backflow protection assemblies must be tested on installation, repair, or relocation and annually after that. Fort Worth also calls out annual testing for all commercial-property assemblies and any health-hazard assemblies.",
   "coveredPropertyTypes": [
     "Commercial properties with backflow assemblies",
     "Any premises with health-hazard assemblies",
@@ -47,15 +50,15 @@
       "kind": "submission portal"
     }
   ],
-  "phone": "817-392-8008",
-  "penalties": "Incomplete or inaccurate reports can fail inspection, and annual testing requirements are actively enforced through the City's program.",
-  "sourceExcerpt": "Fort Worth requires testing upon installation, repair, or relocation and annually thereafter. Testers must register with the City through VEPO and approved testers are added after verification.",
+  "phone": "817-392-8007",
+  "penalties": "Incomplete, missing, or inaccurate reports in VEPO can fail inspection, new installation or replacement work can need permit handling before inspection, and annual testing requirements are enforced through the City's program.",
+  "sourceExcerpt": "Fort Worth requires registered BPATs to enter test reports through VEPO Envirotrax, requires testing before inspection for new or altered assemblies, and publishes separate contacts for installation/permitting and annual enforcement.",
   "sourceSnapshotPath": "storage/snapshots/fort-worth-backflow.html",
   "reviewerInitials": "TL",
   "staleAfterDays": 45,
   "pageStatus": "PUBLISH",
   "lastVerified": "2026-06-29",
-  "verdictSummary": "Fort Worth requires testing at installation, repair, or relocation and then annually, with licensed registered testers submitting reports through VEPO.",
+  "verdictSummary": "Fort Worth requires testing at installation, repair, or relocation and then annually, with licensed registered testers submitting reports through VEPO Envirotrax before inspection or annual closeout.",
   "whoIsAffected": "Commercial properties, irrigation systems, firelines, and any site with a backflow assembly under Fort Worth water utility oversight.",
   "residentialNotes": [
     "Homeowners can install an irrigation system at their own residence, but testing and inspection still route through Fort Worth's registered-BPAT and permit workflow.",
@@ -70,23 +73,25 @@
     "highlights": [
       "Annual testing is not limited to one narrow property class.",
       "Testers must be registered with the City through VEPO.",
-      "Annual notices and online report submission both run through Envirotrax by VEPO."
+      "Annual notices and online report submission both run through Envirotrax by VEPO.",
+      "The annual testing and enforcement program publishes a direct contact line at 817-392-8007."
     ],
     "workflowSteps": [
       "Confirm the assembly and permit status with Fort Worth Water.",
       "Use a BPAT registered with the City of Fort Worth.",
-      "Make sure the tester submits the report directly into Envirotrax through VEPO."
+      "Make sure the tester submits the report directly into Envirotrax through VEPO and keep confirmation for the annual enforcement record."
     ]
   },
   "irrigation": {
-    "summary": "Fort Worth irrigation work is permit-heavy. A Development Services permit is required before work begins, and all installed, altered, or repaired irrigation backflows must be tested by a City-registered BPAT.",
+    "summary": "Fort Worth irrigation work is permit-heavy. A Development Services permit is required before work begins, new or substantially modified lawn sprinkler work may need a lawn sprinkler permit, and all installed, altered, or repaired irrigation backflows must be tested by a City-registered BPAT.",
     "highlights": [
       "A permit is required before irrigation backflow work begins.",
       "A homeowner may do installation at their own residence, but other installers must be licensed plumbers or irrigators registered as Fort Worth contractors.",
+      "Permit cost questions route through Development Services at 817-392-2222.",
       "Commercial-class irrigation backflows are tested annually."
     ],
     "workflowSteps": [
-      "Pull the Fort Worth permit before starting irrigation work.",
+      "Pull the Fort Worth permit before starting irrigation work and confirm whether the lawn sprinkler permit threshold applies.",
       "Use the correct contractor type for installation.",
       "Have a City-registered BPAT test the assembly and submit the result through VEPO before inspection closeout."
     ]
@@ -108,17 +113,19 @@
     "Use the Fort Worth backflow page to confirm the permit, inspection, and annual testing path for the assembly.",
     "Hire a licensed BPAT registered with the City of Fort Worth.",
     "Have the tester submit the report directly into the VEPO Envirotrax system and keep it available onsite for inspection when permits are involved.",
-    "If the device fails, correct the issue and make sure the follow-up report is complete enough to pass inspection."
+    "For installation, replacement, relocation, or removal questions, use the City's installation and permitting contact line before inspection.",
+    "If the device fails, correct the issue and make sure the follow-up report is complete, accurate, and accepted before assuming the inspection or annual record is closed."
   ],
   "failureHighlights": [
-    "Incomplete or inaccurate reports in VEPO can result in a failed inspection.",
+    "Incomplete, missing, or inaccurate reports in VEPO can result in a failed inspection.",
     "Tester registration is not optional; approval is tied to verification of license, insurance, and test-for-accuracy reports.",
+    "New installations, replacements, relocations, and removals can require permit sequencing before inspection closeout.",
     "Fireline testing carries additional State Fire Marshal employment requirements."
   ],
   "costBand": {
     "testingRange": "Private Fort Worth quotes vary by assembly type, access, and whether inspection timing is involved.",
     "repairRetestRange": "Repair and retest costs widen materially for fireline and larger commercial assemblies.",
-    "pricingNotes": "Fort Worth's public materials are clearer on tester registration and inspection sequencing than public retail pricing."
+    "pricingNotes": "Fort Worth's public materials are clearer on tester registration, permit sequencing, Development Services permit-cost routing, and inspection failure causes than public retail test pricing."
   },
   "sources": [
     {

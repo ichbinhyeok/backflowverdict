@@ -13,11 +13,14 @@
   "searchAliases": [
     "anaheim backflow testing",
     "anaheim approved backflow testers",
-    "anaheim cross connection control"
+    "anaheim cross connection control",
+    "anaheim swiftcomply backflow",
+    "anaheim backflow test report photo"
   ],
   "utilityUrl": "https://www.anaheim.net/769/Cross-Connection-Control",
   "officialProgramUrls": [
     "https://www.anaheim.net/769/Cross-Connection-Control",
+    "https://www.sc-tester.com/",
     "https://www.anaheim.net/710/Standard-Specifications-Requirements",
     "https://www.anaheim.net/DocumentCenter/View/1626/Water-Services-Standard-Specifications"
   ],
@@ -45,14 +48,19 @@
       "kind": "program page"
     },
     {
+      "label": "Anaheim SwiftComply tester registration",
+      "url": "https://www.sc-tester.com/",
+      "kind": "SwiftComply tester registration"
+    },
+    {
       "label": "Anaheim standard specifications",
       "url": "https://www.anaheim.net/710/Standard-Specifications-Requirements",
       "kind": "standards page"
     }
   ],
   "phone": "714-765-4173",
-  "penalties": "Anaheim only accepts approved testers from the city workflow, no longer accepts mailed or emailed reports, and requires defective devices to be repaired and retested before they can be treated as compliant.",
-  "sourceExcerpt": "Anaheim publishes annual testing rules, approved-list gating, electronic submission, and utility specifications for irrigation and fireline work.",
+  "penalties": "Anaheim only accepts approved testers from the city workflow, no longer accepts mailed or emailed reports, requires SwiftComply electronic submission with a photo of the assembly during the test, and requires defective devices to be repaired and retested before they can be treated as compliant.",
+  "sourceExcerpt": "Anaheim publishes annual testing rules, approved-list gating, SwiftComply electronic submission, assembly-photo evidence, and utility specifications for irrigation and fireline work.",
   "sourceSnapshotPath": "storage/snapshots/anaheim-backflow.html",
   "reviewerInitials": "TL",
   "staleAfterDays": 45,
@@ -73,12 +81,12 @@
     "highlights": [
       "Only testers on the city's approved list may be used.",
       "The tester must hold Orange County certification and a valid Anaheim business license.",
-      "Test results are submitted through Anaheim's electronic workflow."
+      "Test results are submitted through SwiftComply, and the city requires a photo of the assembly during the test."
     ],
     "workflowSteps": [
       "Confirm the device is still on Anaheim's annual testing program.",
       "Choose a tester from Anaheim's approved list.",
-      "Complete the test and submit the result through Anaheim's electronic workflow."
+      "Complete the test and submit the result plus assembly photo through SwiftComply."
     ]
   },
   "irrigation": {
@@ -110,12 +118,14 @@
   "workflowSteps": [
     "Confirm whether the issue is annual testing, a repair, or a relocation.",
     "Choose an approved Anaheim tester with the required county certification and city license.",
-    "Complete the test and submit the result electronically.",
+    "Complete the test and submit the result plus assembly photo through SwiftComply.",
+    "Continue sending test reports to the Orange County Public Health Care Agency when required by Anaheim's public instructions.",
     "If the device is defective, repair or replace it and retest before treating the matter as closed."
   ],
   "failureHighlights": [
     "Anaheim only accepts approved testers from the city's list.",
     "The city no longer accepts mailed or emailed reports.",
+    "SwiftComply submission requires test report information and a photo of the assembly during the test.",
     "Defective devices must be repaired and retested."
   ],
   "costBand": {
@@ -128,6 +138,11 @@
       "label": "Anaheim cross connection control",
       "url": "https://www.anaheim.net/769/Cross-Connection-Control",
       "kind": "official program page"
+    },
+    {
+      "label": "Anaheim SwiftComply tester registration",
+      "url": "https://www.sc-tester.com/",
+      "kind": "officially linked submission registration"
     },
     {
       "label": "Anaheim standard specifications",

@@ -109,6 +109,31 @@
 
     <section class="section section--tight">
         <div class="container content-grid">
+            <article class="detail-card">
+                <span class="eyebrow">Report packet</span>
+                <h2>What has to be ready before the filing is complete</h2>
+                <ul class="detail-list">
+                    @for (var step : utility.workflowSteps())
+                        <li>${step}</li>
+                    @endfor
+                </ul>
+            </article>
+
+            <article class="detail-card detail-card--warm">
+                <span class="eyebrow">Rejection risk</span>
+                <h2>What can keep the account out of compliance</h2>
+                <ul class="detail-list">
+                    @for (var failureHighlight : utility.failureHighlights())
+                        <li>${failureHighlight}</li>
+                    @endfor
+                    <li>${utility.costBand().pricingNotes()}</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <section class="section section--tight">
+        <div class="container content-grid">
             <article class="detail-card detail-card--key">
                 <span class="eyebrow">Before scheduling</span>
                 <h2>Notice checklist before you call or file</h2>

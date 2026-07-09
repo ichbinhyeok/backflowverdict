@@ -19,7 +19,7 @@
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Report submission hub</span>
                 <h1>Submit backflow test reports through the right city, utility, and portal route.</h1>
-                <p class="lede">Use this hub when the field test is done but the compliance cycle still depends on BSI, WEIRS, SwiftComply, VEPO, Envirotrax, Aqua/TrackMyBackflow, Tokay WebTest, or a utility online submission path.</p>
+                <p class="lede">Use this hub when the field test is done but the compliance cycle still depends on BSI, WEIRS, SwiftComply, VEPO, Envirotrax, Aqua/TrackMyBackflow, Tokay WebTest, SpryBackflow, or a utility online submission path.</p>
                 <div class="hero__actions">
                     <a class="button button--primary" href="/notice-finder">Find from notice</a>
                     <a class="button button--secondary" href="/backflow-reporting-portals">Compare portal families</a>
@@ -55,7 +55,7 @@
             <article class="detail-card">
                 <span class="eyebrow">When to use this page</span>
                 <h2>Use this hub for filing, upload, and report-proof searches</h2>
-                <p>Start here for searches like submit backflow report, upload backflow test, BSI report submission, Austin WEIRS, Dallas SwiftComply, TrackMyBackflow Hazard ID, Tokay WebTest report, or VEPO Envirotrax tester submission.</p>
+                <p>Start here for searches like submit backflow report, upload backflow test, BSI report submission, Austin WEIRS, Dallas SwiftComply, Aurora SpryBackflow, TrackMyBackflow Hazard ID, Tokay WebTest report, or VEPO Envirotrax tester submission.</p>
                 <div class="card-actions">
                     <a class="button button--secondary" href="/notice-finder?q=submit%20backflow%20report">Search submit report</a>
                     <a class="button button--secondary" href="/notice-finder?q=failed%20backflow%20retest">Search failed retest</a>
