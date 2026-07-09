@@ -106,6 +106,11 @@ class AdminControllerTest {
                 .andExpect(content().string(containsString("Lead control room")))
                 .andExpect(content().string(containsString("Storage snapshot")))
                 .andExpect(content().string(containsString("Coverage watch")))
+                .andExpect(content().string(containsString("SEO scorecard")))
+                .andExpect(content().string(containsString("structured workflow coverage")))
+                .andExpect(content().string(containsString("Next internal SEO actions")))
+                .andExpect(content().string(containsString("/admin/seo-scorecard.json")))
+                .andExpect(content().string(containsString("Improvement candidates")))
                 .andExpect(content().string(containsString("No leads captured yet")))
                 .andExpect(content().string(containsString("without provider coverage")))
                 .andExpect(content().string(containsString("public provider profiles")))
@@ -176,6 +181,11 @@ class AdminControllerTest {
                 .andExpect(content().string(containsString("'=Jordan Lee")))
                 .andExpect(content().string(containsString("'@Need a quote this week.")))
                 .andExpect(content().string(containsString("general-testing")));
+
+        mockMvc.perform(get("/admin/seo-scorecard.json").session(session))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("\"strongestRoutes\"")))
+                .andExpect(content().string(containsString("\"improvementCandidates\"")));
     }
 
     @Test

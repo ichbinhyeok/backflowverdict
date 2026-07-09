@@ -2,6 +2,7 @@ package owner.backflow.web;
 
 import jakarta.servlet.http.HttpSession;
 import java.nio.charset.StandardCharsets;
+import owner.backflow.ops.SeoScorecardService;
 import owner.backflow.service.AdminAuthService;
 import owner.backflow.service.AdminCsrfService;
 import owner.backflow.service.AdminWorkspaceInspectorService;
@@ -27,17 +28,20 @@ public class AdminController {
     private final AdminCsrfService adminCsrfService;
     private final LeadAdminService leadAdminService;
     private final AdminWorkspaceInspectorService adminWorkspaceInspectorService;
+    private final SeoScorecardService seoScorecardService;
 
     public AdminController(
             AdminAuthService adminAuthService,
             AdminCsrfService adminCsrfService,
             LeadAdminService leadAdminService,
-            AdminWorkspaceInspectorService adminWorkspaceInspectorService
+            AdminWorkspaceInspectorService adminWorkspaceInspectorService,
+            SeoScorecardService seoScorecardService
     ) {
         this.adminAuthService = adminAuthService;
         this.adminCsrfService = adminCsrfService;
         this.leadAdminService = leadAdminService;
         this.adminWorkspaceInspectorService = adminWorkspaceInspectorService;
+        this.seoScorecardService = seoScorecardService;
     }
 
     @GetMapping("/admin")
@@ -96,6 +100,7 @@ public class AdminController {
         model.addAttribute("heldProviderCount", leadAdminService.heldProviderCount());
         model.addAttribute("storageRoot", adminWorkspaceInspectorService.storageRoot());
         model.addAttribute("storageFiles", adminWorkspaceInspectorService.listStorageFiles());
+        model.addAttribute("seoScorecard", seoScorecardService.buildReport());
         model.addAttribute("username", adminAuthService.username());
         model.addAttribute("csrfToken", adminCsrfService.ensureToken(session));
         return "pages/admin";
@@ -172,6 +177,17 @@ public class AdminController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"backflowpath-leads.csv\"")
                 .contentType(csvMediaType)
                 .body(leadAdminService.exportCsv());
+    }
+
+    @GetMapping(value = "/admin/seo-scorecard.json", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> seoScorecardJson(HttpSession session) {
+        ensureAdminConfigured();
+        if (!isAuthenticated(session)) {
+            return ResponseEntity.status(HttpStatus.FOUND)
+                    .header(HttpHeaders.LOCATION, "/admin")
+                    .build();
+        }
+        return ResponseEntity.ok(seoScorecardService.buildReport());
     }
 
     private ResponseEntity<String> redirectToLogin() {

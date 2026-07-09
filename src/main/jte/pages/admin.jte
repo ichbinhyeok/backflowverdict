@@ -1,4 +1,5 @@
 @import owner.backflow.web.PageMeta
+@import owner.backflow.ops.SeoScorecardService.SeoScorecardReport
 @import owner.backflow.service.AdminWorkspaceInspectorService.StorageFileSummary
 @import owner.backflow.service.LeadInboxItem
 @param PageMeta page
@@ -20,6 +21,7 @@
 @param int heldProviderCount = 0
 @param String storageRoot = ""
 @param java.util.List<StorageFileSummary> storageFiles = java.util.List.of()
+@param SeoScorecardReport seoScorecard = null
 
 @template.layouts.app(page = page, content = @`
     <section class="page-hero">
@@ -120,6 +122,139 @@
                     </article>
                 </div>
             </section>
+
+            @if (seoScorecard != null)
+                <section class="section">
+                    <div class="container">
+                        <div class="section-heading">
+                            <span class="eyebrow">SEO scorecard</span>
+                            <h2>Internal click levers</h2>
+                            <p>structured workflow coverage, high-score URL candidates, and the next data gaps that can lift priority routes.</p>
+                        </div>
+
+                        <div class="utility-grid">
+                            <article class="detail-card detail-card--key">
+                                <h3>Index-ready utilities</h3>
+                                <p><strong>${seoScorecard.summary().indexReadyUtilityCount()}</strong> / ${seoScorecard.summary().publishedUtilityCount()} published utilities</p>
+                                <p class="detail-meta">${seoScorecard.summary().indexReadyCoveragePercent()}% clear the current index-quality floor.</p>
+                            </article>
+
+                            <article class="detail-card">
+                                <h3>Structured workflow coverage</h3>
+                                <p><strong>${seoScorecard.summary().structuredWorkflowCount()}</strong> / ${seoScorecard.summary().publishedUtilityCount()} utilities have report workflow, tester gate, and deadline policy together.</p>
+                                <p class="detail-meta">${seoScorecard.summary().structuredWorkflowCoveragePercent()}% complete structured workflow coverage.</p>
+                            </article>
+
+                            <article class="detail-card">
+                                <h3>Evidence fields</h3>
+                                <ul class="detail-list">
+                                    <li>${seoScorecard.summary().reportWorkflowCount()} report workflows (${seoScorecard.summary().reportWorkflowCoveragePercent()}%)</li>
+                                    <li>${seoScorecard.summary().testerGateCount()} tester gates (${seoScorecard.summary().testerGateCoveragePercent()}%)</li>
+                                    <li>${seoScorecard.summary().deadlinePolicyCount()} deadline policies (${seoScorecard.summary().deadlinePolicyCoveragePercent()}%)</li>
+                                    <li>${seoScorecard.summary().failedTestPolicyCount()} failed-test policies (${seoScorecard.summary().failedTestPolicyCoveragePercent()}%)</li>
+                                    <li>${seoScorecard.summary().structuredFeeCount()} structured fee records (${seoScorecard.summary().structuredFeeCoveragePercent()}%)</li>
+                                </ul>
+                            </article>
+
+                            <article class="detail-card detail-card--warm">
+                                <h3>Next internal SEO actions</h3>
+                                <ul class="detail-list">
+                                    <li>${seoScorecard.summary().highScoreRouteCount()} routes score 80+ in the internal model</li>
+                                    <li>${seoScorecard.summary().improvementCandidateCount()} improvement candidates are visible below</li>
+                                    <li>Use the candidate gaps to decide the next utility JSON facts to verify.</li>
+                                </ul>
+                                <div class="hero__actions">
+                                    <a class="button button--secondary" href="/admin/seo-scorecard.json">Download SEO JSON</a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="section-heading">
+                            <span class="eyebrow">Strongest routes</span>
+                            <h2>URLs most ready for impressions</h2>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="data-table data-table--responsive">
+                                <thead>
+                                <tr>
+                                    <th>Route</th>
+                                    <th>Score</th>
+                                    <th>Strengths</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @for (var item : seoScorecard.strongestRoutes())
+                                    <tr>
+                                        <td data-label="Route">
+                                            <a href="${item.path()}">${item.utilityName()}</a>
+                                            <div class="detail-meta">${item.path()}</div>
+                                        </td>
+                                        <td data-label="Score">
+                                            <strong>${item.displayScore()}</strong>
+                                            <div class="detail-meta">Index facts: ${item.indexQualityScore()}</div>
+                                        </td>
+                                        <td data-label="Strengths">
+                                            <ul class="detail-list">
+                                                @for (var strength : item.strengths())
+                                                    <li>${strength}</li>
+                                                @endfor
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                @endfor
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="section-heading">
+                            <span class="eyebrow">Improvement candidates</span>
+                            <h2>Highest leverage content gaps</h2>
+                        </div>
+                        @if (seoScorecard.improvementCandidates().isEmpty())
+                            <article class="detail-card">
+                                <h3>No scored gaps right now</h3>
+                                <p>All currently published utility routes clear the structured evidence checks in this scorecard.</p>
+                            </article>
+                        @else
+                            <div class="table-wrap">
+                                <table class="data-table data-table--responsive">
+                                    <thead>
+                                    <tr>
+                                        <th>Candidate</th>
+                                        <th>Gap</th>
+                                        <th>Next action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @for (var item : seoScorecard.improvementCandidates())
+                                        <tr>
+                                            <td data-label="Candidate">
+                                                <a href="${item.path()}">${item.utilityName()}</a>
+                                                <div class="detail-meta">${item.displayScore()} SEO score, ${item.opportunityScore()} opportunity score</div>
+                                            </td>
+                                            <td data-label="Gap">
+                                                <ul class="detail-list">
+                                                    @for (var gap : item.gaps())
+                                                        <li>${gap}</li>
+                                                    @endfor
+                                                </ul>
+                                            </td>
+                                            <td data-label="Next action">
+                                                <ul class="detail-list">
+                                                    @for (var action : item.nextActions())
+                                                        <li>${action}</li>
+                                                    @endfor
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    @endfor
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
+                    </div>
+                </section>
+            @endif
 
             <section class="section">
                 <div class="container">
