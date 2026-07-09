@@ -206,6 +206,7 @@ public class SiteController {
                                 new BreadcrumbItem("Home", canonical("/")),
                                 new BreadcrumbItem("Reporting portals", canonical("/backflow-reporting-portals"))
                         )),
+                        portalItemListStructuredData("Backflow reporting portal utility and report submission routes", utilities),
                         faqStructuredData(faqItems)
                 )
         ));
@@ -249,6 +250,7 @@ public class SiteController {
                                 new BreadcrumbItem("Reporting portals", canonical("/backflow-reporting-portals")),
                                 new BreadcrumbItem(portalName, canonical("/backflow-reporting-portals/" + portalSlug))
                         )),
+                        portalItemListStructuredData(portalName + " utility and report submission routes", utilities),
                         faqStructuredData(faqItems)
                 )
         ));
@@ -846,6 +848,7 @@ public class SiteController {
                                 new BreadcrumbItem(alias.city(), canonical(cityPath(alias))),
                                 new BreadcrumbItem(intent.heading(), canonical(path))
                         )),
+                        submitReportHowToStructuredData(alias, utility, intent),
                         faqStructuredData(faqItems)
                 )
         ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
@@ -857,6 +860,7 @@ public class SiteController {
         model.addAttribute("alias", alias);
         model.addAttribute("utility", utility);
         model.addAttribute("eyebrow", intent.eyebrow());
+        model.addAttribute("intentSlug", intent.slug());
         model.addAttribute("heading", intent.heading());
         model.addAttribute("intro", intent.intro());
         model.addAttribute("highlights", intent.highlights());
@@ -2792,6 +2796,97 @@ public class SiteController {
                 .toString();
     }
 
+    private String portalItemListStructuredData(String name, List<UtilityRecord> utilities) {
+        List<StructuredListItem> items = new ArrayList<>();
+        Set<String> seenUrls = new LinkedHashSet<>();
+        for (UtilityRecord utility : utilities) {
+            addStructuredListItem(
+                    items,
+                    seenUrls,
+                    utility.utilityName() + " utility workflow",
+                    canonical(utilityPath(utility))
+            );
+            for (CityAliasRecord alias : publishedCityAliasesForUtility(utility.utilityId())) {
+                addStructuredListItem(
+                        items,
+                        seenUrls,
+                        alias.city() + " submit backflow report",
+                        canonical(cityIntentPath(alias, "submit-backflow-report"))
+                );
+                addStructuredListItem(
+                        items,
+                        seenUrls,
+                        alias.city() + " backflow reporting portal",
+                        canonical(cityIntentPath(alias, "backflow-reporting-portal"))
+                );
+            }
+        }
+        if (items.isEmpty()) {
+            return null;
+        }
+
+        StringBuilder json = new StringBuilder();
+        json.append("{\"@context\":\"https://schema.org\",\"@type\":\"ItemList\"")
+                .append(",\"name\":\"").append(jsonEscape(name)).append("\"")
+                .append(",\"itemListElement\":[");
+        for (int i = 0; i < items.size(); i++) {
+            StructuredListItem item = items.get(i);
+            if (i > 0) {
+                json.append(',');
+            }
+            json.append("{\"@type\":\"ListItem\",\"position\":")
+                    .append(i + 1)
+                    .append(",\"name\":\"")
+                    .append(jsonEscape(item.name()))
+                    .append("\",\"url\":\"")
+                    .append(jsonEscape(item.url()))
+                    .append("\"}");
+        }
+        json.append("]}");
+        return json.toString();
+    }
+
+    private void addStructuredListItem(
+            List<StructuredListItem> items,
+            Set<String> seenUrls,
+            String name,
+            String url
+    ) {
+        if (url == null || url.isBlank() || seenUrls.contains(url) || items.size() >= 120) {
+            return;
+        }
+        seenUrls.add(url);
+        items.add(new StructuredListItem(name, url));
+    }
+
+    private String submitReportHowToStructuredData(CityAliasRecord alias, UtilityRecord utility, CityIntentConfig intent) {
+        if (!"submit-backflow-report".equals(intent.slug())) {
+            return null;
+        }
+        String path = cityIntentPath(alias, intent.slug());
+        StringBuilder json = new StringBuilder();
+        json.append("{\"@context\":\"https://schema.org\",\"@type\":\"HowTo\"")
+                .append(",\"name\":\"").append(jsonEscape(intent.heading())).append("\"")
+                .append(",\"description\":\"").append(jsonEscape(intent.description())).append("\"")
+                .append(",\"url\":\"").append(jsonEscape(canonical(path))).append("\"")
+                .append(",\"step\":[");
+        for (int i = 0; i < intent.workflowSteps().size(); i++) {
+            String step = intent.workflowSteps().get(i);
+            if (i > 0) {
+                json.append(',');
+            }
+            json.append("{\"@type\":\"HowToStep\",\"position\":")
+                    .append(i + 1)
+                    .append(",\"name\":\"Step ")
+                    .append(i + 1)
+                    .append("\",\"text\":\"")
+                    .append(jsonEscape(step))
+                    .append("\"}");
+        }
+        json.append("]}");
+        return json.toString();
+    }
+
     private String breadcrumbStructuredData(List<BreadcrumbItem> items) {
         StringBuilder json = new StringBuilder();
         json.append("{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[");
@@ -2882,6 +2977,9 @@ public class SiteController {
     }
 
     private record BreadcrumbItem(String name, String url) {
+    }
+
+    private record StructuredListItem(String name, String url) {
     }
 
     private record CityIntentConfig(

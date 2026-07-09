@@ -7,6 +7,7 @@
 @param CityAliasRecord alias
 @param UtilityRecord utility
 @param String eyebrow
+@param String intentSlug
 @param String heading
 @param String intro
 @param java.util.List<String> highlights = java.util.List.of()
@@ -97,6 +98,53 @@
                             @endfor
                         </ul>
                     </article>
+                @endif
+
+                @if (intentSlug.equals("submit-backflow-report"))
+                    <section class="section section--tight">
+                        <div class="section-heading">
+                            <span class="eyebrow">Submission packet</span>
+                            <h2>What the report needs before it can count</h2>
+                            <p>Use this as the working checklist for the owner, tester, or property manager before treating a passed field test as a completed compliance cycle.</p>
+                        </div>
+                        <div class="card-grid card-grid--three">
+                            <article class="detail-card detail-card--key">
+                                <span class="pill">Before filing</span>
+                                <h3>Match the notice record</h3>
+                                <ul class="detail-list">
+                                    <li>${noticeIdentifierHint}</li>
+                                    <li>Service address, device type, due date, and utility name must match the notice.</li>
+                                    <li>Use the utility workflow before relying on a generic tester search.</li>
+                                </ul>
+                            </article>
+                            <article class="detail-card">
+                                <span class="pill">Filing gate</span>
+                                <h3>Confirm the accepted route</h3>
+                                <ul class="detail-list">
+                                    @if (utility.submissionMethods().isEmpty())
+                                        <li>Confirm the current report path with the program contact before filing.</li>
+                                    @else
+                                        @for (var method : utility.submissionMethods())
+                                            <li>${method.label()} (${method.kind()})</li>
+                                        @endfor
+                                    @endif
+                                    <li>${testerPath != null && testerLabel != null ? testerLabel : "Confirm tester eligibility with the utility or portal."}</li>
+                                </ul>
+                            </article>
+                            <article class="detail-card detail-card--warm">
+                                <span class="pill">After filing</span>
+                                <h3>Keep acceptance proof</h3>
+                                <ul class="detail-list">
+                                    <li>${reportAcceptanceHint}</li>
+                                    <li>Keep portal confirmation, email receipt, account history, or accepted report record.</li>
+                                    <li>If the assembly failed, use the failed-test workflow before assuming the case is closed.</li>
+                                </ul>
+                                <div class="card-actions">
+                                    <a class="button button--secondary" href="${failedTestPath}">Failed-test workflow</a>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
                 @endif
 
                 @if (!workflowSteps.isEmpty())

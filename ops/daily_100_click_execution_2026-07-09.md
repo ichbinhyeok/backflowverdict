@@ -39,6 +39,12 @@ Top page signals:
    - Added submit-report pages for Austin, Dallas, Fort Worth, Euless, Oxnard, Irving, Tampa, and Aurora.
    - Added high-signal utility/city pages for Aurora, Anaheim, Goodyear, and Hillsborough.
 
+5. Deepened the submit-report pages and portal hubs.
+   - Added visible "Submission packet" blocks to `submit-backflow-report` pages so they read like actual procedure pages, not thin city variants.
+   - Added HowTo structured data to `submit-backflow-report` pages.
+   - Added ItemList structured data to portal hubs so Google sees the utility and city report-submission route collection.
+   - Added visible portal-hub links directly into the city submit-report routes.
+
 ## Verification
 
 - `.\gradlew.bat test --rerun-tasks`: passed.
@@ -49,6 +55,10 @@ Top page signals:
   - `/guides/backflow-reporting-portals`
   - `/notice-finder`
   - `/sitemap-priority.xml`
+- Additional local HTTP checks on `http://localhost:8106`: passed.
+  - `/cities/texas/dallas/submit-backflow-report` includes HowTo schema and Submission packet content.
+  - `/backflow-reporting-portals` includes ItemList schema and city submit-report links.
+  - `/backflow-reporting-portals/swiftcomply` includes ItemList schema and Dallas submit-report links.
 
 ## Next Pressure Point
 

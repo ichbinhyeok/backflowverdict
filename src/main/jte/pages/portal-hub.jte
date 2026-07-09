@@ -237,6 +237,13 @@
                                         </div>
                                         <span class="material-symbols-outlined">arrow_forward</span>
                                     </a>
+                                    <a class="support-link" href="/cities/${alias.state()}/${alias.aliasSlug()}/submit-backflow-report">
+                                        <div>
+                                            <strong>Submit ${alias.city()} backflow report</strong>
+                                            <span>Report filing, notice/device clue, tester gate, and acceptance proof.</span>
+                                        </div>
+                                        <span class="material-symbols-outlined">arrow_forward</span>
+                                    </a>
                                 @endfor
                             </div>
                         @endif

@@ -163,6 +163,9 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Portal access still depends on accepted credentials")))
                 .andExpect(content().string(containsString("Questions to answer before filing a report")))
                 .andExpect(content().string(containsString("Can any backflow tester submit through Backflow reporting portals")))
+                .andExpect(content().string(containsString("ItemList")))
+                .andExpect(content().string(containsString("Submit Dallas backflow report")))
+                .andExpect(content().string(containsString("/cities/texas/dallas/submit-backflow-report")))
                 .andExpect(content().string(containsString("FAQPage")));
 
         mockMvc.perform(get("/backflow-reporting-portals/bsi"))
@@ -177,7 +180,9 @@ class SiteControllerTest {
 
         mockMvc.perform(get("/backflow-reporting-portals/swiftcomply"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("SwiftComply for backflow testing")));
+                .andExpect(content().string(containsString("SwiftComply for backflow testing")))
+                .andExpect(content().string(containsString("ItemList")))
+                .andExpect(content().string(containsString("/cities/texas/dallas/submit-backflow-report")));
 
         mockMvc.perform(get("/backflow-reporting-portals/vepo"))
                 .andExpect(status().isOk())
@@ -1193,6 +1198,10 @@ class SiteControllerTest {
         mockMvc.perform(get("/cities/texas/dallas/submit-backflow-report"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Submit Dallas SwiftComply backflow test reports")))
+                .andExpect(content().string(containsString("Submission packet")))
+                .andExpect(content().string(containsString("What the report needs before it can count")))
+                .andExpect(content().string(containsString("Keep acceptance proof")))
+                .andExpect(content().string(containsString("HowTo")))
                 .andExpect(content().string(containsString("How do I submit a backflow test report for Dallas")))
                 .andExpect(content().string(containsString("proof of submission")))
                 .andExpect(content().string(containsString("FAQPage")));
