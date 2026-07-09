@@ -206,6 +206,74 @@
         </section>
     @endif
 
+    @if (guide.slug().equals("backflow-test-notice-next-steps") || guide.slug().equals("backflow-reporting-portals") || guide.slug().equals("backflow-test-cost") || guide.slug().equals("approved-testers-vs-find-a-tester"))
+        <section class="section section--tight">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Priority local routes</span>
+                    <h2>Open the exact city or utility path when the notice gets specific</h2>
+                    <p class="lede">These routes carry concrete local intent: portal names, annual notices, inspection language, tester gates, and utility-specific report acceptance.</p>
+                </div>
+                <div class="card-grid card-grid--three">
+                    <article class="detail-card detail-card--key">
+                        <span class="pill">WEIRS</span>
+                        <h3>Austin WEIRS report and tester route</h3>
+                        <p>Austin search demand already shows WEIRS language, so the city route should carry the portal, tester, and report-submission path directly.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/cities/texas/austin/backflow-reporting-portal">Austin WEIRS portal</a>
+                            <a class="button button--secondary" href="/cities/texas/austin/submit-backflow-report">Submit Austin report</a>
+                        </div>
+                    </article>
+                    <article class="detail-card detail-card--key">
+                        <span class="pill">SwiftComply</span>
+                        <h3>Dallas SwiftComply report submission</h3>
+                        <p>Use this path when the notice or tester workflow is about SwiftComply report entry, device records, failed tests, or accepted submission proof.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/cities/texas/dallas/backflow-reporting-portal">Dallas SwiftComply portal</a>
+                            <a class="button button--secondary" href="/cities/texas/dallas/submit-backflow-report">Submit Dallas report</a>
+                        </div>
+                    </article>
+                    <article class="detail-card detail-card--warm">
+                        <span class="pill">Fort Worth</span>
+                        <h3>Fort Worth annual and VEPO report routes</h3>
+                        <p>Fort Worth has separate annual-testing, portal, failed-test, and report-submission intent. Do not flatten those into one generic backflow page.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/cities/texas/fort-worth/annual-backflow-testing">Fort Worth annual testing</a>
+                            <a class="button button--secondary" href="/cities/texas/fort-worth/submit-backflow-report">Submit Fort Worth report</a>
+                        </div>
+                    </article>
+                    <article class="detail-card">
+                        <span class="pill">Colorado</span>
+                        <h3>Aurora backflow inspection route</h3>
+                        <p>Aurora already has search visibility. Keep the utility workflow, inspection language, and portal path close together.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/utilities/colorado/aurora-water/">Aurora utility workflow</a>
+                            <a class="button button--secondary" href="/cities/colorado/aurora/submit-backflow-report">Submit Aurora report</a>
+                        </div>
+                    </article>
+                    <article class="detail-card">
+                        <span class="pill">California</span>
+                        <h3>Anaheim backflow prevention and tester route</h3>
+                        <p>Anaheim has installation and prevention impressions, so the route should make the official program and tester path easy to reach.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/cities/california/anaheim/backflow-testing">Anaheim city route</a>
+                            <a class="button button--secondary" href="/utilities/california/anaheim-cross-connection-control/approved-testers">Anaheim tester route</a>
+                        </div>
+                    </article>
+                    <article class="detail-card">
+                        <span class="pill">Florida</span>
+                        <h3>Hillsborough annual testing and cost context</h3>
+                        <p>Hillsborough is already getting impressions and clicks. Keep annual-testing, cost, and utility source context linked from the guide layer.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/utilities/florida/hillsborough-county-backflow-testing/">Hillsborough utility workflow</a>
+                            <a class="button button--secondary" href="/utilities/florida/hillsborough-county-backflow-testing/annual-testing">Hillsborough annual testing</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    @endif
+
     <section class="section">
         <div class="container card-grid">
             @for (var section : guide.sections())

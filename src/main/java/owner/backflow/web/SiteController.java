@@ -288,6 +288,7 @@ public class SiteController {
                                 new BreadcrumbItem("Home", canonical("/")),
                                 new BreadcrumbItem("Notice finder", canonical("/notice-finder"))
                         )),
+                        noticeFinderStructuredData(),
                         faqStructuredData(faqItems)
                 )
         ));
@@ -1023,21 +1024,34 @@ public class SiteController {
                 "/backflow-reporting-portals/weirs",
                 "/backflow-reporting-portals/swiftcomply",
                 "/cities/texas/austin/backflow-reporting-portal",
+                "/cities/texas/austin/submit-backflow-report",
                 "/cities/texas/austin/approved-backflow-testers",
+                "/cities/colorado/aurora/backflow-reporting-portal",
+                "/cities/colorado/aurora/submit-backflow-report",
+                "/cities/california/anaheim/backflow-testing",
+                "/utilities/california/anaheim-cross-connection-control/",
+                "/cities/arizona/goodyear/backflow-testing",
+                "/utilities/florida/hillsborough-county-backflow-testing/",
                 "/cities/texas/euless/backflow-reporting-portal",
+                "/cities/texas/euless/submit-backflow-report",
                 "/cities/california/buena-park/backflow-reporting-portal",
                 "/cities/california/oxnard/backflow-reporting-portal",
+                "/cities/california/oxnard/submit-backflow-report",
                 "/cities/california/pleasanton/backflow-reporting-portal",
                 "/cities/california/dublin/backflow-reporting-portal",
                 "/cities/california/san-ramon/backflow-reporting-portal",
                 "/cities/texas/dallas/backflow-reporting-portal",
+                "/cities/texas/dallas/submit-backflow-report",
                 "/cities/texas/dallas/failed-backflow-test",
                 "/cities/texas/fort-worth/backflow-reporting-portal",
+                "/cities/texas/fort-worth/submit-backflow-report",
                 "/cities/texas/fort-worth/annual-backflow-testing",
                 "/cities/texas/fort-worth/failed-backflow-test",
                 "/cities/texas/irving/backflow-reporting-portal",
+                "/cities/texas/irving/submit-backflow-report",
                 "/cities/arizona/queen-creek/backflow-reporting-portal",
-                "/cities/florida/tampa/backflow-reporting-portal"
+                "/cities/florida/tampa/backflow-reporting-portal",
+                "/cities/florida/tampa/submit-backflow-report"
         );
     }
 
@@ -1325,6 +1339,9 @@ public class SiteController {
         if (isFailedNoticeQuery(normalizedQuery) && cityIntentConfig("failed-backflow-test", alias, utility) != null) {
             return cityIntentPath(alias, "failed-backflow-test");
         }
+        if (isSubmitReportNoticeQuery(normalizedQuery) && cityIntentConfig("submit-backflow-report", alias, utility) != null) {
+            return cityIntentPath(alias, "submit-backflow-report");
+        }
         if (isPortalNoticeQuery(normalizedQuery) && cityIntentConfig("backflow-reporting-portal", alias, utility) != null) {
             return cityIntentPath(alias, "backflow-reporting-portal");
         }
@@ -1453,6 +1470,16 @@ public class SiteController {
                 || queryContains(normalizedQuery, "submit")
                 || queryContains(normalizedQuery, "submission")
                 || PORTAL_SLUGS.stream().anyMatch(slug -> portalSearchTerms(slug).stream().anyMatch(term -> queryContains(normalizedQuery, term)));
+    }
+
+    private boolean isSubmitReportNoticeQuery(String normalizedQuery) {
+        return queryContains(normalizedQuery, "submit")
+                || queryContains(normalizedQuery, "submission")
+                || queryContains(normalizedQuery, "upload")
+                || queryContains(normalizedQuery, "file report")
+                || queryContains(normalizedQuery, "file a report")
+                || queryContains(normalizedQuery, "test report")
+                || queryContains(normalizedQuery, "report submission");
     }
 
     private boolean isTesterNoticeQuery(String normalizedQuery) {
@@ -1741,6 +1768,7 @@ public class SiteController {
         return List.of(
                         "annual-backflow-testing",
                         "backflow-reporting-portal",
+                        "submit-backflow-report",
                         "approved-backflow-testers",
                         "failed-backflow-test",
                         "irrigation-backflow-testing",
@@ -1757,6 +1785,7 @@ public class SiteController {
         return switch (slug) {
             case "annual-backflow-testing" -> annualCityIntent(alias, utility);
             case "backflow-reporting-portal" -> portalCityIntent(alias, utility);
+            case "submit-backflow-report" -> submitReportCityIntent(alias, utility);
             case "approved-backflow-testers" -> approvedTesterCityIntent(alias, utility);
             case "failed-backflow-test" -> failedTestCityIntent(alias, utility);
             case "irrigation-backflow-testing" -> irrigationCityIntent(alias, utility);
@@ -1808,6 +1837,37 @@ public class SiteController {
                 portalHubPath(utility) == null ? utilityPath(utility) : portalHubPath(utility),
                 portalHubLabel(utility) == null ? "Open utility submission workflow" : portalHubLabel(utility),
                 List.of("backflow-test-notice-next-steps", "backflow-reporting-portals", "approved-testers-vs-find-a-tester", "backflow-test-cost")
+        );
+    }
+
+    private CityIntentConfig submitReportCityIntent(CityAliasRecord alias, UtilityRecord utility) {
+        if (!usesPortalWorkflow(utility)) {
+            return null;
+        }
+        String portalLabel = portalDisplayName(utility);
+        List<String> highlights = new ArrayList<>();
+        if (utility.submissionMethods().isEmpty()) {
+            highlights.add("Submission path: confirm the current report path with " + utility.utilityName() + ".");
+        } else {
+            utility.submissionMethods().forEach(method -> highlights.add("Submission path: " + method.label() + " - " + method.kind()));
+        }
+        highlights.add("Notice or device clue: " + noticeIdentifierHint(utility));
+        highlights.add("Tester gate: " + testerAnswer(utility));
+        highlights.add("Report acceptance: " + reportAcceptanceHint(utility));
+        highlights.add("Due basis: " + utility.dueBasis());
+        String heading = "Submit " + alias.city() + " " + portalLabel + " backflow test reports";
+        return new CityIntentConfig(
+                "submit-backflow-report",
+                alias.city() + " " + portalLabel + " backflow report submission steps | BackflowPath",
+                "How to submit a " + alias.city() + " backflow test report through " + utility.utilityName() + ", including " + portalLabel + ", notice/device clues, tester gate, and proof of submission.",
+                "Report submission route",
+                heading,
+                "Use this page when the notice or tester workflow is about submitting, uploading, filing, or confirming a backflow test report for " + alias.city() + ".",
+                highlights,
+                submitReportWorkflowSteps(utility),
+                utilityPath(utility),
+                "Open utility source workflow",
+                List.of("backflow-reporting-portals", "backflow-test-notice-next-steps", "approved-testers-vs-find-a-tester", "backflow-test-cost")
         );
     }
 
@@ -2424,6 +2484,19 @@ public class SiteController {
                     "Can I use a generic backflow tester search for " + alias.city() + "?",
                     "Use generic provider discovery only after the governing utility workflow is clear. Approval, reporting, and credential rules can be utility-specific."
             ));
+        } else if ("submit-backflow-report".equals(intent.slug())) {
+            items.add(new FaqItem(
+                    "How do I submit a backflow test report for " + alias.city() + "?",
+                    submissionAnswer(utility) + " " + reportAcceptanceHint(utility)
+            ));
+            items.add(new FaqItem(
+                    "What information should be ready before filing the " + alias.city() + " report?",
+                    noticeIdentifierHint(utility) + " Also keep the due date, service address, tester credential status, device type, and proof of submission."
+            ));
+            items.add(new FaqItem(
+                    "Does the tester or owner submit the " + alias.city() + " report?",
+                    "The field tester often controls portal entry, but the owner should keep the notice, due date, and proof that the report was accepted by " + utility.utilityName() + "."
+            ));
         } else if ("failed-backflow-test".equals(intent.slug())) {
             items.add(new FaqItem(
                     "What should I do after a failed backflow test in " + alias.city() + "?",
@@ -2454,6 +2527,28 @@ public class SiteController {
                 costAnswer(utility)
         ));
         return items;
+    }
+
+    private List<String> submitReportWorkflowSteps(UtilityRecord utility) {
+        List<String> steps = new ArrayList<>();
+        steps.add("Match the utility notice to the service address, device or assembly record, and due date.");
+        if (utility.supportsApprovedTestersPage()) {
+            steps.add("Confirm the tester is accepted through the governing tester-list or approval route before the report is filed.");
+        } else {
+            steps.add("Confirm tester eligibility with the utility or portal before treating the report as accepted.");
+        }
+        if (utility.submissionMethods().isEmpty()) {
+            steps.add("Use the official utility page or program phone to confirm the current test-report submission path.");
+        } else {
+            steps.add("File the result through the stored submission path: " + utility.submissionMethods().stream()
+                    .map(method -> method.label())
+                    .collect(Collectors.joining(", ")) + ".");
+        }
+        steps.add("Keep proof that the report was submitted and accepted; a passed field test alone may not close the compliance cycle.");
+        if (!utility.failureHighlights().isEmpty()) {
+            steps.add("If the assembly failed, follow the repair, retest, and resubmission sequence before assuming compliance is restored.");
+        }
+        return steps;
     }
 
     private String submissionAnswer(UtilityRecord utility) {
@@ -2668,6 +2763,33 @@ public class SiteController {
         }
         json.append("]}");
         return json.toString();
+    }
+
+    private String noticeFinderStructuredData() {
+        String noticeFinderUrl = canonical("/notice-finder");
+        return new StringBuilder()
+                .append("{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\"")
+                .append(",\"@id\":\"").append(jsonEscape(noticeFinderUrl)).append("#notice-finder\"")
+                .append(",\"name\":\"Backflow notice finder\"")
+                .append(",\"url\":\"").append(jsonEscape(noticeFinderUrl)).append("\"")
+                .append(",\"applicationCategory\":\"BusinessApplication\"")
+                .append(",\"operatingSystem\":\"Web\"")
+                .append(",\"description\":\"")
+                .append(jsonEscape("Search a city, utility, portal name, notice identifier, tester clue, due date, or failed-test phrase to find the source-backed BackflowPath route."))
+                .append("\"")
+                .append(",\"featureList\":").append(jsonStringArray(List.of(
+                        "City and utility matching",
+                        "Reporting portal routing",
+                        "Notice and device identifier clues",
+                        "Approved tester route matching",
+                        "Failed-test and retest routing"
+                )))
+                .append(",\"potentialAction\":{\"@type\":\"SearchAction\"")
+                .append(",\"target\":\"").append(jsonEscape(noticeFinderUrl + "?q={search_term_string}")).append("\"")
+                .append(",\"query-input\":\"required name=search_term_string\"")
+                .append("}")
+                .append("}")
+                .toString();
     }
 
     private String breadcrumbStructuredData(List<BreadcrumbItem> items) {
