@@ -289,6 +289,10 @@ class SiteControllerTest {
         mockMvc.perform(get("/utilities/texas/grand-prairie-water-utilities/"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Grand Prairie Water Utilities backflow testing requirements")))
+                .andExpect(content().string(containsString("Fast compliance answer")))
+                .andExpect(content().string(containsString("What to confirm first for Grand Prairie Water Utilities")))
+                .andExpect(content().string(containsString("Failed-test branch")))
+                .andExpect(content().string(containsString("Proof to keep")))
                 .andExpect(content().string(containsString("Start with the page that matches your situation")))
                 .andExpect(content().string(containsString("Notice checklist before you call or file")))
                 .andExpect(content().string(containsString("Notice or device clue")))
@@ -1461,7 +1465,10 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Area served across mapped utility pages")))
                 .andExpect(content().string(containsString("Backflow testing")))
                 .andExpect(content().string(containsString("mapped utilities with an official tester route")))
-                .andExpect(content().string(containsString("structured submission steps")));
+                .andExpect(content().string(containsString("structured submission steps")))
+                .andExpect(content().string(containsString("Before booking this provider")))
+                .andExpect(content().string(containsString("Report proof")))
+                .andExpect(content().string(containsString("Open utility workflow")));
 
         mockMvc.perform(get("/providers/seminole-brads-backflow/"))
                 .andExpect(status().isOk())

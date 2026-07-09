@@ -62,6 +62,52 @@
     </section>
 
     <section class="section section--tight">
+        <div class="container">
+            <article class="detail-card detail-card--key">
+                <span class="eyebrow">Fast compliance answer</span>
+                <h2>What to confirm first for ${utility.utilityName()}</h2>
+                <p>Searchers usually need the tester gate, the filing route, and the proof trail before they need a long explainer. This source-backed snapshot keeps those actions visible before you call, repair, retest, or upload a report.</p>
+                <div class="metadata-grid">
+                    <div class="metadata-block">
+                        <strong>Deadline trigger</strong>
+                        <span>${utility.testingFrequency()} - ${utility.dueBasis()}</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Tester gate</strong>
+                        <span>${testerPath != null && testerLabel != null ? testerLabel : "Confirm tester status with the utility before scheduling."}</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Report route</strong>
+                        <span>${utility.submissionMethods().isEmpty() ? "Confirm the current utility filing path before the test." : utility.submissionMethods().get(0).label()}</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Proof to keep</strong>
+                        <span>${reportAcceptanceHint}</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Failed-test branch</strong>
+                        <span>Repair first, complete a passing retest, then file the accepted report path for this utility.</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Source trail</strong>
+                        <span>${utility.sources().size()} source link(s), verified ${utility.lastVerified().toString()}.</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    @if (testerPath != null && testerLabel != null)
+                        <a class="button button--secondary" href="${testerPath}">${testerLabel}</a>
+                    @endif
+                    @if (portalHubPath != null && portalHubLabel != null)
+                        <a class="button button--secondary" href="${portalHubPath}">${portalHubLabel}</a>
+                    @endif
+                    <a class="button button--primary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/failed-test">Failed-test steps</a>
+                    <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", "general-testing", "utility-fast-answer")}">Request local help</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="section section--tight">
         <div class="container content-grid">
             <article class="detail-card detail-card--key">
                 <span class="eyebrow">Before scheduling</span>

@@ -56,6 +56,7 @@
 - Deepened the same execution pass by adding visible submission-packet blocks plus HowTo schema to `submit-backflow-report` pages, adding ItemList schema to portal hubs, and linking portal hub utility cards directly into city submit-report routes.
 - Added a top-level `/submit-backflow-report` hub with primary/mobile/footer/home links, ItemList and FAQPage schema, city submission-route links, portal/utility handoffs, and `report_submission_route_click` analytics tracking.
 - Raised procedure density across existing high-intent pages by adding `Notice-to-closeout map` blocks to city intent routes, `Procedure facts` to utility focus pages, `Failure closeout facts` to failed-test pages, and broader HowTo schema for pages with visible workflow steps.
+- Strengthened pages that already have GSC impressions by rewriting utility detail title/meta formulas, adding `Fast compliance answer` blocks to utility pages, and turning provider profiles into booking-check pages with utility-specific notice, submission, proof, and failed-test context.
 - Refreshed `lastVerified` / `lastReviewed` dates to 2026-06-29 for utility, state, metro, and guide JSON records.
 - Ran an automated source URL audit across 215 unique official/support URLs; 119 passed and 96 unresolved URLs were recorded in `data/ops/broken_links.csv`.
 - Added `app.ops.current-date` so tests and manual verification can use a fixed freshness date without changing production behavior.

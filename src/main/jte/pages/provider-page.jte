@@ -18,6 +18,10 @@
 @param int providerDirectoryRouteCount = 0
 @param int providerSubmissionWorkflowCount = 0
 @param java.time.LocalDate latestUtilityVerification = null
+@param java.util.Map<String, String> noticeIdentifierHints = java.util.Map.of()
+@param java.util.Map<String, String> reportAcceptanceHints = java.util.Map.of()
+@param java.util.Map<String, String> portalNamesByUtility = java.util.Map.of()
+@param java.util.Map<String, String> portalHubPathsByUtility = java.util.Map.of()
 
 @template.layouts.app(page = page, content = @`
     <section class="page-hero">
@@ -47,12 +51,23 @@
                     @endif
                 </div>
                 <div class="hero__actions">
+                    @if (provider.phone() != null && !provider.phone().isBlank())
+                        <a class="button button--primary" href="tel:${provider.phone().replace(" ", "")}">Call provider</a>
+                    @endif
                     @if (provider.siteUrl() != null && !provider.siteUrl().isBlank())
-                        <a class="button button--primary" href="${CtaPaths.trackedPath(provider.siteUrl(), "provider-profile", "", provider.providerId(), "provider-website", "/providers/" + provider.providerId() + "/")}">Open website</a>
+                        @if (provider.phone() != null && !provider.phone().isBlank())
+                            <a class="button button--secondary" href="${CtaPaths.trackedPath(provider.siteUrl(), "provider-profile", "", provider.providerId(), "provider-website", "/providers/" + provider.providerId() + "/")}">Open website</a>
+                        @else
+                            <a class="button button--primary" href="${CtaPaths.trackedPath(provider.siteUrl(), "provider-profile", "", provider.providerId(), "provider-website", "/providers/" + provider.providerId() + "/")}">Open website</a>
+                        @endif
+                    @endif
+                    @if ((provider.phone() == null || provider.phone().isBlank()) && (provider.siteUrl() == null || provider.siteUrl().isBlank()) && primaryUtility != null)
+                        <a class="button button--primary" href="/utilities/${primaryUtility.state()}/${primaryUtility.canonicalSlug()}/">Open utility workflow</a>
                     @endif
                     @if (provider.officialApprovalSourceUrl() != null && !provider.officialApprovalSourceUrl().isBlank())
                         <a class="button button--secondary" href="${CtaPaths.trackedPath(provider.officialApprovalSourceUrl(), "provider-profile", "", provider.providerId(), "authority-source", "/providers/" + provider.providerId() + "/")}">Authority source</a>
                     @endif
+                    <a class="button button--secondary" href="${page.requestHelpPathOrDefault()}">Request local help</a>
                     <a class="button button--secondary" href="/contact">Report a profile issue</a>
                 </div>
             </article>
@@ -67,6 +82,56 @@
             </article>
         </div>
     </section>
+
+    @if (primaryUtility != null)
+        <section class="section section--tight">
+            <div class="container">
+                <article class="detail-card detail-card--key">
+                    <span class="eyebrow">Before booking this provider</span>
+                    <h2>Match ${provider.providerName()} to the ${primaryUtility.utilityName()} workflow</h2>
+                    <p>The strongest local provider pages do not stop at a phone number. Confirm the authority source, the utility's tester gate, the report route, and the proof trail before you schedule or send a failed device back for retest.</p>
+                    <div class="metadata-grid">
+                        <div class="metadata-block">
+                            <strong>Official source</strong>
+                            <span>${provider.pageLabel()}</span>
+                        </div>
+                        <div class="metadata-block">
+                            <strong>Due trigger</strong>
+                            <span>${primaryUtility.testingFrequency()} - ${primaryUtility.dueBasis()}</span>
+                        </div>
+                        <div class="metadata-block">
+                            <strong>Notice clue</strong>
+                            <span>${noticeIdentifierHints.getOrDefault(primaryUtility.utilityId(), "Match the utility name, address, device, and due date on the notice.")}</span>
+                        </div>
+                        <div class="metadata-block">
+                            <strong>Report proof</strong>
+                            <span>${reportAcceptanceHints.getOrDefault(primaryUtility.utilityId(), "Keep proof that the accepted report was filed with the governing utility.")}</span>
+                        </div>
+                        <div class="metadata-block">
+                            <strong>Submission route</strong>
+                            <span>${primaryUtility.submissionMethods().isEmpty() ? "Confirm the filing path before booking." : primaryUtility.submissionMethods().get(0).label()}</span>
+                        </div>
+                        <div class="metadata-block">
+                            <strong>Failed-test branch</strong>
+                            <span>Ask whether repair, retest, and final submission are all handled under the same utility workflow.</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <a class="button button--secondary" href="/utilities/${primaryUtility.state()}/${primaryUtility.canonicalSlug()}/">Open utility workflow</a>
+                        @if (primaryUtility.supportsApprovedTestersPage())
+                            <a class="button button--secondary" href="/utilities/${primaryUtility.state()}/${primaryUtility.canonicalSlug()}/approved-testers">Official tester route</a>
+                        @elseif (primaryUtility.supportsFindATesterPage())
+                            <a class="button button--secondary" href="/utilities/${primaryUtility.state()}/${primaryUtility.canonicalSlug()}/find-a-tester">Directory route</a>
+                        @endif
+                        @if (portalHubPathsByUtility.containsKey(primaryUtility.utilityId()))
+                            <a class="button button--secondary" href="${portalHubPathsByUtility.get(primaryUtility.utilityId())}">${portalNamesByUtility.getOrDefault(primaryUtility.utilityId(), "Reporting portal")} portal context</a>
+                        @endif
+                        <a class="button button--primary" href="${page.requestHelpPathOrDefault()}">Request local help</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    @endif
 
     <section class="section">
         <div class="container content-grid">
@@ -184,12 +249,21 @@
                         <span class="pill">${utility.state()}</span>
                         <h3>${utility.utilityName()}</h3>
                         <p>${utility.verdictSummary()}</p>
+                        <ul class="detail-list">
+                            <li><strong>Due basis:</strong> ${utility.dueBasis()}</li>
+                            <li><strong>Notice clue:</strong> ${noticeIdentifierHints.getOrDefault(utility.utilityId(), "Match the utility, address, assembly, and due date before booking.")}</li>
+                            <li><strong>Submission route:</strong> ${utility.submissionMethods().isEmpty() ? "Confirm with the utility before scheduling." : utility.submissionMethods().get(0).label()}</li>
+                            <li><strong>Proof to keep:</strong> ${reportAcceptanceHints.getOrDefault(utility.utilityId(), "Keep proof that the report was submitted through the accepted route.")}</li>
+                        </ul>
                         <div class="card-actions">
                             <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Open utility page</a>
                             @if (utility.supportsApprovedTestersPage())
                                 <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/approved-testers">Official tester route</a>
                             @elseif (utility.supportsFindATesterPage())
                                 <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/find-a-tester">Directory route</a>
+                            @endif
+                            @if (portalHubPathsByUtility.containsKey(utility.utilityId()))
+                                <a class="button button--secondary" href="${portalHubPathsByUtility.get(utility.utilityId())}">${portalNamesByUtility.getOrDefault(utility.utilityId(), "Portal")} context</a>
                             @endif
                         </div>
                     </article>

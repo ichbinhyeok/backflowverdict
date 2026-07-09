@@ -568,9 +568,10 @@ public class SiteController {
         int providerOfficialRouteCount = providerOfficialRouteCount(utilities);
         int providerDirectoryRouteCount = providerDirectoryRouteCount(utilities);
         int providerSubmissionWorkflowCount = providerSubmissionWorkflowCount(utilities);
-        model.addAttribute("page", page(
-                provider.providerName() + " | BackflowPath",
-                provider.pageLabel(),
+        UtilityRecord primaryUtility = utilities.isEmpty() ? null : utilities.getFirst();
+        PageMeta providerPage = page(
+                providerPageTitle(provider, utilities, coverageCities),
+                providerPageDescription(provider, utilities, coverageCities),
                 providerPath(provider),
                 combineStructuredData(
                         breadcrumbStructuredData(List.of(
@@ -580,7 +581,16 @@ public class SiteController {
                         )),
                         providerStructuredData(provider, utilities, coverageStates, coverageCities, coverageCounties)
                 )
-        ));
+        );
+        if (primaryUtility != null) {
+            providerPage = providerPage.withRequestHelpPath(LeadRoutingService.requestHelpPath(
+                    primaryUtility.utilityId(),
+                    providerPath(provider),
+                    "general-testing",
+                    "provider-profile"
+            ));
+        }
+        model.addAttribute("page", providerPage);
         model.addAttribute("provider", provider);
         model.addAttribute("utilities", utilities);
         model.addAttribute("metros", metros);
@@ -593,7 +603,11 @@ public class SiteController {
         model.addAttribute("providerSubmissionWorkflowCount", providerSubmissionWorkflowCount);
         model.addAttribute("latestUtilityVerification", providerLatestUtilityVerification(utilities));
         model.addAttribute("relatedGuides", providerSupportGuides(utilities));
-        model.addAttribute("primaryUtility", utilities.isEmpty() ? null : utilities.getFirst());
+        model.addAttribute("primaryUtility", primaryUtility);
+        model.addAttribute("noticeIdentifierHints", noticeIdentifierHintsFor(utilities));
+        model.addAttribute("reportAcceptanceHints", reportAcceptanceHintsFor(utilities));
+        model.addAttribute("portalNamesByUtility", portalNamesFor(utilities));
+        model.addAttribute("portalHubPathsByUtility", portalHubPathsFor(utilities));
         return "pages/provider-page";
     }
 
@@ -1712,33 +1726,86 @@ public class SiteController {
     }
 
     private String utilityPageTitle(UtilityRecord utility) {
-        String portalName = portalDisplayName(utility);
+        String reportPhrase = portalReportTitlePhrase(utility);
         if (utility.supportsApprovedTestersPage() && usesPortalWorkflow(utility)) {
-            return utility.utilityName() + " " + portalName + " portal and official tester list | BackflowPath";
+            return utility.utilityName() + ": official testers, " + reportPhrase + ", due dates | BackflowPath";
         }
         if (utility.supportsApprovedTestersPage()) {
-            return utility.utilityName() + " backflow testing and official tester list | BackflowPath";
+            return utility.utilityName() + ": official testers, due dates, report steps | BackflowPath";
         }
         if (usesPortalWorkflow(utility)) {
-            return utility.utilityName() + " " + portalName + " backflow reporting portal | BackflowPath";
+            return utility.utilityName() + ": " + reportPhrase + ", due dates, failed tests | BackflowPath";
         }
-        return utility.utilityName() + " backflow testing requirements | BackflowPath";
+        return utility.utilityName() + ": backflow due dates and report steps | BackflowPath";
     }
 
     private String utilityPageDescription(UtilityRecord utility) {
-        StringBuilder description = new StringBuilder(utility.verdictSummary());
+        StringBuilder description = new StringBuilder("Official workflow for ")
+                .append(utility.utilityName())
+                .append(": ")
+                .append(sentenceFragment(utility.testingFrequency()))
+                .append(", ")
+                .append(sentenceFragment(utility.dueBasis()));
         if (usesPortalWorkflow(utility)) {
-            description.append(" Includes ")
-                    .append(portalDisplayName(utility))
-                    .append(", notice/device clues, and report submission context.");
+            description.append(". Includes ")
+                    .append(portalReportRoutingPhrase(utility))
+                    .append(" and notice/device clues");
         }
         if (utility.supportsApprovedTestersPage()) {
-            description.append(" Includes the official tester list route.");
+            description.append(". Includes the official tester list route");
         } else if (utility.supportsFindATesterPage()) {
-            description.append(" Includes a clearly labeled non-official tester route when provider inventory is available.");
+            description.append(". Includes a clearly labeled non-official tester route when provider inventory is available");
         }
-        description.append(" ").append(reportAcceptanceHint(utility));
+        description.append(". ").append(reportAcceptanceHint(utility));
         return description.toString();
+    }
+
+    private String sentenceFragment(String value) {
+        String fragment = value == null ? "" : value.trim();
+        while (fragment.endsWith(".")) {
+            fragment = fragment.substring(0, fragment.length() - 1).trim();
+        }
+        return fragment;
+    }
+
+    private String portalReportTitlePhrase(UtilityRecord utility) {
+        String portalSlug = portalSlugForUtility(utility);
+        return portalSlug == null ? "online reports" : portalName(portalSlug) + " reports";
+    }
+
+    private String portalReportRoutingPhrase(UtilityRecord utility) {
+        String portalSlug = portalSlugForUtility(utility);
+        return portalSlug == null ? "online report routing" : portalName(portalSlug) + " report routing";
+    }
+
+    private String providerPageTitle(
+            ProviderRecord provider,
+            List<UtilityRecord> utilities,
+            List<String> coverageCities
+    ) {
+        if (!coverageCities.isEmpty()) {
+            return provider.providerName() + " backflow tester in " + coverageCities.getFirst() + " | BackflowPath";
+        }
+        if (!utilities.isEmpty()) {
+            return provider.providerName() + " backflow tester for " + utilities.getFirst().utilityName() + " | BackflowPath";
+        }
+        return provider.providerName() + " backflow tester profile | BackflowPath";
+    }
+
+    private String providerPageDescription(
+            ProviderRecord provider,
+            List<UtilityRecord> utilities,
+            List<String> coverageCities
+    ) {
+        String market = coverageCities.isEmpty()
+                ? "mapped utility workflow"
+                : coverageCities.getFirst() + " utility workflow";
+        String utilityContext = utilities.isEmpty()
+                ? "no published utility workflow yet"
+                : utilities.size() + " source-backed " + market + (utilities.size() == 1 ? "" : "s");
+        return "Provider profile for " + provider.providerName()
+                + " with " + utilityContext
+                + ". Check official tester source, due basis, submission path, and proof requirements before booking.";
     }
 
     private String officialTesterPageTitle(UtilityRecord utility) {

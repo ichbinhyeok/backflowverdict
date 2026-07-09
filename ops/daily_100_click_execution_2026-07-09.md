@@ -57,6 +57,12 @@ Top page signals:
    - Added `Failure closeout facts` to failed-test utility pages so repair, retest, accepted submission, proof, cost exposure, and source trail are visible before provider routing.
    - Expanded HowTo structured data from submit-report city pages to all city intent pages with workflow steps, plus utility focus and failed-test pages.
 
+8. Applied the GSC/Reddit CTR pattern to pages already earning impressions.
+   - Rewrote utility detail title/meta generation around exact click jobs: official testers, named portal reports, due dates, report steps, and failed-test handling.
+   - Added a top-of-page `Fast compliance answer` block to utility detail pages so the user immediately sees deadline trigger, tester gate, report route, proof to keep, failed-test branch, and source trail.
+   - Upgraded provider pages from static public profiles into booking-decision pages with call/website/help CTAs, primary-utility booking checks, and utility-card proof/submission details.
+   - This targets the current GSC pattern where Aurora, Hillsborough, Anaheim, and provider pages have impressions or early clicks but still need stronger CTR and action confidence.
+
 ## Verification
 
 - `.\gradlew.bat test --rerun-tasks`: passed.
@@ -83,6 +89,12 @@ Top page signals:
   - `/cities/texas/dallas/backflow-reporting-portal`
   - `/utilities/texas/dallas-water-utilities/annual-testing`
   - `/utilities/texas/fort-worth-water-utilities/failed-test`
+- Latest CTR/provider upgrade checks on `http://localhost:8109`: passed.
+  - `/utilities/colorado/aurora-water/`
+  - `/utilities/florida/hillsborough-county-backflow-testing/`
+  - `/utilities/california/anaheim-cross-connection-control/`
+  - `/providers/prescott-arizona-backflow-care/`
+  - `/providers/phoenix-western-backflow/`
 
 ## Next Pressure Point
 
