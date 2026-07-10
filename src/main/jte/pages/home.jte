@@ -40,7 +40,8 @@
                 </div>
             </div>
             <div class="hero__visual">
-                <img src="/images/design/home-hero-industrial.jpg" alt="Industrial backflow prevention assembly in a commercial mechanical room" fetchpriority="high">
+                <img data-lazy-src="/images/design/home-hero-industrial.jpg" alt="Industrial backflow prevention assembly in a commercial mechanical room" decoding="async">
+                <noscript><img src="/images/design/home-hero-industrial.jpg" alt="Industrial backflow prevention assembly in a commercial mechanical room"></noscript>
                 <div class="hero__visual-copy">
                     <strong>What you'll find here</strong>
                     <p>Utility pages explain due dates, testing frequency, submission steps, failed-test next steps, and tester routes. State, metro, and guide pages help you get to the right local answer faster.</p>
@@ -48,6 +49,38 @@
             </div>
         </div>
     </section>
+    <script>
+        (function () {
+            var image = document.querySelector('.hero__visual img[data-lazy-src]');
+            if (!image) {
+                return;
+            }
+
+            var loadImage = function () {
+                if (!image.getAttribute('src')) {
+                    image.setAttribute('src', image.getAttribute('data-lazy-src'));
+                }
+            };
+
+            if (!window.matchMedia('(max-width: 767px)').matches) {
+                loadImage();
+                return;
+            }
+
+            if (!('IntersectionObserver' in window)) {
+                loadImage();
+                return;
+            }
+
+            var observer = new IntersectionObserver(function (entries) {
+                if (entries.some(function (entry) { return entry.isIntersecting; })) {
+                    loadImage();
+                    observer.disconnect();
+                }
+            }, {rootMargin: '50px 0px'});
+            observer.observe(image);
+        }());
+    </script>
 
     <section class="section">
         <div class="container">
