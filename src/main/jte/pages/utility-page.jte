@@ -8,6 +8,8 @@
 @import owner.backflow.service.LeadRoutingService
 @param PageMeta page
 @param UtilityRecord utility
+@param String utilityHeading = null
+@param String utilitySubmissionLabel = null
 @param String annualTestingPath = null
 @param String irrigationPath = null
 @param String fireLinePath = null
@@ -29,8 +31,9 @@
         <div class="container page-frame">
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">${utility.governingEntityType()}</span>
-                <h1>${utility.utilityName()} backflow testing requirements</h1>
+                <h1>${utilityHeading == null ? utility.utilityName() + " backflow testing requirements" : utilityHeading}</h1>
                 <p class="lede">${utility.verdictSummary()}</p>
+                <p class="detail-meta">Governing program: ${utility.utilityName()}</p>
                 <p class="detail-meta">Use this page to confirm the governing rule, then open the focused page that matches your exact situation.</p>
                 <div class="hero__actions">
                     <a class="button button--primary" href="${utility.utilityUrl()}">Official program page</a>
@@ -39,7 +42,7 @@
                 </div>
                 <div class="hero__stats">
                     <span>Testing cadence: ${utility.testingFrequency()}</span>
-                    <span>Submission: ${utility.submissionMethods().isEmpty() ? "Confirm with utility" : utility.submissionMethods().get(0).kind()}</span>
+                    <span>Submission: ${utilitySubmissionLabel == null ? (utility.submissionMethods().isEmpty() ? "Confirm with utility" : utility.submissionMethods().get(0).kind()) : utilitySubmissionLabel}</span>
                     <span>Last verified: ${utility.lastVerified().toString()}</span>
                     <span>Verification code: <a href="/methodology#verification-code-${utility.reviewerInitials().toLowerCase()}">${utility.reviewerInitials()}</a></span>
                     <span>Freshness window: ${utility.staleAfterDays()} days</span>
@@ -67,7 +70,7 @@
         <div class="container">
             <article class="detail-card detail-card--key">
                 <span class="eyebrow">Fast compliance answer</span>
-                <h2>What to confirm first for ${utility.utilityName()}</h2>
+                <h2>What to confirm first for ${utilityHeading == null ? utility.utilityName() : utilityHeading}</h2>
                 <p>Searchers usually need the tester gate, the filing route, and the proof trail before they need a long explainer. This source-backed snapshot keeps those actions visible before you call, repair, retest, or upload a report.</p>
                 <div class="metadata-grid">
                     <div class="metadata-block">
@@ -113,6 +116,9 @@
                     @endif
                     @if (portalHubPath != null && portalHubLabel != null)
                         <a class="button button--secondary" href="${portalHubPath}">${portalHubLabel}</a>
+                    @endif
+                    @if (utility.reportWorkflow().portalUrl() != null && !utility.reportWorkflow().portalUrl().isBlank() && utility.reportWorkflow().portalVendor() != null && !utility.reportWorkflow().portalVendor().isBlank())
+                        <a class="button button--secondary" href="${utility.reportWorkflow().portalUrl()}" target="_blank" rel="noopener noreferrer">Open ${utility.reportWorkflow().portalVendor()} route</a>
                     @endif
                     <a class="button button--primary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/failed-test">Failed-test steps</a>
                     <a class="button button--secondary" href="${LeadRoutingService.requestHelpPath(utility.utilityId(), "/utilities/" + utility.state() + "/" + utility.canonicalSlug() + "/", "general-testing", "utility-fast-answer")}">Request local help</a>

@@ -663,6 +663,8 @@ public class SiteController {
                 "utility"
         )));
         model.addAttribute("utility", utility);
+        model.addAttribute("utilityHeading", utilityHeading(utility));
+        model.addAttribute("utilitySubmissionLabel", utilitySubmissionLabel(utility));
         model.addAttribute("annualTestingPath", utility.supportsAnnualTestingPage() ? utilityPath(utility) + "annual-testing" : null);
         model.addAttribute("irrigationPath", utility.supportsIrrigationPage() ? utilityPath(utility) + "irrigation" : null);
         model.addAttribute("fireLinePath", utility.supportsFireLinePage() ? utilityPath(utility) + "fire-line" : null);
@@ -2170,8 +2172,10 @@ public class SiteController {
 
     private String utilityPageTitle(UtilityRecord utility) {
         String location = utilitySearchLocation(utility);
-        if (usesPortalWorkflow(utility)) {
-            return location + " utility backflow reporting | BackflowPath";
+        String portalVendor = utilityPortalVendor(utility);
+        if (portalVendor != null) {
+            String suffix = " backflow reports | " + shortenAtWord(portalVendor, 22) + " | BackflowPath";
+            return shortenAtWord(location, Math.max(12, 70 - suffix.length())) + suffix;
         }
         if (utility.supportsApprovedTestersPage()) {
             return location + " utility backflow tester rules | BackflowPath";
@@ -2180,8 +2184,40 @@ public class SiteController {
     }
 
     private String utilityPageDescription(UtilityRecord utility) {
-        return "Check " + utilitySearchLocation(utility)
+        String location = shortenAtWord(utilitySearchLocation(utility), 46);
+        String portalVendor = utilityPortalVendor(utility);
+        if (portalVendor != null) {
+            return "Check " + location + " backflow rules, tester eligibility, and "
+                    + shortenAtWord(portalVendor, 24) + " report submission before the due date.";
+        }
+        return "Check " + location
                 + " utility backflow rules, due dates, tester eligibility, report submission, and official sources before you act.";
+    }
+
+    private String utilityHeading(UtilityRecord utility) {
+        return utilitySearchLocation(utility) + " utility backflow testing requirements";
+    }
+
+    private String utilitySubmissionLabel(UtilityRecord utility) {
+        if (utility.reportWorkflow().portalName() != null && !utility.reportWorkflow().portalName().isBlank()) {
+            return utility.reportWorkflow().portalName();
+        }
+        String portalVendor = utilityPortalVendor(utility);
+        if (portalVendor != null) {
+            return portalVendor + " report route";
+        }
+        return utility.submissionMethods().isEmpty()
+                ? "Confirm with utility"
+                : utility.submissionMethods().get(0).kind();
+    }
+
+    private String utilityPortalVendor(UtilityRecord utility) {
+        String portalVendor = utility.reportWorkflow().portalVendor();
+        if (portalVendor != null && !portalVendor.isBlank()) {
+            return portalVendor.trim();
+        }
+        String portalName = utility.reportWorkflow().portalName();
+        return portalName == null || portalName.isBlank() ? null : portalName.trim();
     }
 
     private String utilitySearchLocation(UtilityRecord utility) {
@@ -2291,14 +2327,14 @@ public class SiteController {
         return switch (guide.slug()) {
             case "anniversary-date-vs-calendar-deadline" -> "Backflow test due dates | BackflowPath";
             case "backflow-test-cost" -> "Backflow test cost and fees | BackflowPath";
-            case "backflow-reporting-portals" -> "Backflow reporting portals | BackflowPath";
+            case "backflow-reporting-portals" -> "SwiftComply, BSI and WEIRS backflow portals | BackflowPath";
             default -> shortenAtWord(guide.title(), 50) + " | BackflowPath";
         };
     }
 
     private String guidePageDescription(GuideRecord guide) {
         return switch (guide.slug()) {
-            case "backflow-reporting-portals" -> "Compare BSI, SwiftComply, WEIRS, VEPO, Aqua, Tokay, and utility backflow report routes.";
+            case "backflow-reporting-portals" -> "Find the right backflow reporting portal: SwiftComply, BSI, WEIRS, VEPO, Aqua, Tokay, or SpryBackflow.";
             case "residential-vs-commercial-backflow-rules" -> "How utilities split residential, commercial, hazard, irrigation, multifamily, and managed-property backflow cases.";
             default -> guide.description();
         };

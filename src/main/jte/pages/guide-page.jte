@@ -17,8 +17,13 @@
         <div class="container page-frame page-frame--hero">
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Evergreen guide</span>
-                <h1>${guide.title()}</h1>
+                <h1>${guide.slug().equals("backflow-reporting-portals") ? "Backflow reporting portals" : guide.title()}</h1>
                 <p class="lede">${guide.intro()}</p>
+                @if (guide.slug().equals("backflow-reporting-portals"))
+                    <div class="hero__actions">
+                        <a class="button button--primary" href="#portal-family-routes">Find my portal</a>
+                    </div>
+                @endif
                 <div class="hero__stats">
                     <span>Last reviewed: ${guide.lastReviewed().toString()}</span>
                     <span>Verification code: <a href="/methodology#verification-code-${guide.reviewerInitials().toLowerCase()}">${guide.reviewerInitials()}</a></span>
@@ -171,7 +176,7 @@
 
     @if (guide.slug().equals("backflow-reporting-portals"))
         <section class="section section--tight">
-            <div class="container">
+            <div class="container" id="portal-family-routes">
                 <div class="section-heading">
                     <span class="eyebrow">Portal lookup</span>
                     <h2>Jump to the portal family named in the notice</h2>

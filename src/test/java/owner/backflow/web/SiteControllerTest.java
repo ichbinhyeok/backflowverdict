@@ -325,11 +325,11 @@ class SiteControllerTest {
     void utilityPageLoadsFromJson() throws Exception {
         mockMvc.perform(get("/utilities/texas/grand-prairie-water-utilities/"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Grand Prairie Water Utilities backflow testing requirements")))
+                .andExpect(content().string(containsString("Grand Prairie utility backflow testing requirements")))
                 .andExpect(content().string(containsString("Fast compliance answer")))
                 .andExpect(content().string(containsString("Report packet")))
                 .andExpect(content().string(containsString("Rejection risk")))
-                .andExpect(content().string(containsString("What to confirm first for Grand Prairie Water Utilities")))
+                .andExpect(content().string(containsString("What to confirm first for Grand Prairie utility backflow testing requirements")))
                 .andExpect(content().string(containsString("Failed-test branch")))
                 .andExpect(content().string(containsString("Proof to keep")))
                 .andExpect(content().string(containsString("Start with the page that matches your situation")))
@@ -355,13 +355,14 @@ class SiteControllerTest {
 
         mockMvc.perform(get("/utilities/texas/irving-cross-connections-backflow/"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Irving utility backflow reporting")))
+                .andExpect(content().string(containsString("Irving utility backflow testing requirements")))
+                .andExpect(content().string(containsString("VEPO")))
                 .andExpect(content().string(containsString("within 10 days after testing")))
                 .andExpect(content().string(containsString("Tester credentials, Test kit calibration forms, Envirotrax registration")));
 
         mockMvc.perform(get("/utilities/texas/college-station-water-utilities/"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("College Station utility backflow reporting")))
+                .andExpect(content().string(containsString("College Station utility backflow testing requirements")))
                 .andExpect(content().string(containsString("within 30 days after testing")))
                 .andExpect(content().string(containsString("TCEQ-certified BPAT status, City of College Station tester registration, Fireline or general tester category when applicable")));
 
@@ -698,6 +699,7 @@ class SiteControllerTest {
         mockMvc.perform(get("/guides/backflow-reporting-portals"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Backflow reporting portals")))
+                .andExpect(content().string(containsString("Find my portal")))
                 .andExpect(content().string(containsString("Dallas Water Utilities")))
                 .andExpect(content().string(containsString("/backflow-reporting-portals/bsi")))
                 .andExpect(content().string(containsString("/backflow-reporting-portals/swiftcomply")))
