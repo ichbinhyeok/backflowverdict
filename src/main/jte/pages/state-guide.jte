@@ -19,6 +19,14 @@
                 <span class="eyebrow kicker-rule">Representative state</span>
                 <h1>${stateGuide.title()}</h1>
                 <p class="lede">${stateGuide.summary()}</p>
+                <div class="hero__actions">
+                    <a class="button button--primary" href="/notice-finder">Find from notice</a>
+                    @if (!cityAliases.isEmpty())
+                        <a class="button button--secondary" href="#state-city-routes">Browse city routes</a>
+                    @else
+                        <a class="button button--secondary" href="#state-utilities">Browse utility pages</a>
+                    @endif
+                </div>
                 <div class="hero__stats">
                     <span>Last verified: ${stateGuide.lastVerified().toString()}</span>
                     <span>${allUtilities.size()} live utility pages in this state</span>
@@ -72,25 +80,28 @@
     </section>
 
     @if (!cityAliases.isEmpty())
-        <section class="section section--tight">
+        <section class="section section--tight" id="state-city-routes">
             <div class="container">
                 <div class="section-heading">
                     <span class="eyebrow">City routes</span>
                     <h2>City backflow testing pages in this state</h2>
                     <p class="lede">Use city routes when the search starts with a local place name. Each page still maps back to the governing utility workflow.</p>
                 </div>
-                <div class="card-grid card-grid--three">
-                    @for (var alias : cityAliases)
-                        <article class="detail-card detail-card--quiet">
-                            <span class="pill">${alias.state()}</span>
-                            <h3>${alias.city()} backflow testing</h3>
-                            <p>${alias.justification()}</p>
-                            <div class="card-actions">
-                                <a class="button button--secondary" href="/cities/${alias.state()}/${alias.aliasSlug()}/backflow-testing">Open city route</a>
-                            </div>
-                        </article>
-                    @endfor
-                </div>
+                <details class="directory-disclosure">
+                    <summary>Browse ${cityAliases.size()} city routes</summary>
+                    <div class="card-grid card-grid--three directory-disclosure__content">
+                        @for (var alias : cityAliases)
+                            <article class="detail-card detail-card--quiet">
+                                <span class="pill">${alias.state()}</span>
+                                <h3>${alias.city()} backflow testing</h3>
+                                <p>${alias.justification()}</p>
+                                <div class="card-actions">
+                                    <a class="button button--secondary" href="/cities/${alias.state()}/${alias.aliasSlug()}/backflow-testing">Open city route</a>
+                                </div>
+                            </article>
+                        @endfor
+                    </div>
+                </details>
             </div>
         </section>
     @endif
@@ -118,7 +129,7 @@
         </section>
     @endif
 
-    <section class="section">
+    <section class="section" id="state-utilities">
         <div class="container">
             <div class="section-heading">
                 <span class="eyebrow">Featured utilities</span>
@@ -178,22 +189,25 @@
                 <span class="eyebrow">All live utilities</span>
                 <h2>All live utilities</h2>
             </div>
-            <div class="card-grid card-grid--three">
-                @for (var utility : allUtilities)
-                    <article class="detail-card detail-card--quiet">
-                        <span class="pill">${utility.testingFrequency()}</span>
-                        <h3>${utility.utilityName()}</h3>
-                        <p>${utility.verdictSummary()}</p>
-                        <div class="card-actions">
-                            <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Utility page</a>
-                            @if (utility.supportsAnnualTestingPage())
-                                <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/annual-testing">Annual testing</a>
-                            @endif
-                            <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/failed-test">Failed test</a>
-                        </div>
-                    </article>
-                @endfor
-            </div>
+            <details class="directory-disclosure">
+                <summary>Browse all ${allUtilities.size()} utility pages</summary>
+                <div class="card-grid card-grid--three directory-disclosure__content">
+                    @for (var utility : allUtilities)
+                        <article class="detail-card detail-card--quiet">
+                            <span class="pill">${utility.testingFrequency()}</span>
+                            <h3>${utility.utilityName()}</h3>
+                            <p>${utility.verdictSummary()}</p>
+                            <div class="card-actions">
+                                <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Utility page</a>
+                                @if (utility.supportsAnnualTestingPage())
+                                    <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/annual-testing">Annual testing</a>
+                                @endif
+                                <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/failed-test">Failed test</a>
+                            </div>
+                        </article>
+                    @endfor
+                </div>
+            </details>
         </div>
     </section>
 `)

@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="hero__visual">
-                <img src="/images/design/home-hero-industrial.jpg" alt="Industrial backflow prevention assembly in a commercial mechanical room">
+                <img src="/images/design/home-hero-industrial.jpg" alt="Industrial backflow prevention assembly in a commercial mechanical room" fetchpriority="high">
                 <div class="hero__visual-copy">
                     <strong>What you'll find here</strong>
                     <p>Utility pages explain due dates, testing frequency, submission steps, failed-test next steps, and tester routes. State, metro, and guide pages help you get to the right local answer faster.</p>

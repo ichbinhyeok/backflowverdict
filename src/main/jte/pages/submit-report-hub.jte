@@ -97,8 +97,10 @@
                     <h2>City and utility report-submission paths</h2>
                     <p>Open the city submission route when the notice names a city. Open the utility workflow when the notice names only the governing water authority.</p>
                 </div>
-                <div class="table-wrap">
-                    <table class="data-table data-table--responsive">
+                <details class="directory-disclosure">
+                    <summary>Browse all ${utilities.size()} submission workflows</summary>
+                    <div class="table-wrap directory-disclosure__content">
+                        <table class="data-table data-table--responsive">
                         <thead>
                         <tr>
                             <th>Utility and cities</th>
@@ -155,8 +157,9 @@
                             </tr>
                         @endfor
                         </tbody>
-                    </table>
-                </div>
+                        </table>
+                    </div>
+                </details>
             </article>
         </div>
     </section>

@@ -11,6 +11,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -72,6 +73,8 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("notice_finder_search")))
                 .andExpect(content().string(containsString("request_help_click")))
                 .andExpect(content().string(containsString("provider_website_click")))
+                .andExpect(content().string(containsString("icon_names=arrow_forward,assignment_turned_in,build,cloud_upload,menu,monitoring,policy,verified_user")))
+                .andExpect(content().string(not(containsString("wght,FILL@100..700,0..1"))))
                 .andExpect(content().string(containsString("tester_route_click")))
                 .andExpect(content().string(containsString("report_submission_route_click")))
                 .andExpect(content().string(containsString("lead_form_submit")))
@@ -173,17 +176,12 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("SpryBackflow reporting")))
                 .andExpect(content().string(containsString("Owner checklist")))
                 .andExpect(content().string(containsString("Priority portal routes")))
-                .andExpect(content().string(containsString("Portal comparison")))
-                .andExpect(content().string(containsString("Notice or device ID")))
-                .andExpect(content().string(containsString("Report acceptance")))
-                .andExpect(content().string(containsString("WEIRS database")))
-                .andExpect(content().string(containsString("within 5 days after testing")))
-                .andExpect(content().string(containsString("Gauge calibration within 12 months")))
+                .andExpect(content().string(not(containsString("Portal comparison"))))
+                .andExpect(content().string(not(containsString("Mapped utilities"))))
                 .andExpect(content().string(containsString("Portal access still depends on accepted credentials")))
                 .andExpect(content().string(containsString("Questions to answer before filing a report")))
                 .andExpect(content().string(containsString("Can any backflow tester submit through Backflow reporting portals")))
                 .andExpect(content().string(containsString("ItemList")))
-                .andExpect(content().string(containsString("Submit Dallas backflow report")))
                 .andExpect(content().string(containsString("/cities/texas/dallas/submit-backflow-report")))
                 .andExpect(content().string(containsString("FAQPage")));
 
@@ -196,6 +194,8 @@ class SiteControllerTest {
         mockMvc.perform(get("/backflow-reporting-portals/weirs"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("WEIRS for backflow testing")))
+                .andExpect(content().string(containsString("Portal comparison")))
+                .andExpect(content().string(containsString("Notice or device ID")))
                 .andExpect(content().string(containsString("WEIRS database")))
                 .andExpect(content().string(containsString("Complete online Test and Maintenance Report submitted through WEIRS")));
 
@@ -237,6 +237,8 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("$25 - City filing fee per test submission")))
                 .andExpect(content().string(containsString("Passed is not always filed")))
                 .andExpect(content().string(containsString("City and utility report-submission paths")))
+                .andExpect(content().string(containsString("Browse all ")))
+                .andExpect(content().string(containsString("submission workflows")))
                 .andExpect(content().string(containsString("Submit-report priority routes")))
                 .andExpect(content().string(containsString("/cities/texas/austin/submit-backflow-report")))
                 .andExpect(content().string(containsString("/cities/texas/dallas/submit-backflow-report")))
@@ -353,15 +355,15 @@ class SiteControllerTest {
 
         mockMvc.perform(get("/utilities/texas/irving-cross-connections-backflow/"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("VEPO/Envirotrax reports, tester gate, 10-day report deadline")))
+                .andExpect(content().string(containsString("Irving utility backflow reporting")))
                 .andExpect(content().string(containsString("within 10 days after testing")))
-                .andExpect(content().string(containsString("Tester gate: Tester credentials, Test kit calibration forms, Envirotrax registration")));
+                .andExpect(content().string(containsString("Tester credentials, Test kit calibration forms, Envirotrax registration")));
 
         mockMvc.perform(get("/utilities/texas/college-station-water-utilities/"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("report submission, tester gate, 30-day report deadline")))
+                .andExpect(content().string(containsString("College Station utility backflow reporting")))
                 .andExpect(content().string(containsString("within 30 days after testing")))
-                .andExpect(content().string(containsString("Tester gate: TCEQ-certified BPAT status, City of College Station tester registration, Fireline or general tester category when applicable")));
+                .andExpect(content().string(containsString("TCEQ-certified BPAT status, City of College Station tester registration, Fireline or general tester category when applicable")));
 
         mockMvc.perform(get("/utilities/arizona/phoenix-water-services/"))
                 .andExpect(status().isOk())
@@ -649,6 +651,10 @@ class SiteControllerTest {
         mockMvc.perform(get("/states/texas/backflow-testing"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Texas backflow testing requirements")))
+                .andExpect(content().string(containsString("href=\"/notice-finder\">Find from notice")))
+                .andExpect(content().string(containsString("href=\"#state-city-routes\">Browse city routes")))
+                .andExpect(content().string(containsString("Browse 27 city routes")))
+                .andExpect(content().string(containsString("Browse all 28 utility pages")))
                 .andExpect(content().string(containsString("Fort Worth")))
                 .andExpect(content().string(containsString("All live utilities")))
                 .andExpect(content().string(containsString("Best local drops")))
@@ -1328,9 +1334,9 @@ class SiteControllerTest {
 
         mockMvc.perform(get("/cities/texas/irving/backflow-testing"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Irving VEPO/Envirotrax reports and 10-day report deadline")))
-                .andExpect(content().string(containsString("within 10 days after testing")))
-                .andExpect(content().string(containsString("Tester gate: Tester credentials, Test kit calibration forms, Envirotrax registration")));
+                .andExpect(content().string(containsString("Irving backflow testing requirements")))
+                .andExpect(content().string(containsString("within 10 days of the test date")))
+                .andExpect(content().string(containsString("tester credentials, test kit calibration forms")));
 
         mockMvc.perform(get("/cities/florida/fort-myers/backflow-testing"))
                 .andExpect(status().isOk())
@@ -1390,6 +1396,8 @@ class SiteControllerTest {
         mockMvc.perform(get("/cities/texas/austin/submit-backflow-report"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Submit Austin WEIRS backflow test reports")))
+                .andExpect(content().string(not(containsString("How to submit a Austin"))))
+                .andExpect(content().string(containsString("How to submit a backflow test report in Austin")))
                 .andExpect(content().string(containsString("WEIRS")))
                 .andExpect(content().string(containsString("WEIRS database")))
                 .andExpect(content().string(containsString("Report due within 5 days after testing")))
@@ -1741,6 +1749,32 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("\"code\":\"broken_source_links\"")));
     }
 
+    @Test
+    void representativeSeoSnippetsStayConcise() throws Exception {
+        List<String> paths = List.of(
+                "/utilities/texas/dallas-water-utilities/",
+                "/utilities/texas/dallas-water-utilities/annual-testing",
+                "/cities/texas/dallas/backflow-testing",
+                "/cities/texas/austin/submit-backflow-report",
+                "/cities/california/oxnard/backflow-reporting-portal",
+                "/cities/florida/fort-lauderdale/failed-backflow-test",
+                "/cities/arizona/phoenix/approved-backflow-testers",
+                "/cities/texas/dallas/fire-line-backflow-testing"
+        );
+
+        for (String path : paths) {
+            String html = mockMvc.perform(get(path))
+                    .andExpect(status().isOk())
+                    .andReturn()
+                    .getResponse()
+                    .getContentAsString();
+            String title = htmlValue(html, "<title>", "</title>");
+            String description = htmlValue(html, "<meta name=\"description\" content=\"", "\">");
+            assertTrue(title.length() <= 70, () -> path + " title is too long: " + title.length() + " - " + title);
+            assertTrue(description.length() <= 160, () -> path + " description is too long: " + description.length() + " - " + description);
+        }
+    }
+
     private void assertNoticeFinderTopRoute(String query, String expectedPath) throws Exception {
         MvcResult result = mockMvc.perform(get("/notice-finder").queryParam("q", query))
                 .andExpect(status().isOk())
@@ -1752,5 +1786,14 @@ class SiteControllerTest {
                 () -> "Expected top route for query [" + query + "] to be [" + expectedPath + "]."
                         + " Could not find [" + expectedTopRoute + "] in notice finder response."
         );
+    }
+
+    private String htmlValue(String html, String prefix, String suffix) {
+        int start = html.indexOf(prefix);
+        assertTrue(start >= 0, () -> "Missing HTML prefix: " + prefix);
+        int valueStart = start + prefix.length();
+        int end = html.indexOf(suffix, valueStart);
+        assertTrue(end >= valueStart, () -> "Missing HTML suffix after prefix: " + suffix);
+        return html.substring(valueStart, end);
     }
 }

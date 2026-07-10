@@ -164,7 +164,7 @@
         </div>
     </section>
 
-    @if (!utilities.isEmpty())
+    @if (!utilities.isEmpty() && !overview)
         <section class="section">
             <div class="container">
                 <article class="table-card">
@@ -280,16 +280,17 @@
         </section>
     @endif
 
-    <section class="section">
-        <div class="container">
-            <div class="section-heading">
-                <span class="eyebrow">Mapped utilities</span>
-                <h2>${portalSlug.equals("all") ? "Utility workflows that mention a portal or online submission route" : portalName + " backflow portal examples by utility"}</h2>
-                <p class="lede">Open the utility page first. It contains the due basis, submission method, program phone, and any tester-list route tied to the property.</p>
-            </div>
-            <div class="card-grid card-grid--three">
-                @for (var utility : utilities)
-                    <article class="detail-card detail-card--quiet">
+    @if (!overview)
+        <section class="section">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Mapped utilities</span>
+                    <h2>${portalName} backflow portal examples by utility</h2>
+                    <p class="lede">Open the utility page first. It contains the due basis, submission method, program phone, and any tester-list route tied to the property.</p>
+                </div>
+                <div class="card-grid card-grid--three">
+                    @for (var utility : utilities)
+                        <article class="detail-card detail-card--quiet">
                         <span class="pill">${utility.state()}</span>
                         <h3>${utility.utilityName()}</h3>
                         <p>${utility.verdictSummary()}</p>
@@ -327,11 +328,12 @@
                                 <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/approved-testers">Tester list</a>
                             @endif
                         </div>
-                    </article>
-                @endfor
+                        </article>
+                    @endfor
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <section class="section section--tight">
         <div class="container content-grid">
