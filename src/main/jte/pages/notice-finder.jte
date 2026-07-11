@@ -6,6 +6,10 @@
 @import owner.backflow.data.model.UtilityRecord
 @param PageMeta page
 @param String query = ""
+@param String referralCode = ""
+@param String shareUrl = "/notice-finder"
+@param String shareMessage = ""
+@param String shareEmailUrl = "mailto:"
 @param java.util.List<NoticeFinderResult> results = java.util.List.of()
 @param java.util.List<NoticeFinderResult> popularPortals = java.util.List.of()
 @param java.util.List<PriorityRoute> priorityRoutes = java.util.List.of()
@@ -21,6 +25,7 @@
                 <h1>Turn a backflow notice into the right next page.</h1>
                 <p class="lede">Search the city, utility, portal name, notice ID clue, or failed-test phrase. BackflowPath will route you to the most specific source-backed page it has.</p>
                 <form class="stack-form notice-finder-form" method="get" action="/notice-finder">
+                    <input type="hidden" name="ref" value="${referralCode}">
                     <label class="field" data-required="false">
                         <span>Notice, city, portal, or utility</span>
                         <input name="q" type="search" value="${query}" placeholder="Example: Euless TrackMyBackflow Hazard ID" autocomplete="off">
@@ -74,6 +79,7 @@
                                 <div class="card-actions">
                                     <a class="button button--secondary" href="/states">Browse state guides</a>
                                     <a class="button button--secondary" href="/backflow-reporting-portals">Browse portal hub</a>
+                                    <a class="button button--primary" href="${page.requestHelpPathOrDefault()}">Request help</a>
                                 </div>
                             </article>
                         </div>
@@ -103,6 +109,41 @@
                                 <a class="button button--secondary" href="/leads/new?source=/notice-finder&amp;pageFamily=notice-finder">Still unsure? Request help</a>
                             </div>
                         </article>
+                        <section class="share-surface" data-funnel-event="notice_share_surface_view">
+                            <div class="share-surface__header">
+                                <div>
+                                    <span class="eyebrow">Send the answer onward</span>
+                                    <h2>Share this notice route</h2>
+                                    <p>Send the same source-backed next step to a tester, building manager, or property owner.</p>
+                                </div>
+                                <div class="share-surface__actions">
+                                    <button class="button button--primary" type="button" data-copy-target="notice-share-message" data-funnel-event="notice_share_copy">Copy message</button>
+                                    <button class="button button--secondary" type="button" data-native-share="notice-share-message" data-funnel-event="notice_share_native">Share</button>
+                                </div>
+                            </div>
+                            <div class="share-surface__grid">
+                                <div class="share-surface__panel">
+                                    <label class="field" for="notice-share-message">
+                                        <span>Copy-ready message</span>
+                                        <textarea id="notice-share-message" rows="4" readonly>${shareMessage}</textarea>
+                                    </label>
+                                    <label class="field" for="notice-share-url">
+                                        <span>Direct result link</span>
+                                        <input id="notice-share-url" type="text" value="${shareUrl}" readonly>
+                                    </label>
+                                </div>
+                                <div class="share-surface__panel share-surface__panel--support">
+                                    <strong>Choose who receives it</strong>
+                                    <p>These buttons open a ready-to-send email with the result link and the original notice clue.</p>
+                                    <div class="share-surface__actions">
+                                        <a class="button button--secondary" href="${shareEmailUrl}" data-share-role="tester" data-funnel-event="notice_share_tester">Send to tester</a>
+                                        <a class="button button--secondary" href="${shareEmailUrl}" data-share-role="manager" data-funnel-event="notice_share_manager">Send to manager</a>
+                                        <a class="button button--secondary" href="${shareEmailUrl}" data-share-role="owner" data-funnel-event="notice_share_owner">Send to owner</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="share-feedback__status" data-share-status aria-live="polite"></p>
+                        </section>
                         <article class="detail-card detail-card--key">
                             <span class="eyebrow">Best first</span>
                             <h3>${results.get(0).label()}</h3>

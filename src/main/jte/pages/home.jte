@@ -25,13 +25,13 @@
         <div class="container hero__grid hero__grid--home">
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Find local backflow requirements</span>
-                <h1>Know your utility's backflow testing rules before you schedule the work.</h1>
-                <p class="lede">BackflowPath organizes backflow requirements by utility so you can see who needs testing, how reports are filed, what happens after a failed test, and whether an official tester list exists. State, metro, and guide pages help you narrow down the right local path without mixing public guidance and provider options.</p>
+                <h1>Got a backflow notice? Find the right next step in 30 seconds.</h1>
+                <p class="lede">Paste the city, utility, portal, or notice clue and get the source-backed route for submission, due dates, tester eligibility, or failed-test follow-up. Know your utility's backflow testing rules before you schedule the work.</p>
                 <form class="home-search" method="get" action="/notice-finder">
                     <label for="home-notice-search">Search your notice, city, portal, or utility</label>
                     <div class="home-search__row">
                         <input id="home-notice-search" name="q" type="search" placeholder="Try Dallas SwiftComply or Queen Creek BSI" autocomplete="off">
-                        <button class="button button--primary" type="submit">Find route</button>
+                        <button class="button button--primary" type="submit">Find my next step</button>
                     </div>
                 </form>
                 <div class="hero__actions">

@@ -52,9 +52,11 @@
                 }
 
                 function withPageContext(params) {
+                    var currentUrl = new URL(window.location.href);
                     var next = Object.assign({
                         page_path: window.location.pathname,
                         page_title: document.title,
+                        referral_code: clean(currentUrl.searchParams.get('ref')),
                         transport_type: 'beacon'
                     }, params || {});
 
@@ -72,6 +74,8 @@
                     }
                     gtag('event', eventName, withPageContext(params));
                 }
+
+                window.backflowTrack = track;
 
                 function classifyLink(anchor) {
                     try {
@@ -113,6 +117,16 @@
                                     route_type: url.pathname.indexOf('/approved-testers') >= 0 ? 'approved' : 'directory',
                                     destination_path: url.pathname,
                                     cta_text: text
+                                }
+                            };
+                        }
+
+                        if (anchor.dataset.funnelEvent) {
+                            return {
+                                eventName: anchor.dataset.funnelEvent,
+                                params: {
+                                    cta_text: text,
+                                    role: clean(anchor.dataset.shareRole)
                                 }
                             };
                         }
@@ -203,6 +217,17 @@
                     }
                 });
 
+                document.addEventListener('click', function (event) {
+                    var element = event.target.closest('[data-funnel-event]');
+                    if (!element || element.matches('a[href]')) {
+                        return;
+                    }
+                    track(element.getAttribute('data-funnel-event'), {
+                        cta_text: clean(element.textContent),
+                        role: clean(element.getAttribute('data-share-role'))
+                    });
+                });
+
                 document.addEventListener('submit', function (event) {
                     if (!(event.target instanceof HTMLFormElement)) {
                         return;
@@ -212,7 +237,8 @@
                     if (action === '/notice-finder') {
                         var finderData = new FormData(form);
                         track('notice_finder_search', {
-                            search_term: clean(finderData.get('q'))
+                            search_term_length: clean(finderData.get('q')) ? String(finderData.get('q')).trim().length : 0,
+                            search_has_portal: /bsi|swiftcomply|weirs|vepo|envirotrax|trackmybackflow|tokay|sprybackflow/i.test(String(finderData.get('q') || '')) ? 'yes' : 'no'
                         });
                         return;
                     }
@@ -281,6 +307,36 @@
                 window.setTimeout(function () {
                     button.textContent = originalLabel;
                 }, 1500);
+            }
+        });
+
+        document.addEventListener('click', async function (event) {
+            var button = event.target.closest('[data-native-share]');
+            if (!button) {
+                return;
+            }
+            var target = document.getElementById(button.getAttribute('data-native-share'));
+            if (!target) {
+                return;
+            }
+            var message = target.value || target.textContent || '';
+            var status = document.querySelector('[data-share-status]');
+            try {
+                if (navigator.share) {
+                    await navigator.share({title: 'BackflowPath notice route', text: message});
+                    if (status) {
+                        status.textContent = 'Shared.';
+                    }
+                } else if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(message);
+                    if (status) {
+                        status.textContent = 'Sharing is unavailable here, so the message was copied.';
+                    }
+                }
+            } catch (error) {
+                if (status && error.name !== 'AbortError') {
+                    status.textContent = 'Could not open sharing. Use Copy message instead.';
+                }
             }
         });
     </script>
@@ -359,6 +415,7 @@
             <div class="footer-column">
                 <span class="footer-column__label">Popular help</span>
                 <a href="/backflow-reporting-portals">Reporting portal hub</a>
+                <a href="/partners/notice-kit">Free partner notice kit</a>
                 <a href="/submit-backflow-report">Submit report hub</a>
                 <a href="/official-backflow-tester-lists">Official tester list hub</a>
                 <a href="/guides/approved-testers-vs-find-a-tester">Approved vs directory</a>

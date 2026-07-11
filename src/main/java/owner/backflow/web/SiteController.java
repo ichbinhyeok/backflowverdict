@@ -2,6 +2,7 @@ package owner.backflow.web;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -32,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.util.UriUtils;
 
 @Controller
 public class SiteController {
@@ -254,8 +256,8 @@ public class SiteController {
         String portalName = portalName(portalSlug);
         List<FaqItem> faqItems = portalFaqItems(portalSlug, portalName, utilities);
         model.addAttribute("page", page(
-                portalName + " backflow reporting utilities | BackflowPath",
-                portalDescription(portalSlug),
+                portalName + " backflow portal: city routes and report submission | BackflowPath",
+                "Find " + portalName + " backflow report submission routes by city, tester requirements, notice clues, and accepted filing proof.",
                 "/backflow-reporting-portals/" + portalSlug,
                 combineStructuredData(
                         breadcrumbStructuredData(List.of(
@@ -290,11 +292,16 @@ public class SiteController {
     @GetMapping("/notice-finder")
     public String noticeFinderPage(
             @RequestParam(name = "q", required = false, defaultValue = "") String query,
+            @RequestParam(name = "ref", required = false, defaultValue = "") String referralCode,
             Model model
     ) {
         String trimmedQuery = query == null ? "" : query.trim();
+        String normalizedReferralCode = normalizeReferralCode(referralCode);
         List<NoticeFinderResult> results = noticeFinderResults(trimmedQuery);
         List<FaqItem> faqItems = noticeFinderFaqItems();
+        String shareUrl = noticeFinderShareUrl(trimmedQuery, normalizedReferralCode);
+        String shareMessage = noticeFinderShareMessage(trimmedQuery, shareUrl);
+        String shareEmailUrl = noticeFinderShareEmailUrl(shareMessage);
         model.addAttribute("page", page(
                 "Backflow notice finder | BackflowPath",
                 "Paste a city, utility, BSI, SwiftComply, TrackMyBackflow, Tokay, notice ID, Hazard ID, approved tester, or failed-test phrase.",
@@ -309,6 +316,10 @@ public class SiteController {
                 )
         ));
         model.addAttribute("query", trimmedQuery);
+        model.addAttribute("referralCode", normalizedReferralCode);
+        model.addAttribute("shareUrl", shareUrl);
+        model.addAttribute("shareMessage", shareMessage);
+        model.addAttribute("shareEmailUrl", shareEmailUrl);
         model.addAttribute("results", results);
         model.addAttribute("priorityRoutes", priorityRoutes(12));
         model.addAttribute("popularPortals", PORTAL_SLUGS.stream()
@@ -330,6 +341,20 @@ public class SiteController {
         ), 4, null));
         model.addAttribute("faqItems", faqItems);
         return "pages/notice-finder";
+    }
+
+    @GetMapping("/partners/notice-kit")
+    public String partnerNoticeKitPage(Model model) {
+        model.addAttribute("page", page(
+                "Backflow notice kit for testers and property managers | BackflowPath",
+                "Free copy, links, and a notice lookup workflow that backflow testers, contractors, and property managers can send to customers.",
+                "/partners/notice-kit",
+                breadcrumbStructuredData(List.of(
+                        new BreadcrumbItem("Home", canonical("/")),
+                        new BreadcrumbItem("Partner notice kit", canonical("/partners/notice-kit"))
+                ))
+        ));
+        return "pages/partner-notice-kit";
     }
 
     @GetMapping("/submit-backflow-report")
@@ -1642,9 +1667,12 @@ public class SiteController {
                 continue;
             }
             registryService.findUtilityById(alias.utilityId()).ifPresent(utility -> {
-                int score = scoreCandidate(normalizedQuery, candidateText(alias, utility));
-                score += localityBoost(normalizedQuery, alias);
-                score += intentBoost(normalizedQuery, utility);
+                int textScore = scoreCandidate(normalizedQuery, candidateText(alias, utility));
+                int localityScore = localityBoost(normalizedQuery, alias);
+                if (textScore == 0 && localityScore == 0 && !searchTokens(normalizedQuery).isEmpty()) {
+                    return;
+                }
+                int score = textScore + localityScore + intentBoost(normalizedQuery, utility);
                 if (score > 0) {
                     addNoticeFinderResult(resultsByPath, new NoticeFinderResult(
                             alias.city() + " backflow notice route",
@@ -1659,7 +1687,11 @@ public class SiteController {
         }
 
         for (UtilityRecord utility : registryService.listPublishedUtilities()) {
-            int score = scoreCandidate(normalizedQuery, candidateText(utility));
+            int textScore = scoreCandidate(normalizedQuery, candidateText(utility));
+            if (textScore == 0 && !searchTokens(normalizedQuery).isEmpty()) {
+                continue;
+            }
+            int score = textScore;
             if (utility.utilityName() != null && normalizeSearch(utility.utilityName()).contains(normalizedQuery)) {
                 score += 40;
             }
@@ -2068,6 +2100,39 @@ public class SiteController {
                 .replaceAll("[^a-z0-9]+", " ")
                 .replaceAll("\\s+", " ")
                 .trim();
+    }
+
+    private String normalizeReferralCode(String value) {
+        if (value == null || value.isBlank()) {
+            return "";
+        }
+        String normalized = value.toLowerCase(Locale.US).replaceAll("[^a-z0-9_-]", "");
+        return normalized.substring(0, Math.min(48, normalized.length()));
+    }
+
+    private String noticeFinderShareUrl(String query, String referralCode) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(canonical("/notice-finder"));
+        if (query != null && !query.isBlank()) {
+            builder.queryParam("q", query);
+        }
+        if (referralCode != null && !referralCode.isBlank()) {
+            builder.queryParam("ref", referralCode);
+        }
+        return builder.build().encode().toUriString();
+    }
+
+    private String noticeFinderShareMessage(String query, String shareUrl) {
+        if (query == null || query.isBlank()) {
+            return "Find the right backflow notice route with BackflowPath: " + shareUrl;
+        }
+        return "I found a source-backed next step for this backflow notice (" + query + "): " + shareUrl;
+    }
+
+    private String noticeFinderShareEmailUrl(String shareMessage) {
+        return "mailto:?subject="
+                + UriUtils.encodeQueryParam("Backflow notice next step", StandardCharsets.UTF_8)
+                + "&body="
+                + UriUtils.encodeQueryParam(shareMessage, StandardCharsets.UTF_8);
     }
 
     private Map<String, List<CityAliasRecord>> publishedCityAliasesByUtility(List<UtilityRecord> utilities) {

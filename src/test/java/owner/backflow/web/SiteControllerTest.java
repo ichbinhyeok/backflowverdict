@@ -1805,6 +1805,41 @@ class SiteControllerTest {
         );
     }
 
+    @Test
+    void noticeFinderProvidesShareableResultAndReferralContext() throws Exception {
+        mockMvc.perform(get("/notice-finder")
+                        .queryParam("q", "Dallas SwiftComply annual notice")
+                        .queryParam("ref", "Dallas-Testers"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Share this notice route")))
+                .andExpect(content().string(containsString("Copy message")))
+                .andExpect(content().string(containsString("Send to tester")))
+                .andExpect(content().string(containsString("Send to manager")))
+                .andExpect(content().string(containsString("Send to owner")))
+                .andExpect(content().string(containsString("/notice-finder?q=Dallas%20SwiftComply%20annual%20notice&amp;ref=dallas-testers")))
+                .andExpect(content().string(containsString("notice_share_native")))
+                .andExpect(content().string(containsString("referral_code")));
+    }
+
+    @Test
+    void partnerNoticeKitProvidesSafeReferralLinkBuilder() throws Exception {
+        mockMvc.perform(get("/partners/notice-kit"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Free partner kit")))
+                .andExpect(content().string(containsString("Create your reusable referral link")))
+                .andExpect(content().string(containsString("no customer information is stored")))
+                .andExpect(content().string(containsString("data-copy-target=\"partner-link\"")));
+    }
+
+    @Test
+    void noticeFinderShowsNoMatchForUnrelatedSearchTerms() throws Exception {
+        mockMvc.perform(get("/notice-finder").queryParam("q", "qzxv-9182"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("No direct match")))
+                .andExpect(content().string(containsString("Try the city, utility, portal name")))
+                .andExpect(content().string(containsString("Request help")));
+    }
+
     private String htmlValue(String html, String prefix, String suffix) {
         int start = html.indexOf(prefix);
         assertTrue(start >= 0, () -> "Missing HTML prefix: " + prefix);
