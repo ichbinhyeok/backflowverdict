@@ -25,50 +25,6 @@
                     @endif
                 </div>
 
-                <div class="content-grid">
-                    <article class="detail-card">
-                        <span class="eyebrow">Why this form helps</span>
-                        <h2>Get the right next step</h2>
-                        <p>Backflow rules change by utility. This form gives BackflowPath the details needed to review the local rule, understand the issue, and point you toward the next practical step.</p>
-                        <ul class="detail-list">
-                            <li>Annual testing and inspection questions</li>
-                            <li>Failed test repair and retest context</li>
-                            <li>Irrigation, fire-line, or tester-search follow-up</li>
-                        </ul>
-                    </article>
-
-                    <article class="detail-card">
-                        <span class="eyebrow">What happens next</span>
-                        <h2>Reviewed against the utility workflow</h2>
-                        <ul class="detail-list">
-                            <li>BackflowPath reviews the utility, issue type, and notes together.</li>
-                            <li>If more detail is needed, follow-up can clarify the deadline, device type, or reporting path.</li>
-                            <li>If public provider help fits the situation, the team can follow up with a manual recommendation after reviewing the rule context.</li>
-                        </ul>
-                    </article>
-                </div>
-
-                <article class="detail-card">
-                    <div class="mini-provider">
-                        <img src="/images/design/lead-testimonial.jpg" alt="Engineering supervisor portrait">
-                        <div>
-                            <strong>Trust through routing clarity</strong>
-                            <span>The point of this form is not to blur official guidance with provider sales. It captures demand after the user has already seen the utility rule.</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="detail-card">
-                    <span class="eyebrow">Request notice</span>
-                    <h2>What you are consenting to</h2>
-                    <p>BackflowPath keeps this request so the team can review the utility context, respond about next steps, and follow up with public provider options when appropriate.</p>
-                    <ul class="detail-list">
-                        <li>Your request is reviewed alongside the local utility context attached to the lead link or saved request.</li>
-                        <li>If the routing metadata cannot be verified, BackflowPath stores the request for manual review.</li>
-                        <li>BackflowPath does not treat this form as a private resale channel.</li>
-                        <li>Read the full <a href="/privacy">privacy and request handling notice</a> before submitting.</li>
-                    </ul>
-                </article>
             </div>
 
             <article class="detail-card">
@@ -156,6 +112,48 @@
                         <a class="button button--secondary" href="/">Back to site</a>
                     </div>
                 </form>
+            </article>
+
+            <div class="content-grid lead-capture-explainers">
+                <details class="detail-card lead-capture-disclosure">
+                    <summary><span class="eyebrow">Why this form helps</span><strong>Get the right next step</strong></summary>
+                    <p>Backflow rules change by utility. This form gives BackflowPath the details needed to review the local rule, understand the issue, and point you toward the next practical step.</p>
+                    <ul class="detail-list">
+                        <li>Annual testing and inspection questions</li>
+                        <li>Failed test repair and retest context</li>
+                        <li>Irrigation, fire-line, or tester-search follow-up</li>
+                    </ul>
+                </details>
+
+                <details class="detail-card lead-capture-disclosure">
+                    <summary><span class="eyebrow">What happens next</span><strong>Reviewed against the utility workflow</strong></summary>
+                    <ul class="detail-list">
+                        <li>BackflowPath reviews the utility, issue type, and notes together.</li>
+                        <li>If more detail is needed, follow-up can clarify the deadline, device type, or reporting path.</li>
+                        <li>If public provider help fits the situation, the team can follow up with a manual recommendation after reviewing the rule context.</li>
+                    </ul>
+                </details>
+
+                <details class="detail-card lead-capture-disclosure">
+                    <summary><span class="eyebrow">Request notice</span><strong>What you are consenting to</strong></summary>
+                    <p>BackflowPath keeps this request so the team can review the utility context, respond about next steps, and follow up with public provider options when appropriate.</p>
+                    <ul class="detail-list">
+                        <li>Your request is reviewed alongside the local utility context attached to the lead link or saved request.</li>
+                        <li>If the routing metadata cannot be verified, BackflowPath stores the request for manual review.</li>
+                        <li>BackflowPath does not treat this form as a private resale channel.</li>
+                        <li>Read the full <a href="/privacy">privacy and request handling notice</a> before submitting.</li>
+                    </ul>
+                </details>
+            </div>
+
+            <article class="detail-card lead-capture-trust">
+                <div class="mini-provider">
+                    <img src="/images/design/lead-testimonial.jpg" alt="Engineering supervisor portrait">
+                    <div>
+                        <strong>Trust through routing clarity</strong>
+                        <span>The point of this form is not to blur official guidance with provider sales. It captures demand after the user has already seen the utility rule.</span>
+                    </div>
+                </div>
             </article>
         </div>
     </section>

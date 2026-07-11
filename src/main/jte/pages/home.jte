@@ -27,8 +27,14 @@
                 <span class="eyebrow kicker-rule">Find local backflow requirements</span>
                 <h1>Know your utility's backflow testing rules before you schedule the work.</h1>
                 <p class="lede">BackflowPath organizes backflow requirements by utility so you can see who needs testing, how reports are filed, what happens after a failed test, and whether an official tester list exists. State, metro, and guide pages help you narrow down the right local path without mixing public guidance and provider options.</p>
+                <form class="home-search" method="get" action="/notice-finder">
+                    <label for="home-notice-search">Search your notice, city, portal, or utility</label>
+                    <div class="home-search__row">
+                        <input id="home-notice-search" name="q" type="search" placeholder="Try Dallas SwiftComply or Queen Creek BSI" autocomplete="off">
+                        <button class="button button--primary" type="submit">Find route</button>
+                    </div>
+                </form>
                 <div class="hero__actions">
-                    <a class="button button--primary" href="/notice-finder">Find from your notice</a>
                     <a class="button button--secondary" href="/states">Browse state guides</a>
                     <a class="button button--secondary" href="#utility-examples">See utility examples</a>
                 </div>

@@ -686,8 +686,10 @@ p {
     padding: 0.9rem;
     border: 1px solid rgba(226, 232, 240, 0.12);
     border-radius: 1rem;
-    background: rgba(15, 23, 42, 0.96);
+    background: #0f172a;
     box-shadow: 0 24px 48px rgba(15, 23, 42, 0.24);
+    isolation: isolate;
+    z-index: 30;
 }
 
 .site-menu__nav {
@@ -2146,6 +2148,84 @@ p {
     font-size: 0.88rem;
     overflow-wrap: anywhere;
     word-break: break-word;
+}
+
+.home-search {
+    display: grid;
+    gap: 0.55rem;
+    max-width: 42rem;
+    margin-top: 1.25rem;
+}
+
+.home-search label {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.home-search__row {
+    display: flex;
+    gap: 0.65rem;
+    align-items: stretch;
+}
+
+.home-search input {
+    min-width: 0;
+    flex: 1;
+    padding: 0.95rem 1rem;
+    border: 1px solid rgba(203, 213, 225, 0.7);
+    border-radius: 0.8rem;
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--primary);
+}
+
+.lead-capture-disclosure {
+    display: block;
+    position: relative;
+}
+
+.lead-capture-disclosure summary {
+    display: grid;
+    gap: 0.45rem;
+    cursor: pointer;
+    list-style: none;
+}
+
+.lead-capture-disclosure summary::-webkit-details-marker {
+    display: none;
+}
+
+.lead-capture-disclosure summary::after {
+    content: "+";
+    float: right;
+    position: absolute;
+    right: 1.4rem;
+    top: 1.2rem;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+}
+
+.lead-capture-disclosure[open] summary::after {
+    content: "−";
+}
+
+.lead-capture-disclosure summary strong {
+    padding-right: 2rem;
+    color: var(--primary);
+    font-family: var(--font-headline);
+    font-size: 1.45rem;
+    letter-spacing: -0.04em;
+}
+
+.lead-capture-disclosure > :not(summary) {
+    margin-top: 1rem;
+}
+
+.lead-capture-trust {
+    margin-top: 1.5rem;
 }
 
 .notice-match-drawer {
@@ -3854,6 +3934,30 @@ p {
         padding: 0.75rem;
         border-radius: 0.85rem;
         box-sizing: border-box;
+        background: #0f172a;
+        z-index: 40;
+    }
+
+    .home-search {
+        margin-top: 1rem;
+    }
+
+    .home-search__row {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .home-search .button {
+        width: 100%;
+    }
+
+    .lead-capture-explainers {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .lead-capture-trust {
+        margin-top: 0.8rem;
     }
 
     .hero h1,

@@ -1,6 +1,7 @@
 package owner.backflow.web;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -43,12 +44,22 @@ class SiteControllerTest {
     private BackflowRegistryService registryService;
 
     @Test
+    void queenCreekUtilityLoadsStructuredFilingFee() {
+        UtilityRecord utility = registryService.findUtilityById("queen-creek-water").orElseThrow();
+
+        assertEquals("$14.95", utility.costBand().filingFee().amount());
+        assertEquals("$14.95", utility.reportWorkflow().filingFee().amount());
+    }
+
+    @Test
     void homePageLoads() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("backflow testing rules before you schedule the work.")))
                 .andExpect(content().string(containsString("Browse state guides")))
                 .andExpect(content().string(containsString("See utility examples")))
+                .andExpect(content().string(containsString("home-notice-search")))
+                .andExpect(content().string(containsString("action=\"/notice-finder\"")))
                 .andExpect(content().string(containsString("High-intent routes Google should discover quickly")))
                 .andExpect(content().string(containsString("Priority crawl paths")))
                 .andExpect(content().string(containsString("/cities/texas/dallas/submit-backflow-report")))
