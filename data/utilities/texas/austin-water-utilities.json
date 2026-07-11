@@ -38,7 +38,7 @@
     "Private fire hydrant and fire sprinkler assemblies"
   ],
   "approvedTesterMode": "OFFICIAL_LIST",
-  "approvedTesterListUrl": "https://services.austintexas.gov/weirs/",
+  "approvedTesterListUrl": "https://services.austintexas.gov/water/weirs/index.cfm?fuseaction=report.publicWSCTechEmployer&tt=1",
   "officialListLabel": "Use Austin Water resources and WEIRS-linked tester information",
   "submissionMethods": [
     {
@@ -53,7 +53,7 @@
     },
     {
       "label": "WEIRS database",
-      "url": "https://services.austintexas.gov/weirs/",
+      "url": "https://services.austintexas.gov/water/weirs/index.cfm?fuseaction=report.publicWTRNotice",
       "kind": "submission portal"
     }
   ],
@@ -136,7 +136,7 @@
   "reportWorkflow": {
     "portalVendor": "WEIRS",
     "portalName": "WEIRS database",
-    "portalUrl": "https://services.austintexas.gov/weirs/",
+    "portalUrl": "https://services.austintexas.gov/water/weirs/index.cfm?fuseaction=report.publicWTRNotice",
     "submissionDeadlineDaysAfterTest": 5,
     "submitter": "TCEQ-licensed BPAT registered with Austin Water",
     "paperAccepted": false,
@@ -210,7 +210,7 @@
     },
     {
       "label": "Austin ordinance 20250410-002",
-      "url": "https://www.austintexas.gov/sites/default/files/files/Water/SSD/Ord.-20250410-002---Chapter-15-1-Cross-Connection.pdf",
+      "url": "https://www.austintexas.gov/water/cross-connection-control-water-protection-program",
       "kind": "official ordinance"
     }
   ]

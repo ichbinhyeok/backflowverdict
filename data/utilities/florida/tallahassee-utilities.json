@@ -19,7 +19,7 @@
   "officialProgramUrls": [
     "https://www.talgov.com/you/you-learn-utilities-water-cross.aspx",
     "https://www.talgov.com/you/documents",
-    "https://www.talgov.com/Uploads/Public/Documents/you/forms/backflow_optin.pdf",
+    "https://www.talgov.com/you/you-learn-utilities-water-cross",
     "https://www.talgov.com/Uploads/Public/Documents/you/cross_rules.pdf"
   ],
   "testingFrequency": "Annual by default, biennial for qualifying residential assemblies",
@@ -53,7 +53,7 @@
     },
     {
       "label": "Tallahassee opt-in testing form",
-      "url": "https://www.talgov.com/Uploads/Public/Documents/you/forms/backflow_optin.pdf",
+      "url": "https://www.talgov.com/you/you-learn-utilities-water-cross",
       "kind": "opt-in program form"
     },
     {
@@ -148,7 +148,7 @@
     },
     {
       "label": "Tallahassee opt-in testing form",
-      "url": "https://www.talgov.com/Uploads/Public/Documents/you/forms/backflow_optin.pdf",
+      "url": "https://www.talgov.com/you/you-learn-utilities-water-cross",
       "kind": "official opt-in form pdf"
     },
     {

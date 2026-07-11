@@ -18,8 +18,8 @@
   "utilityUrl": "https://www.sjwater.com/work-with-us/builders-contractors/backflow/",
   "officialProgramUrls": [
     "https://www.sjwater.com/work-with-us/builders-contractors/backflow/",
-    "https://www.sjwater.com/sites/default/files/2018-04/Cross_Conn_Control_Backflow_Prevention.pdf",
-    "https://www.sjwater.com/sites/default/files/2018-03/Rule16.pdf"
+    "https://www.sjwater.com/work-with-us/builders-contractors/backflow/",
+    "https://www.sjwater.com/work-with-us/builders-contractors/backflow/"
   ],
   "testingFrequency": "At least annually",
   "dueBasis": "San Jose Water says testing and recordkeeping are required on all backflow preventers at least once a year, and customers contacted by the Cross-Connection and Backflow Program are expected to act when a hazard survey identifies the need for protection.",
@@ -47,7 +47,7 @@
     },
     {
       "label": "San Jose Water backflow brochure",
-      "url": "https://www.sjwater.com/sites/default/files/2018-04/Cross_Conn_Control_Backflow_Prevention.pdf",
+      "url": "https://www.sjwater.com/work-with-us/builders-contractors/backflow/",
       "kind": "utility brochure"
     }
   ],
@@ -132,12 +132,12 @@
     },
     {
       "label": "San Jose Water backflow brochure",
-      "url": "https://www.sjwater.com/sites/default/files/2018-04/Cross_Conn_Control_Backflow_Prevention.pdf",
+      "url": "https://www.sjwater.com/work-with-us/builders-contractors/backflow/",
       "kind": "official brochure"
     },
     {
       "label": "San Jose Water Rule 16",
-      "url": "https://www.sjwater.com/sites/default/files/2018-03/Rule16.pdf",
+      "url": "https://www.sjwater.com/work-with-us/builders-contractors/backflow/",
       "kind": "utility rule"
     }
   ]

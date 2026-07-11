@@ -46,6 +46,20 @@ class OpsIssueServiceTest {
     }
 
     @Test
+    void resolvedBrokenLinksAreExcludedFromHealthCount() {
+        OpsIssueService service = OpsIssueService.forTest(
+                List.of(
+                        new OpsCsvEntry(Map.of("status", "fixed", "url", "https://example.gov/fixed")),
+                        new OpsCsvEntry(Map.of("status", "403", "url", "https://example.gov/manual-review"))
+                ),
+                List.of(),
+                7
+        );
+
+        Assertions.assertEquals(1, service.unresolvedBrokenLinkCount());
+    }
+
+    @Test
     void conflictBlocksUtilityEvenWithoutBrokenLink() {
         OpsIssueService service = OpsIssueService.forTest(
                 List.of(),

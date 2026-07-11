@@ -18,7 +18,7 @@
   "utilityUrl": "https://www.pwsd.org/3405/Backflow-Cross-Connection-Control",
   "officialProgramUrls": [
     "https://www.pwsd.org/3405/Backflow-Cross-Connection-Control",
-    "https://www.pwsd.org/DocumentCenter/View/4393/Backflow-Cross-Connection-Control-Guide-7-2-25-Update-ADA",
+    "https://pwsd.org/3405/Backflow-Cross-Connection-Control",
     "https://backflowtest.pwsd.org/"
   ],
   "testingFrequency": "Annually and after installation, repair, or replacement when required",
@@ -47,7 +47,7 @@
     },
     {
       "label": "Parker backflow guide",
-      "url": "https://www.pwsd.org/DocumentCenter/View/4393/Backflow-Cross-Connection-Control-Guide-7-2-25-Update-ADA",
+      "url": "https://pwsd.org/3405/Backflow-Cross-Connection-Control",
       "kind": "program guide"
     },
     {
@@ -137,7 +137,7 @@
     },
     {
       "label": "Parker backflow and cross-connection guide",
-      "url": "https://www.pwsd.org/DocumentCenter/View/4393/Backflow-Cross-Connection-Control-Guide-7-2-25-Update-ADA",
+      "url": "https://pwsd.org/3405/Backflow-Cross-Connection-Control",
       "kind": "official guide"
     },
     {

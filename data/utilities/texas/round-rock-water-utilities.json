@@ -17,7 +17,7 @@
   "utilityUrl": "https://www.roundrocktexas.gov/city-departments/utilities-and-environmental-services/water/backflow/",
   "officialProgramUrls": [
     "https://www.roundrocktexas.gov/city-departments/utilities-and-environmental-services/water/backflow/",
-    "https://www.roundrocktexas.gov/wp-content/uploads/2023/05/List-of-Registered-Testers-5.10.23.pdf"
+    "https://www.roundrocktexas.gov/city-departments/utilities-and-environmental-services/water/backflow/"
   ],
   "testingFrequency": "Annual for high-hazard devices; every 7 years for low-hazard devices",
   "dueBasis": "Round Rock sends notices through BSI Online about 30 days before the testing due date. High-hazard devices require annual testing and low-hazard residential irrigation devices require testing every 7 years.",
@@ -31,7 +31,7 @@
     "Low-hazard irrigation assemblies"
   ],
   "approvedTesterMode": "OFFICIAL_LIST",
-  "approvedTesterListUrl": "https://www.roundrocktexas.gov/wp-content/uploads/2023/05/List-of-Registered-Testers-5.10.23.pdf",
+  "approvedTesterListUrl": "https://www.roundrocktexas.gov/city-departments/utilities-and-environmental-services/water/backflow/",
   "officialListLabel": "Open the Round Rock registered tester list",
   "submissionMethods": [
     {
@@ -176,7 +176,7 @@
     },
     {
       "label": "Round Rock registered tester list",
-      "url": "https://www.roundrocktexas.gov/wp-content/uploads/2023/05/List-of-Registered-Testers-5.10.23.pdf",
+      "url": "https://www.roundrocktexas.gov/city-departments/utilities-and-environmental-services/water/backflow/",
       "kind": "official pdf"
     }
   ]

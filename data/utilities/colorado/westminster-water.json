@@ -19,7 +19,7 @@
   "utilityUrl": "https://www.westminsterco.gov/706/Cross-Connection-Control-Backflow",
   "officialProgramUrls": [
     "https://www.westminsterco.gov/706/Cross-Connection-Control-Backflow",
-    "https://www.westminsterco.gov/DocumentCenter/View/12467/Cross-Connection-Control-Manual"
+    "https://www.westminsterco.gov/706/Cross-Connection-Control-Backflow"
   ],
   "testingFrequency": "Upon installation and annually thereafter",
   "dueBasis": "Westminster says all commercial, industrial, domestic, irrigation, and fire line services must have an approved backflow assembly installed when the city determines one is required, and each assembly must be tested at installation and annually thereafter.",
@@ -47,7 +47,7 @@
     },
     {
       "label": "Westminster cross-connection manual",
-      "url": "https://www.westminsterco.gov/DocumentCenter/View/12467/Cross-Connection-Control-Manual",
+      "url": "https://www.westminsterco.gov/706/Cross-Connection-Control-Backflow",
       "kind": "manual"
     }
   ],
@@ -132,7 +132,7 @@
     },
     {
       "label": "Westminster cross-connection manual",
-      "url": "https://www.westminsterco.gov/DocumentCenter/View/12467/Cross-Connection-Control-Manual",
+      "url": "https://www.westminsterco.gov/706/Cross-Connection-Control-Backflow",
       "kind": "official manual"
     }
   ]

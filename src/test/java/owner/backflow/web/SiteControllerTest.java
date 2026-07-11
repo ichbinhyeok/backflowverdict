@@ -1828,7 +1828,9 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Free partner kit")))
                 .andExpect(content().string(containsString("Create your reusable referral link")))
                 .andExpect(content().string(containsString("no customer information is stored")))
-                .andExpect(content().string(containsString("data-copy-target=\"partner-link\"")));
+                .andExpect(content().string(containsString("data-copy-target=\"partner-link\"")))
+                .andExpect(content().string(containsString("id=\"partner-message-open\"")))
+                .andExpect(content().string(containsString("id=\"notice-clue\"")));
     }
 
     @Test

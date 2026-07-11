@@ -93,7 +93,7 @@ public class FreshnessAuditService {
                         staleGuides.size(),
                         registryService.listAllStateGuides().size(),
                         staleStateGuides.size(),
-                        opsIssueService.brokenLinks().size(),
+                        Math.toIntExact(opsIssueService.unresolvedBrokenLinkCount()),
                         opsIssueService.conflicts().size()
                 ),
                 staleUtilities,

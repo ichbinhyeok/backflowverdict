@@ -26,11 +26,15 @@
             <article class="detail-card detail-card--key">
                 <span class="eyebrow">Copy and send</span>
                 <h2>Customer message</h2>
-                <p id="partner-message">Paste this into email, SMS, a work order, or a customer portal message:</p>
-                <textarea class="partner-copy" id="partner-copy" rows="6" readonly>Paste the city, utility, portal name, or exact clue from your backflow notice here: https://backflowpath.com/notice-finder?ref=partner</textarea>
+                <p id="partner-message">Add the customer’s notice clue, then copy the ready-to-send message.</p>
+                <label class="field" for="notice-clue">
+                    <span>Customer notice clue</span>
+                    <input id="notice-clue" type="text" maxlength="180" placeholder="Dallas SwiftComply annual notice">
+                </label>
+                <textarea class="partner-copy" id="partner-copy" rows="6" readonly>Send the customer’s city, utility, portal name, or exact notice clue here: /notice-finder?ref=partner</textarea>
                 <div class="card-actions">
                     <button class="button button--primary" type="button" data-copy-target="partner-copy">Copy customer message</button>
-                    <a class="button button--secondary" href="/notice-finder?ref=partner">Test the flow</a>
+                    <a class="button button--secondary" id="partner-message-open" href="/notice-finder?ref=partner">Test the flow</a>
                 </div>
             </article>
             <article class="detail-card">
@@ -76,16 +80,29 @@
             var code = document.getElementById('partner-code');
             var link = document.getElementById('partner-link');
             var open = document.getElementById('partner-link-open');
-            if (!code || !link || !open) {
+            var clue = document.getElementById('notice-clue');
+            var message = document.getElementById('partner-copy');
+            var messageOpen = document.getElementById('partner-message-open');
+            if (!code || !link || !open || !clue || !message || !messageOpen) {
                 return;
             }
             function refresh() {
                 var normalized = code.value.toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 48) || 'partner';
-                var value = '/notice-finder?ref=' + encodeURIComponent(normalized);
+                var destination = new URL('/notice-finder', window.location.origin);
+                destination.searchParams.set('ref', normalized);
+                if (clue.value.trim()) {
+                    destination.searchParams.set('q', clue.value.trim());
+                }
+                var value = destination.pathname + destination.search;
                 link.value = value;
                 open.href = value;
+                messageOpen.href = value;
+                message.value = clue.value.trim()
+                    ? 'Use this BackflowPath route for the notice clue "' + clue.value.trim() + '": ' + destination.toString()
+                    : 'Send the customer’s city, utility, portal name, or exact notice clue here: ' + destination.toString();
             }
             code.addEventListener('input', refresh);
+            clue.addEventListener('input', refresh);
             refresh();
         }());
     </script>

@@ -18,8 +18,8 @@
   "utilityUrl": "https://www.fcgov.com/utilities/safety-and-security/landscape-safely/backflow-prevention",
   "officialProgramUrls": [
     "https://www.fcgov.com/utilities/safety-and-security/landscape-safely/backflow-prevention",
-    "https://www.fcgov.com/utilities/residential/conserve/water-efficiency/hydrants-meters-and-backflow-prevention",
-    "https://www.fcgov.com/utilities/safety-and-security/landscape-safely/backflow-prevention/backflow-testers"
+    "https://www.fcgov.com/utilities/img/site_specific/uploads/crossconnection.pdf",
+    "https://www.fcgov.com/utilities/img/site_specific/uploads/crossconnection.pdf"
   ],
   "testingFrequency": "Upon installation and annually thereafter",
   "dueBasis": "Fort Collins Utilities requires test reports on all devices annually, requires new and replacement assemblies to be entered into BSI Online or sent to the city's cross-connection email, and warns that customers can face water-service suspension for noncompliance.",
@@ -37,7 +37,7 @@
     "Utility-approved cross-connection control devices"
   ],
   "approvedTesterMode": "OFFICIAL_LIST",
-  "approvedTesterListUrl": "https://www.fcgov.com/utilities/safety-and-security/landscape-safely/backflow-prevention/backflow-testers",
+  "approvedTesterListUrl": "https://www.fcgov.com/utilities/img/site_specific/uploads/crossconnection.pdf",
   "officialListLabel": "Open the Fort Collins local certified backflow tester list",
   "submissionMethods": [
     {
@@ -47,7 +47,7 @@
     },
     {
       "label": "Fort Collins certified tester list",
-      "url": "https://www.fcgov.com/utilities/safety-and-security/landscape-safely/backflow-prevention/backflow-testers",
+      "url": "https://www.fcgov.com/utilities/img/site_specific/uploads/crossconnection.pdf",
       "kind": "official tester list"
     }
   ],
@@ -132,12 +132,12 @@
     },
     {
       "label": "Fort Collins hydrants, meters, and backflow prevention",
-      "url": "https://www.fcgov.com/utilities/residential/conserve/water-efficiency/hydrants-meters-and-backflow-prevention",
+      "url": "https://www.fcgov.com/utilities/img/site_specific/uploads/crossconnection.pdf",
       "kind": "official utility page"
     },
     {
       "label": "Fort Collins certified tester list",
-      "url": "https://www.fcgov.com/utilities/safety-and-security/landscape-safely/backflow-prevention/backflow-testers",
+      "url": "https://www.fcgov.com/utilities/img/site_specific/uploads/crossconnection.pdf",
       "kind": "official tester list"
     }
   ]

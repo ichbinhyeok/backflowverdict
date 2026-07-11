@@ -1,12 +1,12 @@
 checkedAt,url,status,note
 2026-06-29,https://ccclink.floridawaterstar.com/,timeout,Automated source URL audit on 2026-06-29 timed out; confirm manually.
-2026-06-29,https://discover.pbcgov.org/waterutilities/Pages/Plumbing-Contractors-List.aspx,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
-2026-06-29,https://emd.saccounty.gov/EC/Documents/testers-list.pdf,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
+2026-06-29,https://discover.pbcgov.org/waterutilities/Pages/Plumbing-Contractors-List.aspx,fixed,Replaced with current Palm Beach County backflow prevention program page on 2026-07-11.
+2026-06-29,https://emd.saccounty.gov/EC/Documents/testers-list.pdf,fixed,Replaced with current Sacramento County EH tester list PDF on 2026-07-11.
 2026-06-29,https://greeleygov.com/services/ws/about-our-system/our-water-system/cross-connection,timeout,Automated source URL audit on 2026-06-29 timed out; confirm manually.
 2026-06-29,https://greeleygov.com/services/ws/about-our-system/our-water-system/cross-connection/backflow-testers,timeout,Automated source URL audit on 2026-06-29 timed out; confirm manually.
-2026-06-29,https://services.austintexas.gov/weirs/,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
+2026-06-29,https://services.austintexas.gov/weirs/,fixed,Replaced with current Austin WEIRS report and tester routes on 2026-07-11.
 2026-06-29,https://sprybackflow.com/CityofGreeley,timeout,Automated source URL audit on 2026-06-29 timed out; confirm manually.
-2026-06-29,https://tampafl.c3swift.com/,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
+2026-06-29,https://tampafl.c3swift.com/,fixed,Replaced with current City of Tampa backflow program page on 2026-07-11.
 2026-06-29,https://www.anaheim.net/710/Standard-Specifications-Requirements,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.anaheim.net/769/Cross-Connection-Control,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.anaheim.net/DocumentCenter/View/1626/Water-Services-Standard-Specifications,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
@@ -18,10 +18,10 @@ checkedAt,url,status,note
 2026-06-29,https://www.aspen.gov/DocumentCenter/View/8018/2025-City-of-Aspen-Backflow-Flyer-and-Tester-List--PDF,timeout,Automated source URL audit on 2026-06-29 timed out; confirm manually.
 2026-06-29,https://www.auroragov.org/residents/water/pay_my_water_bill/backflow_prevention,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.auroragov.org/residents/water/service_center___emergencies/hydrant_meter_program,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
-2026-06-29,https://www.austintexas.gov/sites/default/files/files/Water/SSD/Ord.-20250410-002---Chapter-15-1-Cross-Connection.pdf,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
-2026-06-29,https://www.avondaleaz.gov/home/showpublisheddocument/17667/638119626066630000,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
-2026-06-29,https://www.avondaleaz.gov/home/showpublisheddocument/9038/638254490100330000,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
-2026-06-29,https://www.backflowtest.com/customer/BF/BSI/LafayetteCO,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
+2026-06-29,https://www.austintexas.gov/sites/default/files/files/Water/SSD/Ord.-20250410-002---Chapter-15-1-Cross-Connection.pdf,fixed,Replaced with current Austin Water cross-connection program page on 2026-07-11.
+2026-06-29,https://www.avondaleaz.gov/home/showpublisheddocument/17667/638119626066630000,fixed,Replaced with current Avondale backflow program page on 2026-07-11.
+2026-06-29,https://www.avondaleaz.gov/home/showpublisheddocument/9038/638254490100330000,fixed,Replaced with current Avondale backflow FAQ page on 2026-07-11.
+2026-06-29,https://www.backflowtest.com/customer/BF/BSI/LafayetteCO,fixed,Replaced with current City of Lafayette backflow testing page on 2026-07-11.
 2026-06-29,https://www.buckeyeaz.gov/community/residents/water-resources/environmental-compliance,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.buckeyeaz.gov/home/showpublisheddocument/15447/639045928491930000,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.cityoflewisville.com/city-hall/city-departments/public-services/meter-services/backflow-testing,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
@@ -29,8 +29,8 @@ checkedAt,url,status,note
 2026-06-29,https://www.crgov.com/DocumentCenter/View/29057/Backflow-Tester-List-2024-CL-PDF,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.englewoodco.gov/government/city-departments/utilities/customers/cross-connection-control-and-backflow-prevention-program,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.englewoodco.gov/government/city-departments/utilities/services/contact-us,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
-2026-06-29,https://www.fcgov.com/utilities/residential/conserve/water-efficiency/hydrants-meters-and-backflow-prevention,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
-2026-06-29,https://www.fcgov.com/utilities/safety-and-security/landscape-safely/backflow-prevention/backflow-testers,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
+2026-06-29,https://www.fcgov.com/utilities/residential/conserve/water-efficiency/hydrants-meters-and-backflow-prevention,fixed,Replaced with current Fort Collins cross-connection PDF on 2026-07-11.
+2026-06-29,https://www.fcgov.com/utilities/safety-and-security/landscape-safely/backflow-prevention/backflow-testers,fixed,Replaced with current Fort Collins cross-connection PDF on 2026-07-11.
 2026-06-29,https://www.fortlauderdale.gov/government/departments-i-z/parks-recreation/sustainability/environmental-regulatory-affairs/backflow-cross-connection,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.fortlauderdale.gov/home/showpublisheddocument/27069/636806372595930000,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.fortlauderdale.gov/home/showpublisheddocument/51493/637317106006870000,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
@@ -67,13 +67,13 @@ checkedAt,url,status,note
 2026-06-29,https://www.mckinneytexas.org/DocumentCenter/View/132/Backflow-Registration-Form-General?bidId=,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.mckinneytexas.org/DocumentCenter/View/133/BPAT-Test-Report?bidId=,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.mckinneytexas.org/DocumentCenter/View/133/Backflow-Registration-Form-Fireline?bidId=,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
-2026-06-29,https://www.miamidade.gov/water/library/brochures/cross-connection-backflow.pdf,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
-2026-06-29,https://www.pwsd.org/DocumentCenter/View/4393/Backflow-Cross-Connection-Control-Guide-7-2-25-Update-ADA,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
+2026-06-29,https://www.miamidade.gov/water/library/brochures/cross-connection-backflow.pdf,fixed,Replaced with current Miami-Dade cross-connection service page on 2026-07-11.
+2026-06-29,https://www.pwsd.org/DocumentCenter/View/4393/Backflow-Cross-Connection-Control-Guide-7-2-25-Update-ADA,fixed,Replaced with current Parker Water backflow page on 2026-07-11.
 2026-06-29,https://www.queencreekaz.gov/government/utilities/water/backflow-information,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.queencreekaz.gov/government/utilities/water/contractor-information,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
-2026-06-29,https://www.roseville.ca.us/government/departments/development_services/engineering_land_development/construction_management_inspection/design_construction_standards,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
-2026-06-29,https://www.roseville.ca.us/government/departments/environmental_utilities/at_your_service/water_supply/cross_connection_and_backflow_prevention_program,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
-2026-06-29,https://www.roundrocktexas.gov/wp-content/uploads/2023/05/List-of-Registered-Testers-5.10.23.pdf,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
+2026-06-29,https://www.roseville.ca.us/government/departments/development_services/engineering_land_development/construction_management_inspection/design_construction_standards,fixed,Replaced with current Roseville water supply page on 2026-07-11.
+2026-06-29,https://www.roseville.ca.us/government/departments/environmental_utilities/at_your_service/water_supply/cross_connection_and_backflow_prevention_program,fixed,Replaced with current Roseville cross-connection page on 2026-07-11.
+2026-06-29,https://www.roundrocktexas.gov/wp-content/uploads/2023/05/List-of-Registered-Testers-5.10.23.pdf,fixed,Replaced with current Round Rock backflow program page on 2026-07-11.
 2026-06-29,https://www.santaclaraca.gov/home/showpublisheddocument/53096/636365952410470000,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.santaclaraca.gov/our-city/departments-g-z/water-sewer-utilities/cross-connection-control-policy-handbook,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.santaclaraca.gov/our-city/departments-g-z/water-sewer-utilities/development-construction-requirements,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
@@ -82,16 +82,16 @@ checkedAt,url,status,note
 2026-06-29,https://www.seminolecountyfl.gov/departments-services/utilities/water/ccc-program,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.seminolecountyfl.gov/docs/default-source/pdf/ccc-vendors-0424.pdf?sfvrsn=5f15c059_1,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.seminolecountyfl.gov/docs/default-source/pdf/what-is-a-residential-irr-water-meter-ada.pdf?sfvrsn=b3e5eda0_3,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
-2026-06-29,https://www.sjwater.com/sites/default/files/2018-03/Rule16.pdf,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
-2026-06-29,https://www.sjwater.com/sites/default/files/2018-04/Cross_Conn_Control_Backflow_Prevention.pdf,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
+2026-06-29,https://www.sjwater.com/sites/default/files/2018-03/Rule16.pdf,fixed,Replaced with current San Jose Water backflow page on 2026-07-11.
+2026-06-29,https://www.sjwater.com/sites/default/files/2018-04/Cross_Conn_Control_Backflow_Prevention.pdf,fixed,Replaced with current San Jose Water backflow page on 2026-07-11.
 2026-06-29,https://www.srcity.org/3888/Backflow-Prevention,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.srcity.org/DocumentCenter/View/45217/Backflow-Tester-Application-Checklist-PDF,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.srcity.org/DocumentCenter/View/45218/Certified-Testers-Authorized-to-Test-in-Santa-Rosa-2025-PDF,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.sswd.org/departments/water-quality,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.sswd.org/services/cross-connection-control-program,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
-2026-06-29,https://www.talgov.com/Uploads/Public/Documents/you/forms/backflow_optin.pdf,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
+2026-06-29,https://www.talgov.com/Uploads/Public/Documents/you/forms/backflow_optin.pdf,fixed,Replaced with current Tallahassee cross-connection page on 2026-07-11.
 2026-06-29,https://www.tempe.gov/government/public-works/water/backflow-prevention-program,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.tempe.gov/home/showpublisheddocument/112159/639052888033930000,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
 2026-06-29,https://www.tucsonaz.gov/files/sharedassets/public/v/1/city-services/tucson-water/water-quality/documents/backflow_tester_list_2020_march.pdf,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."
-2026-06-29,https://www.westminsterco.gov/DocumentCenter/View/12467/Cross-Connection-Control-Manual,404,Automated source URL audit on 2026-06-29; confirm manually or replace source URL.
+2026-06-29,https://www.westminsterco.gov/DocumentCenter/View/12467/Cross-Connection-Control-Manual,fixed,Replaced with current Westminster cross-connection page on 2026-07-11.
 2026-06-29,https://www.wpb.org/Departments/Public-Utilities/Cross-Connection-Control,403,"Automated source URL audit on 2026-06-29 returned 403; may be bot protection, confirm manually."

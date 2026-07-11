@@ -68,6 +68,12 @@ public class OpsIssueService {
         return brokenLinks;
     }
 
+    public long unresolvedBrokenLinkCount() {
+        return brokenLinks.stream()
+                .filter(entry -> !RESOLVED_STATUSES.contains(entry.value("status").trim().toLowerCase(Locale.US)))
+                .count();
+    }
+
     public List<OpsCsvEntry> conflicts() {
         return conflicts;
     }

@@ -15,11 +15,11 @@
     "roseville irrigation backflow",
     "roseville fire sprinkler backflow"
   ],
-  "utilityUrl": "https://www.roseville.ca.us/government/departments/environmental_utilities/at_your_service/water_supply/cross_connection_and_backflow_prevention_program",
+  "utilityUrl": "https://www.roseville.ca.us/government/departments/environmental_utilities/at_your_service/water_supply",
   "officialProgramUrls": [
-    "https://www.roseville.ca.us/government/departments/environmental_utilities/at_your_service/water_supply/cross_connection_and_backflow_prevention_program",
+    "https://www.roseville.ca.us/government/departments/environmental_utilities/at_your_service/water_supply/cross_connection_and_backflow_prevention",
     "https://www.roseville.ca.us/backflow",
-    "https://www.roseville.ca.us/government/departments/development_services/engineering_land_development/construction_management_inspection/design_construction_standards"
+    "https://www.roseville.ca.us/government/departments/environmental_utilities/at_your_service/water_supply"
   ],
   "testingFrequency": "Annually",
   "dueBasis": "Roseville requires annual testing on commercial or domestic use lines, irrigation, and fire sprinklers, and it gives customers 30 days to repair or replace a failed assembly after notice.",
@@ -42,7 +42,7 @@
   "submissionMethods": [
     {
       "label": "Roseville cross-connection control program",
-      "url": "https://www.roseville.ca.us/government/departments/environmental_utilities/at_your_service/water_supply/cross_connection_and_backflow_prevention_program",
+      "url": "https://www.roseville.ca.us/government/departments/environmental_utilities/at_your_service/water_supply/cross_connection_and_backflow_prevention",
       "kind": "program page"
     },
     {
@@ -127,7 +127,7 @@
   "sources": [
     {
       "label": "Roseville cross-connection and backflow prevention program",
-      "url": "https://www.roseville.ca.us/government/departments/environmental_utilities/at_your_service/water_supply/cross_connection_and_backflow_prevention_program",
+      "url": "https://www.roseville.ca.us/government/departments/environmental_utilities/at_your_service/water_supply/cross_connection_and_backflow_prevention",
       "kind": "official program page"
     },
     {
@@ -137,7 +137,7 @@
     },
     {
       "label": "Roseville design and construction standards",
-      "url": "https://www.roseville.ca.us/government/departments/development_services/engineering_land_development/construction_management_inspection/design_construction_standards",
+      "url": "https://www.roseville.ca.us/government/departments/environmental_utilities/at_your_service/water_supply",
       "kind": "official standards page"
     }
   ]

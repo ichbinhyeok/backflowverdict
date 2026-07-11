@@ -19,7 +19,7 @@
   "officialProgramUrls": [
     "https://www.cityofsacramento.gov/utilities/water-quality",
     "https://www.cityofsacramento.gov/content/dam/portal/dou/utilities/water/documents/Backflow%20Tester%20List.pdf",
-    "https://emd.saccounty.gov/EC/Documents/testers-list.pdf"
+    "https://emd.saccounty.gov/EH/Documents/testers-list.pdf"
   ],
   "testingFrequency": "At installation and on the local recurring certification cycle",
   "dueBasis": "Sacramento's city and county cross-connection workflow uses approved tester lists and a county portal for registered testers and electronic test entry. The city's water certification language applies up to the property line, backflow preventer, or water meter.",
@@ -51,7 +51,7 @@
     },
     {
       "label": "Sacramento County cross connection tester registry",
-      "url": "https://emd.saccounty.gov/EC/Documents/testers-list.pdf",
+      "url": "https://emd.saccounty.gov/EH/Documents/testers-list.pdf",
       "kind": "county tester registry"
     }
   ],
@@ -141,7 +141,7 @@
     },
     {
       "label": "Sacramento County tester registry",
-      "url": "https://emd.saccounty.gov/EC/Documents/testers-list.pdf",
+      "url": "https://emd.saccounty.gov/EH/Documents/testers-list.pdf",
       "kind": "official county tester list pdf"
     }
   ]

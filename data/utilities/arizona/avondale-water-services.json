@@ -18,8 +18,8 @@
   "utilityUrl": "https://www.avondaleaz.gov/government/departments/public-works/water/backflow-cross-connection",
   "officialProgramUrls": [
     "https://www.avondaleaz.gov/government/departments/public-works/water/backflow-cross-connection",
-    "https://www.avondaleaz.gov/home/showpublisheddocument/9038/638254490100330000",
-    "https://www.avondaleaz.gov/home/showpublisheddocument/17667/638119626066630000"
+    "https://www.avondaleaz.gov/government/departments/public-works/water/backflow-cross-connection/frequently-asked-questions",
+    "https://www.avondaleaz.gov/government/departments/public-works/water/backflow-cross-connection"
   ],
   "testingFrequency": "At installation and annually thereafter",
   "dueBasis": "Avondale says annual testing is required, that customers will be notified when results are due, and that only a Certified Backflow Prevention Assembly Tester approved by the City may test devices in the system.",
@@ -37,7 +37,7 @@
     "Air gap assemblies"
   ],
   "approvedTesterMode": "OFFICIAL_LIST",
-  "approvedTesterListUrl": "https://www.avondaleaz.gov/home/showpublisheddocument/9038/638254490100330000",
+  "approvedTesterListUrl": "https://www.avondaleaz.gov/government/departments/public-works/water/backflow-cross-connection/frequently-asked-questions",
   "officialListLabel": "Open the Avondale approved tester list",
   "submissionMethods": [
     {
@@ -47,12 +47,12 @@
     },
     {
       "label": "Avondale approved tester list",
-      "url": "https://www.avondaleaz.gov/home/showpublisheddocument/9038/638254490100330000",
+      "url": "https://www.avondaleaz.gov/government/departments/public-works/water/backflow-cross-connection/frequently-asked-questions",
       "kind": "official tester list"
     },
     {
       "label": "Avondale engineering requirements manual",
-      "url": "https://www.avondaleaz.gov/home/showpublisheddocument/17667/638119626066630000",
+      "url": "https://www.avondaleaz.gov/government/departments/public-works/water/backflow-cross-connection",
       "kind": "engineering manual"
     }
   ],
@@ -137,12 +137,12 @@
     },
     {
       "label": "Avondale approved tester list",
-      "url": "https://www.avondaleaz.gov/home/showpublisheddocument/9038/638254490100330000",
+      "url": "https://www.avondaleaz.gov/government/departments/public-works/water/backflow-cross-connection/frequently-asked-questions",
       "kind": "official tester list pdf"
     },
     {
       "label": "Avondale engineering requirements manual",
-      "url": "https://www.avondaleaz.gov/home/showpublisheddocument/17667/638119626066630000",
+      "url": "https://www.avondaleaz.gov/government/departments/public-works/water/backflow-cross-connection",
       "kind": "official engineering manual"
     }
   ]

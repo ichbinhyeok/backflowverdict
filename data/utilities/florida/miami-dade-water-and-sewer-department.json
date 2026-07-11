@@ -18,7 +18,7 @@
   "utilityUrl": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1517344068939644",
   "officialProgramUrls": [
     "https://www.miamidade.gov/global/service.page?Mduid_service=ser1517344068939644",
-    "https://www.miamidade.gov/water/library/brochures/cross-connection-backflow.pdf"
+    "https://www.miamidade.gov/global/service.page?Mduid_service=ser1517344068939644"
   ],
   "testingFrequency": "Upon installation and annually thereafter",
   "dueBasis": "Miami-Dade says certain customers, including irrigation users and listed hazard facilities, must install assemblies and have them tested upon installation and annually by a certified tester.",
@@ -45,7 +45,7 @@
     },
     {
       "label": "Miami-Dade cross-connection brochure",
-      "url": "https://www.miamidade.gov/water/library/brochures/cross-connection-backflow.pdf",
+      "url": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1517344068939644",
       "kind": "official brochure"
     }
   ],
@@ -117,7 +117,7 @@
     },
     {
       "label": "Miami-Dade cross-connection brochure",
-      "url": "https://www.miamidade.gov/water/library/brochures/cross-connection-backflow.pdf",
+      "url": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1517344068939644",
       "kind": "official brochure"
     }
   ]

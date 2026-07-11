@@ -18,7 +18,7 @@
   "utilityUrl": "https://www.lafayetteco.gov/directory.aspx?did=6",
   "officialProgramUrls": [
     "https://www.lafayetteco.gov/directory.aspx?did=6",
-    "https://www.backflowtest.com/customer/BF/BSI/LafayetteCO",
+    "https://www.lafayetteco.gov/590/Backflow-Testing",
     "https://codelibrary.amlegal.com/codes/lafayette/latest/lafayette_co/0-0-0-21431"
   ],
   "testingFrequency": "Annually",
@@ -45,7 +45,7 @@
     },
     {
       "label": "Lafayette BSI customer portal",
-      "url": "https://www.backflowtest.com/customer/BF/BSI/LafayetteCO",
+      "url": "https://www.lafayetteco.gov/590/Backflow-Testing",
       "kind": "reporting portal"
     },
     {
@@ -122,7 +122,7 @@
     },
     {
       "label": "Lafayette BSI customer portal",
-      "url": "https://www.backflowtest.com/customer/BF/BSI/LafayetteCO",
+      "url": "https://www.lafayetteco.gov/590/Backflow-Testing",
       "kind": "official reporting portal"
     },
     {

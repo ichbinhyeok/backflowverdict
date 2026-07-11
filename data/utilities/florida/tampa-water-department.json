@@ -44,7 +44,7 @@
     },
     {
       "label": "Tampa SwiftComply portal",
-      "url": "https://tampafl.c3swift.com/",
+      "url": "https://www.tampa.gov/water/water-quality/backflow-testing",
       "kind": "online reporting portal"
     }
   ],
@@ -111,7 +111,7 @@
   "reportWorkflow": {
     "portalVendor": "SwiftComply",
     "portalName": "Tampa SwiftComply portal",
-    "portalUrl": "https://tampafl.c3swift.com/",
+    "portalUrl": "https://www.tampa.gov/water/water-quality/backflow-testing",
     "submissionDeadlineDaysAfterTest": 7,
     "submitter": "Certified tester enrolled through Tampa's workflow",
     "requiredIdentifiers": [
@@ -155,7 +155,7 @@
     },
     {
       "label": "Tampa SwiftComply portal",
-      "url": "https://tampafl.c3swift.com/",
+      "url": "https://www.tampa.gov/water/water-quality/backflow-testing",
       "kind": "official portal"
     }
   ]
