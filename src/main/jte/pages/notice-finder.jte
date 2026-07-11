@@ -14,7 +14,7 @@
 @param java.util.List<FaqItem> faqItems = java.util.List.of()
 
 @template.layouts.app(page = page, content = @`
-    <section class="page-hero">
+    <section class="page-hero ${!query.isBlank() ? "page-hero--notice-result" : ""}">
         <div class="container page-frame page-frame--hero">
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Notice finder</span>
@@ -78,6 +78,31 @@
                             </article>
                         </div>
                     @else
+                        <article class="notice-quick-answer">
+                            <div class="notice-quick-answer__intro">
+                                <span class="eyebrow">Your likely next steps</span>
+                                <h2>${results.get(0).actionLabel()}</h2>
+                                <p>${results.get(0).actionSummary()}</p>
+                            </div>
+                            <div class="notice-quick-answer__grid">
+                                <div>
+                                    <span>When</span>
+                                    <strong>${results.get(0).dueSummary()}</strong>
+                                </div>
+                                <div>
+                                    <span>Where to submit</span>
+                                    <strong>${results.get(0).submissionSummary()}</strong>
+                                </div>
+                                <div>
+                                    <span>Who can test it</span>
+                                    <strong>${results.get(0).testerSummary()}</strong>
+                                </div>
+                            </div>
+                            <div class="notice-quick-answer__actions">
+                                <a class="button button--primary" href="${results.get(0).path()}" aria-label="Start ${results.get(0).actionLabel()} for ${results.get(0).label()}">${results.get(0).actionLabel()}</a>
+                                <a class="button button--secondary" href="/leads/new?source=/notice-finder&amp;pageFamily=notice-finder">Still unsure? Request help</a>
+                            </div>
+                        </article>
                         <article class="detail-card detail-card--key">
                             <span class="eyebrow">Best first</span>
                             <h3>${results.get(0).label()}</h3>

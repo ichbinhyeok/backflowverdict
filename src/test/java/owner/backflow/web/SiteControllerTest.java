@@ -815,6 +815,10 @@ class SiteControllerTest {
         mockMvc.perform(get("/notice-finder").queryParam("q", "Dallas SwiftComply annual notice"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Dallas backflow notice route")))
+                .andExpect(content().string(containsString("Your likely next steps")))
+                .andExpect(content().string(containsString("Schedule required testing")))
+                .andExpect(content().string(containsString("Where to submit")))
+                .andExpect(content().string(containsString("Who can test it")))
                 .andExpect(content().string(containsString("href=\"/cities/texas/dallas/annual-backflow-testing\" aria-label=\"Open top route for Dallas backflow notice route\"")))
                 .andExpect(content().string(containsString("/cities/texas/dallas/annual-backflow-testing")))
                 .andExpect(content().string(containsString("Show all matched routes")));

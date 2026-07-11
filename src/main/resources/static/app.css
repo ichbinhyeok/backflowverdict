@@ -2238,6 +2238,70 @@ p {
     background: rgba(255, 255, 255, 0.94);
 }
 
+.notice-quick-answer {
+    display: grid;
+    gap: 1.35rem;
+    margin-bottom: 1.2rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border: 1px solid rgba(20, 78, 68, 0.22);
+    border-radius: 1.25rem;
+    background: linear-gradient(135deg, #e8f5ef 0%, #f7fbfa 100%);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+.notice-quick-answer__intro {
+    max-width: 48rem;
+}
+
+.notice-quick-answer h2 {
+    margin: 0.35rem 0 0;
+    color: var(--primary);
+    font-family: var(--font-headline);
+    font-size: clamp(2rem, 4.2vw, 3.25rem);
+    letter-spacing: -0.055em;
+    line-height: 0.98;
+}
+
+.notice-quick-answer p {
+    max-width: 58ch;
+    margin: 0.7rem 0 0;
+    color: var(--text-muted);
+}
+
+.notice-quick-answer__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+}
+
+.notice-quick-answer__grid > div {
+    display: grid;
+    gap: 0.45rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(20, 78, 68, 0.2);
+}
+
+.notice-quick-answer__grid span {
+    color: #276356;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.notice-quick-answer__grid strong {
+    color: var(--primary);
+    font-size: 0.96rem;
+    line-height: 1.45;
+}
+
+.notice-quick-answer__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
 .notice-match-drawer summary {
     display: flex;
     align-items: center;
@@ -3951,6 +4015,27 @@ p {
         width: 100%;
     }
 
+    .notice-quick-answer {
+        gap: 1rem;
+        margin-bottom: 0.9rem;
+        padding: 1.1rem;
+        border-radius: 1rem;
+    }
+
+    .notice-quick-answer__grid {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+    }
+
+    .notice-quick-answer__actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .notice-quick-answer__actions .button {
+        width: 100%;
+    }
+
     .lead-capture-explainers {
         grid-template-columns: 1fr;
         gap: 0.8rem;
@@ -3994,6 +4079,28 @@ p {
     .page-hero--compact-mobile {
         padding-top: 2.6rem;
         padding-bottom: 1.25rem;
+    }
+
+    .page-hero--notice-result {
+        padding-top: 2.1rem;
+        padding-bottom: 0.8rem;
+    }
+
+    .page-hero--notice-result h1 {
+        max-width: 12ch;
+        font-size: clamp(2.4rem, 9.8vw, 4.2rem);
+    }
+
+    .page-hero--notice-result .lede {
+        margin-top: 0.8rem;
+    }
+
+    .page-hero--notice-result .notice-finder-form {
+        gap: 0.75rem;
+    }
+
+    .page-hero--notice-result .notice-hero-result {
+        margin-top: 0.75rem;
     }
 
     .page-hero--compact-mobile .page-frame {
