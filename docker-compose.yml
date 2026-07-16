@@ -12,6 +12,7 @@ services:
       SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-prod}
       SERVER_PORT: 8080
       APP_SITE_BASE_URL: ${APP_SITE_BASE_URL:-https://backflowpath.com}
+      APP_SITE_CONTENT_LAST_MODIFIED: ${APP_SITE_CONTENT_LAST_MODIFIED:-2026-07-11}
       APP_DATA_ROOT: /app/data
       APP_LEADS_ROOT: /app/leads
       APP_OPS_FRESHNESS_REPORT_PATH: /app/ops/freshness_report.json

@@ -1,10 +1,18 @@
 package owner.backflow.config;
 
+import java.time.LocalDate;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SiteRuntimeConfig {
-    private static volatile AppSiteProperties properties = new AppSiteProperties("", "BackflowPath", "", "", "");
+    private static volatile AppSiteProperties properties = new AppSiteProperties(
+            "",
+            "BackflowPath",
+            "",
+            "",
+            "",
+            LocalDate.of(2026, 7, 11)
+    );
 
     public SiteRuntimeConfig(AppSiteProperties properties) {
         SiteRuntimeConfig.properties = properties;

@@ -33,7 +33,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=arrow_forward,assignment_turned_in,build,cloud_upload,menu,monitoring,policy,verified_user&display=block" rel="stylesheet">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/app.css?v=20260711">
+    <link rel="stylesheet" href="/app.css?v=20260712">
     @if (SiteRuntimeConfig.googleAnalyticsMeasurementId() != null && !SiteRuntimeConfig.googleAnalyticsMeasurementId().isBlank())
         <script async src="https://www.googletagmanager.com/gtag/js?id=${SiteRuntimeConfig.googleAnalyticsMeasurementId()}"></script>
         <script>
@@ -350,7 +350,7 @@
         <script type="application/ld+json">$unsafe{page.structuredDataJson()}</script>
     @endif
 </head>
-<body class="site-body">
+<body class="site-body${page.canonicalUrl().endsWith("/partners/sample/customer-guide") ? " partner-demo-body" : ""}">
     <header class="site-header">
         <div class="container site-header__inner">
             <a class="brand" href="/">

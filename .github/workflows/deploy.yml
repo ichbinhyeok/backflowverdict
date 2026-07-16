@@ -82,6 +82,7 @@ jobs:
             IMAGE_NAME=shinhyeok22/backflow:latest
             SPRING_PROFILES_ACTIVE=prod
             APP_SITE_BASE_URL=https://backflowpath.com
+            APP_SITE_CONTENT_LAST_MODIFIED=2026-07-11
             APP_ADMIN_USERNAME=${{ secrets.APP_ADMIN_USERNAME }}
             APP_ADMIN_PASSWORD=${{ secrets.APP_ADMIN_PASSWORD }}
             APP_OPS_VERIFICATION_TOKEN=${{ secrets.APP_OPS_VERIFICATION_TOKEN }}

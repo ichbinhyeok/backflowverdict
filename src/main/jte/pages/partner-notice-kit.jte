@@ -10,6 +10,7 @@
                 <p class="lede">For testers, contractors, HOA teams, and property managers: send a notice clue, city, or portal name to the source-backed BackflowPath lookup flow before you explain the next step.</p>
                 <div class="hero__actions">
                     <a class="button button--primary" href="/notice-finder?ref=partner">Open the notice finder</a>
+                    <a class="button button--secondary" href="/partners/sample/customer-guide">See a customer page</a>
                     <a class="button button--secondary" href="#partner-link-builder">Create a tracked link</a>
                 </div>
             </div>

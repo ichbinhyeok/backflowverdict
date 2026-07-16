@@ -24,6 +24,7 @@ import owner.backflow.data.model.UtilityFocusContent;
 import owner.backflow.data.model.UtilityRecord;
 import owner.backflow.files.BackflowRegistryService;
 import owner.backflow.service.LeadRoutingService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +32,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.web.util.UriUtils;
@@ -293,6 +295,7 @@ public class SiteController {
     public String noticeFinderPage(
             @RequestParam(name = "q", required = false, defaultValue = "") String query,
             @RequestParam(name = "ref", required = false, defaultValue = "") String referralCode,
+            HttpServletRequest request,
             Model model
     ) {
         String trimmedQuery = query == null ? "" : query.trim();
@@ -302,7 +305,7 @@ public class SiteController {
         String shareUrl = noticeFinderShareUrl(trimmedQuery, normalizedReferralCode);
         String shareMessage = noticeFinderShareMessage(trimmedQuery, shareUrl);
         String shareEmailUrl = noticeFinderShareEmailUrl(shareMessage);
-        model.addAttribute("page", page(
+        PageMeta noticeFinderPage = page(
                 "Backflow notice finder | BackflowPath",
                 "Paste a city, utility, BSI, SwiftComply, TrackMyBackflow, Tokay, notice ID, Hazard ID, approved tester, or failed-test phrase.",
                 "/notice-finder",
@@ -314,7 +317,11 @@ public class SiteController {
                         noticeFinderStructuredData(),
                         faqStructuredData(faqItems)
                 )
-        ));
+        );
+        if (request.getQueryString() != null && !request.getQueryString().isBlank()) {
+            noticeFinderPage = noticeFinderPage.withNoindex(true);
+        }
+        model.addAttribute("page", noticeFinderPage);
         model.addAttribute("query", trimmedQuery);
         model.addAttribute("referralCode", normalizedReferralCode);
         model.addAttribute("shareUrl", shareUrl);
@@ -355,6 +362,25 @@ public class SiteController {
                 ))
         ));
         return "pages/partner-notice-kit";
+    }
+
+    @GetMapping("/partners/sample/customer-guide")
+    public String partnerCustomerGuideSamplePage(Model model) {
+        model.addAttribute("page", new PageMeta(
+                "Sample customer handoff page | BackflowPath",
+                "A sample post-test customer handoff page for a Dallas SwiftComply backflow notice.",
+                canonical("/partners/sample/customer-guide"),
+                true
+        ));
+        return "pages/partner-customer-guide-sample";
+    }
+
+    @GetMapping({"/for-providers", "/for-providers/", "/pricing", "/pricing/"})
+    public RedirectView legacyProviderAcquisitionRedirect() {
+        RedirectView redirect = new RedirectView("/claim-listing");
+        redirect.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
+        redirect.setExposeModelAttributes(false);
+        return redirect;
     }
 
     @GetMapping("/submit-backflow-report")
@@ -1286,11 +1312,12 @@ public class SiteController {
     }
 
     private LocalDate latestSitemapModified(List<SitemapEntry> entries) {
-        return entries.stream()
+        LocalDate latest = entries.stream()
                 .map(SitemapEntry::lastModified)
                 .filter(java.util.Objects::nonNull)
                 .max(LocalDate::compareTo)
                 .orElse(homeLastModified());
+        return effectiveSitemapLastModified(latest);
     }
 
     private String sitemapXml(List<SitemapEntry> urls) {
@@ -1301,7 +1328,7 @@ public class SiteController {
             xml.append("<url><loc>")
                     .append(entry.url())
                     .append("</loc><lastmod>")
-                    .append(entry.lastModified())
+                    .append(effectiveSitemapLastModified(entry.lastModified()))
                     .append("</lastmod></url>");
         }
         xml.append("</urlset>");
@@ -3879,7 +3906,7 @@ public class SiteController {
     }
 
     private LocalDate homeLastModified() {
-        LocalDate latest = LocalDate.of(2000, 1, 1);
+        LocalDate latest = effectiveSitemapLastModified(null);
         for (UtilityRecord utility : registryService.listPublishedUtilities()) {
             if (utility.lastVerified() != null && utility.lastVerified().isAfter(latest)) {
                 latest = utility.lastVerified();
@@ -3896,6 +3923,17 @@ public class SiteController {
             }
         }
         return latest;
+    }
+
+    private LocalDate effectiveSitemapLastModified(LocalDate recordLastModified) {
+        LocalDate contentLastModified = siteProperties.contentLastModified();
+        if (contentLastModified == null) {
+            return recordLastModified == null ? LocalDate.of(2000, 1, 1) : recordLastModified;
+        }
+        if (recordLastModified == null || contentLastModified.isAfter(recordLastModified)) {
+            return contentLastModified;
+        }
+        return recordLastModified;
     }
 
     private record SitemapEntry(String url, LocalDate lastModified) {

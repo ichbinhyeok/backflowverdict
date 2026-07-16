@@ -1,5 +1,6 @@
 package owner.backflow.config;
 
+import java.time.LocalDate;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 
@@ -9,6 +10,7 @@ public record AppSiteProperties(
         @DefaultValue("BackflowPath") String siteName,
         @DefaultValue("") String gaMeasurementId,
         @DefaultValue("") String supportEmail,
-        @DefaultValue("") String supportPhone
+        @DefaultValue("") String supportPhone,
+        @DefaultValue("2026-07-11") LocalDate contentLastModified
 ) {
 }

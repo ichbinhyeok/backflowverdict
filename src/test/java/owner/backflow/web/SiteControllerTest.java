@@ -288,6 +288,25 @@ class SiteControllerTest {
     }
 
     @Test
+    void legacyProviderAcquisitionRoutesPreserveSearchEquity() throws Exception {
+        mockMvc.perform(get("/for-providers"))
+                .andExpect(status().isMovedPermanently())
+                .andExpect(redirectedUrl("/claim-listing"));
+
+        mockMvc.perform(get("/pricing"))
+                .andExpect(status().isMovedPermanently())
+                .andExpect(redirectedUrl("/claim-listing"));
+
+        mockMvc.perform(get("/for-providers/"))
+                .andExpect(status().isMovedPermanently())
+                .andExpect(redirectedUrl("/claim-listing"));
+
+        mockMvc.perform(get("/pricing/"))
+                .andExpect(status().isMovedPermanently())
+                .andExpect(redirectedUrl("/claim-listing"));
+    }
+
+    @Test
     void sitemapAndCanonicalUseConfiguredBackflowPathBaseUrl() throws Exception {
         mockMvc.perform(get("/sitemap.xml"))
                 .andExpect(status().isOk())
@@ -1602,7 +1621,7 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemaps/city-intents.xml</loc>")))
                 .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemaps/portals.xml</loc>")))
                 .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemaps/providers.xml</loc>")))
-                .andExpect(content().string(containsString("<lastmod>")));
+                .andExpect(content().string(containsString("<lastmod>2026-07-11</lastmod>")));
 
         mockMvc.perform(get("/sitemaps/city-intents.xml"))
                 .andExpect(status().isOk())
@@ -1615,7 +1634,9 @@ class SiteControllerTest {
 
         mockMvc.perform(get("/sitemaps/providers.xml"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("https://backflowpath.com/providers/phoenix-western-backflow/")));
+                .andExpect(content().string(containsString(
+                        "<loc>https://backflowpath.com/providers/phoenix-western-backflow/</loc><lastmod>2026-07-11</lastmod>"
+                )));
 
         mockMvc.perform(get("/robots.txt"))
                 .andExpect(status().isOk())
@@ -1818,7 +1839,33 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Send to owner")))
                 .andExpect(content().string(containsString("/notice-finder?q=Dallas%20SwiftComply%20annual%20notice&amp;ref=dallas-testers")))
                 .andExpect(content().string(containsString("notice_share_native")))
-                .andExpect(content().string(containsString("referral_code")));
+                .andExpect(content().string(containsString("referral_code")))
+                .andExpect(content().string(containsString("<meta name=\"robots\" content=\"noindex,follow\">")))
+                .andExpect(content().string(containsString("<link rel=\"canonical\" href=\"https://backflowpath.com/notice-finder\">")))
+                .andExpect(header().string("X-Robots-Tag", "noindex,follow"));
+    }
+
+    @Test
+    void noticeFinderOnlyIndexesTheCleanLandingPage() throws Exception {
+        mockMvc.perform(get("/notice-finder"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("<meta name=\"robots\" content=\"index,follow\">")))
+                .andExpect(header().doesNotExist("X-Robots-Tag"));
+
+        mockMvc.perform(get("/notice-finder").queryParam("q", "Dallas"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("<meta name=\"robots\" content=\"noindex,follow\">")))
+                .andExpect(header().string("X-Robots-Tag", "noindex,follow"));
+
+        mockMvc.perform(get("/notice-finder").queryParam("ref", "partner"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("<meta name=\"robots\" content=\"noindex,follow\">")))
+                .andExpect(header().string("X-Robots-Tag", "noindex,follow"));
+
+        mockMvc.perform(get("/notice-finder").queryParam("utm_source", "partner-newsletter"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("<meta name=\"robots\" content=\"noindex,follow\">")))
+                .andExpect(header().string("X-Robots-Tag", "noindex,follow"));
     }
 
     @Test
@@ -1831,6 +1878,18 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("data-copy-target=\"partner-link\"")))
                 .andExpect(content().string(containsString("id=\"partner-message-open\"")))
                 .andExpect(content().string(containsString("id=\"notice-clue\"")));
+    }
+
+    @Test
+    void partnerCustomerGuideSampleIsDirectShareOnly() throws Exception {
+        mockMvc.perform(get("/partners/sample/customer-guide"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("North Texas Backflow Co.")))
+                .andExpect(content().string(containsString("Your Dallas backflow test is complete.")))
+                .andExpect(content().string(containsString("Open Dallas submission route")))
+                .andExpect(content().string(containsString("Dallas Water Utilities")))
+                .andExpect(content().string(containsString("noindex,follow")))
+                .andExpect(content().string(containsString("/notice-finder?q=Dallas%20SwiftComply%20annual%20notice&amp;ref=sample-dallas-partner")));
     }
 
     @Test
