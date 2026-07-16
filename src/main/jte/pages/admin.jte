@@ -171,6 +171,12 @@
                                     <p>No Search Console page export is loaded yet.</p>
                                     <p class="detail-meta">Expected CSV path: <code>${seoScorecard.summary().searchConsoleSourcePath()}</code></p>
                                 @endif
+                                @if (seoScorecard.searchConsole().queryAvailable())
+                                    <p><strong>${seoScorecard.searchConsole().queryRowCount()}</strong> search queries loaded from ${seoScorecard.searchConsole().queryTotalImpressions()} impressions.</p>
+                                @else
+                                    <p>No Search Console query export is loaded yet.</p>
+                                    <p class="detail-meta">Expected query CSV path: <code>${seoScorecard.searchConsole().querySourcePath()}</code></p>
+                                @endif
                             </article>
 
                             <article class="detail-card detail-card--warm">
@@ -207,6 +213,40 @@
                                                 <a href="${metric.path()}">${metric.path()}</a>
                                                 <div class="detail-meta">${metric.page()}</div>
                                             </td>
+                                            <td data-label="Bottleneck">
+                                                <strong>${metric.bottleneckLabel()}</strong>
+                                                <div class="detail-meta">Opportunity score: ${metric.opportunityScore()}</div>
+                                            </td>
+                                            <td data-label="Performance">
+                                                <div>${metric.clicks()} clicks, ${metric.impressions()} impressions</div>
+                                                <div class="detail-meta">${metric.displayCtr()} CTR, position ${metric.displayPosition()}</div>
+                                            </td>
+                                        </tr>
+                                    @endfor
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
+
+                        @if (seoScorecard.searchConsole().queryAvailable() && !seoScorecard.searchConsole().topQueryOpportunities().isEmpty())
+                            <div class="section-heading">
+                                <span class="eyebrow">Search query opportunities</span>
+                                <h2>Queries that need a clearer winning page</h2>
+                                <p>Use these rows with the page export before consolidating city and utility routes.</p>
+                            </div>
+                            <div class="table-wrap">
+                                <table class="data-table data-table--responsive">
+                                    <thead>
+                                    <tr>
+                                        <th>Query</th>
+                                        <th>Bottleneck</th>
+                                        <th>Performance</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @for (var metric : seoScorecard.searchConsole().topQueryOpportunities())
+                                        <tr>
+                                            <td data-label="Query"><strong>${metric.query()}</strong></td>
                                             <td data-label="Bottleneck">
                                                 <strong>${metric.bottleneckLabel()}</strong>
                                                 <div class="detail-meta">Opportunity score: ${metric.opportunityScore()}</div>

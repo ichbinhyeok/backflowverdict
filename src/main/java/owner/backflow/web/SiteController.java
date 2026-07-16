@@ -1150,8 +1150,6 @@ public class SiteController {
             return emptySitemapIndex();
         }
         return sitemapIndexXml(List.of(
-                new SitemapEntry(canonical("/sitemap.xml"), homeLastModified()),
-                new SitemapEntry(canonical("/sitemap-priority.xml"), latestSitemapModified(prioritySitemapEntries())),
                 new SitemapEntry(canonical("/sitemaps/core.xml"), latestSitemapModified(coreSitemapEntries())),
                 new SitemapEntry(canonical("/sitemaps/utilities.xml"), latestSitemapModified(utilitySitemapEntries())),
                 new SitemapEntry(canonical("/sitemaps/city-intents.xml"), latestSitemapModified(cityIntentSitemapEntries())),
@@ -1171,7 +1169,6 @@ public class SiteController {
         return "User-agent: *\n"
                 + "Allow: /\n\n"
                 + "Sitemap: " + canonical("/sitemap-index.xml") + "\n"
-                + "Sitemap: " + canonical("/sitemap.xml") + "\n"
                 + "Sitemap: " + canonical("/sitemap-priority.xml") + "\n";
     }
 

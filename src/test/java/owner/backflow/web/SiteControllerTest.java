@@ -1615,8 +1615,9 @@ class SiteControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(header().string("Content-Type", containsString("application/xml")))
                 .andExpect(content().string(containsString("<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">")))
-                .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemap.xml</loc>")))
-                .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemap-priority.xml</loc>")))
+                .andExpect(content().string(not(containsString("<loc>https://backflowpath.com/sitemap.xml</loc>"))))
+                .andExpect(content().string(not(containsString("<loc>https://backflowpath.com/sitemap-priority.xml</loc>"))))
+                .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemaps/core.xml</loc>")))
                 .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemaps/utilities.xml</loc>")))
                 .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemaps/city-intents.xml</loc>")))
                 .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemaps/portals.xml</loc>")))
@@ -1647,7 +1648,7 @@ class SiteControllerTest {
         mockMvc.perform(get("/robots.txt"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Sitemap: https://backflowpath.com/sitemap-index.xml")))
-                .andExpect(content().string(containsString("Sitemap: https://backflowpath.com/sitemap.xml")))
+                .andExpect(content().string(not(containsString("Sitemap: https://backflowpath.com/sitemap.xml"))))
                 .andExpect(content().string(containsString("Sitemap: https://backflowpath.com/sitemap-priority.xml")));
     }
 

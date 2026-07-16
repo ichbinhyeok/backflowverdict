@@ -46,7 +46,7 @@ public class OpsIssueService {
     static OpsIssueService forTest(List<OpsCsvEntry> brokenLinks, List<OpsCsvEntry> conflicts, int brokenLinkSuppressionDays) {
         OpsIssueService service = new OpsIssueService(
                 new AppDataProperties(""),
-                new AppOpsProperties("", "", false, "", true, "", brokenLinkSuppressionDays, "", "")
+                new AppOpsProperties("", "", false, "", true, "", brokenLinkSuppressionDays, "", "", "")
         );
         service.brokenLinks = List.copyOf(brokenLinks);
         service.conflicts = List.copyOf(conflicts);
