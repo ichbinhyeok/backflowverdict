@@ -65,7 +65,8 @@ class VerificationWorkflowServiceTest {
                 "",
                 7,
                 currentDate,
-                tempDir.resolve("storage").resolve("search-console").resolve("pages.csv").toString()
+                tempDir.resolve("storage").resolve("search-console").resolve("pages.csv").toString(),
+                tempDir.resolve("storage").resolve("search-console").resolve("queries.csv").toString()
         );
 
         ChangeLogService changeLogService = new ChangeLogService(dataProperties);

@@ -1,0 +1,318 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "BackflowPath 100 Clicks/Day SEO Audit",
+    "description": "A decision-ready audit of the gap between current organic search performance and 100 clicks per day.",
+    "generatedAt": "2026-07-16T21:50:00+09:00",
+    "cards": [
+      {
+        "id": "current_clicks",
+        "description": "Latest saved 7-day Search Console average, ending July 6, 2026.",
+        "dataset": "headline_metrics",
+        "sourceId": "gsc_saved_snapshot",
+        "metrics": [
+          { "label": "Current clicks/day", "field": "current_clicks_day", "format": "number" },
+          { "label": "Target clicks/day", "field": "target_clicks_day", "format": "number" }
+        ]
+      },
+      {
+        "id": "growth_multiple",
+        "description": "Required click growth from the latest saved daily average.",
+        "dataset": "headline_metrics",
+        "sourceId": "audit_calculations",
+        "metrics": [
+          { "label": "Required growth (x)", "field": "target_multiple", "format": "number" }
+        ]
+      },
+      {
+        "id": "crawl_health",
+        "description": "Unique URLs in the live main sitemap that passed the full crawl audit.",
+        "dataset": "headline_metrics",
+        "sourceId": "live_sitemap",
+        "metrics": [
+          { "label": "Healthy sitemap URLs", "field": "indexed_urls", "format": "number" },
+          { "label": "Technical pass rate", "field": "technical_pass_rate", "format": "percent" }
+        ]
+      },
+      {
+        "id": "intent_overlap",
+        "description": "City and utility page pairs targeting substantially overlapping local intents.",
+        "dataset": "headline_metrics",
+        "sourceId": "audit_calculations",
+        "metrics": [
+          { "label": "Overlapping page pairs", "field": "overlap_pairs", "format": "number" }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "impression_scenarios",
+        "title": "Daily impressions required by CTR scenario",
+        "subtitle": "100 organic clicks per day; latest saved traffic averaged about 112 impressions per day.",
+        "type": "bar",
+        "dataset": "ctr_scenarios",
+        "sourceId": "audit_calculations",
+        "valueFormat": "number",
+        "layout": "half",
+        "encodings": {
+          "x": { "field": "scenario", "type": "nominal", "label": "CTR scenario" },
+          "y": { "field": "required_impressions_day", "type": "quantitative", "label": "Required impressions/day" },
+          "tooltip": [
+            { "field": "multiple_vs_current", "type": "quantitative", "label": "Multiple vs current" }
+          ]
+        }
+      },
+      {
+        "id": "overlap_by_intent",
+        "title": "City and utility overlap pairs by intent",
+        "subtitle": "Candidates for query-level cannibalization review, not automatic consolidation.",
+        "type": "bar",
+        "dataset": "overlap_intents",
+        "sourceId": "audit_calculations",
+        "valueFormat": "number",
+        "layout": "half",
+        "encodings": {
+          "x": { "field": "intent", "type": "nominal", "label": "Intent" },
+          "y": { "field": "pairs", "type": "quantitative", "label": "Overlapping pairs" }
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "technical_checks",
+        "title": "Live technical SEO checks",
+        "subtitle": "Full crawl of all 1,219 unique URLs in the main sitemap on July 16, 2026.",
+        "dataset": "technical_audit",
+        "sourceId": "live_sitemap",
+        "defaultSort": { "field": "check", "direction": "asc" },
+        "density": "spacious",
+        "columns": [
+          { "field": "check", "label": "Check", "type": "text" },
+          { "field": "result", "label": "Result", "format": "number" },
+          { "field": "interpretation", "label": "Interpretation", "type": "text" }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "gsc_saved_snapshot",
+        "label": "Saved Search Console indexing and performance note",
+        "path": "ops/gsc_indexing_bottleneck_queue_2026-07-06.txt",
+        "query": {
+          "engine": "sqlite",
+          "language": "sql",
+          "sql": "SELECT 5 AS clicks_7d, 785 AS impressions_7d, 0.0064 AS ctr, 14.64 AS average_position, 5.0 / 7.0 AS current_clicks_day, 785.0 / 7.0 AS current_impressions_day",
+          "description": "Reproduces the latest saved seven-day Search Console headline metrics.",
+          "executed_at": "2026-07-16T21:50:00+09:00",
+          "filters": ["Performance window ends 2026-07-06"]
+        }
+      },
+      {
+        "id": "live_sitemap",
+        "label": "BackflowPath live main sitemap",
+        "href": "https://backflowpath.com/sitemap.xml",
+        "query": {
+          "engine": "sqlite",
+          "language": "sql",
+          "sql": "SELECT 1219 AS sitemap_urls, 1219 AS http_200, 0 AS noindex, 0 AS missing_canonical, 0 AS canonical_mismatch, 0 AS duplicate_title_groups, 0 AS missing_h1, 0 AS zero_internal_inlinks",
+          "description": "Stores the reviewed results from the July 16 full live sitemap crawl.",
+          "executed_at": "2026-07-16T21:30:00+09:00",
+          "filters": ["All 1,219 unique URLs in https://backflowpath.com/sitemap.xml"]
+        }
+      },
+      {
+        "id": "audit_calculations",
+        "label": "July 16 SEO audit calculations",
+        "path": "ops/seo_daily_100_click_audit_2026-07-16.md",
+        "query": {
+          "engine": "sqlite",
+          "language": "sql",
+          "sql": "WITH scenarios(ctr) AS (VALUES (0.0064), (0.01), (0.02), (0.03), (0.05)) SELECT ctr, 100.0 / ctr AS required_impressions_day, (100.0 / ctr) / (785.0 / 7.0) AS multiple_vs_current FROM scenarios",
+          "description": "Calculates the daily impression requirement for 100 clicks at each CTR scenario.",
+          "executed_at": "2026-07-16T21:50:00+09:00",
+          "metric_definitions": ["Required impressions/day = 100 target clicks / CTR", "Multiple vs current = required impressions/day / (785 saved impressions / 7 days)"]
+        }
+      },
+      {
+        "id": "audit_report",
+        "label": "BackflowPath 100 clicks/day SEO audit",
+        "path": "ops/seo_daily_100_click_audit_2026-07-16.md",
+        "query": {
+          "engine": "sqlite",
+          "language": "sql",
+          "sql": "SELECT 1 AS priority, 'Refresh GSC page and query exports' AS lever UNION ALL SELECT 2, 'Resolve proven intent cannibalization' UNION ALL SELECT 3, 'Earn relevant authority links' UNION ALL SELECT 4, 'Expand governing utility coverage' UNION ALL SELECT 5, 'Simplify sitemap reporting' UNION ALL SELECT 6, 'Run weekly CTR iterations'",
+          "description": "Reproduces the ordered action queue from the audit findings.",
+          "executed_at": "2026-07-16T21:50:00+09:00"
+        }
+      },
+      {
+        "id": "google_seo_guidance",
+        "label": "Google Search Central SEO Starter Guide",
+        "href": "https://developers.google.com/search/docs/fundamentals/seo-starter-guide"
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# BackflowPath 100 Clicks/Day SEO Audit"
+      },
+      {
+        "id": "executive_summary",
+        "type": "markdown",
+        "body": "## Executive Summary\n\n- **The target is still far away:** the latest saved data averages 0.71 clicks/day, so 100 clicks/day requires about 140x growth.\n- **Technical SEO is not the main blocker:** all 1,219 sitemap URLs passed the live crawl with clean indexability, canonicals, titles, H1s, and internal links.\n- **The real constraints are scale and authority:** BackflowPath needs materially more qualified impressions, stronger external validation, broader jurisdiction coverage, and less city/utility intent overlap.\n- **Fresh measurement is urgent:** the latest saved GSC window ends before the July 9-16 releases were fully measured."
+      },
+      {
+        "id": "headline_metrics_block",
+        "type": "metric-strip",
+        "cardIds": ["current_clicks", "growth_multiple", "crawl_health", "intent_overlap"]
+      },
+      {
+        "id": "traffic_gap",
+        "type": "markdown",
+        "body": "## The gap is qualified exposure, not crawlability\n\nAt the current 0.64% CTR, the site would need 15,625 impressions per day. Even if CTR improves to 3%, it still needs about 3,334 daily impressions—29.7 times the latest saved level. CTR work helps, but cannot replace authority, ranking gains, and new jurisdiction-level demand."
+      },
+      {
+        "id": "impression_chart_block",
+        "type": "chart",
+        "chartId": "impression_scenarios"
+      },
+      {
+        "id": "technical_health",
+        "type": "markdown",
+        "body": "## The technical foundation is already strong\n\nThe live crawl found no critical indexability or on-page hygiene failures across the main sitemap. More template multiplication or generic technical cleanup is unlikely to deliver the next order-of-magnitude increase. The sitemap index does repeat the same canonical URLs through full, priority, and family sitemaps, which should be simplified for cleaner GSC diagnosis."
+      },
+      {
+        "id": "technical_table_block",
+        "type": "table",
+        "tableId": "technical_checks"
+      },
+      {
+        "id": "overlap_section",
+        "type": "markdown",
+        "body": "## 453 local-intent pairs may divide ranking signals\n\nCity and utility pages are not exact technical duplicates, but many answer nearly the same search job. Use query-by-page GSC data to select a winner for each local intent. Keep both only when each page has a clearly different user job; otherwise consolidate the weaker route."
+      },
+      {
+        "id": "overlap_chart_block",
+        "type": "chart",
+        "chartId": "overlap_by_intent"
+      },
+      {
+        "id": "recommendations",
+        "type": "markdown",
+        "body": "## Recommended Next Steps\n\n1. **Refresh GSC page and query exports.** Export the latest 7-day and 28-day data and load the page CSV into the internal scorecard.\n2. **Resolve proven intent cannibalization.** Choose city or utility winners from query-by-page overlap; consolidate only where overlap is proven.\n3. **Earn relevant authority links.** Distribute linkable portal, deadline, fee, tester, and notice assets through providers and property-industry partners.\n4. **Expand governing utility coverage.** Add 150-300 high-demand, source-rich jurisdictions before creating more generic templates.\n5. **Simplify sitemap reporting.** Use family sitemaps in the index plus the priority sitemap for cleaner GSC tracking.\n6. **Run weekly CTR iterations.** Rewrite high-impression pages ranking in positions 4-15 and measure for 14 days."
+      },
+      {
+        "id": "further_questions",
+        "type": "markdown",
+        "body": "## Further Questions\n\n- Which July 9-16 pages now have impressions but no clicks?\n- For each of the 453 overlap pairs, which URL is Google already preferring?\n- Which provider, property-management, irrigation, and fire-protection partners can realistically link to the reference assets?\n- Which 150-300 new utility jurisdictions have both measurable demand and strong official-source detail?"
+      },
+      {
+        "id": "caveats",
+        "type": "markdown",
+        "body": "## Caveats and Assumptions\n\n- The latest saved GSC performance window ends July 6, 2026 and cannot verify the complete impact of the latest deployment.\n- Public search discovery checks are not a substitute for GSC index coverage or a professional backlink index.\n- Overlap pairs require query evidence before consolidation.\n- The latest saved mobile Lighthouse result predates the current deployment; a fresh PageSpeed request was rate-limited."
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-07-16T21:50:00+09:00",
+    "status": "ready",
+    "datasets": {
+      "headline_metrics": [
+        {
+          "current_clicks_day": 0.71,
+          "target_clicks_day": 100,
+          "target_multiple": 140,
+          "indexed_urls": 1219,
+          "technical_pass_rate": 1,
+          "overlap_pairs": 453
+        }
+      ],
+      "ctr_scenarios": [
+        { "scenario": "Current 0.64%", "ctr": 0.0064, "required_impressions_day": 15625, "multiple_vs_current": 139.3, "current_impressions_day": 112.1 },
+        { "scenario": "1% CTR", "ctr": 0.01, "required_impressions_day": 10000, "multiple_vs_current": 89.2, "current_impressions_day": 112.1 },
+        { "scenario": "2% CTR", "ctr": 0.02, "required_impressions_day": 5000, "multiple_vs_current": 44.6, "current_impressions_day": 112.1 },
+        { "scenario": "3% CTR", "ctr": 0.03, "required_impressions_day": 3334, "multiple_vs_current": 29.7, "current_impressions_day": 112.1 },
+        { "scenario": "5% CTR", "ctr": 0.05, "required_impressions_day": 2000, "multiple_vs_current": 17.8, "current_impressions_day": 112.1 }
+      ],
+      "overlap_intents": [
+        { "intent": "Base requirements", "pairs": 85, "review_rule": "Choose city or utility winner from GSC query overlap" },
+        { "intent": "Annual testing", "pairs": 85, "review_rule": "Choose city or utility winner from GSC query overlap" },
+        { "intent": "Failed test", "pairs": 85, "review_rule": "Choose city or utility winner from GSC query overlap" },
+        { "intent": "Irrigation", "pairs": 77, "review_rule": "Choose city or utility winner from GSC query overlap" },
+        { "intent": "Fire line", "pairs": 64, "review_rule": "Choose city or utility winner from GSC query overlap" },
+        { "intent": "Approved testers", "pairs": 57, "review_rule": "Choose city or utility winner from GSC query overlap" }
+      ],
+      "technical_audit": [
+        { "order": 1, "check": "HTTP 200", "result": 1219, "interpretation": "All main-sitemap URLs loaded successfully" },
+        { "order": 2, "check": "Sitemap noindex", "result": 0, "interpretation": "No indexability conflicts" },
+        { "order": 3, "check": "Missing canonical", "result": 0, "interpretation": "Canonical coverage is complete" },
+        { "order": 4, "check": "Canonical mismatch", "result": 0, "interpretation": "All canonicals point to the audited URL" },
+        { "order": 5, "check": "Missing or duplicate title groups", "result": 0, "interpretation": "Titles are present and unique" },
+        { "order": 6, "check": "Missing H1", "result": 0, "interpretation": "Every audited page has an H1" },
+        { "order": 7, "check": "Zero internal inlinks", "result": 0, "interpretation": "No sitemap URL is internally orphaned" }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "gsc_saved_snapshot",
+      "label": "Saved Search Console indexing and performance note",
+      "path": "ops/gsc_indexing_bottleneck_queue_2026-07-06.txt",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "sql": "SELECT 5 AS clicks_7d, 785 AS impressions_7d, 0.0064 AS ctr, 14.64 AS average_position, 5.0 / 7.0 AS current_clicks_day, 785.0 / 7.0 AS current_impressions_day",
+        "description": "Reproduces the latest saved seven-day Search Console headline metrics.",
+        "executed_at": "2026-07-16T21:50:00+09:00",
+        "filters": ["Performance window ends 2026-07-06"]
+      }
+    },
+    {
+      "id": "live_sitemap",
+      "label": "BackflowPath live main sitemap",
+      "href": "https://backflowpath.com/sitemap.xml",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "sql": "SELECT 1219 AS sitemap_urls, 1219 AS http_200, 0 AS noindex, 0 AS missing_canonical, 0 AS canonical_mismatch, 0 AS duplicate_title_groups, 0 AS missing_h1, 0 AS zero_internal_inlinks",
+        "description": "Stores the reviewed results from the July 16 full live sitemap crawl.",
+        "executed_at": "2026-07-16T21:30:00+09:00",
+        "filters": ["All 1,219 unique URLs in https://backflowpath.com/sitemap.xml"]
+      }
+    },
+    {
+      "id": "audit_calculations",
+      "label": "July 16 SEO audit calculations",
+      "path": "ops/seo_daily_100_click_audit_2026-07-16.md",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "sql": "WITH scenarios(ctr) AS (VALUES (0.0064), (0.01), (0.02), (0.03), (0.05)) SELECT ctr, 100.0 / ctr AS required_impressions_day, (100.0 / ctr) / (785.0 / 7.0) AS multiple_vs_current FROM scenarios",
+        "description": "Calculates the daily impression requirement for 100 clicks at each CTR scenario.",
+        "executed_at": "2026-07-16T21:50:00+09:00",
+        "metric_definitions": ["Required impressions/day = 100 target clicks / CTR", "Multiple vs current = required impressions/day / (785 saved impressions / 7 days)"]
+      }
+    },
+    {
+      "id": "audit_report",
+      "label": "BackflowPath 100 clicks/day SEO audit",
+      "path": "ops/seo_daily_100_click_audit_2026-07-16.md",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "sql": "SELECT 1 AS priority, 'Refresh GSC page and query exports' AS lever UNION ALL SELECT 2, 'Resolve proven intent cannibalization' UNION ALL SELECT 3, 'Earn relevant authority links' UNION ALL SELECT 4, 'Expand governing utility coverage' UNION ALL SELECT 5, 'Simplify sitemap reporting' UNION ALL SELECT 6, 'Run weekly CTR iterations'",
+        "description": "Reproduces the ordered action queue from the audit findings.",
+        "executed_at": "2026-07-16T21:50:00+09:00"
+      }
+    },
+    {
+      "id": "google_seo_guidance",
+      "label": "Google Search Central SEO Starter Guide",
+      "href": "https://developers.google.com/search/docs/fundamentals/seo-starter-guide"
+    }
+  ]
+}

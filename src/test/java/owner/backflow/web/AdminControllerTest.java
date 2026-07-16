@@ -35,12 +35,14 @@ import owner.backflow.service.LeadSubmissionGuardService;
         "app.ops.verification-token=test-ops-token",
         "app.ops.current-date=2026-06-29",
         "app.ops.write-freshness-report-on-startup=false",
-        "app.ops.search-console-pages-path=build/test-data/admin-ui/search-console/pages.csv"
+        "app.ops.search-console-pages-path=build/test-data/admin-ui/search-console/pages.csv",
+        "app.ops.search-console-queries-path=build/test-data/admin-ui/search-console/queries.csv"
 })
 @AutoConfigureMockMvc
 class AdminControllerTest {
     private static final Path LEADS_ROOT = Path.of("build", "test-data", "admin-ui", "leads");
     private static final Path SEARCH_CONSOLE_PATH = Path.of("build", "test-data", "admin-ui", "search-console", "pages.csv");
+    private static final Path SEARCH_CONSOLE_QUERIES_PATH = Path.of("build", "test-data", "admin-ui", "search-console", "queries.csv");
 
     @Autowired
     private MockMvc mockMvc;
@@ -61,6 +63,7 @@ class AdminControllerTest {
     void resetLeadsRoot() throws IOException {
         leadSubmissionGuardService.clear();
         Files.deleteIfExists(SEARCH_CONSOLE_PATH);
+        Files.deleteIfExists(SEARCH_CONSOLE_QUERIES_PATH);
         if (!Files.exists(LEADS_ROOT)) {
             registryService.reload();
             return;
@@ -115,6 +118,8 @@ class AdminControllerTest {
                 .andExpect(content().string(containsString("Search Console snapshot")))
                 .andExpect(content().string(containsString("CTR bottlenecks")))
                 .andExpect(content().string(containsString("CTR/title bottleneck")))
+                .andExpect(content().string(containsString("Search query opportunities")))
+                .andExpect(content().string(containsString("swiftcomply portal")))
                 .andExpect(content().string(containsString("Next internal SEO actions")))
                 .andExpect(content().string(containsString("/admin/seo-scorecard.json")))
                 .andExpect(content().string(containsString("Improvement candidates")))
@@ -475,6 +480,14 @@ class AdminControllerTest {
                 Top pages,Clicks,Impressions,CTR,Position
                 https://backflowpath.com/utilities/texas/dallas-water-utilities/,0,180,0.4%,9.8
                 https://backflowpath.com/utilities/texas/garland-water-utilities/,1,42,2.4%,13.2
+                """
+        );
+        Files.writeString(
+                SEARCH_CONSOLE_QUERIES_PATH,
+                """
+                Top queries,Clicks,Impressions,CTR,Position
+                swiftcomply portal,0,140,0%,8.8
+                dallas backflow report,1,45,2.2%,7.2
                 """
         );
     }
