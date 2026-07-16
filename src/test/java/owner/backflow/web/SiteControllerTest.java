@@ -1623,6 +1623,12 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemaps/providers.xml</loc>")))
                 .andExpect(content().string(containsString("<lastmod>2026-07-11</lastmod>")));
 
+        mockMvc.perform(get("/sitemaps/core.xml"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString(
+                        "<loc>https://backflowpath.com/partners/notice-kit</loc><lastmod>2026-07-11</lastmod>"
+                )));
+
         mockMvc.perform(get("/sitemaps/city-intents.xml"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("https://backflowpath.com/cities/texas/austin/submit-backflow-report")))
@@ -1889,7 +1895,9 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Open Dallas submission route")))
                 .andExpect(content().string(containsString("Dallas Water Utilities")))
                 .andExpect(content().string(containsString("noindex,follow")))
-                .andExpect(content().string(containsString("/notice-finder?q=Dallas%20SwiftComply%20annual%20notice&amp;ref=sample-dallas-partner")));
+                .andExpect(content().string(containsString("/cities/texas/dallas/submit-backflow-report")))
+                .andExpect(content().string(containsString("/cities/texas/dallas/failed-backflow-test")))
+                .andExpect(content().string(not(containsString("ref=sample-dallas-partner"))));
     }
 
     @Test

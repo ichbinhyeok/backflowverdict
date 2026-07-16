@@ -14,7 +14,7 @@
                     <h1>Your Dallas backflow test is complete.</h1>
                     <p class="partner-guide-lede">North Texas Backflow Co. has organized the next steps below so you can finish the report without guessing.</p>
                     <div class="partner-guide-hero__actions">
-                        <a class="button button--light" href="/notice-finder?q=Dallas%20SwiftComply%20annual%20notice&amp;ref=sample-dallas-partner">Open Dallas submission route</a>
+                        <a class="button button--light" href="/cities/texas/dallas/submit-backflow-report">Open Dallas submission route</a>
                         <a class="partner-guide-text-link" href="#contact">Contact your inspector <span aria-hidden="true">↓</span></a>
                     </div>
                     <p class="partner-guide-hero__microcopy">Sample partner page · Dallas, Texas · SwiftComply notice</p>
@@ -57,7 +57,7 @@
                     <article class="partner-guide-step">
                         <span class="partner-guide-step__number">2</span>
                         <div><h3>Use the required Dallas route</h3><p>Open the source-backed route to confirm the current submission path and any tester or portal requirements.</p></div>
-                        <a class="partner-guide-step__arrow" href="/notice-finder?q=Dallas%20SwiftComply%20annual%20notice&amp;ref=sample-dallas-partner" aria-label="Open Dallas SwiftComply route">↗</a>
+                        <a class="partner-guide-step__arrow" href="/cities/texas/dallas/submit-backflow-report" aria-label="Open Dallas submission route">↗</a>
                     </article>
                     <article class="partner-guide-step">
                         <span class="partner-guide-step__number">3</span>
@@ -75,7 +75,7 @@
                     <h2>Do not stop at the result.</h2>
                     <p>Ask your inspector whether repair, retest, and final report submission are included in the next step. The utility’s workflow still controls what counts as complete.</p>
                 </div>
-                <a class="button button--dark" href="/notice-finder?q=Dallas%20SwiftComply%20failed%20test&amp;ref=sample-dallas-partner">Find failed-test guidance</a>
+                <a class="button button--dark" href="/cities/texas/dallas/failed-backflow-test">Find failed-test guidance</a>
             </div>
         </section>
 

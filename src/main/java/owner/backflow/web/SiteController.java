@@ -1197,6 +1197,7 @@ public class SiteController {
         urls.add(new SitemapEntry(canonical("/contact"), homeLastModified()));
         urls.add(new SitemapEntry(canonical("/claim-listing"), homeLastModified()));
         urls.add(new SitemapEntry(canonical("/notice-finder"), homeLastModified()));
+        urls.add(new SitemapEntry(canonical("/partners/notice-kit"), homeLastModified()));
         return urls;
     }
 
