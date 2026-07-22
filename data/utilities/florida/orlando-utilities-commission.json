@@ -127,7 +127,75 @@
   "costBand": {
     "testingRange": "Residential customers pay a $4 monthly maintenance fee after installation, while commercial OUC-run annual tests are priced at $48 for 5/8-inch to 4-inch devices and $110 for 6-inch and above.",
     "repairRetestRange": "Commercial repair and retest costs sit with the customer when the device fails or must be replaced.",
-    "pricingNotes": "The utility is unusually explicit about recurring testing costs, which makes this page commercially valuable."
+    "pricingNotes": "The utility is unusually explicit about recurring testing costs, which makes this page commercially valuable.",
+    "portalFee": {
+      "amount": "$4/month",
+      "appliesTo": "OUC residential backflow maintenance fee",
+      "sourceRefs": [
+        "OUC backflow program"
+      ]
+    },
+    "feeNotes": "OUC lists commercial OUC annual testing at $48 for 5/8-inch through 4-inch devices and $110 for 6-inch and larger devices.",
+    "sourceRefs": [
+      "OUC backflow program"
+    ]
+  },
+  "reportWorkflow": {
+    "portalVendor": "OUC",
+    "portalName": "OUC residential and commercial backflow testing workflow",
+    "portalUrl": "https://www.ouc.com/about/water-services/backflow/",
+    "submitter": "OUC for residential testing and maintenance; OUC or a properly licensed plumber or backflow provider for commercial annual testing",
+    "requiredIdentifiers": [
+      "Residential or commercial customer class",
+      "Domestic, irrigation, or fire-line service context",
+      "Backflow prevention device size",
+      "Properly licensed commercial tester or installer",
+      "OUC repair deadline when a commercial device fails"
+    ],
+    "acceptanceProof": "Keep the OUC annual test or maintenance completion record, or the accepted commercial test and repair completion record when OUC assigns a repair deadline.",
+    "sourceRefs": [
+      "OUC backflow program"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": false,
+    "portalEnrollmentRequired": false,
+    "credentialDocuments": [
+      "Proper Florida license for commercial installation or testing work",
+      "Plumber, fire-line company, or backflow specialist credential as applicable",
+      "OUC commercial annual testing path when the customer chooses OUC"
+    ],
+    "deviceScopeLimit": "OUC separates residential testing handled by OUC from commercial testing that may be performed by OUC or the customer's properly licensed provider.",
+    "sourceRefs": [
+      "OUC backflow program"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Residential OUC backflow devices: annual testing and maintenance handled by OUC",
+      "Commercial OUC backflow devices: annual testing handled by OUC or the customer's properly licensed provider",
+      "Commercial failed devices: repair or replace by the OUC deadline when OUC issues one",
+      "Residential, multifamily, and commercial customers: noncompliance can move toward water-service termination or interruption"
+    ],
+    "initialTestRequired": true,
+    "pastDueLadder": [
+      "OUC maintains residential devices and retests repaired or replaced residential devices before service resumes.",
+      "Commercial customers remain responsible for repair or replacement cost when a device fails.",
+      "Failure to comply with testing requirements may result in termination of water service."
+    ],
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "OUC backflow program"
+    ]
+  },
+  "failedTestPolicy": {
+    "retestRequired": true,
+    "failedReportMustBeSubmitted": true,
+    "shutoffRisk": true,
+    "sourceRefs": [
+      "OUC backflow program"
+    ]
   },
   "sources": [
     {

@@ -18,6 +18,7 @@
   "utilityUrl": "https://www.jupiter.fl.us/243/Backflow-Prevention-Details",
   "officialProgramUrls": [
     "https://www.jupiter.fl.us/243/Backflow-Prevention-Details",
+    "https://www.jupiter.fl.us/2507/Backflow-Prevention---What-You-Need-to-K",
     "https://www.jupiter.fl.us/DocumentCenter/View/16396/Backflow_Brochure",
     "https://www.jupiter.fl.us/DocumentCenter/View/19405/Backflow-DIY-Test-Kit-Verification-Form"
   ],
@@ -41,6 +42,11 @@
       "label": "Town of Jupiter backflow prevention details",
       "url": "https://www.jupiter.fl.us/243/Backflow-Prevention-Details",
       "kind": "program page"
+    },
+    {
+      "label": "Town of Jupiter backflow prevention FAQ",
+      "url": "https://www.jupiter.fl.us/2507/Backflow-Prevention---What-You-Need-to-K",
+      "kind": "program FAQ"
     },
     {
       "label": "Town of Jupiter backflow brochure",
@@ -111,13 +117,85 @@
   "costBand": {
     "testingRange": "Testing is market-priced, but Jupiter's notice timing and shutoff risk matter more than any public countywide rate.",
     "repairRetestRange": "Repair and retest cost depends on the assembly and the owner's responsibility for corrective work.",
-    "pricingNotes": "The strongest local pressure is avoiding the town's notice sequence and shutoff risk."
+    "pricingNotes": "The strongest local pressure is avoiding the town's notice sequence and shutoff risk.",
+    "feeNotes": "Jupiter's public FAQ says typical backflow testing pricing ranges from $50 to $150, while repairs remain the owner's responsibility.",
+    "sourceRefs": [
+      "Town of Jupiter backflow prevention details",
+      "Town of Jupiter backflow prevention FAQ"
+    ]
+  },
+  "reportWorkflow": {
+    "portalVendor": "Town of Jupiter",
+    "portalName": "Town of Jupiter backflow test result database",
+    "portalUrl": "https://www.jupiter.fl.us/2507/Backflow-Prevention---What-You-Need-to-K",
+    "submitter": "Certified Backflow Prevention Technician or registered plumbing contractor submitting directly to the town database",
+    "requiredIdentifiers": [
+      "Town backflow notice or due-date record",
+      "Backflow prevention device record",
+      "Certified Backflow Prevention Technician credential",
+      "Registered plumber submitter status",
+      "Town Building Department permit for new or replacement devices"
+    ],
+    "acceptanceProof": "Keep the accepted town-database submission or confirmation that the passing test result was received before the notice ladder continues.",
+    "sourceRefs": [
+      "Town of Jupiter backflow prevention details",
+      "Town of Jupiter backflow prevention FAQ"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Certified Backflow Prevention Technician credential",
+      "Licensed plumbing contractor credential for installation work",
+      "Town database submitter registration",
+      "Town Building Department permit for new or replacement devices"
+    ],
+    "deviceScopeLimit": "Jupiter says testing is performed by a Certified Backflow Prevention Technician, while new or replacement device installation requires a licensed plumbing contractor and town permit.",
+    "sourceRefs": [
+      "Town of Jupiter backflow prevention details",
+      "Town of Jupiter backflow prevention FAQ"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Required Jupiter backflow devices: annual testing",
+      "Passing test results: submit within 30 days of the due date",
+      "New or replacement devices: obtain the required Town Building Department permit"
+    ],
+    "initialTestRequired": true,
+    "noticeLeadDays": 30,
+    "pastDueLadder": [
+      "First notice tells the owner to complete and submit the annual test result.",
+      "A second reminder follows if the town has not received a passing result.",
+      "After three reminders without a passing test result, Jupiter may temporarily shut off water service."
+    ],
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "Town of Jupiter backflow prevention details",
+      "Town of Jupiter backflow prevention FAQ"
+    ]
+  },
+  "failedTestPolicy": {
+    "retestRequired": true,
+    "failedReportMustBeSubmitted": true,
+    "shutoffRisk": true,
+    "sourceRefs": [
+      "Town of Jupiter backflow prevention details",
+      "Town of Jupiter backflow prevention FAQ"
+    ]
   },
   "sources": [
     {
       "label": "Town of Jupiter backflow prevention details",
       "url": "https://www.jupiter.fl.us/243/Backflow-Prevention-Details",
       "kind": "official program page"
+    },
+    {
+      "label": "Town of Jupiter backflow prevention FAQ",
+      "url": "https://www.jupiter.fl.us/2507/Backflow-Prevention---What-You-Need-to-K",
+      "kind": "official program FAQ"
     },
     {
       "label": "Town of Jupiter backflow brochure",
