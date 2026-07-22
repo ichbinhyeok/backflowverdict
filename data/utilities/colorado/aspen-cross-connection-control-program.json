@@ -127,6 +127,51 @@
     "repairRetestRange": "Repair and retest cost depends on whether the assembly is domestic, irrigation, or fire-related.",
     "pricingNotes": "Aspen's strongest commercial signal is the utility's operational discipline around reminders, list-based routing, and BSI reporting."
   },
+  "reportWorkflow": {
+    "portalVendor": "Backflow Solutions, Inc. / BSI Online",
+    "portalName": "Aspen BSI Online backflow assembly test reporting",
+    "portalUrl": "https://app.bsionlinetracking.com",
+    "submitter": "Certified backflow prevention assembly tester",
+    "requiredIdentifiers": [
+      "Aspen BSI notification or assembly record",
+      "Backflow prevention assembly test report",
+      "Certified tester selected by the resident or customer",
+      "Domestic, irrigation, fire, containment, or isolation device context"
+    ],
+    "acceptanceProof": "Keep the BSI Online submission record or customer portal report copy for the Aspen assembly.",
+    "sourceRefs": [
+      "Aspen cross connection control program",
+      "Aspen flyer and certified tester list"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Certified backflow prevention assembly tester status",
+      "Aspen certified tester list status",
+      "BSI Online tester portal access"
+    ],
+    "deviceScopeLimit": "Aspen customers continue to schedule annual tests with their preferred certified tester, and testers must submit results through BSI Online.",
+    "sourceRefs": [
+      "Aspen cross connection control program",
+      "Aspen flyer and certified tester list"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Containment devices for commercial and multi-family accounts: tested at least annually",
+      "Annual BSI notifications: initial notices now come directly from BSI",
+      "Anniversary-cycle testing: customers receive a reminder before the anniversary of the prior test date"
+    ],
+    "initialTestRequired": true,
+    "calendarWindow": "Aspen says BSI sends initial notifications and annual reminders come before the anniversary of the test date.",
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "Aspen cross connection control program"
+    ]
+  },
   "sources": [
     {
       "label": "Aspen cross connection control program",

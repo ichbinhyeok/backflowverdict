@@ -109,6 +109,55 @@
     "repairRetestRange": "Repair and retest cost depends on the assembly type and the property hazard class.",
     "pricingNotes": "The value of the page is in hazard-class clarity and next-action routing, not in a published county test fee."
   },
+  "reportWorkflow": {
+    "portalVendor": "Tokay",
+    "portalName": "Miami-Dade Tokay online backflow test report submission",
+    "portalUrl": "https://miamidade.tokaytest.com/",
+    "submitter": "Certified Backflow Prevention Assembly Tester with Miami-Dade WASD online credentials",
+    "requiredIdentifiers": [
+      "Unique Tokay username and password",
+      "Backflow prevention assembly test report",
+      "Assembly, service, or hazard-class context",
+      "Certified tester records"
+    ],
+    "acceptanceProof": "Miami-Dade says certified testers can submit test reports online through Tokay or submit the completed county backflow assembly test report form.",
+    "sourceRefs": [
+      "Miami-Dade cross-connection service page"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Certified Tester Information form",
+      "Business license or occupational license if applicable",
+      "Liability insurance",
+      "Test kit calibration certificate",
+      "Certified tester certificate",
+      "Contractor license if applicable"
+    ],
+    "deviceScopeLimit": "Miami-Dade requires testing by a Certified Backflow Prevention Assembly Tester and separately lists documents needed to be added to the WASD certified tester company list.",
+    "sourceRefs": [
+      "Miami-Dade cross-connection service page"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Covered backflow prevention assemblies: test upon installation and every year",
+      "Lawn irrigation systems and listed hazard facilities: use required service-connection protection when applicable",
+      "Certified testers: submit the test report through Tokay or the completed county report form"
+    ],
+    "initialTestRequired": true,
+    "pastDueLadder": [
+      "Miami-Dade places the installation and annual testing obligation on covered water customers.",
+      "Online report submission is available through Tokay for certified testers with Miami-Dade credentials."
+    ],
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "Miami-Dade cross-connection service page"
+    ]
+  },
   "sources": [
     {
       "label": "Miami-Dade cross-connection service page",

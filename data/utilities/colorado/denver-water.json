@@ -121,7 +121,68 @@
   "costBand": {
     "testingRange": "Testing is market-priced, but Denver Water adds real compliance cost through penalties and suspension risk.",
     "repairRetestRange": "Repair and retest cost varies widely by domestic, irrigation, or fire-line assembly type.",
-    "pricingNotes": "The financial risk is not just the tester invoice; it is also Denver Water's penalty and service-interruption exposure."
+    "pricingNotes": "The financial risk is not just the tester invoice; it is also Denver Water's penalty and service-interruption exposure.",
+    "fineMin": {
+      "amount": "$250",
+      "currency": "USD",
+      "appliesTo": "Penalty after three mailed notification letters are ignored and service moves into suspension status",
+      "sourceRefs": [
+        "Denver Water backflow program"
+      ]
+    },
+    "sourceRefs": [
+      "Denver Water backflow program"
+    ]
+  },
+  "reportWorkflow": {
+    "portalVendor": "Denver Water Cross-Connection Control office",
+    "portalName": "Denver Water test report email workflow",
+    "portalUrl": "https://www.denverwater.org/sites/default/files/2017-05/backflow-device-test-maintenance-report.pdf",
+    "submitter": "Certified backflow prevention assembly tester",
+    "requiredIdentifiers": [
+      "Denver Water backflow test and maintenance report",
+      "Assembly installation or annual testing context",
+      "Service type such as domestic, irrigation, or fire line",
+      "Certified tester information"
+    ],
+    "acceptanceProof": "Keep the completed test report sent to Denver Water's Cross-Connection Control office at crossconnectioncontrol@denverwater.org.",
+    "sourceRefs": [
+      "Denver Water backflow program",
+      "Denver Water test and maintenance report"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": false,
+    "portalEnrollmentRequired": false,
+    "credentialDocuments": [
+      "Certified backflow prevention assembly tester status",
+      "ABPA or ASSE certification for domestic and irrigation backflow assemblies",
+      "State of Colorado Fire Suppression System Contractor-Backflow certification for fire assemblies"
+    ],
+    "deviceScopeLimit": "Domestic and irrigation assemblies may be tested, inspected, and repaired by certified testers with ABPA or ASSE certification; fire assemblies need the additional State of Colorado Fire Suppression System Contractor-Backflow certification to be accepted by Denver Water.",
+    "sourceRefs": [
+      "Denver Water backflow program"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "All required assemblies: tested upon installation and annually thereafter",
+      "Irrigation assemblies: tested as water is turned on during the May-to-September irrigation testing season",
+      "Backflow installation or testing compliance: Denver Water expects completion within 60 days unless the Cross Connection Control team is notified"
+    ],
+    "initialTestRequired": true,
+    "noticeLeadDays": 30,
+    "pastDueLadder": [
+      "Denver Water sends a reminder notice 30 days before the annual test is due.",
+      "Denver Water sends three notices to the service address and backflow contact before disconnection within a 60-day time frame.",
+      "A $250 penalty is assessed after three mailed notification letters are not responded to and service enters suspension status."
+    ],
+    "calendarWindow": "Irrigation backflow testing season is May through September; annual notices are sent before the due date.",
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "Denver Water backflow program"
+    ]
   },
   "sources": [
     {

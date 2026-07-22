@@ -28,13 +28,21 @@
             <div class="side-stack">
                 <article class="panel panel--status">
                     <span class="stat-card__label">Priority risk</span>
-                    <div class="stat-card__value">Water shutoff risk</div>
-                    <p class="stat-card__meta">A failed device means the water authority can escalate quickly if repair and retest are not completed on time.</p>
+                    @if (utility.failedTestPolicy().shutoffRisk() != null && utility.failedTestPolicy().shutoffRisk())
+                        <div class="stat-card__value">Water shutoff risk</div>
+                        <p class="stat-card__meta">This utility record has a source-backed shutoff or service-interruption signal, so repair, retest, and accepted reporting should be treated as urgent.</p>
+                    @elseif (utility.failedTestPolicy().hasContent())
+                        <div class="stat-card__value">Source-backed deadline</div>
+                        <p class="stat-card__meta">This utility publishes a failed-test, repair, retest, inspection, or failed-report requirement. Follow that local rule before relying on generic repair advice.</p>
+                    @else
+                        <div class="stat-card__value">Confirm local deadline</div>
+                        <p class="stat-card__meta">This utility page has failure context, but no structured utility-specific repair or failed-report deadline has been verified yet.</p>
+                    @endif
                 </article>
                 <article class="detail-card">
                     <span class="stat-card__label">Legal status</span>
-                    <div class="stat-card__value" style="font-size: 2rem;">Notice of violation</div>
-                    <p class="stat-card__meta">Use the utility page and source notes below before treating any repair offer as sufficient proof of compliance.</p>
+                    <div class="stat-card__value" style="font-size: 2rem;">${utility.failedTestPolicy().hasContent() ? "Verified local branch" : "Source check needed"}</div>
+                    <p class="stat-card__meta">Use the official utility page and source notes below before treating any repair offer as sufficient proof of compliance.</p>
                 </article>
             </div>
         </div>
@@ -110,6 +118,18 @@
                     <div class="metadata-block">
                         <strong>Cost exposure</strong>
                         <span>${utility.costBand().repairRetestRange()}</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Published failed-test rule</strong>
+                        @if (utility.failedTestPolicy().failedReportDeadlineHours() != null)
+                            <span>${utility.failedTestPolicy().failedReportDeadlineLabel()}</span>
+                        @elseif (utility.failedTestPolicy().repairDeadlineDays() != null)
+                            <span>${utility.failedTestPolicy().repairDeadlineLabel()}</span>
+                        @elseif (utility.failedTestPolicy().retestRequired() != null && utility.failedTestPolicy().retestRequired())
+                            <span>Utility-specific retest requirement is source-backed; confirm the due timing in the official workflow.</span>
+                        @else
+                            <span>No utility-specific failed-test deadline has been structured for this record yet; confirm with the program contact.</span>
+                        @endif
                     </div>
                     <div class="metadata-block">
                         <strong>Official source trail</strong>

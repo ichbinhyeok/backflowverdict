@@ -122,6 +122,53 @@
     "repairRetestRange": "Repair and retest cost depends on assembly type and service class.",
     "pricingNotes": "Castle Rock's main commercial advantage is a clean certified-tester workflow plus list freshness."
   },
+  "reportWorkflow": {
+    "portalVendor": "Castle Rock Water",
+    "portalName": "Castle Rock annual backflow testing notice workflow",
+    "portalUrl": "https://www.crgov.com/2440/Cross-Connection-Backflow",
+    "submitter": "Certified backflow assembly tester permitted to test within the Town of Castle Rock",
+    "requiredIdentifiers": [
+      "Castle Rock annual testing notification",
+      "Specific deadline from Castle Rock Water",
+      "Certified tester status",
+      "Backflow prevention assembly record"
+    ],
+    "acceptanceProof": "Keep the Castle Rock Water annual testing record and certified tester documentation tied to the notice deadline.",
+    "sourceRefs": [
+      "Castle Rock cross-connection and backflow page",
+      "Castle Rock tester list PDF"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": false,
+    "credentialDocuments": [
+      "Current tester certification",
+      "Current gauge calibration",
+      "Certificate of insurance",
+      "Town certified tester list status"
+    ],
+    "deviceScopeLimit": "Only certified backflow assembly testers are permitted to test backflow assemblies within the Town of Castle Rock.",
+    "sourceRefs": [
+      "Castle Rock cross-connection and backflow page",
+      "Castle Rock tester list PDF"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "All businesses: annual testing",
+      "Nonresidential irrigation systems: annual testing",
+      "Certain properties with fire suppression systems: annual testing",
+      "Town irrigation systems: approved assembly required and periodic testing recommended or required depending on system type"
+    ],
+    "initialTestRequired": true,
+    "calendarWindow": "Castle Rock Water sends customers required to test an annual notification with a specific deadline.",
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "Castle Rock cross-connection and backflow page"
+    ]
+  },
   "sources": [
     {
       "label": "Castle Rock cross-connection and backflow page",

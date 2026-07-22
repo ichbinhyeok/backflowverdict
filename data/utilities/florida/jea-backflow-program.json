@@ -126,7 +126,72 @@
   "costBand": {
     "testingRange": "Testing is market-priced when the owner chooses a tester, but JEA can bill $35 for a utility-arranged residential test if the owner does not submit results in time.",
     "repairRetestRange": "Repair and retest cost depends on device class, especially for commercial and fire-side assemblies.",
-    "pricingNotes": "JEA's strongest local value is a fully operational utility workflow plus a public tester list."
+    "pricingNotes": "JEA's strongest local value is a fully operational utility workflow plus a public tester list.",
+    "sourceRefs": [
+      "JEA commercial backflow requirements",
+      "JEA residential backflow requirements"
+    ]
+  },
+  "reportWorkflow": {
+    "portalVendor": "JEA qualified vendor workflow",
+    "portalName": "JEA commercial and residential backflow testing workflow",
+    "portalUrl": "https://www.jea.com/About/Water_Supply/Backflow/Commercial_Backflow_Requirements/",
+    "submitter": "JEA qualified backflow prevention vendor or utility-routed residential tester",
+    "requiredIdentifiers": [
+      "JEA qualified vendor status",
+      "Commercial containment or residential irrigation service context",
+      "Installation, annual test, failed test, repair, or replacement context",
+      "Backflow preventer assembly type"
+    ],
+    "acceptanceProof": "Keep the completed JEA-qualified vendor test record and any repair, replacement, or retest documentation for failed assemblies.",
+    "sourceRefs": [
+      "JEA qualified backflow testers",
+      "JEA commercial backflow requirements",
+      "JEA residential backflow requirements"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": false,
+    "credentialDocuments": [
+      "JEA qualified backflow prevention vendor status",
+      "Required training",
+      "Proper certifications",
+      "JEA standards compliance"
+    ],
+    "deviceScopeLimit": "JEA says its qualified vendor program exists so vendors testing customer backflow preventers have the required training, proper certifications, and JEA-standard business practices.",
+    "sourceRefs": [
+      "JEA qualified backflow testers",
+      "JEA commercial backflow requirements"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Commercial JEA water services: install required containment backflow prevention and test annually",
+      "Approved commercial backflow preventers: test upon installation and annually thereafter",
+      "Residential irrigation and reclaimed-water protections: follow JEA's residential backflow checkup workflow",
+      "Commercial failed tests: repair or replace and retest within 30 days"
+    ],
+    "initialTestRequired": true,
+    "pastDueLadder": [
+      "JEA tracks installation and annual testing of containment backflow preventers.",
+      "Failed commercial systems must be repaired or replaced and retested within 30 days.",
+      "Ignoring required repair or replacement work can lead to JEA-recovered testing costs, fines, or water service interruption under the published FAQ."
+    ],
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "JEA commercial backflow requirements",
+      "JEA residential backflow requirements"
+    ]
+  },
+  "failedTestPolicy": {
+    "repairDeadlineDays": 30,
+    "retestRequired": true,
+    "shutoffRisk": true,
+    "sourceRefs": [
+      "JEA commercial backflow requirements"
+    ]
   },
   "sources": [
     {
