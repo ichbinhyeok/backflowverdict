@@ -95,6 +95,48 @@
     "repairRetestRange": "Repair and retest costs depend on the assembly and whether another accepted upload is required.",
     "pricingNotes": "Buena Park's public page emphasizes Aqua Backflow inventory and record access rather than a public retail test price."
   },
+  "reportWorkflow": {
+    "portalVendor": "Aqua Backflow",
+    "portalName": "TrackMyBackflow web-based reporting and record access",
+    "portalUrl": "https://www.aquabackflow.com/trackmybackflow/",
+    "submitter": "Device tester, contractor, or consultant with Aqua Backflow portal access",
+    "requiredIdentifiers": [
+      "City Utilities Division annual notice",
+      "Aqua Backflow device or customer inventory record",
+      "Backflow prevention device test data",
+      "Customer or facility record access"
+    ],
+    "acceptanceProof": "Confirm that the tester recorded and uploaded the test data in the Aqua Backflow / TrackMyBackflow portal and that the customer record is accessible.",
+    "sourceRefs": [
+      "Buena Park backflow reporting",
+      "Aqua Backflow TrackMyBackflow product page"
+    ]
+  },
+  "testerGate": {
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Aqua Backflow portal account or login",
+      "Backflow device test data upload access"
+    ],
+    "deviceScopeLimit": "Buena Park's official page emphasizes commercial, industrial, and higher-health-hazard facilities; residential customers should follow a City Utilities Division notice when issued.",
+    "sourceRefs": [
+      "Buena Park backflow reporting",
+      "Aqua Backflow TrackMyBackflow product page"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Backflow prevention devices: tested upon installation",
+      "Notified City Utilities Division customers: annual testing",
+      "Commercial, industrial, and higher-health-hazard facilities: core cross-connection control focus"
+    ],
+    "initialTestRequired": true,
+    "calendarWindow": "Buena Park says devices are tested upon installation and annually as customers are notified by the City Utilities Division.",
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "Buena Park backflow reporting"
+    ]
+  },
   "sources": [
     {
       "label": "Buena Park backflow reporting",

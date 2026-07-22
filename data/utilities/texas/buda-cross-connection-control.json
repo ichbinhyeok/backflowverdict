@@ -121,6 +121,66 @@
     "repairRetestRange": "Repair and retest costs depend on assembly condition and access.",
     "pricingNotes": "The public page is stronger on submission and registration workflow than on retail quote ranges."
   },
+  "reportWorkflow": {
+    "portalVendor": "VEPO",
+    "portalName": "Buda VEPO BPAT testing and maintenance reports",
+    "portalUrl": "https://www.vepollc.com/save_bpats.aspx",
+    "submissionDeadlineDaysAfterTest": 5,
+    "submitter": "BPAT registered with the City of Buda through VEPO",
+    "requiredIdentifiers": [
+      "City of Buda BPAT registration",
+      "Backflow prevention assembly test or maintenance report",
+      "Customer or service location",
+      "Signed and dated original test, repair, or overhaul form when applicable"
+    ],
+    "acceptanceProof": "Keep the VEPO submission record showing the signed and dated BPAT report was submitted to the City within five working days.",
+    "sourceRefs": [
+      "Buda cross-connection control",
+      "VEPO registered backflow tester search"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Current TCEQ BPAT endorsement",
+      "City of Buda BPAT registration through VEPO",
+      "Annual gauge calibration record"
+    ],
+    "gaugeCalibrationWindowMonths": 12,
+    "offListAllowedIfAccepted": false,
+    "deviceScopeLimit": "Buda says the listed BPATs are not City-endorsed recommendations, but BPATs wishing to perform testing must be registered with the City through VEPO.",
+    "sourceRefs": [
+      "Buda cross-connection control",
+      "VEPO registered backflow tester search"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "New construction backflow devices: installed and tested",
+      "High-hazard commercial, industrial, and residential water connections: annual testing",
+      "Sprinkler-system backflow assemblies: tested upon installation; health-hazard assemblies certified at least annually"
+    ],
+    "initialTestRequired": true,
+    "reportDueDaysAfterTest": 5,
+    "pastDueLadder": [
+      "Signed and dated originals of tests, repairs, and overhauls are submitted to the City within five working days.",
+      "Defective assemblies must be repaired, overhauled, or replaced at the customer's expense."
+    ],
+    "calendarWindow": "Buda enforces annual testing on high-hazard water connections and requires submitted reports within five working days of testing or repair activity.",
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "Buda cross-connection control"
+    ]
+  },
+  "failedTestPolicy": {
+    "retestRequired": true,
+    "failedReportMustBeSubmitted": true,
+    "sourceRefs": [
+      "Buda cross-connection control"
+    ]
+  },
   "sources": [
     {
       "label": "Buda cross-connection control",

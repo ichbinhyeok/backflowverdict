@@ -104,13 +104,82 @@
   "costBand": {
     "testingRange": "Private tester pricing varies, plus a City-administered per-device annual inspection fee.",
     "repairRetestRange": "Repair and retest costs vary with assembly type and installation conditions.",
-    "pricingNotes": "Frisco is one of the clearer cities on the existence of a City fee layered on top of private testing charges."
+    "pricingNotes": "Frisco is one of the clearer cities on the existence of a City fee layered on top of private testing charges.",
+    "filingFee": {
+      "amount": "$40",
+      "currency": "USD",
+      "appliesTo": "Per-device backflow test fee administered through BSI",
+      "sourceRefs": [
+        "Frisco backflow program"
+      ]
+    },
+    "sourceRefs": [
+      "Frisco backflow program"
+    ]
+  },
+  "reportWorkflow": {
+    "portalVendor": "Backflow Solutions, Inc. / BSI Online",
+    "portalName": "Frisco BSI Online backflow administration",
+    "portalUrl": "https://www.bsionlinetracking.com/",
+    "submitter": "Licensed backflow tester or testing company working through BSI",
+    "requiredIdentifiers": [
+      "Frisco water customer or service address",
+      "Backflow prevention assembly record",
+      "Device or assembly test-port context",
+      "BSI customer or tester workflow record"
+    ],
+    "acceptanceProof": "Keep the BSI/Frisco device record or submission confirmation showing the required installation or annual test workflow was completed.",
+    "filingFee": {
+      "amount": "$40",
+      "currency": "USD",
+      "appliesTo": "Per-device backflow test fee administered through BSI",
+      "sourceRefs": [
+        "Frisco backflow program"
+      ]
+    },
+    "sourceRefs": [
+      "Frisco backflow program",
+      "BSI Online tracking"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Licensed backflow tester status",
+      "BSI registered tester access",
+      "Frisco-registered plumber or irrigator status when installation work applies"
+    ],
+    "deviceScopeLimit": "Frisco says the required assembly type depends on the hazard identified by the Public Works Backflow Inspector; installation work may require a Frisco-registered plumber or irrigator before annual testing applies.",
+    "sourceRefs": [
+      "Frisco backflow program"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Certain testable assemblies: tested upon installation and annually thereafter",
+      "Irrigation-related assemblies: follow Frisco permit, registration, and approval workflow before related inspections",
+      "Hazard-reviewed sites: assembly type depends on Public Works Backflow Inspector review"
+    ],
+    "initialTestRequired": true,
+    "calendarWindow": "Frisco's official page says certain assemblies with test ports must be tested upon installation and annually thereafter by a licensed tester.",
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "Frisco backflow program",
+      "Frisco irrigation page"
+    ]
   },
   "sources": [
     {
       "label": "Frisco backflow program",
       "url": "https://www.friscotexas.gov/165/Backflow",
       "kind": "official program page"
+    },
+    {
+      "label": "BSI Online tracking",
+      "url": "https://www.bsionlinetracking.com/",
+      "kind": "official linked reporting site"
     },
     {
       "label": "Frisco irrigation page",

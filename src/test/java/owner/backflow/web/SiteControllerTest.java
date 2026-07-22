@@ -108,7 +108,7 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Start with a state guide, then open the exact utility page.")))
                 .andExpect(content().string(containsString("Browse by state")))
                 .andExpect(content().string(containsString("Fastest local drops")))
-                .andExpect(content().string(containsString("/cities/texas/dallas/submit-backflow-report")))
+                .andExpect(content().string(containsString("/cities/texas/buda/submit-backflow-report")))
                 .andExpect(content().string(containsString(statesHelpPath)));
 
         mockMvc.perform(get("/metros"))
