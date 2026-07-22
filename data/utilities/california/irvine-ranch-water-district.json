@@ -114,6 +114,54 @@
     "repairRetestRange": "Repair and retest cost depends on assembly type and site hazard, not a district-set price sheet.",
     "pricingNotes": "The monetizable value is the district determination and tester-routing clarity rather than a published fee table."
   },
+  "reportWorkflow": {
+    "portalVendor": "Irvine Ranch Water District",
+    "portalName": "IRWD backflow prevention assembly test and maintenance report form",
+    "portalUrl": "https://www.irwd.com/get-help/backflow-prevention",
+    "submitter": "Backflow assembly tester approved by the Orange County Health Care Agency",
+    "requiredIdentifiers": [
+      "IRWD-required assembly record",
+      "Approved assembly type",
+      "Backflow prevention assembly test and maintenance report form",
+      "Certified tester record"
+    ],
+    "acceptanceProof": "Keep the IRWD backflow prevention assembly test and maintenance report form and certified tester documentation once the district-required assembly is tested.",
+    "sourceRefs": [
+      "IRWD Backflow Prevention",
+      "IRWD tester list"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": false,
+    "portalEnrollmentRequired": false,
+    "credentialDocuments": [
+      "Orange County Health Care Agency-approved backflow assembly tester status",
+      "Certified tester listing or equivalent certification",
+      "IRWD test and maintenance report form"
+    ],
+    "deviceScopeLimit": "IRWD says annual testing is done by backflow assembly testers approved by the Orange County Health Care Agency and points customers to a certified tester list.",
+    "sourceRefs": [
+      "IRWD Backflow Prevention",
+      "IRWD tester list"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "IRWD service-area assemblies: tested annually",
+      "Residential, commercial, and industrial customers: install and maintain assemblies when IRWD determines contamination potential exists",
+      "Lawn irrigation and home service-connection assemblies: install approved, testable assemblies when required"
+    ],
+    "initialTestRequired": true,
+    "pastDueLadder": [
+      "IRWD notifies the customer when a backflow assembly is required.",
+      "Once required, the customer must install and maintain an approved backflow prevention assembly."
+    ],
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "IRWD Backflow Prevention"
+    ]
+  },
   "sources": [
     {
       "label": "IRWD Backflow Prevention",

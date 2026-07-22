@@ -196,15 +196,15 @@
                 <div class="metadata-grid">
                     <div class="metadata-block">
                         <strong>Owner search</strong>
-                        <span>“Where do I submit my backflow report?” Match the utility, notice/device ID, due date, and proof of accepted filing.</span>
+                        <span>Where do I submit my backflow report? Match the utility, notice/device ID, due date, and proof of accepted filing.</span>
                     </div>
                     <div class="metadata-block">
                         <strong>Tester search</strong>
-                        <span>“Which portal does this city use?” Confirm portal enrollment, accepted credentials, gauge calibration, and report upload rules.</span>
+                        <span>Which portal does this city use? Confirm portal enrollment, accepted credentials, gauge calibration, and report upload rules.</span>
                     </div>
                     <div class="metadata-block">
                         <strong>Failed-test search</strong>
-                        <span>“My backflow test failed.” Repair, retest, and accepted resubmission usually come before compliance is closed.</span>
+                        <span>My backflow test failed. Repair, retest, and accepted resubmission usually come before compliance is closed.</span>
                     </div>
                     <div class="metadata-block">
                         <strong>AI answer source</strong>
@@ -219,6 +219,43 @@
             </article>
         </div>
     </section>
+
+    @if (!overview)
+        <section class="section section--tight">
+            <div class="container">
+                <article class="detail-card detail-card--key">
+                    <div class="section-heading">
+                        <span class="eyebrow">Common lookup phrases</span>
+                        <h2>${portalName} searches this page is built to answer</h2>
+                        <p>Use these phrases as the practical clue set from a notice, tester upload screen, or property manager handoff.</p>
+                    </div>
+                    <div class="metadata-grid metadata-grid--three">
+                        @if (portalSlug.equals("swiftcomply"))
+                            <div class="metadata-block"><strong>SwiftComply portal</strong><span>Match the utility, device record, account clue, and accepted report route before filing.</span></div>
+                            <div class="metadata-block"><strong>C3Swift backflow</strong><span>Some utilities label the SwiftComply workflow as C3Swift or city-specific online submission.</span></div>
+                            <div class="metadata-block"><strong>Submit backflow report</strong><span>Confirm tester enrollment, calibration status, due date, and filing proof.</span></div>
+                        @elseif (portalSlug.equals("aqua"))
+                            <div class="metadata-block"><strong>TrackMyBackflow</strong><span>Look for the Hazard ID, Site ID, or customer notice before the tester enters the report.</span></div>
+                            <div class="metadata-block"><strong>Aqua Backflow</strong><span>Confirm the city or utility program that routes reports through Aqua Backflow.</span></div>
+                            <div class="metadata-block"><strong>Filing fee clue</strong><span>Some Aqua/TrackMyBackflow utilities publish a filing fee or returned-report rule.</span></div>
+                        @elseif (portalSlug.equals("tokay"))
+                            <div class="metadata-block"><strong>Tokay WebTest</strong><span>Confirm whether the tester needs utility credentials before online report entry.</span></div>
+                            <div class="metadata-block"><strong>WebTest report entry</strong><span>Match the assembly, service, tester record, and accepted submission path.</span></div>
+                            <div class="metadata-block"><strong>Tester approval</strong><span>Tokay routes often depend on certification, license, insurance, or test-kit calibration proof.</span></div>
+                        @elseif (portalSlug.equals("sprybackflow"))
+                            <div class="metadata-block"><strong>SpryBackflow portal</strong><span>Match the annual notice, utility account, assembly record, and online submission route.</span></div>
+                            <div class="metadata-block"><strong>Aurora SpryBackflow</strong><span>Aurora is the clearest source-backed SpryBackflow route in this database.</span></div>
+                            <div class="metadata-block"><strong>Online test submission</strong><span>Keep proof that the utility accepted the submitted report.</span></div>
+                        @else
+                            <div class="metadata-block"><strong>${portalName} portal</strong><span>Match the exact utility, tester gate, notice clue, and report acceptance proof.</span></div>
+                            <div class="metadata-block"><strong>Submit report</strong><span>Do not treat a passed field test as complete until the utility accepts the filing.</span></div>
+                            <div class="metadata-block"><strong>Failed test</strong><span>Repair and retest rules may use a different deadline or closeout path.</span></div>
+                        @endif
+                    </div>
+                </article>
+            </div>
+        </section>
+    @endif
 
     @if (!priorityRoutes.isEmpty())
         <section class="section section--tight">

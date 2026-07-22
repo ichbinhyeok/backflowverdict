@@ -267,8 +267,8 @@ public class SiteController {
         String portalName = portalName(portalSlug);
         List<FaqItem> faqItems = portalFaqItems(portalSlug, portalName, utilities);
         model.addAttribute("page", page(
-                portalName + " backflow portal: city routes and report submission | BackflowPath",
-                "Find " + portalName + " backflow report submission routes by city, tester requirements, notice clues, and accepted filing proof.",
+                portalDetailPageTitle(portalSlug, portalName),
+                portalDetailPageDescription(portalSlug, portalName),
                 "/backflow-reporting-portals/" + portalSlug,
                 combineStructuredData(
                         breadcrumbStructuredData(List.of(
@@ -2238,12 +2238,32 @@ public class SiteController {
         return switch (portalSlug.toLowerCase(Locale.US)) {
             case "bsi" -> "Find utilities using BSI Online or Backflow Solutions for tester enrollment and backflow test report submission.";
             case "weirs" -> "Find utilities using WEIRS for tester lookup, water inspection, or backflow report submission.";
-            case "swiftcomply" -> "Find utilities using SwiftComply or C3Swift for official backflow report submission.";
+            case "swiftcomply" -> "Find utilities using SwiftComply or C3Swift for official backflow report submission, device records, and accepted filing proof.";
             case "vepo" -> "Find utilities using VEPO or Envirotrax for tester registration and backflow report submission.";
-            case "aqua" -> "Find utilities using Aqua Backflow or TrackMyBackflow for test reports, fees, or tester registration.";
-            case "tokay" -> "Find utilities using Tokay WebTest for tester approval, credentials, or online backflow reports.";
-            case "sprybackflow" -> "Find utilities using SpryBackflow for official backflow test report submission.";
+            case "aqua" -> "Find utilities using Aqua Backflow or TrackMyBackflow for Hazard ID, Site ID, test reports, filing fees, or tester registration.";
+            case "tokay" -> "Find utilities using Tokay WebTest for tester approval, credentials, online backflow reports, and accepted submission proof.";
+            case "sprybackflow" -> "Find utilities using SpryBackflow for official backflow test report submission, annual notices, and utility acceptance proof.";
             default -> "Find utility backflow reporting portal routes and online submission workflows.";
+        };
+    }
+
+    private String portalDetailPageTitle(String portalSlug, String portalName) {
+        return switch (portalSlug.toLowerCase(Locale.US)) {
+            case "swiftcomply" -> "SwiftComply portal backflow report routes | BackflowPath";
+            case "aqua" -> "Aqua Backflow and TrackMyBackflow portal routes | BackflowPath";
+            case "tokay" -> "Tokay WebTest backflow report routes | BackflowPath";
+            case "sprybackflow" -> "SpryBackflow backflow report portal routes | BackflowPath";
+            default -> portalName + " backflow portal: city routes and report submission | BackflowPath";
+        };
+    }
+
+    private String portalDetailPageDescription(String portalSlug, String portalName) {
+        return switch (portalSlug.toLowerCase(Locale.US)) {
+            case "swiftcomply" -> "Find SwiftComply and C3Swift backflow report routes by city, tester requirements, notice clues, and accepted filing proof.";
+            case "aqua" -> "Find Aqua Backflow and TrackMyBackflow routes by city, including Hazard ID, Site ID, filing fee, tester gate, and accepted report proof.";
+            case "tokay" -> "Find Tokay WebTest backflow report routes by utility, including tester approval, credentials, notice clues, and online submission proof.";
+            case "sprybackflow" -> "Find SpryBackflow backflow report routes by utility, including annual notices, tester submission, and accepted filing proof.";
+            default -> "Find " + portalName + " backflow report submission routes by city, tester requirements, notice clues, and accepted filing proof.";
         };
     }
 
@@ -2920,6 +2940,12 @@ public class SiteController {
 
     private String utilityFocusPageTitle(UtilityRecord utility, String focus) {
         String location = utilitySearchLocation(utility);
+        if (focus.equalsIgnoreCase("annual testing") && utilityContainsAny(utility, "irvine ranch", "irwd")) {
+            return location + " backflow prevention and annual test | BackflowPath";
+        }
+        if (focus.equalsIgnoreCase("annual testing") && utilityContainsAny(utility, "parker water", "pwsd")) {
+            return location + " backflow preventer testing and portal | BackflowPath";
+        }
         return switch (focus.toLowerCase(Locale.US)) {
             case "annual testing" -> location + " utility annual backflow test | BackflowPath";
             case "failed test" -> location + " utility failed backflow test and retest | BackflowPath";

@@ -129,6 +129,69 @@
     "repairRetestRange": "Repair and retest cost depends on assembly type, fire-service complexity, and how quickly the failed-device clock starts running.",
     "pricingNotes": "The real Parker constraint is district workflow discipline, not a generic statewide average."
   },
+  "reportWorkflow": {
+    "portalVendor": "Parker Water and Sanitation District",
+    "portalName": "PWSD backflow tester submission portal",
+    "portalUrl": "https://backflowtest.pwsd.org/",
+    "submitter": "ABPA or ASSE-certified tester with current test kit calibration",
+    "requiredIdentifiers": [
+      "PWSD service or assembly record",
+      "Assembly or method type, location, make, model, serial number, size, test date, and result",
+      "Certified Cross-Connection Control Technician certification agency and number",
+      "Certification expiration or current-status proof",
+      "Test equipment manufacturer, type, serial number, and current calibration"
+    ],
+    "acceptanceProof": "Keep the PWSD portal submission or accepted test report record; PWSD says it only accepts reports from ABPA or ASSE-certified testers with current test kit calibration.",
+    "sourceRefs": [
+      "Parker Water and Sanitation District backflow and cross-connection control",
+      "Parker backflow and cross-connection guide"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "gaugeCalibrationWindowMonths": 12,
+    "credentialDocuments": [
+      "ABPA certification",
+      "ASSE certification",
+      "Current test kit calibration",
+      "PWSD backflow portal account status"
+    ],
+    "deviceScopeLimit": "PWSD only accepts test reports from ABPA or ASSE-certified testers with current test kit calibration, and the manual allows tester portal lockout or prohibition after repeated noncompliance.",
+    "sourceRefs": [
+      "Parker Water and Sanitation District backflow and cross-connection control",
+      "Parker backflow and cross-connection guide"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Newly installed backflow preventer: test and submit within 10 days",
+      "Existing domestic or fire backflow preventer: test annually",
+      "Irrigation backflow preventer: test upon seasonal startup and submit within 10 days",
+      "Air gap: inspect upon implementation and annually",
+      "Failed test: notify PWSD within one business day and repair, replace, and retest within 30 days unless PWSD directs otherwise"
+    ],
+    "initialTestRequired": true,
+    "pastDueLadder": [
+      "PWSD can contract a tester and back-charge the owner when the owner is non-compliant with annual testing.",
+      "Failure to comply with the Cross-Connection Control Program can result in water service suspension or disconnection."
+    ],
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "Parker backflow and cross-connection guide"
+    ]
+  },
+  "failedTestPolicy": {
+    "failedReportDeadlineHours": 24,
+    "failedReportMustBeSubmitted": true,
+    "repairDeadlineDays": 30,
+    "retestRequired": true,
+    "shutoffRisk": true,
+    "sourceRefs": [
+      "Parker backflow and cross-connection guide"
+    ]
+  },
   "sources": [
     {
       "label": "Parker Water and Sanitation District backflow and cross-connection control",

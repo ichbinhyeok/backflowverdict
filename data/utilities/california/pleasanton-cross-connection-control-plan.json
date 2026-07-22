@@ -95,6 +95,62 @@
     "repairRetestRange": "Repair and retest cost depends on assembly type and whether another accepted portal entry is needed.",
     "pricingNotes": "Pleasanton's strongest cost signal is the administrative risk around accepted online reporting and tester credential upkeep."
   },
+  "reportWorkflow": {
+    "portalVendor": "Aqua Backflow",
+    "portalName": "Pleasanton Aqua Backflow online report submission",
+    "portalUrl": "https://www.aquabackflow.com/trackmybackflow/",
+    "submitter": "Tester qualified for the Pleasanton online backflow workflow",
+    "requiredIdentifiers": [
+      "Backflow prevention assembly record",
+      "Completed test report",
+      "Tester certification",
+      "Gauge calibration record",
+      "Business license status when applicable"
+    ],
+    "acceptanceProof": "Keep the accepted Aqua Backflow online report record; Pleasanton's plan ties completed test report entry and approved-tester discipline to the online workflow.",
+    "sourceRefs": [
+      "Pleasanton cross-connection control plan",
+      "Aqua Backflow TrackMyBackflow product page"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Tester certification",
+      "Gauge calibration record",
+      "Business license status",
+      "Aqua Backflow online portal access"
+    ],
+    "deviceScopeLimit": "Pleasanton's plan says testers can be removed from the approved list if certification, gauge calibration, business license, or completed online report entry requirements lapse.",
+    "sourceRefs": [
+      "Pleasanton cross-connection control plan"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Backflow prevention assemblies: field tested at least annually",
+      "New installation, repair, depressurization for winterizing, or permanent relocation: field test required",
+      "Failed assemblies: repair or replace within 30 days of notification unless the PWS allows an extension"
+    ],
+    "initialTestRequired": true,
+    "pastDueLadder": [
+      "Pleasanton uses reminder and past-due notices through its contracted online backflow software vendor.",
+      "Completed test reports must be entered online to protect tester approval status."
+    ],
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "Pleasanton cross-connection control plan"
+    ]
+  },
+  "failedTestPolicy": {
+    "repairDeadlineDays": 30,
+    "retestRequired": true,
+    "sourceRefs": [
+      "Pleasanton cross-connection control plan"
+    ]
+  },
   "sources": [
     {
       "label": "Pleasanton cross-connection control plan",
