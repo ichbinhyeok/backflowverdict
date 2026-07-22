@@ -121,6 +121,65 @@
     "repairRetestRange": "Repair and retest costs depend on device type and whether fire protection rules apply.",
     "pricingNotes": "The clearest public cost signal is avoiding rejected paper or unregistered-tester reporting."
   },
+  "reportWorkflow": {
+    "portalVendor": "VEPO Envirotrax",
+    "portalName": "Bedford VEPO Envirotrax backflow test reporting workflow",
+    "portalUrl": "https://www.vepollc.com/save_bpats.aspx",
+    "submitter": "VEPO-registered Backflow Prevention Assembly Tester",
+    "requiredIdentifiers": [
+      "Commercial facility or event-triggered assembly status",
+      "Installation, replacement, repair, or relocation trigger when applicable",
+      "VEPO registered BPAT status",
+      "License, insurance, and test gauge accuracy verification",
+      "State Fire Marshal fire sprinkler company employment for fire-protection assemblies"
+    ],
+    "acceptanceProof": "Keep the accepted VEPO Envirotrax report because Bedford says paper test reports are no longer submitted directly to the City.",
+    "sourceRefs": [
+      "Bedford cross connection and backflow prevention",
+      "VEPO registered backflow tester search"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "VEPO BPAT registration",
+      "BPAT license verification",
+      "Insurance verification",
+      "Test gauge accuracy verification",
+      "State Fire Marshal licensed fire protection sprinkler company employment for fire-protection assemblies"
+    ],
+    "deviceScopeLimit": "Bedford's annual rule is strongest for commercial facilities, while installation, replacement, repair, or relocation triggers testing across assemblies.",
+    "sourceRefs": [
+      "Bedford cross connection and backflow prevention",
+      "VEPO registered backflow tester search"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "All backflow protection assemblies: test upon installation, replacement, repair, or relocation",
+      "Commercial facilities: annual testing for all backflow protection assemblies",
+      "Irrigation systems: backflow device required; commercial irrigation facilities tested annually",
+      "Fire protection sprinkler assemblies: BPAT must satisfy State Fire Marshal fire-company employment rule"
+    ],
+    "initialTestRequired": true,
+    "pastDueLadder": [
+      "Direct paper reports are not the accepted Bedford reporting route.",
+      "Accepted reporting depends on VEPO registration and Envirotrax submission."
+    ],
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "Bedford cross connection and backflow prevention"
+    ]
+  },
+  "failedTestPolicy": {
+    "retestRequired": true,
+    "failedReportMustBeSubmitted": true,
+    "sourceRefs": [
+      "Bedford cross connection and backflow prevention"
+    ]
+  },
   "sources": [
     {
       "label": "Bedford cross connection and backflow prevention",

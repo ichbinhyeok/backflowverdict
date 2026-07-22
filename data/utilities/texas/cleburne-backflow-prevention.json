@@ -119,6 +119,66 @@
     "repairRetestRange": "Repair and retest prices depend on device condition and fire-line status.",
     "pricingNotes": "The source-backed cost risk is wasted time from the wrong tester or paper-only submission."
   },
+  "reportWorkflow": {
+    "portalVendor": "VEPO Envirotrax",
+    "portalName": "Cleburne VEPO Envirotrax online backflow report workflow",
+    "portalUrl": "https://www.vepollc.com/save_bpats.aspx",
+    "submitter": "VEPO-registered Backflow Prevention Assembly Tester",
+    "requiredIdentifiers": [
+      "Backflow prevention assembly record",
+      "Installation, repair, or relocation trigger when applicable",
+      "Annual testing status",
+      "VEPO registered BPAT status",
+      "License, insurance, and test accuracy verification",
+      "State Fire Marshal fire sprinkler company employment for fire-protection assemblies"
+    ],
+    "acceptanceProof": "Keep the accepted VEPO Envirotrax submission because Cleburne says testers no longer submit paper reports directly to the City.",
+    "sourceRefs": [
+      "Cleburne backflow prevention and cross-connection program",
+      "VEPO registered backflow tester search"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "VEPO BPAT registration",
+      "BPAT license verification",
+      "Insurance verification",
+      "Test accuracy report verification",
+      "State Fire Marshal licensed fire protection sprinkler company employment for fire-protection assemblies"
+    ],
+    "deviceScopeLimit": "Cleburne requires BPAT registration through VEPO and applies a separate fire-protection sprinkler rule when the assembly serves that system.",
+    "sourceRefs": [
+      "Cleburne backflow prevention and cross-connection program",
+      "VEPO registered backflow tester search"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "All backflow protection assemblies: test upon installation, repair, or relocation",
+      "All backflow assemblies: annual testing recommended to protect the City's potable water and meet TCEQ standards",
+      "Annual testing reports: tester enters the information in VEPO Envirotrax",
+      "Fire protection sprinkler assemblies: BPAT must satisfy State Fire Marshal fire-company employment rule"
+    ],
+    "initialTestRequired": true,
+    "pastDueLadder": [
+      "Paper reports are no longer the accepted direct City submission route.",
+      "Accepted reporting depends on VEPO registration and online Envirotrax entry."
+    ],
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "Cleburne backflow prevention and cross-connection program"
+    ]
+  },
+  "failedTestPolicy": {
+    "retestRequired": true,
+    "failedReportMustBeSubmitted": true,
+    "sourceRefs": [
+      "Cleburne backflow prevention and cross-connection program"
+    ]
+  },
   "sources": [
     {
       "label": "Cleburne backflow prevention and cross-connection program",

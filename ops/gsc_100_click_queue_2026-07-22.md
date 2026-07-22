@@ -22,6 +22,7 @@ Window: 2026-04-23 through 2026-07-21, Google web, `dataState=all`.
 - GSC quick wins identified Irvine backflow prevention. IRWD now has structured annual tester/report form/deadline facts and an annual title variant that includes "backflow prevention."
 - Follow-up pass found `vepo backflow` impressions landing on Southlake city routes. Southlake now has structured VEPO/Envirotrax report workflow, paperless submission, registered tester gate, $11.50 per-device fee, and guide-level internal links to the VEPO matrix.
 - Follow-up pass found failed-test demand around Jupiter and Orlando. Jupiter now has structured town-database submission, certified-technician gate, 30-day notice ladder, typical $50-$150 test price, and shutoff-risk facts. OUC now has structured residential-versus-commercial workflow, licensed commercial tester gate, $4/month residential maintenance fee, $48/$110 commercial test pricing, repair/retest responsibility, and termination-risk facts.
+- VEPO/Envirotrax expansion pass strengthened Baytown, Bedford, and Cleburne. These now expose accepted online report submission, registered BPAT gates, paper-report rejection risk, CSI or fire-protection credential overlays, and acceptance-proof language for city-level portal and submit-report routes.
 
 ## Next queue
 

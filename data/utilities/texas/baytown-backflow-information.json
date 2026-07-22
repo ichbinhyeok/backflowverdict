@@ -121,6 +121,59 @@
     "repairRetestRange": "Repair and retest costs depend on assembly type and fire-line status.",
     "pricingNotes": "The practical cost risk is using a tester or CSI inspector who does not complete the Envirotrax submission."
   },
+  "reportWorkflow": {
+    "portalVendor": "Envirotrax",
+    "portalName": "Baytown Envirotrax backflow and CSI reporting workflow",
+    "portalUrl": "https://www.envirotrax.com/registrations.aspx?at=1",
+    "submitter": "Licensed BPAT for backflow reports; licensed CSI inspector for commercial CSI reports",
+    "requiredIdentifiers": [
+      "Backflow prevention assembly record",
+      "Envirotrax registered tester status",
+      "Licensed BPAT credential",
+      "Commercial CSI license or Water Supply Protection Specialist endorsement when CSI applies",
+      "State Fire Marshal fire sprinkler company employment when a fire-protection assembly applies"
+    ],
+    "acceptanceProof": "Keep the Envirotrax online submission record instead of relying on paper reports sent directly to the City.",
+    "sourceRefs": [
+      "Baytown backflow information",
+      "Envirotrax registered tester search"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Licensed Backflow Prevention Assembly Tester credential",
+      "Envirotrax registered tester status",
+      "Valid CSI license or WSPS endorsement when CSI applies",
+      "State Fire Marshal licensed fire protection sprinkler company employment for fire-protection assemblies"
+    ],
+    "deviceScopeLimit": "Baytown separates ordinary backflow reports, commercial CSI reports, and fire-protection sprinkler assemblies, so the tester credential must match the report type.",
+    "sourceRefs": [
+      "Baytown backflow information",
+      "Envirotrax registered tester search"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Backflow test reports: licensed BPAT submits online through Envirotrax",
+      "Commercial CSI reports: licensed CSI inspector submits through Envirotrax",
+      "Paper reports: no longer accepted as direct City submission"
+    ],
+    "pastDueLadder": [
+      "Using paper-only delivery or an unregistered tester can leave the City without an accepted online report."
+    ],
+    "sourceRefs": [
+      "Baytown backflow information"
+    ]
+  },
+  "failedTestPolicy": {
+    "failedReportMustBeSubmitted": true,
+    "sourceRefs": [
+      "Baytown backflow information"
+    ]
+  },
   "sources": [
     {
       "label": "Baytown backflow information",
