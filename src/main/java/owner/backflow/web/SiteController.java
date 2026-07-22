@@ -1,5 +1,10 @@
 package owner.backflow.web;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import jakarta.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.nio.charset.StandardCharsets;
@@ -15,11 +20,14 @@ import java.util.stream.Collectors;
 import owner.backflow.config.AppSiteProperties;
 import owner.backflow.data.model.AliasMode;
 import owner.backflow.data.model.CityAliasRecord;
+import owner.backflow.data.model.FailedTestPolicy;
 import owner.backflow.data.model.GuideRecord;
 import owner.backflow.data.model.MetroRecord;
 import owner.backflow.data.model.ProviderRecord;
+import owner.backflow.data.model.ReportWorkflow;
 import owner.backflow.data.model.SourceLink;
 import owner.backflow.data.model.StateGuideRecord;
+import owner.backflow.data.model.SubmissionMethod;
 import owner.backflow.data.model.UtilityFocusContent;
 import owner.backflow.data.model.UtilityRecord;
 import owner.backflow.files.BackflowRegistryService;
@@ -53,6 +61,7 @@ public class SiteController {
     private final BackflowRegistryService registryService;
     private final AppSiteProperties siteProperties;
     private final SiteVisibilityService siteVisibilityService;
+    private final ObjectMapper jsonMapper = new ObjectMapper();
 
     public SiteController(
             BackflowRegistryService registryService,
@@ -705,6 +714,8 @@ public class SiteController {
                                 new BreadcrumbItem(utility.utilityName(), canonical(path))
                         )),
                         webPageStructuredData(title, description, path, utility.lastVerified(), utilityAbout(utility), utility.sources()),
+                        utilityServiceStructuredData(utility, path, title, description),
+                        utilityAnswerCardStructuredData(utility, path, utility.utilityName() + " compliance answer"),
                         faqStructuredData(faqItems)
                 )
         ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
@@ -778,6 +789,8 @@ public class SiteController {
                                 new BreadcrumbItem("Failed test", canonical(path))
                         )),
                         webPageStructuredData(title, description, path, utility.lastVerified(), utilityAbout(utility), utility.sources()),
+                        utilityServiceStructuredData(utility, path, title, description),
+                        utilityAnswerCardStructuredData(utility, path, utility.utilityName() + " failed-test answer"),
                         workflowHowToStructuredData(
                                 utility.utilityName() + " failed backflow test repair and retest",
                                 description,
@@ -833,7 +846,9 @@ public class SiteController {
                                 new BreadcrumbItem(utility.utilityName(), canonical(utilityPath(utility))),
                                 new BreadcrumbItem("Approved testers", canonical(path))
                         )),
-                        webPageStructuredData(title, description, path, utility.lastVerified(), utilityAbout(utility), utility.sources())
+                        webPageStructuredData(title, description, path, utility.lastVerified(), utilityAbout(utility), utility.sources()),
+                        utilityServiceStructuredData(utility, path, title, description),
+                        utilityAnswerCardStructuredData(utility, path, utility.utilityName() + " approved tester answer")
                 )
         ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
                 utility.utilityId(),
@@ -875,7 +890,9 @@ public class SiteController {
                                 new BreadcrumbItem(utility.utilityName(), canonical(utilityPath(utility))),
                                 new BreadcrumbItem("Find a tester", canonical(path))
                         )),
-                        webPageStructuredData(title, description, path, utility.lastVerified(), utilityAbout(utility), utility.sources())
+                        webPageStructuredData(title, description, path, utility.lastVerified(), utilityAbout(utility), utility.sources()),
+                        utilityServiceStructuredData(utility, path, title, description),
+                        utilityAnswerCardStructuredData(utility, path, utility.utilityName() + " tester directory answer")
                 )
         ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
                 utility.utilityId(),
@@ -961,9 +978,11 @@ public class SiteController {
                                 latestDate(alias.lastReviewed(), utility.lastVerified()),
                                 cityAbout(alias, utility, "City backflow testing route"),
                                 utility.sources()
-                        )
+                        ),
+                        utilityServiceStructuredData(utility, path, title, description),
+                        utilityAnswerCardStructuredData(utility, path, alias.city() + " backflow testing answer")
                 )
-        ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
+        ).withDateModified(latestDate(alias.lastReviewed(), utility.lastVerified())).withRequestHelpPath(LeadRoutingService.requestHelpPath(
                 utility.utilityId(),
                 path,
                 "general-testing",
@@ -1029,10 +1048,12 @@ public class SiteController {
                                 cityAbout(alias, utility, intent.heading()),
                                 utility.sources()
                         ),
+                        utilityServiceStructuredData(utility, path, intent.title(), intent.description()),
+                        utilityAnswerCardStructuredData(utility, path, alias.city() + " " + intent.slug() + " answer"),
                         cityIntentHowToStructuredData(alias, intent),
                         faqStructuredData(faqItems)
                 )
-        ).withRequestHelpPath(LeadRoutingService.requestHelpPath(
+        ).withDateModified(latestDate(alias.lastReviewed(), utility.lastVerified())).withRequestHelpPath(LeadRoutingService.requestHelpPath(
                 utility.utilityId(),
                 path,
                 intent.slug(),
@@ -1598,7 +1619,8 @@ public class SiteController {
     }
 
     private PageMeta page(String title, String description, String path, String structuredDataJson) {
-        return new PageMeta(title, description, canonical(path), false, structuredDataJson);
+        return new PageMeta(title, description, canonical(path), false, structuredDataJson)
+                .withDateModified(priorityLastModified(path));
     }
 
     private List<UtilityRecord> officialTesterUtilities() {
@@ -2815,6 +2837,8 @@ public class SiteController {
                                 new BreadcrumbItem(titleStem, canonical(path))
                         )),
                         webPageStructuredData(searchTitle, metaDescription, path, utility.lastVerified(), utilityAbout(utility), utility.sources()),
+                        utilityServiceStructuredData(utility, path, searchTitle, metaDescription),
+                        utilityAnswerCardStructuredData(utility, path, titleStem + " answer"),
                         workflowHowToStructuredData(titleStem, description, path, focus.workflowSteps()),
                         faqStructuredData(utilityFaqItems(utility))
                 )
@@ -3617,18 +3641,20 @@ public class SiteController {
             List<SourceLink> citations
     ) {
         String canonicalUrl = canonical(path);
-        StringBuilder json = new StringBuilder();
-        json.append("{\"@context\":\"https://schema.org\",\"@type\":\"WebPage\"")
-                .append(",\"@id\":\"").append(jsonEscape(canonicalUrl)).append("#webpage\"")
-                .append(",\"url\":\"").append(jsonEscape(canonicalUrl)).append("\"")
-                .append(",\"name\":\"").append(jsonEscape(name)).append("\"")
-                .append(",\"description\":\"").append(jsonEscape(description)).append("\"")
-                .append(",\"isPartOf\":{\"@type\":\"WebSite\",\"name\":\"BackflowPath\",\"url\":\"")
-                .append(jsonEscape(canonical("/")))
-                .append("\"}")
-                .append(",\"reviewedBy\":{\"@type\":\"Organization\",\"name\":\"BackflowPath editorial review\"}");
+        ObjectNode json = jsonLdObject("WebPage");
+        json.put("@id", canonicalUrl + "#webpage");
+        json.put("url", canonicalUrl);
+        json.put("name", name);
+        json.put("description", description);
+        ObjectNode site = typedObject("WebSite");
+        site.put("name", "BackflowPath");
+        site.put("url", canonical("/"));
+        json.set("isPartOf", site);
+        ObjectNode reviewer = typedObject("Organization");
+        reviewer.put("name", "BackflowPath editorial review");
+        json.set("reviewedBy", reviewer);
         if (dateModified != null) {
-            json.append(",\"dateModified\":\"").append(dateModified).append("\"");
+            json.put("dateModified", dateModified.toString());
         }
         List<String> aboutItems = about == null ? List.of() : about.stream()
                 .filter(value -> value != null && !value.isBlank())
@@ -3636,38 +3662,168 @@ public class SiteController {
                 .limit(8)
                 .toList();
         if (!aboutItems.isEmpty()) {
-            json.append(",\"about\":[");
-            for (int i = 0; i < aboutItems.size(); i++) {
-                if (i > 0) {
-                    json.append(',');
-                }
-                json.append("{\"@type\":\"Thing\",\"name\":\"")
-                        .append(jsonEscape(aboutItems.get(i)))
-                        .append("\"}");
+            ArrayNode aboutArray = jsonMapper.createArrayNode();
+            for (String aboutItem : aboutItems) {
+                ObjectNode thing = typedObject("Thing");
+                thing.put("name", aboutItem);
+                aboutArray.add(thing);
             }
-            json.append(']');
+            json.set("about", aboutArray);
         }
         List<SourceLink> citedSources = citations == null ? List.of() : citations.stream()
                 .filter(source -> source != null && source.url() != null && !source.url().isBlank())
                 .limit(6)
                 .toList();
         if (!citedSources.isEmpty()) {
-            json.append(",\"citation\":[");
-            for (int i = 0; i < citedSources.size(); i++) {
-                SourceLink source = citedSources.get(i);
-                if (i > 0) {
-                    json.append(',');
-                }
-                json.append("{\"@type\":\"CreativeWork\",\"name\":\"")
-                        .append(jsonEscape(source.label() == null || source.label().isBlank() ? source.url() : source.label()))
-                        .append("\",\"url\":\"")
-                        .append(jsonEscape(source.url()))
-                        .append("\"}");
+            ArrayNode citationArray = jsonMapper.createArrayNode();
+            for (SourceLink source : citedSources) {
+                ObjectNode citation = typedObject("CreativeWork");
+                citation.put("name", source.label() == null || source.label().isBlank() ? source.url() : source.label());
+                citation.put("url", source.url());
+                citationArray.add(citation);
             }
-            json.append(']');
+            json.set("citation", citationArray);
         }
-        json.append('}');
-        return json.toString();
+        return jsonString(json);
+    }
+
+    private String utilityServiceStructuredData(
+            UtilityRecord utility,
+            String path,
+            String name,
+            String description
+    ) {
+        String canonicalUrl = canonical(path);
+        ObjectNode json = jsonLdObject("Service");
+        json.put("@id", canonicalUrl + "#service");
+        json.put("name", stripSiteSuffix(name));
+        json.put("description", description);
+        json.put("serviceType", "Backflow testing compliance guidance");
+        json.put("url", canonicalUrl);
+        ObjectNode provider = typedObject("Organization");
+        provider.put("name", "BackflowPath");
+        provider.put("url", canonical("/"));
+        json.set("provider", provider);
+        json.set("areaServed", utilityAreaServedArray(utility));
+        ObjectNode audience = typedObject("Audience");
+        audience.put("audienceType", "Property owners and backflow testers");
+        json.set("audience", audience);
+        if (utility.lastVerified() != null) {
+            json.put("dateModified", utility.lastVerified().toString());
+        }
+        return jsonString(json);
+    }
+
+    private String utilityAnswerCardStructuredData(
+            UtilityRecord utility,
+            String path,
+            String name
+    ) {
+        List<StructuredAnswerTerm> terms = new ArrayList<>();
+        addAnswerTerm(terms, "Governing utility", utility.utilityName());
+        addAnswerTerm(terms, "Testing or deadline rule", firstNonBlank(utility.testingFrequency(), utility.dueBasis()));
+        addAnswerTerm(terms, "Tester gate", testerGateAnswer(utility));
+        addAnswerTerm(terms, "Report route", reportRouteAnswer(utility));
+        addAnswerTerm(terms, "Acceptance proof", firstNonBlank(utility.reportWorkflow().acceptanceProof(), reportAcceptanceHint(utility)));
+        addAnswerTerm(terms, "Failed-test rule", failedTestAnswer(utility));
+        if (utility.lastVerified() != null) {
+            addAnswerTerm(terms, "Last verified", utility.lastVerified().toString());
+        }
+        if (terms.size() < 3) {
+            return null;
+        }
+
+        String canonicalUrl = canonical(path);
+        ObjectNode json = jsonLdObject("DefinedTermSet");
+        json.put("@id", canonicalUrl + "#answer-card");
+        json.put("name", name);
+        json.put("url", canonicalUrl);
+        json.put("description", "Source-backed answer fields for the local backflow workflow.");
+        ArrayNode termArray = jsonMapper.createArrayNode();
+        for (StructuredAnswerTerm term : terms) {
+            ObjectNode termNode = typedObject("DefinedTerm");
+            termNode.put("name", term.name());
+            termNode.put("description", term.description());
+            termArray.add(termNode);
+        }
+        json.set("hasDefinedTerm", termArray);
+        return jsonString(json);
+    }
+
+    private ArrayNode utilityAreaServedArray(UtilityRecord utility) {
+        ArrayNode entries = jsonMapper.createArrayNode();
+        for (String city : utility.serviceAreaCities().stream().filter(value -> value != null && !value.isBlank()).limit(8).toList()) {
+            ObjectNode cityNode = typedObject("City");
+            cityNode.put("name", city);
+            entries.add(cityNode);
+        }
+        for (String county : utility.serviceAreaCounties().stream().filter(value -> value != null && !value.isBlank()).limit(4).toList()) {
+            ObjectNode countyNode = typedObject("AdministrativeArea");
+            countyNode.put("name", county);
+            entries.add(countyNode);
+        }
+        ObjectNode stateNode = typedObject("AdministrativeArea");
+        stateNode.put("name", stateLabel(utility.state()));
+        entries.add(stateNode);
+        return entries;
+    }
+
+    private void addAnswerTerm(List<StructuredAnswerTerm> terms, String name, String description) {
+        if (description != null && !description.isBlank()) {
+            terms.add(new StructuredAnswerTerm(name, shortenAtWord(description, 220)));
+        }
+    }
+
+    private String testerGateAnswer(UtilityRecord utility) {
+        if (utility.supportsApprovedTestersPage()) {
+            return firstNonBlank(utility.officialListLabel(), "Use the official utility approved tester route.");
+        }
+        if (utility.supportsFindATesterPage()) {
+            return "Use provider options only after checking the utility tester and report submission rules.";
+        }
+        if (utility.hasTesterGate()) {
+            return utility.testerGate().credentialSummary();
+        }
+        return "";
+    }
+
+    private String reportRouteAnswer(UtilityRecord utility) {
+        ReportWorkflow workflow = utility.reportWorkflow();
+        String portal = firstNonBlank(workflow.portalName(), workflow.portalVendor());
+        if (portal != null && !portal.isBlank()) {
+            return portal + " handles the report route.";
+        }
+        if (!utility.submissionMethods().isEmpty()) {
+            SubmissionMethod method = utility.submissionMethods().get(0);
+            return firstNonBlank(method.label(), method.kind());
+        }
+        return "";
+    }
+
+    private String failedTestAnswer(UtilityRecord utility) {
+        FailedTestPolicy policy = utility.failedTestPolicy();
+        return firstNonBlank(
+                policy.repairDeadlineLabel(),
+                policy.failedReportDeadlineLabel(),
+                utility.failureHighlights().isEmpty() ? "" : utility.failureHighlights().get(0),
+                utility.penalties()
+        );
+    }
+
+    private String firstNonBlank(String... values) {
+        for (String value : values) {
+            if (value != null && !value.isBlank()) {
+                return value;
+            }
+        }
+        return "";
+    }
+
+    private String stripSiteSuffix(String value) {
+        if (value == null) {
+            return "";
+        }
+        return value.replace(" | BackflowPath", "");
     }
 
     private List<String> utilityAbout(UtilityRecord utility) {
@@ -3693,48 +3849,43 @@ public class SiteController {
     }
 
     private String faqStructuredData(List<FaqItem> faqItems) {
-        StringBuilder json = new StringBuilder();
-        json.append("{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[");
-        for (int i = 0; i < faqItems.size(); i++) {
-            FaqItem item = faqItems.get(i);
-            if (i > 0) {
-                json.append(',');
-            }
-            json.append("{\"@type\":\"Question\",\"name\":\"")
-                    .append(jsonEscape(item.question()))
-                    .append("\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"")
-                    .append(jsonEscape(item.answer()))
-                    .append("\"}}");
+        ObjectNode json = jsonLdObject("FAQPage");
+        ArrayNode questions = jsonMapper.createArrayNode();
+        for (FaqItem item : faqItems) {
+            ObjectNode question = typedObject("Question");
+            question.put("name", item.question());
+            ObjectNode answer = typedObject("Answer");
+            answer.put("text", item.answer());
+            question.set("acceptedAnswer", answer);
+            questions.add(question);
         }
-        json.append("]}");
-        return json.toString();
+        json.set("mainEntity", questions);
+        return jsonString(json);
     }
 
     private String noticeFinderStructuredData() {
         String noticeFinderUrl = canonical("/notice-finder");
-        return new StringBuilder()
-                .append("{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\"")
-                .append(",\"@id\":\"").append(jsonEscape(noticeFinderUrl)).append("#notice-finder\"")
-                .append(",\"name\":\"Backflow notice finder\"")
-                .append(",\"url\":\"").append(jsonEscape(noticeFinderUrl)).append("\"")
-                .append(",\"applicationCategory\":\"BusinessApplication\"")
-                .append(",\"operatingSystem\":\"Web\"")
-                .append(",\"description\":\"")
-                .append(jsonEscape("Search a city, utility, portal name, notice identifier, tester clue, due date, or failed-test phrase to find the source-backed BackflowPath route."))
-                .append("\"")
-                .append(",\"featureList\":").append(jsonStringArray(List.of(
-                        "City and utility matching",
-                        "Reporting portal routing",
-                        "Notice and device identifier clues",
-                        "Approved tester route matching",
-                        "Failed-test and retest routing"
-                )))
-                .append(",\"potentialAction\":{\"@type\":\"SearchAction\"")
-                .append(",\"target\":\"").append(jsonEscape(noticeFinderUrl + "?q={search_term_string}")).append("\"")
-                .append(",\"query-input\":\"required name=search_term_string\"")
-                .append("}")
-                .append("}")
-                .toString();
+        ObjectNode json = jsonLdObject("WebApplication");
+        json.put("@id", noticeFinderUrl + "#notice-finder");
+        json.put("name", "Backflow notice finder");
+        json.put("url", noticeFinderUrl);
+        json.put("applicationCategory", "BusinessApplication");
+        json.put("operatingSystem", "Web");
+        json.put("description", "Search a city, utility, portal name, notice identifier, tester clue, due date, or failed-test phrase to find the source-backed BackflowPath route.");
+        ArrayNode features = jsonMapper.createArrayNode();
+        List.of(
+                "City and utility matching",
+                "Reporting portal routing",
+                "Notice and device identifier clues",
+                "Approved tester route matching",
+                "Failed-test and retest routing"
+        ).forEach(features::add);
+        json.set("featureList", features);
+        ObjectNode action = typedObject("SearchAction");
+        action.put("target", noticeFinderUrl + "?q={search_term_string}");
+        action.put("query-input", "required name=search_term_string");
+        json.set("potentialAction", action);
+        return jsonString(json);
     }
 
     private String portalItemListStructuredData(String name, List<UtilityRecord> utilities) {
@@ -3770,25 +3921,19 @@ public class SiteController {
             return null;
         }
 
-        StringBuilder json = new StringBuilder();
-        json.append("{\"@context\":\"https://schema.org\",\"@type\":\"ItemList\"")
-                .append(",\"name\":\"").append(jsonEscape(name)).append("\"")
-                .append(",\"itemListElement\":[");
+        ObjectNode json = jsonLdObject("ItemList");
+        json.put("name", name);
+        ArrayNode itemArray = jsonMapper.createArrayNode();
         for (int i = 0; i < items.size(); i++) {
             StructuredListItem item = items.get(i);
-            if (i > 0) {
-                json.append(',');
-            }
-            json.append("{\"@type\":\"ListItem\",\"position\":")
-                    .append(i + 1)
-                    .append(",\"name\":\"")
-                    .append(jsonEscape(item.name()))
-                    .append("\",\"url\":\"")
-                    .append(jsonEscape(item.url()))
-                    .append("\"}");
+            ObjectNode listItem = typedObject("ListItem");
+            listItem.put("position", i + 1);
+            listItem.put("name", item.name());
+            listItem.put("url", item.url());
+            itemArray.add(listItem);
         }
-        json.append("]}");
-        return json.toString();
+        json.set("itemListElement", itemArray);
+        return jsonString(json);
     }
 
     private void addStructuredListItem(
@@ -3817,49 +3962,51 @@ public class SiteController {
         if (steps == null || steps.isEmpty()) {
             return null;
         }
-        StringBuilder json = new StringBuilder();
-        json.append("{\"@context\":\"https://schema.org\",\"@type\":\"HowTo\"")
-                .append(",\"name\":\"").append(jsonEscape(name)).append("\"")
-                .append(",\"description\":\"").append(jsonEscape(description)).append("\"")
-                .append(",\"url\":\"").append(jsonEscape(canonical(path))).append("\"")
-                .append(",\"step\":[");
+        ObjectNode json = jsonLdObject("HowTo");
+        json.put("name", name);
+        json.put("description", description);
+        json.put("url", canonical(path));
+        ArrayNode stepArray = jsonMapper.createArrayNode();
         for (int i = 0; i < steps.size(); i++) {
             String step = steps.get(i);
-            if (i > 0) {
-                json.append(',');
-            }
-            json.append("{\"@type\":\"HowToStep\",\"position\":")
-                    .append(i + 1)
-                    .append(",\"name\":\"Step ")
-                    .append(i + 1)
-                    .append("\",\"text\":\"")
-                    .append(jsonEscape(step))
-                    .append("\"}");
+            ObjectNode stepNode = typedObject("HowToStep");
+            stepNode.put("position", i + 1);
+            stepNode.put("name", howToStepName(step, i + 1));
+            stepNode.put("text", step);
+            stepArray.add(stepNode);
         }
-        json.append("]}");
-        return json.toString();
+        json.set("step", stepArray);
+        return jsonString(json);
+    }
+
+    private String howToStepName(String step, int position) {
+        if (step == null || step.isBlank()) {
+            return "Step " + position;
+        }
+        String normalized = step.replaceAll("\\s+", " ").trim();
+        int sentenceEnd = normalized.indexOf('.');
+        if (sentenceEnd > 0) {
+            normalized = normalized.substring(0, sentenceEnd);
+        }
+        return shortenAtWord(normalized, 72);
     }
 
     private String breadcrumbStructuredData(List<BreadcrumbItem> items) {
-        StringBuilder json = new StringBuilder();
-        json.append("{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[");
+        ObjectNode json = jsonLdObject("BreadcrumbList");
+        ArrayNode itemArray = jsonMapper.createArrayNode();
         for (int i = 0; i < items.size(); i++) {
             BreadcrumbItem item = items.get(i);
-            if (i > 0) {
-                json.append(',');
-            }
-            json.append("{\"@type\":\"ListItem\",\"position\":")
-                    .append(i + 1)
-                    .append(",\"name\":\"")
-                    .append(jsonEscape(item.name()))
-                    .append("\",\"item\":{\"@id\":\"")
-                    .append(jsonEscape(item.url()))
-                    .append("\",\"name\":\"")
-                    .append(jsonEscape(item.name()))
-                    .append("\"}}");
+            ObjectNode listItem = typedObject("ListItem");
+            listItem.put("position", i + 1);
+            listItem.put("name", item.name());
+            ObjectNode nestedItem = jsonMapper.createObjectNode();
+            nestedItem.put("@id", item.url());
+            nestedItem.put("name", item.name());
+            listItem.set("item", nestedItem);
+            itemArray.add(listItem);
         }
-        json.append("]}");
-        return json.toString();
+        json.set("itemListElement", itemArray);
+        return jsonString(json);
     }
 
     private String combineStructuredData(String... jsonSnippets) {
@@ -3876,6 +4023,26 @@ public class SiteController {
             return snippets.get(0);
         }
         return "[" + String.join(",", snippets) + "]";
+    }
+
+    private ObjectNode jsonLdObject(String type) {
+        ObjectNode node = typedObject(type);
+        node.put("@context", "https://schema.org");
+        return node;
+    }
+
+    private ObjectNode typedObject(String type) {
+        ObjectNode node = jsonMapper.createObjectNode();
+        node.put("@type", type);
+        return node;
+    }
+
+    private String jsonString(JsonNode node) {
+        try {
+            return jsonMapper.writeValueAsString(node);
+        } catch (JsonProcessingException exception) {
+            throw new IllegalStateException("Failed to serialize JSON-LD.", exception);
+        }
     }
 
     private String jsonEscape(String value) {
@@ -3944,6 +4111,9 @@ public class SiteController {
     }
 
     private record StructuredListItem(String name, String url) {
+    }
+
+    private record StructuredAnswerTerm(String name, String description) {
     }
 
     private record CityIntentConfig(

@@ -46,11 +46,13 @@ class OpsIssueServiceTest {
     }
 
     @Test
-    void resolvedBrokenLinksAreExcludedFromHealthCount() {
+    void resolvedAndManualReviewLinksAreExcludedFromHealthCount() {
         OpsIssueService service = OpsIssueService.forTest(
                 List.of(
                         new OpsCsvEntry(Map.of("status", "fixed", "url", "https://example.gov/fixed")),
-                        new OpsCsvEntry(Map.of("status", "403", "url", "https://example.gov/manual-review"))
+                        new OpsCsvEntry(Map.of("status", "403", "url", "https://example.gov/manual-review")),
+                        new OpsCsvEntry(Map.of("status", "timeout", "url", "https://example.gov/slow")),
+                        new OpsCsvEntry(Map.of("status", "404", "url", "https://example.gov/gone"))
                 ),
                 List.of(),
                 7

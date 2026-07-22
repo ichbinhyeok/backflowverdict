@@ -102,8 +102,18 @@
                         <span>${utility.reportWorkflow().acceptanceProof() != null && !utility.reportWorkflow().acceptanceProof().isBlank() ? utility.reportWorkflow().acceptanceProof() : reportAcceptanceHint}</span>
                     </div>
                     <div class="metadata-block">
+                        <strong>Notice or device ID</strong>
+                        <span>${noticeIdentifierHint}</span>
+                    </div>
+                    <div class="metadata-block">
                         <strong>Failed-test branch</strong>
-                        <span>Repair first, complete a passing retest, then file the accepted report path for this utility.</span>
+                        @if (utility.failedTestPolicy().failedReportDeadlineHours() != null)
+                            <span>${utility.failedTestPolicy().failedReportDeadlineLabel()}</span>
+                        @elseif (utility.failedTestPolicy().repairDeadlineDays() != null)
+                            <span>${utility.failedTestPolicy().repairDeadlineLabel()}</span>
+                        @else
+                            <span>Repair first, complete a passing retest, then file the accepted report path for this utility.</span>
+                        @endif
                     </div>
                     <div class="metadata-block">
                         <strong>Source trail</strong>
@@ -133,6 +143,18 @@
                 <span class="eyebrow">Report packet</span>
                 <h2>What has to be ready before the filing is complete</h2>
                 <ul class="detail-list">
+                    @if (utility.reportWorkflow().portalVendor() != null && !utility.reportWorkflow().portalVendor().isBlank())
+                        <li><strong>Portal vendor:</strong> ${utility.reportWorkflow().portalVendor()}</li>
+                    @endif
+                    @if (utility.reportWorkflow().portalName() != null && !utility.reportWorkflow().portalName().isBlank())
+                        <li><strong>Portal name:</strong> ${utility.reportWorkflow().portalName()}</li>
+                    @endif
+                    @if (utility.reportWorkflow().submitter() != null && !utility.reportWorkflow().submitter().isBlank())
+                        <li><strong>Accepted submitter:</strong> ${utility.reportWorkflow().submitter()}</li>
+                    @endif
+                    @if (utility.reportWorkflow().acceptanceProof() != null && !utility.reportWorkflow().acceptanceProof().isBlank())
+                        <li><strong>Acceptance proof:</strong> ${utility.reportWorkflow().acceptanceProof()}</li>
+                    @endif
                     @if (utility.reportWorkflow().submissionDeadlineDaysAfterTest() != null)
                         <li><strong>Submission deadline:</strong> ${utility.reportWorkflow().deadlineLabel()}</li>
                     @endif
@@ -157,6 +179,9 @@
                 <span class="eyebrow">Rejection risk</span>
                 <h2>What can keep the account out of compliance</h2>
                 <ul class="detail-list">
+                    @if (utility.testerGate().credentialSummary() != null && !utility.testerGate().credentialSummary().isBlank())
+                        <li>${utility.testerGate().credentialSummary()}</li>
+                    @endif
                     @if (utility.testerGate().gaugeCalibrationWindowMonths() != null)
                         <li>${utility.testerGate().calibrationLabel()}</li>
                     @endif

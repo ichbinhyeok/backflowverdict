@@ -70,6 +70,16 @@
 - Kept county/weak authority city bridge aliases noindex and excluded them from sitemap.
 - Added city route reindex and 100 clicks/day strategy files under `ops/`.
 - Added the Gradle Foojay toolchain resolver convention plugin so Java 21 toolchain auto-provisioning no longer emits the Gradle 10 deprecation warning.
+- Added page-level SEO/AEO metadata so indexed pages expose sitemap-aligned `article:modified_time`, image alt text, Open Graph locale, and accurate 512x512 social image dimensions from shared `PageMeta`.
+- Strengthened AEO extraction by allowing large image previews on indexed pages, adding utility/city `Service` and source-backed answer-card JSON-LD, and replacing generic HowTo step names with action-specific step names.
+- Reclassified ops broken-link health counting so fixed links are resolved, 403/timeout rows remain manual-review evidence, and only confirmed broken statuses count as unresolved source-link failures.
+- Reworked core JSON-LD generation in `SiteController` from manual string concatenation to Jackson node builders for WebPage, Service, answer-card, FAQ, WebApplication, ItemList, HowTo, and Breadcrumb schema.
+- Added `ops/daily_100_click_execution_2026-07-22.md` after the daily 100-click expert review. The implementation turned the admin Search Console bottleneck table into a weekly title/meta/H1 rewrite queue, exposed portal comparison rows on the main reporting-portal hub, added a portal lookup intent block, and moved utility hard facts such as notice/device ID, portal vendor/name, submitter, acceptance proof, and failed-test deadlines higher on utility pages.
+- Extended the weekly SEO rewrite loop so `/admin/seo-scorecard.json` includes a `rewriteQueue` array and `/admin/seo-rewrite-queue.csv` exports the priority, URL, bottleneck, performance, title pattern, and concrete rewrite action for weekly execution.
+- Added query-level GSC support through `app.ops.search-console-queries-path`, `SearchConsoleQueryPerformanceService`, `searchConsoleQueries`, `queryRewriteQueue`, and `/admin/seo-query-rewrite-queue.csv`, so Search Console query exports can drive title, H1, and meta rewrites by detected intent family.
+- Extended the query-level rewrite queue with target route matching so city, utility, and intent queries point to the likely city task page, utility focus page, or fallback hub before title/H1/meta rewrites are performed.
+- Added `deepFactQueue` plus `/admin/seo-deep-fact-queue.csv` so utilities missing report workflow, tester gate, deadline, failed-test, fee, portal, identifier, or acceptance-proof facts can be prioritized before creating more pSEO pages.
+- Strengthened `/backflow-reporting-portals` as a lookup database by adding a portal family matrix for BSI, WEIRS, SwiftComply, VEPO, Aqua/TrackMyBackflow, Tokay, and SpryBackflow searches.
 
 ## Next recommended tasks
 1. Continue working through the unresolved rows in `data/ops/broken_links.csv`, starting with true 404s before likely bot-protected 403s.

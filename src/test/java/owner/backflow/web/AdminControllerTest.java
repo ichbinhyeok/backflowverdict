@@ -35,12 +35,14 @@ import owner.backflow.service.LeadSubmissionGuardService;
         "app.ops.verification-token=test-ops-token",
         "app.ops.current-date=2026-06-29",
         "app.ops.write-freshness-report-on-startup=false",
-        "app.ops.search-console-pages-path=build/test-data/admin-ui/search-console/pages.csv"
+        "app.ops.search-console-pages-path=build/test-data/admin-ui/search-console/pages.csv",
+        "app.ops.search-console-queries-path=build/test-data/admin-ui/search-console/queries.csv"
 })
 @AutoConfigureMockMvc
 class AdminControllerTest {
     private static final Path LEADS_ROOT = Path.of("build", "test-data", "admin-ui", "leads");
     private static final Path SEARCH_CONSOLE_PATH = Path.of("build", "test-data", "admin-ui", "search-console", "pages.csv");
+    private static final Path SEARCH_CONSOLE_QUERY_PATH = Path.of("build", "test-data", "admin-ui", "search-console", "queries.csv");
 
     @Autowired
     private MockMvc mockMvc;
@@ -114,7 +116,20 @@ class AdminControllerTest {
                 .andExpect(content().string(containsString("structured workflow coverage")))
                 .andExpect(content().string(containsString("Search Console snapshot")))
                 .andExpect(content().string(containsString("CTR bottlenecks")))
+                .andExpect(content().string(containsString("Weekly title, meta, H1 rewrite queue")))
                 .andExpect(content().string(containsString("CTR/title bottleneck")))
+                .andExpect(content().string(containsString("Rewrite now")))
+                .andExpect(content().string(containsString("Rewrite title, meta, and H1")))
+                .andExpect(content().string(containsString("Download rewrite CSV")))
+                .andExpect(content().string(containsString("/admin/seo-rewrite-queue.csv")))
+                .andExpect(content().string(containsString("Download query CSV")))
+                .andExpect(content().string(containsString("/admin/seo-query-rewrite-queue.csv")))
+                .andExpect(content().string(containsString("Download fact CSV")))
+                .andExpect(content().string(containsString("/admin/seo-deep-fact-queue.csv")))
+                .andExpect(content().string(containsString("Deep fact expansion queue")))
+                .andExpect(content().string(containsString("Query-level GSC queue")))
+                .andExpect(content().string(containsString("dallas swiftcomply portal")))
+                .andExpect(content().string(containsString("/cities/texas/dallas/backflow-reporting-portal")))
                 .andExpect(content().string(containsString("Next internal SEO actions")))
                 .andExpect(content().string(containsString("/admin/seo-scorecard.json")))
                 .andExpect(content().string(containsString("Improvement candidates")))
@@ -128,6 +143,7 @@ class AdminControllerTest {
     @Test
     void leadCaptureIsStoredVisibleAndExportable() throws Exception {
         MockHttpSession session = adminSession();
+        writeSearchConsoleSnapshot();
 
         mockMvc.perform(get("/leads/new")
                         .param("utilityId", "dallas-water")
@@ -193,7 +209,31 @@ class AdminControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("\"strongestRoutes\"")))
                 .andExpect(content().string(containsString("\"improvementCandidates\"")))
+                .andExpect(content().string(containsString("\"rewriteQueue\"")))
+                .andExpect(content().string(containsString("\"queryRewriteQueue\"")))
+                .andExpect(content().string(containsString("\"deepFactQueue\"")))
                 .andExpect(content().string(containsString("\"searchConsole\"")));
+
+        mockMvc.perform(get("/admin/seo-rewrite-queue.csv").session(session))
+                .andExpect(status().isOk())
+                .andExpect(header().string("Content-Disposition", containsString("backflowpath-seo-rewrite-queue.csv")))
+                .andExpect(content().string(containsString("priority,page,bottleneck,clicks,impressions,ctr,position,suggested_title_pattern,action")))
+                .andExpect(content().string(containsString("Rewrite now")))
+                .andExpect(content().string(containsString("Rewrite title, meta, and H1")));
+
+        mockMvc.perform(get("/admin/seo-query-rewrite-queue.csv").session(session))
+                .andExpect(status().isOk())
+                .andExpect(header().string("Content-Disposition", containsString("backflowpath-seo-query-rewrite-queue.csv")))
+                .andExpect(content().string(containsString("priority,query,intent,target_path,target_label,bottleneck,clicks,impressions,ctr,position,suggested_title_pattern,suggested_h1_pattern,suggested_meta_pattern,action")))
+                .andExpect(content().string(containsString("dallas swiftcomply portal")))
+                .andExpect(content().string(containsString("/cities/texas/dallas/backflow-reporting-portal")))
+                .andExpect(content().string(containsString("Rewrite title, H1, and meta")));
+
+        mockMvc.perform(get("/admin/seo-deep-fact-queue.csv").session(session))
+                .andExpect(status().isOk())
+                .andExpect(header().string("Content-Disposition", containsString("backflowpath-seo-deep-fact-queue.csv")))
+                .andExpect(content().string(containsString("priority,utility_id,utility_name,state,path,fact_score,missing_facts,next_action")))
+                .andExpect(content().string(containsString("reportWorkflow")));
     }
 
     @Test
@@ -475,6 +515,15 @@ class AdminControllerTest {
                 Top pages,Clicks,Impressions,CTR,Position
                 https://backflowpath.com/utilities/texas/dallas-water-utilities/,0,180,0.4%,9.8
                 https://backflowpath.com/utilities/texas/garland-water-utilities/,1,42,2.4%,13.2
+                """
+        );
+        Files.writeString(
+                SEARCH_CONSOLE_QUERY_PATH,
+                """
+                Query,Clicks,Impressions,CTR,Position
+                dallas swiftcomply portal,0,140,0.3%,8.4
+                failed backflow test fort worth,0,64,0.2%,18.1
+                garland backflow testing,2,50,4.0%,7.2
                 """
         );
     }

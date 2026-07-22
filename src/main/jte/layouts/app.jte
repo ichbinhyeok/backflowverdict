@@ -18,14 +18,23 @@
     <meta property="og:description" content="${page.description()}">
     <meta property="og:url" content="${page.canonicalUrl()}">
     <meta property="og:type" content="${page.openGraphType()}">
+    <meta property="og:locale" content="en_US">
     @if (page.socialImageUrl() != null)
         <meta property="og:image" content="${page.socialImageUrl()}">
+        <meta property="og:image:secure_url" content="${page.socialImageUrl()}">
+        <meta property="og:image:width" content="512">
+        <meta property="og:image:height" content="512">
+        <meta property="og:image:alt" content="${page.socialImageAltText()}">
+    @endif
+    @if (page.dateModified() != null)
+        <meta property="article:modified_time" content="${page.dateModified().toString()}">
     @endif
     <meta name="twitter:card" content="${page.twitterCard()}">
     <meta name="twitter:title" content="${page.title()}">
     <meta name="twitter:description" content="${page.description()}">
     @if (page.socialImageUrl() != null)
         <meta name="twitter:image" content="${page.socialImageUrl()}">
+        <meta name="twitter:image:alt" content="${page.socialImageAltText()}">
     @endif
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -1,6 +1,7 @@
 package owner.backflow.web;
 
 import java.net.URI;
+import java.time.LocalDate;
 
 public record PageMeta(
         String title,
@@ -10,14 +11,16 @@ public record PageMeta(
         String structuredDataJson,
         String socialImageUrl,
         String openGraphType,
-        String requestHelpPath
+        String requestHelpPath,
+        LocalDate dateModified,
+        String socialImageAlt
 ) {
     public PageMeta(String title, String description, String canonicalUrl, boolean noindex) {
-        this(title, description, canonicalUrl, noindex, null, null, null, null);
+        this(title, description, canonicalUrl, noindex, null, null, null, null, null, null);
     }
 
     public PageMeta(String title, String description, String canonicalUrl, boolean noindex, String structuredDataJson) {
-        this(title, description, canonicalUrl, noindex, structuredDataJson, null, null, null);
+        this(title, description, canonicalUrl, noindex, structuredDataJson, null, null, null, null, null);
     }
 
     public PageMeta(
@@ -29,11 +32,11 @@ public record PageMeta(
             String socialImageUrl,
             String openGraphType
     ) {
-        this(title, description, canonicalUrl, noindex, structuredDataJson, socialImageUrl, openGraphType, null);
+        this(title, description, canonicalUrl, noindex, structuredDataJson, socialImageUrl, openGraphType, null, null, null);
     }
 
     public String robots() {
-        return noindex ? "noindex,follow" : "index,follow";
+        return noindex ? "noindex,follow" : "index,follow,max-image-preview:large";
     }
 
     public String socialImageUrl() {
@@ -62,6 +65,15 @@ public record PageMeta(
         return socialImageUrl() == null ? "summary" : "summary_large_image";
     }
 
+    public String socialImageAltText() {
+        if (socialImageAlt != null && !socialImageAlt.isBlank()) {
+            return socialImageAlt;
+        }
+        return title == null || title.isBlank()
+                ? "BackflowPath utility backflow compliance guide"
+                : title;
+    }
+
     public String requestHelpPathOrDefault() {
         return RequestHelpPaths.defaultPath(this);
     }
@@ -75,7 +87,9 @@ public record PageMeta(
                 structuredDataJson,
                 socialImageUrl,
                 openGraphType,
-                value
+                value,
+                dateModified,
+                socialImageAlt
         );
     }
 
@@ -88,7 +102,24 @@ public record PageMeta(
                 structuredDataJson,
                 socialImageUrl,
                 openGraphType,
-                requestHelpPath
+                requestHelpPath,
+                dateModified,
+                socialImageAlt
+        );
+    }
+
+    public PageMeta withDateModified(LocalDate value) {
+        return new PageMeta(
+                title,
+                description,
+                canonicalUrl,
+                noindex,
+                structuredDataJson,
+                socialImageUrl,
+                openGraphType,
+                requestHelpPath,
+                value,
+                socialImageAlt
         );
     }
 }

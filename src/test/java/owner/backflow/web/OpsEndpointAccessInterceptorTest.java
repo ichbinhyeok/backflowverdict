@@ -46,6 +46,6 @@ class OpsEndpointAccessInterceptorTest {
                     return request;
                 }))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("\"status\":\"warning\"")));
+                .andExpect(content().string(containsString("\"status\":\"ok\"")));
     }
 }

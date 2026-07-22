@@ -28,6 +28,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class OpsIssueService {
     private static final Set<String> RESOLVED_STATUSES = Set.of("ok", "resolved", "fixed", "200", "301", "302");
+    private static final Set<String> MANUAL_REVIEW_STATUSES = Set.of("401", "403", "timeout", "manual-review", "needs-review", "bot-protected");
 
     private final AppDataProperties dataProperties;
     private final AppOpsProperties opsProperties;
@@ -46,7 +47,7 @@ public class OpsIssueService {
     static OpsIssueService forTest(List<OpsCsvEntry> brokenLinks, List<OpsCsvEntry> conflicts, int brokenLinkSuppressionDays) {
         OpsIssueService service = new OpsIssueService(
                 new AppDataProperties(""),
-                new AppOpsProperties("", "", false, "", true, "", brokenLinkSuppressionDays, "", "")
+                new AppOpsProperties("", "", false, "", true, "", brokenLinkSuppressionDays, "", "", "")
         );
         service.brokenLinks = List.copyOf(brokenLinks);
         service.conflicts = List.copyOf(conflicts);
@@ -70,7 +71,7 @@ public class OpsIssueService {
 
     public long unresolvedBrokenLinkCount() {
         return brokenLinks.stream()
-                .filter(entry -> !RESOLVED_STATUSES.contains(entry.value("status").trim().toLowerCase(Locale.US)))
+                .filter(entry -> isConfirmedBrokenStatus(entry.value("status")))
                 .count();
     }
 
@@ -122,7 +123,7 @@ public class OpsIssueService {
 
         return brokenLinks.stream().anyMatch(entry -> {
             String status = entry.value("status").trim().toLowerCase(Locale.US);
-            if (RESOLVED_STATUSES.contains(status)) {
+            if (!isConfirmedBrokenStatus(status)) {
                 return false;
             }
             String normalizedBrokenUrl = normalizeUrl(entry.value("url"));
@@ -133,6 +134,13 @@ public class OpsIssueService {
             long age = ChronoUnit.DAYS.between(checkedAt, today);
             return age >= opsProperties.brokenLinkSuppressionDays();
         });
+    }
+
+    private boolean isConfirmedBrokenStatus(String status) {
+        String normalized = status == null ? "" : status.trim().toLowerCase(Locale.US);
+        return !normalized.isBlank()
+                && !RESOLVED_STATUSES.contains(normalized)
+                && !MANUAL_REVIEW_STATUSES.contains(normalized);
     }
 
     private List<String> utilityUrls(UtilityRecord utility) {

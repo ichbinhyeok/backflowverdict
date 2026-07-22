@@ -59,7 +59,8 @@ class SearchConsolePerformanceServiceTest {
                 "",
                 7,
                 "",
-                searchConsolePath.toString()
+                searchConsolePath.toString(),
+                tempDir.resolve("queries.csv").toString()
         );
     }
 }

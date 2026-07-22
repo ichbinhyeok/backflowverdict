@@ -13,7 +13,8 @@ public record AppOpsProperties(
         @DefaultValue("") String verificationToken,
         @DefaultValue("7") int brokenLinkSuppressionDays,
         @DefaultValue("") String currentDate,
-        @DefaultValue("./storage/search-console/pages.csv") String searchConsolePagesPath
+        @DefaultValue("./storage/search-console/pages.csv") String searchConsolePagesPath,
+        @DefaultValue("./storage/search-console/queries.csv") String searchConsoleQueriesPath
 ) {
     public static AppOpsProperties defaults() {
         return new AppOpsProperties(
@@ -25,7 +26,8 @@ public record AppOpsProperties(
                 "",
                 7,
                 "",
-                "./storage/search-console/pages.csv"
+                "./storage/search-console/pages.csv",
+                "./storage/search-console/queries.csv"
         );
     }
 }

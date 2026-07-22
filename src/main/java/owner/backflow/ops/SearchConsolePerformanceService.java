@@ -361,6 +361,57 @@ public class SearchConsolePerformanceService {
             return String.format(Locale.US, "%.1f", position);
         }
 
+        public String rewritePriorityLabel() {
+            return switch (bottleneckCode) {
+                case "ctr_bottleneck" -> "Rewrite now";
+                case "ranking_bottleneck" -> "Add depth";
+                case "discovery_bottleneck", "no_impressions" -> "Add links";
+                case "watch" -> "Watch next export";
+                default -> clicks > 0 ? "Protect winner" : "Review";
+            };
+        }
+
+        public String suggestedRewriteAction() {
+            return switch (bottleneckCode) {
+                case "ctr_bottleneck" -> "Rewrite title, meta, and H1 around the exact task query. Put the portal, due-date, approved-tester, or failed-test hook first.";
+                case "ranking_bottleneck" -> "Add source-backed facts before rewriting: portal vendor, notice/device identifier, tester gate, fee, deadline, and failed-test branch.";
+                case "discovery_bottleneck", "no_impressions" -> "Add contextual links from the state hub, portal hub, guide pages, and matching city-intent routes before requesting indexing.";
+                case "watch" -> "Keep the route in the priority sitemap and compare the next Search Console export before changing copy.";
+                default -> clicks > 0
+                        ? "Do not rewrite aggressively; add internal links and preserve the query promise that is already earning clicks."
+                        : "Review the page against the query family and pick one stronger click promise.";
+            };
+        }
+
+        public String suggestedTitlePattern() {
+            String normalizedPath = path == null ? "" : path.toLowerCase(Locale.US);
+            if (normalizedPath.contains("/backflow-reporting-portals")) {
+                return "[Portal] backflow report routes by city, tester gate, and filing proof";
+            }
+            if (normalizedPath.contains("/submit-backflow-report")) {
+                return "Submit a backflow test report in [City]: portal, notice ID, and proof";
+            }
+            if (normalizedPath.contains("/approved-testers")) {
+                return "[City/Utility] approved backflow testers: official list and report rules";
+            }
+            if (normalizedPath.contains("/failed-test")) {
+                return "[City/Utility] failed backflow test: repair, retest, and report deadline";
+            }
+            if (normalizedPath.contains("/annual-testing")) {
+                return "[City/Utility] annual backflow testing: due date, tester, and report route";
+            }
+            if (normalizedPath.contains("/guides/backflow-test-cost")) {
+                return "Backflow test cost: testing, repair, retest, and filing fee signals";
+            }
+            if (normalizedPath.contains("/guides/backflow-test-notice")) {
+                return "Backflow test notice: find the portal, due date, and accepted report path";
+            }
+            if (normalizedPath.contains("/utilities/")) {
+                return "[Utility] backflow testing: deadline, tester gate, portal, and failed-test steps";
+            }
+            return "Match the title to the exact query: task, city/utility, portal, and next action";
+        }
+
         private double weightedPosition(SearchConsolePageMetric other, int mergedImpressions) {
             if (mergedImpressions <= 0) {
                 return Math.max(position, other.position);

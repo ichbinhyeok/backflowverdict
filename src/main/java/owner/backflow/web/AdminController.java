@@ -190,6 +190,45 @@ public class AdminController {
         return ResponseEntity.ok(seoScorecardService.buildReport());
     }
 
+    @GetMapping(value = "/admin/seo-rewrite-queue.csv", produces = "text/csv")
+    public ResponseEntity<String> seoRewriteQueueCsv(HttpSession session) {
+        ensureAdminConfigured();
+        if (!isAuthenticated(session)) {
+            return redirectToLogin();
+        }
+        MediaType csvMediaType = new MediaType("text", "csv", StandardCharsets.UTF_8);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"backflowpath-seo-rewrite-queue.csv\"")
+                .contentType(csvMediaType)
+                .body(seoScorecardService.exportRewriteQueueCsv());
+    }
+
+    @GetMapping(value = "/admin/seo-query-rewrite-queue.csv", produces = "text/csv")
+    public ResponseEntity<String> seoQueryRewriteQueueCsv(HttpSession session) {
+        ensureAdminConfigured();
+        if (!isAuthenticated(session)) {
+            return redirectToLogin();
+        }
+        MediaType csvMediaType = new MediaType("text", "csv", StandardCharsets.UTF_8);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"backflowpath-seo-query-rewrite-queue.csv\"")
+                .contentType(csvMediaType)
+                .body(seoScorecardService.exportQueryRewriteQueueCsv());
+    }
+
+    @GetMapping(value = "/admin/seo-deep-fact-queue.csv", produces = "text/csv")
+    public ResponseEntity<String> seoDeepFactQueueCsv(HttpSession session) {
+        ensureAdminConfigured();
+        if (!isAuthenticated(session)) {
+            return redirectToLogin();
+        }
+        MediaType csvMediaType = new MediaType("text", "csv", StandardCharsets.UTF_8);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"backflowpath-seo-deep-fact-queue.csv\"")
+                .contentType(csvMediaType)
+                .body(seoScorecardService.exportDeepFactQueueCsv());
+    }
+
     private ResponseEntity<String> redirectToLogin() {
         return ResponseEntity.status(HttpStatus.FOUND)
                 .header(HttpHeaders.LOCATION, "/admin")

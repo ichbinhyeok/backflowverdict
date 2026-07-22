@@ -178,18 +178,110 @@
                                 <ul class="detail-list">
                                     <li>${seoScorecard.summary().highScoreRouteCount()} routes score 80+ in the internal model</li>
                                     <li>${seoScorecard.summary().improvementCandidateCount()} improvement candidates are visible below</li>
+                                    <li>${seoScorecard.rewriteQueue().size()} Search Console rows are ready for the weekly rewrite queue</li>
+                                    <li>${seoScorecard.queryRewriteQueue().size()} query rows are ready for query-level title/H1/meta rewrites</li>
+                                    <li>${seoScorecard.deepFactQueue().size()} utility records are queued for deep fact expansion</li>
                                     <li>Use candidate gaps and Search Console bottlenecks to decide the next utility JSON facts to verify.</li>
                                 </ul>
                                 <div class="hero__actions">
                                     <a class="button button--secondary" href="/admin/seo-scorecard.json">Download SEO JSON</a>
+                                    <a class="button button--secondary" href="/admin/seo-rewrite-queue.csv">Download rewrite CSV</a>
+                                    <a class="button button--secondary" href="/admin/seo-query-rewrite-queue.csv">Download query CSV</a>
+                                    <a class="button button--secondary" href="/admin/seo-deep-fact-queue.csv">Download fact CSV</a>
                                 </div>
                             </article>
                         </div>
 
+                        @if (!seoScorecard.deepFactQueue().isEmpty())
+                            <div class="section-heading">
+                                <span class="eyebrow">Deep fact expansion queue</span>
+                                <h2>Utility records missing answer-card facts</h2>
+                                <p>Use this before creating more pages. Daily 100 clicks needs more utilities with portal, tester, deadline, fee, failed-test, identifier, and acceptance-proof facts.</p>
+                            </div>
+                            <div class="table-wrap">
+                                <table class="data-table data-table--responsive">
+                                    <thead>
+                                    <tr>
+                                        <th>Utility</th>
+                                        <th>Priority</th>
+                                        <th>Missing facts</th>
+                                        <th>Next action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @for (var item : seoScorecard.deepFactQueue())
+                                        <tr>
+                                            <td data-label="Utility">
+                                                <a href="${item.path()}">${item.utilityName()}</a>
+                                                <div class="detail-meta">${item.state()} &middot; ${item.utilityId()} &middot; fact score ${item.factScore()}</div>
+                                            </td>
+                                            <td data-label="Priority">
+                                                <strong>${item.priority()}</strong>
+                                                <div class="detail-meta">Opportunity score: ${item.opportunityScore()}</div>
+                                            </td>
+                                            <td data-label="Missing facts">
+                                                ${String.join(", ", item.missingFacts())}
+                                            </td>
+                                            <td data-label="Next action">
+                                                ${item.nextAction()}
+                                            </td>
+                                        </tr>
+                                    @endfor
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
+
+                        @if (seoScorecard.searchConsoleQueries().available() && !seoScorecard.queryRewriteQueue().isEmpty())
+                            <div class="section-heading">
+                                <span class="eyebrow">Query-level GSC queue</span>
+                                <h2>Search terms that need title, H1, and meta alignment</h2>
+                                <p>This queue is query-first. Use it when one page ranks for the wrong wording or a high-impression query has no clicks.</p>
+                            </div>
+                            <div class="table-wrap">
+                                <table class="data-table data-table--responsive">
+                                    <thead>
+                                    <tr>
+                                        <th>Query</th>
+                                        <th>Intent</th>
+                                        <th>Target route</th>
+                                        <th>Performance</th>
+                                        <th>Rewrite pattern</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @for (var item : seoScorecard.queryRewriteQueue())
+                                        <tr>
+                                            <td data-label="Query">
+                                                <strong>${item.query()}</strong>
+                                                <div class="detail-meta">${item.priority()} &middot; ${item.bottleneck()}</div>
+                                            </td>
+                                            <td data-label="Intent">${item.intent()}</td>
+                                            <td data-label="Target route">
+                                                <a href="${item.targetPath()}">${item.targetLabel()}</a>
+                                                <div class="detail-meta">${item.targetPath()}</div>
+                                            </td>
+                                            <td data-label="Performance">
+                                                <div>${item.clicks()} clicks, ${item.impressions()} impressions</div>
+                                                <div class="detail-meta">${item.ctr()} CTR, position ${item.position()}</div>
+                                            </td>
+                                            <td data-label="Rewrite pattern">
+                                                <strong>${item.suggestedTitlePattern()}</strong>
+                                                <div>${item.suggestedH1Pattern()}</div>
+                                                <div class="detail-meta">${item.action()}</div>
+                                            </td>
+                                        </tr>
+                                    @endfor
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
+
                         @if (seoScorecard.searchConsole().available() && !seoScorecard.searchConsole().topBottlenecks().isEmpty())
                             <div class="section-heading">
                                 <span class="eyebrow">Search Console bottlenecks</span>
-                                <h2>Live query-side friction</h2>
+                                <h2>Weekly title, meta, H1 rewrite queue</h2>
+                                <p>Use this table as the weekly GSC loop: rewrite CTR bottlenecks first, add hard facts for ranking bottlenecks, and add contextual links for discovery bottlenecks.</p>
                             </div>
                             <div class="table-wrap">
                                 <table class="data-table data-table--responsive">
@@ -198,6 +290,7 @@
                                         <th>Page</th>
                                         <th>Bottleneck</th>
                                         <th>Performance</th>
+                                        <th>Rewrite action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -214,6 +307,11 @@
                                             <td data-label="Performance">
                                                 <div>${metric.clicks()} clicks, ${metric.impressions()} impressions</div>
                                                 <div class="detail-meta">${metric.displayCtr()} CTR, position ${metric.displayPosition()}</div>
+                                            </td>
+                                            <td data-label="Rewrite action">
+                                                <strong>${metric.rewritePriorityLabel()}</strong>
+                                                <div>${metric.suggestedTitlePattern()}</div>
+                                                <div class="detail-meta">${metric.suggestedRewriteAction()}</div>
                                             </td>
                                         </tr>
                                     @endfor

@@ -21,14 +21,14 @@ class VerificationWorkflowServiceTest {
 
         VerificationReport report = context.verificationWorkflowService().run("TL", "manual verification");
 
-        Assertions.assertEquals("warning", report.status());
+        Assertions.assertEquals("ok", report.status());
         Assertions.assertTrue(report.summary().publishedUtilityCount() >= 13);
         Assertions.assertTrue(report.summary().publishedGuideCount() >= 6);
         Assertions.assertTrue(report.summary().publishedStateGuideCount() >= 1);
         Assertions.assertEquals(0, report.summary().errorCount());
-        Assertions.assertTrue(report.summary().warningCount() >= 1);
+        Assertions.assertEquals(0, report.summary().warningCount());
         Assertions.assertTrue(report.findings().stream()
-                .anyMatch(finding -> "broken_source_links".equals(finding.code())));
+                .noneMatch(finding -> "broken_source_links".equals(finding.code())));
         Assertions.assertTrue(Files.exists(Path.of(context.opsProperties().freshnessReportPath())));
         Assertions.assertTrue(Files.exists(Path.of(context.opsProperties().verificationReportPath())));
         Assertions.assertTrue(
@@ -65,7 +65,8 @@ class VerificationWorkflowServiceTest {
                 "",
                 7,
                 currentDate,
-                tempDir.resolve("storage").resolve("search-console").resolve("pages.csv").toString()
+                tempDir.resolve("storage").resolve("search-console").resolve("pages.csv").toString(),
+                tempDir.resolve("storage").resolve("search-console").resolve("queries.csv").toString()
         );
 
         ChangeLogService changeLogService = new ChangeLogService(dataProperties);

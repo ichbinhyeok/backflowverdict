@@ -185,10 +185,14 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Aqua and TrackMyBackflow reporting")))
                 .andExpect(content().string(containsString("Tokay WebTest reporting")))
                 .andExpect(content().string(containsString("SpryBackflow reporting")))
+                .andExpect(content().string(containsString("Portal lookup database")))
+                .andExpect(content().string(containsString("Open SwiftComply matrix")))
                 .andExpect(content().string(containsString("Owner checklist")))
                 .andExpect(content().string(containsString("Priority portal routes")))
-                .andExpect(content().string(not(containsString("Portal comparison"))))
-                .andExpect(content().string(not(containsString("Mapped utilities"))))
+                .andExpect(content().string(containsString("Portal lookup intent")))
+                .andExpect(content().string(containsString("Portal comparison")))
+                .andExpect(content().string(containsString("Notice or device ID")))
+                .andExpect(content().string(containsString("mapped utility workflows")))
                 .andExpect(content().string(containsString("Portal access still depends on accepted credentials")))
                 .andExpect(content().string(containsString("Questions to answer before filing a report")))
                 .andExpect(content().string(containsString("Can any backflow tester submit through Backflow reporting portals")))
@@ -319,7 +323,11 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("noindex,follow")))
                 .andExpect(header().string("X-Robots-Tag", "noindex,follow"))
                 .andExpect(content().string(containsString("property=\"og:title\"")))
+                .andExpect(content().string(containsString("property=\"og:image:width\" content=\"512\"")))
+                .andExpect(content().string(containsString("property=\"og:image:alt\" content=\"Dallas backflow reports | SwiftComply | BackflowPath\"")))
+                .andExpect(content().string(containsString("property=\"article:modified_time\" content=\"2026-06-29\"")))
                 .andExpect(content().string(containsString("name=\"twitter:card\" content=\"summary_large_image\"")))
+                .andExpect(content().string(containsString("name=\"twitter:image:alt\" content=\"Dallas backflow reports | SwiftComply | BackflowPath\"")))
                 .andExpect(content().string(containsString("gtag/js?id=G-TEST123")))
                 .andExpect(content().string(containsString("request_help_click")));
     }
@@ -368,6 +376,11 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Acceptance rule")))
                 .andExpect(content().string(containsString("What costs or portal fees should I expect")))
                 .andExpect(content().string(containsString("Annual testing is required")))
+                .andExpect(content().string(containsString("\"@type\":\"Service\"")))
+                .andExpect(content().string(containsString("\"serviceType\":\"Backflow testing compliance guidance\"")))
+                .andExpect(content().string(containsString("\"@type\":\"DefinedTermSet\"")))
+                .andExpect(content().string(containsString("\"name\":\"Governing utility\"")))
+                .andExpect(content().string(containsString("\"name\":\"Report route\"")))
                 .andExpect(content().string(containsString("State compliance layer")))
                 .andExpect(content().string(containsString("Local questions people actually ask")))
                 .andExpect(content().string(not(containsString("Office staff: create annual brief"))))
@@ -1424,7 +1437,11 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Keep acceptance proof")))
                 .andExpect(content().string(containsString("HowTo")))
                 .andExpect(content().string(containsString("\"@type\":\"WebPage\"")))
+                .andExpect(content().string(containsString("\"@type\":\"Service\"")))
+                .andExpect(content().string(containsString("\"@type\":\"DefinedTermSet\"")))
                 .andExpect(content().string(containsString("\"citation\"")))
+                .andExpect(content().string(containsString("\"name\":\"Match the utility notice to the service address, device or assembly\"")))
+                .andExpect(content().string(containsString("\"name\":\"File the result through the stored submission path: Dallas Water\"")))
                 .andExpect(content().string(containsString("How do I submit a backflow test report for Dallas")))
                 .andExpect(content().string(containsString("proof of submission")))
                 .andExpect(content().string(containsString("FAQPage")));
@@ -1789,8 +1806,8 @@ class SiteControllerTest {
                             return request;
                         }))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("\"status\":\"warning\"")))
-                .andExpect(content().string(containsString("\"code\":\"broken_source_links\"")));
+                .andExpect(content().string(containsString("\"status\":\"ok\"")))
+                .andExpect(content().string(not(containsString("\"code\":\"broken_source_links\""))));
     }
 
     @Test
@@ -1855,7 +1872,7 @@ class SiteControllerTest {
     void noticeFinderOnlyIndexesTheCleanLandingPage() throws Exception {
         mockMvc.perform(get("/notice-finder"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("<meta name=\"robots\" content=\"index,follow\">")))
+                .andExpect(content().string(containsString("<meta name=\"robots\" content=\"index,follow,max-image-preview:large\">")))
                 .andExpect(header().doesNotExist("X-Robots-Tag"));
 
         mockMvc.perform(get("/notice-finder").queryParam("q", "Dallas"))

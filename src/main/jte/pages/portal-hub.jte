@@ -115,7 +115,110 @@
                 </div>
             </div>
         </section>
+
+        <section class="section section--tight">
+            <div class="container">
+                <article class="table-card">
+                    <div class="section-heading">
+                        <span class="eyebrow">Portal lookup database</span>
+                        <h2>Portal family matrix for city and tester-route searches</h2>
+                        <p>Start with the portal family when the notice or tester workflow names a vendor, then open the family page to compare utility rows by notice/device ID, tester gate, report acceptance, timing/fee clue, and failed-test handling.</p>
+                    </div>
+                    <div class="table-wrap">
+                        <table class="data-table data-table--responsive">
+                            <thead>
+                            <tr>
+                                <th>Portal family</th>
+                                <th>Mapped utilities</th>
+                                <th>Best matching searches</th>
+                                <th>Lookup route</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td data-label="Portal family"><strong>BSI / Backflow Solutions</strong></td>
+                                <td data-label="Mapped utilities">${portalCounts.getOrDefault("bsi", 0)}</td>
+                                <td data-label="Best matching searches">BSI backflow portal, Backflow Solutions report, city BSI tester upload</td>
+                                <td data-label="Lookup route"><a href="/backflow-reporting-portals/bsi">Open BSI matrix</a></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Portal family"><strong>WEIRS</strong></td>
+                                <td data-label="Mapped utilities">${portalCounts.getOrDefault("weirs", 0)}</td>
+                                <td data-label="Best matching searches">WEIRS backflow report, Austin WEIRS, tester TMR upload</td>
+                                <td data-label="Lookup route"><a href="/backflow-reporting-portals/weirs">Open WEIRS matrix</a></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Portal family"><strong>SwiftComply / C3Swift</strong></td>
+                                <td data-label="Mapped utilities">${portalCounts.getOrDefault("swiftcomply", 0)}</td>
+                                <td data-label="Best matching searches">SwiftComply portal, C3Swift backflow, city report submission</td>
+                                <td data-label="Lookup route"><a href="/backflow-reporting-portals/swiftcomply">Open SwiftComply matrix</a></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Portal family"><strong>VEPO / Envirotrax</strong></td>
+                                <td data-label="Mapped utilities">${portalCounts.getOrDefault("vepo", 0)}</td>
+                                <td data-label="Best matching searches">VEPO backflow, Envirotrax tester portal, failed-test upload</td>
+                                <td data-label="Lookup route"><a href="/backflow-reporting-portals/vepo">Open VEPO matrix</a></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Portal family"><strong>Aqua / TrackMyBackflow</strong></td>
+                                <td data-label="Mapped utilities">${portalCounts.getOrDefault("aqua", 0)}</td>
+                                <td data-label="Best matching searches">Aqua Backflow, TrackMyBackflow Hazard ID, customer record</td>
+                                <td data-label="Lookup route"><a href="/backflow-reporting-portals/aqua">Open Aqua matrix</a></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Portal family"><strong>Tokay WebTest</strong></td>
+                                <td data-label="Mapped utilities">${portalCounts.getOrDefault("tokay", 0)}</td>
+                                <td data-label="Best matching searches">Tokay WebTest, WebTest report entry, tester approval</td>
+                                <td data-label="Lookup route"><a href="/backflow-reporting-portals/tokay">Open Tokay matrix</a></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Portal family"><strong>SpryBackflow</strong></td>
+                                <td data-label="Mapped utilities">${portalCounts.getOrDefault("sprybackflow", 0)}</td>
+                                <td data-label="Best matching searches">SpryBackflow portal, Aurora SpryBackflow, online test submission</td>
+                                <td data-label="Lookup route"><a href="/backflow-reporting-portals/sprybackflow">Open SpryBackflow matrix</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </div>
+        </section>
     @endif
+
+    <section class="section section--tight">
+        <div class="container">
+            <article class="detail-card detail-card--key">
+                <div class="section-heading">
+                    <span class="eyebrow">Portal lookup intent</span>
+                    <h2>Use this hub like a lookup table, not a generic article</h2>
+                    <p>Most portal searches start after a notice, failed test, or tester upload problem. Match the portal name to the city or utility, then confirm the exact acceptance gate before filing.</p>
+                </div>
+                <div class="metadata-grid">
+                    <div class="metadata-block">
+                        <strong>Owner search</strong>
+                        <span>“Where do I submit my backflow report?” Match the utility, notice/device ID, due date, and proof of accepted filing.</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Tester search</strong>
+                        <span>“Which portal does this city use?” Confirm portal enrollment, accepted credentials, gauge calibration, and report upload rules.</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>Failed-test search</strong>
+                        <span>“My backflow test failed.” Repair, retest, and accepted resubmission usually come before compliance is closed.</span>
+                    </div>
+                    <div class="metadata-block">
+                        <strong>AI answer source</strong>
+                        <span>Each row keeps the portal, tester gate, notice clue, timing/fee clue, and failed-test clue in one extractable block.</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <a class="button button--primary" href="/notice-finder">Find a route from a notice</a>
+                    <a class="button button--secondary" href="/submit-backflow-report">Submit report routes</a>
+                    <a class="button button--secondary" href="/official-backflow-tester-lists">Official tester lists</a>
+                </div>
+            </article>
+        </div>
+    </section>
 
     @if (!priorityRoutes.isEmpty())
         <section class="section section--tight">
@@ -164,7 +267,7 @@
         </div>
     </section>
 
-    @if (!utilities.isEmpty() && !overview)
+    @if (!utilities.isEmpty())
         <section class="section">
             <div class="container">
                 <article class="table-card">

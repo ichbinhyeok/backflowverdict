@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import owner.backflow.data.model.ApprovedTesterMode;
+import owner.backflow.data.model.CityAliasRecord;
 import owner.backflow.data.model.CostBand;
 import owner.backflow.data.model.SourceLink;
 import owner.backflow.data.model.SubmissionMethod;
@@ -12,6 +13,8 @@ import owner.backflow.data.model.UtilityRecord;
 import owner.backflow.files.BackflowRegistryService;
 import owner.backflow.ops.SearchConsolePerformanceService.SearchConsolePageMetric;
 import owner.backflow.ops.SearchConsolePerformanceService.SearchConsoleSnapshot;
+import owner.backflow.ops.SearchConsoleQueryPerformanceService.SearchConsoleQueryMetric;
+import owner.backflow.ops.SearchConsoleQueryPerformanceService.SearchConsoleQuerySnapshot;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -30,18 +33,22 @@ public class SeoScorecardService {
 
     private final BackflowRegistryService registryService;
     private final SearchConsolePerformanceService searchConsolePerformanceService;
+    private final SearchConsoleQueryPerformanceService searchConsoleQueryPerformanceService;
 
     public SeoScorecardService(
             BackflowRegistryService registryService,
-            SearchConsolePerformanceService searchConsolePerformanceService
+            SearchConsolePerformanceService searchConsolePerformanceService,
+            SearchConsoleQueryPerformanceService searchConsoleQueryPerformanceService
     ) {
         this.registryService = registryService;
         this.searchConsolePerformanceService = searchConsolePerformanceService;
+        this.searchConsoleQueryPerformanceService = searchConsoleQueryPerformanceService;
     }
 
     public SeoScorecardReport buildReport() {
         List<UtilityRecord> utilities = registryService.listPublishedUtilities();
         SearchConsoleSnapshot searchConsole = searchConsolePerformanceService.loadSnapshot();
+        SearchConsoleQuerySnapshot searchConsoleQueries = searchConsoleQueryPerformanceService.loadSnapshot();
         List<SeoScorecardItem> items = utilities.stream()
                 .map(utility -> scoreUtility(utility, searchConsole))
                 .toList();
@@ -87,8 +94,310 @@ public class SeoScorecardService {
                 ),
                 strongestRoutes,
                 improvementCandidates,
-                searchConsole
+                searchConsole,
+                searchConsoleQueries,
+                rewriteQueue(searchConsole),
+                queryRewriteQueue(searchConsoleQueries),
+                deepFactQueue(utilities)
         );
+    }
+
+    public String exportRewriteQueueCsv() {
+        SeoScorecardReport report = buildReport();
+        StringBuilder csv = new StringBuilder();
+        csv.append("priority,page,bottleneck,clicks,impressions,ctr,position,suggested_title_pattern,action\n");
+        for (SeoRewriteQueueItem item : report.rewriteQueue()) {
+            appendCsvRow(csv,
+                    item.priority(),
+                    item.path(),
+                    item.bottleneck(),
+                    String.valueOf(item.clicks()),
+                    String.valueOf(item.impressions()),
+                    item.ctr(),
+                    item.position(),
+                    item.suggestedTitlePattern(),
+                    item.action());
+        }
+        return csv.toString();
+    }
+
+    public String exportQueryRewriteQueueCsv() {
+        SeoScorecardReport report = buildReport();
+        StringBuilder csv = new StringBuilder();
+        csv.append("priority,query,intent,target_path,target_label,bottleneck,clicks,impressions,ctr,position,suggested_title_pattern,suggested_h1_pattern,suggested_meta_pattern,action\n");
+        for (SeoQueryRewriteQueueItem item : report.queryRewriteQueue()) {
+            appendCsvRow(csv,
+                    item.priority(),
+                    item.query(),
+                    item.intent(),
+                    item.targetPath(),
+                    item.targetLabel(),
+                    item.bottleneck(),
+                    String.valueOf(item.clicks()),
+                    String.valueOf(item.impressions()),
+                    item.ctr(),
+                    item.position(),
+                    item.suggestedTitlePattern(),
+                    item.suggestedH1Pattern(),
+                    item.suggestedMetaPattern(),
+                    item.action());
+        }
+        return csv.toString();
+    }
+
+    public String exportDeepFactQueueCsv() {
+        SeoScorecardReport report = buildReport();
+        StringBuilder csv = new StringBuilder();
+        csv.append("priority,utility_id,utility_name,state,path,fact_score,missing_facts,next_action\n");
+        for (SeoDeepFactQueueItem item : report.deepFactQueue()) {
+            appendCsvRow(csv,
+                    item.priority(),
+                    item.utilityId(),
+                    item.utilityName(),
+                    item.state(),
+                    item.path(),
+                    item.factScore(),
+                    String.join("; ", item.missingFacts()),
+                    item.nextAction());
+        }
+        return csv.toString();
+    }
+
+    private List<SeoRewriteQueueItem> rewriteQueue(SearchConsoleSnapshot searchConsole) {
+        if (searchConsole == null || !searchConsole.available()) {
+            return List.of();
+        }
+        return searchConsole.topBottlenecks().stream()
+                .map(metric -> new SeoRewriteQueueItem(
+                        metric.rewritePriorityLabel(),
+                        metric.path(),
+                        metric.bottleneckLabel(),
+                        metric.clicks(),
+                        metric.impressions(),
+                        metric.displayCtr(),
+                        metric.displayPosition(),
+                        metric.suggestedTitlePattern(),
+                        metric.suggestedRewriteAction()
+                ))
+                .toList();
+    }
+
+    private List<SeoQueryRewriteQueueItem> queryRewriteQueue(SearchConsoleQuerySnapshot searchConsoleQueries) {
+        if (searchConsoleQueries == null || !searchConsoleQueries.available()) {
+            return List.of();
+        }
+        return searchConsoleQueries.topBottlenecks().stream()
+                .map(metric -> {
+                    QueryTarget target = queryTarget(metric);
+                    return new SeoQueryRewriteQueueItem(
+                        metric.priorityLabel(),
+                        metric.query(),
+                        metric.intentFamily(),
+                        target.path(),
+                        target.label(),
+                        metric.bottleneckLabel(),
+                        metric.clicks(),
+                        metric.impressions(),
+                        metric.displayCtr(),
+                        metric.displayPosition(),
+                        metric.suggestedTitlePattern(),
+                        metric.suggestedH1Pattern(),
+                        metric.suggestedMetaPattern(),
+                        metric.action()
+                    );
+                })
+                .toList();
+    }
+
+    private QueryTarget queryTarget(SearchConsoleQueryMetric metric) {
+        String normalizedQuery = metric.normalizedQuery() == null ? "" : metric.normalizedQuery();
+        String intentSlug = intentSlug(metric.intentFamily());
+        CityAliasRecord matchedAlias = registryService.listCityAliases().stream()
+                .filter(alias -> alias.aliasMode() != owner.backflow.data.model.AliasMode.NOINDEX_BRIDGE)
+                .filter(alias -> queryMentionsAlias(normalizedQuery, alias))
+                .findFirst()
+                .orElse(null);
+        if (matchedAlias != null) {
+            UtilityRecord utility = registryService.findUtilityById(matchedAlias.utilityId()).orElse(null);
+            if (utility != null && intentSlug != null && utility.supportsCityIntent(intentSlug)) {
+                return new QueryTarget(cityIntentPath(matchedAlias, intentSlug), matchedAlias.city() + " " + readableIntent(metric.intentFamily()));
+            }
+            return new QueryTarget(cityPath(matchedAlias), matchedAlias.city() + " backflow testing");
+        }
+
+        UtilityRecord matchedUtility = registryService.listPublishedUtilities().stream()
+                .filter(utility -> queryMentionsUtility(normalizedQuery, utility))
+                .findFirst()
+                .orElse(null);
+        if (matchedUtility != null) {
+            if ("failed-test".equals(metric.intentFamily()) && matchedUtility.supportsFailedTestPage()) {
+                return new QueryTarget(utilityPath(matchedUtility) + "failed-test", matchedUtility.utilityName() + " failed-test page");
+            }
+            if ("approved-testers".equals(metric.intentFamily()) && matchedUtility.supportsApprovedTestersPage()) {
+                return new QueryTarget(utilityPath(matchedUtility) + "approved-testers", matchedUtility.utilityName() + " approved testers page");
+            }
+            if ("annual-notice".equals(metric.intentFamily()) && matchedUtility.supportsAnnualTestingPage()) {
+                return new QueryTarget(utilityPath(matchedUtility) + "annual-testing", matchedUtility.utilityName() + " annual testing page");
+            }
+            return new QueryTarget(utilityPath(matchedUtility), matchedUtility.utilityName() + " utility page");
+        }
+
+        if ("portal".equals(metric.intentFamily())) {
+            return new QueryTarget("/backflow-reporting-portals", "Reporting portal hub");
+        }
+        if ("submit-report".equals(metric.intentFamily())) {
+            return new QueryTarget("/submit-backflow-report", "Submit report hub");
+        }
+        if ("approved-testers".equals(metric.intentFamily())) {
+            return new QueryTarget("/official-backflow-tester-lists", "Official tester list hub");
+        }
+        if ("cost-fee".equals(metric.intentFamily())) {
+            return new QueryTarget("/guides/backflow-test-cost", "Backflow test cost guide");
+        }
+        return new QueryTarget("/notice-finder", "Notice finder");
+    }
+
+    private boolean queryMentionsAlias(String normalizedQuery, CityAliasRecord alias) {
+        return containsAny(normalizedQuery, alias.city(), alias.aliasSlug());
+    }
+
+    private boolean queryMentionsUtility(String normalizedQuery, UtilityRecord utility) {
+        return containsAny(normalizedQuery, utility.utilityName(), utility.canonicalSlug(), utility.utilityId())
+                || utility.searchAliases().stream().anyMatch(alias -> containsAny(normalizedQuery, alias));
+    }
+
+    private String cityPath(CityAliasRecord alias) {
+        return "/cities/" + alias.state() + "/" + alias.aliasSlug() + "/backflow-testing";
+    }
+
+    private String cityIntentPath(CityAliasRecord alias, String intentSlug) {
+        return "/cities/" + alias.state() + "/" + alias.aliasSlug() + "/" + intentSlug;
+    }
+
+    private String intentSlug(String intentFamily) {
+        return switch (intentFamily) {
+            case "failed-test" -> "failed-backflow-test";
+            case "submit-report" -> "submit-backflow-report";
+            case "approved-testers" -> "approved-backflow-testers";
+            case "portal" -> "backflow-reporting-portal";
+            case "annual-notice" -> "annual-backflow-testing";
+            case "irrigation" -> "irrigation-backflow-testing";
+            case "fire-line" -> "fire-line-backflow-testing";
+            default -> null;
+        };
+    }
+
+    private String readableIntent(String intentFamily) {
+        return switch (intentFamily) {
+            case "failed-test" -> "failed-test route";
+            case "submit-report" -> "submit report route";
+            case "approved-testers" -> "approved tester route";
+            case "portal" -> "portal route";
+            case "annual-notice" -> "annual notice route";
+            case "irrigation" -> "irrigation route";
+            case "fire-line" -> "fire-line route";
+            default -> "backflow route";
+        };
+    }
+
+    private List<SeoDeepFactQueueItem> deepFactQueue(List<UtilityRecord> utilities) {
+        return utilities.stream()
+                .map(this::deepFactQueueItem)
+                .filter(item -> !item.missingFacts().isEmpty())
+                .sorted(Comparator.comparingInt(SeoDeepFactQueueItem::opportunityScore).reversed()
+                        .thenComparing(Comparator.comparingInt(item -> Integer.parseInt(item.factScore())))
+                        .thenComparing(SeoDeepFactQueueItem::utilityName))
+                .limit(40)
+                .toList();
+    }
+
+    private SeoDeepFactQueueItem deepFactQueueItem(UtilityRecord utility) {
+        List<String> missingFacts = new ArrayList<>();
+        int factScore = 0;
+        if (utility.hasReportWorkflow()) {
+            factScore++;
+        } else {
+            missingFacts.add("reportWorkflow");
+        }
+        if (utility.hasTesterGate()) {
+            factScore++;
+        } else {
+            missingFacts.add("testerGate");
+        }
+        if (utility.hasDeadlinePolicy()) {
+            factScore++;
+        } else {
+            missingFacts.add("deadlinePolicy");
+        }
+        if (utility.hasFailedTestPolicy()) {
+            factScore++;
+        } else {
+            missingFacts.add("failedTestPolicy");
+        }
+        if (hasStructuredFees(utility)) {
+            factScore++;
+        } else {
+            missingFacts.add("structuredFees");
+        }
+        if (!isBlank(utility.reportWorkflow().portalVendor()) || !isBlank(utility.reportWorkflow().portalName())) {
+            factScore++;
+        } else {
+            missingFacts.add("portalVendorOrName");
+        }
+        if (!utility.reportWorkflow().requiredIdentifiers().isEmpty()) {
+            factScore++;
+        } else {
+            missingFacts.add("noticeOrDeviceIdentifiers");
+        }
+        if (!isBlank(utility.reportWorkflow().acceptanceProof())) {
+            factScore++;
+        } else {
+            missingFacts.add("acceptanceProof");
+        }
+
+        int opportunityScore = (missingFacts.size() * 10)
+                + Math.min(utility.indexQualityScore(), 20)
+                + (utility.supportsCityIntent("submit-backflow-report") ? 8 : 0)
+                + (utility.supportsCityIntent("backflow-reporting-portal") ? 8 : 0)
+                + (utility.supportsApprovedTestersPage() ? 5 : 0);
+
+        return new SeoDeepFactQueueItem(
+                deepFactPriority(missingFacts.size()),
+                utility.utilityId(),
+                utility.utilityName(),
+                utility.state(),
+                utilityPath(utility),
+                String.valueOf(factScore),
+                opportunityScore,
+                missingFacts,
+                deepFactNextAction(missingFacts)
+        );
+    }
+
+    private String deepFactPriority(int missingFactCount) {
+        if (missingFactCount >= 6) {
+            return "P0";
+        }
+        if (missingFactCount >= 4) {
+            return "P1";
+        }
+        return "P2";
+    }
+
+    private String deepFactNextAction(List<String> missingFacts) {
+        if (missingFacts.contains("reportWorkflow") || missingFacts.contains("portalVendorOrName")) {
+            return "Verify portal vendor/name, submitter, required IDs, deadline, acceptance proof, and sourceRefs.";
+        }
+        if (missingFacts.contains("testerGate")) {
+            return "Verify approved tester route, credential, registration, gauge calibration, portal enrollment, and sourceRefs.";
+        }
+        if (missingFacts.contains("failedTestPolicy")) {
+            return "Verify repair/retest deadline, failed-report deadline, shutoff risk, penalty, and sourceRefs.";
+        }
+        if (missingFacts.contains("structuredFees")) {
+            return "Convert filing, portal, late, fine, or penalty amounts into structured fee fields with sourceRefs.";
+        }
+        return "Fill the remaining answer-card fact slots with official source evidence.";
     }
 
     private SeoScorecardItem scoreUtility(UtilityRecord utility, SearchConsoleSnapshot searchConsole) {
@@ -429,7 +738,7 @@ public class SeoScorecardService {
         }
         String lowered = value.toLowerCase(Locale.US);
         for (String keyword : keywords) {
-            if (lowered.contains(keyword)) {
+            if (!isBlank(keyword) && lowered.contains(keyword.toLowerCase(Locale.US))) {
                 return true;
             }
         }
@@ -448,16 +757,92 @@ public class SeoScorecardService {
         return value == null || value.isBlank();
     }
 
+    private static void appendCsvRow(StringBuilder csv, String... values) {
+        for (int index = 0; index < values.length; index++) {
+            if (index > 0) {
+                csv.append(',');
+            }
+            csv.append(csvCell(values[index]));
+        }
+        csv.append('\n');
+    }
+
+    private static String csvCell(String value) {
+        String safeValue = value == null ? "" : value;
+        return "\"" + safeValue.replace("\"", "\"\"") + "\"";
+    }
+
     public record SeoScorecardReport(
             SeoScorecardSummary summary,
             List<SeoScorecardItem> strongestRoutes,
             List<SeoScorecardItem> improvementCandidates,
-            SearchConsoleSnapshot searchConsole
+            SearchConsoleSnapshot searchConsole,
+            SearchConsoleQuerySnapshot searchConsoleQueries,
+            List<SeoRewriteQueueItem> rewriteQueue,
+            List<SeoQueryRewriteQueueItem> queryRewriteQueue,
+            List<SeoDeepFactQueueItem> deepFactQueue
     ) {
         public SeoScorecardReport {
             strongestRoutes = strongestRoutes == null ? List.of() : List.copyOf(strongestRoutes);
             improvementCandidates = improvementCandidates == null ? List.of() : List.copyOf(improvementCandidates);
             searchConsole = searchConsole == null ? SearchConsoleSnapshot.missing("") : searchConsole;
+            searchConsoleQueries = searchConsoleQueries == null ? SearchConsoleQuerySnapshot.missing("") : searchConsoleQueries;
+            rewriteQueue = rewriteQueue == null ? List.of() : List.copyOf(rewriteQueue);
+            queryRewriteQueue = queryRewriteQueue == null ? List.of() : List.copyOf(queryRewriteQueue);
+            deepFactQueue = deepFactQueue == null ? List.of() : List.copyOf(deepFactQueue);
+        }
+    }
+
+    public record SeoRewriteQueueItem(
+            String priority,
+            String path,
+            String bottleneck,
+            int clicks,
+            int impressions,
+            String ctr,
+            String position,
+            String suggestedTitlePattern,
+            String action
+    ) {
+    }
+
+    public record SeoQueryRewriteQueueItem(
+            String priority,
+            String query,
+            String intent,
+            String targetPath,
+            String targetLabel,
+            String bottleneck,
+            int clicks,
+            int impressions,
+            String ctr,
+            String position,
+            String suggestedTitlePattern,
+            String suggestedH1Pattern,
+            String suggestedMetaPattern,
+            String action
+    ) {
+    }
+
+    private record QueryTarget(
+            String path,
+            String label
+    ) {
+    }
+
+    public record SeoDeepFactQueueItem(
+            String priority,
+            String utilityId,
+            String utilityName,
+            String state,
+            String path,
+            String factScore,
+            int opportunityScore,
+            List<String> missingFacts,
+            String nextAction
+    ) {
+        public SeoDeepFactQueueItem {
+            missingFacts = missingFacts == null ? List.of() : List.copyOf(missingFacts);
         }
     }
 
