@@ -238,6 +238,10 @@
                             <div class="metadata-block"><strong>TrackMyBackflow</strong><span>Look for the Hazard ID, Site ID, or customer notice before the tester enters the report.</span></div>
                             <div class="metadata-block"><strong>Aqua Backflow</strong><span>Confirm the city or utility program that routes reports through Aqua Backflow.</span></div>
                             <div class="metadata-block"><strong>Filing fee clue</strong><span>Some Aqua/TrackMyBackflow utilities publish a filing fee or returned-report rule.</span></div>
+                        @elseif (portalSlug.equals("vepo"))
+                            <div class="metadata-block"><strong>VEPO backflow</strong><span>Match the water supplier, registered tester status, device record, and paperless submission rule.</span></div>
+                            <div class="metadata-block"><strong>Envirotrax tester search</strong><span>Use the registered professional search when the city routes tester status through VEPO or Envirotrax.</span></div>
+                            <div class="metadata-block"><strong>Device fee clue</strong><span>Some VEPO utilities publish a per-device submission fee or approved-list registration condition.</span></div>
                         @elseif (portalSlug.equals("tokay"))
                             <div class="metadata-block"><strong>Tokay WebTest</strong><span>Confirm whether the tester needs utility credentials before online report entry.</span></div>
                             <div class="metadata-block"><strong>WebTest report entry</strong><span>Match the assembly, service, tester record, and accepted submission path.</span></div>

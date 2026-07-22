@@ -20,6 +20,7 @@ Window: 2026-04-23 through 2026-07-21, Google web, `dataState=all`.
 - GSC quick wins identified `trackmybackflow` for Euless and Pleasanton city submit-report pages. Pleasanton now has structured Aqua Backflow report workflow, tester gate, deadline policy, and failed-test policy.
 - GSC quick wins identified Parker backflow preventer testing. Parker now has structured PWSD portal workflow, ABPA/ASSE tester gate, 12-month calibration gate, deadline policy, and failed-test policy.
 - GSC quick wins identified Irvine backflow prevention. IRWD now has structured annual tester/report form/deadline facts and an annual title variant that includes "backflow prevention."
+- Follow-up pass found `vepo backflow` impressions landing on Southlake city routes. Southlake now has structured VEPO/Envirotrax report workflow, paperless submission, registered tester gate, $11.50 per-device fee, and guide-level internal links to the VEPO matrix.
 
 ## Next queue
 

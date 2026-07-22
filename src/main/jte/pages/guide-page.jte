@@ -280,6 +280,15 @@
                             <a class="button button--secondary" href="/cities/texas/fort-worth/submit-backflow-report">Submit Fort Worth report</a>
                         </div>
                     </article>
+                    <article class="detail-card detail-card--key">
+                        <span class="pill">VEPO</span>
+                        <h3>Southlake VEPO backflow route</h3>
+                        <p>GSC shows VEPO backflow demand landing on Southlake. Keep the annual letter, VEPO records, registered tester search, paperless submission, and device fee close together.</p>
+                        <div class="card-actions">
+                            <a class="button button--secondary" href="/cities/texas/southlake/backflow-testing">Southlake VEPO city route</a>
+                            <a class="button button--secondary" href="/backflow-reporting-portals/vepo">VEPO portal matrix</a>
+                        </div>
+                    </article>
                     <article class="detail-card">
                         <span class="pill">Colorado</span>
                         <h3>Aurora backflow inspection route</h3>

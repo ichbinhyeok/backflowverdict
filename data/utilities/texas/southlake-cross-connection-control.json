@@ -117,7 +117,77 @@
   "costBand": {
     "testingRange": "Private tester pricing is market-based, but Southlake publishes a VEPO per-device submission fee signal.",
     "repairRetestRange": "Repair and retest costs vary by assembly, access, and whether fire sprinkler rules apply.",
-    "pricingNotes": "Southlake is clearer on portal and fee workflow than on retail testing price."
+    "pricingNotes": "Southlake is clearer on portal and fee workflow than on retail testing price.",
+    "filingFee": {
+      "amount": "$11.50",
+      "currency": "USD",
+      "appliesTo": "VEPO per-device tester submission fee",
+      "sourceRefs": [
+        "Southlake cross connection control and backflow"
+      ]
+    },
+    "sourceRefs": [
+      "Southlake cross connection control and backflow"
+    ]
+  },
+  "reportWorkflow": {
+    "portalVendor": "VEPO / Envirotrax",
+    "portalName": "Southlake VEPO online database and tester submission workflow",
+    "portalUrl": "https://www.envirotrax.com/registrations.aspx?at=1",
+    "submitter": "Tester registered with VEPO for the City of Southlake",
+    "paperAccepted": false,
+    "requiredIdentifiers": [
+      "City of Southlake water supplier selection",
+      "Backflow prevention assembly record",
+      "Annual test letter or VEPO record",
+      "Registered tester status",
+      "Device submitted by the tester"
+    ],
+    "acceptanceProof": "Keep the VEPO submission and approved-list/record evidence; Southlake says testers can no longer submit testing information through paper format.",
+    "filingFee": {
+      "amount": "$11.50",
+      "currency": "USD",
+      "appliesTo": "VEPO per-device tester submission fee",
+      "sourceRefs": [
+        "Southlake cross connection control and backflow"
+      ]
+    },
+    "sourceRefs": [
+      "Southlake cross connection control and backflow",
+      "VEPO Envirotrax registered backflow tester search"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "VEPO registration for Southlake",
+      "Approved Backflow Prevention Assembly Tester List status",
+      "State Fire Marshal-registered fire protection sprinkler company employment for fire protection sprinkler systems"
+    ],
+    "deviceScopeLimit": "Southlake says testers register with VEPO and are added to the approved tester list after VEPO approval; fire protection sprinkler assemblies require the separate State Fire Marshal employment path.",
+    "sourceRefs": [
+      "Southlake cross connection control and backflow",
+      "VEPO Envirotrax registered backflow tester search"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Backflow prevention assemblies: tested annually",
+      "Customers receiving a City letter: search VEPO records if the annual-test status appears wrong",
+      "Tester submissions: submit electronically through VEPO; paper-format testing information is no longer accepted",
+      "Fire protection sprinkler systems: test and repair by a full-time employee of a State Fire Marshal-registered fire protection sprinkler company"
+    ],
+    "initialTestRequired": false,
+    "pastDueLadder": [
+      "Southlake sends an annual letter when a City record shows an assembly has not been tested in the last year.",
+      "Tester registration and approved-list status are controlled through VEPO approval."
+    ],
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "Southlake cross connection control and backflow"
+    ]
   },
   "sources": [
     {

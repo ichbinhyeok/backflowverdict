@@ -2250,6 +2250,7 @@ public class SiteController {
     private String portalDetailPageTitle(String portalSlug, String portalName) {
         return switch (portalSlug.toLowerCase(Locale.US)) {
             case "swiftcomply" -> "SwiftComply portal backflow report routes | BackflowPath";
+            case "vepo" -> "VEPO Envirotrax backflow report routes | BackflowPath";
             case "aqua" -> "Aqua Backflow and TrackMyBackflow portal routes | BackflowPath";
             case "tokay" -> "Tokay WebTest backflow report routes | BackflowPath";
             case "sprybackflow" -> "SpryBackflow backflow report portal routes | BackflowPath";
@@ -2260,6 +2261,7 @@ public class SiteController {
     private String portalDetailPageDescription(String portalSlug, String portalName) {
         return switch (portalSlug.toLowerCase(Locale.US)) {
             case "swiftcomply" -> "Find SwiftComply and C3Swift backflow report routes by city, tester requirements, notice clues, and accepted filing proof.";
+            case "vepo" -> "Find VEPO and Envirotrax backflow routes by city, including registered tester status, device fees, paperless submission, and accepted report proof.";
             case "aqua" -> "Find Aqua Backflow and TrackMyBackflow routes by city, including Hazard ID, Site ID, filing fee, tester gate, and accepted report proof.";
             case "tokay" -> "Find Tokay WebTest backflow report routes by utility, including tester approval, credentials, notice clues, and online submission proof.";
             case "sprybackflow" -> "Find SpryBackflow backflow report routes by utility, including annual notices, tester submission, and accepted filing proof.";
