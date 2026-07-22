@@ -1624,8 +1624,8 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("https://backflowpath.com/backflow-reporting-portals/sprybackflow")))
                 .andExpect(content().string(containsString("https://backflowpath.com/cities/colorado/aurora/backflow-reporting-portal")))
                 .andExpect(content().string(containsString("https://backflowpath.com/cities/texas/euless/backflow-reporting-portal")))
-                .andExpect(content().string(containsString("https://backflowpath.com/cities/california/oxnard/backflow-reporting-portal")))
-                .andExpect(content().string(containsString("https://backflowpath.com/cities/california/dublin/backflow-reporting-portal")))
+                .andExpect(content().string(containsString("https://backflowpath.com/cities/texas/sugar-land/backflow-reporting-portal")))
+                .andExpect(content().string(containsString("https://backflowpath.com/cities/texas/leander/backflow-reporting-portal")))
                 .andExpect(content().string(not(containsString("/cities/texas/arlington/backflow-testing"))));
 
         mockMvc.perform(get("/sitemap-index.xml"))

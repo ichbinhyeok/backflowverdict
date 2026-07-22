@@ -28,9 +28,9 @@
     "Backflow prevention devices protecting against health hazards",
     "Fireline backflow devices"
   ],
-  "approvedTesterMode": "NONE",
-  "approvedTesterListUrl": "",
-  "officialListLabel": "",
+  "approvedTesterMode": "OFFICIAL_LIST",
+  "approvedTesterListUrl": "https://www.bsionlinetracking.com/",
+  "officialListLabel": "Contact BSI for the current Sugar Land companies and testers registered for online report entry",
   "submissionMethods": [
     {
       "label": "Sugar Land backflow testing program",
@@ -116,11 +116,68 @@
     "repairRetestRange": "Repair and retest cost varies with the assembly, fireline involvement, and contractor scope.",
     "pricingNotes": "The City page is stronger on workflow and enforcement than public pricing, so use local quotes rather than assuming a statewide rate."
   },
+  "reportWorkflow": {
+    "portalVendor": "Backflow Solutions, Inc. / BSI Online",
+    "portalName": "Sugar Land BSI Online backflow tracking system",
+    "portalUrl": "https://www.bsionlinetracking.com/",
+    "submissionDeadlineDaysAfterTest": 2,
+    "submitter": "TCEQ-licensed tester or testing company representative registered for BSI online entry",
+    "requiredIdentifiers": [
+      "Customer Confirmation Number from the reminder or overdue letter",
+      "Sugar Land customer or service address",
+      "Existing or replacement backflow device record",
+      "Tester licensing and pressure-gauge calibration information"
+    ],
+    "acceptanceProof": "Keep the BSI Online report entry showing the annual test was submitted within 48 hours of the test date.",
+    "sourceRefs": [
+      "Sugar Land backflow testing program",
+      "BSI Online backflow tracking system"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Current TCEQ tester license",
+      "Annual pressure-gauge calibration within the expiration period",
+      "BSI online entry registration",
+      "State-licensed fireline tester employment by a fireline testing company when fireline devices apply"
+    ],
+    "gaugeCalibrationWindowMonths": 12,
+    "deviceScopeLimit": "Fireline backflow devices must be tested by a state-licensed backflow tester employed by a fireline testing company.",
+    "sourceRefs": [
+      "Sugar Land backflow testing program"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Health-hazard backflow prevention devices: annual test reports as proof of compliance",
+      "Existing and replacement backflow devices: BSI Online submission within 48 hours of test date",
+      "Due timing: same date every month, not one year from the last test date"
+    ],
+    "initialTestRequired": true,
+    "reportDueDaysAfterTest": 2,
+    "pastDueLadder": [
+      "BSI sends testing due and overdue notices.",
+      "Failure to have annual testing performed and reported can escalate to enforcement, including possible water service termination."
+    ],
+    "calendarWindow": "Sugar Land says testing is due on the same date every month and not a year from the last test date.",
+    "anniversaryBased": false,
+    "sourceRefs": [
+      "Sugar Land backflow testing program"
+    ]
+  },
   "sources": [
     {
       "label": "Sugar Land backflow testing program",
       "url": "https://www.sugarlandtx.gov/627/Backflow-Testing-Program",
       "kind": "official program page"
+    },
+    {
+      "label": "BSI Online backflow tracking system",
+      "url": "https://www.bsionlinetracking.com/",
+      "kind": "official linked reporting site"
     }
   ]
 }

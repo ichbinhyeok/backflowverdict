@@ -122,6 +122,53 @@
     "repairRetestRange": "Repair cost widens if a grandfathered assembly now has to be replaced with an RPZ.",
     "pricingNotes": "Leander is one of the better cities for explaining frequency logic, but still not a strong public source for retail pricing."
   },
+  "reportWorkflow": {
+    "portalVendor": "Backflow Solutions, Inc. / BSI Online",
+    "portalName": "Leander BSI backflow report submission workflow",
+    "portalUrl": "https://bsionline.com/",
+    "submitter": "Licensed tester using the Leander BSI route",
+    "requiredIdentifiers": [
+      "Leander hazard or assembly context",
+      "TCEQ-20700 Backflow Prevention Assembly Test and Maintenance Report",
+      "New installation signed T&M form when applicable",
+      "Existing assembly BSI test-result submission"
+    ],
+    "acceptanceProof": "Keep the signed TCEQ-20700 form for new installations or the BSI submission record for existing assemblies.",
+    "sourceRefs": [
+      "Leander cross-connection and backflow prevention page",
+      "BSI Online"
+    ]
+  },
+  "testerGate": {
+    "licenseRequired": true,
+    "utilityRegistrationRequired": true,
+    "portalEnrollmentRequired": true,
+    "credentialDocuments": [
+      "Licensed backflow tester status",
+      "BSI registered testing agency route",
+      "Signed TCEQ-20700 form for new installations"
+    ],
+    "deviceScopeLimit": "Leander frequency and device requirements depend on the hazard list; septic-connected irrigation requires annual RPZ testing, while some residences without septic test every five years.",
+    "sourceRefs": [
+      "Leander cross-connection and backflow prevention page",
+      "BSI Online"
+    ]
+  },
+  "deadlinePolicy": {
+    "cadenceByPropertyType": [
+      "Fire sprinkler systems: annual backflow testing",
+      "Swimming pools with auto fillers: annual backflow testing",
+      "Landscape irrigation with septic: annual RPZ testing",
+      "Residential irrigation without septic: five-year testing in the published FAQ example",
+      "Existing double check valve assemblies: grandfathered only while still in service and tested annually"
+    ],
+    "initialTestRequired": true,
+    "calendarWindow": "Leander sets testing frequency by hazard; the FAQ gives annual and five-year examples rather than one universal annual rule.",
+    "anniversaryBased": true,
+    "sourceRefs": [
+      "Leander cross-connection and backflow prevention page"
+    ]
+  },
   "sources": [
     {
       "label": "Leander cross-connection and backflow prevention page",
@@ -142,6 +189,11 @@
       "label": "Leander backflow presentation",
       "url": "https://www.leandertx.gov/DocumentCenter/View/4608/Backflow-Prevention-Presentation-PDF",
       "kind": "official presentation"
+    },
+    {
+      "label": "BSI Online",
+      "url": "https://bsionline.com/",
+      "kind": "official linked reporting site"
     }
   ]
 }

@@ -1485,7 +1485,7 @@ public class SiteController {
                 }
                 cityIntentConfigs(alias, utility).stream()
                         .filter(intent -> allowedIntentSlugs.contains(intent.slug()))
-                        .filter(intent -> canIndexCityIntent(alias, utility, intent))
+                        .filter(intent -> canIndexPriorityCityIntent(alias, utility, intent))
                         .forEach(intent -> addPriorityRoute(routesByPath, new PriorityRoute(
                                 intent.eyebrow(),
                                 intent.heading(),
@@ -1578,7 +1578,7 @@ public class SiteController {
                                                 "annual-backflow-testing",
                                                 "failed-backflow-test"
                                         ).contains(intent.slug()))
-                                        .filter(intent -> canIndexCityIntent(alias, utility, intent))
+                                        .filter(intent -> canIndexPriorityCityIntent(alias, utility, intent))
                                         .forEach(intent -> paths.add(cityIntentPath(alias, intent.slug())));
                             });
                 });
@@ -2788,6 +2788,63 @@ public class SiteController {
         return intent != null
                 && canIndexCityAlias(alias, utility)
                 && utility.supportsCityIntent(intent.slug());
+    }
+
+    private boolean canIndexPriorityCityIntent(CityAliasRecord alias, UtilityRecord utility, CityIntentConfig intent) {
+        if (!canIndexCityIntent(alias, utility, intent)) {
+            return false;
+        }
+        return switch (intent.slug()) {
+            case "submit-backflow-report" -> hasStrongSubmitReportEvidence(utility);
+            case "backflow-reporting-portal" -> hasStrongPortalEvidence(utility);
+            case "failed-backflow-test" -> hasStrongFailedTestEvidence(utility);
+            case "approved-backflow-testers" -> hasStrongTesterEvidence(utility);
+            case "annual-backflow-testing" -> hasStrongAnnualEvidence(utility);
+            default -> true;
+        };
+    }
+
+    private boolean hasStrongSubmitReportEvidence(UtilityRecord utility) {
+        return utility.hasReportWorkflow()
+                && utility.reportWorkflow().portalUrl() != null
+                && !utility.reportWorkflow().portalUrl().isBlank()
+                && utility.reportWorkflow().submitter() != null
+                && !utility.reportWorkflow().submitter().isBlank()
+                && !utility.reportWorkflow().requiredIdentifiers().isEmpty()
+                && utility.reportWorkflow().acceptanceProof() != null
+                && !utility.reportWorkflow().acceptanceProof().isBlank();
+    }
+
+    private boolean hasStrongPortalEvidence(UtilityRecord utility) {
+        return utility.hasReportWorkflow()
+                && ((utility.reportWorkflow().portalVendor() != null && !utility.reportWorkflow().portalVendor().isBlank())
+                || (utility.reportWorkflow().portalName() != null && !utility.reportWorkflow().portalName().isBlank()))
+                && utility.reportWorkflow().portalUrl() != null
+                && !utility.reportWorkflow().portalUrl().isBlank();
+    }
+
+    private boolean hasStrongFailedTestEvidence(UtilityRecord utility) {
+        return utility.hasFailedTestPolicy()
+                && (utility.failedTestPolicy().repairDeadlineDays() != null
+                || utility.failedTestPolicy().failedReportDeadlineHours() != null
+                || utility.failedTestPolicy().retestRequired() != null
+                || utility.failedTestPolicy().inspectionRequired() != null
+                || utility.failedTestPolicy().shutoffRisk() != null);
+    }
+
+    private boolean hasStrongTesterEvidence(UtilityRecord utility) {
+        return utility.hasTesterGate()
+                && !utility.testerGate().credentialDocuments().isEmpty()
+                && (utility.testerGate().licenseRequired() != null
+                || utility.testerGate().utilityRegistrationRequired() != null
+                || utility.testerGate().portalEnrollmentRequired() != null);
+    }
+
+    private boolean hasStrongAnnualEvidence(UtilityRecord utility) {
+        return utility.hasDeadlinePolicy()
+                && (utility.deadlinePolicy().reportDueDaysAfterTest() != null
+                || !utility.deadlinePolicy().cadenceByPropertyType().isEmpty()
+                || utility.deadlinePolicy().calendarWindow() != null && !utility.deadlinePolicy().calendarWindow().isBlank());
     }
 
     private LocalDate latestUtilityModified(List<UtilityRecord> utilities) {
