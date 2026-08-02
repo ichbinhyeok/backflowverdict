@@ -7,7 +7,7 @@
             <article class="detail-card">
                 <span class="eyebrow kicker-rule">Request handling</span>
                 <h1>Privacy and request handling</h1>
-                <p class="lede">BackflowPath stores contact requests so the team can review the local utility context, answer next-step questions, and follow up on public provider options when useful.</p>
+                <p class="lede">BackflowVerdict stores contact requests so the team can review the local utility context, answer next-step questions, and follow up on public provider options when useful.</p>
             </article>
 
             <article class="panel panel--hero">
@@ -27,7 +27,7 @@
                 <h2>Stored request data</h2>
                 <ul class="detail-list">
                     <li>Name, phone, email, city, property type, issue type, and notes from the form.</li>
-                    <li>Trusted utility routing fields when BackflowPath can validate the request against a server-issued routing context.</li>
+                    <li>Trusted utility routing fields when BackflowVerdict can validate the request against a server-issued routing context.</li>
                     <li>Submitted utility ID, utility name, page family, source page, and referring page when the browser sends them.</li>
                     <li>Assignment records when the team manually matches a request to a public provider profile.</li>
                     <li>Storage metadata needed to export or review the request history later.</li>
@@ -39,10 +39,10 @@
                 <h2>Official guidance stays separate</h2>
                 <ul class="detail-list">
                     <li>Submitting a request does not change the underlying utility rule.</li>
-                    <li>BackflowPath keeps official authority guidance and public provider directories separate.</li>
+                    <li>BackflowVerdict keeps official authority guidance and public provider directories separate.</li>
                     <li>Requests are stored for review first, even when the page context is verified.</li>
-                        <li>BackflowPath does not sell or fan out a request through a private dispatch queue.</li>
-                    <li>If the routing context cannot be verified, the request stays in BackflowPath for manual review.</li>
+                        <li>BackflowVerdict does not sell or fan out a request through a private dispatch queue.</li>
+                    <li>If the routing context cannot be verified, the request stays in BackflowVerdict for manual review.</li>
                 </ul>
             </article>
         </div>

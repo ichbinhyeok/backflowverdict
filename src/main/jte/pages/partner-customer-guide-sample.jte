@@ -88,7 +88,7 @@
                 </div>
                 <div class="partner-guide-footer__note">
                     <span class="partner-guide-mark partner-guide-mark--small">BP</span>
-                    <p><strong>Sample page</strong><br>Built with BackflowPath for a clearer customer handoff.</p>
+                    <p><strong>Sample page</strong><br>Built with BackflowVerdict for a clearer customer handoff.</p>
                 </div>
             </div>
         </section>

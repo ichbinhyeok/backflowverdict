@@ -7,7 +7,7 @@
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Free partner kit</span>
                 <h1>Give customers one clear link for a backflow notice.</h1>
-                <p class="lede">For testers, contractors, HOA teams, and property managers: send a notice clue, city, or portal name to the source-backed BackflowPath lookup flow before you explain the next step.</p>
+                <p class="lede">For testers, contractors, HOA teams, and property managers: send a notice clue, city, or portal name to the source-backed BackflowVerdict lookup flow before you explain the next step.</p>
                 <div class="hero__actions">
                     <a class="button button--primary" href="/notice-finder?ref=partner">Open the notice finder</a>
                     <a class="button button--secondary" href="/partners/sample/customer-guide">See a customer page</a>
@@ -99,7 +99,7 @@
                 open.href = value;
                 messageOpen.href = value;
                 message.value = clue.value.trim()
-                    ? 'Use this BackflowPath route for the notice clue "' + clue.value.trim() + '": ' + destination.toString()
+                    ? 'Use this BackflowVerdict route for the notice clue "' + clue.value.trim() + '": ' + destination.toString()
                     : 'Send the customer’s city, utility, portal name, or exact notice clue here: ' + destination.toString();
             }
             code.addEventListener('input', refresh);

@@ -13,4 +13,7 @@ jte-classes/
 .gstack/
 .playwright-cli/
 output/
+node_modules/
+test-results/
+playwright-report/
 data/ops/change_log.jsonl

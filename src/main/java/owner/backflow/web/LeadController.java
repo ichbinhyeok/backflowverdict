@@ -35,7 +35,7 @@ public class LeadController {
         this.leadRoutingService = leadRoutingService;
     }
 
-    @GetMapping("/leads/new")
+    @GetMapping({"/leads/new", "/get-help", "/get-help/"})
     public String newLead(
             @RequestParam(value = "utilityId", required = false) String utilityId,
             @RequestParam(value = "utilityName", required = false) String utilityName,
@@ -59,9 +59,9 @@ public class LeadController {
                 .map(utility -> utility.utilityName())
                 .orElse(normalize(utilityName));
         model.addAttribute("page", new PageMeta(
-                "Request backflow help | BackflowPath",
-                "Share your utility, deadline, or failed-test details so BackflowPath can review the next step.",
-                "/leads/new",
+                "Get help with the next backflow step | BackflowVerdict",
+                "Share the utility, device, timing, and task so the request keeps the context needed for a useful next step.",
+                "/get-help/",
                 true
         ));
         model.addAttribute("utilityId", normalizedUtilityId);
@@ -135,8 +135,8 @@ public class LeadController {
     @GetMapping("/leads/thanks")
     public String thanks(Model model) {
         model.addAttribute("page", new PageMeta(
-                "Request received | BackflowPath",
-                "BackflowPath received your request and will review it against the local utility context.",
+                "Request received | BackflowVerdict",
+                "BackflowVerdict received your request and will review it against the local utility context.",
                 "/leads/thanks",
                 true
         ));
@@ -149,7 +149,7 @@ public class LeadController {
 
     private String formError(String errorCode) {
         return switch (errorCode) {
-            case "consent" -> "Consent is required before BackflowPath can store and review your request.";
+            case "consent" -> "Consent is required before BackflowVerdict can store and review your request.";
             case "rate-limit" -> "Too many requests came from this network in a short window. Please wait a few minutes and try again.";
             default -> "";
         };

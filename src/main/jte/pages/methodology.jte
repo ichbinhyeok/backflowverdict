@@ -6,7 +6,7 @@
         <div class="container page-frame page-frame--hero">
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Methodology</span>
-                <h1>How BackflowPath verifies local rules</h1>
+                <h1>How BackflowVerdict verifies local rules</h1>
                 <p class="lede">Each published page is built from source-backed utility or authority material, normalized into the file registry, reviewed on a freshness window, and re-verified when the source record ages. The method is intentionally conservative because local compliance pages can create expensive or safety-sensitive mistakes when they drift.</p>
             </div>
             <aside class="panel panel--hero">
@@ -22,7 +22,7 @@
             <article class="detail-card detail-card--key">
                 <span class="eyebrow">Step 1</span>
                 <h2>Resolve the governing entity</h2>
-                <p>BackflowPath starts by identifying the utility, district, or authority that actually controls testing, submission, or enforcement. City aliases and metro clusters are secondary discovery paths, not the compliance source of truth.</p>
+                <p>BackflowVerdict starts by identifying the utility, district, or authority that actually controls testing, submission, or enforcement. City aliases and metro clusters are secondary discovery paths, not the compliance source of truth.</p>
             </article>
 
             <article class="detail-card">
@@ -56,7 +56,7 @@
             <article class="detail-card">
                 <span class="eyebrow">Extraction rule</span>
                 <h2>How public pages are assembled</h2>
-                <p>BackflowPath does not publish a local page from a loose summary alone. The page needs enough structured evidence to support fields such as testing cadence, due basis, submission methods, penalties, tester route classification, and the public source block.</p>
+                <p>BackflowVerdict does not publish a local page from a loose summary alone. The page needs enough structured evidence to support fields such as testing cadence, due basis, submission methods, penalties, tester route classification, and the public source block.</p>
                 <ul class="detail-list">
                     <li>If the source cannot support a field, that field should stay blank or the page should stay unpublished.</li>
                     <li>If a city search term maps to a utility, the city route should stay secondary to the utility page.</li>

@@ -1,0 +1,41 @@
+{
+  "slug": "wilkins-950xl",
+  "canonicalPath": "/models/wilkins-950xl/",
+  "manufacturer": "Zurn Wilkins",
+  "model": "950XL",
+  "aliases": ["Wilkins 950XL", "Zurn Wilkins 950XL", "950XL repair kit", "Wilkins 950XL repair parts"],
+  "deviceType": "Double check backflow assembly",
+  "title": "Wilkins 950XL repair kits by size, check scope, and part number",
+  "description": "Match a Zurn Wilkins 950XL double check assembly to its official 3/4–1 inch or 1 1/4–2 inch standard, complete, rubber, seat, or check-cover kit.",
+  "summary": "The 950XL is a double-check assembly, not a 975XL reduced-pressure assembly. Zurn publishes separate kit prefixes for the 3/4–1 and 1 1/4–2 inch size bands.",
+  "status": "Published 950XL repair-kit family",
+  "statusNote": "Do not substitute 950XL3 or 975XL data. Confirm the body label and nominal size, then select the smallest repair scope supported by the confirmed failed component.",
+  "diagram": "double-check",
+  "diagramAlt": "Double check backflow assembly with two check covers and shutoff valves",
+  "sizes": ["3/4–1 in", "1 1/4–2 in"],
+  "identifiers": [
+    "The 950XL is a double-check assembly for polluted-water applications; do not apply reduced-pressure 975XL relief-valve kit data.",
+    "The repair-kit prefix changes from RK34 to RK114 after the 1 inch / 1 1/4 inch size boundary.",
+    "Standard, complete, rubber, seat, and cover kits solve different scopes; a visible cover leak does not establish an internal check failure."
+  ],
+  "kits": [
+    {"sizeBand":"3/4–1 in","task":"Standard service","partNumber":"RK34-950XL","kitName":"Standard repair kit","contents":"Two cover O-rings, two check springs, and two seal rings.","compatibility":"Official Zurn 950XL kit for 3/4 and 1 inch assemblies."},
+    {"sizeBand":"3/4–1 in","task":"Complete internal service","partNumber":"RK34-950XLC","kitName":"Complete repair kit","contents":"Two cover O-rings, check springs, poppets, seal rings, retainers, retaining bolts, check seats, and check-seat O-rings.","compatibility":"Official Zurn 950XL kit for 3/4 and 1 inch assemblies."},
+    {"sizeBand":"3/4–1 in","task":"Rubber components","partNumber":"RK34-950XLR","kitName":"Rubber repair kit","contents":"Published cover O-rings and seal rings for the applicable 950XL band.","compatibility":"Rubber-only scope for 3/4 and 1 inch 950XL."},
+    {"sizeBand":"3/4–1 in","task":"Seat service","partNumber":"RK34-950XLSK","kitName":"Repair kit with seats","contents":"Published check-seat service components for the 3/4 and 1 inch band.","compatibility":"Use only when check-seat service is confirmed; not a complete internal repair kit."},
+    {"sizeBand":"3/4–1 in","task":"Check cover","partNumber":"RK34-CK-COVER","kitName":"Check-cover repair kit","contents":"Two check covers and published cover O-rings.","compatibility":"Cover scope only for 3/4 and 1 inch 950XL."},
+    {"sizeBand":"1 1/4–2 in","task":"Standard service","partNumber":"RK114-950XL","kitName":"Standard repair kit","contents":"Two cover O-rings, two check springs, and two seal rings.","compatibility":"Official Zurn 950XL kit for 1 1/4 through 2 inch assemblies."},
+    {"sizeBand":"1 1/4–2 in","task":"Complete internal service","partNumber":"RK114-950XLC","kitName":"Complete repair kit","contents":"Two cover O-rings, check springs, poppets, seal rings, retainers, retaining bolts, check seats, and check-seat O-rings.","compatibility":"Official Zurn 950XL kit for 1 1/4 through 2 inch assemblies."},
+    {"sizeBand":"1 1/4–2 in","task":"Rubber components","partNumber":"RK114-950XLR","kitName":"Rubber repair kit","contents":"Published cover O-rings and seal rings for the applicable 950XL band.","compatibility":"Rubber-only scope for 1 1/4 through 2 inch 950XL."},
+    {"sizeBand":"1 1/4–2 in","task":"Seat service","partNumber":"RK114-950XLSK","kitName":"Repair kit with seats","contents":"Published check-seat service components for the 1 1/4 through 2 inch band.","compatibility":"Use only when check-seat service is confirmed; not a complete internal repair kit."},
+    {"sizeBand":"1 1/4–2 in","task":"Check cover","partNumber":"RK114-CK-COVER","kitName":"Check-cover repair kit","contents":"Two check covers and published cover O-rings.","compatibility":"Cover scope only for 1 1/4 through 2 inch 950XL."}
+  ],
+  "sources": [
+    {"title":"Zurn Wilkins 950XL product record","url":"https://www.zurn.com/products/water-control/backflow-preventers/950xl","publisher":"Zurn","lastVerified":"2026-08-02"},
+    {"title":"Zurn Wilkins 950XL repair parts and repair-kit record","url":"https://www.zurn.com/products/repair-parts/water-safety-control/small-diameter-backflow-preventer/double-check/950xl-partsrepair-kits","publisher":"Zurn","lastVerified":"2026-08-02"},
+    {"title":"Zurn 950XL repair-parts breakdown","url":"https://files.zurn.com/repair-parts/950xl_34_to_2.pdf","publisher":"Zurn","lastVerified":"2026-08-02"}
+  ],
+  "lastReviewed": "2026-08-02",
+  "published": true,
+  "indexable": true
+}

@@ -1,0 +1,42 @@
+{
+  "slug": "febco-765",
+  "canonicalPath": "/models/febco-765/",
+  "manufacturer": "FEBCO",
+  "model": "765",
+  "aliases": ["FEBCO 765 PVB", "765 pressure vacuum breaker", "Febco backflow 765"],
+  "deviceType": "Pressure vacuum breaker",
+  "title": "FEBCO 765 repair-kit finder and winterization record",
+  "description": "Choose the FEBCO 765 size band and service task to find the official bonnet, poppet, check, or rubber-parts kit family.",
+  "summary": "FEBCO publishes different 765 kit numbers for 1/2–3/4, 1–1 1/4, and 1 1/2–2 inch assemblies. Match both the size band and failed component.",
+  "status": "Published product family",
+  "statusNote": "The official product record includes repair parts, freeze-detection information, and winterization instructions. Local testing requirements still control return to service.",
+  "diagram": "pvb",
+  "diagramAlt": "Pressure vacuum breaker showing bonnet, atmospheric vent, check assembly, and test cocks",
+  "sizes": ["1/2–3/4 in", "1–1 1/4 in", "1 1/2–2 in"],
+  "identifiers": [
+    "The raised bonnet and air inlet identify the pressure-vacuum-breaker layout.",
+    "The body label should show FEBCO and Series 765 before these kits are used.",
+    "Bonnet, poppet, check, and rubber kits solve different service scopes."
+  ],
+  "kits": [
+    {"sizeBand":"1/2–3/4 in","task":"Bonnet","partNumber":"FRK 765-B 1/2-3/4","kitName":"Bonnet kit","contents":"Bonnet, O-ring, spring, E-ring, washer, and stem.","compatibility":"Series 765, published 1/2 and 3/4 inch size band."},
+    {"sizeBand":"1/2–3/4 in","task":"Bonnet and poppet","partNumber":"FRK 765-BP 1/2-3/4","kitName":"Bonnet/poppet kit","contents":"Bonnet hardware plus rubber disc and poppet.","compatibility":"Use when both upper assembly and poppet scope are confirmed."},
+    {"sizeBand":"1/2–3/4 in","task":"Check assembly","partNumber":"FRK 765-CK 1/2-3/4","kitName":"Check kit","contents":"Holder, disc, guide, and screw.","compatibility":"Does not replace the bonnet or vent components."},
+    {"sizeBand":"1/2–3/4 in","task":"Rubber components","partNumber":"FRK 765-RT 1/2-3/4","kitName":"Complete rubber parts kit","contents":"O-ring, rubber disc, and check disc.","compatibility":"Inspect hard parts and freeze damage before choosing rubber-only service."},
+    {"sizeBand":"1–1 1/4 in","task":"Bonnet","partNumber":"FRK 765-B 1-1 1/4","kitName":"Bonnet kit","contents":"Bonnet, O-ring, spring, E-ring, washer, and stem.","compatibility":"Series 765, published 1 and 1 1/4 inch size band."},
+    {"sizeBand":"1–1 1/4 in","task":"Bonnet and poppet","partNumber":"FRK 765-BP 1-1 1/4","kitName":"Bonnet/poppet kit","contents":"Bonnet hardware plus rubber disc and poppet.","compatibility":"Confirm that the body is not cracked or freeze distorted."},
+    {"sizeBand":"1–1 1/4 in","task":"Check assembly","partNumber":"FRK 765-CK 1-1 1/4","kitName":"Check kit","contents":"Holder, disc, guide, and screw.","compatibility":"Series 765 only; verify nominal size on the body."},
+    {"sizeBand":"1–1 1/4 in","task":"Rubber components","partNumber":"FRK 765-RT 1-1 1/4","kitName":"Complete rubber parts kit","contents":"O-ring, rubber disc, and check disc.","compatibility":"Rubber-only kit does not address damaged seats, bonnet, or body."},
+    {"sizeBand":"1 1/2–2 in","task":"Bonnet","partNumber":"FRK 765-B 1 1/2-2","kitName":"Bonnet kit","contents":"Bonnet, O-ring, spring, E-ring, washer, and stem.","compatibility":"Series 765, published 1 1/2 and 2 inch size band."},
+    {"sizeBand":"1 1/2–2 in","task":"Check assembly","partNumber":"FRK 765-CK 1 1/2-2","kitName":"Check kit","contents":"Holder, disc, guide, and screw.","compatibility":"Confirm the failed component before ordering a check-only kit."},
+    {"sizeBand":"1 1/2–2 in","task":"Rubber components","partNumber":"FRK 765-RT 1 1/2-2","kitName":"Complete rubber parts kit","contents":"O-ring, rubber disc, and check disc.","compatibility":"Published for the 1 1/2 and 2 inch 765 size band."}
+  ],
+  "sources": [
+    {"title":"FEBCO Series 765 product and repair-parts record","url":"https://www.watts.com/products/plumbing-flow-control-solutions/backflow-preventers/vacuum-breakers/765","publisher":"Watts / FEBCO","lastVerified":"2026-08-02"},
+    {"title":"RK-765 repair-kit family","url":"https://www.watts.com/products/plumbing-flow-control-solutions/repair-kits/backflow-preventer-repair-kits/rk-765","publisher":"Watts / FEBCO","lastVerified":"2026-08-02"},
+    {"title":"FRK 765 rubber-parts kit example","url":"https://www.watts.com/products/plumbing-flow-control-solutions/repair-kits/backflow-preventer-repair-kits/rk-765/frk-765-rt-1-12-2","publisher":"Watts / FEBCO","lastVerified":"2026-08-02"}
+  ],
+  "lastReviewed": "2026-08-02",
+  "published": true,
+  "indexable": true
+}

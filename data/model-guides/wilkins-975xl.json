@@ -1,0 +1,41 @@
+{
+  "slug": "wilkins-975xl",
+  "canonicalPath": "/models/wilkins-975xl/",
+  "manufacturer": "Zurn Wilkins",
+  "model": "975XL / 975XL2",
+  "aliases": ["Wilkins 975 XL", "Wilkins 975XL2", "Zurn 975XL", "Zurn Wilkins 975XL"],
+  "deviceType": "Reduced pressure principle assembly",
+  "title": "Wilkins 975XL repair kits, sizes, and model identification",
+  "description": "Identify a Zurn Wilkins 975XL or 975XL2, select its size band, and open the official repair-kit family without creating a separate page for every pipe size.",
+  "summary": "The 975XL and 975XL2 share repair-kit families, but the part-number prefix changes by size band. Confirm the body label and nominal size before selecting a kit.",
+  "status": "Current and legacy variants",
+  "statusNote": "Zurn marks the 1/4–1/2 inch 975XL product page as discontinued while continuing to publish official repair parts. Verify the exact body label and current replacement status.",
+  "diagram": "rpz",
+  "diagramAlt": "Reduced pressure backflow assembly showing two check covers and the relief valve zone",
+  "sizes": ["1/4–1/2 in", "3/4–1 in", "1 1/4–2 in"],
+  "identifiers": [
+    "The model marking may read 975XL or 975XL2; do not substitute 975XL3 data.",
+    "Two check covers sit above the reduced-pressure zone and relief assembly.",
+    "Kit prefixes RK14, RK34, and RK114 correspond to the published size bands, not a universal kit."
+  ],
+  "kits": [
+    {"sizeBand":"1/4–1/2 in","task":"Total service","partNumber":"RK14-975XL","kitName":"Total repair kit","contents":"Check and relief-valve service components listed in the official parts breakdown.","compatibility":"For the published 1/4–1/2 inch 975XL/975XL2 family; verify the body label."},
+    {"sizeBand":"1/4–1/2 in","task":"Poppets, springs, and seats","partNumber":"RK14-975XLC","kitName":"Complete internal kit","contents":"Poppets, springs, seats, seals, and related O-rings shown by Zurn.","compatibility":"Not a substitute for a cover-only or ball-valve part."},
+    {"sizeBand":"1/4–1/2 in","task":"Rubber components","partNumber":"RK14-975XLR","kitName":"Rubber repair kit","contents":"Published rubber sealing components for the model family.","compatibility":"Confirm whether hard parts are also damaged before choosing a rubber-only kit."},
+    {"sizeBand":"3/4–1 in","task":"Total service","partNumber":"RK34-975XL","kitName":"Total repair kit","contents":"Check and relief-valve internal components for the 3/4 and 1 inch band.","compatibility":"Use the exact nominal size and confirm 975XL/975XL2 rather than 975XL3."},
+    {"sizeBand":"3/4–1 in","task":"Poppets, springs, and seats","partNumber":"RK34-975XLC","kitName":"Complete internal kit","contents":"Poppets, springs, seats, seals, and O-rings in the official component matrix.","compatibility":"The XLC kit scope differs from the rubber-only XLR kit."},
+    {"sizeBand":"3/4–1 in","task":"Rubber components","partNumber":"RK34-975XLR","kitName":"Rubber repair kit","contents":"Rubber seals and O-rings identified in the official repair-parts guide.","compatibility":"Inspect seats, poppets, springs, and covers before ordering rubber parts alone."},
+    {"sizeBand":"3/4–1 in","task":"Seat service","partNumber":"RK34-975XLSK","kitName":"Seat repair kit","contents":"Published check and relief-valve seat service components.","compatibility":"Use the official component matrix to distinguish seat service from full internal service."},
+    {"sizeBand":"1 1/4–2 in","task":"Total service","partNumber":"RK114-975XL","kitName":"Total repair kit","contents":"Check and relief-valve internal components for the 1 1/4 through 2 inch band.","compatibility":"The RK114 prefix covers the published larger-size band; confirm exact assembly."},
+    {"sizeBand":"1 1/4–2 in","task":"Poppets, springs, and seats","partNumber":"RK114-975XLC","kitName":"Complete internal kit","contents":"Poppets, springs, seats, seals, and O-rings in the official component matrix.","compatibility":"Confirm cover and relief-valve condition before choosing the kit scope."},
+    {"sizeBand":"1 1/4–2 in","task":"Rubber components","partNumber":"RK114-975XLR","kitName":"Rubber repair kit","contents":"Rubber sealing components identified by Zurn for this size band.","compatibility":"Rubber-only service does not address damaged metal or spring components."}
+  ],
+  "sources": [
+    {"title":"MODEL 975XL2 and 975XL repair-parts breakdown","url":"https://files.zurn.com/repair-parts/975xl-repair-parts.pdf","publisher":"Zurn","lastVerified":"2026-08-02"},
+    {"title":"Zurn Wilkins Repair Kits Guide","url":"https://www.zurn.com/content/dam/zurnv49/resources/replacement-repair-part-information/480-023_repair_kits_guide.pdf","publisher":"Zurn","lastVerified":"2026-08-02"},
+    {"title":"975XL 1/4–1/2 inch discontinued product record","url":"https://www.zurn.com/products/water-control/backflow-preventers/975xl-14-12","publisher":"Zurn","lastVerified":"2026-08-02"}
+  ],
+  "lastReviewed": "2026-08-02",
+  "published": true,
+  "indexable": true
+}

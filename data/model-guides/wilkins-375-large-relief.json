@@ -1,0 +1,40 @@
+{
+  "slug": "wilkins-375-large-relief",
+  "canonicalPath": "/models/wilkins-375-large-relief/",
+  "manufacturer": "Zurn Wilkins",
+  "model": "375 / 375A / 375AST large-body relief valve",
+  "aliases": ["Wilkins 375 relief valve repair kit", "Zurn 375 RP relief valve kit", "Wilkins 375 RP repair kit", "375AST relief repair kit"],
+  "deviceType": "Reduced pressure principle assembly — large-body relief valve service",
+  "title": "Wilkins 375 large-body relief valve repair kits: 2 1/2–10 inch",
+  "description": "Use the manufacturer-published repair-kit map for the large-body relief valve in Zurn Wilkins 375, 375A, 375AST, 475, and 475V assemblies from 2 1/2 through 10 inches.",
+  "summary": "This record is intentionally limited to the large-body relief valve. Zurn publishes a different component set for 2 1/2–6 inch versus 8–10 inch assemblies, and neither should be treated as a universal 375 kit.",
+  "status": "Official large-body relief-valve service map",
+  "statusNote": "This is not a substitute for the 1 1/4–2 inch 375 repair path, check-service kits, valve configuration, or a diagnosis of continuous relief discharge. Confirm the exact size and repair scope before ordering.",
+  "diagram": "rpz",
+  "diagramAlt": "Reduced pressure backflow assembly showing the central relief-valve zone between check assemblies",
+  "sizes": ["2 1/2–6 in", "8–10 in"],
+  "identifiers": [
+    "Use this record only when the assembly is a Zurn Wilkins 375-family large-body unit and the required work is specifically the relief-valve service path.",
+    "The 2 1/2–6 inch and 8–10 inch relief-valve kits have separate part-number prefixes and must not be swapped.",
+    "A relief-valve kit is not a diagnosis: continuous discharge can involve check, pressure, debris, or installation conditions that require qualified testing."
+  ],
+  "kits": [
+    {"sizeBand":"2 1/2–6 in","task":"Complete relief-valve service","partNumber":"RK212-375","kitName":"Complete relief-valve repair kit","contents":"Published relief-valve rubber and service components including diaphragm, seal rings, relief spring, and related O-rings.","compatibility":"For the manufacturer-published 2 1/2–6 inch relief-valve path in Models 375, 375A, 375AST, 475, and 475V."},
+    {"sizeBand":"2 1/2–6 in","task":"Relief-valve rubber components","partNumber":"RK212-375R","kitName":"Relief-valve rubber repair kit","contents":"Published rubber service components for the relief-valve assembly.","compatibility":"Rubber-only scope; does not include the complete relief-valve internal component set."},
+    {"sizeBand":"2 1/2–6 in","task":"Relief-valve complete internals","partNumber":"RK212-375RVCI","kitName":"Relief-valve complete internals kit","contents":"Upper and lower plunger, diaphragm, seals, seat, retainer, washer, bolt, and relief-valve spring in the published component matrix.","compatibility":"For the 2 1/2–6 inch relief-valve path; confirm the exact assembly before internal disassembly."},
+    {"sizeBand":"2 1/2–6 in","task":"Relief-valve cover","partNumber":"RK212-RV-COVER","kitName":"Relief-valve cover repair kit","contents":"Relief-valve cover and published cover hardware.","compatibility":"Cover scope only; does not replace the relief-valve internal service kit."},
+    {"sizeBand":"2 1/2–6 in","task":"Relief-valve plunger","partNumber":"RK212-RV-PLUNGER","kitName":"Relief-valve plunger repair kit","contents":"Published upper and lower plunger service components.","compatibility":"Plunger scope only; compare against diaphragm, seat, and seal condition."},
+    {"sizeBand":"8–10 in","task":"Complete relief-valve service","partNumber":"RK8-375","kitName":"Complete relief-valve repair kit","contents":"Published relief-valve rubber and service components for the 8 and 10 inch size band.","compatibility":"For the manufacturer-published 8 and 10 inch relief-valve path in Models 375, 375A, 375AST, 475, and 475V."},
+    {"sizeBand":"8–10 in","task":"Relief-valve rubber components","partNumber":"RK8-375R","kitName":"Relief-valve rubber repair kit","contents":"Published rubber service components for the large 8 and 10 inch relief-valve assembly.","compatibility":"Rubber-only scope; it does not include the complete relief-valve internal component set."},
+    {"sizeBand":"8–10 in","task":"Relief-valve complete internals","partNumber":"RK8-375RVCI","kitName":"Relief-valve complete internals kit","contents":"Published upper and lower plunger, diaphragm, seals, seat, retainer, washer, bolt, and relief-valve spring components.","compatibility":"Use only for the 8 and 10 inch relief-valve service path."},
+    {"sizeBand":"8–10 in","task":"Relief-valve cover","partNumber":"RK8-RV-COVER","kitName":"Relief-valve cover repair kit","contents":"Relief-valve cover and published cover hardware.","compatibility":"Cover scope only; does not substitute for internals or rubber service."}
+  ],
+  "sources": [
+    {"title":"Zurn Wilkins 375 reduced pressure principle backflow preventer product record","url":"https://www.zurn.com/products/water-control/backflow-preventers/375","publisher":"Zurn","lastVerified":"2026-08-02"},
+    {"title":"Zurn Wilkins Repair Kits Guide: 375 large-body relief valve, 2 1/2–10 inch","url":"https://www.zurn.com/content/dam/zurnv49/resources/replacement-repair-part-information/480-023_repair_kits_guide.pdf","publisher":"Zurn","lastVerified":"2026-08-02"},
+    {"title":"Zurn 375AR product record with repair-parts and large-body maintenance resources","url":"https://www.zurn.com/products/water-control/backflow-preventers/custom-retrofit/375ar","publisher":"Zurn","lastVerified":"2026-08-02"}
+  ],
+  "lastReviewed": "2026-08-02",
+  "published": true,
+  "indexable": true
+}

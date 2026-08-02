@@ -70,7 +70,7 @@ public record PageMeta(
             return socialImageAlt;
         }
         return title == null || title.isBlank()
-                ? "BackflowPath utility backflow compliance guide"
+                ? "BackflowVerdict utility backflow compliance guide"
                 : title;
     }
 

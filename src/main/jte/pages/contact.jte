@@ -7,12 +7,12 @@
         <div class="container page-frame page-frame--hero">
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Contact</span>
-                <h1>Contact BackflowPath</h1>
-                <p class="lede">Use this path for corrections, source updates, broken links, privacy questions, or questions about how a BackflowPath page was assembled. For utility-specific service help, the request form should still start after the user has seen the relevant local rule page.</p>
+                <h1>Contact BackflowVerdict</h1>
+                <p class="lede">Use this path for corrections, source updates, broken links, privacy questions, or questions about how a BackflowVerdict page was assembled. For utility-specific service help, the request form should still start after the user has seen the relevant local rule page.</p>
                 <div class="hero__actions">
                     <a class="button button--primary" href="${page.requestHelpPathOrDefault()}">Request help</a>
                     @if (SiteRuntimeConfig.supportEmail() != null && !SiteRuntimeConfig.supportEmail().isBlank())
-                        <a class="button button--secondary" href="mailto:${SiteRuntimeConfig.supportEmail()}?subject=BackflowPath%20question">Email support</a>
+                        <a class="button button--secondary" href="mailto:${SiteRuntimeConfig.supportEmail()}?subject=BackflowVerdict%20question">Email support</a>
                     @endif
                     <a class="button button--secondary" href="/corrections">Report a correction</a>
                 </div>
@@ -65,7 +65,7 @@
                 <span class="eyebrow">Fastest route</span>
                 <h2>How to write a useful message</h2>
                 <ul class="detail-list">
-                    <li>Include the exact BackflowPath URL you are referencing.</li>
+                    <li>Include the exact BackflowVerdict URL you are referencing.</li>
                     <li>Say whether the issue is a broken source, wrong requirement, stale timing, or unclear route labeling.</li>
                     <li>Include the authority URL if you think the public page is wrong.</li>
                     <li>If the issue is operational, say whether it involves privacy, lead routing, or a provider profile.</li>

@@ -14,7 +14,7 @@
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">${stateLabel} tester routes</span>
                 <h1>${stateLabel} approved backflow tester lists by utility.</h1>
-                <p class="lede">Use this page to find ${stateLabel} utility routes where BackflowPath has a published official tester-list path. The governing utility page remains the route that decides the list and reporting workflow.</p>
+                <p class="lede">Use this page to find ${stateLabel} utility routes where BackflowVerdict has a published official tester-list path. The governing utility page remains the route that decides the list and reporting workflow.</p>
                 <div class="hero__actions">
                     @if (!utilities.isEmpty())
                         <a class="button button--primary" href="/utilities/${utilities.get(0).state()}/${utilities.get(0).canonicalSlug()}/approved-testers">Open a tester list</a>
@@ -68,7 +68,7 @@
             <article class="trust-box">
                 <span class="trust-box__label">Approval boundary</span>
                 <h2>Statewide certification is not the same as utility approval</h2>
-                <p>Many searches mix certified, registered, and approved tester language. BackflowPath keeps these routes tied to the actual utility list or portal source shown on the local page.</p>
+                <p>Many searches mix certified, registered, and approved tester language. BackflowVerdict keeps these routes tied to the actual utility list or portal source shown on the local page.</p>
             </article>
 
             <article class="detail-card">

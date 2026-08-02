@@ -1,7 +1,7 @@
 # Agent Start Here
 
 ## Project
-BackflowPath
+BackflowVerdict product on the existing BackflowPath domain and utility dataset
 
 ## Package root
 `owner.backflow`
@@ -24,6 +24,10 @@ BackflowPath
 11. `spec/08_delivery_and_execution.md`
 
 ## Rules
+- Read `DESIGN.md` before changing any public UI.
+- The primary journey is identify → diagnose → decide → official utility route.
+- National device/problem guides live in `data/decision-guides/`; do not put them in `UtilityRecord`.
+- Preserve the winner URLs listed in `src/test/resources/seo/winner-url-contract.csv`.
 - Utility or water-authority page is the canonical SEO unit.
 - This product is local compliance plus next action, not generic plumbing SEO.
 - Residential and commercial workflows must stay separate when rules differ.

@@ -52,7 +52,7 @@ public class AdminController {
     ) {
         if (!adminAuthService.isConfigured()) {
             model.addAttribute("page", new PageMeta(
-                    "Admin disabled | BackflowPath",
+                    "Admin disabled | BackflowVerdict",
                     "Admin access is disabled until credentials are configured.",
                     "/admin",
                     true
@@ -65,7 +65,7 @@ public class AdminController {
 
         if (!isAuthenticated(session)) {
             model.addAttribute("page", new PageMeta(
-                    "Admin login | BackflowPath",
+                    "Admin login | BackflowVerdict",
                     "Authenticate to view captured leads.",
                     "/admin",
                     true
@@ -80,7 +80,7 @@ public class AdminController {
 
         java.util.List<LeadInboxItem> inbox = leadAdminService.listInbox();
         model.addAttribute("page", new PageMeta(
-                "Admin control room | BackflowPath",
+                "Admin control room | BackflowVerdict",
                 "View captured requests, public-provider coverage, and local storage files from one protected admin page.",
                 "/admin",
                 true

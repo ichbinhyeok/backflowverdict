@@ -1,0 +1,40 @@
+{
+  "slug": "febco-860-large",
+  "canonicalPath": "/models/febco-860-large/",
+  "manufacturer": "FEBCO",
+  "model": "860 / LF860 large-body service parts",
+  "aliases": ["FEBCO 860 repair kit", "FEBCO LF860 repair kit", "FEBCO 860 rubber parts kit", "FEBCO 860 relief valve repair"],
+  "deviceType": "Double check / reduced pressure large-body service parts",
+  "title": "FEBCO 860 large-body repair kit map: 2 1/2–10 inch",
+  "description": "Use the manufacturer maintenance record to match FEBCO 860/LF860 large-body assemblies to published check, rubber, and relief-valve kit references by size.",
+  "summary": "FEBCO 860 large-body service references change across 2 1/2–3, 4, 6, and 8–10 inch bands. This record maintains those boundaries and does not mix 860 with 880V or detector variants.",
+  "status": "Official large-body 860 service map",
+  "statusNote": "The same manual contains 860 and 880V information. This page shows only 860 references. Verify the full label, assembly type, and size before ordering or opening the body.",
+  "diagram": "rpz",
+  "diagramAlt": "Large backflow assembly showing check service covers and central relief-valve service zone",
+  "sizes": ["2 1/2–3 in", "4 in", "6 in", "8–10 in", "2 1/2–10 in (relief valve only)"],
+  "identifiers": [
+    "Confirm that the body is 860/LF860 rather than an 880V, LF866, or other related FEBCO large-body assembly.",
+    "The manufacturer publishes different part numbers by size for check replacement and complete rubber service.",
+    "A relief-valve service kit is a separate scope from complete rubber or check replacement."
+  ],
+  "kits": [
+    {"sizeBand":"2 1/2–3 in","task":"Check replacement","partNumber":"905-543","kitName":"860 inlet check replacement kit","contents":"Published inlet-check replacement components from the FEBCO 860 maintenance table.","compatibility":"860 only, 2 1/2 and 3 inch band; do not substitute the separate outlet-check reference."},
+    {"sizeBand":"2 1/2–3 in","task":"Complete rubber components","partNumber":"905-187","kitName":"860 rubber parts kit (checks and relief valve)","contents":"Published check and relief-valve rubber service components.","compatibility":"860, 2 1/2 and 3 inch band."},
+    {"sizeBand":"4 in","task":"Check replacement","partNumber":"905-546","kitName":"860 inlet check replacement kit","contents":"Published inlet-check replacement components from the maintenance table.","compatibility":"860, 4 inch only."},
+    {"sizeBand":"4 in","task":"Complete rubber components","partNumber":"905-188","kitName":"860 rubber parts kit (checks and relief valve)","contents":"Published check and relief-valve rubber service components.","compatibility":"860, 4 inch only."},
+    {"sizeBand":"6 in","task":"Check replacement","partNumber":"905-550","kitName":"860 inlet check replacement kit","contents":"Published inlet-check replacement components from the maintenance table.","compatibility":"860, 6 inch only."},
+    {"sizeBand":"6 in","task":"Complete rubber components","partNumber":"905-189","kitName":"860 rubber parts kit (checks and relief valve)","contents":"Published check and relief-valve rubber service components.","compatibility":"860, 6 inch only."},
+    {"sizeBand":"8–10 in","task":"Check replacement","partNumber":"905-554","kitName":"860 inlet check replacement kit","contents":"Published inlet-check replacement components from the maintenance table.","compatibility":"860, 8 and 10 inch band."},
+    {"sizeBand":"8–10 in","task":"Complete rubber components","partNumber":"905-190","kitName":"860 rubber parts kit (checks and relief valve)","contents":"Published check and relief-valve rubber service components.","compatibility":"860, 8 and 10 inch band."},
+    {"sizeBand":"2 1/2–10 in (relief valve only)","task":"Relief-valve service","partNumber":"905-192","kitName":"860 relief valve repair kit","contents":"Published relief-valve service components including diaphragm, disc, piston, seat, O-rings, and related hardware.","compatibility":"The manufacturer table lists this 860 relief-valve reference across the 2 1/2–10 inch range; verify model and valve scope."}
+  ],
+  "sources": [
+    {"title":"FEBCO 860/LF860/860U/LF860U/880/880U repair-kit family","url":"https://www.watts.com/products/plumbing-flow-control-solutions/repair-kits/backflow-preventer-repair-kits/rk-860lf860860ulf860u880880u","publisher":"Watts / FEBCO","lastVerified":"2026-08-02"},
+    {"title":"FEBCO 860/880V installation, operation, and maintenance kit table","url":"https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/34459-source/639110976000000000/iom-f-860-880v-2543.pdf?qh=1%2F2","publisher":"Watts / FEBCO","lastVerified":"2026-08-02"},
+    {"title":"FEBCO parts selection guide and price list","url":"https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/36353-source/pl-febco-2514.pdf?qh=683216","publisher":"Watts / FEBCO","lastVerified":"2026-08-02"}
+  ],
+  "lastReviewed": "2026-08-02",
+  "published": true,
+  "indexable": true
+}

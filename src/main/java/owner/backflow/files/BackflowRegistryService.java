@@ -17,6 +17,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import owner.backflow.config.AppOpsProperties;
@@ -82,21 +83,21 @@ public class BackflowRegistryService {
                 .collect(Collectors.toMap(
                         utility -> key(utility.state(), utility.canonicalSlug()),
                         Function.identity(),
-                        (left, right) -> right,
+                        duplicate("utility state/slug"),
                         LinkedHashMap::new
                 ));
         this.utilitiesById = utilitiesByKey.values().stream()
                 .collect(Collectors.toMap(
                         UtilityRecord::utilityId,
                         Function.identity(),
-                        (left, right) -> right,
+                        duplicate("utility id"),
                         LinkedHashMap::new
                 ));
         this.aliasesByKey = loadAliases(root.resolve("city_aliases.csv")).stream()
                 .collect(Collectors.toMap(
                         alias -> key(alias.state(), alias.aliasSlug()),
                         Function.identity(),
-                        (left, right) -> right,
+                        duplicate("city alias"),
                         LinkedHashMap::new
                 ));
         this.providers = loadProviders(root.resolve("providers").resolve("providers.csv")).stream()
@@ -106,23 +107,24 @@ public class BackflowRegistryService {
                 .collect(Collectors.toMap(
                         guide -> guide.state().trim().toLowerCase(Locale.US),
                         Function.identity(),
-                        (left, right) -> right,
+                        duplicate("state guide"),
                         LinkedHashMap::new
                 ));
         this.guidesBySlug = loadGuides(root.resolve("guides")).stream()
                 .collect(Collectors.toMap(
                         guide -> guide.slug().trim().toLowerCase(Locale.US),
                         Function.identity(),
-                        (left, right) -> right,
+                        duplicate("guide slug"),
                         LinkedHashMap::new
                 ));
         this.metrosByKey = loadMetros(root.resolve("metros")).stream()
                 .collect(Collectors.toMap(
                         metro -> key(metro.state(), metro.metroSlug()),
                         Function.identity(),
-                        (left, right) -> right,
+                        duplicate("metro state/slug"),
                         LinkedHashMap::new
                 ));
+        validateReferences();
     }
 
     public List<UtilityRecord> listPublishedUtilities() {
@@ -536,5 +538,27 @@ public class BackflowRegistryService {
         return (state == null ? "" : state.trim().toLowerCase(Locale.US))
                 + "::"
                 + (slug == null ? "" : slug.trim().toLowerCase(Locale.US));
+    }
+
+    private <T> BinaryOperator<T> duplicate(String type) {
+        return (left, right) -> {
+            throw new IllegalStateException("Duplicate " + type + " in registry: " + left + " <> " + right);
+        };
+    }
+
+    private void validateReferences() {
+        aliasesByKey.values().forEach(alias -> requireUtility(alias.utilityId(), "city alias " + alias.aliasSlug()));
+        providers.forEach(provider -> provider.coverageTargets().forEach(
+                id -> requireUtility(id, "provider " + provider.providerId())));
+        metrosByKey.values().forEach(metro -> metro.utilityIds().forEach(
+                id -> requireUtility(id, "metro " + metro.metroSlug())));
+        stateGuidesByState.values().forEach(guide -> guide.featuredUtilityIds().forEach(
+                id -> requireUtility(id, "state guide " + guide.state())));
+    }
+
+    private void requireUtility(String utilityId, String owner) {
+        if (!utilitiesById.containsKey(utilityId)) {
+            throw new IllegalStateException("Unknown utility id '" + utilityId + "' referenced by " + owner);
+        }
     }
 }

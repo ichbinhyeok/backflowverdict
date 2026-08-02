@@ -23,7 +23,7 @@
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Notice finder</span>
                 <h1>Turn a backflow notice into the right next page.</h1>
-                <p class="lede">Search the city, utility, portal name, notice ID clue, or failed-test phrase. BackflowPath will route you to the most specific source-backed page it has.</p>
+                <p class="lede">Search the city, utility, portal name, notice ID clue, or failed-test phrase. BackflowVerdict will route you to the most specific source-backed page it has.</p>
                 <form class="stack-form notice-finder-form" method="get" action="/notice-finder">
                     <input type="hidden" name="ref" value="${referralCode}">
                     <label class="field" data-required="false">

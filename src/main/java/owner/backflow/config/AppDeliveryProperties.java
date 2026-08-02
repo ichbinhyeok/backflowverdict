@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.bind.DefaultValue;
 public record AppDeliveryProperties(
         @DefaultValue("false") boolean emailEnabled,
         @DefaultValue("") String fromEmail,
-        @DefaultValue("BackflowPath") String fromName,
+        @DefaultValue("BackflowVerdict") String fromName,
         @DefaultValue("") String replyTo
 ) {
 }

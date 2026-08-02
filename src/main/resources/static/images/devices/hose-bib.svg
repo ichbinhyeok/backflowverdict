@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-labelledby="title desc">
+  <title id="title">Hose-bib vacuum breaker field diagram</title><desc id="desc">An outdoor faucet with a threaded vacuum breaker, atmospheric drain openings, and garden hose connection.</desc>
+  <g fill="none" stroke="#17201d" stroke-width="8" stroke-linecap="square" stroke-linejoin="round">
+    <path d="M90 130v180h165"/><path d="M175 130h160v74H175z" fill="#f4f1e8"/><path d="M255 204v70"/>
+    <path d="M205 96h100m-50-38v72"/><circle cx="255" cy="95" r="46" fill="#f4f1e8"/>
+    <path d="M255 274h120v74H255z" fill="#f4f1e8"/><path d="M280 286v50m24-50v50m24-50v50m24-50v50" stroke-width="3"/>
+    <path d="M375 300h105v104"/><path d="M480 404c35 0 58 21 58 52" stroke="#c64e32"/>
+    <path d="M285 360c0 18-14 32-32 32s-32-14-32-32c0-14 20-38 32-52 12 14 32 38 32 52z" fill="#c64e32" stroke="none"/>
+    <path d="M375 274l20-20m-20 94 20 20" stroke="#c64e32"/>
+  </g>
+  <g fill="#5d6661" font-family="IBM Plex Mono, monospace" font-size="15" font-weight="600">
+    <text x="77" y="112">FAUCET</text><text x="250" y="244">THREAD</text><text x="405" y="245">AIR / DRAIN</text><text x="463" y="438">HOSE</text>
+  </g>
+</svg>

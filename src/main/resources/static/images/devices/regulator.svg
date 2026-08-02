@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-labelledby="title desc">
+  <title id="title">Water pressure regulator field diagram</title><desc id="desc">A pressure regulator with inlet, outlet, flow arrow, bell housing, adjustment bolt, union, and gauge point.</desc>
+  <g fill="none" stroke="#17201d" stroke-width="8" stroke-linecap="square" stroke-linejoin="round">
+    <path d="M55 340h145m320 0h145"/><path d="M200 294h320v92H200z" fill="#f4f1e8"/>
+    <path d="M260 294c8-92 52-138 100-138s92 46 100 138" fill="#f4f1e8"/>
+    <path d="M330 156v-48h60v48M360 108V68"/><path d="M185 314v52m350-52v52"/>
+    <circle cx="480" cy="238" r="44" fill="#f4f1e8"/><path d="M480 238l22-17M468 260h24"/>
+    <path d="M285 340h150" stroke="#c64e32"/><path d="m414 320 30 20-30 20" stroke="#c64e32"/>
+    <path d="M216 400v32m288-32v32" stroke-width="3"/>
+  </g>
+  <g fill="#5d6661" font-family="IBM Plex Mono, monospace" font-size="15" font-weight="600">
+    <text x="55" y="318">INLET</text><text x="607" y="318">OUTLET</text><text x="298" y="48">ADJUSTMENT</text>
+    <text x="281" y="142">BELL / SPRING</text><text x="438" y="176">GAUGE POINT</text><text x="275" y="462">FLOW DIRECTION</text>
+  </g>
+</svg>

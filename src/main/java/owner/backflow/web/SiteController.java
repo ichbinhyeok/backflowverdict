@@ -31,6 +31,8 @@ import owner.backflow.data.model.SubmissionMethod;
 import owner.backflow.data.model.UtilityFocusContent;
 import owner.backflow.data.model.UtilityRecord;
 import owner.backflow.files.BackflowRegistryService;
+import owner.backflow.files.DecisionGuideService;
+import owner.backflow.files.ModelGuideService;
 import owner.backflow.service.LeadRoutingService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -59,16 +61,22 @@ public class SiteController {
     );
 
     private final BackflowRegistryService registryService;
+    private final DecisionGuideService decisionGuideService;
+    private final ModelGuideService modelGuideService;
     private final AppSiteProperties siteProperties;
     private final SiteVisibilityService siteVisibilityService;
     private final ObjectMapper jsonMapper = new ObjectMapper();
 
     public SiteController(
             BackflowRegistryService registryService,
+            DecisionGuideService decisionGuideService,
+            ModelGuideService modelGuideService,
             AppSiteProperties siteProperties,
             SiteVisibilityService siteVisibilityService
     ) {
         this.registryService = registryService;
+        this.decisionGuideService = decisionGuideService;
+        this.modelGuideService = modelGuideService;
         this.siteProperties = siteProperties;
         this.siteVisibilityService = siteVisibilityService;
     }
@@ -93,8 +101,8 @@ public class SiteController {
             }
         }
         model.addAttribute("page", page(
-                "BackflowPath | Local backflow rules and tester routes",
-                "Find utility-specific backflow testing requirements, annual testing steps, reporting portals, failed-test guidance, and official tester list routes.",
+                "BackflowVerdict | Identify the device, decide the next step, verify the rule",
+                "Identify a backflow preventer or vacuum breaker, check a leak or failed test, and verify the official local utility route.",
                 "/",
                 breadcrumbStructuredData(List.of(new BreadcrumbItem("Home", canonical("/"))))
         ));
@@ -129,7 +137,7 @@ public class SiteController {
                 .mapToInt(Integer::intValue)
                 .sum();
         model.addAttribute("page", page(
-                "State backflow guides | BackflowPath",
+                "State backflow guides | BackflowVerdict",
                 "Browse source-backed state backflow guides that route into utility-specific testing requirements and next-step pages.",
                 "/states",
                 breadcrumbStructuredData(List.of(
@@ -159,7 +167,7 @@ public class SiteController {
                 .mapToInt(Integer::intValue)
                 .sum();
         model.addAttribute("page", page(
-                "Metro backflow coverage | BackflowPath",
+                "Metro backflow coverage | BackflowVerdict",
                 "Browse metro backflow pages that group nearby utility rules, public provider profiles, and local support guides.",
                 "/metros",
                 breadcrumbStructuredData(List.of(
@@ -178,7 +186,7 @@ public class SiteController {
     public String guidesIndex(Model model) {
         List<GuideRecord> guides = registryService.listPublishedGuides();
         model.addAttribute("page", page(
-                "Backflow guides | BackflowPath",
+                "Backflow guides | BackflowVerdict",
                 "Browse practical backflow guides that explain recurring rule patterns without replacing utility-specific authority pages.",
                 "/guides",
                 breadcrumbStructuredData(List.of(
@@ -198,7 +206,7 @@ public class SiteController {
         List<UtilityRecord> utilities = officialTesterUtilities();
         Map<String, List<UtilityRecord>> utilitiesByState = utilitiesByState(utilities);
         model.addAttribute("page", page(
-                "Official backflow tester lists by utility | BackflowPath",
+                "Official backflow tester lists by utility | BackflowVerdict",
                 "Browse utility-published approved, registered, and certified backflow tester list routes without mixing them into non-official directories.",
                 "/official-backflow-tester-lists",
                 breadcrumbStructuredData(List.of(
@@ -223,7 +231,7 @@ public class SiteController {
         List<UtilityRecord> utilities = portalUtilities("all");
         List<FaqItem> faqItems = portalFaqItems("all", "Backflow reporting portals", utilities);
         model.addAttribute("page", page(
-                "Backflow reporting portals by utility | BackflowPath",
+                "Backflow reporting portals by utility | BackflowVerdict",
                 "Find the correct BSI, SwiftComply, WEIRS, VEPO, Aqua, Tokay, or utility backflow report route before filing.",
                 "/backflow-reporting-portals",
                 combineStructuredData(
@@ -315,7 +323,7 @@ public class SiteController {
         String shareMessage = noticeFinderShareMessage(trimmedQuery, shareUrl);
         String shareEmailUrl = noticeFinderShareEmailUrl(shareMessage);
         PageMeta noticeFinderPage = page(
-                "Backflow notice finder | BackflowPath",
+                "Backflow notice finder | BackflowVerdict",
                 "Paste a city, utility, BSI, SwiftComply, TrackMyBackflow, Tokay, notice ID, Hazard ID, approved tester, or failed-test phrase.",
                 "/notice-finder",
                 combineStructuredData(
@@ -362,7 +370,7 @@ public class SiteController {
     @GetMapping("/partners/notice-kit")
     public String partnerNoticeKitPage(Model model) {
         model.addAttribute("page", page(
-                "Backflow notice kit for testers and property managers | BackflowPath",
+                "Backflow notice kit for testers and property managers | BackflowVerdict",
                 "Free copy, links, and a notice lookup workflow that backflow testers, contractors, and property managers can send to customers.",
                 "/partners/notice-kit",
                 breadcrumbStructuredData(List.of(
@@ -376,7 +384,7 @@ public class SiteController {
     @GetMapping("/partners/sample/customer-guide")
     public String partnerCustomerGuideSamplePage(Model model) {
         model.addAttribute("page", new PageMeta(
-                "Sample customer handoff page | BackflowPath",
+                "Sample customer handoff page | BackflowVerdict",
                 "A sample post-test customer handoff page for a Dallas SwiftComply backflow notice.",
                 canonical("/partners/sample/customer-guide"),
                 true
@@ -392,13 +400,13 @@ public class SiteController {
         return redirect;
     }
 
-    @GetMapping("/submit-backflow-report")
+    @GetMapping({"/submit-backflow-report", "/submit-backflow-report/"})
     public String submitBackflowReportHubPage(Model model) {
         List<UtilityRecord> utilities = portalUtilities("all");
         List<FaqItem> faqItems = submitReportHubFaqItems();
         model.addAttribute("page", page(
-                "Submit backflow test reports by city and portal | BackflowPath",
-                "Find city and utility routes for submitting backflow test reports through BSI, WEIRS, SwiftComply, VEPO, Aqua/TrackMyBackflow, Tokay, and online portals.",
+                "Find where to submit a backflow test report | BackflowVerdict",
+                "Match the governing utility to its official backflow report portal, accepted submitter, identifiers, and proof route.",
                 "/submit-backflow-report",
                 combineStructuredData(
                         breadcrumbStructuredData(List.of(
@@ -429,8 +437,8 @@ public class SiteController {
     @GetMapping("/privacy")
     public String privacyPage(Model model) {
         model.addAttribute("page", new PageMeta(
-                "Privacy and request handling | BackflowPath",
-                "How BackflowPath stores contact requests, preserves page context, and handles manual follow-up.",
+                "Privacy and request handling | BackflowVerdict",
+                "How BackflowVerdict stores contact requests, preserves page context, and handles manual follow-up.",
                 canonical("/privacy"),
                 true
         ));
@@ -440,8 +448,8 @@ public class SiteController {
     @GetMapping("/about")
     public String aboutPage(Model model) {
         model.addAttribute("page", page(
-                "About BackflowPath | BackflowPath",
-                "How BackflowPath organizes utility-specific backflow compliance guidance without mixing authority rules and provider routing.",
+                "About BackflowVerdict | BackflowVerdict",
+                "How BackflowVerdict organizes utility-specific backflow compliance guidance without mixing authority rules and provider routing.",
                 "/about",
                 breadcrumbStructuredData(List.of(
                         new BreadcrumbItem("Home", canonical("/")),
@@ -454,8 +462,8 @@ public class SiteController {
     @GetMapping("/methodology")
     public String methodologyPage(Model model) {
         model.addAttribute("page", page(
-                "Methodology | BackflowPath",
-                "How BackflowPath verifies utility rules, freshness windows, reviewer codes, and source-backed updates.",
+                "Methodology | BackflowVerdict",
+                "How BackflowVerdict verifies utility rules, freshness windows, reviewer codes, and source-backed updates.",
                 "/methodology",
                 breadcrumbStructuredData(List.of(
                         new BreadcrumbItem("Home", canonical("/")),
@@ -468,8 +476,8 @@ public class SiteController {
     @GetMapping("/editorial-standards")
     public String editorialStandardsPage(Model model) {
         model.addAttribute("page", page(
-                "Editorial standards | BackflowPath",
-                "Editorial rules for separating official guidance, support content, and non-official provider directories on BackflowPath.",
+                "Editorial standards | BackflowVerdict",
+                "Editorial rules for separating official guidance, support content, and non-official provider directories on BackflowVerdict.",
                 "/editorial-standards",
                 breadcrumbStructuredData(List.of(
                         new BreadcrumbItem("Home", canonical("/")),
@@ -482,8 +490,8 @@ public class SiteController {
     @GetMapping("/corrections")
     public String correctionsPage(Model model) {
         model.addAttribute("page", page(
-                "Corrections policy | BackflowPath",
-                "How BackflowPath handles reported errors, stale utility rules, broken source links, and public updates.",
+                "Corrections policy | BackflowVerdict",
+                "How BackflowVerdict handles reported errors, stale utility rules, broken source links, and public updates.",
                 "/corrections",
                 breadcrumbStructuredData(List.of(
                         new BreadcrumbItem("Home", canonical("/")),
@@ -496,8 +504,8 @@ public class SiteController {
     @GetMapping("/contact")
     public String contactPage(Model model) {
         model.addAttribute("page", page(
-                "Contact BackflowPath | BackflowPath",
-                "Contact BackflowPath for corrections, source updates, and utility-specific routing questions.",
+                "Contact BackflowVerdict | BackflowVerdict",
+                "Contact BackflowVerdict for corrections, source updates, and utility-specific routing questions.",
                 "/contact",
                 breadcrumbStructuredData(List.of(
                         new BreadcrumbItem("Home", canonical("/")),
@@ -510,7 +518,7 @@ public class SiteController {
     @GetMapping("/claim-listing")
     public String claimListingPage(Model model) {
         model.addAttribute("page", page(
-                "Claim or correct a BackflowPath provider listing | BackflowPath",
+                "Claim or correct a BackflowVerdict provider listing | BackflowVerdict",
                 "Request a public provider listing correction, claim context, or official source update without changing the utility rule layer.",
                 "/claim-listing",
                 breadcrumbStructuredData(List.of(
@@ -529,7 +537,7 @@ public class SiteController {
                 .orElseThrow(() -> new NotFoundException("State guide not found."));
         List<UtilityRecord> utilities = registryService.listPublishedUtilitiesForState(state);
         model.addAttribute("page", page(
-                stateGuide.title() + " | BackflowPath",
+                stateGuide.title() + " | BackflowVerdict",
                 stateGuide.description(),
                 "/states/" + state + "/backflow-testing",
                 breadcrumbStructuredData(List.of(
@@ -558,7 +566,7 @@ public class SiteController {
         }
         String label = stateLabel(stateGuide.state());
         model.addAttribute("page", page(
-                label + " approved backflow tester lists by utility | BackflowPath",
+                label + " approved backflow tester lists by utility | BackflowVerdict",
                 "Browse " + label + " utility pages with official approved, certified, or registered backflow tester list routes.",
                 "/states/" + stateGuide.state() + "/approved-backflow-testers",
                 breadcrumbStructuredData(List.of(
@@ -774,7 +782,7 @@ public class SiteController {
         UtilityRecord utility = registryService.findPublishedUtility(state, utilitySlug)
                 .orElseThrow(() -> new NotFoundException("Failed-test page not found."));
         String location = utilitySearchLocation(utility);
-        String title = location + " utility failed backflow test | BackflowPath";
+        String title = location + " utility failed backflow test | BackflowVerdict";
         String description = "Check " + location + " utility failed-test repair, retest, deadline, and report submission steps.";
         String path = utilityPath(utility) + "failed-test";
         model.addAttribute("page", page(
@@ -832,7 +840,7 @@ public class SiteController {
                 .filter(UtilityRecord::supportsApprovedTestersPage)
                 .orElseThrow(() -> new NotFoundException("Approved tester page not available for this utility."));
         List<ProviderRecord> providers = registryService.findProvidersForUtility(utility.utilityId());
-        String title = officialTesterPageTitle(utility) + " | BackflowPath";
+        String title = officialTesterPageTitle(utility) + " | BackflowVerdict";
         String description = officialTesterPageDescription(utility);
         String path = utilityPath(utility) + "approved-testers";
         model.addAttribute("page", page(
@@ -876,7 +884,7 @@ public class SiteController {
             throw new NotFoundException("Find-a-tester page not available for this utility.");
         }
         String location = utilitySearchLocation(utility);
-        String title = location + " utility backflow tester directory | BackflowPath";
+        String title = location + " utility backflow tester directory | BackflowVerdict";
         String description = "Compare " + location + " providers after checking the official utility tester and report submission rules.";
         String path = utilityPath(utility) + "find-a-tester";
         model.addAttribute("page", page(
@@ -1219,6 +1227,16 @@ public class SiteController {
         urls.add(new SitemapEntry(canonical("/claim-listing"), homeLastModified()));
         urls.add(new SitemapEntry(canonical("/notice-finder"), homeLastModified()));
         urls.add(new SitemapEntry(canonical("/partners/notice-kit"), homeLastModified()));
+        urls.add(new SitemapEntry(canonical("/backflow-library/"), LocalDate.of(2026, 8, 2)));
+        urls.add(new SitemapEntry(canonical("/backflow-preventer-repair-kits/"), LocalDate.of(2026, 8, 2)));
+        decisionGuideService.listPublished().forEach(guide -> urls.add(new SitemapEntry(
+                canonical(guide.canonicalPath()),
+                LocalDate.parse(guide.lastReviewed())
+        )));
+        modelGuideService.listIndexable().forEach(guide -> urls.add(new SitemapEntry(
+                canonical(guide.canonicalPath()),
+                LocalDate.parse(guide.lastReviewed())
+        )));
         return urls;
     }
 
@@ -1547,6 +1565,9 @@ public class SiteController {
                 "/official-backflow-tester-lists",
                 "/backflow-reporting-portals"
         ));
+        decisionGuideService.listPublished().stream()
+                .map(guide -> guide.canonicalPath())
+                .forEach(paths::add);
         PORTAL_SLUGS.stream()
                 .filter(slug -> !portalUtilities(slug).isEmpty())
                 .map(slug -> "/backflow-reporting-portals/" + slug)
@@ -2173,7 +2194,7 @@ public class SiteController {
 
     private String noticeFinderShareMessage(String query, String shareUrl) {
         if (query == null || query.isBlank()) {
-            return "Find the right backflow notice route with BackflowPath: " + shareUrl;
+            return "Find the right backflow notice route with BackflowVerdict: " + shareUrl;
         }
         return "I found a source-backed next step for this backflow notice (" + query + "): " + shareUrl;
     }
@@ -2249,12 +2270,12 @@ public class SiteController {
 
     private String portalDetailPageTitle(String portalSlug, String portalName) {
         return switch (portalSlug.toLowerCase(Locale.US)) {
-            case "swiftcomply" -> "SwiftComply portal backflow report routes | BackflowPath";
-            case "vepo" -> "VEPO Envirotrax backflow report routes | BackflowPath";
-            case "aqua" -> "Aqua Backflow and TrackMyBackflow portal routes | BackflowPath";
-            case "tokay" -> "Tokay WebTest backflow report routes | BackflowPath";
-            case "sprybackflow" -> "SpryBackflow backflow report portal routes | BackflowPath";
-            default -> portalName + " backflow portal: city routes and report submission | BackflowPath";
+            case "swiftcomply" -> "SwiftComply portal backflow report routes | BackflowVerdict";
+            case "vepo" -> "VEPO Envirotrax backflow report routes | BackflowVerdict";
+            case "aqua" -> "Aqua Backflow and TrackMyBackflow portal routes | BackflowVerdict";
+            case "tokay" -> "Tokay WebTest backflow report routes | BackflowVerdict";
+            case "sprybackflow" -> "SpryBackflow backflow report portal routes | BackflowVerdict";
+            default -> portalName + " backflow portal: city routes and report submission | BackflowVerdict";
         };
     }
 
@@ -2311,13 +2332,13 @@ public class SiteController {
         String location = utilitySearchLocation(utility);
         String portalVendor = utilityPortalVendor(utility);
         if (portalVendor != null) {
-            String suffix = " backflow reports | " + shortenAtWord(portalVendor, 22) + " | BackflowPath";
+            String suffix = " backflow reports | " + shortenAtWord(portalVendor, 22) + " | BackflowVerdict";
             return shortenAtWord(location, Math.max(12, 70 - suffix.length())) + suffix;
         }
         if (utility.supportsApprovedTestersPage()) {
-            return location + " utility backflow tester rules | BackflowPath";
+            return location + " utility backflow tester rules | BackflowVerdict";
         }
-        return location + " utility backflow requirements | BackflowPath";
+        return location + " utility backflow requirements | BackflowVerdict";
     }
 
     private String utilityPageDescription(UtilityRecord utility) {
@@ -2443,7 +2464,7 @@ public class SiteController {
         String market = coverageCities.isEmpty()
                 ? (utilities.isEmpty() ? "provider profile" : utilitySearchLocation(utilities.getFirst()))
                 : coverageCities.getFirst();
-        String suffix = " | " + shortenAtWord(market, 24) + " | BackflowPath";
+        String suffix = " | " + shortenAtWord(market, 24) + " | BackflowVerdict";
         return shortenAtWord(provider.providerName(), Math.max(12, 70 - suffix.length())) + suffix;
     }
 
@@ -2462,10 +2483,10 @@ public class SiteController {
 
     private String guidePageTitle(GuideRecord guide) {
         return switch (guide.slug()) {
-            case "anniversary-date-vs-calendar-deadline" -> "Backflow test due dates | BackflowPath";
-            case "backflow-test-cost" -> "Backflow test cost and fees | BackflowPath";
-            case "backflow-reporting-portals" -> "SwiftComply, BSI and WEIRS backflow portals | BackflowPath";
-            default -> shortenAtWord(guide.title(), 50) + " | BackflowPath";
+            case "anniversary-date-vs-calendar-deadline" -> "Backflow test due dates | BackflowVerdict";
+            case "backflow-test-cost" -> "Backflow test cost and fees | BackflowVerdict";
+            case "backflow-reporting-portals" -> "SwiftComply, BSI and WEIRS backflow portals | BackflowVerdict";
+            default -> shortenAtWord(guide.title(), 50) + " | BackflowVerdict";
         };
     }
 
@@ -2478,7 +2499,7 @@ public class SiteController {
     }
 
     private String metroPageTitle(MetroRecord metro) {
-        return shortenAtWord(metro.title(), 50) + " | BackflowPath";
+        return shortenAtWord(metro.title(), 50) + " | BackflowVerdict";
     }
 
     private String officialTesterPageTitle(UtilityRecord utility) {
@@ -2562,7 +2583,7 @@ public class SiteController {
     }
 
     private String cityPageTitle(CityAliasRecord alias, UtilityRecord utility) {
-        return alias.city() + " backflow testing requirements | BackflowPath";
+        return alias.city() + " backflow testing requirements | BackflowVerdict";
     }
 
     private String cityPageDescription(CityAliasRecord alias, UtilityRecord utility) {
@@ -2620,7 +2641,7 @@ public class SiteController {
         String heading = alias.city() + " annual backflow testing";
         return new CityIntentConfig(
                 "annual-backflow-testing",
-                alias.city() + " annual backflow testing and due dates | BackflowPath",
+                alias.city() + " annual backflow testing and due dates | BackflowVerdict",
                 alias.city() + " annual backflow testing: verify who must test, the due-date rule, tester requirements, and the official submission workflow.",
                 "Annual city route",
                 heading,
@@ -2645,7 +2666,7 @@ public class SiteController {
         String heading = alias.city() + " " + portalLabel + " backflow reporting portal";
         return new CityIntentConfig(
                 "backflow-reporting-portal",
-                alias.city() + " " + portalLabel + " backflow reporting | BackflowPath",
+                alias.city() + " " + portalLabel + " backflow reporting | BackflowVerdict",
                 "Find the " + alias.city() + " " + portalLabel + " backflow report route, notice or device identifiers, tester gate, and proof of accepted submission.",
                 "Portal city route",
                 heading,
@@ -2676,7 +2697,7 @@ public class SiteController {
         String heading = "Submit " + alias.city() + " " + portalLabel + " backflow test reports";
         return new CityIntentConfig(
                 "submit-backflow-report",
-                alias.city() + " " + portalLabel + " report submission | BackflowPath",
+                alias.city() + " " + portalLabel + " report submission | BackflowVerdict",
                 "How to submit a backflow test report in " + alias.city() + " through " + portalLabel + ", including notice clues, tester requirements, and accepted filing proof.",
                 "Report submission route",
                 heading,
@@ -2702,7 +2723,7 @@ public class SiteController {
         String heading = alias.city() + " approved backflow testers";
         return new CityIntentConfig(
                 "approved-backflow-testers",
-                alias.city() + " approved backflow testers | BackflowPath",
+                alias.city() + " approved backflow testers | BackflowVerdict",
                 "Find the official " + alias.city() + " approved backflow tester route and confirm utility registration, credentials, and report submission requirements.",
                 "Tester city route",
                 heading,
@@ -2722,7 +2743,7 @@ public class SiteController {
         String heading = alias.city() + " failed backflow test";
         return new CityIntentConfig(
                 "failed-backflow-test",
-                alias.city() + " failed backflow test | BackflowPath",
+                alias.city() + " failed backflow test | BackflowVerdict",
                 "What to do after a failed backflow test in " + alias.city() + ": repair, retest, and confirm accepted report submission with the utility.",
                 "Failed-test city route",
                 heading,
@@ -2743,7 +2764,7 @@ public class SiteController {
         String heading = alias.city() + " irrigation backflow testing";
         return new CityIntentConfig(
                 "irrigation-backflow-testing",
-                alias.city() + " irrigation backflow testing | BackflowPath",
+                alias.city() + " irrigation backflow testing | BackflowVerdict",
                 "Check " + alias.city() + " irrigation backflow testing triggers, device rules, tester requirements, and the official utility workflow.",
                 "Irrigation city route",
                 heading,
@@ -2764,7 +2785,7 @@ public class SiteController {
         String heading = alias.city() + " fire-line backflow testing";
         return new CityIntentConfig(
                 "fire-line-backflow-testing",
-                alias.city() + " fire-line backflow testing | BackflowPath",
+                alias.city() + " fire-line backflow testing | BackflowVerdict",
                 "Check " + alias.city() + " fire-line backflow testing triggers, assembly rules, tester requirements, and the official utility workflow.",
                 "Fire-line city route",
                 heading,
@@ -2943,19 +2964,19 @@ public class SiteController {
     private String utilityFocusPageTitle(UtilityRecord utility, String focus) {
         String location = utilitySearchLocation(utility);
         if (focus.equalsIgnoreCase("annual testing") && utilityContainsAny(utility, "irvine ranch", "irwd")) {
-            return location + " backflow prevention and annual test | BackflowPath";
+            return location + " backflow prevention and annual test | BackflowVerdict";
         }
         if (focus.equalsIgnoreCase("annual testing") && utilityContainsAny(utility, "parker water", "pwsd")) {
-            return location + " backflow preventer testing and portal | BackflowPath";
+            return location + " backflow preventer testing and portal | BackflowVerdict";
         }
         return switch (focus.toLowerCase(Locale.US)) {
-            case "annual testing" -> location + " utility annual backflow test | BackflowPath";
-            case "failed test" -> location + " utility failed backflow test and retest | BackflowPath";
-            case "approved testers" -> location + " utility approved backflow testers | BackflowPath";
-            case "find a tester" -> location + " utility backflow tester directory | BackflowPath";
-            case "irrigation" -> location + " utility irrigation backflow test | BackflowPath";
-            case "fire line" -> location + " utility fire-line backflow test | BackflowPath";
-            default -> location + " utility backflow requirements | BackflowPath";
+            case "annual testing" -> location + " utility annual backflow test | BackflowVerdict";
+            case "failed test" -> location + " utility failed backflow test and retest | BackflowVerdict";
+            case "approved testers" -> location + " utility approved backflow testers | BackflowVerdict";
+            case "find a tester" -> location + " utility backflow tester directory | BackflowVerdict";
+            case "irrigation" -> location + " utility irrigation backflow test | BackflowVerdict";
+            case "fire line" -> location + " utility fire-line backflow test | BackflowVerdict";
+            default -> location + " utility backflow requirements | BackflowVerdict";
         };
     }
 
@@ -3347,7 +3368,7 @@ public class SiteController {
     private List<FaqItem> noticeFinderFaqItems() {
         return List.of(
                 new FaqItem(
-                        "What should I paste into the BackflowPath notice finder?",
+                        "What should I paste into the BackflowVerdict notice finder?",
                         "Paste the city, utility, portal name, notice identifier, account clue, device clue, approved-tester wording, due-date wording, or failed-test phrase from the notice."
                 ),
                 new FaqItem(
@@ -3380,7 +3401,7 @@ public class SiteController {
                         "Compare the utility name, service address, notice or device identifier, approved tester gate, report acceptance rule, filing fee, due window, and failed-test instructions."
                 ),
                 new FaqItem(
-                        "How many BackflowPath utility workflows mention " + familyNames + "?",
+                        "How many BackflowVerdict utility workflows mention " + familyNames + "?",
                         "This portal view currently groups " + utilityCount + " with source-backed portal or online submission evidence."
                 ),
                 new FaqItem(
@@ -3401,8 +3422,8 @@ public class SiteController {
                         "No. Many utilities require the report to be entered through a named portal or online submission path. Keep proof that the report was submitted and accepted."
                 ),
                 new FaqItem(
-                        "Which backflow report portals appear in BackflowPath?",
-                        "BackflowPath currently groups source-backed routes for BSI, WEIRS, SwiftComply, VEPO, Envirotrax, Aqua Backflow, TrackMyBackflow, Tokay WebTest, SpryBackflow, and utility-run online submission workflows."
+                        "Which backflow report portals appear in BackflowVerdict?",
+                        "BackflowVerdict currently groups source-backed routes for BSI, WEIRS, SwiftComply, VEPO, Envirotrax, Aqua Backflow, TrackMyBackflow, Tokay WebTest, SpryBackflow, and utility-run online submission workflows."
                 ),
                 new FaqItem(
                         "What should the owner keep after the tester files a report?",
@@ -3525,7 +3546,7 @@ public class SiteController {
             return "The page does not store a named portal for this utility yet. Confirm the current report path on the official utility page before submitting a test.";
         }
         String hubLabel = portalHubLabel(utility);
-        String hubContext = hubLabel == null ? "" : " The matching portal hub on BackflowPath is " + hubLabel + ".";
+        String hubContext = hubLabel == null ? "" : " The matching portal hub on BackflowVerdict is " + hubLabel + ".";
         return "The stored submission route is: " + methods
                 + ". Follow the utility workflow first because tester enrollment, filing fees, and pass/fail handling can differ by jurisdiction."
                 + hubContext;
@@ -3555,7 +3576,7 @@ public class SiteController {
 
     private String costAnswer(UtilityRecord utility) {
         if (utility.costBand() == null) {
-            return "BackflowPath does not store a local cost band for this utility yet. Confirm test pricing with the tester and any filing fee with the utility or portal.";
+            return "BackflowVerdict does not store a local cost band for this utility yet. Confirm test pricing with the tester and any filing fee with the utility or portal.";
         }
         return utility.costBand().testingRange()
                 + " "
@@ -3732,11 +3753,11 @@ public class SiteController {
         json.put("name", name);
         json.put("description", description);
         ObjectNode site = typedObject("WebSite");
-        site.put("name", "BackflowPath");
+        site.put("name", "BackflowVerdict");
         site.put("url", canonical("/"));
         json.set("isPartOf", site);
         ObjectNode reviewer = typedObject("Organization");
-        reviewer.put("name", "BackflowPath editorial review");
+        reviewer.put("name", "BackflowVerdict editorial review");
         json.set("reviewedBy", reviewer);
         if (dateModified != null) {
             json.put("dateModified", dateModified.toString());
@@ -3786,7 +3807,7 @@ public class SiteController {
         json.put("serviceType", "Backflow testing compliance guidance");
         json.put("url", canonicalUrl);
         ObjectNode provider = typedObject("Organization");
-        provider.put("name", "BackflowPath");
+        provider.put("name", "BackflowVerdict");
         provider.put("url", canonical("/"));
         json.set("provider", provider);
         json.set("areaServed", utilityAreaServedArray(utility));
@@ -3908,7 +3929,7 @@ public class SiteController {
         if (value == null) {
             return "";
         }
-        return value.replace(" | BackflowPath", "");
+        return value.replace(" | BackflowVerdict", "");
     }
 
     private List<String> utilityAbout(UtilityRecord utility) {
@@ -3956,7 +3977,7 @@ public class SiteController {
         json.put("url", noticeFinderUrl);
         json.put("applicationCategory", "BusinessApplication");
         json.put("operatingSystem", "Web");
-        json.put("description", "Search a city, utility, portal name, notice identifier, tester clue, due date, or failed-test phrase to find the source-backed BackflowPath route.");
+        json.put("description", "Search a city, utility, portal name, notice identifier, tester clue, due date, or failed-test phrase to find the source-backed BackflowVerdict route.");
         ArrayNode features = jsonMapper.createArrayNode();
         List.of(
                 "City and utility matching",

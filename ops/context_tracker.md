@@ -1,5 +1,14 @@
 # Context Tracker
 
+## 2026-08-02 — strengthened decision portfolio
+
+- Expanded the explicit decision-guide set from 9 to 26 routes using the validated Wave A/B portfolio. Wave C generic check-valve pages remain intentionally gated until traction.
+- Added water-pressure-regulator, PVB/AVB/hose-bib, irrigation, RPZ, backwater installation/cost, and relief-vent paths.
+- Added interactive identifier, diagnostic, repair score, PSI, and cost modules.
+- Added centralized EPA, manufacturer, and municipal evidence ledgers plus Article/Breadcrumb structured data.
+- Added page-group/tool-result analytics events and automated guide link/accessibility contracts.
+- Deployment now runs the full test suite and no longer uses destructive `rsync --delete` for project data.
+
 ## Current status
 - BackflowPath is tracked as an owner-facing utility-first compliance product.
 - The public site centers on utility, state, metro, guide, tester, failed-test, provider, and request-help pages.
@@ -93,3 +102,24 @@
 - How far metro and provider aggregation should expand before it begins to dilute utility-first trust.
 - Whether request-help follow-up needs a more explicit public service-level expectation on the site.
 - Whether 403/time-out source audit failures should be tracked separately from definite 404s so bot-protected official pages do not suppress otherwise valid pages after the grace window.
+# 2026-08-02 search-salvage product reset
+
+- Rebuilt the primary product around identify → diagnose → decide → official utility verification.
+- Added nine JSON-backed national decision guides and a fail-fast `DecisionGuideService`.
+- Added dedicated decision controller, JTE layout, technical SVG device diagrams, and restrained field-manual design system.
+- Rebuilt homepage, utility record, submit-report finder, and noindex help handoff without removing existing utility/provider/city URLs.
+- Added current GSC winner URL contract coverage and kept the official utility data layer separate from commercial handoff.
+- The target remains search acquisition first; lead economics are measured later against qualified traffic.
+
+## 2026-08-02 release-readiness strengthening
+
+- Limited search launch to 12 indexable Wave A decision screens; 15 additional screens remain accessible but `noindex,follow` and absent from sitemap.
+- Added the data-prioritized `/backflow-preventer-installation/` decision screen and an explicit `data/decision-query-ownership.csv` canonical-owner ledger.
+- Replaced unsupported national dollar ranges with a quote-scope comparison tool.
+- Added selected-utility overlays with official cadence, due basis, verification date, canonical utility record, and direct official source.
+- Moved decision evidence into a claim-ID and freshness-controlled ledger checked against unresolved broken-link rows.
+- Expanded protection from 12 sample routes to all 107 latest GSC `KEEP_WINNER` URLs.
+- Added fail-fast registry duplicates/references and a 96-utility identity baseline.
+- Changed deployment to immutable SHA images with pre-copy data snapshots, rollback, and route/canonical/robots/sitemap smoke checks.
+- Added six Playwright Chromium contracts. Java/Spring: 82 passing; browser: 6 passing; npm audit: 0 vulnerabilities.
+- No deployment was performed.

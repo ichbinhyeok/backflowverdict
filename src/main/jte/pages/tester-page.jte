@@ -92,7 +92,7 @@
                         @else
                             <div class="empty-state">
                                 <strong>No local official entries are cached yet</strong>
-                                <p>Use the utility's official program page to confirm the latest authority list directly while BackflowPath expands this page.</p>
+                                <p>Use the utility's official program page to confirm the latest authority list directly while BackflowVerdict expands this page.</p>
                             </div>
                         @endif
                     </article>
@@ -101,7 +101,7 @@
                         <div class="section-heading">
                             <span class="eyebrow">Provider inventory</span>
                             <h2>Directory entries mapped to this utility</h2>
-                            <p>No official approved tester list is published here in BackflowPath, so this page only presents clearly labeled provider options.</p>
+                            <p>No official approved tester list is published here in BackflowVerdict, so this page only presents clearly labeled provider options.</p>
                         </div>
                         @if (!providers.isEmpty())
                             <div class="card-grid">
@@ -131,7 +131,7 @@
                                 @endfor
                             </div>
                         @else
-                            <div class="empty-state">BackflowPath does not yet show mapped provider options for this utility. Use the official program page while this route is expanded.</div>
+                            <div class="empty-state">BackflowVerdict does not yet show mapped provider options for this utility. Use the official program page while this route is expanded.</div>
                         @endif
                     </article>
                 @endif

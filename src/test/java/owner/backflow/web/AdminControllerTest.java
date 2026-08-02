@@ -151,9 +151,9 @@ class AdminControllerTest {
                         .param("issueType", "general-testing")
                         .param("pageFamily", "utility"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Tell us what is going on")))
+                .andExpect(content().string(containsString("Get help with the next step")))
                 .andExpect(content().string(containsString("Dallas Water Utilities")))
-                .andExpect(content().string(containsString("privacy and request handling notice")));
+                .andExpect(content().string(containsString("privacy")));
 
         mockMvc.perform(post("/leads")
                         .param("fullName", "=Jordan Lee")
@@ -290,11 +290,9 @@ class AdminControllerTest {
                         .param("issueType", "general-testing")
                         .param("pageFamily", "utility"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Official guidance stays separate from provider help")))
-                .andExpect(content().string(containsString("Reviewed against the utility workflow")))
-                .andExpect(content().string(containsString("What you are consenting to")))
-                .andExpect(content().string(containsString("follow up with public provider options when appropriate")))
-                .andExpect(content().string(containsString("BackflowPath does not treat this form as a private resale channel.")))
+                .andExpect(content().string(containsString("official approved-tester list")))
+                .andExpect(content().string(containsString("reviewed against the official workflow")))
+                .andExpect(content().string(containsString("follow up about relevant next steps or provider options")))
                 .andExpect(content().string(not(containsString("Held directory emails"))))
                 .andExpect(content().string(not(containsString("Israel@nextdaybackflowtesting.com"))));
     }

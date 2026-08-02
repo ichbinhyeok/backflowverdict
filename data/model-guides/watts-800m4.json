@@ -1,0 +1,42 @@
+{
+  "slug": "watts-800m4",
+  "canonicalPath": "/models/watts-800m4/",
+  "manufacturer": "Watts",
+  "model": "800M4 / LF800M4QT",
+  "aliases": ["Watts 800M4", "Watts LF800M4", "800M4 pressure vacuum breaker"],
+  "deviceType": "Pressure vacuum breaker",
+  "title": "Watts 800M4 repair kits by size and failed component",
+  "description": "Match a Watts 800M4 or LF800M4QT size band to the official bonnet, check, vent-float, rubber, seat, or total repair kit.",
+  "summary": "The 800M4 repair family repeats across size bands, but the part-number suffix and eligible model designation change. Select the exact band before comparing kit scope.",
+  "status": "Published repair family",
+  "statusNote": "Watts publishes 800M4FR, 800M4QT, and LF800M4 variants. Confirm the complete body label because some retrofit, freeze-sensor, and repair kits have narrower compatibility.",
+  "diagram": "pvb",
+  "diagramAlt": "Pressure vacuum breaker showing bonnet, vent float, check assembly, and test cocks",
+  "sizes": ["1/2–3/4 in", "1 in", "1 1/4–2 in"],
+  "identifiers": [
+    "The full label may include 800M4QT, LF800M4QT, 800M4FR, or LF800M4FR.",
+    "A bonnet kit, vent-float kit, and check kit repair different assemblies.",
+    "Retrofit and freeze-sensor kits are not interchangeable with internal repair kits."
+  ],
+  "kits": [
+    {"sizeBand":"1/2–3/4 in","task":"Total service","partNumber":"RK 800M4-T 1/2-3/4","kitName":"Total repair kit","contents":"Check, vent-float, bonnet, and seat repair-kit groups.","compatibility":"Published for 800M4QT; confirm the full model marking."},
+    {"sizeBand":"1/2–3/4 in","task":"Bonnet","partNumber":"RK 800M4-B 1/2-3/4","kitName":"Bonnet kit","contents":"Bonnet, bonnet O-ring, vent spring, hood, and hood screw.","compatibility":"Published for LF800M4QT and 800M4QT."},
+    {"sizeBand":"1/2–3/4 in","task":"Check assembly","partNumber":"RK 800M4-CK 1/2-3/4","kitName":"Check kit","contents":"Check disc assembly, bonnet O-ring, and check spring.","compatibility":"Published for LF800M4QT and 800M4QT."},
+    {"sizeBand":"1/2–3/4 in","task":"Rubber components","partNumber":"RK 800M4-RT","kitName":"Rubber parts kit","contents":"Vent seal, check disc, and bonnet O-ring.","compatibility":"Published for LF800M4QT and 800M4QT; inspect seats and hard parts."},
+    {"sizeBand":"1 in","task":"Total service","partNumber":"RK 800M4-T 1","kitName":"Total repair kit","contents":"Check, vent-float, bonnet, and seat repair-kit groups.","compatibility":"Published for LF800M4QT and 800M4QT."},
+    {"sizeBand":"1 in","task":"Bonnet","partNumber":"RK 800M4-B 1","kitName":"Bonnet kit","contents":"Bonnet, bonnet O-ring, vent spring, hood, and hood screw.","compatibility":"Published for LF800M4QT and 800M4QT."},
+    {"sizeBand":"1 in","task":"Check assembly","partNumber":"RK 800M4-CK 1","kitName":"Check kit","contents":"Check disc assembly, bonnet O-ring, and check spring.","compatibility":"Published for LF800M4QT and 800M4QT."},
+    {"sizeBand":"1 in","task":"Vent float","partNumber":"RK 800M4-V 1","kitName":"Vent float kit","contents":"Float vent disc assembly and bonnet O-ring.","compatibility":"Published for LF800M4QT and 800M4QT."},
+    {"sizeBand":"1 1/4–2 in","task":"Total service","partNumber":"RK 800M4-T 1 1/4-2","kitName":"Total repair kit","contents":"Check, vent-float, bonnet, and seat repair-kit groups.","compatibility":"Published for LF800M4QT and 800M4QT."},
+    {"sizeBand":"1 1/4–2 in","task":"Bonnet","partNumber":"RK 800M4-B 1 1/4-2","kitName":"Bonnet kit","contents":"Bonnet, bonnet O-ring, vent spring, hood, and hood screw.","compatibility":"Published for LF800M4QT and 800M4QT."},
+    {"sizeBand":"1 1/4–2 in","task":"Check assembly","partNumber":"RK 800M4-CK 1 1/4-2","kitName":"Check kit","contents":"Check disc assembly, bonnet O-ring, and check spring.","compatibility":"Published for 800M4QT; confirm LF compatibility on the official record."},
+    {"sizeBand":"1 1/4–2 in","task":"Rubber components","partNumber":"RK 800M4-RT 1 1/4-2","kitName":"Rubber parts kit","contents":"Vent seal, check disc, and bonnet O-ring.","compatibility":"Published for LF800M4QT and 800M4QT."}
+  ],
+  "sources": [
+    {"title":"Watts 800M4FR product and repair-kit record","url":"https://www.watts.com/products/Plumbing-Flow-Control-Solutions/Backflow-Preventers/Vacuum-Breakers/800M4FR","publisher":"Watts","lastVerified":"2026-08-02"},
+    {"title":"Watts backflow repair-kits and service-parts price list","url":"https://dev.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/18291-source/638914744200000000/pl-rp-bpd-2538.pdf","publisher":"Watts","lastVerified":"2026-08-02"}
+  ],
+  "lastReviewed": "2026-08-02",
+  "published": true,
+  "indexable": true
+}

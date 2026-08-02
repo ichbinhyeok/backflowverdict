@@ -1,10 +1,25 @@
-# BackflowPath
+# BackflowVerdict on BackflowPath
 
 **Date:** 2026-04-22 (Asia/Seoul)  
-**Purpose:** This folder is a self-contained implementation packet for a US-focused backflow testing and compliance site with utility-first search coverage and owner-facing next-step guidance.
+**Purpose:** A US-focused decision product that starts with device/problem intent and connects the result to source-backed BackflowPath utility records.
+
+## 2026-08-02 product reset and strengthened portfolio
+
+The primary product is no longer a directory-shaped collection of local pages. It is a decision system:
+
+1. Identify the device or the event.
+2. Observe the symptom without claiming a remote diagnosis.
+3. Decide the safe next step.
+4. Verify the tester, deadline, and report route with the governing utility.
+
+The existing utility data and GSC winner URLs are preserved. New national decision content lives in `data/decision-guides/` and is loaded by `DecisionGuideService`; it is not copied into the local `UtilityRecord` model.
+
+The core now includes 26 explicit, data-backed Wave A/B decision routes, the homepage, report-submission finder, utility records, and the noindex help handoff. The portfolio covers backflow assemblies, vacuum breakers, irrigation protection, backwater valves, and residential water-pressure regulators. Design tokens and content rules are in `DESIGN.md`.
+
+Interactive modules include device and symptom routing, repair-versus-replacement scoring, static/flowing PSI interpretation, and planning-range calculators. Every decision guide displays a centralized official/manufacturer evidence ledger and emits Article plus BreadcrumbList structured data.
 
 ## What you are building
-An owner-facing compliance site that helps homeowners, property managers, and facility coordinators answer whether backflow testing is required, when it is due, what a failed test means, what it may cost, and what the safest local next step is.
+An owner-facing product that helps homeowners, property managers, and facility coordinators identify water-control devices, handle leaks or failed tests, and verify the correct local compliance closeout.
 
 ## Product posture
 - The governing utility or water authority is the canonical local entity.

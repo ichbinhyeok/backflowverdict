@@ -6,8 +6,8 @@
         <div class="container page-frame page-frame--hero">
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">About</span>
-                <h1>What BackflowPath is built to do</h1>
-                <p class="lede">BackflowPath organizes backflow compliance by utility so a property owner, facility manager, HOA, contractor, or service coordinator can find the governing authority, the testing cadence, the submission path, and the right next action without confusing that workflow with provider marketing.</p>
+                <h1>What BackflowVerdict is built to do</h1>
+                <p class="lede">BackflowVerdict organizes backflow compliance by utility so a property owner, facility manager, HOA, contractor, or service coordinator can find the governing authority, the testing cadence, the submission path, and the right next action without confusing that workflow with provider marketing.</p>
                 <div class="hero__actions">
                     <a class="button button--primary" href="/methodology">Read the methodology</a>
                     <a class="button button--secondary" href="/editorial-standards">Read editorial standards</a>
@@ -26,7 +26,7 @@
             <article class="detail-card detail-card--key">
                 <span class="eyebrow">Canonical entity</span>
                 <h2>Utility pages are the core record</h2>
-                <p>People often search by city, county, or metro, but the enforceable rule usually lives under a utility, district, or water authority. BackflowPath treats that governing entity as the canonical page and keeps other discovery routes subordinate to it.</p>
+                <p>People often search by city, county, or metro, but the enforceable rule usually lives under a utility, district, or water authority. BackflowVerdict treats that governing entity as the canonical page and keeps other discovery routes subordinate to it.</p>
             </article>
 
             <article class="detail-card">
@@ -38,7 +38,7 @@
             <article class="detail-card">
                 <span class="eyebrow">Trust boundary</span>
                 <h2>Official guidance and public provider browse stay separate</h2>
-                <p>If a utility publishes an official tester list, BackflowPath keeps that route distinct from any non-official directory. If no official list exists, provider discovery paths stay labeled as non-official.</p>
+                <p>If a utility publishes an official tester list, BackflowVerdict keeps that route distinct from any non-official directory. If no official list exists, provider discovery paths stay labeled as non-official.</p>
             </article>
         </div>
     </section>
@@ -59,7 +59,7 @@
 
             <article class="detail-card">
                 <span class="eyebrow">What the site is not</span>
-                <h2>What BackflowPath should not pretend to be</h2>
+                <h2>What BackflowVerdict should not pretend to be</h2>
                 <ul class="detail-list">
                     <li>It is not the utility, district, or governing water authority.</li>
                     <li>It is not a legal opinion about local ordinance enforcement.</li>
@@ -85,7 +85,7 @@
 
             <article class="detail-card">
                 <span class="eyebrow">What does not happen</span>
-                <h2>What BackflowPath avoids</h2>
+                <h2>What BackflowVerdict avoids</h2>
                 <ul class="detail-list">
                     <li>Inventing approval or certification status for a tester</li>
                     <li>Mixing directory placement into the official source block</li>
@@ -112,7 +112,7 @@
             <article class="detail-card">
                 <span class="eyebrow">Why these pages exist</span>
                 <h2>The product shape behind the site</h2>
-                <p>Backflow compliance is highly fragmented. Searchers often know the city, neighborhood, or contractor problem, but the enforceable answer lives inside a utility program page, PDF, or portal with inconsistent labeling. BackflowPath exists to compress that lookup work while keeping the trust boundary visible.</p>
+                <p>Backflow compliance is highly fragmented. Searchers often know the city, neighborhood, or contractor problem, but the enforceable answer lives inside a utility program page, PDF, or portal with inconsistent labeling. BackflowVerdict exists to compress that lookup work while keeping the trust boundary visible.</p>
                 <p class="detail-meta">The goal is not to replace the authority page. The goal is to make the authority page easier to find, interpret, and act on.</p>
             </article>
         </div>
@@ -123,7 +123,7 @@
             <article class="detail-card">
                 <span class="eyebrow">Scope decisions</span>
                 <h2>Why some pages are indexed and others are not</h2>
-                <p>BackflowPath does not treat every generated route as worthy of indexing. Thin city bridges, unsupported records, or pages that fail to add real local compliance value should be canonicalized, noindexed, or removed until they earn a stronger public record.</p>
+                <p>BackflowVerdict does not treat every generated route as worthy of indexing. Thin city bridges, unsupported records, or pages that fail to add real local compliance value should be canonicalized, noindexed, or removed until they earn a stronger public record.</p>
             </article>
 
             <article class="detail-card">

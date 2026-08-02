@@ -332,7 +332,7 @@
             var status = document.querySelector('[data-share-status]');
             try {
                 if (navigator.share) {
-                    await navigator.share({title: 'BackflowPath notice route', text: message});
+                    await navigator.share({title: 'BackflowVerdict notice route', text: message});
                     if (status) {
                         status.textContent = 'Shared.';
                     }
@@ -364,7 +364,7 @@
         <div class="container site-header__inner">
             <a class="brand" href="/">
                 <span class="brand__copy">
-                    <strong>BackflowPath</strong>
+                    <strong>BackflowVerdict</strong>
                     <span>Local backflow requirements</span>
                 </span>
             </a>
@@ -410,7 +410,7 @@
     <footer class="site-footer">
         <div class="container footer-grid">
             <div class="footer-brand">
-                <strong>BackflowPath</strong>
+                <strong>BackflowVerdict</strong>
                 <p>Find utility-specific backflow testing requirements, official tester routes, and clearly labeled provider options across representative states.</p>
             </div>
             <div class="footer-column">
@@ -453,7 +453,7 @@
             </div>
         </div>
         <div class="container footer-legal">
-            <span>BackflowPath</span>
+            <span>BackflowVerdict</span>
             <span>Source-backed utility pages with official guidance and provider options kept separate.</span>
         </div>
     </footer>

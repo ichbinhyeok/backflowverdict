@@ -1,0 +1,37 @@
+{
+  "slug": "watts-909-small",
+  "canonicalPath": "/models/watts-909-small/",
+  "manufacturer": "Watts",
+  "model": "909 / LF909 small-body service parts",
+  "aliases": ["Watts 909 repair kit", "Watts 909 RPZ repair kit", "Watts 909 backflow repair kit", "LF909 repair kit"],
+  "deviceType": "Reduced pressure zone assembly — selected 3/4–2 inch service parts",
+  "title": "Watts 909 and LF909 repair kits for small-body assemblies",
+  "description": "Use the official Watts repair references for selected 3/4–2 inch 909 and LF909 cover, check, relief, total-rubber, and total-service scopes.",
+  "summary": "The 909 repair family is split by lead-free designation, size, and component scope. This record starts with official small-body references rather than presenting a false universal 909 kit.",
+  "status": "Official selected small-body service map",
+  "statusNote": "This page does not cover 2 1/2–10 inch 909 kits, RPDA variants, flood-sensor accessories, or every discontinued part. Confirm the model suffix and size on the body before ordering.",
+  "diagram": "rpz",
+  "diagramAlt": "Reduced pressure zone assembly showing first check, second check, relief valve, and service cover",
+  "sizes": ["3/4–1 in", "1 1/4–2 in"],
+  "identifiers": [
+    "Verify whether the label reads 909 or LF909; original and lead-free kit references may be different or superseded.",
+    "The first-check, relief-valve, total-rubber, total-service, and cover scopes are different repair decisions.",
+    "Do not mix small-body 3/4–2 inch kits with the separate 2 1/2–10 inch 909 family."
+  ],
+  "kits": [
+    {"sizeBand":"3/4–1 in","task":"Total service","partNumber":"LFRK 909-T 3/4-1","kitName":"Total repair kit","contents":"First and second check-valve assemblies, relief-valve assembly, and lubricant.","compatibility":"Watts publishes this lead-free total service kit for the 3/4 and 1 inch 909 family."},
+    {"sizeBand":"3/4–1 in","task":"Total rubber components","partNumber":"LFRK 909-RT 3/4-1","kitName":"Total rubber parts repair kit","contents":"Diaphragm, molded disc assemblies, seat O-rings, relief-valve and piston O-rings, flow-tube O-ring, cover O-ring, and lubricant.","compatibility":"Watts publishes this lead-free total rubber kit for 3/4 and 1 inch 909 assemblies."},
+    {"sizeBand":"3/4–1 in","task":"Relief-valve rubber components","partNumber":"LFRK 909-RV 3/4-1","kitName":"Relief-valve rubber parts kit","contents":"Diaphragm, disc assembly, seat O-ring, relief-valve O-ring, piston O-rings, and lubricant.","compatibility":"Watts lists this for 3/4 and 1 inch LF909 relief-valve service."},
+    {"sizeBand":"3/4–1 in","task":"First check","partNumber":"LFRK 909-PC-CK1 3/4-1","kitName":"First check repair kit","contents":"Disc assembly, seat, seat O-ring, sleeve, check spring, PC cover, and cover O-ring.","compatibility":"Watts lists this first-check kit for the 3/4 and 1 inch 909 assembly."},
+    {"sizeBand":"3/4–1 in","task":"Cover service","partNumber":"LFRK 909-C2 3/4-1","kitName":"Cover repair kit","contents":"Cover, cover O-ring, and lubricant.","compatibility":"Watts lists this lead-free cover kit for 3/4 and 1 inch LF909."},
+    {"sizeBand":"1 1/4–2 in","task":"First and second check rubber components","partNumber":"LFRK 909-RC3-HW 1 1/4-2","kitName":"Check rubber parts repair kit","contents":"Bronze disc assembly, seat O-ring, cover O-ring, and lubricant.","compatibility":"Watts lists this kit for 1 1/4–2 inch 909M1; it is not a universal 909 kit."}
+  ],
+  "sources": [
+    {"title":"Watts RK-909 repair-kit family","url":"https://www.watts.com/products/plumbing-flow-control-solutions/repair-kits/backflow-preventer-repair-kits/rk-909","publisher":"Watts","lastVerified":"2026-08-02"},
+    {"title":"Watts LFRK 909-T 3/4–1 total repair kit","url":"https://www.watts.com/products/plumbing-flow-control-solutions/repair-kits/backflow-preventer-repair-kits/rk-lf909/lfrk-909-t-34-1","publisher":"Watts","lastVerified":"2026-08-02"},
+    {"title":"Watts LFRK 909-PC-CK1 3/4–1 first-check repair kit","url":"https://www.watts.com/products/plumbing-flow-control-solutions/repair-kits/backflow-preventer-repair-kits/rk-lf909/lfrk-909-pc-ck1-34-1","publisher":"Watts","lastVerified":"2026-08-02"}
+  ],
+  "lastReviewed": "2026-08-02",
+  "published": true,
+  "indexable": true
+}

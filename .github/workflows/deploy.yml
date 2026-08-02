@@ -1,4 +1,4 @@
-name: Deploy BackflowPath to OCI
+name: Deploy BackflowVerdict to OCI
 
 on:
   push:
@@ -22,6 +22,27 @@ jobs:
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Run the full test suite
+        run: ./gradlew test --no-daemon
+
+      - name: Set up Node for browser contracts
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Run decision-guide browser contracts
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          npm run test:e2e
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -65,12 +86,40 @@ jobs:
 
             APP_DIR="$HOME/deploy/backflowpath"
             RELEASE_DIR="$APP_DIR/release"
+            RELEASE_SHA="${{ github.sha }}"
+            BACKUP_DIR="$APP_DIR/backups/$RELEASE_SHA-$(date -u +%Y%m%dT%H%M%SZ)"
+
+            rollback() {
+              echo "Deployment failed; restoring the previous image and data snapshot."
+              set +e
+              cd "$APP_DIR"
+              docker compose down
+              if [ -d "$BACKUP_DIR/data" ]; then
+                mv "$APP_DIR/data" "$BACKUP_DIR/failed-data"
+                mv "$BACKUP_DIR/data" "$APP_DIR/data"
+              fi
+              if [ -d "$BACKUP_DIR/snapshots" ]; then
+                mv "$APP_DIR/storage/snapshots" "$BACKUP_DIR/failed-snapshots"
+                mv "$BACKUP_DIR/snapshots" "$APP_DIR/storage/snapshots"
+              fi
+              if [ -f "$BACKUP_DIR/.env" ]; then
+                cp "$BACKUP_DIR/.env" "$APP_DIR/.env"
+                docker compose pull
+                docker compose up -d --remove-orphans
+              fi
+              exit 1
+            }
+            trap rollback ERR
 
             mkdir -p "$APP_DIR/data" "$APP_DIR/storage/snapshots" "$APP_DIR/leads" "$APP_DIR/ops" "$APP_DIR/logs"
+            mkdir -p "$BACKUP_DIR"
+            cp -a "$APP_DIR/data" "$BACKUP_DIR/data"
+            cp -a "$APP_DIR/storage/snapshots" "$BACKUP_DIR/snapshots"
+            if [ -f "$APP_DIR/.env" ]; then cp "$APP_DIR/.env" "$BACKUP_DIR/.env"; fi
 
             if command -v rsync >/dev/null 2>&1; then
-              rsync -a --delete "$RELEASE_DIR/data/" "$APP_DIR/data/"
-              rsync -a --delete "$RELEASE_DIR/storage/snapshots/" "$APP_DIR/storage/snapshots/"
+              rsync -a "$RELEASE_DIR/data/" "$APP_DIR/data/"
+              rsync -a "$RELEASE_DIR/storage/snapshots/" "$APP_DIR/storage/snapshots/"
             else
               cp -R "$RELEASE_DIR/data/." "$APP_DIR/data/"
               cp -R "$RELEASE_DIR/storage/snapshots/." "$APP_DIR/storage/snapshots/"
@@ -79,10 +128,11 @@ jobs:
             cp "$RELEASE_DIR/docker-compose.yml" "$APP_DIR/docker-compose.yml"
 
             cat > "$APP_DIR/.env" <<EOF
-            IMAGE_NAME=shinhyeok22/backflow:latest
+            IMAGE_NAME=shinhyeok22/backflow:${{ github.sha }}
             SPRING_PROFILES_ACTIVE=prod
             APP_SITE_BASE_URL=https://backflowpath.com
-            APP_SITE_CONTENT_LAST_MODIFIED=2026-07-11
+            APP_SITE_NAME=BackflowVerdict
+            APP_SITE_CONTENT_LAST_MODIFIED=2026-08-02
             APP_ADMIN_USERNAME=${{ secrets.APP_ADMIN_USERNAME }}
             APP_ADMIN_PASSWORD=${{ secrets.APP_ADMIN_PASSWORD }}
             APP_OPS_VERIFICATION_TOKEN=${{ secrets.APP_OPS_VERIFICATION_TOKEN }}
@@ -98,7 +148,7 @@ jobs:
             for attempt in $(seq 1 24); do
               if curl -fsS "http://127.0.0.1:8093/healthz"; then
                 echo
-                echo "BackflowPath health check passed on attempt $attempt."
+                echo "BackflowVerdict health check passed on attempt $attempt."
                 break
               fi
 
@@ -107,19 +157,44 @@ jobs:
             done
 
             if ! curl -fsS "http://127.0.0.1:8093/healthz" >/dev/null; then
-              echo "BackflowPath health check failed after deploy."
+              echo "BackflowVerdict health check failed after deploy."
               docker compose logs --tail=200 app
               exit 1
             fi
 
-            if curl -fsSL -H "Host: backflowpath.com" "http://127.0.0.1/" > /tmp/backflowpath-public-check.html; then
-              if ! grep -qi "BackflowPath" /tmp/backflowpath-public-check.html; then
-                echo "Host-routed public check did not return BackflowPath content."
-                echo "This usually means nginx or another reverse proxy is still pointing backflowpath.com at a different app."
-                sed -n '1,120p' /tmp/backflowpath-public-check.html
-                exit 1
+            smoke_path() {
+              path="$1"
+              expected="$2"
+              body="$(mktemp)"
+              code="$(curl -sS -o "$body" -w '%{http_code}' "http://127.0.0.1:8093$path")"
+              if [ "$code" != "200" ] || ! grep -Fqi "$expected" "$body"; then
+                echo "Smoke check failed for $path: HTTP $code, missing '$expected'."
+                sed -n '1,80p' "$body"
+                return 1
               fi
-              echo "Host-routed public check returned BackflowPath content."
-            else
-              echo "Skipped host-routed public check because http://127.0.0.1/ was not reachable on the OCI host."
+              rm -f "$body"
+            }
+
+            smoke_path "/" "BackflowVerdict"
+            smoke_path "/backflow-preventer-installation/" "backflow preventer installation"
+            smoke_path "/vacuum-breaker-leaking/" "vacuum breaker"
+            smoke_path "/water-pressure-regulator-adjustment/" "pressure regulator"
+            smoke_path "/backflow-test/" "backflow test"
+            smoke_path "/submit-backflow-report" "submit a backflow test report"
+            smoke_path "/cities/florida/fort-lauderdale/submit-backflow-report" "Fort Lauderdale"
+            smoke_path "/cities/colorado/greeley/approved-backflow-testers" "Greeley"
+            smoke_path "/utilities/florida/lee-county-cross-connection-control/" "Lee County"
+            smoke_path "/robots.txt" "Sitemap:"
+            smoke_path "/sitemap.xml" "/backflow-preventer-installation/"
+
+            if ! curl -fsS "http://127.0.0.1:8093/sitemap.xml" | grep -Fq "/water-pressure-regulator-symptoms/"; then
+              echo "Published decision route is missing from the sitemap."
+              exit 1
             fi
+            if ! curl -fsS "http://127.0.0.1:8093/backflow-preventer-installation/" | grep -Fq '<link rel="canonical" href="https://backflowpath.com/backflow-preventer-installation/"'; then
+              echo "Canonical smoke check failed."
+              exit 1
+            fi
+
+            trap - ERR
+            echo "Release $RELEASE_SHA passed health, route, canonical, robots, sitemap, and winner smoke checks."

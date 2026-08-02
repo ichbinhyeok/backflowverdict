@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.bind.DefaultValue;
 @ConfigurationProperties("app.site")
 public record AppSiteProperties(
         @DefaultValue("") String baseUrl,
-        @DefaultValue("BackflowPath") String siteName,
+        @DefaultValue("BackflowVerdict") String siteName,
         @DefaultValue("") String gaMeasurementId,
         @DefaultValue("") String supportEmail,
         @DefaultValue("") String supportPhone,

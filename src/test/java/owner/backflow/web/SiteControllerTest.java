@@ -55,40 +55,27 @@ class SiteControllerTest {
     void homePageLoads() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("backflow testing rules before you schedule the work.")))
-                .andExpect(content().string(containsString("Browse state guides")))
-                .andExpect(content().string(containsString("See utility examples")))
-                .andExpect(content().string(containsString("home-notice-search")))
+                .andExpect(content().string(containsString("What happened with your water-control device?")))
+                .andExpect(content().string(containsString("I received a test notice")))
+                .andExpect(content().string(containsString("It is leaking or discharging")))
+                .andExpect(content().string(containsString("home-query")))
                 .andExpect(content().string(containsString("action=\"/notice-finder\"")))
-                .andExpect(content().string(containsString("High-intent routes Google should discover quickly")))
-                .andExpect(content().string(containsString("Priority crawl paths")))
-                .andExpect(content().string(containsString("/cities/texas/dallas/submit-backflow-report")))
-                .andExpect(content().string(containsString("/backflow-reporting-portals/aqua")))
-                .andExpect(content().string(containsString("/cities/texas/euless/backflow-reporting-portal")))
-                .andExpect(content().string(containsString("/backflow-reporting-portals/tokay")))
-                .andExpect(content().string(containsString("/backflow-reporting-portals/sprybackflow")))
-                .andExpect(content().string(containsString("What stays official")))
+                .andExpect(content().string(containsString("/backflow-preventer/")))
+                .andExpect(content().string(containsString("/vacuum-breaker/")))
+                .andExpect(content().string(containsString("/backwater-valve/")))
+                .andExpect(content().string(containsString("Official and commercial routes kept separate")))
                 .andExpect(content().string(not(containsString("Request a quote"))))
                 .andExpect(content().string(not(containsString("Protocol v4.2 compliance engine"))))
                 .andExpect(content().string(not(containsString("JSON is the source of truth"))))
-                .andExpect(content().string(containsString("Arizona backflow testing requirements")))
-                .andExpect(content().string(containsString("Florida backflow testing requirements")))
                 .andExpect(content().string(containsString("Organization")))
                 .andExpect(content().string(containsString("WebSite")))
                 .andExpect(content().string(containsString("SearchAction")))
                 .andExpect(content().string(containsString("/notice-finder?q={search_term_string}")))
                 .andExpect(content().string(containsString("support@backflowpath.com")))
-                .andExpect(content().string(containsString("gtag/js?id=G-TEST123")))
+                .andExpect(content().string(containsString("gtag/js?id=G\\-TEST123")))
                 .andExpect(content().string(containsString("window.dataLayer = window.dataLayer || [];")))
                 .andExpect(content().string(containsString("function gtag(){dataLayer.push(arguments);}")))
-                .andExpect(content().string(containsString("notice_finder_search")))
-                .andExpect(content().string(containsString("request_help_click")))
-                .andExpect(content().string(containsString("provider_website_click")))
-                .andExpect(content().string(containsString("icon_names=arrow_forward,assignment_turned_in,build,cloud_upload,menu,monitoring,policy,verified_user")))
-                .andExpect(content().string(not(containsString("wght,FILL@100..700,0..1"))))
-                .andExpect(content().string(containsString("tester_route_click")))
-                .andExpect(content().string(containsString("report_submission_route_click")))
-                .andExpect(content().string(containsString("lead_form_submit")))
+                .andExpect(content().string(containsString("src=\"/verdict.js?v=20260802c\"")))
                 .andExpect(content().string(containsString("href=\"/submit-backflow-report\"")))
                 .andExpect(content().string(containsString("href=\"/about\"")))
                 .andExpect(content().string(containsString("href=\"/methodology\"")))
@@ -126,18 +113,18 @@ class SiteControllerTest {
         mockMvc.perform(get("/privacy"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Privacy and request handling")))
-                .andExpect(content().string(containsString("BackflowPath does not sell or fan out a request through a private dispatch queue.")))
+                .andExpect(content().string(containsString("BackflowVerdict does not sell or fan out a request through a private dispatch queue.")))
                 .andExpect(content().string(containsString("noindex,follow")))
                 .andExpect(content().string(containsString("gtag/js?id=G-TEST123")));
 
         mockMvc.perform(get("/about"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("What BackflowPath is built to do")))
+                .andExpect(content().string(containsString("What BackflowVerdict is built to do")))
                 .andExpect(content().string(containsString("Authority first")));
 
         mockMvc.perform(get("/methodology"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("How BackflowPath verifies local rules")))
+                .andExpect(content().string(containsString("How BackflowVerdict verifies local rules")))
                 .andExpect(content().string(containsString("verification-code-tl")));
 
         mockMvc.perform(get("/editorial-standards"))
@@ -147,12 +134,12 @@ class SiteControllerTest {
 
         mockMvc.perform(get("/corrections"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("How BackflowPath handles errors and stale rules")))
+                .andExpect(content().string(containsString("How BackflowVerdict handles errors and stale rules")))
                 .andExpect(content().string(containsString("Verify against the source")));
 
         mockMvc.perform(get("/contact"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Contact BackflowPath")))
+                .andExpect(content().string(containsString("Contact BackflowVerdict")))
                 .andExpect(content().string(containsString("support@backflowpath.com")))
                 .andExpect(content().string(containsString("+1-555-0100")))
                 .andExpect(content().string(containsString(htmlHref(
@@ -164,7 +151,7 @@ class SiteControllerTest {
     void highIntentSeoHubPagesLoad() throws Exception {
         mockMvc.perform(get("/claim-listing"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Claim or correct a BackflowPath provider listing")));
+                .andExpect(content().string(containsString("Claim or correct a BackflowVerdict provider listing")));
 
         mockMvc.perform(get("/official-backflow-tester-lists"))
                 .andExpect(status().isOk())
@@ -246,18 +233,16 @@ class SiteControllerTest {
 
         mockMvc.perform(get("/submit-backflow-report"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Submit backflow test reports through the right city, utility, and portal route.")))
+                .andExpect(content().string(containsString("Find where your backflow test report must be submitted")))
                 .andExpect(content().string(containsString("SpryBackflow")))
-                .andExpect(content().string(containsString("WEIRS database")))
-                .andExpect(content().string(containsString("$25 - City filing fee per test submission")))
-                .andExpect(content().string(containsString("Passed is not always filed")))
-                .andExpect(content().string(containsString("City and utility report-submission paths")))
-                .andExpect(content().string(containsString("Browse all ")))
-                .andExpect(content().string(containsString("submission workflows")))
-                .andExpect(content().string(containsString("Submit-report priority routes")))
-                .andExpect(content().string(containsString("/cities/texas/austin/submit-backflow-report")))
-                .andExpect(content().string(containsString("/cities/texas/dallas/submit-backflow-report")))
-                .andExpect(content().string(containsString("Submission FAQ")))
+                .andExpect(content().string(containsString("A portal receives the report. Your utility sets the rule.")))
+                .andExpect(content().string(containsString("Search ")))
+                .andExpect(content().string(containsString("Official route and next action")))
+                .andExpect(content().string(containsString("data-route-count")))
+                .andExpect(content().string(containsString("data-route-empty")))
+                .andExpect(content().string(containsString("<span>Keep:</span>")))
+                .andExpect(content().string(containsString("/utilities/texas/austin-water-utilities/")))
+                .andExpect(content().string(containsString("/utilities/texas/dallas-water-utilities/")))
                 .andExpect(content().string(containsString("ItemList")))
                 .andExpect(content().string(containsString("FAQPage")));
     }
@@ -311,7 +296,7 @@ class SiteControllerTest {
     }
 
     @Test
-    void sitemapAndCanonicalUseConfiguredBackflowPathBaseUrl() throws Exception {
+    void sitemapAndCanonicalUseConfiguredBackflowVerdictBaseUrl() throws Exception {
         mockMvc.perform(get("/sitemap.xml"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("https://backflowpath.com/")))
@@ -324,12 +309,12 @@ class SiteControllerTest {
                 .andExpect(header().string("X-Robots-Tag", "noindex,follow"))
                 .andExpect(content().string(containsString("property=\"og:title\"")))
                 .andExpect(content().string(containsString("property=\"og:image:width\" content=\"512\"")))
-                .andExpect(content().string(containsString("property=\"og:image:alt\" content=\"Dallas backflow reports | SwiftComply | BackflowPath\"")))
+                .andExpect(content().string(containsString("property=\"og:image:alt\" content=\"Dallas backflow reports | SwiftComply | BackflowVerdict\"")))
                 .andExpect(content().string(containsString("property=\"article:modified_time\" content=\"2026-06-29\"")))
                 .andExpect(content().string(containsString("name=\"twitter:card\" content=\"summary_large_image\"")))
-                .andExpect(content().string(containsString("name=\"twitter:image:alt\" content=\"Dallas backflow reports | SwiftComply | BackflowPath\"")))
-                .andExpect(content().string(containsString("gtag/js?id=G-TEST123")))
-                .andExpect(content().string(containsString("request_help_click")));
+                .andExpect(content().string(containsString("name=\"twitter:image:alt\" content=\"Dallas backflow reports | SwiftComply | BackflowVerdict\"")))
+                .andExpect(content().string(containsString("gtag/js?id=G\\-TEST123")))
+                .andExpect(content().string(containsString("src=\"/verdict.js?v=20260802c\"")));
     }
 
     @Test
@@ -364,31 +349,27 @@ class SiteControllerTest {
         mockMvc.perform(get("/utilities/texas/grand-prairie-water-utilities/"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Grand Prairie utility backflow testing requirements")))
-                .andExpect(content().string(containsString("Fast compliance answer")))
-                .andExpect(content().string(containsString("Report packet")))
-                .andExpect(content().string(containsString("Rejection risk")))
-                .andExpect(content().string(containsString("What to confirm first for Grand Prairie utility backflow testing requirements")))
-                .andExpect(content().string(containsString("Failed-test branch")))
-                .andExpect(content().string(containsString("Proof to keep")))
-                .andExpect(content().string(containsString("Start with the page that matches your situation")))
-                .andExpect(content().string(containsString("Notice checklist before you call or file")))
-                .andExpect(content().string(containsString("Notice or device clue")))
-                .andExpect(content().string(containsString("Acceptance rule")))
-                .andExpect(content().string(containsString("What costs or portal fees should I expect")))
+                .andExpect(content().string(containsString("Fast answer")))
+                .andExpect(content().string(containsString("Who, when, and what device?")))
+                .andExpect(content().string(containsString("Choose the task on your notice")))
+                .andExpect(content().string(containsString("The device failed")))
+                .andExpect(content().string(containsString("Submit or confirm the report")))
+                .andExpect(content().string(containsString("Who can produce an accepted result?")))
+                .andExpect(content().string(containsString("Official sources")))
                 .andExpect(content().string(containsString("Annual testing is required")))
                 .andExpect(content().string(containsString("\"@type\":\"Service\"")))
                 .andExpect(content().string(containsString("\"serviceType\":\"Backflow testing compliance guidance\"")))
                 .andExpect(content().string(containsString("\"@type\":\"DefinedTermSet\"")))
                 .andExpect(content().string(containsString("\"name\":\"Governing utility\"")))
                 .andExpect(content().string(containsString("\"name\":\"Report route\"")))
-                .andExpect(content().string(containsString("State compliance layer")))
-                .andExpect(content().string(containsString("Local questions people actually ask")))
+                .andExpect(content().string(containsString("official record")))
+                .andExpect(content().string(containsString("Exact workflow")))
                 .andExpect(content().string(not(containsString("Office staff: create annual brief"))))
                 .andExpect(content().string(not(containsString("Office staff: create failed-test brief"))))
                 .andExpect(content().string(containsString("FAQPage")))
                 .andExpect(content().string(containsString("BreadcrumbList")))
-                .andExpect(content().string(containsString("Submission methods and utility contact")))
-                .andExpect(content().string(containsString("/methodology#verification-code-tl")))
+                .andExpect(content().string(containsString("Submission route")))
+                .andExpect(content().string(containsString("Last verified")))
                 .andExpect(content().string(containsString("/corrections")));
 
         mockMvc.perform(get("/utilities/texas/garland-water-utilities/"))
@@ -677,11 +658,11 @@ class SiteControllerTest {
                 .getContentAsString();
 
         org.junit.jupiter.api.Assertions.assertTrue(
-                html.indexOf("Source block") < html.indexOf("Public provider direction"),
+                html.indexOf("Evidence ledger") < html.indexOf("Commercial handoff"),
                 "Source block should appear before the provider layer."
         );
         org.junit.jupiter.api.Assertions.assertTrue(
-                html.indexOf("Submission methods and utility contact") < html.indexOf("Public provider direction"),
+                html.indexOf("Submission route") < html.indexOf("Commercial handoff"),
                 "Submission path should appear before the provider layer."
         );
         org.junit.jupiter.api.Assertions.assertTrue(html.contains("\"@type\":\"WebPage\""));
@@ -1638,12 +1619,12 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemaps/city-intents.xml</loc>")))
                 .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemaps/portals.xml</loc>")))
                 .andExpect(content().string(containsString("<loc>https://backflowpath.com/sitemaps/providers.xml</loc>")))
-                .andExpect(content().string(containsString("<lastmod>2026-07-11</lastmod>")));
+                .andExpect(content().string(containsString("<lastmod>2026-08-02</lastmod>")));
 
         mockMvc.perform(get("/sitemaps/core.xml"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString(
-                        "<loc>https://backflowpath.com/partners/notice-kit</loc><lastmod>2026-07-11</lastmod>"
+                        "<loc>https://backflowpath.com/partners/notice-kit</loc><lastmod>2026-08-02</lastmod>"
                 )));
 
         mockMvc.perform(get("/sitemaps/city-intents.xml"))
@@ -1658,7 +1639,7 @@ class SiteControllerTest {
         mockMvc.perform(get("/sitemaps/providers.xml"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString(
-                        "<loc>https://backflowpath.com/providers/phoenix-western-backflow/</loc><lastmod>2026-07-11</lastmod>"
+                        "<loc>https://backflowpath.com/providers/phoenix-western-backflow/</loc><lastmod>2026-08-02</lastmod>"
                 )));
 
         mockMvc.perform(get("/robots.txt"))

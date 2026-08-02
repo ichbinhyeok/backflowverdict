@@ -1,0 +1,40 @@
+{
+  "slug": "watts-009-service",
+  "canonicalPath": "/models/watts-009-service/",
+  "manufacturer": "Watts",
+  "model": "009 / LF009 service parts",
+  "aliases": ["Watts LF009M2QT repair kit", "LF009M2QT repair kit", "Watts 009 repair kit", "Watts 009 backflow parts"],
+  "deviceType": "Reduced pressure zone assembly — selected official service parts",
+  "title": "Watts 009 and LF009 repair parts by model revision and size",
+  "description": "Match a Watts 009 or LF009 assembly to published cover, first-check, and relief-valve service references while keeping M2, M3, size, and flood-sensor variants separate.",
+  "summary": "Watts 009 parts are not universal across the 009, 009M2, 009M3, LF009, and sensor variants. This record exposes only the official service references whose model, size, and component boundary are explicit.",
+  "status": "Official selected service-part map",
+  "statusNote": "This is intentionally not a universal 009 rebuild selector. Confirm the full body marking, nominal size, lead-free designation, and whether the assembly has a sensor or special cover before using any part reference.",
+  "diagram": "rpz",
+  "diagramAlt": "Reduced pressure zone assembly with first check, second check, central relief valve, and service cover",
+  "sizes": ["1/4–1/2 in", "3/4 in", "1 in", "1 1/4–1 1/2 in", "2 in"],
+  "identifiers": [
+    "Read the whole label: 009, LF009, 009M2, and 009M3 have different published part compatibility.",
+    "A cover kit, first-check kit, and relief-valve kit address separate components; a matching body size is not enough.",
+    "Flood-sensor and connection accessories are not internal repair kits and should not be substituted for one."
+  ],
+  "kits": [
+    {"sizeBand":"1/4–1/2 in","task":"First check","partNumber":"RK 009-CK1 1/4-1/2","kitName":"First check kit","contents":"First check assembly and cover O-ring.","compatibility":"Watts lists this kit for 009 and LF009 in the 1/4–1/2 inch band."},
+    {"sizeBand":"3/4 in","task":"Cover service","partNumber":"LFRK 009M3-C 3/4","kitName":"Cover repair kit","contents":"Cover and cover O-ring.","compatibility":"Watts lists LF009M3, 009M2, and 009M3 compatibility for the 3/4 inch cover kit; confirm the full marking."},
+    {"sizeBand":"3/4 in","task":"Relief-valve rubber components","partNumber":"RK 009M2-RV 3/4","kitName":"Relief-valve rubber parts kit","contents":"Diaphragm, disc assembly, stem O-rings, seat O-ring, and cover O-ring.","compatibility":"Watts lists this for LF009M2 and 009M2; do not apply it to an M3 assembly without an official match."},
+    {"sizeBand":"1 in","task":"Cover service","partNumber":"LFRK 009M2-C 1","kitName":"Cover repair kit","contents":"Cover and cover O-ring.","compatibility":"Watts lists this cover kit for 1 inch 009M2; verify the label and sensor configuration."},
+    {"sizeBand":"1 in","task":"Total relief-valve service","partNumber":"RK 009M2-VT 1","kitName":"Total relief valve kit","contents":"Seat, seat O-ring, stem and diaphragm assembly, stem O-ring, cover O-ring, and relief-valve spring.","compatibility":"Watts lists this kit for LF009M2 and 009M2 in the 1 inch band."},
+    {"sizeBand":"1 1/4–1 1/2 in","task":"Cover service","partNumber":"LFRK 009M2-C 1 1/4-1 1/2","kitName":"Cover repair kit","contents":"Cover, cover O-ring, sensing passage O-ring, bleed screw O-ring, vent hood, and bleed screw.","compatibility":"Watts lists this cover kit for 009M2, 1 1/4–1 1/2 inch; it is not a generic 009 cover."},
+    {"sizeBand":"1 1/4–1 1/2 in","task":"First check","partNumber":"RK 009M2-CK1 1 1/4-1 1/2","kitName":"First check kit","contents":"First check assembly, cover O-ring, and sensing passage O-ring.","compatibility":"Watts lists this kit for LF009M2 and 009M2 in the published 1 1/4–1 1/2 inch band."},
+    {"sizeBand":"2 in","task":"Cover service","partNumber":"LFRK 009M2-C 2","kitName":"Cover repair kit","contents":"Cover, cover O-ring, sensing passage O-ring, bleed screw O-ring, vent hood, and bleed screw.","compatibility":"Watts lists this cover kit for 2 inch 009M2; confirm the full assembly variant."},
+    {"sizeBand":"2 in","task":"First check","partNumber":"RK 009M2-CK1 2","kitName":"First check kit","contents":"First check assembly, cover O-ring, and sensing passage O-ring.","compatibility":"Watts lists this kit for LF009M2 and 009M2 in the 2 inch band."}
+  ],
+  "sources": [
+    {"title":"Watts 009 product record, repair parts breakdowns, and kits","url":"https://www.watts.com/products/plumbing-flow-control-solutions/backflow-preventers/reduced-pressure-zone-assemblies/009","publisher":"Watts","lastVerified":"2026-08-02"},
+    {"title":"Watts LF009 product record and model-specific kit references","url":"https://www.watts.com/products/plumbing-flow-control-solutions/backflow-preventers/reduced-pressure-zone-assemblies/lf009","publisher":"Watts","lastVerified":"2026-08-02"},
+    {"title":"Watts 2026 backflow prevention repair kits and parts price list","url":"https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/18291-source/639110976000000000/pl-rp-bpd-2604.pdf","publisher":"Watts","lastVerified":"2026-08-02"}
+  ],
+  "lastReviewed": "2026-08-02",
+  "published": true,
+  "indexable": true
+}

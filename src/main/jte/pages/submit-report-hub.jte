@@ -15,196 +15,31 @@
 @param java.util.List<PriorityRoute> priorityRoutes = java.util.List.of()
 @param java.util.List<GuideRecord> relatedGuides = java.util.List.of()
 
-@template.layouts.app(page = page, content = @`
-    <section class="page-hero">
-        <div class="container page-frame page-frame--hero">
-            <div class="hero__copy">
-                <span class="eyebrow kicker-rule">Report submission hub</span>
-                <h1>Submit backflow test reports through the right city, utility, and portal route.</h1>
-                <p class="lede">Use this hub when the field test is done but the compliance cycle still depends on BSI, WEIRS, SwiftComply, VEPO, Envirotrax, Aqua/TrackMyBackflow, Tokay WebTest, SpryBackflow, or a utility online submission path.</p>
-                <div class="hero__actions">
-                    <a class="button button--primary" href="/notice-finder">Find from notice</a>
-                    <a class="button button--secondary" href="/backflow-reporting-portals">Compare portal families</a>
-                    <a class="button button--secondary" href="/guides/backflow-reporting-portals">Read portal guide</a>
-                </div>
-                <div class="hero__stats">
-                    <span>${utilities.size()} portal or online submission utility workflows</span>
-                    <span>City report-submission routes</span>
-                    <span>Notice and device clues</span>
-                    <span>Accepted report proof</span>
-                </div>
-            </div>
-            <aside class="panel panel--hero">
-                <span class="stat-card__label" style="color: rgba(141, 224, 196, 0.9);">Submission rule</span>
-                <div class="stat-card__value" style="color: #ffffff; font-size: clamp(2rem, 4vw, 2.7rem);">Passed is not always filed</div>
-                <p class="stat-card__meta" style="color: rgba(239, 241, 243, 0.74);">The tester can pass the assembly in the field and the owner can still have a compliance problem if the report is not accepted through the correct utility or portal route.</p>
-            </aside>
+@template.layouts.verdict(page = page, content = @`
+    <section class="bv-submit-hero">
+        <div class="bv-shell bv-submit-hero__grid">
+            <div><p class="bv-kicker">Official report route</p><h1>Find where your backflow test report must be submitted</h1><p class="bv-lede">A portal receives the report. Your utility sets the rule.</p></div>
+            <div class="bv-submit-rule"><span>Do not stop at “passed”</span><p>Confirm who may submit, which identifier is required, and what proves acceptance.</p></div>
         </div>
     </section>
-
-    <section class="section section--tight">
-        <div class="container content-grid">
-            <article class="detail-card detail-card--key">
-                <span class="eyebrow">Submission checklist</span>
-                <h2>Do this before treating the test as complete</h2>
-                <ul class="detail-list">
-                    <li>Match the notice to the exact utility, city, service address, device record, and due date.</li>
-                    <li>Confirm the named portal or online submission path before the tester files the report.</li>
-                    <li>Confirm tester acceptance, credential, license, insurance, or calibration gates where the utility requires them.</li>
-                    <li>Keep proof that the report was submitted and accepted, not only that the field test passed.</li>
-                </ul>
-            </article>
-            <article class="detail-card">
-                <span class="eyebrow">When to use this page</span>
-                <h2>Use this hub for filing, upload, and report-proof searches</h2>
-                <p>Start here for searches like submit backflow report, upload backflow test, BSI report submission, Austin WEIRS, Dallas SwiftComply, Aurora SpryBackflow, TrackMyBackflow Hazard ID, Tokay WebTest report, or VEPO Envirotrax tester submission.</p>
-                <div class="card-actions">
-                    <a class="button button--secondary" href="/notice-finder?q=submit%20backflow%20report">Search submit report</a>
-                    <a class="button button--secondary" href="/notice-finder?q=failed%20backflow%20retest">Search failed retest</a>
-                </div>
-            </article>
+    <section class="bv-section bv-local">
+        <div class="bv-shell bv-local__grid">
+            <div><p class="bv-kicker">Search ${utilities.size()} official workflows</p><h2>Start with the utility</h2><p>Use the name on the notice or water bill, not only the city where the property sits.</p></div>
+            <div class="bv-lookup"><label for="report-filter">Utility, city, or portal</label><div><input id="report-filter" type="search" placeholder="Dallas, WEIRS, BSI..." autocomplete="off" data-route-filter><button type="button" data-route-clear>Clear</button></div><p class="bv-lookup-status" aria-live="polite"><span data-route-count>${utilities.size()}</span> of ${utilities.size()} verified workflows shown</p></div>
         </div>
     </section>
-
-    @if (!priorityRoutes.isEmpty())
-        <section class="section section--tight">
-            <div class="container">
-                <div class="section-heading">
-                    <span class="eyebrow">Submit-report priority routes</span>
-                    <h2>City report pages with enough evidence to act on</h2>
-                    <p class="lede">These routes are ranked by accepted submission workflow, portal/vendor signal, tester gate, identifiers, filing fees, and deadline proof.</p>
-                </div>
-                <div class="support-links">
-                    @for (var route : priorityRoutes)
-                        <a class="support-link" href="${route.path()}">
-                            <div>
-                                <strong>${route.label()}</strong>
-                                <span>${route.eyebrow()} · ${route.description()}</span>
-                            </div>
-                            <span class="material-symbols-outlined">arrow_forward</span>
-                        </a>
-                    @endfor
-                </div>
+    <section class="bv-section">
+        <div class="bv-shell">
+            <div class="bv-route-head"><span>Utility</span><span>Official route and next action</span></div>
+            <div class="bv-route-list" data-route-list>
+                @for (var utility : utilities)
+                    <article class="bv-route" data-search="${utility.utilityName()} ${utility.state()} ${portalNamesByUtility.getOrDefault(utility.utilityId(), "")}">
+                        <div><span>${utility.state()}</span><h2>${utility.utilityName()}</h2><small>Verified ${utility.lastVerified().toString()}</small></div>
+                        <div><strong>${utility.reportWorkflow().portalName() != null && !utility.reportWorkflow().portalName().isBlank() ? utility.reportWorkflow().portalName() : portalNamesByUtility.getOrDefault(utility.utilityId(), "Official utility workflow")}</strong><p>${noticeIdentifierHints.getOrDefault(utility.utilityId(), "Match the service address, device, notice, or account identifier.")}</p><p class="bv-acceptance"><span>Keep:</span> ${reportAcceptanceHints.getOrDefault(utility.utilityId(), "Proof that the report was submitted and accepted.")}</p><div class="bv-route__actions"><a href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Open utility record</a>@if (portalHubPathsByUtility.get(utility.utilityId()) != null)<a href="${portalHubPathsByUtility.get(utility.utilityId())}">Review portal family</a>@endif</div></div>
+                    </article>
+                @endfor
             </div>
-        </section>
-    @endif
-
-    <section class="section">
-        <div class="container">
-            <article class="table-card">
-                <div class="section-heading">
-                    <span class="eyebrow">Report routes</span>
-                    <h2>City and utility report-submission paths</h2>
-                    <p>Open the city submission route when the notice names a city. Open the utility workflow when the notice names only the governing water authority.</p>
-                </div>
-                <details class="directory-disclosure">
-                    <summary>Browse all ${utilities.size()} submission workflows</summary>
-                    <div class="table-wrap directory-disclosure__content">
-                        <table class="data-table data-table--responsive">
-                        <thead>
-                        <tr>
-                            <th>Utility and cities</th>
-                            <th>Portal or submission route</th>
-                            <th>Notice clue</th>
-                            <th>Acceptance proof</th>
-                            <th>Open route</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @for (var utility : utilities)
-                            <tr>
-                                <td data-label="Utility and cities">
-                                    <strong>${utility.utilityName()}</strong>
-                                    @if (!cityAliasesByUtility.getOrDefault(utility.utilityId(), java.util.List.of()).isEmpty())
-                                        <div class="detail-meta">
-                                            @for (var alias : cityAliasesByUtility.getOrDefault(utility.utilityId(), java.util.List.of()))
-                                                <a href="/cities/${alias.state()}/${alias.aliasSlug()}/submit-backflow-report">${alias.city()}</a>
-                                            @endfor
-                                        </div>
-                                    @else
-                                        <div class="detail-meta">${utility.state()}</div>
-                                    @endif
-                                </td>
-                                <td data-label="Portal or submission route">
-                                    <strong>${utility.reportWorkflow().portalName() != null && !utility.reportWorkflow().portalName().isBlank() ? utility.reportWorkflow().portalName() : portalNamesByUtility.getOrDefault(utility.utilityId(), "Online submission")}</strong>
-                                    @if (utility.reportWorkflow().submissionDeadlineDaysAfterTest() != null)
-                                        <div class="detail-meta">${utility.reportWorkflow().deadlineLabel()}</div>
-                                    @endif
-                                    @if (utility.reportWorkflow().filingFee() != null && utility.reportWorkflow().filingFee().hasContent())
-                                        <div class="detail-meta">${utility.reportWorkflow().filingFee().display()}</div>
-                                    @endif
-                                    @if (!utility.submissionMethods().isEmpty())
-                                        @for (var method : utility.submissionMethods())
-                                            <div class="detail-meta">${method.label()}</div>
-                                        @endfor
-                                    @endif
-                                </td>
-                                <td data-label="Notice clue">${noticeIdentifierHints.getOrDefault(utility.utilityId(), "Look for the account, notice, device, or assembly identifier.")}</td>
-                                <td data-label="Acceptance proof">
-                                    ${utility.reportWorkflow().acceptanceProof() != null && !utility.reportWorkflow().acceptanceProof().isBlank() ? utility.reportWorkflow().acceptanceProof() : reportAcceptanceHints.getOrDefault(utility.utilityId(), "Keep proof that the report was submitted and accepted.")}
-                                    @if (utility.testerGate().hasContent())
-                                        <div class="detail-meta">${utility.testerGate().credentialSummary()}</div>
-                                    @endif
-                                </td>
-                                <td data-label="Open route">
-                                    <div class="card-actions">
-                                        <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Utility workflow</a>
-                                        @if (portalHubPathsByUtility.get(utility.utilityId()) != null)
-                                            <a class="button button--secondary" href="${portalHubPathsByUtility.get(utility.utilityId())}">Portal hub</a>
-                                        @endif
-                                    </div>
-                                </td>
-                            </tr>
-                        @endfor
-                        </tbody>
-                        </table>
-                    </div>
-                </details>
-            </article>
-        </div>
-    </section>
-
-    @if (!faqItems.isEmpty())
-        <section class="section section--tight">
-            <div class="container">
-                <div class="section-heading">
-                    <span class="eyebrow">Submission FAQ</span>
-                    <h2>Report filing questions that change the next step</h2>
-                </div>
-                <div class="faq-list">
-                    @for (var faqItem : faqItems)
-                        <details class="faq-item">
-                            <summary>${faqItem.question()}</summary>
-                            <p>${faqItem.answer()}</p>
-                        </details>
-                    @endfor
-                </div>
-            </div>
-        </section>
-    @endif
-
-    <section class="section section--tight">
-        <div class="container content-grid">
-            <article class="detail-card">
-                <span class="eyebrow">Related guides</span>
-                <h2>Read before filing if the notice is unclear</h2>
-                <div class="support-links">
-                    @for (var guide : relatedGuides)
-                        <a class="support-link" href="/guides/${guide.slug()}">
-                            <div>
-                                <strong>${guide.title()}</strong>
-                                <span>${guide.description()}</span>
-                            </div>
-                            <span class="material-symbols-outlined">arrow_forward</span>
-                        </a>
-                    @endfor
-                </div>
-            </article>
-            <article class="trust-box">
-                <span class="trust-box__label">Authority split</span>
-                <h2>The portal is not the authority</h2>
-                <p>A portal can collect reports, but the utility still controls who must test, which tester is accepted, what identifier is required, and whether a failed test needs repair, retest, or resubmission.</p>
-            </article>
+            <p class="bv-empty" data-route-empty hidden>No matching workflow. Try the utility name from the water bill or use the notice finder.</p>
         </div>
     </section>
 `)

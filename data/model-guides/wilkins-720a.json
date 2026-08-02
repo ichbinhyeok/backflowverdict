@@ -1,0 +1,36 @@
+{
+  "slug": "wilkins-720a",
+  "canonicalPath": "/models/wilkins-720a/",
+  "manufacturer": "Zurn Wilkins",
+  "model": "720A",
+  "aliases": ["Wilkins 720A", "Zurn 720A", "Wilkins 720A repair kit", "720A pressure vacuum breaker"],
+  "deviceType": "Pressure vacuum breaker",
+  "title": "Wilkins 720A repair kits by size, bonnet, and internal service",
+  "description": "Match a Zurn Wilkins 720A pressure vacuum breaker to the manufacturer-published 1/2–1 inch or 1 1/4–2 inch repair-kit family before ordering parts.",
+  "summary": "The 720A looks like one device family, but Zurn separates its repair-kit path at the 1 inch / 1 1/4 inch boundary. Confirm the body size first, then choose complete internal or bonnet service.",
+  "status": "Published irrigation PVB family",
+  "statusNote": "Zurn positions the 720A for irrigation backflow protection. A correct kit does not resolve freeze-cracked bodies, incorrect installation height, or local testing and reporting requirements.",
+  "diagram": "pvb",
+  "diagramAlt": "Pressure vacuum breaker showing bonnet, atmospheric vent, check assembly, and test cocks",
+  "sizes": ["1/2–1 in", "1 1/4–2 in"],
+  "identifiers": [
+    "Confirm the body label reads 720A; do not apply these parts to an unmarked look-alike or a different Wilkins PVB.",
+    "The published complete-kit boundary changes after 1 inch: RK1-720A is for 1/2–1 inch, while RK2-720A is for 1 1/4–2 inch assemblies.",
+    "A bonnet repair kit and a complete internal repair kit address different scopes; do not use a bonnet kit to assume the check and internal parts are serviceable."
+  ],
+  "kits": [
+    {"sizeBand":"1/2–1 in","task":"Complete internal service","partNumber":"RK1-720A","kitName":"Complete repair kit","contents":"Bonnet washer and O-ring, load nut and guide, load washer, upper disc, poppet, spring, spider screw, lower disc, guide spider, and hex nut.","compatibility":"Manufacturer-published for 1/2, 3/4, and 1 inch Model 720A pressure vacuum breakers."},
+    {"sizeBand":"1/2–1 in","task":"Core internal service","partNumber":"RK1-720APK","kitName":"Repair Pro-Kit","contents":"Bonnet O-ring, load nut and guide, load washer, upper disc, and poppet.","compatibility":"Manufacturer-published for 1/2–1 inch 720A; compare its narrower component set with the complete RK1-720A kit."},
+    {"sizeBand":"1/2–1 in","task":"Bonnet service","partNumber":"RK1-720AB","kitName":"Bonnet repair kit","contents":"Canopy screws, canopy, bonnet, bonnet washer, and bonnet O-ring.","compatibility":"Verify the actual 720A size and current Zurn instruction sheet before purchase; bonnet service does not include the full internal service set."},
+    {"sizeBand":"1 1/4–2 in","task":"Complete internal service","partNumber":"RK2-720A","kitName":"Complete repair kit","contents":"Bonnet washer and O-ring, load nut and guide, load washer, upper disc, poppet, spring, spider screw, lower disc, guide spider, and hex nut.","compatibility":"Manufacturer-published for 1 1/4, 1 1/2, and 2 inch Model 720A assemblies."},
+    {"sizeBand":"1 1/4–2 in","task":"Bonnet service","partNumber":"RK114-720A-BONNET","kitName":"Bonnet repair kit","contents":"Canopy, bonnet, bonnet washer, bonnet O-ring, and related canopy hardware listed in the manufacturer repair-kit guide.","compatibility":"Manufacturer-published for the 1 1/4–2 inch 720A band; not the 1/2–1 inch complete-kit family."}
+  ],
+  "sources": [
+    {"title":"Zurn Wilkins 720A pressure vacuum breaker product record","url":"https://www.zurn.com/products/water-control/backflow-preventers/pressure-vacuum-breakers/720a","publisher":"Zurn","lastVerified":"2026-08-02"},
+    {"title":"RK1-720A complete repair kit: 1/2, 3/4, and 1 inch","url":"https://www.zurn.com/products/water-control/backflow-preventers/rk1-720a","publisher":"Zurn","lastVerified":"2026-08-02"},
+    {"title":"Zurn Wilkins Repair Kits Guide: Model 720A 1 1/4–2 inch","url":"https://www.zurn.com/content/dam/zurnv49/resources/replacement-repair-part-information/480-023_repair_kits_guide.pdf","publisher":"Zurn","lastVerified":"2026-08-02"}
+  ],
+  "lastReviewed": "2026-08-02",
+  "published": true,
+  "indexable": true
+}

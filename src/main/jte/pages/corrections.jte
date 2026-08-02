@@ -6,7 +6,7 @@
         <div class="container page-frame page-frame--hero">
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Corrections</span>
-                <h1>How BackflowPath handles errors and stale rules</h1>
+                <h1>How BackflowVerdict handles errors and stale rules</h1>
                 <p class="lede">If a utility page, guide, or provider record no longer matches the source material, the correct response is to review the source, update the record, or suppress the page from indexing until it is supported again. A correction is not just a cosmetic content edit. On this site it is part of the publishing control system.</p>
                 <div class="hero__actions">
                     <a class="button button--primary" href="/contact">Send a correction</a>
@@ -16,7 +16,7 @@
             <aside class="panel panel--hero">
                 <span class="stat-card__label" style="color: rgba(141, 224, 196, 0.9);">Correction standard</span>
                 <div class="stat-card__value" style="color: #ffffff; font-size: clamp(2rem, 4vw, 2.7rem);">Verify against the source</div>
-                <p class="stat-card__meta" style="color: rgba(239, 241, 243, 0.74);">BackflowPath does not treat anecdotal reports or provider sales claims as sufficient evidence for changing an authority rule.</p>
+                <p class="stat-card__meta" style="color: rgba(239, 241, 243, 0.74);">BackflowVerdict does not treat anecdotal reports or provider sales claims as sufficient evidence for changing an authority rule.</p>
             </aside>
         </div>
     </section>
@@ -27,7 +27,7 @@
                 <span class="eyebrow">Good correction reports</span>
                 <h2>What to include</h2>
                 <ul class="detail-list">
-                    <li>The exact BackflowPath URL that appears wrong</li>
+                    <li>The exact BackflowVerdict URL that appears wrong</li>
                     <li>The utility or authority source URL that conflicts with it</li>
                     <li>A short explanation of what changed</li>
                     <li>The date you saw the change</li>
@@ -89,7 +89,7 @@
             <article class="detail-card">
                 <span class="eyebrow">Public expectation</span>
                 <h2>What users should expect from this policy</h2>
-                <p>BackflowPath should prefer being incomplete over being confidently wrong. If a page cannot be supported to a reasonable standard, the right choice is to weaken it, hide it, or remove it from search rather than leave a misleading answer in place.</p>
+                <p>BackflowVerdict should prefer being incomplete over being confidently wrong. If a page cannot be supported to a reasonable standard, the right choice is to weaken it, hide it, or remove it from search rather than leave a misleading answer in place.</p>
             </article>
 
             <article class="detail-card">

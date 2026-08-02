@@ -356,10 +356,10 @@
             <article class="detail-card">
                 <span class="eyebrow">Profile maintenance</span>
                 <h2>Need a correction to this profile?</h2>
-                <p>If a phone number, website, or approval source is wrong, report it for manual review. BackflowPath updates public provider profiles only after checking the source record.</p>
+                <p>If a phone number, website, or approval source is wrong, report it for manual review. BackflowVerdict updates public provider profiles only after checking the source record.</p>
                 <div class="card-actions">
                     <a class="button button--secondary" href="/corrections">Report a correction</a>
-                    <a class="button button--secondary" href="/contact">Contact BackflowPath</a>
+                    <a class="button button--secondary" href="/contact">Contact BackflowVerdict</a>
                 </div>
             </article>
         </div>

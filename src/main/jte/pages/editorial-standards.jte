@@ -7,7 +7,7 @@
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Editorial standards</span>
                 <h1>Writing rules for a source-backed compliance site</h1>
-                <p class="lede">BackflowPath is not supposed to sound like a generic SEO education site. The public copy should clarify the local rule, preserve the official source, and keep provider-directory language visibly separate from utility authority. Editorial quality on this site is defined by trust, legibility, and restraint, not by word count alone.</p>
+                <p class="lede">BackflowVerdict is not supposed to sound like a generic SEO education site. The public copy should clarify the local rule, preserve the official source, and keep provider-directory language visibly separate from utility authority. Editorial quality on this site is defined by trust, legibility, and restraint, not by word count alone.</p>
             </div>
             <aside class="panel panel--hero">
                 <span class="stat-card__label" style="color: rgba(141, 224, 196, 0.9);">Core rule</span>
@@ -28,7 +28,7 @@
             <article class="detail-card">
                 <span class="eyebrow">Claims</span>
                 <h2>Never overstate authority status</h2>
-                <p>BackflowPath should only call a tester approved, certified, or official when the governing authority itself uses that status. If the site is showing a discovery path instead, it must be labeled as non-official or directory-only.</p>
+                <p>BackflowVerdict should only call a tester approved, certified, or official when the governing authority itself uses that status. If the site is showing a discovery path instead, it must be labeled as non-official or directory-only.</p>
             </article>
 
             <article class="detail-card">
@@ -103,7 +103,7 @@
             <article class="detail-card">
                 <span class="eyebrow">Editorial posture</span>
                 <h2>Preferred failure mode</h2>
-                <p>When the tradeoff is between being broader and being clearer, BackflowPath should choose clarity. When the tradeoff is between indexing a questionable page and waiting for stronger source support, it should choose patience.</p>
+                <p>When the tradeoff is between being broader and being clearer, BackflowVerdict should choose clarity. When the tradeoff is between indexing a questionable page and waiting for stronger source support, it should choose patience.</p>
             </article>
         </div>
     </section>

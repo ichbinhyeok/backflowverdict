@@ -20,307 +20,73 @@
 @param int publishedMetroCount
 @param int publicProviderCount
 
-@template.layouts.app(page = page, content = @`
-    <section class="hero">
-        <div class="container hero__grid hero__grid--home">
-            <div class="hero__copy">
-                <span class="eyebrow kicker-rule">Find local backflow requirements</span>
-                <h1>Got a backflow notice? Find the right next step in 30 seconds.</h1>
-                <p class="lede">Paste the city, utility, portal, or notice clue and get the source-backed route for submission, due dates, tester eligibility, or failed-test follow-up. Know your utility's backflow testing rules before you schedule the work.</p>
-                <form class="home-search" method="get" action="/notice-finder">
-                    <label for="home-notice-search">Search your notice, city, portal, or utility</label>
-                    <div class="home-search__row">
-                        <input id="home-notice-search" name="q" type="search" placeholder="Try Dallas SwiftComply or Queen Creek BSI" autocomplete="off">
-                        <button class="button button--primary" type="submit">Find my next step</button>
-                    </div>
-                </form>
-                <div class="hero__actions">
-                    <a class="button button--secondary" href="/states">Browse state guides</a>
-                    <a class="button button--secondary" href="#utility-examples">See utility examples</a>
-                </div>
-                <div class="hero__stats">
-                    <span>${publishedUtilityCount} live utility pages</span>
-                    <span>${publishedStateCount} state guides</span>
-                    <span>${publishedMetroCount} metro pages</span>
-                    <span>${publicProviderCount} public provider profiles</span>
-                </div>
+@template.layouts.verdict(page = page, content = @`
+    <section class="bv-home-hero">
+        <div class="bv-shell bv-home-hero__grid">
+            <div class="bv-home-hero__copy bv-reveal">
+                <p class="bv-kicker">Backflow decision system</p>
+                <h1>What happened with your water-control device?</h1>
+                <p class="bv-lede">Identify the device, check the symptom, then confirm the rule for your water utility.</p>
+                <a class="bv-text-link" href="#start">Start with what you can see <span>↓</span></a>
             </div>
-            <div class="hero__visual">
-                <img data-lazy-src="/images/design/home-hero-industrial.jpg" alt="Industrial backflow prevention assembly in a commercial mechanical room" decoding="async">
-                <noscript><img src="/images/design/home-hero-industrial.jpg" alt="Industrial backflow prevention assembly in a commercial mechanical room"></noscript>
-                <div class="hero__visual-copy">
-                    <strong>What you'll find here</strong>
-                    <p>Utility pages explain due dates, testing frequency, submission steps, failed-test next steps, and tester routes. State, metro, and guide pages help you get to the right local answer faster.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <script>
-        (function () {
-            var image = document.querySelector('.hero__visual img[data-lazy-src]');
-            if (!image) {
-                return;
-            }
-
-            var loadImage = function () {
-                if (!image.getAttribute('src')) {
-                    image.setAttribute('src', image.getAttribute('data-lazy-src'));
-                }
-            };
-
-            if (!window.matchMedia('(max-width: 767px)').matches) {
-                loadImage();
-                return;
-            }
-
-            if (!('IntersectionObserver' in window)) {
-                loadImage();
-                return;
-            }
-
-            var observer = new IntersectionObserver(function (entries) {
-                if (entries.some(function (entry) { return entry.isIntersecting; })) {
-                    loadImage();
-                    observer.disconnect();
-                }
-            }, {rootMargin: '50px 0px'});
-            observer.observe(image);
-        }());
-    </script>
-
-    <section class="section">
-        <div class="container">
-            <div class="section-heading">
-                <span class="eyebrow">How it works</span>
-                <h2>Start with the authority, then move to the next action</h2>
-                <p class="lede">Every page is built to answer the next practical question: what the utility requires, whether an official tester list exists, and where to go if you still need help.</p>
-            </div>
-            <div class="process-grid">
-                <article class="process-card">
-                    <div class="process-card__index">
-                        <span>01</span>
-                        <span class="material-symbols-outlined">policy</span>
-                    </div>
-                    <h3>Find the right utility page</h3>
-                    <p>Utility pages are the clearest local answer. They explain who needs testing, how often it happens, where reports go, and which follow-up pages matter.</p>
-                </article>
-                <article class="process-card">
-                    <div class="process-card__index">
-                        <span>02</span>
-                        <span class="material-symbols-outlined">verified_user</span>
-                    </div>
-                    <h3>Open the page for your situation</h3>
-                    <p>Annual testing, failed-test, irrigation, and fire-line pages sit in front of the exact question that usually comes after the main utility rule.</p>
-                </article>
-                <article class="process-card">
-                    <div class="process-card__index">
-                        <span>03</span>
-                        <span class="material-symbols-outlined">monitoring</span>
-                    </div>
-                    <h3>Use the tester or help layer last</h3>
-                    <p>Once the rule is clear, use the official tester route when it exists. If it does not, provider and help surfaces stay clearly labeled as a separate action layer.</p>
-                </article>
+            <div class="bv-home-visual bv-reveal" style="--delay:90ms" aria-hidden="true">
+                <svg viewBox="0 0 620 480"><path class="pipe" d="M25 282h118v-92h88v92h88v-92h92v92h184"/><path class="device" d="M192 148h78v84h-78zM365 148h78v84h-78zM270 175h95v108h-95z"/><path class="flow" d="M64 255h60m360 0h70"/><circle cx="317" cy="312" r="16"/><path class="drop" d="M317 328c-18 24-20 39 0 49 20-10 18-25 0-49z"/><text x="24" y="58">FIELD NOTE / 01</text><text x="24" y="90">DEVICE → SYMPTOM → RULE</text></svg>
             </div>
         </div>
     </section>
 
-    <section class="section section--tight">
-        <div class="container">
-            <div class="section-heading">
-                <span class="eyebrow">Notice and portal shortcuts</span>
-                <h2>High-intent routes Google should discover quickly</h2>
-                <p class="lede">These pages answer the same words that appear on real backflow notices: portal name, city, due date, tester route, and report submission.</p>
-            </div>
-            <div class="card-grid card-grid--three">
-                <article class="detail-card detail-card--key">
-                    <span class="pill">Finder</span>
-                    <h3>Backflow notice finder</h3>
-                    <p>Use city, utility, portal, tester, failed-test, or notice ID clues to open the most specific source-backed route.</p>
-                    <div class="card-actions">
-                        <a class="button button--secondary" href="/notice-finder">Open notice finder</a>
-                        <a class="button button--secondary" href="/submit-backflow-report">Submit report hub</a>
-                    </div>
-                </article>
-                <article class="detail-card">
-                    <span class="pill">Aqua</span>
-                    <h3>TrackMyBackflow notice routes</h3>
-                    <p>Euless, Buena Park, and Pleasanton-style workflows where Aqua Backflow or TrackMyBackflow appears in official reporting context.</p>
-                    <div class="card-actions">
-                        <a class="button button--secondary" href="/backflow-reporting-portals/aqua">Aqua portal hub</a>
-                        <a class="button button--secondary" href="/cities/texas/euless/backflow-reporting-portal">Euless portal</a>
-                    </div>
-                </article>
-                <article class="detail-card">
-                    <span class="pill">Named portals</span>
-                    <h3>Tokay and SpryBackflow notice routes</h3>
-                    <p>Oxnard, Dublin San Ramon, and Aurora-style workflows where the official page names Tokay/WebTest or SpryBackflow for online report entry.</p>
-                    <div class="card-actions">
-                        <a class="button button--secondary" href="/backflow-reporting-portals/tokay">Tokay portal hub</a>
-                        <a class="button button--secondary" href="/backflow-reporting-portals/sprybackflow">SpryBackflow hub</a>
-                    </div>
-                </article>
+    <section class="bv-start" id="start">
+        <div class="bv-shell bv-document-grid">
+            <div class="bv-section-heading"><p class="bv-kicker">Start here</p><h2>Choose the event, not a technical term</h2><p>You do not need to know the model yet.</p></div>
+            <div class="bv-choice-list bv-choice-list--home">
+                <a class="bv-choice" href="/backflow-test/"><span class="bv-index">01</span><span><strong>I received a test notice</strong><small>Find the test, tester, and local reporting path.</small></span><span class="bv-choice__arrow">→</span></a>
+                <a class="bv-choice bv-choice--urgent" href="/backflow-preventer-leaking/"><span class="bv-index">02</span><span><strong>It is leaking or discharging</strong><small>Start with location, timing, weather, and recent work.</small></span><span class="bv-choice__arrow">→</span></a>
+                <a class="bv-choice bv-choice--warning" href="/failed-backflow-test/"><span class="bv-index">03</span><span><strong>My device failed a test</strong><small>Repair, retest, and close the utility record.</small></span><span class="bv-choice__arrow">→</span></a>
+                <a class="bv-choice" href="/backflow-preventer/"><span class="bv-index">04</span><span><strong>I need to identify the device</strong><small>Separate RPZ, PVB, double-check, and look-alikes.</small></span><span class="bv-choice__arrow">→</span></a>
+                <a class="bv-choice" href="/backwater-valve/"><span class="bv-index">05</span><span><strong>Sewage is backing up</strong><small>Use the separate sewer backwater-valve lane.</small></span><span class="bv-choice__arrow">→</span></a>
+                <a class="bv-choice" href="/water-pressure-regulator/"><span class="bv-index">06</span><span><strong>House pressure is high, low, or unstable</strong><small>Measure PSI and separate regulator symptoms from supply or fixture problems.</small></span><span class="bv-choice__arrow">→</span></a>
             </div>
         </div>
     </section>
 
-    @if (!priorityRoutes.isEmpty())
-        <section class="section section--tight">
-            <div class="container">
-                <div class="section-heading">
-                    <span class="eyebrow">Priority crawl paths</span>
-                    <h2>Strong local pages to crawl from the homepage</h2>
-                    <p class="lede">These links are selected from structured utility facts, city intent evidence, portal workflow depth, deadline rules, and fee data.</p>
-                </div>
-                <div class="support-links">
-                    @for (var route : priorityRoutes)
-                        <a class="support-link" href="${route.path()}">
-                            <div>
-                                <strong>${route.label()}</strong>
-                                <span>${route.eyebrow()} · ${route.description()}</span>
-                            </div>
-                            <span class="material-symbols-outlined">arrow_forward</span>
-                        </a>
+    <section class="bv-section bv-local">
+        <div class="bv-shell bv-local__grid">
+            <div><p class="bv-kicker">Have a notice?</p><h2>Find the exact utility record</h2><p>Enter the city, utility, portal, or identifier printed on the notice.</p></div>
+            <form class="bv-lookup" method="get" action="/notice-finder"><label for="home-query">Notice or utility clue</label><div><input id="home-query" name="q" type="search" placeholder="Example: Queen Creek BSI"><button type="submit">Find official route</button></div></form>
+        </div>
+        <div class="bv-shell bv-proof-line"><span>${publishedUtilityCount} published utility records</span><span>${publishedStateCount} states covered</span><span>Official and commercial routes kept separate</span></div>
+    </section>
+
+    <section class="bv-section">
+        <div class="bv-shell">
+            <div class="bv-section-heading"><p class="bv-kicker">Device passports</p><h2>Four systems people commonly mix up</h2></div>
+            <div class="bv-passports">
+                <a href="/backflow-preventer/"><img src="/images/devices/rpz.svg" alt=""><span>Potable water</span><strong>Backflow preventer</strong><p>RPZ, double-check, irrigation, and testable assemblies.</p></a>
+                <a href="/vacuum-breaker/"><img src="/images/devices/pvb.svg" alt=""><span>Air-inlet protection</span><strong>Vacuum breaker</strong><p>PVB, atmospheric, and hose-bib device families.</p></a>
+                <a href="/backwater-valve/"><img src="/images/devices/backwater.svg" alt=""><span>Sewer lane</span><strong>Backwater valve</strong><p>Drainage reversal protection, separate from drinking water.</p></a>
+                <a href="/water-pressure-regulator/"><img src="/images/devices/regulator.svg" alt=""><span>House pressure</span><strong>Pressure regulator</strong><p>Measure static and flowing PSI before adjustment or replacement.</p></a>
+            </div>
+            <a class="bv-library-callout" href="/backflow-library/"><span>Browse the complete field library</span><strong>Devices, failures, repair paths, installation, and testing</strong><b aria-hidden="true">→</b></a>
+        </div>
+    </section>
+
+    <section class="bv-section bv-section--ink">
+        <div class="bv-shell bv-method">
+            <div><p class="bv-kicker">How a verdict is built</p><h2>Observation first. Local authority last.</h2></div>
+            <ol><li><span>01</span><strong>Identify</strong><p>Use the nameplate, openings, pipe system, and visible geometry.</p></li><li><span>02</span><strong>Decide</strong><p>Use safe checks and stop conditions without pretending to diagnose remotely.</p></li><li><span>03</span><strong>Verify</strong><p>Open the governing utility record for tester, deadline, and submission facts.</p></li></ol>
+        </div>
+    </section>
+
+    @if (!featuredUtilities.isEmpty())
+        <section class="bv-section">
+            <div class="bv-shell">
+                <div class="bv-section-heading"><p class="bv-kicker">Source-backed records</p><h2>See the local layer in practice</h2><p>These pages retain the official utility evidence already built in this domain.</p></div>
+                <div class="bv-record-rail">
+                    @for (var utility : featuredUtilities)
+                        <a href="/utilities/${utility.state()}/${utility.canonicalSlug()}/"><span>${utility.state()}</span><strong>${utility.utilityName()}</strong><small>Verified ${utility.lastVerified().toString()}</small></a>
                     @endfor
                 </div>
             </div>
         </section>
     @endif
-
-    <section class="section section--tight">
-        <div class="container content-grid">
-            <article class="detail-card">
-                <div class="section-heading">
-                    <span class="eyebrow">Browse by state</span>
-                    <h2>State guides help you narrow down the right utility</h2>
-                    <p class="lede">State pages give statewide context and then route you into the utility page that actually governs the testing workflow.</p>
-                </div>
-                <div class="card-grid">
-                    @for (var stateGuide : stateGuides)
-                        <article class="panel detail-card--quiet">
-                            <span class="pill">${stateGuide.state()}</span>
-                            <h3>${stateGuide.title()}</h3>
-                            <p>${stateGuide.description()}</p>
-                            <p class="detail-meta">${stateGuide.summary()}</p>
-                            <div class="card-actions">
-                                <a class="button button--secondary" href="/states/${stateGuide.state()}/backflow-testing">Open state guide</a>
-                            </div>
-                        </article>
-                    @endfor
-                </div>
-            </article>
-
-            <article class="panel panel--dark">
-                <div class="section-heading">
-                    <span class="eyebrow" style="color: rgba(197, 234, 223, 0.92);">Popular guides</span>
-                    <h2 style="color: #ffffff;">Common questions, explained clearly</h2>
-                    <p>Guide pages answer recurring backflow questions, then route you back into the local utility page before you act on a rule or hire a provider.</p>
-                </div>
-                <div class="support-links">
-                    @for (var guide : featuredGuides)
-                        <a class="support-link" href="/guides/${guide.slug()}">
-                            <div>
-                                <strong>${guide.title()}</strong>
-                                <span>${guide.description()}</span>
-                            </div>
-                            <span class="material-symbols-outlined">arrow_forward</span>
-                        </a>
-                    @endfor
-                </div>
-            </article>
-        </div>
-    </section>
-
-    @if (!metros.isEmpty())
-        <section class="section">
-            <div class="container">
-                <div class="section-heading">
-                    <span class="eyebrow">Browse by metro</span>
-                    <h2>Metro pages group nearby utilities and public provider options</h2>
-                    <p class="lede">Use metro pages to compare nearby utilities and public provider profiles, then open the exact utility page before acting on a local rule.</p>
-                </div>
-                <div class="metric-banner">
-                    <div class="metric-banner__pair">
-                        <div class="metric-banner__value">${publishedMetroCount}</div>
-                        <div class="metric-banner__label">live metro pages</div>
-                    </div>
-                    <div class="metric-banner__pair">
-                        @for (var metro : metros)
-                            @if (metros.indexOf(metro) < 3)
-                                <span class="meta-chip">${metro.title()}</span>
-                            @endif
-                        @endfor
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
-
-    <section class="section" id="utility-examples">
-        <div class="container">
-            <div class="section-heading">
-                <span class="eyebrow">Popular utility pages</span>
-                <h2>See how the product works at the local level</h2>
-                <p class="lede">These pages show the strongest live patterns across the representative states: utility guidance first, tester routing second, and help options kept clearly separate.</p>
-            </div>
-            <div class="card-grid card-grid--three">
-                @for (var utility : featuredUtilities)
-                    <article class="detail-card detail-card--quiet">
-                        <span class="pill">${utility.testingFrequency()}</span>
-                        <h3>${utility.utilityName()}</h3>
-                        <p>${utility.verdictSummary()}</p>
-                        <ul class="detail-list">
-                            <li>Last verified ${utility.lastVerified().toString()}</li>
-                            <li>${utility.whoIsAffected()}</li>
-                        </ul>
-                        <div class="card-actions">
-                            <a class="button button--secondary" href="/utilities/${utility.state()}/${utility.canonicalSlug()}/">Open utility page</a>
-                        </div>
-                    </article>
-                @endfor
-            </div>
-            <div class="metric-banner metric-banner--light">
-                <div class="metric-banner__pair metric-banner__pair--stacked">
-                    <div class="metric-banner__value">${publishedUtilityCount}</div>
-                    <div class="metric-banner__label">live utility pages</div>
-                </div>
-                <div class="metric-banner__pair metric-banner__pair--flow">
-                    @for (var stateGuide : stateGuides)
-                        <a class="meta-chip meta-chip--link" href="/states/${stateGuide.state()}/backflow-testing">${stateGuide.state()}</a>
-                    @endfor
-                </div>
-                <div class="metric-banner__pair metric-banner__pair--actions">
-                    <a class="button button--primary" href="/states">Browse state guides</a>
-                    <a class="button button--secondary" href="/guides">Browse guides</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="split-panels">
-                <article class="split-panel split-panel--official">
-                    <span class="eyebrow">What stays official</span>
-                    <h3>Authority guidance comes first</h3>
-                    <p>Utility rules, due dates, report portals, source excerpts, and official tester lists stay public and auditable. That public guidance is the foundation of the product.</p>
-                    <ul class="detail-list">
-                        <li>Official program links and submission portals</li>
-                        <li>Freshness windows and verification codes</li>
-                        <li>Approved tester pages only when the list is real</li>
-                    </ul>
-                </article>
-                <article class="split-panel split-panel--commercial">
-                    <span class="eyebrow">Where provider help fits</span>
-                    <h3>Provider options stay clearly labeled</h3>
-                    <p>Provider profiles, metro inventory, and help requests exist as a separate layer. They can help the user act, but they do not replace or blur the authority workflow.</p>
-                    <ul class="detail-list">
-                        <li>Public provider pages appear only where inventory is ready</li>
-                        <li>Official and non-official tester routes stay clearly separated</li>
-                        <li>Help requests are collected without rewriting the rule page</li>
-                    </ul>
-                </article>
-            </div>
-        </div>
-    </section>
-
 `)

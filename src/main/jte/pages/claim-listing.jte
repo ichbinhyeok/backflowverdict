@@ -8,10 +8,10 @@
         <div class="container page-frame page-frame--hero">
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">Provider listing support</span>
-                <h1>Claim or correct a BackflowPath provider listing.</h1>
+                <h1>Claim or correct a BackflowVerdict provider listing.</h1>
                 <p class="lede">Use this page when a public provider profile needs a correction, a source link should be updated, or a provider wants listing context reviewed. Utility rules and official tester routes stay separate from provider claims.</p>
                 <div class="hero__actions">
-                    <a class="button button--primary" href="/contact">Contact BackflowPath</a>
+                    <a class="button button--primary" href="/contact">Contact BackflowVerdict</a>
                     <a class="button button--secondary" href="/corrections">Report a correction</a>
                     <a class="button button--secondary" href="/official-backflow-tester-lists">Official tester lists</a>
                 </div>
@@ -43,7 +43,7 @@
             <article class="detail-card">
                 <span class="eyebrow">Authority evidence</span>
                 <h2>Update official-list context</h2>
-                <p>If a provider appears on a utility, county, BSI, WEIRS, or portal list, include the public source. BackflowPath will keep that evidence distinct from non-official directory copy.</p>
+                <p>If a provider appears on a utility, county, BSI, WEIRS, or portal list, include the public source. BackflowVerdict will keep that evidence distinct from non-official directory copy.</p>
                 <div class="card-actions">
                     <a class="button button--secondary" href="/corrections">Send source evidence</a>
                 </div>
@@ -66,7 +66,7 @@
                 <span class="trust-box__label">What to include</span>
                 <h2>Information that speeds review</h2>
                 <ul class="detail-list">
-                    <li>Provider name and BackflowPath profile URL, if one exists</li>
+                    <li>Provider name and BackflowVerdict profile URL, if one exists</li>
                     <li>Correct website, phone, license, or service-area detail</li>
                     <li>Official list or utility source URL when approval status is involved</li>
                     <li>Whether the request is a listing correction, source update, or duplicate profile issue</li>
@@ -76,7 +76,7 @@
             <article class="detail-card">
                 <span class="eyebrow">Trust rule</span>
                 <h2>Provider edits cannot rewrite utility requirements</h2>
-                <p>BackflowPath can update a public provider profile, but it will not infer utility approval from a provider claim alone. Official tester status must come from the governing authority, county, or accepted portal source.</p>
+                <p>BackflowVerdict can update a public provider profile, but it will not infer utility approval from a provider claim alone. Official tester status must come from the governing authority, county, or accepted portal source.</p>
                 <div class="card-actions">
                     <a class="button button--secondary" href="/methodology">Read methodology</a>
                     <a class="button button--secondary" href="/editorial-standards">Editorial standards</a>

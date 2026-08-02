@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class SiteRuntimeConfig {
     private static volatile AppSiteProperties properties = new AppSiteProperties(
             "",
-            "BackflowPath",
+            "BackflowVerdict",
             "",
             "",
             "",
@@ -20,7 +20,7 @@ public class SiteRuntimeConfig {
 
     public static String siteName() {
         String configured = properties.siteName();
-        return configured == null || configured.isBlank() ? "BackflowPath" : configured.trim();
+        return configured == null || configured.isBlank() ? "BackflowVerdict" : configured.trim();
     }
 
     public static String googleAnalyticsMeasurementId() {
@@ -58,7 +58,7 @@ public class SiteRuntimeConfig {
                 .append(",\"name\":\"").append(jsonEscape(siteName())).append("\"")
                 .append(",\"url\":\"").append(jsonEscape(siteBaseUrl)).append("\"")
                 .append(",\"description\":\"")
-                .append(jsonEscape("Source-backed backflow compliance guidance organized by utility, with official authority rules separated from provider routing."))
+                .append(jsonEscape("Decision guidance for identifying water-control devices, checking problems, and verifying source-backed local utility requirements."))
                 .append("\"")
                 .append(",\"publishingPrinciples\":\"").append(jsonEscape(siteBaseUrl + "/editorial-standards")).append("\"")
                 .append(",\"correctionsPolicy\":\"").append(jsonEscape(siteBaseUrl + "/corrections")).append("\"")

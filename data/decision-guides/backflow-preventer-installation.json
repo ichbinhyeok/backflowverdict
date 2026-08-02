@@ -1,0 +1,58 @@
+{
+  "slug": "backflow-preventer-installation",
+  "pageType": "installation-decision",
+  "canonicalPath": "/backflow-preventer-installation/",
+  "eyebrow": "Installation decision",
+  "title": "Backflow preventer installation starts with the hazard and utility rule",
+  "description": "Choose the required assembly, placement, approval, test, and report path before comparing installation quotes.",
+  "prompt": "What system is the installation protecting?",
+  "answer": "Do not select a device from pipe size alone. The hazard, system use, local approved-device rules, placement constraints, and post-installation test determine the job.",
+  "urgency": "Never bypass an existing assembly or place an RPZ where relief discharge can flood, damage equipment, or create an unsafe condition. Fire and commercial systems need qualified design review.",
+  "diagram": "rpz",
+  "diagramAlt": "Reduced pressure backflow assembly with shutoffs, test ports, check modules, and relief discharge",
+  "aliases": ["backflow preventer installation", "install a backflow preventer", "backflow device installation requirements", "backflow preventer installer"],
+  "identifiers": [
+    "Record the service type: irrigation, domestic, fire, process, or combined.",
+    "Photograph the existing pipe, meter direction, drainage, clearance, and model plate.",
+    "Ask the governing utility which assembly type and approval list apply before purchase."
+  ],
+  "choices": [
+    {"label": "Irrigation connection", "detail": "Confirm whether the local rule accepts a PVB or requires a testable higher-protection assembly.", "href": "/irrigation-backflow-preventer/", "tone": "action"},
+    {"label": "Commercial or process connection", "detail": "Have the hazard classification and approved assembly confirmed before the quote is finalized.", "href": "/notice-finder", "tone": "warning"},
+    {"label": "Fire protection connection", "detail": "Coordinate fire authority, utility, approved assembly, drainage, alarm, and testing requirements.", "href": "/get-help/?issueType=installation&source=/backflow-preventer-installation/", "tone": "urgent"},
+    {"label": "Unknown device or notice", "detail": "Identify the assembly and governing utility first.", "href": "/backflow-preventer/", "tone": "neutral"}
+  ],
+  "steps": [
+    {"label": "01", "title": "Confirm the governing rule", "body": "Use the property utility, not a generic city assumption, to confirm the hazard category, accepted assembly type, tester requirements, and submission route."},
+    {"label": "02", "title": "Scope the physical installation", "body": "Document size, direction, access, freeze exposure, drainage, clearances, shutdown coordination, and whether permits or fire review apply."},
+    {"label": "03", "title": "Make quotes comparable", "body": "Require separate scope for the approved assembly, fittings, labor, drainage or enclosure, permit work, initial test, and report filing."},
+    {"label": "04", "title": "Close the compliance loop", "body": "Keep the passing test record and submission confirmation. Installation is not complete merely because water is flowing."}
+  ],
+  "safeChecks": [
+    "Read the utility notice and meter account name.",
+    "Photograph the site without opening or disassembling the assembly.",
+    "Confirm pipe size and flow arrow from accessible labels.",
+    "Ask whether the quote includes the initial certified test and report submission."
+  ],
+  "stopConditions": [
+    "The required assembly type is still unknown",
+    "The proposed location lacks safe RPZ relief drainage",
+    "A fire or life-safety system shutdown is involved",
+    "The installer proposes bypassing testing, permits, or the utility approval path"
+  ],
+  "notThisDevice": [
+    "A sewer backwater valve protects a drain line, not the potable supply.",
+    "A water-pressure regulator controls pressure and is not a substitute for backflow protection.",
+    "A hose-bib vacuum breaker does not replace a testable premise assembly when one is required."
+  ],
+  "related": [
+    {"eyebrow": "Identify", "title": "Identify the backflow preventer", "href": "/backflow-preventer/"},
+    {"eyebrow": "Verify", "title": "Find the governing utility", "href": "/notice-finder"},
+    {"eyebrow": "Closeout", "title": "Understand the backflow test", "href": "/backflow-test/"}
+  ],
+  "evidenceNote": "This page scopes decisions and quote line items; it does not prescribe a universal assembly. The governing utility, adopted code, manufacturer instructions, and qualified installer control the final design.",
+  "lastReviewed": "2026-08-02",
+  "published": true,
+  "indexable": true,
+  "toolType": ""
+}
