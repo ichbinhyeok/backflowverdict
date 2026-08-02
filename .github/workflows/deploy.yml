@@ -187,14 +187,19 @@ jobs:
             smoke_path "/robots.txt" "Sitemap:"
             smoke_path "/sitemap.xml" "/backflow-preventer-installation/"
 
-            if ! curl -fsS "http://127.0.0.1:8093/sitemap.xml" | grep -Fq "/water-pressure-regulator-symptoms/"; then
+            sitemap_body="$(mktemp)"
+            curl -fsS "http://127.0.0.1:8093/sitemap.xml" -o "$sitemap_body"
+            if ! grep -Fq "/water-pressure-regulator-symptoms/" "$sitemap_body"; then
               echo "Published decision route is missing from the sitemap."
               exit 1
             fi
-            if ! curl -fsS "http://127.0.0.1:8093/backflow-preventer-installation/" | grep -Fq '<link rel="canonical" href="https://backflowpath.com/backflow-preventer-installation/"'; then
+            canonical_body="$(mktemp)"
+            curl -fsS "http://127.0.0.1:8093/backflow-preventer-installation/" -o "$canonical_body"
+            if ! grep -Fq '<link rel="canonical" href="https://backflowpath.com/backflow-preventer-installation/"' "$canonical_body"; then
               echo "Canonical smoke check failed."
               exit 1
             fi
+            rm -f "$sitemap_body" "$canonical_body"
 
             trap - ERR
             echo "Release $RELEASE_SHA passed health, route, canonical, robots, sitemap, and winner smoke checks."
