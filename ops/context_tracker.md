@@ -1,5 +1,32 @@
 # Context Tracker
 
+## 2026-08-11 — repository-wide SEO execution
+
+- Crawled all 1,323 sitemap URLs locally; every URL returned 200 with one H1, unique title and description, an indexable robots directive, and a matching canonical.
+- Added direct homepage crawl paths to the repair-kit finder, installation requirements/detail page, and RPZ/category answer.
+- Narrowed `/backflow-reporting-portal/` to official-portal verification so `/backflow-reporting-portals` can own generic portal-family lookup intent; rewrote the strongest portal-family titles around exact TrackMyBackflow, Tokay, SpryBackflow, SwiftComply, VEPO, city, and utility language.
+- Added `ops/daily_100_click_execution_2026-08-11.md` with the 74,700-impression / 3.75%-CTR portfolio model, query ownership boundaries, and 30/60/90-day GSC gates.
+
+## 2026-08-11 — first post-launch ranking intervention
+
+- Rechecked the three manually requested launch URLs in Google Search Console; all now return `PASS` and `Submitted and indexed`, with successful mobile fetches, allowed indexing, and matching Google/user canonicals.
+- Measured the first 2026-08-02 through 2026-08-08 query sample: repair kits received 7 impressions at position 45.6, installation detail 1 at 38, installation requirements 1 at 60, and the RPZ-difference query 2 at 91.
+- Confirmed the site-level 28-day comparison is expanding rather than collapsing: clicks rose 28 to 116, impressions 2,978 to 7,465, and CTR 0.94% to 1.55%; average position moved from 12.33 to 14.12 as lower-ranked query coverage expanded.
+- Strengthened `/backflow-preventer-repair-kits/` with an exact-intent title/H1, visible model-size-part matrix, matching rules, FAQ content, model-passport return links, and CollectionPage, ItemList, FAQPage, and Breadcrumb structured data.
+- Strengthened `/backflow-preventer-installation/` with explicit installation-requirements and installation-detail sections, field and closeout checklists, and direct RPZ/DCVA/PVB comparison paths.
+- Assigned `backflow preventer installation requirements` and `backflow preventer installation detail` to the installation decision page; narrowed `/backflow-installation-requirements/` to adopted-code and approval workflow intent.
+- Assigned `difference between rpz and backflow preventer` and `is an rpz a backflow preventer` to `/backflow-preventer/`, added a visible RPZ boundary answer, and linked the exact comparison routes.
+- Verified the change with the full Gradle suite, 6/6 Playwright browser contracts, and fresh desktop/mobile Chromium captures under `output/playwright/`.
+
+## 2026-08-02 — production deployment and GSC submission
+
+- Deployed the 100-asset BackflowVerdict decision portfolio to production at commit `beb0b1c` through GitHub Actions run `30752485808`.
+- Confirmed full Gradle tests, 6/6 browser contracts, OCI health and route smoke checks, canonical, robots, and sitemap checks.
+- Verified the live main sitemap at 1,323 URLs and the live priority sitemap at 447 URLs.
+- Resubmitted `sitemap.xml` and `sitemap-priority.xml` in the logged-in Google Search Console browser; both submissions were confirmed.
+- Manually requested indexing for `/backflow-preventer/`, `/backflow-preventer-repair-kits/`, and `/backflow-preventer-installation/`; all three were added to Google's priority crawl queue.
+- Saved the deployment and submission evidence in `analysis/deployment_gsc_submission_2026-08-02.md`.
+
 ## 2026-08-02 — strengthened decision portfolio
 
 - Expanded the explicit decision-guide set from 9 to 26 routes using the validated Wave A/B portfolio. Wave C generic check-valve pages remain intentionally gated until traction.
@@ -10,6 +37,9 @@
 - Deployment now runs the full test suite and no longer uses destructive `rsync --delete` for project data.
 
 ## Current status
+- The repository-wide SEO pass is merge-ready locally: full Gradle tests and Playwright 6/6 pass, and the sitemap crawl has no metadata, canonical, status, or internal-link defects.
+- The three manually requested BackflowVerdict launch URLs are indexed as of 2026-08-11 and have begun receiving low-volume exploratory impressions.
+- The first ranking pass is implemented locally and verified, but is not yet committed or deployed.
 - BackflowPath is tracked as an owner-facing utility-first compliance product.
 - The public site centers on utility, state, metro, guide, tester, failed-test, provider, and request-help pages.
 - Lead capture remains file-backed and manually reviewed through `/admin`.
@@ -18,6 +48,11 @@
 - `/readyz` must stay `ready` as long as utility pages are explicitly published and not blocked, even when freshness warnings exist.
 
 ## Latest decisions
+- Let `/backflow-reporting-portals` own generic portal-family lookup; keep `/backflow-reporting-portal/` narrowly focused on verifying an official filing route before data is submitted.
+- Use the 74,700-impression / 3.75%-CTR model as a measurable portfolio requirement, not a traffic promise.
+- Do not passively wait on low initial rankings or repeat indexing requests; improve query ownership and visible evidence now, then judge results on a 7-day cadence after deployment.
+- Use 50 impressions per page or 14 elapsed days as the minimum signal before treating a new page's average position as stable enough for a major rewrite decision.
+- Keep the plural repair-kit finder focused on model/size/part lookup, the singular repair-kit decision guide focused on scope selection, and the installation code page focused on authority/approval workflow.
 - Keep the governing utility or water authority as the canonical entity.
 - Keep official guidance and public provider directories visibly separate.
 - Do not reintroduce private setup or internal routing surfaces into the published experience.
@@ -28,6 +63,13 @@
 - Automated source URL audits can refresh freshness dates only when unresolved URLs are also recorded in `data/ops/broken_links.csv` for follow-up suppression.
 
 ## What changed this session
+- Added homepage links to the three priority national pages, tightened exact portal-family titles, and separated portal lookup from portal-verification intent.
+- Crawled all sitemap pages and internal links, parsed priority JSON-LD, and visually checked desktop and mobile output in Chromium.
+- Queried live GSC URL inspection, sitemap, page/query, period-comparison, striking-distance, and cannibalization data on 2026-08-11.
+- Built and rendered a source-backed ranking diagnostic report for the three launch pages.
+- Implemented the repair-kit, installation, and RPZ-comparison ranking interventions described above.
+- Added controller and service contracts for structured data, visible search-intent sections, model-index links, and exclusive query ownership.
+- Passed the full Gradle suite and all 6 browser contracts; visually checked repair-kit desktop/mobile plus installation and device-identification desktop pages in Chromium.
 - Ran a 2026-07-03 search/SEO audit using Google Search Console, live crawl checks, Lighthouse, and public web source checks.
 - Added `ops/click_100_audit_2026-07-03.md` with the current search score, 50 official-source cases, technical findings, and a one-month plan to reach 100 monthly organic clicks.
 - Confirmed the latest 28-day GSC window, ending 2026-06-30, shows 17 clicks, 2,031 impressions, 0.84% CTR, and average position 12.0.
@@ -91,13 +133,16 @@
 - Strengthened `/backflow-reporting-portals` as a lookup database by adding a portal family matrix for BSI, WEIRS, SwiftComply, VEPO, Aqua/TrackMyBackflow, Tokay, and SpryBackflow searches.
 
 ## Next recommended tasks
-1. Continue working through the unresolved rows in `data/ops/broken_links.csv`, starting with true 404s before likely bot-protected 403s.
-2. Submit `/sitemap.xml` and `/sitemap-priority.xml` in Search Console, then use URL inspection for the 50 URLs in `ops/gsc_priority_reindex_urls_2026-07-03.txt`.
-3. Manually recheck Greeley and JEA because the 2026-07-03 URL spot check errored under automation.
-4. Add sourced fee, deadline, and rejection-risk fields to more utilities so the notice finder and portal matrices can expose harder facts above the fold.
-5. Re-run `/ops/verification/run` after broken-link cleanup; status should return to `ok` once source URL issues are resolved.
+1. Review, commit, and deploy the 2026-08-11 ranking intervention, then confirm the production HTML, canonicals, structured data, and sitemap modified dates.
+2. Recheck the three launch pages after 7 days and again at 50 impressions per page; compare query fit, top-20 entry, impressions, and clicks rather than average position alone.
+3. If a page remains outside position 30 after 50 impressions or 14 days, run a second pass on SERP format, evidence depth, internal-link concentration, and external authority.
+4. Measure whether the new portal ownership and exact-family titles reduce `envirotrax`, `trackmybackflow`, and `vepo backflow` URL splitting without weakening utility-first local routes.
+5. Continue resolving confirmed 404 rows in `data/ops/broken_links.csv` before bot-protected 403/time-out rows.
 
 ## Open questions
+- Whether exact portal-family title changes lift CTR at positions 5–10 without moving generic portal impressions away from the lookup hub.
+- Whether the repair-kit finder needs additional model cohorts before the current ten model passports accumulate enough exact-query impressions.
+- Whether installation demand separates into a national detail page and local installation pages after the next 14-day sample, or remains best consolidated in the current national decision page plus utility overlay.
 - Whether legacy internal provider-status fields should be renamed in code and data files after the public cleanup is complete.
 - How far metro and provider aggregation should expand before it begins to dilute utility-first trust.
 - Whether request-help follow-up needs a more explicit public service-level expectation on the site.
