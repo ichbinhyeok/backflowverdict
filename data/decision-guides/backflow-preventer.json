@@ -3,14 +3,14 @@
   "pageType": "device",
   "canonicalPath": "/backflow-preventer/",
   "eyebrow": "Device passport 01",
-  "title": "Identify your backflow preventer before you troubleshoot it",
-  "description": "Use visible features and installation context to separate RPZ, double-check, pressure vacuum breaker, and look-alike devices.",
+  "title": "Backflow preventer identification: RPZ, DCVA, PVB, and look-alikes",
+  "description": "Identify a backflow preventer from its label, relief or air opening, and system use; then separate RPZ, DCVA, PVB, and look-alike devices.",
   "prompt": "Which description is closest to what you can see?",
   "answer": "A backflow preventer protects a water supply from reverse flow, but different assemblies fail, drain, and require testing in different ways.",
   "urgency": "Do not open a sealed assembly or bypass it. If water is continuous, forceful, freezing, or flooding the area, move to the leak safety path.",
   "diagram": "rpz",
   "diagramAlt": "Simplified RPZ backflow preventer diagram with two shutoff valves and a lower relief vent",
-  "aliases": ["RPZ", "reduced pressure assembly", "double check", "DCVA", "PVB", "irrigation backflow device"],
+  "aliases": ["RPZ", "reduced pressure assembly", "double check", "DCVA", "PVB", "irrigation backflow device", "difference between rpz and backflow preventer", "is an rpz a backflow preventer"],
   "identifiers": ["A relief opening beneath the body usually points to an RP or RPZ assembly.", "A raised bonnet or air inlet above the piping often points to a pressure vacuum breaker.", "Two check modules without an open relief vent may point to a double-check assembly."],
   "choices": [
     {"label":"Water is leaking or discharging","detail":"Start with where the water exits and when it happens.","href":"/backflow-preventer-leaking/","tone":"urgent"},
@@ -28,12 +28,13 @@
   "notThisDevice": ["A bell-shaped pressure regulator controls downstream pressure; it is not a backflow preventer.", "A sewer backwater valve blocks wastewater reversal and belongs to a separate system.", "A hose-bib vacuum breaker is a small atmospheric device at a faucet, not a testable RPZ assembly."],
   "related": [
     {"eyebrow":"Installation","title":"Scope a backflow preventer installation","href":"/backflow-preventer-installation/"},
+    {"eyebrow":"Parts","title":"Find repair kits by exact model and size","href":"/backflow-preventer-repair-kits/"},
     {"eyebrow":"Problem","title":"Backflow preventer leaking","href":"/backflow-preventer-leaking/"},
     {"eyebrow":"Process","title":"What a backflow test checks","href":"/backflow-test/"},
     {"eyebrow":"Local rule","title":"Find the utility named on the notice","href":"/notice-finder"}
   ],
   "evidenceNote": "Identification guidance is national and observational. Testing, repair authorization, and reporting requirements must be verified with the governing utility.",
-  "lastReviewed": "2026-08-02",
+  "lastReviewed": "2026-08-11",
   "published": true, "indexable": true
 ,"toolType":"identifier"
 }

@@ -77,6 +77,17 @@
         </div>
     </section>
 
+    <section class="bv-section">
+        <div class="bv-shell bv-document-grid">
+            <div><p class="bv-kicker">High-intent field desk</p><h2>Move from the label to the right job.</h2><p>Use the exact model, installation scope, or device family before comparing parts or work.</p></div>
+            <div class="bv-related">
+                <a href="/backflow-preventer-repair-kits/"><span>Parts</span><strong>Find repair kits by model and size</strong><b aria-hidden="true">&rarr;</b></a>
+                <a href="/backflow-preventer-installation/"><span>Install</span><strong>Check installation requirements and detail</strong><b aria-hidden="true">&rarr;</b></a>
+                <a href="/backflow-preventer/"><span>Identify</span><strong>Compare RPZ with other backflow preventers</strong><b aria-hidden="true">&rarr;</b></a>
+            </div>
+        </div>
+    </section>
+
     @if (!featuredUtilities.isEmpty())
         <section class="bv-section">
             <div class="bv-shell">

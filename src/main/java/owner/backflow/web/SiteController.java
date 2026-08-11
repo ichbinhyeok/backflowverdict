@@ -2270,11 +2270,11 @@ public class SiteController {
 
     private String portalDetailPageTitle(String portalSlug, String portalName) {
         return switch (portalSlug.toLowerCase(Locale.US)) {
-            case "swiftcomply" -> "SwiftComply portal backflow report routes | BackflowVerdict";
-            case "vepo" -> "VEPO Envirotrax backflow report routes | BackflowVerdict";
-            case "aqua" -> "Aqua Backflow and TrackMyBackflow portal routes | BackflowVerdict";
-            case "tokay" -> "Tokay WebTest backflow report routes | BackflowVerdict";
-            case "sprybackflow" -> "SpryBackflow backflow report portal routes | BackflowVerdict";
+            case "swiftcomply" -> "SwiftComply portal by city | BackflowVerdict";
+            case "vepo" -> "VEPO / Envirotrax portal by city | BackflowVerdict";
+            case "aqua" -> "TrackMyBackflow portal by city | BackflowVerdict";
+            case "tokay" -> "Tokay WebTest portal by utility | BackflowVerdict";
+            case "sprybackflow" -> "SpryBackflow portal by utility | BackflowVerdict";
             default -> portalName + " backflow portal: city routes and report submission | BackflowVerdict";
         };
     }
@@ -2283,9 +2283,9 @@ public class SiteController {
         return switch (portalSlug.toLowerCase(Locale.US)) {
             case "swiftcomply" -> "Find SwiftComply and C3Swift backflow report routes by city, tester requirements, notice clues, and accepted filing proof.";
             case "vepo" -> "Find VEPO and Envirotrax backflow routes by city, including registered tester status, device fees, paperless submission, and accepted report proof.";
-            case "aqua" -> "Find Aqua Backflow and TrackMyBackflow routes by city, including Hazard ID, Site ID, filing fee, tester gate, and accepted report proof.";
-            case "tokay" -> "Find Tokay WebTest backflow report routes by utility, including tester approval, credentials, notice clues, and online submission proof.";
-            case "sprybackflow" -> "Find SpryBackflow backflow report routes by utility, including annual notices, tester submission, and accepted filing proof.";
+            case "aqua" -> "Find the correct TrackMyBackflow or Aqua Backflow route by city, including Hazard ID, Site ID, filing fee, tester gate, and accepted report proof.";
+            case "tokay" -> "Find the correct Tokay WebTest route by utility, including tester approval, credentials, notice clues, and online submission proof.";
+            case "sprybackflow" -> "Find the correct SpryBackflow route by utility, including annual notices, tester submission, and accepted filing proof.";
             default -> "Find " + portalName + " backflow report submission routes by city, tester requirements, notice clues, and accepted filing proof.";
         };
     }
