@@ -126,6 +126,37 @@
             </section>
         @endif
 
+        @if (guide.slug().equals("backflow-preventer-installation"))
+            <section class="bv-section bv-section--paper" data-installation-requirements>
+                <div class="bv-shell bv-document-grid">
+                    <div><p class="bv-kicker">Requirement ownership</p><h2>Backflow preventer installation requirements.</h2><p>There is no single national device-and-placement answer. Use this checklist to identify the decisions that the governing utility, adopted code, manufacturer instructions, and qualified installer must close.</p></div>
+                    <ul class="bv-fact-lines">
+                        <li><strong>Protection level:</strong> confirm the hazard classification and the accepted assembly family before selecting equipment.</li>
+                        <li><strong>Approved assembly:</strong> verify model, size, orientation, and any local approved-device list or plan-review requirement.</li>
+                        <li><strong>Placement:</strong> document access, elevation, drainage, freeze exposure, clearances, discharge route, and meter direction.</li>
+                        <li><strong>Qualified work:</strong> confirm installer, tester, permit, fire-authority, and shutdown responsibilities before scheduling.</li>
+                        <li><strong>Closeout:</strong> include the initial certified test, report submission, correction cycle, and acceptance proof.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="bv-section" data-installation-detail>
+                <div class="bv-shell bv-safety-grid">
+                    <div><p class="bv-kicker">Field detail</p><h2>Installation detail checklist.</h2><ul class="bv-check-list"><li>Property and water account tied to the governing utility</li><li>Protected system: irrigation, domestic, fire, process, or combined</li><li>Existing and proposed manufacturer, model, size, flow direction, and orientation</li><li>Upstream and downstream isolation plus service-interruption plan</li><li>Relief discharge, drain capacity, enclosure, heat, and freeze protection</li><li>Test access, maintenance clearance, permit, initial test, and report owner</li></ul></div>
+                    <div><p class="bv-kicker">Device comparison</p><h2>Choose from the required protection, not the price.</h2><ul class="bv-fact-lines"><li><a href="/rpz-vs-dcva/"><strong>RPZ vs DCVA:</strong> compare hazard protection, relief discharge, access, and testability.</a></li><li><a href="/rpz-vs-pvb/"><strong>RPZ vs PVB:</strong> compare system use, elevation, backsiphonage limits, and local acceptance.</a></li><li><a href="/backflow-preventer-installation-cost/"><strong>Installation cost scope:</strong> compare device, piping, drainage, permit, testing, and filing as separate quote lines.</a></li></ul></div>
+                </div>
+            </section>
+        @endif
+
+        @if (guide.slug().equals("backflow-preventer"))
+            <section class="bv-section bv-section--paper" data-rpz-comparison>
+                <div class="bv-shell bv-document-grid">
+                    <div><p class="bv-kicker">RPZ boundary</p><h2>Is an RPZ different from a backflow preventer?</h2><p>An RPZ is one type of testable backflow preventer. “Backflow preventer” is the broader category; RPZ, DCVA, PVB, AVB, and hose-bib devices are not interchangeable.</p></div>
+                    <div class="bv-related"><a href="/rpz-backflow-preventer/"><span>Device</span><strong>Identify an RPZ assembly</strong><b aria-hidden="true">&rarr;</b></a><a href="/rpz-vs-dcva/"><span>Compare</span><strong>RPZ versus DCVA</strong><b aria-hidden="true">&rarr;</b></a><a href="/rpz-vs-pvb/"><span>Compare</span><strong>RPZ versus PVB</strong><b aria-hidden="true">&rarr;</b></a></div>
+                </div>
+            </section>
+        @endif
+
         <section class="bv-section bv-section--paper" id="safe-checks">
             <div class="bv-shell bv-safety-grid">
                 <div><p class="bv-kicker">Safe observations</p><h2>What you can check without taking it apart</h2><ul class="bv-check-list">@for (var item : guide.safeChecks())<li>${item}</li>@endfor</ul></div>

@@ -51,6 +51,7 @@
                     @endfor
                 </div>
                 <div class="bv-kit-empty" data-kit-empty hidden>No published match is stored for that combination. Recheck the full label and use the official source below.</div>
+                <a class="bv-text-link" href="/backflow-preventer-repair-kits/">Compare another model in the complete repair-kit index <span>&rarr;</span></a>
             </div>
         </section>
 

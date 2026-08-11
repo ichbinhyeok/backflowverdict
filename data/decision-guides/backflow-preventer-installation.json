@@ -3,14 +3,14 @@
   "pageType": "installation-decision",
   "canonicalPath": "/backflow-preventer-installation/",
   "eyebrow": "Installation decision",
-  "title": "Backflow preventer installation starts with the hazard and utility rule",
-  "description": "Choose the required assembly, placement, approval, test, and report path before comparing installation quotes.",
+  "title": "Backflow preventer installation requirements and detail checklist",
+  "description": "Check backflow preventer installation requirements for assembly selection, placement, drainage, access, permits, initial testing, and utility report closeout.",
   "prompt": "What system is the installation protecting?",
-  "answer": "Do not select a device from pipe size alone. The hazard, system use, local approved-device rules, placement constraints, and post-installation test determine the job.",
+  "answer": "A complete installation is defined by the required protection level, approved assembly, field placement details, qualified work, initial test, and accepted utility closeout—not pipe size alone.",
   "urgency": "Never bypass an existing assembly or place an RPZ where relief discharge can flood, damage equipment, or create an unsafe condition. Fire and commercial systems need qualified design review.",
   "diagram": "rpz",
   "diagramAlt": "Reduced pressure backflow assembly with shutoffs, test ports, check modules, and relief discharge",
-  "aliases": ["backflow preventer installation", "install a backflow preventer", "backflow device installation requirements", "backflow preventer installer"],
+  "aliases": ["backflow preventer installation", "install a backflow preventer", "backflow device installation requirements", "backflow preventer installation requirements", "backflow preventer installation detail", "backflow preventer installer"],
   "identifiers": [
     "Record the service type: irrigation, domestic, fire, process, or combined.",
     "Photograph the existing pipe, meter direction, drainage, clearance, and model plate.",
@@ -47,11 +47,13 @@
   ],
   "related": [
     {"eyebrow": "Identify", "title": "Identify the backflow preventer", "href": "/backflow-preventer/"},
+    {"eyebrow": "Compare", "title": "RPZ versus DCVA", "href": "/rpz-vs-dcva/"},
+    {"eyebrow": "Compare", "title": "RPZ versus PVB", "href": "/rpz-vs-pvb/"},
     {"eyebrow": "Verify", "title": "Find the governing utility", "href": "/notice-finder"},
     {"eyebrow": "Closeout", "title": "Understand the backflow test", "href": "/backflow-test/"}
   ],
   "evidenceNote": "This page scopes decisions and quote line items; it does not prescribe a universal assembly. The governing utility, adopted code, manufacturer instructions, and qualified installer control the final design.",
-  "lastReviewed": "2026-08-02",
+  "lastReviewed": "2026-08-11",
   "published": true,
   "indexable": true,
   "toolType": ""
