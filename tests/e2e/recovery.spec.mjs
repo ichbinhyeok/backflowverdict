@@ -7,7 +7,7 @@ test('kit selection exposes the exact size, scope and merchant without mixing so
   const row = page.locator('[data-kit-option]:visible');
   await expect(row).toHaveCount(1);
   await expect(row).toContainText('RK34-975XLC');
-  await expect(row).toContainText('do not assume seats are included');
+  await expect(row).toContainText('Check seats, poppets, springs');
   await expect(row.locator('[data-link-kind="merchant"]')).toHaveAttribute('data-part-number', 'RK34-975XLC');
   await page.selectOption('[data-kit-size]', '1 1/4–2 in');
   await expect(page.locator('[data-kit-option]:visible')).toHaveCount(3);

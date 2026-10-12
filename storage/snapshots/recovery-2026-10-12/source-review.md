@@ -12,6 +12,8 @@ Reviewer: Codex, automated editorial review. This is a review note, not a manufa
 
 Retailer checks: SupplyHouse pages for RK34-975XL, RK34-975XLC and FEBCO 905111 were inspected separately. No retailer price, stock, review score, or affiliate relationship is copied into the site. Retailer copy is not used to override manufacturer compatibility.
 
+Final visual matrix check: XLC includes check seats and relief-valve seat components in both reviewed size bands. XLSK is a narrower seat-service reference. XLC does not include the check or relief covers shown in separate cover-kit columns. A preliminary interpretation based on the kit-description names was corrected during pre-deployment verification; use the component columns, not the word “complete”, as the authority.
+
 Local preservation: October research inspected Fort Worth's official program for installation/repair/relocation and annual testing, registered tester responsibilities and Vepo Envirotrax reporting. Arlington's published backflow ordinance remains reachable through the research service, but its complete department/irrigation link set has not been reverified; its utility-wide verification date is therefore unchanged.
 
 Remaining utilities require semantic review. The generated refresh queue does not change verification dates or publication state.
