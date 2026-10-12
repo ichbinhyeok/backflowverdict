@@ -7,6 +7,7 @@
 - Unified analytics across layouts; source, official, provider and merchant actions are separate. Saved-inquiry success uses a server persistence flash flag; attempts, spam and rejected requests do not count as completed inquiries.
 - OAuth GA4 can enumerate the backflow property, but GSC Wizard reports no property binding. Historical conversions/revenue remain unverified; no binding tool is exposed and no new browser sign-in/terms acceptance was attempted.
 - Full pre-merge Gradle suite passed (92 tests) and browser contracts passed (10/10). The remote August SEO commits were discovered and merged, preserving their homepage/portal ownership changes. Integrated Gradle verification passed (92 tests); production release is pending.
+- The first October deployment run was cancelled during image build before OCI upload/deploy after an expanded visual source check corrected XLC seat inclusion. The current matrix-based map includes seats and distinguishes separate cover kits.
 - The source queue contains 96 overdue utility records; no bulk verification-date reset was made. New national source reviews are documented separately.
 
 ## 2026-10-12 — search growth and monetization salvage research

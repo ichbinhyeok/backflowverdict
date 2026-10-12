@@ -24,7 +24,7 @@
   "identifiers": [
     "The model marking may read 975XL or 975XL2; do not substitute 975XL3 data.",
     "Two check covers sit above the reduced-pressure zone and relief assembly.",
-    "RK34 and RK114 denote different size bands. A complete XLC kit and a separate seat SK kit are different service scopes."
+    "RK34 and RK114 denote different size bands. XLC includes seats plus other internal components; XLSK is a narrower seat-service reference."
   ],
   "kits": [
     {
@@ -47,8 +47,8 @@
       "task": "Complete internal service",
       "partNumber": "RK34-975XLC",
       "kitName": "Complete repair kit",
-      "contents": "Complete kit as designated by Zurn. Seat service is separately listed; do not assume seats are included.",
-      "compatibility": "Match the size prefix and confirm the component matrix. A retailer title mentioning seats does not override the manufacturer.",
+      "contents": "Check seats, poppets, springs, and relief-valve service components shown in the official matrix. Covers are separate references.",
+      "compatibility": "Match the size prefix and the diagnosed components to the matrix. Check and relief-valve covers use separate part references.",
       "merchants": [
         {
           "seller": "SupplyHouse",
@@ -86,8 +86,8 @@
       "task": "Complete internal service",
       "partNumber": "RK114-975XLC",
       "kitName": "Complete repair kit",
-      "contents": "Complete kit as designated by Zurn. Seat service is separately listed; do not assume seats are included.",
-      "compatibility": "Match the size prefix and confirm the component matrix. A retailer title mentioning seats does not override the manufacturer."
+      "contents": "Check seats, poppets, springs, and relief-valve service components shown in the official matrix. Covers are separate references.",
+      "compatibility": "Match the size prefix and the diagnosed components to the matrix. Check and relief-valve covers use separate part references."
     },
     {
       "sizeBand": "1 1/4–2 in",
@@ -124,8 +124,8 @@
   "fieldSections": [
     {
       "id": "975xl-kit-scope",
-      "title": "975XL kit scope: read past the word “complete”.",
-      "introduction": "Use the Zurn breakdown on page 1 and exploded drawing on page 2 together. The published names distinguish a standard kit, a complete kit, rubber service, and seat service.",
+      "title": "975XL kit scope: use the component matrix.",
+      "introduction": "Compare the kit columns on page 1 with the exploded drawing on page 2. Kit names alone do not establish which seats, poppets, covers, or tools are included.",
       "firstColumn": "Observation",
       "secondColumn": "What it establishes",
       "thirdColumn": "Next step",
@@ -144,8 +144,8 @@
         },
         {
           "observation": "Seats versus other internals",
-          "meaning": "XLC and XLSK have separate references; do not presume a seat is included.",
-          "nextStep": "Match the diagnosed component against the parts matrix.",
+          "meaning": "The XLC column lists check and relief-valve seats along with other internals. XLSK is a separate, narrower seat-service kit.",
+          "nextStep": "Match the diagnosed components against the correct size column; cover kits are separate references.",
           "href": ""
         },
         {
