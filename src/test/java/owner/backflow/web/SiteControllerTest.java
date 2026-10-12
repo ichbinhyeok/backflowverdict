@@ -61,6 +61,9 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("home-query")))
                 .andExpect(content().string(containsString("action=\"/notice-finder\"")))
                 .andExpect(content().string(containsString("/backflow-preventer/")))
+                .andExpect(content().string(containsString("href=\"/backflow-preventer-repair-kits/\"")))
+                .andExpect(content().string(containsString("href=\"/backflow-preventer-installation/\"")))
+                .andExpect(content().string(containsString("Compare RPZ with other backflow preventers")))
                 .andExpect(content().string(containsString("/vacuum-breaker/")))
                 .andExpect(content().string(containsString("/backwater-valve/")))
                 .andExpect(content().string(containsString("Official and commercial routes kept separate")))
@@ -203,30 +206,35 @@ class SiteControllerTest {
 
         mockMvc.perform(get("/backflow-reporting-portals/swiftcomply"))
                 .andExpect(status().isOk())
+                .andExpect(content().string(containsString("<title>SwiftComply portal by city | BackflowVerdict</title>")))
                 .andExpect(content().string(containsString("SwiftComply for backflow testing")))
                 .andExpect(content().string(containsString("ItemList")))
                 .andExpect(content().string(containsString("/cities/texas/dallas/submit-backflow-report")));
 
         mockMvc.perform(get("/backflow-reporting-portals/vepo"))
                 .andExpect(status().isOk())
+                .andExpect(content().string(containsString("<title>VEPO / Envirotrax portal by city | BackflowVerdict</title>")))
                 .andExpect(content().string(containsString("VEPO/Envirotrax for backflow testing")))
                 .andExpect(content().string(containsString("City of Fort Worth Water Backflow Program")))
                 .andExpect(content().string(containsString("City of Irving Cross Connections and Backflow")));
 
         mockMvc.perform(get("/backflow-reporting-portals/aqua"))
                 .andExpect(status().isOk())
+                .andExpect(content().string(containsString("<title>TrackMyBackflow portal by city | BackflowVerdict</title>")))
                 .andExpect(content().string(containsString("Aqua/TrackMyBackflow for backflow testing")))
                 .andExpect(content().string(containsString("City of Euless Cross-Connection Control Program")))
                 .andExpect(content().string(containsString("City of Buena Park Water Backflow Reporting")));
 
         mockMvc.perform(get("/backflow-reporting-portals/tokay"))
                 .andExpect(status().isOk())
+                .andExpect(content().string(containsString("<title>Tokay WebTest portal by utility | BackflowVerdict</title>")))
                 .andExpect(content().string(containsString("Tokay WebTest for backflow testing")))
                 .andExpect(content().string(containsString("City of Oxnard Water Division Backflow Prevention")))
                 .andExpect(content().string(containsString("Dublin San Ramon Services District Backflow Testing")));
 
         mockMvc.perform(get("/backflow-reporting-portals/sprybackflow"))
                 .andExpect(status().isOk())
+                .andExpect(content().string(containsString("<title>SpryBackflow portal by utility | BackflowVerdict</title>")))
                 .andExpect(content().string(containsString("SpryBackflow for backflow testing")))
                 .andExpect(content().string(containsString("Aurora Water Backflow Prevention")))
                 .andExpect(content().string(containsString("City of Greeley Cross-Connection Control Program")));

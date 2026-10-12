@@ -1,1 +1,46 @@
-﻿{"slug":"backflow-reporting-portal","pageType":"workflow","canonicalPath":"/backflow-reporting-portal/","eyebrow":"Submission workflow","title":"Backflow reporting portal: find the official filing route","description":"The correct portal is established by the issuing utility or authority, not search results.","prompt":"How can the official reporting portal be verified before information is submitted?","answer":"The correct portal is established by the issuing utility or authority, not search results. Confirm the official domain, property account, assembly, tester record, and receipt mechanism before entering data.","urgency":"Do not send property or tester data to an unverified portal. Escalate rejected files or missing receipt evidence before the deadline.","diagram":"test","diagramAlt":"Backflow decision workflow reference","aliases":["backflow reporting portal","backflow report portal","submit backflow test online"],"identifiers":["Official issuer links establish the authorized filing route.","A field test report can require owner or contractor action to become an accepted filing.","A rejection must be tied back to the exact assembly and resubmission owner."],"choices":[{"label":"I have an official notice or requirement","detail":"Match it to the exact property and assembly before booking work.","href":"/backflow-test-notice/","tone":"action"},{"label":"The device failed or needs service","detail":"Define repair, retest, and filing responsibility separately.","href":"/failed-backflow-test/","tone":"warning"},{"label":"I need a complete scope","detail":"Include access, testing, closeout, and documentation in the comparison.","href":"/commercial-backflow-inspection/","tone":"action"}],"steps":[{"label":"01","title":"Establish the governing record","body":"Start at the issuer notice or website and verify the domain."},{"label":"02","title":"Define the complete work","body":"Check all property, assembly, tester, date, and result fields before submission."},{"label":"03","title":"Document completion","body":"Save confirmation and resolve rejection messages with the responsible party."}],"safeChecks":["Use the exact property and assembly record before authorizing work.","Confirm official program and manufacturer information for the decision.","Keep the final result and submission evidence together."],"stopConditions":["The portal is not linked or named by the issuer.","Submission cannot be proven after upload."],"notThisDevice":["A generic product listing is not an approval record.","A different system type may require a different workflow.","This page does not replace a qualified on-site assessment."],"related":[{"eyebrow":"Notice","title":"Review a backflow test notice","href":"/backflow-test-notice/"},{"eyebrow":"Failure","title":"Handle a failed backflow test","href":"/failed-backflow-test/"},{"eyebrow":"Report","title":"Submit a backflow report","href":"/submit-backflow-report/"}],"evidenceNote":"This path is governed by the official utility or authority requirement, then by exact manufacturer documentation for the identified assembly.","lastReviewed":"2026-08-02","published":true,"indexable":true,"toolType":"identifier"}
+{
+  "slug": "backflow-reporting-portal",
+  "pageType": "workflow",
+  "canonicalPath": "/backflow-reporting-portal/",
+  "eyebrow": "Portal verification workflow",
+  "title": "Verify an official backflow report portal before filing",
+  "description": "Confirm the issuing utility, official domain, property and assembly identifiers, tester eligibility, and receipt path before entering a backflow test report.",
+  "prompt": "How can the official reporting portal be verified before information is submitted?",
+  "answer": "The issuing utility or authority establishes the correct portal. Confirm its official link, the property and assembly record, tester eligibility, and the accepted-submission receipt before entering data.",
+  "urgency": "Do not send property or tester data to an unverified portal. Escalate rejected files or missing receipt evidence before the deadline.",
+  "diagram": "test",
+  "diagramAlt": "Backflow report portal verification workflow",
+  "aliases": ["verify backflow reporting portal", "official backflow report portal", "verify backflow report submission portal"],
+  "identifiers": [
+    "The governing utility links or names the authorized filing route.",
+    "The property, assembly, tester, and notice identifiers match the official record.",
+    "The workflow provides a receipt, accepted status, or other documented completion proof."
+  ],
+  "choices": [
+    {"label": "I need the portal for a city or utility", "detail": "Use the portal-family index to match BSI, WEIRS, SwiftComply, VEPO, TrackMyBackflow, Tokay, or SpryBackflow to a local workflow.", "href": "/backflow-reporting-portals", "tone": "action"},
+    {"label": "I have an official notice", "detail": "Match the issuer, property, assembly, and notice identifiers before filing.", "href": "/backflow-test-notice/", "tone": "action"},
+    {"label": "The device failed or needs service", "detail": "Define repair, retest, and resubmission responsibility separately.", "href": "/failed-backflow-test/", "tone": "warning"}
+  ],
+  "steps": [
+    {"label": "01", "title": "Establish the governing record", "body": "Start with the issuer notice or official utility website and follow its current portal link."},
+    {"label": "02", "title": "Match the filing identity", "body": "Verify the property, assembly, tester, date, result, and required notice or device identifiers."},
+    {"label": "03", "title": "Prove accepted completion", "body": "Save the receipt or accepted status and route any rejection to the party responsible for correction and resubmission."}
+  ],
+  "safeChecks": [
+    "Open the portal from the issuing utility or authority rather than a copied search result.",
+    "Confirm the exact property and assembly before authorizing or uploading work.",
+    "Keep the test result, submission receipt, and any correction notice together."
+  ],
+  "stopConditions": ["The portal is not linked or named by the issuer.", "The record identifiers do not match the notice or assembly.", "Submission cannot be proven after upload."],
+  "notThisDevice": ["A portal-family index helps discovery but does not establish the local rule.", "Portal access does not prove tester eligibility.", "This page does not replace the issuing authority's instructions."],
+  "related": [
+    {"eyebrow": "Lookup", "title": "Browse portal families and mapped utilities", "href": "/backflow-reporting-portals"},
+    {"eyebrow": "Notice", "title": "Review a backflow test notice", "href": "/backflow-test-notice/"},
+    {"eyebrow": "Report", "title": "Find a local report-submission route", "href": "/submit-backflow-report"}
+  ],
+  "evidenceNote": "Use the governing utility or authority source to establish the authorized portal, then preserve the accepted filing evidence.",
+  "lastReviewed": "2026-08-11",
+  "published": true,
+  "indexable": true,
+  "toolType": "identifier"
+}
