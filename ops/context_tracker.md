@@ -1,5 +1,11 @@
 # Context Tracker
 
+## 2026-10-12 — post-expansion search submissions
+
+- User expressly requested sitemap and manual submissions. Re-submitted sitemap index, main and priority XML; all three accepted and confirmed at 11:04:42 UTC. Main downloaded at 11:04:45 UTC with zero reported warnings/errors; other two downloads remained pending at the subsequent read.
+- All five expanded guides are already indexed with matching canonicals, but reported crawls predate the release. Used the authenticated Search Console UI to request each URL separately; all five confirmed addition to the priority crawl queue.
+- Saved private API/browser receipts and ops/search-submission-2026-10-12.md. No code, production runtime, experiment baseline or review gates changed; submission does not establish completed recrawl or traffic growth.
+
 ## 2026-10-12 — diagram and leak evidence expansion
 
 - User requested the installation-style source expansion and production deployment for diagram/leak pages. Scoped four existing focus URLs: diagram, general leak, PVB/vacuum-breaker leak and double-check leak. Preserved canonical/query ownership and 107 winner contracts.
@@ -73,6 +79,7 @@
 - Deployment now runs the full test suite and no longer uses destructive `rsync --delete` for project data.
 
 ## Current status
+- Post-expansion sitemap submissions and all five manual indexing requests are accepted; new-content recrawl remains unconfirmed. See ops/search-submission-2026-10-12.md.
 - Diagram and three leak focus pages are merged and verified in production at runtime `79a0659`; evidence and release provenance are in ops/diagram-leaks-evidence-2026-10-12.md. Search/revenue effects remain unmeasured.
 - Installation evidence expansion is merged and verified in production at runtime `e9a169d`. Search effects remain unmeasured because available GSC data ends October 9, before either October 12 intervention.
 - As of 2026-10-12, live research supports a small retained search asset but does not establish a scalable diagnostic-content or revenue engine; see the October salvage report. The three inspected core URLs are indexed with matching canonicals.
@@ -86,6 +93,7 @@
 - `/readyz` must stay `ready` as long as utility pages are explicitly published and not blocked, even when freshness warnings exist.
 
 ## Latest decisions
+- Submit the five materially updated guides once after release, then evaluate recrawl and settled performance; do not interpret request receipts as updated indexing or repeatedly request the same unchanged URL.
 - Extend inspectable model evidence and attributed cases to the four existing diagram/leak focus URLs; preserve the October 12 baseline and original review gates. Keep historical incidents and prevention projects distinct from leak repair outcomes.
 - Strengthen installation detail intent on the existing URL with inspectable manufacturer documents and attributed real projects. Keep code/approval and cost intent on their existing routes; no further topic expansion is needed for this change.
 - Record the installation expansion as a second October 12 intervention; retain the original 28-day baseline and December/January review dates.
@@ -104,6 +112,7 @@
 - Automated source URL audits can refresh freshness dates only when unresolved URLs are also recorded in `data/ops/broken_links.csv` for follow-up suppression.
 
 ## What changed this session
+- Completed three sitemap submissions, five URL inspections and five actual manual UI indexing requests; saved their distinct receipts and preserved the existing recovery experiment.
 - Expanded and deployed the diagram and three leak pages, added original observation maps, generalized native case/question rendering and verified source-event classification plus full local regressions. Public checks and production browser QA passed; saved the additional GSC annotation without resetting the recovery experiment.
 - Added installation case reports, model drawing deep links, an original site schematic, a quote/observation brief and accessible questions; verified full regression suites and the new browser behavior.
 - Completed installation production verification and saved a GSC release annotation. All five contents anchors, two project reports and six native questions passed browser checks, including keyboard and no-JavaScript behavior.
@@ -180,12 +189,14 @@
 - Strengthened `/backflow-reporting-portals` as a lookup database by adding a portal family matrix for BSI, WEIRS, SwiftComply, VEPO, Aqua/TrackMyBackflow, Tokay, and SpryBackflow searches.
 
 ## Next recommended tasks
+Check the post-release crawl dates for the five guides and pending sitemap downloads at the next review; compare settled performance after recrawl without resetting day zero.
 1. Link properties/531520200 to sc-domain:backflowpath.com in GSC Wizard's Analytics page; verify lead_form_success in GA4 and register needed event dimensions. Binding cannot be changed through the exposed API.
 2. Review equal settled 28-day GSC windows weekly with scripts/recovery_scorecard.py, then apply the December 11 / January 10 gates with commercial evidence and seasonality judgment.
 3. Work the semantic utility source-refresh queue, prioritizing existing click winners. Preserve older dates until the full record is reverified; do not confuse bot-blocked fetches with dead links.
 4. Retain local/portal query ownership while watching source navigation separately from commercial intent. Add affiliate tracking only after a real agreement and exact fit check.
 
 ## Open questions
+- When Google will recrawl the five updated guides and reflect the new content; the manual requests confirmed queue acceptance only.
 - Whether the diagram and symptom-specific improvements attract more qualified search landings after recrawl; publication and passing QA alone do not establish growth or revenue.
 - Whether installation/detail search visibility and qualified next-step behavior improve after recrawl; the current small, pre-release query sample cannot establish impact.
 - Whether the installation page needs additional first-hand field documentation after its present manufacturer-sourced comparison accumulates enough settled search data.
