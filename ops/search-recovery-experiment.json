@@ -16,6 +16,20 @@
       "deploymentRun": "https://github.com/ichbinhyeok/backflowverdict/actions/runs/38235893694",
       "productionVerifiedAt": "2026-10-12T10:30:57Z",
       "gscAnnotationId": "196d2c3d-41b7-486a-bb9e-c7a635504b71"
+    },
+    {
+      "date": "2026-10-12",
+      "paths": [
+        "/backflow-preventer-diagram/",
+        "/backflow-preventer-leaking/",
+        "/vacuum-breaker-leaking/",
+        "/double-check-valve-leaking/"
+      ],
+      "description": "Exact-model manufacturer evidence, original DCVA/PVB observation maps, attributed project and historical cases, native questions",
+      "commit": "79a06595603e2a522a27ea868f94b43d9e6c4595",
+      "deploymentRun": "https://github.com/ichbinhyeok/backflowverdict/actions/runs/38238719889",
+      "productionVerifiedAt": "2026-10-12T10:58:00Z",
+      "gscAnnotationId": "48ad80c1-d71f-4bb4-b2cc-af571665809c"
     }
   ],
   "site": "https://backflowpath.com",
