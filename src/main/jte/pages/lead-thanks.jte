@@ -1,8 +1,9 @@
 @import owner.backflow.web.PageMeta
 @param PageMeta page
+@param boolean leadSaved = false
 
 @template.layouts.app(page = page, content = @`
-    <section class="page-hero">
+    <section class="page-hero" data-lead-saved="${leadSaved}">
         <div class="container">
             <span class="eyebrow">Request received</span>
             <h1>Thanks, your request is in</h1>

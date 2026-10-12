@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class LeadController {
@@ -90,7 +91,8 @@ public class LeadController {
             @RequestParam(value = "rt", required = false) String routingToken,
             @RequestParam(required = false) String consentToRouting,
             @RequestParam(required = false) String companyWebsite,
-            HttpServletRequest request
+            HttpServletRequest request,
+            RedirectAttributes redirectAttributes
     ) {
         if (companyWebsite != null && !companyWebsite.isBlank()) {
             return "redirect:/leads/thanks";
@@ -129,6 +131,7 @@ public class LeadController {
                 trustedContext.routingStatus(),
                 trustedContext.routingReason()
         ));
+        redirectAttributes.addFlashAttribute("leadSaved", true);
         return "redirect:/leads/thanks";
     }
 

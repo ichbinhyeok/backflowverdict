@@ -1,0 +1,34 @@
+{
+  "name": "Existing URL search-to-revenue recovery",
+  "preparedAt": "2026-10-12",
+  "deploymentDate": null,
+  "deploymentCommit": null,
+  "site": "https://backflowpath.com",
+  "baseline": {
+    "start": "2026-09-12",
+    "end": "2026-10-09",
+    "siteClicks": 91,
+    "siteImpressions": 7937,
+    "focusPageClicks": 8,
+    "focusPageImpressions": 879,
+    "note": "GSC web search. Site totals and per-page aggregation are distinct. Targets are investment gates, not forecasts."
+  },
+  "focusPaths": [
+    "/backflow-preventer-installation/",
+    "/backflow-preventer-diagram/",
+    "/vacuum-breaker-leaking/",
+    "/models/wilkins-975xl/",
+    "/double-check-valve-leaking/",
+    "/models/febco-825y/",
+    "/backflow-preventer-repair-kits/",
+    "/backflow-preventer-leaking/"
+  ],
+  "gates": [
+    {"day": 60, "siteClicks28Days": 150, "focusClicks28Days": 25},
+    {"day": 90, "siteClicks28Days": 200, "focusClicks28Days": 40}
+  ],
+  "stopRule": "At day 90, if site clicks remain below 150, focus pages are stalled, and no qualified commercial progress is evidenced, stop new development and retain the useful existing asset. Review seasonality and data completeness before deciding.",
+  "commercialEvents": ["kit_match_result", "merchant_outbound_click", "request_help_click", "lead_form_success"],
+  "nonRevenueEvents": ["manufacturer_source_click", "official_source_click", "official_route_click", "tester_route_click", "report_submission_route_click"],
+  "revenueRule": "Clicks and saved inquiries are not revenue. Record accepted relevant inquiries, signed commercial terms, and collected payments separately."
+}

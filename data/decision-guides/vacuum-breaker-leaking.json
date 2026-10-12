@@ -1,4 +1,162 @@
 {
-  "slug":"vacuum-breaker-leaking","pageType":"problem","canonicalPath":"/vacuum-breaker-leaking/","eyebrow":"Problem path 02","title":"A vacuum breaker leak changes meaning with timing and device type","description":"Distinguish brief venting, debris, freeze damage, and continuous discharge on PVB, atmospheric, and hose-bib devices.","prompt":"When does the water appear?","answer":"Vacuum breakers intentionally admit air, so the vent cannot be sealed. A short event during pressure change is not the same evidence as continuous flow or a cracked bonnet.","urgency":"Do not cap the vent. Isolate only through a known safe procedure, especially when freezing or flooding is possible.","diagram":"pvb-leak","diagramAlt":"Pressure vacuum breaker diagram marking bonnet, air inlet, and body leak points","aliases":["PVB leaking","anti siphon valve leaking","hose bib vacuum breaker spraying","vacuum breaker dripping"],"identifiers":["Start-up or shutdown only: record how long the release lasts.","Continuous from the bonnet: debris, sealing, pressure, or damage may need service.","From a visible crack: freeze damage is more likely than a replaceable seal alone."],"choices":[{"label":"Briefly when irrigation starts or stops","detail":"Observe duration, frequency, and whether the poppet reseats.","href":"#safe-checks","tone":"action"},{"label":"Continuously from the top or vent","detail":"Do not block it; arrange inspection before water damage or freezing.","href":"/get-help/?issueType=irrigation&source=/vacuum-breaker-leaking/","tone":"urgent"},{"label":"From a cracked bonnet or body","detail":"Compare replacement scope and any required retest.","href":"/backflow-repair-or-replace/","tone":"urgent"},{"label":"At an outdoor faucet attachment","detail":"Confirm it is a hose-bib device, not a testable PVB.","href":"/vacuum-breaker/","tone":"neutral"}],"steps":[{"label":"01","title":"Identify PVB, AVB, or hose-bib","body":"The repair path depends on the actual device family."},{"label":"02","title":"Observe one complete cycle","body":"Record before start, during flow, shutdown, and several minutes after."},{"label":"03","title":"Check local consequences","body":"A testable irrigation assembly may require a test after repair or replacement."}],"safeChecks":["Remove no covers while pressurized.","Look for freeze cracks and loose external fittings.","Record the make, model, pipe size, and installation height.","Keep the air inlet open."],"stopConditions":["Continuous flow","Visible cracking","Freezing spray","Unknown shutoff or a commercial system"],"notThisDevice":["An RPZ relief valve is below a larger inline body.","A pressure regulator does not use an atmospheric air inlet.","A sewer valve does not discharge clean supply water."],"related":[{"eyebrow":"Identify","title":"Vacuum breaker types","href":"/vacuum-breaker/"},{"eyebrow":"Decision","title":"Repair or replace","href":"/backflow-repair-or-replace/"},{"eyebrow":"Local","title":"Check the utility rule","href":"/notice-finder"}],"evidenceNote":"The page owns the observable leak decision. It does not duplicate model-specific repair instructions or invent a local testing rule.","lastReviewed":"2026-08-02","published": true, "indexable": true
-,"toolType":"diagnostic"
+  "slug": "vacuum-breaker-leaking",
+  "pageType": "problem",
+  "canonicalPath": "/vacuum-breaker-leaking/",
+  "eyebrow": "Problem path 02",
+  "title": "Vacuum breaker leaking: top, vent, or hose connection?",
+  "description": "Locate a leaking vacuum breaker and distinguish PVB startup spillage, continuous bonnet discharge, freeze cracks, and hose-bib leakage before choosing parts.",
+  "prompt": "When does the water appear?",
+  "answer": "Vacuum breakers intentionally admit air, so the vent cannot be sealed. A short event during pressure change is not the same evidence as continuous flow or a cracked bonnet.",
+  "urgency": "Do not cap the vent. Isolate only through a known safe procedure, especially when freezing or flooding is possible.",
+  "diagram": "pvb-leak",
+  "diagramAlt": "Pressure vacuum breaker diagram marking bonnet, air inlet, and body leak points",
+  "aliases": [
+    "PVB leaking",
+    "anti siphon valve leaking",
+    "hose bib vacuum breaker spraying",
+    "vacuum breaker dripping"
+  ],
+  "identifiers": [
+    "Start-up or shutdown only: record how long the release lasts.",
+    "Continuous from the bonnet: debris, sealing, pressure, or damage may need service.",
+    "From a visible crack: freeze damage is more likely than a replaceable seal alone."
+  ],
+  "choices": [
+    {
+      "label": "Briefly when irrigation starts or stops",
+      "detail": "Observe duration, frequency, and whether the poppet reseats.",
+      "href": "#safe-checks",
+      "tone": "action"
+    },
+    {
+      "label": "Continuously from the top or vent",
+      "detail": "Do not block it; arrange inspection before water damage or freezing.",
+      "href": "/get-help/?issueType=irrigation&source=/vacuum-breaker-leaking/",
+      "tone": "urgent"
+    },
+    {
+      "label": "From a cracked bonnet or body",
+      "detail": "Compare replacement scope and any required retest.",
+      "href": "/backflow-repair-or-replace/",
+      "tone": "urgent"
+    },
+    {
+      "label": "At an outdoor faucet attachment",
+      "detail": "Confirm it is a hose-bib device, not a testable PVB.",
+      "href": "/vacuum-breaker/",
+      "tone": "neutral"
+    }
+  ],
+  "steps": [
+    {
+      "label": "01",
+      "title": "Identify PVB, AVB, or hose-bib",
+      "body": "The repair path depends on the actual device family."
+    },
+    {
+      "label": "02",
+      "title": "Observe one complete cycle",
+      "body": "Record before start, during flow, shutdown, and several minutes after."
+    },
+    {
+      "label": "03",
+      "title": "Check local consequences",
+      "body": "A testable irrigation assembly may require a test after repair or replacement."
+    }
+  ],
+  "safeChecks": [
+    "Remove no covers while pressurized.",
+    "Look for freeze cracks and loose external fittings.",
+    "Record the make, model, pipe size, and installation height.",
+    "Keep the air inlet open."
+  ],
+  "stopConditions": [
+    "Continuous flow",
+    "Visible cracking",
+    "Freezing spray",
+    "Unknown shutoff or a commercial system"
+  ],
+  "notThisDevice": [
+    "An RPZ relief valve is below a larger inline body.",
+    "A pressure regulator does not use an atmospheric air inlet.",
+    "A sewer valve does not discharge clean supply water."
+  ],
+  "related": [
+    {
+      "eyebrow": "Identify",
+      "title": "Vacuum breaker types",
+      "href": "/vacuum-breaker/"
+    },
+    {
+      "eyebrow": "Decision",
+      "title": "Repair or replace",
+      "href": "/backflow-repair-or-replace/"
+    },
+    {
+      "eyebrow": "Local",
+      "title": "Check the utility rule",
+      "href": "/notice-finder"
+    },
+    {
+      "eyebrow": "Model",
+      "title": "Watts 800M4 parts and model checks",
+      "href": "/models/watts-800m4/"
+    }
+  ],
+  "evidenceNote": "The page owns the observable leak decision. It does not duplicate model-specific repair instructions or invent a local testing rule.",
+  "lastReviewed": "2026-10-12",
+  "published": true,
+  "indexable": true,
+  "toolType": "diagnostic",
+  "fieldSections": [
+    {
+      "id": "leak-location",
+      "title": "Where and when is the vacuum breaker leaking?",
+      "introduction": "Record a full start/run/stop cycle from a safe distance. The 800M4 manual describes startup spillage while its air inlet is still open; persistent flow needs a different assessment.",
+      "firstColumn": "Observation",
+      "secondColumn": "What it establishes",
+      "thirdColumn": "Next step",
+      "rows": [
+        {
+          "observation": "PVB top / air inlet at startup",
+          "meaning": "A brief event while pressure builds can differ from a leak that continues during steady operation.",
+          "nextStep": "Record duration and whether the release stops. Follow the exact startup instructions; do not improvise valve operation.",
+          "href": ""
+        },
+        {
+          "observation": "PVB bonnet continuously during flow",
+          "meaning": "Timing alone cannot distinguish debris, seals, pressure conditions, or damage.",
+          "nextStep": "Keep the vent open and request a model-specific inspection.",
+          "href": "/models/watts-800m4/"
+        },
+        {
+          "observation": "Bonnet, body, or fitting with a visible crack",
+          "meaning": "A damaged pressure boundary changes repair scope; a seal kit may not solve it.",
+          "nextStep": "Avoid pressurized disassembly; compare qualified replacement and retest scope.",
+          "href": "/backflow-repair-or-replace/"
+        },
+        {
+          "observation": "Hose-end vent after shutting off the faucet",
+          "meaning": "First establish that this is a hose-bib vacuum breaker, not a testable PVB.",
+          "nextStep": "Compare the attachment type and manufacturer instructions.",
+          "href": "/hose-bib-vacuum-breaker/"
+        }
+      ],
+      "sources": [
+        {
+          "eyebrow": "Manufacturer",
+          "title": "Watts 800M4 / LF800M4 manual: startup and service",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/630139-source/rp-is-800m4-2409"
+        },
+        {
+          "eyebrow": "Manufacturer",
+          "title": "Watts Series 8 hose-connection vacuum breaker",
+          "href": "https://www.watts.com/products/plumbing-flow-control-solutions/backflow-preventers/vacuum-breakers/8"
+        }
+      ],
+      "diagram": null,
+      "diagramAlt": null,
+      "caption": null
+    }
+  ]
 }

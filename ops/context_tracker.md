@@ -1,5 +1,22 @@
 # Context Tracker
 
+## 2026-10-12 — focused search recovery implementation
+
+- User authorized the proposed work with “다 작업해봐”. Strengthened five existing decision pages, two model passports and the repair-kit hub; no new national URL portfolio was added.
+- Added source-backed field tables and a conceptual RPZ schematic, corrected 975XL kit scope and reviewed size coverage, and added three explicitly uncompensated retailer links after manufacturer matching.
+- Unified analytics across layouts; source, official, provider and merchant actions are separate. Saved-inquiry success uses a server persistence flash flag; attempts, spam and rejected requests do not count as completed inquiries.
+- OAuth GA4 can enumerate the backflow property, but GSC Wizard reports no property binding. Historical conversions/revenue remain unverified; no binding tool is exposed and no new browser sign-in/terms acceptance was attempted.
+- Full pre-merge Gradle suite passed (92 tests) and browser contracts passed (10/10). The remote August SEO commits were discovered and merged, preserving their homepage/portal ownership changes. Integrated Gradle verification passed (92 tests); production release is pending.
+- The source queue contains 96 overdue utility records; no bulk verification-date reset was made. New national source reviews are documented separately.
+
+## 2026-10-12 — search growth and monetization salvage research
+
+- Completed a read-only business/search review using live GSC daily/page/query/country data, three URL inspections, public HTML/JS/sitemaps, historical Keyword Planner exports, manufacturer/merchant/competitor sources, Google guidance, and independent research.
+- Full Korean report and reproducible evidence: `analysis/salvage_2026-10-12/REPORT.md`, `evidence.json`, `analyze.py`, CSV outputs, live snapshots, and `traffic_evidence.png`.
+- Consecutive 28-day property clicks: 121 → 106 → 91; latest window is 2026-09-12 through 2026-10-09. Latest page-row click sum is 93 and must not be conflated with property clicks. Visible query data accounts for only 1 click.
+- Current public installation and repair-kit pages already expose the August ranking-intervention titles/content, despite older context describing those changes as undeployed. Deployment commit provenance was not established.
+- Recommendation, not an implemented or owner-approved strategy change: preserve local winners and validate eight existing installation/diagram/leak/model/kit pages for 60–90 days before further topic expansion. Current eight-page baseline: 879 impressions and 8 page clicks.
+- GA4 property 531520200 denied service-account access. No current sessions, conversion, approved-lead, or revenue claim was made. No product code, public data, deployment, campaign, or external message was changed.
 ## 2026-08-11 — repository-wide SEO execution
 
 - Crawled all 1,323 sitemap URLs locally; every URL returned 200 with one H1, unique title and description, an indexable robots directive, and a matching canonical.
@@ -37,9 +54,9 @@
 - Deployment now runs the full test suite and no longer uses destructive `rsync --delete` for project data.
 
 ## Current status
-- The repository-wide SEO pass is merge-ready locally: full Gradle tests and Playwright 6/6 pass, and the sitemap crawl has no metadata, canonical, status, or internal-link defects.
+- As of 2026-10-12, live research supports a small retained search asset but does not establish a scalable diagnostic-content or revenue engine; see the October salvage report. The three inspected core URLs are indexed with matching canonicals.
 - The three manually requested BackflowVerdict launch URLs are indexed as of 2026-08-11 and have begun receiving low-volume exploratory impressions.
-- The first ranking pass is implemented locally and verified, but is not yet committed or deployed.
+- The October recovery implementation is committed on codex/search-recovery-2026-10; integrated Gradle verification passed and production release is pending.
 - BackflowPath is tracked as an owner-facing utility-first compliance product.
 - The public site centers on utility, state, metro, guide, tester, failed-test, provider, and request-help pages.
 - Lead capture remains file-backed and manually reviewed through `/admin`.
@@ -48,8 +65,8 @@
 - `/readyz` must stay `ready` as long as utility pages are explicitly published and not blocked, even when freshness warnings exist.
 
 ## Latest decisions
-- Let `/backflow-reporting-portals` own generic portal-family lookup; keep `/backflow-reporting-portal/` narrowly focused on verifying an official filing route before data is submitted.
-- Use the 74,700-impression / 3.75%-CTR model as a measurable portfolio requirement, not a traffic promise.
+- Execute the authorized eight-URL recovery experiment; use actual production verification as day zero, preserve local winners, and require commercial evidence separately from source navigation. See ops/search-recovery-runbook.md.
+- October research recommendation: evaluate purchase-adjacent search growth separately from free compliance navigation; do not use the historical average-position-5 traffic model as a forecast. This is a proposed investment rule, not a shipped product change.
 - Do not passively wait on low initial rankings or repeat indexing requests; improve query ownership and visible evidence now, then judge results on a 7-day cadence after deployment.
 - Use 50 impressions per page or 14 elapsed days as the minimum signal before treating a new page's average position as stable enough for a major rewrite decision.
 - Keep the plural repair-kit finder focused on model/size/part lookup, the singular repair-kit decision guide focused on scope selection, and the installation code page focused on authority/approval workflow.
@@ -63,6 +80,8 @@
 - Automated source URL audits can refresh freshness dates only when unresolved URLs are also recorded in `data/ops/broken_links.csv` for follow-up suppression.
 
 ## What changed this session
+- Implemented the October field references, model compatibility corrections, uncompensated merchant links, shared analytics, persistence-confirmed inquiry conversion, and recovery scorecard/source queue.
+- Added the 2026-10-12 salvage research report, original GSC evidence, derived CSVs, public HTML snapshots, and verified traffic chart. Confirmed that external-link events currently mix merchant/provider and official/manufacturer destinations, and form-submit events do not establish accepted or paid leads.
 - Added homepage links to the three priority national pages, tightened exact portal-family titles, and separated portal lookup from portal-verification intent.
 - Crawled all sitemap pages and internal links, parsed priority JSON-LD, and visually checked desktop and mobile output in Chromium.
 - Queried live GSC URL inspection, sitemap, page/query, period-comparison, striking-distance, and cannibalization data on 2026-08-11.
@@ -133,14 +152,14 @@
 - Strengthened `/backflow-reporting-portals` as a lookup database by adding a portal family matrix for BSI, WEIRS, SwiftComply, VEPO, Aqua/TrackMyBackflow, Tokay, and SpryBackflow searches.
 
 ## Next recommended tasks
-1. Review, commit, and deploy the 2026-08-11 ranking intervention, then confirm the production HTML, canonicals, structured data, and sitemap modified dates.
-2. Recheck the three launch pages after 7 days and again at 50 impressions per page; compare query fit, top-20 entry, impressions, and clicks rather than average position alone.
-3. If a page remains outside position 30 after 50 impressions or 14 days, run a second pass on SERP format, evidence depth, internal-link concentration, and external authority.
-4. Measure whether the new portal ownership and exact-family titles reduce `envirotrax`, `trackmybackflow`, and `vepo backflow` URL splitting without weakening utility-first local routes.
-5. Continue resolving confirmed 404 rows in `data/ops/broken_links.csv` before bot-protected 403/time-out rows.
+1. Finish integrated tests, release through the existing deployment pipeline, and record the actual verified deployment date and commit in the experiment manifest.
+2. Link properties/531520200 to sc-domain:backflowpath.com in GSC Wizard's Analytics page; verify lead_form_success in GA4 and register needed event dimensions.
+3. Review equal settled 28-day GSC windows weekly with scripts/recovery_scorecard.py, then apply the day-60/day-90 gates with commercial evidence and seasonality judgment.
+4. Work the semantic utility source-refresh queue, prioritizing existing click winners. Preserve older dates until the full record is reverified; do not confuse bot-blocked fetches with dead links.
+5. Retain local/portal query ownership while watching source navigation separately from commercial intent. Add affiliate tracking only after a real agreement and exact fit check.
 
 ## Open questions
-- Whether exact portal-family title changes lift CTR at positions 5–10 without moving generic portal impressions away from the lookup hub.
+- Whether current approved/paid leads exist, which GA4 property is authoritative for all production routes, and whether installation/leak/model improvements can increase purchase-adjacent organic landings under the proposed 60–90-day experiment.
 - Whether the repair-kit finder needs additional model cohorts before the current ten model passports accumulate enough exact-query impressions.
 - Whether installation demand separates into a national detail page and local installation pages after the next 14-day sample, or remains best consolidated in the current national decision page plus utility overlay.
 - Whether legacy internal provider-status fields should be renamed in code and data files after the public cleanup is complete.

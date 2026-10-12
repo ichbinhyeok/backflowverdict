@@ -106,6 +106,8 @@
             </section>
         @endif
 
+        @template.components.field-sections(sections = guide.fieldSections())
+
         <section class="bv-section bv-section--ink" id="workflow">
             <div class="bv-shell">
                 <div class="bv-section-heading"><p class="bv-kicker">Evidence sequence</p><h2>Move in this order</h2></div>

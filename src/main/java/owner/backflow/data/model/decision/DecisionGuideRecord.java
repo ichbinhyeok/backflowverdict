@@ -26,6 +26,10 @@ public record DecisionGuideRecord(
         String lastReviewed,
         boolean published,
         boolean indexable,
-        String toolType
+        String toolType,
+        List<DecisionFieldSection> fieldSections
 ) {
+    public DecisionGuideRecord {
+        fieldSections = fieldSections == null ? List.of() : List.copyOf(fieldSections);
+    }
 }

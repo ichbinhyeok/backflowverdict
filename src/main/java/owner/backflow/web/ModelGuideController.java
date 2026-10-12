@@ -63,7 +63,7 @@ public class ModelGuideController {
                 "/backflow-preventer-repair-kits/",
                 false,
                 repairKitFinderStructuredData(guides),
-                "2026-08-11"
+                "2026-10-12"
         ));
         model.addAttribute("modelGuides", guides);
         return "pages/repair-kit-finder";
@@ -95,9 +95,8 @@ public class ModelGuideController {
         article.put("dateModified", guide.lastReviewed());
         article.put("mainEntityOfPage", base + guide.canonicalPath());
         article.putObject("about")
-                .put("@type", "Product")
-                .put("name", guide.manufacturer() + " " + guide.model())
-                .put("manufacturer", guide.manufacturer());
+                .put("@type", "Thing")
+                .put("name", guide.manufacturer() + " " + guide.model());
         ArrayNode citations = article.putArray("citation");
         guide.sources().forEach(source -> citations.add(source.url()));
         ObjectNode breadcrumbs = graph.addObject();
@@ -123,7 +122,7 @@ public class ModelGuideController {
         page.put("@type", "CollectionPage");
         page.put("name", "Backflow preventer repair kits by model and size");
         page.put("description", "Match official backflow preventer repair-kit references by manufacturer, model, nominal size, and repair scope.");
-        page.put("dateModified", "2026-08-11");
+        page.put("dateModified", "2026-10-12");
         page.put("url", base + "/backflow-preventer-repair-kits/");
         ObjectNode itemList = page.putObject("mainEntity");
         itemList.put("@type", "ItemList");

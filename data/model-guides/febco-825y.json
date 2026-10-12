@@ -3,7 +3,12 @@
   "canonicalPath": "/models/febco-825y/",
   "manufacturer": "FEBCO",
   "model": "825Y / 825YA / LF825Y / LF825YA",
-  "aliases": ["FEBCO 825Y repair kit", "FEBCO LF825Y repair kit", "FEBCO 825YA parts", "825Y backflow repair kit"],
+  "aliases": [
+    "FEBCO 825Y repair kit",
+    "FEBCO LF825Y repair kit",
+    "FEBCO 825YA parts",
+    "825Y backflow repair kit"
+  ],
   "deviceType": "Reduced pressure zone assembly — selected official service parts",
   "title": "FEBCO 825Y repair kits by size, check seat, and rubber service",
   "description": "Identify the FEBCO 825Y-family label and select the manufacturer-published check-seat or complete-rubber service reference for the matching size band.",
@@ -12,24 +17,134 @@
   "statusNote": "Confirm 825Y versus LF825Y and the nominal size before ordering. This page does not claim to cover every relief-valve, check, or sensor configuration in the wider 825Y family.",
   "diagram": "rpz",
   "diagramAlt": "Reduced pressure zone assembly showing check-valve covers and central relief-valve zone",
-  "sizes": ["3/4–1 1/4 in", "1 1/2–2 in"],
+  "sizes": [
+    "3/4–1 1/4 in",
+    "1 1/2–2 in"
+  ],
   "identifiers": [
     "Read the full marking: 825Y, 825YA, LF825Y, and LF825YA are related but may use different published kit references.",
     "A check-seat-and-ring kit is not a complete rubber-parts kit, and neither should be treated as a full internal rebuild.",
     "Flood-sensor accessories appear alongside repair parts on manufacturer records but are not internal repair kits."
   ],
   "kits": [
-    {"sizeBand":"3/4–1 1/4 in","task":"Check valve seat and ring","partNumber":"FRK 825Y/825YA-CKS 3/4-1 1/4","kitName":"Check valve seat and ring kit","contents":"Seat ring and O-ring.","compatibility":"Manufacturer-published for original 825Y/825YA, 3/4–1 1/4 inch; not marked lead-free."},
-    {"sizeBand":"3/4–1 1/4 in","task":"Complete rubber components","partNumber":"FRK 825Y-RT 3/4-1 1/4","kitName":"Complete rubber parts kit","contents":"Published rubber service components for the applicable 825Y assembly.","compatibility":"Confirm the original 825Y label and exact size against the FEBCO selection guide before ordering."},
-    {"sizeBand":"1 1/2–2 in","task":"Check valve seat and ring","partNumber":"LFFRK 825Y/825YA-CKS 1 1/2-2","kitName":"Check valve seat and ring kit","contents":"Seat ring and O-ring.","compatibility":"Manufacturer-published for LF825Y, 1 1/2 and 2 inch; lead-free family only."},
-    {"sizeBand":"1 1/2–2 in","task":"Complete rubber components","partNumber":"FRK 825Y-RT 1 1/2-2","kitName":"Complete rubber parts kit","contents":"All silicone rubber parts necessary for the applicable 825Y valve service path.","compatibility":"Original 825Y service reference; confirm lead-free designation before selecting an original-family kit."}
+    {
+      "sizeBand": "3/4–1 1/4 in",
+      "task": "Check valve seat and ring",
+      "partNumber": "FRK 825Y/825YA-CKS 3/4-1 1/4",
+      "kitName": "Check valve seat and ring kit",
+      "contents": "Seat ring and O-ring.",
+      "compatibility": "Manufacturer-published for original 825Y/825YA, 3/4–1 1/4 inch; not marked lead-free."
+    },
+    {
+      "sizeBand": "3/4–1 1/4 in",
+      "task": "Complete rubber components",
+      "partNumber": "FRK 825Y-RT 3/4-1 1/4",
+      "kitName": "Complete rubber parts kit",
+      "contents": "Complete rubber service kit, ordering code 905111. Confirm exact inclusions in the linked FEBCO record.",
+      "compatibility": "Confirm the original 825Y label and exact size against the FEBCO selection guide before ordering.",
+      "merchants": [
+        {
+          "seller": "SupplyHouse",
+          "url": "https://www.supplyhouse.com/Febco-905111-3-4-1-1-4-Complete-Rubber-Kit-for-825Y-Series",
+          "lastVerified": "2026-10-12"
+        }
+      ]
+    },
+    {
+      "sizeBand": "1 1/2–2 in",
+      "task": "Check valve seat and ring",
+      "partNumber": "LFFRK 825Y/825YA-CKS 1 1/2-2",
+      "kitName": "Check valve seat and ring kit",
+      "contents": "Seat ring and O-ring.",
+      "compatibility": "Manufacturer-published for LF825Y, 1 1/2 and 2 inch; lead-free family only."
+    },
+    {
+      "sizeBand": "1 1/2–2 in",
+      "task": "Complete rubber components",
+      "partNumber": "FRK 825Y-RT 1 1/2-2",
+      "kitName": "Complete rubber parts kit",
+      "contents": "Original-family rubber service reference. Confirm material and component contents in the FEBCO selection guide; RT and RTS are different designations.",
+      "compatibility": "Original 825Y service reference; confirm lead-free designation before selecting an original-family kit."
+    }
   ],
   "sources": [
-    {"title":"FEBCO 825Y/825YA/LF825Y/LF825YA repair-kit family","url":"https://www.watts.com/products/plumbing-flow-control-solutions/repair-kits/backflow-preventer-repair-kits/rk-825y825yalf825ylf825ya","publisher":"Watts / FEBCO","lastVerified":"2026-08-02"},
-    {"title":"FEBCO 825YA product record and kits","url":"https://www.watts.com/products/plumbing-flow-control-solutions/backflow-preventers/reduced-pressure-zone-assemblies/825ya","publisher":"Watts / FEBCO","lastVerified":"2026-08-02"},
-    {"title":"FEBCO parts selection guide and price list","url":"https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/36353-source/pl-febco-2514.pdf?qh=683216","publisher":"Watts / FEBCO","lastVerified":"2026-08-02"}
+    {
+      "title": "FEBCO 825Y/825YA/LF825Y/LF825YA repair-kit family",
+      "url": "https://www.watts.com/products/plumbing-flow-control-solutions/repair-kits/backflow-preventer-repair-kits/rk-825y825yalf825ylf825ya",
+      "publisher": "Watts / FEBCO",
+      "lastVerified": "2026-08-02"
+    },
+    {
+      "title": "FEBCO 825YA product record and kits",
+      "url": "https://www.watts.com/products/plumbing-flow-control-solutions/backflow-preventers/reduced-pressure-zone-assemblies/825ya",
+      "publisher": "Watts / FEBCO",
+      "lastVerified": "2026-08-02"
+    },
+    {
+      "title": "FEBCO parts selection guide and price list",
+      "url": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/36353-source/pl-febco-2514.pdf?qh=683216",
+      "publisher": "Watts / FEBCO",
+      "lastVerified": "2026-08-02"
+    },
+    {
+      "title": "FRK 825Y-RT 3/4–1 1/4: ordering code 905111",
+      "url": "https://www.watts.com/products/plumbing-flow-control-solutions/repair-kits/backflow-preventer-repair-kits/rk-825y/frk-825y-rt-34-1-14",
+      "publisher": "Watts / FEBCO",
+      "lastVerified": "2026-10-12"
+    }
   ],
-  "lastReviewed": "2026-08-02",
+  "lastReviewed": "2026-10-12",
   "published": true,
-  "indexable": true
+  "indexable": true,
+  "fieldSections": [
+    {
+      "id": "825y-label-boundaries",
+      "title": "825Y, LF825Y, and rubber-kit designations.",
+      "introduction": "Record the full prefix and size before using a catalog reference. A lead-free kit material label alone does not establish compatibility with every LF assembly.",
+      "firstColumn": "Observation",
+      "secondColumn": "What it establishes",
+      "thirdColumn": "Next step",
+      "rows": [
+        {
+          "observation": "825Y / 825YA / LF825Y / LF825YA",
+          "meaning": "The family name covers multiple configurations.",
+          "nextStep": "Use the exact manufacturer model record and service chart.",
+          "href": ""
+        },
+        {
+          "observation": "FRK 825Y-RT, 3/4–1 1/4 in",
+          "meaning": "FEBCO identifies this rubber kit as ordering code 905111, compatible with 825Y in the stated band.",
+          "nextStep": "Compare both the descriptive reference and order code before purchase.",
+          "href": ""
+        },
+        {
+          "observation": "RT versus RTS",
+          "meaning": "Rubber material and service designations can differ.",
+          "nextStep": "Do not replace RT with RTS solely because a listing looks similar.",
+          "href": ""
+        },
+        {
+          "observation": "Check seats or relief-valve scope",
+          "meaning": "A rubber kit is not a universal check-seat or complete assembly rebuild.",
+          "nextStep": "Use the diagnosed component and exact parts record.",
+          "href": "/backflow-preventer-repair-kits/"
+        }
+      ],
+      "sources": [
+        {
+          "eyebrow": "Manufacturer",
+          "title": "FEBCO 905111 official kit record",
+          "href": "https://www.watts.com/products/plumbing-flow-control-solutions/repair-kits/backflow-preventer-repair-kits/rk-825y/frk-825y-rt-34-1-14"
+        },
+        {
+          "eyebrow": "Manufacturer",
+          "title": "FEBCO 825Y-family service catalog",
+          "href": "https://www.watts.com/products/plumbing-flow-control-solutions/repair-kits/backflow-preventer-repair-kits/rk-825y825yalf825ylf825ya"
+        }
+      ],
+      "diagram": null,
+      "diagramAlt": null,
+      "caption": null
+    }
+  ]
 }

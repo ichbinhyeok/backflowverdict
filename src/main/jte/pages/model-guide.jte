@@ -29,6 +29,8 @@
             </div>
         </header>
 
+        @template.components.field-sections(sections = modelGuide.fieldSections())
+
         <section class="bv-section bv-section--paper" id="kit-finder">
             <div class="bv-shell bv-model-workbench" data-model-kit-tool>
                 <header>
@@ -40,13 +42,13 @@
                     <label>Nominal size<select data-kit-size><option value="">Choose a size band</option>@for (var size : modelGuide.sizes())<option value="${size}">${size}</option>@endfor</select></label>
                     <label>Repair scope<select data-kit-task disabled><option value="">Choose size first</option></select></label>
                 </div>
-                <p class="bv-kit-count" data-kit-count aria-live="polite">Choose a size band to reveal compatible published kits.</p>
+                <p class="bv-kit-count" data-kit-count aria-live="polite">Published references are listed below. Choose a size band to narrow the list.</p>
                 <div class="bv-kit-results">
                     @for (var kit : modelGuide.kits())
-                        <article class="bv-kit-row" data-kit-option data-size="${kit.sizeBand()}" data-task="${kit.task()}" hidden>
+                        <article class="bv-kit-row" data-kit-option data-size="${kit.sizeBand()}" data-task="${kit.task()}">
                             <div class="bv-kit-row__part"><span>Manufacturer part reference</span><strong>${kit.partNumber()}</strong></div>
-                            <div><span>${kit.task()}</span><h3>${kit.kitName()}</h3><p>${kit.contents()}</p></div>
-                            <aside><span>Compatibility boundary</span><p>${kit.compatibility()}</p></aside>
+                            <div><span>${kit.task()} / ${kit.sizeBand()}</span><h3>${kit.kitName()}</h3><p>${kit.contents()}</p></div>
+                            <aside><span>Compatibility boundary</span><p>${kit.compatibility()}</p>@template.components.merchant-links(merchants = kit.merchants(), partNumber = kit.partNumber())</aside>
                         </article>
                     @endfor
                 </div>
@@ -77,7 +79,7 @@
         <section class="bv-section" id="sources">
             <div class="bv-shell bv-model-sources">
                 <header><p class="bv-kicker">Official source ledger</p><h2>Trace every compatibility claim.</h2><p>No retailer copy is used as the authority for the kit map.</p></header>
-                <ol>@for (var source : modelGuide.sources())<li><span>${String.format("%02d", modelGuide.sources().indexOf(source) + 1)}</span><div><strong>${source.publisher()}</strong><a href="${source.url()}" rel="noopener noreferrer">${source.title()}</a><small>Verified ${source.lastVerified()}</small></div></li>@endfor</ol>
+                <ol>@for (var source : modelGuide.sources())<li><span>${String.format("%02d", modelGuide.sources().indexOf(source) + 1)}</span><div><strong>${source.publisher()}</strong><a href="${source.url()}" data-link-kind="manufacturer" rel="noopener noreferrer">${source.title()}</a><small>Verified ${source.lastVerified()}</small></div></li>@endfor</ol>
             </div>
         </section>
     </article>

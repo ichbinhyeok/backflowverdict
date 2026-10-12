@@ -22,6 +22,10 @@ public record ModelGuideRecord(
         List<ModelSourceRecord> sources,
         String lastReviewed,
         boolean published,
-        boolean indexable
+        boolean indexable,
+        List<owner.backflow.data.model.decision.DecisionFieldSection> fieldSections
 ) {
+    public ModelGuideRecord {
+        fieldSections = fieldSections == null ? List.of() : List.copyOf(fieldSections);
+    }
 }

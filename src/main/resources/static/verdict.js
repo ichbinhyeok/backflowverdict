@@ -9,42 +9,6 @@
         });
     });
 
-    document.addEventListener('click', function (event) {
-        var link = event.target.closest('a[href]');
-        if (!link || typeof window.gtag !== 'function') {
-            return;
-        }
-        var href = link.getAttribute('href') || '';
-        if (href.indexOf('/get-help/') === 0 || href.indexOf('/leads/new') === 0) {
-            window.gtag('event', 'request_help_click', {destination_path: href});
-        } else if (href.indexOf('/submit-backflow-report') === 0) {
-            window.gtag('event', 'report_submission_route_click', {destination_path: href});
-        } else if (href.indexOf('/approved-backflow-tester') === 0 || href.indexOf('/official-backflow-tester') === 0) {
-            window.gtag('event', 'tester_route_click', {destination_path: href});
-        } else if (link.host && link.host !== window.location.host) {
-            window.gtag('event', 'provider_website_click', {destination: link.href});
-        } else if (href.indexOf('/utilities/') === 0 || href.indexOf('/notice-finder') === 0) {
-            window.gtag('event', 'official_route_click', {destination_path: href});
-        }
-    });
-
-    document.addEventListener('submit', function (event) {
-        if (typeof window.gtag !== 'function') return;
-        var action = event.target.getAttribute('action') || '';
-        if (action === '/notice-finder') window.gtag('event', 'notice_finder_search');
-        if (action === '/leads') window.gtag('event', 'lead_form_submit');
-    });
-
-    var guide = document.querySelector('[data-guide-slug]');
-    var pageGroup = guide ? 'decision_guides' : document.querySelector('.bv-utility-record') ? 'utility_records' : document.querySelector('[data-route-list]') ? 'submission_routes' : document.querySelector('.bv-home') ? 'home' : 'other_verdict';
-    if (typeof window.gtag === 'function') {
-        window.gtag('event', 'page_context', {
-            content_group: pageGroup,
-            guide_slug: guide ? guide.getAttribute('data-guide-slug') : undefined,
-            guide_type: guide ? guide.getAttribute('data-guide-type') : undefined
-        });
-    }
-
     document.querySelectorAll('[data-choice-tool]').forEach(function (tool) {
         var result = tool.querySelector('[data-tool-result]');
         tool.querySelectorAll('[data-tool-choice]').forEach(function (button) {
@@ -215,8 +179,10 @@
         size.addEventListener('change', function () {
             replaceOptions(task, 'All repair scopes', uniqueValues(rows, 'data-task', 'data-size', size.value));
             render();
+            if (typeof window.gtag === 'function' && size.value) window.gtag('event', 'kit_match_result', {content_group: tool.hasAttribute('data-global-kit-tool') ? 'repair_kit_finder' : 'model_guides', size_band: size.value});
         });
         task.addEventListener('change', render);
+        render();
     });
 
     document.querySelectorAll('[data-global-kit-tool]').forEach(function (tool) {
@@ -244,7 +210,9 @@
             var modelRows = rows.filter(function (row) { return row.getAttribute('data-model') === model.value && row.getAttribute('data-size') === size.value; });
             replaceOptions(task, 'All repair scopes', uniqueValues(modelRows, 'data-task'));
             render();
+            if (typeof window.gtag === 'function' && size.value) window.gtag('event', 'kit_match_result', {content_group: tool.hasAttribute('data-global-kit-tool') ? 'repair_kit_finder' : 'model_guides', size_band: size.value});
         });
         task.addEventListener('change', render);
+        render();
     });
 }());

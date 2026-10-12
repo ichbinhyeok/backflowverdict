@@ -23,10 +23,10 @@
                 <div class="bv-kit-results bv-kit-results--global">
                     @for (var guide : modelGuides)
                         @for (var kit : guide.kits())
-                            <article class="bv-kit-row" data-global-option data-model="${guide.slug()}" data-size="${kit.sizeBand()}" data-task="${kit.task()}" hidden>
+                            <article class="bv-kit-row" data-global-option data-model="${guide.slug()}" data-size="${kit.sizeBand()}" data-task="${kit.task()}">
                                 <div class="bv-kit-row__part"><span>Official part reference</span><strong>${kit.partNumber()}</strong><a href="${guide.canonicalPath()}">${guide.manufacturer()} ${guide.model()} passport</a></div>
                                 <div><span>${kit.task()} / ${kit.sizeBand()}</span><h2>${kit.kitName()}</h2><p>${kit.contents()}</p></div>
-                                <aside><span>Compatibility boundary</span><p>${kit.compatibility()}</p></aside>
+                                <aside><span>Compatibility boundary</span><p>${kit.compatibility()}</p>@template.components.merchant-links(merchants = kit.merchants(), partNumber = kit.partNumber())</aside>
                             </article>
                         @endfor
                     @endfor

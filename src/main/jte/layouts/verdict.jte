@@ -31,14 +31,15 @@
         <meta property="article:modified_time" content="${page.dateModified().toString()}">
     @endif
     <meta name="twitter:card" content="${page.twitterCard()}">
-    <link rel="stylesheet" href="/verdict.css?v=20260802">
-    <script defer src="/verdict.js?v=20260802c"></script>
+    <link rel="stylesheet" href="/verdict.css?v=20261012">
+    <script defer src="/analytics.js?v=20261012"></script>
+    <script defer src="/verdict.js?v=20261012"></script>
     @if (SiteRuntimeConfig.googleAnalyticsMeasurementId() != null && !SiteRuntimeConfig.googleAnalyticsMeasurementId().isBlank())
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${SiteRuntimeConfig.googleAnalyticsMeasurementId()}');
+            gtag('config', '${SiteRuntimeConfig.googleAnalyticsMeasurementId()}', {page_location: location.origin + location.pathname, page_referrer: document.referrer.split('?')[0].split('#')[0]});
             window.addEventListener('load', function () {
                 var loadAnalytics = function () {
                     var script = document.createElement('script');

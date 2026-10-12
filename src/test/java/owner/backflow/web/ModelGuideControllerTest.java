@@ -36,6 +36,7 @@ class ModelGuideControllerTest {
                     .andExpect(content().string(containsString(guide.kits().get(0).partNumber())))
                     .andExpect(content().string(containsString("Official source ledger")))
                     .andExpect(content().string(containsString("\"@type\":\"TechArticle\"")))
+                    .andExpect(content().string(org.hamcrest.Matchers.not(containsString("\"@type\":\"Product\""))))
                     .andExpect(content().string(containsString("href=\"https://backflowpath.com" + guide.canonicalPath() + "\"")));
         }
     }
