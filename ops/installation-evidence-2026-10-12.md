@@ -10,4 +10,6 @@ Search basis: the existing page receives installation, installation detail, inst
 
 Retain the original October 12 experiment baseline and day-60/day-90 gates. Annotate this page expansion as another October 12 intervention rather than resetting day zero. Judge settled same-window page clicks and impressions alongside kit/merchant/help behavior; do not treat source navigation as revenue.
 
-Validation and production release are recorded in the context tracker after completion.
+Validation: 92 Gradle tests and 11 Chromium contracts passed. Additional CLI QA verified the five contents anchors, two case reports, six questions, keyboard/no-JavaScript disclosure, mobile layout fit and no page JavaScript errors. Desktop/mobile captures were inspected.
+
+Production verified 2026-10-12 at 10:30:57 UTC, runtime `e9a169df237b5a778c416754f9f7bda6d9950b26`, [successful deployment](https://github.com/ichbinhyeok/backflowverdict/actions/runs/38235893694), [PR #5](https://github.com/ichbinhyeok/backflowverdict/pull/5). Public response, single H1, canonical/indexability, case citations, new stylesheet/SVG and ready state passed. The production browser repeated the anchor, keyboard/no-JavaScript and mobile checks successfully. The GSC annotation ID is recorded in the experiment's interventions array. No production test inquiry was submitted.

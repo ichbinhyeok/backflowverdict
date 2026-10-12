@@ -7,6 +7,17 @@
   "productionVerifiedAt": "2026-10-12T09:54:38Z",
   "gscContentGroupId": "63c3a584-8dd1-47d6-aa77-113163398369",
   "gscAnnotationId": "8bb6223f-e1bd-4965-9ae1-454de0a344d5",
+  "interventions": [
+    {
+      "date": "2026-10-12",
+      "path": "/backflow-preventer-installation/",
+      "description": "Documented manufacturer projects, exact-model drawing links, site brief and native questions",
+      "commit": "e9a169df237b5a778c416754f9f7bda6d9950b26",
+      "deploymentRun": "https://github.com/ichbinhyeok/backflowverdict/actions/runs/38235893694",
+      "productionVerifiedAt": "2026-10-12T10:30:57Z",
+      "gscAnnotationId": "196d2c3d-41b7-486a-bb9e-c7a635504b71"
+    }
+  ],
   "site": "https://backflowpath.com",
   "baseline": {
     "start": "2026-09-12",
