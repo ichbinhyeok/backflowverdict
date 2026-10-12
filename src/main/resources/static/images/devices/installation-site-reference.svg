@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" role="img" aria-labelledby="title desc">
+  <title id="title">RPZ installation site reference</title>
+  <desc id="desc">Conceptual flow path with two checks, relief outlet, open air gap and receiving drain, plus testing and service space. This is not a dimensioned installation plan.</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 6 3 0 6" fill="none" stroke="#176b5b" stroke-width="1.4"/></marker></defs>
+  <rect width="640" height="520" fill="#fcfbf7"/>
+  <g font-family="sans-serif" fill="#17201d">
+    <text x="30" y="42" font-size="17" letter-spacing="2">INSTALLATION / SITE BRIEF</text>
+    <text x="320" y="104" text-anchor="middle" font-size="24">Testing + service space</text>
+    <path d="M145 146V123H495V146" fill="none" stroke="#5d6661" stroke-width="2" stroke-dasharray="6 5"/>
+    <g fill="#f4f1e8" stroke="#17201d" stroke-width="4">
+      <path d="M50 208H110V189H145V208H195V178H262V208H360V178H427V208H477V189H512V208H590V254H512V273H477V254H427V284H360V254H262V284H195V254H145V273H110V254H50Z"/>
+      <path d="M294 254V306H330V254"/>
+    </g>
+    <path d="M72 231H565" stroke="#176b5b" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+    <text x="50" y="178" font-size="23">Supply</text><text x="491" y="178" font-size="23">To system</text>
+    <path d="M312 307V362" stroke="#c64e32" stroke-width="3" stroke-dasharray="7 6"/>
+    <path d="M266 366H358L347 399H278Z" fill="#e2e7e0" stroke="#17201d" stroke-width="3"/>
+    <path d="M312 400V453" fill="none" stroke="#17201d" stroke-width="6"/>
+    <path d="M355 333H382" fill="none" stroke="#5d6661" stroke-width="2"/>
+    <text x="390" y="328" font-size="22">Open relief</text><text x="390" y="355" font-size="22">+ air gap</text>
+    <path d="M266 384H218" fill="none" stroke="#5d6661" stroke-width="2"/>
+    <text x="30" y="376" font-size="22">Receiving drain</text><text x="30" y="404" font-size="19">Confirm capacity</text>
+    <path d="M30 454H610" stroke="#c8ccc4" stroke-width="2"/>
+    <text x="30" y="491" font-size="18">Exact model drawing + local approval control.</text>
+  </g>
+</svg>

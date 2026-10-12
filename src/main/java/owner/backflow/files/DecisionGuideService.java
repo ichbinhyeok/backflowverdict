@@ -85,6 +85,20 @@ public class DecisionGuideService {
 
     private void validate(DecisionGuideRecord record, Path file) {
         FieldReferenceValidator.validate(record.fieldSections(), file);
+        for (var study : record.caseStudies()) {
+            if (Stream.of(study.title(), study.setting(), study.constraint(), study.documentedAction(),
+                    study.planningLesson(), study.publisher(), study.sourceTitle(), study.sourceUrl())
+                    .anyMatch(value -> value == null || value.isBlank())
+                    || !study.sourceUrl().startsWith("https://")) {
+                throw new IllegalStateException("Incomplete documented case study: " + file);
+            }
+        }
+        for (var question : record.questions()) {
+            if (question.question() == null || question.question().isBlank()
+                    || question.answer() == null || question.answer().isBlank()) {
+                throw new IllegalStateException("Incomplete decision question: " + file);
+            }
+        }
         if (record.slug() == null || record.slug().isBlank()
                 || record.canonicalPath() == null || record.canonicalPath().isBlank()
                 || record.title() == null || record.title().isBlank()

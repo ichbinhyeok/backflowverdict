@@ -1,5 +1,13 @@
 # Context Tracker
 
+## 2026-10-12 — installation evidence expansion
+
+- User requested stronger installation search content using actual cases and manufacturer material. Kept the existing canonical installation URL and query ownership; no new indexed route was created.
+- Added two attributed Watts project reports (Brenham Hospital replacement space and Arroyo Seco school service planning), exact-model LF825Y/800M4 height references with PDF page links, an original conceptual site schematic, native six-question disclosure, page contents and an installer observation brief.
+- Manufacturer-reported actions and editorial planning lessons are visibly separate. No on-site inspection, project photo ownership, transferable savings, universal clearance or local approval is claimed.
+- Full Gradle suite passed: 92 tests, zero failures/errors. Existing Chromium contracts passed 11/11. Additional CLI QA verified all five contents anchors, both projects, six questions, keyboard and no-JavaScript disclosure, mobile fit and no page JavaScript errors; desktop/mobile screenshots inspected.
+- Source review and implementation rationale are in storage/snapshots/installation-2026-10-12/source-review.md and ops/installation-evidence-2026-10-12.md. Release is pending; preserve the existing October 12 experiment baseline and annotate the second intervention.
+
 ## 2026-10-12 — focused search recovery implementation
 
 - User authorized the proposed work with “다 작업해봐”. Strengthened five existing decision pages, two model passports and the repair-kit hub; no new national URL portfolio was added.
@@ -57,6 +65,7 @@
 - Deployment now runs the full test suite and no longer uses destructive `rsync --delete` for project data.
 
 ## Current status
+- Installation evidence expansion is verified locally on codex/installation-evidence-2026-10 and awaiting release. Search effects remain unmeasured because available GSC data ends October 9, before either October 12 intervention.
 - As of 2026-10-12, live research supports a small retained search asset but does not establish a scalable diagnostic-content or revenue engine; see the October salvage report. The three inspected core URLs are indexed with matching canonicals.
 - The three manually requested BackflowVerdict launch URLs are indexed as of 2026-08-11 and have begun receiving low-volume exploratory impressions.
 - The October recovery implementation is merged into main and verified in production at runtime commit `47d3942`; all eight focus URLs passed public checks. Measurement and review artifacts are in ops/search-recovery-experiment.json and ops/search-recovery-runbook.md.
@@ -68,6 +77,7 @@
 - `/readyz` must stay `ready` as long as utility pages are explicitly published and not blocked, even when freshness warnings exist.
 
 ## Latest decisions
+- Strengthen installation detail intent on the existing URL with inspectable manufacturer documents and attributed real projects. Keep code/approval and cost intent on their existing routes; no further topic expansion is needed for this change.
 - Execute the authorized eight-URL recovery experiment; use actual production verification as day zero, preserve local winners, and require commercial evidence separately from source navigation. See ops/search-recovery-runbook.md.
 - The authorized October experiment evaluates purchase-adjacent search growth separately from free compliance navigation. The thresholds are investment review gates; the historical average-position-5 traffic model is not a forecast.
 - Do not passively wait on low initial rankings or repeat indexing requests; improve query ownership and visible evidence now, then judge results on a 7-day cadence after deployment.
@@ -83,6 +93,7 @@
 - Automated source URL audits can refresh freshness dates only when unresolved URLs are also recorded in `data/ops/broken_links.csv` for follow-up suppression.
 
 ## What changed this session
+- Added installation case reports, model drawing deep links, an original site schematic, a quote/observation brief and accessible questions; verified full regression suites and the new browser behavior.
 - Completed the production release and external GSC measurement setup. Preserved 107 winner URL contracts and recorded runtime provenance, public verification, sitemap submission and the remaining GA4 binding limitation.
 - Implemented the October field references, model compatibility corrections, uncompensated merchant links, shared analytics, persistence-confirmed inquiry conversion, and recovery scorecard/source queue.
 - Added the 2026-10-12 salvage research report, original GSC evidence, derived CSVs, public HTML snapshots, and verified traffic chart. Confirmed that external-link events currently mix merchant/provider and official/manufacturer destinations, and form-submit events do not establish accepted or paid leads.
@@ -156,12 +167,14 @@
 - Strengthened `/backflow-reporting-portals` as a lookup database by adding a portal family matrix for BSI, WEIRS, SwiftComply, VEPO, Aqua/TrackMyBackflow, Tokay, and SpryBackflow searches.
 
 ## Next recommended tasks
+0. Release the verified installation evidence expansion, confirm public output and record its runtime commit/annotation without resetting the experiment baseline.
 1. Link properties/531520200 to sc-domain:backflowpath.com in GSC Wizard's Analytics page; verify lead_form_success in GA4 and register needed event dimensions. Binding cannot be changed through the exposed API.
 2. Review equal settled 28-day GSC windows weekly with scripts/recovery_scorecard.py, then apply the December 11 / January 10 gates with commercial evidence and seasonality judgment.
 3. Work the semantic utility source-refresh queue, prioritizing existing click winners. Preserve older dates until the full record is reverified; do not confuse bot-blocked fetches with dead links.
 4. Retain local/portal query ownership while watching source navigation separately from commercial intent. Add affiliate tracking only after a real agreement and exact fit check.
 
 ## Open questions
+- Whether installation/detail search visibility and qualified next-step behavior improve after recrawl; the current small, pre-release query sample cannot establish impact.
 - Whether current approved/paid leads exist, whether the available backflow GA4 property captures all production routes correctly after binding/DebugView verification, and whether the released installation/leak/model improvements increase purchase-adjacent organic landings over 60–90 days.
 - Whether the repair-kit finder needs additional model cohorts before the current ten model passports accumulate enough exact-query impressions.
 - Whether installation demand separates into a national detail page and local installation pages after the next 14-day sample, or remains best consolidated in the current national decision page plus utility overlay.

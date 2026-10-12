@@ -473,3 +473,23 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .bv-merchant-links a { display: block; color: #9f3c25; font-weight: 600; margin-block: .5rem; overflow-wrap: anywhere; }
 .bv-merchant-links small { display: block; font-size: .8rem; line-height: 1.5; margin-top: .6rem; }
 @media (max-width: 680px) { .bv-reference-table { min-width: 0; font-size: .88rem; } .bv-reference-table th, .bv-reference-table td { padding: .85rem .55rem; overflow-wrap: anywhere; } }
+
+.bv-page-contents { display: flex; flex-wrap: wrap; gap: 12px 24px; padding-block: 24px; border-bottom: 1px solid var(--bv-line); }
+.bv-page-contents > span { font: 500 .78rem var(--bv-mono); text-transform: uppercase; letter-spacing: .06em; }
+.bv-page-contents a { color: var(--bv-ink); text-underline-offset: 4px; }
+.bv-projects { margin-top: 32px; border-top: 2px solid var(--bv-ink); }
+.bv-project { display: grid; grid-template-columns: 1fr 1.5fr; gap: 48px; padding-block: 40px; border-bottom: 1px solid var(--bv-line); }
+.bv-project h3 { font-size: clamp(28px, 3vw, 40px); line-height: 1.1; margin-top: 12px; }
+.bv-project dl { margin: 0; }
+.bv-project dl > div { margin-bottom: 20px; }
+.bv-project dt { font: 500 .78rem var(--bv-mono); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; }
+.bv-project dd { margin: 0; line-height: 1.6; }
+.bv-project-source { font-size: .9rem; line-height: 1.5; }
+.bv-project-source a { overflow-wrap: anywhere; text-underline-offset: 3px; }
+.bv-question-list details { border-top: 1px solid var(--bv-line); padding-block: 20px; }
+.bv-question-list details:last-child { border-bottom: 1px solid var(--bv-line); }
+.bv-question-list summary { font-weight: 700; font-size: 1.15rem; line-height: 1.4; cursor: pointer; }
+.bv-question-list p { margin: 16px 0 0; line-height: 1.65; }
+.bv-page-contents a:focus-visible, .bv-question-list summary:focus-visible { outline: 3px solid var(--bv-action); outline-offset: 5px; }
+[id="model-installation-details"], [id="installation-cases"], [id="installation-detail"], [id="installation-questions"], [id="utility-check"] { scroll-margin-top: 100px; }
+@media (max-width: 680px) { .bv-project { grid-template-columns: 1fr; gap: 20px; padding-block: 32px; } .bv-page-contents { gap: 16px 24px; } .bv-page-contents > span { width: 100%; } }

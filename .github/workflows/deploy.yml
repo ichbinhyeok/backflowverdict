@@ -177,6 +177,8 @@ jobs:
 
             smoke_path "/" "BackflowVerdict"
             smoke_path "/backflow-preventer-installation/" "backflow preventer installation"
+            smoke_path "/backflow-preventer-installation/" "Brenham Hospital: measure the replacement envelope"
+            smoke_path "/images/devices/installation-site-reference.svg" "RPZ installation site reference"
             smoke_path "/vacuum-breaker-leaking/" "vacuum breaker"
             smoke_path "/backflow-preventer-diagram/" "Read the parts before choosing"
             smoke_path "/double-check-valve-leaking/" "An external leak does not prove"
