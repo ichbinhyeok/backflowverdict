@@ -4,12 +4,12 @@
   "canonicalPath": "/backflow-preventer-diagram/",
   "eyebrow": "Device identification",
   "title": "Backflow preventer diagram: RPZ, double check, and PVB parts",
-  "description": "Read labeled backflow assembly diagrams, compare RPZ, double-check and PVB features, and open official model drawings before selecting parts.",
+  "description": "Read labeled RPZ, double-check and PVB diagrams. Compare manufacturer parts drawings, cover layouts and real project constraints before choosing a leak or service path.",
   "prompt": "What can the assembly layout tell me without becoming a remote diagnosis?",
   "answer": "A diagram helps label visible zones such as shutoffs, test cocks, checks, relief or vent paths, and unions. It does not establish the model, hazard classification, part compatibility, or repair method.",
   "urgency": "Use diagrams only for observation and communication. Escalate any active discharge, damage, failed test, or uncertain device identity.",
   "diagram": "rpz",
-  "diagramAlt": "Backflow assembly diagnostic reference",
+  "diagramAlt": "Conceptual RPZ assembly; compare the labeled RPZ, double-check and PVB drawings below",
   "aliases": [
     "backflow preventer diagram",
     "backflow valve diagram",
@@ -28,9 +28,9 @@
       "tone": "action"
     },
     {
-      "label": "The assembly is leaking or failed",
-      "detail": "Document the location and obtain a qualified diagnosis before repair.",
-      "href": "/backflow-preventer-repair/",
+      "label": "I need to identify a leak opening",
+      "detail": "Compare relief outlets, air inlets and external joints before choosing the symptom guide.",
+      "href": "/backflow-preventer-leaking/",
       "tone": "warning"
     },
     {
@@ -60,7 +60,9 @@
   "safeChecks": [
     "Do not use a drawing to select a repair kit.",
     "Do not adjust screws or test ports based on a diagram.",
-    "Keep safety and access boundaries visible in photos."
+    "Keep safety and access boundaries visible in photos.",
+    "Photograph the model suffix, nominal size and flow arrow, then open the matching manufacturer drawing.",
+    "Separate a parts drawing, a dimensional drawing and an installation detail in the service brief."
   ],
   "stopConditions": [
     "The actual device does not match the assumed family.",
@@ -98,7 +100,7 @@
       "id": "read-the-diagram",
       "title": "Read the parts before choosing a service path.",
       "introduction": "These sketches describe device families. Record the actual label and photograph the complete assembly plus the suspected leak point.",
-      "firstColumn": "Observation",
+      "firstColumn": "RPZ observation points",
       "secondColumn": "What it establishes",
       "thirdColumn": "Next step",
       "rows": [
@@ -150,46 +152,118 @@
     },
     {
       "id": "compare-device-drawings",
-      "title": "Find the matching family drawing.",
-      "introduction": "Two check valves alone do not make an assembly an RPZ. Match the relief or air-inlet features, then confirm the model.",
-      "firstColumn": "Device family",
-      "secondColumn": "Visible distinction",
-      "thirdColumn": "Model-specific reference",
+      "title": "Double-check diagram: two checks do not mean two covers.",
+      "introduction": "The Watts 007 has one service cover over two checks. The Wilkins 350XL uses a different removable housing. Cover count alone cannot identify the assembly.",
+      "firstColumn": "Double-check drawings",
+      "secondColumn": "What to match",
+      "thirdColumn": "Exact reference",
       "rows": [
         {
-          "observation": "RPZ / reduced pressure assembly",
-          "meaning": "Two checks with a reduced-pressure zone and relief outlet.",
-          "nextStep": "Compare the 975XL / XL2 official exploded drawing, page 2.",
-          "href": "/models/wilkins-975xl/"
+          "observation": "Watts 007 / LF007 · 1/2–2 in",
+          "meaning": "Two check modules beneath one cover, with a cover O-ring and separate test connections.",
+          "nextStep": "See the exploded service view on PDF page 3.",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/633411-source/638762888320000000/rp-is-007s-2409.pdf#page=3"
         },
         {
-          "observation": "Double-check assembly",
-          "meaning": "Two independent checks, without the RPZ atmospheric relief valve.",
-          "nextStep": "Open the Watts 007 drawing and compare the cast model label.",
-          "href": "/rpz-vs-dcva/"
+          "observation": "Zurn Wilkins 350 / 350XL · 3/4 and 1 in",
+          "meaning": "The parts sheet distinguishes body, housing, inlet/outlet housing O-rings and checks.",
+          "nextStep": "Use PDF page 2 for the exploded drawing and page 1 for the matching size column.",
+          "href": "https://files.zurn.com/repair-parts/350xl-34-1.pdf#page=2"
         },
         {
-          "observation": "Pressure vacuum breaker",
-          "meaning": "A check and atmospheric air inlet; different from a hose-end attachment.",
-          "nextStep": "Use the 800M4 model record for its specific parts.",
-          "href": "/models/watts-800m4/"
+          "observation": "Water below an assumed double check",
+          "meaning": "A DCVA has no RPZ differential relief outlet. Wet housing joints or test ports are a different observation.",
+          "nextStep": "Recheck the label and use the double-check leak guide.",
+          "href": "/double-check-valve-leaking/"
         }
       ],
       "sources": [
         {
           "eyebrow": "Manufacturer",
-          "title": "Zurn 975XL / XL2 parts drawing (PDF)",
-          "href": "https://files.zurn.com/repair-parts/975xl-repair-parts.pdf"
+          "title": "007 / LF007 service drawing · PDF p. 3",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/633411-source/638762888320000000/rp-is-007s-2409.pdf#page=3"
         },
         {
           "eyebrow": "Manufacturer",
-          "title": "Watts 007 family drawing (PDF)",
-          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/20186-source/es-007-2409.pdf"
+          "title": "350 / 350XL parts drawing · PDF p. 2",
+          "href": "https://files.zurn.com/repair-parts/350xl-34-1.pdf#page=2"
         }
       ],
-      "diagram": null,
-      "diagramAlt": null,
-      "caption": null
+      "diagram": "dcva-field-reference",
+      "diagramAlt": "Conceptual single-cover double-check assembly with two hidden checks, cover seal, test connections and shutoffs",
+      "caption": "Original conceptual single-cover example, not a universal casting or port layout. Dashed checks are internal; use the exact model drawing."
+    },
+    {
+      "id": "pvb-parts-drawing",
+      "title": "PVB diagram: one check and an atmospheric air inlet.",
+      "introduction": "A pressure vacuum breaker has a different flow path from an RPZ. The FEBCO 765 drawing separates canopy, bonnet, poppet and check assembly; similar names do not make their parts interchangeable.",
+      "firstColumn": "PVB drawing",
+      "secondColumn": "What to match",
+      "thirdColumn": "Exact reference",
+      "rows": [
+        {
+          "observation": "FEBCO 765 · parts view",
+          "meaning": "The bonnet/poppet is above the check assembly; the parts table has separate nominal-size columns.",
+          "nextStep": "Open the exploded view on PDF page 5; use the observed model and size.",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/630725-source/rp-is-f-fz-765#page=5"
+        },
+        {
+          "observation": "Air inlet versus body joint",
+          "meaning": "An intentional air opening is not the same location as a cracked bonnet or threaded fitting.",
+          "nextStep": "Use timing and location in the vacuum-breaker guide.",
+          "href": "/vacuum-breaker-leaking/"
+        },
+        {
+          "observation": "Installation drawing versus parts drawing",
+          "meaning": "A parts view identifies components. It does not specify the approved site elevation, drainage or hazard protection.",
+          "nextStep": "Use the installation detail guide for model-specific placement.",
+          "href": "/backflow-preventer-installation/"
+        }
+      ],
+      "sources": [
+        {
+          "eyebrow": "Manufacturer",
+          "title": "FEBCO 765 parts view · PDF p. 5",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/630725-source/rp-is-f-fz-765#page=5"
+        }
+      ],
+      "diagram": "pvb-field-reference",
+      "diagramAlt": "Conceptual PVB path showing one check followed by an atmospheric air inlet beneath a bonnet, plus isolation and test access",
+      "caption": "Original conceptual flow path, not an exploded parts or dimensional installation drawing. Port positions vary by model."
+    }
+  ],
+  "caseStudies": [
+    {
+      "title": "Brenham Hospital: a diagram needs site measurements",
+      "setting": "Brenham, Texas · Manufacturer project report",
+      "constraint": "Existing piping and a confined mechanical room limited replacement options.",
+      "documentedAction": "Watts reports that measurements informed the selection of a 957 RPZ.",
+      "planningLesson": "Match the exact drawing to the actual space and service access. A family sketch does not establish fit or approval.",
+      "publisher": "Watts",
+      "sourceTitle": "Brenham Hospital replacement project",
+      "sourceUrl": "https://www.watts.com/resources/case-studies/aging-backflow-preventer-swapped-out-at-brenham-hospital-despite-space-constraints"
+    }
+  ],
+  "questions": [
+    {
+      "question": "What are the main parts of a backflow preventer?",
+      "answer": "Match the device family first. An RPZ has two checks and a differential relief path; a DCVA has two checks without that relief valve; a PVB has one check and an atmospheric air inlet. Shutoffs, test connections and service covers vary by model."
+    },
+    {
+      "question": "Does every double-check assembly have two covers?",
+      "answer": "No. The Watts 007 service drawing shows two checks under one cover. The number or shape of covers is not enough to identify a model or select replacement parts."
+    },
+    {
+      "question": "Which drawing should I use to find replacement parts?",
+      "answer": "Use the manufacturer’s exploded parts drawing and its matching size/revision table. Installation views show placement; dimension tables show fit; simplified family drawings show function. None substitutes for a verified service diagnosis."
+    },
+    {
+      "question": "Can a diagram tell whether a check valve has failed?",
+      "answer": "A drawing identifies the intended components and path. Internal check performance requires the appropriate field test; a photograph or dry exterior cannot establish a passing result."
+    },
+    {
+      "question": "Where is the leak opening on the diagram?",
+      "answer": "Compare the RPZ relief outlet, PVB bonnet/air inlet, and DCVA cover, housing joints or test connections. Photograph the full device and the exact wet point, then follow the corresponding symptom guide."
     }
   ]
 }

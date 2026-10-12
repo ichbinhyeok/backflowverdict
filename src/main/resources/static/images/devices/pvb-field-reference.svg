@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" role="img" aria-labelledby="title desc">
+  <title id="title">Pressure vacuum breaker observation points</title>
+  <desc id="desc">Conceptual PVB flow path from supply through inlet isolation and one check to the atmospheric air inlet area downstream of the check, then outlet isolation and the irrigation system. Bonnet and body-joint observation points and selected test connections are labeled. This is not a dimensional or exploded drawing.</desc>
+  <defs><marker id="flow-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#285f8f"/></marker></defs>
+  <rect width="1000" height="500" fill="#fcfbf7"/>
+  <g font-family="sans-serif" fill="#17201d">
+    <text x="30" y="35" font-size="16" letter-spacing="2">CONCEPTUAL FIELD REFERENCE · PVB</text>
+    <text x="30" y="63" font-size="17">One check, then an atmospheric air inlet. Keep the air path open.</text>
+    <g stroke="#17201d" stroke-width="4" fill="#f4f1e8">
+      <path d="M210 435V240H380V210H570V240H790V435H730V300H570V330H380V300H270V435Z"/>
+      <path d="M455 210V175H525V210M430 170H550L535 140H445Z"/>
+      <path d="M210 360H270M730 360H790M275 375H305M305 350V400M695 375H725M695 350V400" fill="none"/>
+      <path d="M325 240V215H345M625 240V215H645" fill="none"/>
+    </g>
+    <rect x="385" y="240" width="65" height="60" stroke="#5c675e" stroke-width="3" stroke-dasharray="6 5" fill="none"/>
+    <path d="M240 425V270H760V425" stroke="#285f8f" stroke-width="4" fill="none" marker-end="url(#flow-arrow)"/>
+    <path d="M490 115V175" stroke="#c64e32" stroke-width="4" stroke-dasharray="6 5"/>
+    <g font-size="20"><text x="575" y="133">Bonnet / air inlet</text><text x="575" y="160">downstream of check</text><text x="70" y="153">One internal check</text><text x="60" y="373">Inlet isolation</text><text x="807" y="373">Outlet</text><text x="807" y="399">isolation</text><text x="90" y="466">Supply</text><text x="720" y="466">To system</text><text x="390" y="414">Body / joint boundary</text></g>
+    <g stroke="#5c675e" stroke-width="1.5" fill="none"><path d="M260 160L410 238M570 145H550M480 335V388M340 214L340 190"/></g>
+    <text x="255" y="185" font-size="17">Test connection</text>
+    <text x="30" y="493" font-size="16">Port positions and installation elevation vary. Use the exact model manual.</text>
+  </g>
+</svg>

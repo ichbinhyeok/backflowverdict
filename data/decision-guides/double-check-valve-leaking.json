@@ -3,8 +3,8 @@
   "pageType": "diagnostic",
   "canonicalPath": "/double-check-valve-leaking/",
   "eyebrow": "Leak diagnosis",
-  "title": "Double check valve leaking: identify the assembly and leak location",
-  "description": "Locate double-check backflow assembly leaks at test cocks, covers, shutoffs, or pipe joints. Separate external leakage from an internal failed check and find the model-specific service path.",
+  "title": "Double check valve leaking: cover, test cock or housing?",
+  "description": "Separate external double-check leaks from failed internal checks. Read Watts 007 and Wilkins 350XL drawings, compare repair scope, and prepare the test and retest evidence.",
   "prompt": "Is water leaving a test cock, cover, shutoff, check area, or connected pipe?",
   "answer": "Double-check leakage must be located before a repair choice is made. The external point of water does not by itself prove an internal check failure, and the exact assembly controls any service kit path.",
   "urgency": "Escalate body damage, failed isolation, high-hazard uncertainty, or a leak that cannot be safely contained.",
@@ -64,7 +64,8 @@
   ],
   "stopConditions": [
     "The body or connected pipe is cracked.",
-    "The protection requirement is uncertain."
+    "The protection requirement is uncertain.",
+    "The assembly serves fire protection or a critical process; coordinate service and shutdown with the responsible qualified team."
   ],
   "notThisDevice": [
     "A product-family name alone does not establish component compatibility.",
@@ -139,9 +140,92 @@
           "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/20186-source/es-007-2409.pdf"
         }
       ],
+      "diagram": "dcva-field-reference",
+      "diagramAlt": "Conceptual single-cover double-check assembly marking cover seal, test connections, isolation valves and two internal checks",
+      "caption": "Original conceptual single-cover example. Actual cover count, housing and port locations vary; a DCVA has no RPZ relief outlet."
+    },
+    {
+      "id": "dcva-model-service",
+      "title": "Model drawings change the repair scope.",
+      "introduction": "Keep external water, the failed-test reading and the proposed parts as three separate pieces of evidence. These manufacturer examples are not interchangeable kit recommendations.",
+      "firstColumn": "Double-check model references",
+      "secondColumn": "What the source establishes",
+      "thirdColumn": "Before accepting the scope",
+      "rows": [
+        {
+          "observation": "Watts 007 / LF007 · service view p. 3",
+          "meaning": "One cover O-ring and two internal check modules are separate components. The manual cautions that first/second check seats and springs are not generally interchangeable; specified M1/M2 exceptions exist.",
+          "nextStep": "Match the suffix, size and check position in the complete manual.",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/633411-source/638762888320000000/rp-is-007s-2409.pdf#page=3"
+        },
+        {
+          "observation": "Watts 007 / LF007 · troubleshooting p. 4",
+          "meaning": "A failed differential check test can involve debris, seat/disc/O-ring damage, guide or spring problems, or an isolation-valve issue.",
+          "nextStep": "Request the tester’s actual readings and component assessment; an exterior photo cannot establish the failed item.",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/633411-source/638762888320000000/rp-is-007s-2409.pdf#page=4"
+        },
+        {
+          "observation": "Wilkins 350 / 350XL · 3/4 and 1 in",
+          "meaning": "The parts sheet separates housing inlet/outlet O-rings, check components, rubber kits and housing assemblies.",
+          "nextStep": "Match the leak boundary and size column. The illustrated sheet does not cover every size or double-check family.",
+          "href": "https://files.zurn.com/repair-parts/350xl-34-1.pdf#page=1"
+        },
+        {
+          "observation": "After internal maintenance",
+          "meaning": "The 007 manual requires retesting after maintenance. Utility filing and acceptance are a separate local obligation.",
+          "nextStep": "Include the test result and required report closeout in the quote.",
+          "href": "/failed-backflow-test/"
+        }
+      ],
+      "sources": [
+        {
+          "eyebrow": "Manufacturer",
+          "title": "007 / LF007 service and troubleshooting · PDF pp. 3–4",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/633411-source/638762888320000000/rp-is-007s-2409.pdf#page=3"
+        },
+        {
+          "eyebrow": "Manufacturer",
+          "title": "350 / 350XL size-specific parts table · PDF p. 1",
+          "href": "https://files.zurn.com/repair-parts/350xl-34-1.pdf#page=1"
+        }
+      ],
       "diagram": null,
       "diagramAlt": null,
       "caption": null
+    }
+  ],
+  "caseStudies": [
+    {
+      "title": "California school, 1995: deteriorated internal seals",
+      "setting": "Historical incident · EPA compilation, Exhibit 5.1",
+      "constraint": "The report describes a nonstandard double-check valve with badly deteriorated rubber gaskets.",
+      "documentedAction": "EPA’s review, citing Craun and Calderon, records illness associated with drinking water from that system.",
+      "planningLesson": "A dry exterior does not establish internal protection. This historical summary names no current model and does not document an external leak or a successful repair; it cannot diagnose your assembly.",
+      "publisher": "EPA",
+      "sourceTitle": "Historical school incident · PDF p. 19",
+      "sourceUrl": "https://www.epa.gov/sites/default/files/2015-09/documents/2007_05_18_disinfection_tcr_issuepaper_tcr_crossconnection-backflow.pdf#page=19"
+    }
+  ],
+  "questions": [
+    {
+      "question": "Can a double-check valve fail without leaking outside?",
+      "answer": "Yes. Internal check sealing and the external pressure boundary are different functions. A dry exterior does not establish a passing field test; preserve the tester’s readings and failed-check identification."
+    },
+    {
+      "question": "Why is water leaking around the cover or housing?",
+      "answer": "It identifies an external wet boundary, not the exact failed part. The Watts 007 drawing separates a cover O-ring from internal checks; the Wilkins 350XL drawing separates housing O-rings from check components. Confirm the exact model and size before specifying service."
+    },
+    {
+      "question": "Why is water coming from a relief vent on my double check?",
+      "answer": "Revisit the device identity. A DCVA does not have an RPZ differential relief valve. Photograph the whole device, read its model label and compare the RPZ leak guide before ordering parts."
+    },
+    {
+      "question": "Can I swap the first and second check components?",
+      "answer": "Do not assume interchangeability. The 007 manual distinguishes first/second seats and springs and names specific M1/M2 exceptions. A generic family name cannot determine fit; have the repairer follow the exact model instructions."
+    },
+    {
+      "question": "Is stopping the external leak enough to close a failed test?",
+      "answer": "Confirm a passing retest after the relevant maintenance and the governing authority’s report/acceptance requirements. A stopped drip is not a substitute for internal check performance or accepted paperwork."
     }
   ]
 }

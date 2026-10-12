@@ -14,7 +14,7 @@
                 </table>
             </div>
             @if (!section.sources().isEmpty())
-                <ul class="bv-field-sources" aria-label="Sources for this reference">@for (var source : section.sources())<li><span>${source.eyebrow()}</span> <a href="${source.href()}" data-link-kind="manufacturer" rel="noopener noreferrer">${source.title()}</a></li>@endfor</ul>
+                <ul class="bv-field-sources" aria-label="Sources for this reference">@for (var source : section.sources())<li><span>${source.eyebrow()}</span> <a href="${source.href()}" data-link-kind="${"Manufacturer".equals(source.eyebrow()) ? "manufacturer" : "official"}" rel="noopener noreferrer">${source.title()}</a></li>@endfor</ul>
             @endif
         </div>
     </section>

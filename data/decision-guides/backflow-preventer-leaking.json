@@ -3,8 +3,8 @@
   "pageType": "problem",
   "canonicalPath": "/backflow-preventer-leaking/",
   "eyebrow": "Problem path 01",
-  "title": "Backflow preventer leaking: locate the water, then choose the route",
-  "description": "Identify whether water is leaving an RPZ relief outlet, PVB bonnet, double-check cover, or hose attachment. Use leak location and timing to choose the next check.",
+  "title": "Backflow preventer leaking: relief valve, top or body?",
+  "description": "Locate a backflow preventer leak, compare continuous and intermittent RPZ discharge with FEBCO guidance, and distinguish PVB and double-check symptoms before repair.",
   "prompt": "Where is the water coming from?",
   "answer": "A brief release can be different from continuous discharge. The useful clues are the exact opening, whether flow stops, recent freezing or service, and visible body damage.",
   "urgency": "Continuous discharge, flooding, freezing, or a cracked body needs prompt professional attention. Never plug a relief or vent opening.",
@@ -157,6 +157,84 @@
       "diagram": "rpz-field-reference",
       "diagramAlt": "Conceptual RPZ observation points with relief outlet and check covers",
       "caption": "For an RPZ only. Compare the PVB and double-check paths when these features do not match."
+    },
+    {
+      "id": "rpz-discharge-patterns",
+      "title": "RPZ relief discharge: timing changes the investigation.",
+      "introduction": "The FEBCO 825Y / LF825Y manual separates continuous from intermittent discharge. These are model-specific troubleshooting possibilities for qualified service, not a diagnosis from a video.",
+      "firstColumn": "RPZ discharge patterns",
+      "secondColumn": "Manufacturer context",
+      "thirdColumn": "What to send the repairer",
+      "rows": [
+        {
+          "observation": "Continuous relief discharge",
+          "meaning": "The 825Y manual lists debris at check seating surfaces or the relief seat. Seeing water at the relief outlet does not isolate the faulty component.",
+          "nextStep": "Provide a full-device photo, exact model/size and a video showing whether discharge stops.",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/34403-source/638766311000000000/rp-is-f-825y-2405.pdf#page=3"
+        },
+        {
+          "observation": "Intermittent relief discharge",
+          "meaning": "The same manual lists inlet-pressure fluctuations and downstream surges. Replacing only relief parts may miss the system condition.",
+          "nextStep": "Record whether events coincide with irrigation, pumps, shutoffs or other water use.",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/34403-source/638766311000000000/rp-is-f-825y-2405.pdf#page=3"
+        },
+        {
+          "observation": "Wet cover, crack or fitting",
+          "meaning": "An external pressure-boundary leak is separate evidence from water leaving the designed relief path.",
+          "nextStep": "Mark the point where water first appears; use the repair-versus-replace route if the body is damaged.",
+          "href": "/backflow-repair-or-replace/"
+        },
+        {
+          "observation": "Indoor discharge near vulnerable equipment",
+          "meaning": "The drainage route and consequences need attention alongside the assembly’s condition.",
+          "nextStep": "Keep the outlet open; have the site’s qualified team assess drainage and safe isolation.",
+          "href": "/backflow-preventer-installation/"
+        }
+      ],
+      "sources": [
+        {
+          "eyebrow": "Manufacturer",
+          "title": "FEBCO 825Y / LF825Y troubleshooting · PDF p. 3",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/34403-source/638766311000000000/rp-is-f-825y-2405.pdf#page=3"
+        }
+      ],
+      "diagram": null,
+      "diagramAlt": null,
+      "caption": null
+    }
+  ],
+  "caseStudies": [
+    {
+      "title": "UMass Life Sciences: plan for RPZ discharge",
+      "setting": "Amherst, Massachusetts · Manufacturer project report",
+      "constraint": "Lower-level research spaces were vulnerable to water from large RPZ assemblies.",
+      "documentedAction": "Watts reports that engineers specified 113-6RFP flood-protection shutdown valves upstream of large RPZs to address the drainage risk.",
+      "planningLesson": "Assess where discharged water can go and what it can damage. This is a prevention project, not a documented diagnosis of a leaking valve; its design is not a retrofit recommendation for your site.",
+      "publisher": "Watts",
+      "sourceTitle": "UMass flood-protection case report (PDF)",
+      "sourceUrl": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/26310-source/637805499170000000/s-watts-umass"
+    }
+  ],
+  "questions": [
+    {
+      "question": "Is water from an RPZ relief valve always a broken relief valve?",
+      "answer": "No. The FEBCO 825Y / LF825Y manual includes check-seat debris as well as relief-seat debris for continuous discharge. A qualified test and service assessment must distinguish the component and system conditions."
+    },
+    {
+      "question": "Can intermittent discharge be ignored if it stops?",
+      "answer": "Record it and arrange assessment if it recurs. The 825Y manual identifies inlet fluctuations and downstream surges as possibilities; stopping by itself does not prove that the assembly passes a test."
+    },
+    {
+      "question": "Why does a backflow preventer leak after freezing?",
+      "answer": "A visible crack or distorted pressure boundary changes the scope. Do not assume a rubber kit repairs a damaged body. Show the model and damaged area to the repairer and compare replacement, test and reporting requirements."
+    },
+    {
+      "question": "Can I cap the vent to stop the leak?",
+      "answer": "Keep intentional relief and air-inlet openings unobstructed. For flooding, use only the property’s known safe emergency procedure; fire protection or critical process systems require coordinated qualified response."
+    },
+    {
+      "question": "What should I include in a leak repair request?",
+      "answer": "Include a wide photo, label/size, exact exit point, timing, recent work or freezing, protected system and any failed-test report. Ask for diagnosis, correct parts, test after service, and the local report/acceptance scope separately."
     }
   ]
 }

@@ -31,7 +31,7 @@
         <meta property="article:modified_time" content="${page.dateModified().toString()}">
     @endif
     <meta name="twitter:card" content="${page.twitterCard()}">
-    <link rel="stylesheet" href="/verdict.css?v=20261012-installation">
+    <link rel="stylesheet" href="/verdict.css?v=20261012-diagram-leaks">
     <script defer src="/analytics.js?v=20261012"></script>
     <script defer src="/verdict.js?v=20261012"></script>
     @if (SiteRuntimeConfig.googleAnalyticsMeasurementId() != null && !SiteRuntimeConfig.googleAnalyticsMeasurementId().isBlank())
