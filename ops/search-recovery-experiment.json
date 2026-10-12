@@ -1,8 +1,12 @@
 {
   "name": "Existing URL search-to-revenue recovery",
   "preparedAt": "2026-10-12",
-  "deploymentDate": null,
-  "deploymentCommit": null,
+  "deploymentDate": "2026-10-12",
+  "deploymentCommit": "47d3942bf3afbc3cc7a31cde9a4b4d77cfcb9faa",
+  "deploymentRun": "https://github.com/ichbinhyeok/backflowverdict/actions/runs/38231440081",
+  "productionVerifiedAt": "2026-10-12T09:54:38Z",
+  "gscContentGroupId": "63c3a584-8dd1-47d6-aa77-113163398369",
+  "gscAnnotationId": "8bb6223f-e1bd-4965-9ae1-454de0a344d5",
   "site": "https://backflowpath.com",
   "baseline": {
     "start": "2026-09-12",
@@ -24,8 +28,8 @@
     "/backflow-preventer-leaking/"
   ],
   "gates": [
-    {"day": 60, "siteClicks28Days": 150, "focusClicks28Days": 25},
-    {"day": 90, "siteClicks28Days": 200, "focusClicks28Days": 40}
+    {"day": 60, "reviewDate": "2026-12-11", "siteClicks28Days": 150, "focusClicks28Days": 25},
+    {"day": 90, "reviewDate": "2027-01-10", "siteClicks28Days": 200, "focusClicks28Days": 40}
   ],
   "stopRule": "At day 90, if site clicks remain below 150, focus pages are stalled, and no qualified commercial progress is evidenced, stop new development and retain the useful existing asset. Review seasonality and data completeness before deciding.",
   "commercialEvents": ["kit_match_result", "merchant_outbound_click", "request_help_click", "lead_form_success"],

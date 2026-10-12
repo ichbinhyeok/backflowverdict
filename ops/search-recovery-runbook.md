@@ -2,6 +2,10 @@
 
 Scope: strengthen the eight URLs in `search-recovery-experiment.json`, preserve local winners and official-first routing, and test purchase-adjacent intent before further page expansion. Prepared 2026-10-12; the experiment clock starts only after production verification. These are decision thresholds, not promised traffic or revenue.
 
+Production verified on 2026-10-12 at runtime commit `47d3942bf3afbc3cc7a31cde9a4b4d77cfcb9faa`, [successful deployment](https://github.com/ichbinhyeok/backflowverdict/actions/runs/38231440081). Full suite: 92 server tests and 11 Chromium contracts. All eight public URLs returned 200 with one H1, matching canonical, indexable robots and the new analytics asset; model schema is TechArticle/Thing. The live 975XL size/scope selection and manufacturer/merchant event separation passed, with no mobile overflow or page JavaScript errors. No production inquiry was submitted as a test. Public `/healthz` is restricted; internal deployment health passed and public `/readyz` returned ready.
+
+GSC Wizard group `Recovery focus — 8 existing URLs` is saved with eight exact-match rules (ID in the manifest), and the release annotation is saved. Both live sitemaps were resubmitted and accepted on 2026-10-12; downloading/indexing remains Google's work. Main sitemap: 1,323 URLs including all eight focus URLs. Priority sitemap: 447 URLs including the five focus decision guides; models and the kit hub remain discoverable through the main sitemap and internal links. Day 60 is 2026-12-11; day 90 is 2027-01-10. Reviews use the latest settled 28 days at those checkpoints.
+
 ## Measurement
 
 Both public layouts use `/analytics.js`. Query strings, contact details, free-text notes, and routing tokens are excluded from custom click/form parameters. GA4 page location and referrer omit query strings and fragments. Enhanced measurement can independently collect events; do not add its generic outbound clicks to these mutually classified custom counts.

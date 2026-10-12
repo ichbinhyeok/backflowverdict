@@ -6,8 +6,10 @@
 - Added source-backed field tables and a conceptual RPZ schematic, corrected 975XL kit scope and reviewed size coverage, and added three explicitly uncompensated retailer links after manufacturer matching.
 - Unified analytics across layouts; source, official, provider and merchant actions are separate. Saved-inquiry success uses a server persistence flash flag; attempts, spam and rejected requests do not count as completed inquiries.
 - OAuth GA4 can enumerate the backflow property, but GSC Wizard reports no property binding. Historical conversions/revenue remain unverified; no binding tool is exposed and no new browser sign-in/terms acceptance was attempted.
-- Full pre-merge Gradle suite passed (92 tests) and browser contracts passed (10/10). The remote August SEO commits were discovered and merged, preserving their homepage/portal ownership changes. Integrated Gradle verification passed (92 tests); production release is pending.
+- The remote August SEO commits were discovered and merged, preserving their homepage/portal ownership changes. Final integrated and deployment verification passed: 92 Gradle tests and 11 Chromium contracts.
 - The first October deployment run was cancelled during image build before OCI upload/deploy after an expanded visual source check corrected XLC seat inclusion. The current matrix-based map includes seats and distinguishes separate cover kits.
+- Released runtime commit `47d3942bf3afbc3cc7a31cde9a4b4d77cfcb9faa` through successful Actions run `38231440081`. Verified all eight public URLs, canonical/indexability, model schema, exact kit content, mobile fit and browser event separation. Public `/readyz` is ready; internal deployment health passed. No live inquiry was submitted for QA.
+- Registered the eight-URL GSC Wizard group and release annotation, resubmitted both sitemaps successfully, and recorded October 12 as day zero. The day-60/day-90 reviews are December 11 / January 10. Sitemap acceptance does not establish indexing or traffic growth.
 - The source queue contains 96 overdue utility records; no bulk verification-date reset was made. New national source reviews are documented separately.
 
 ## 2026-10-12 — search growth and monetization salvage research
@@ -57,7 +59,7 @@
 ## Current status
 - As of 2026-10-12, live research supports a small retained search asset but does not establish a scalable diagnostic-content or revenue engine; see the October salvage report. The three inspected core URLs are indexed with matching canonicals.
 - The three manually requested BackflowVerdict launch URLs are indexed as of 2026-08-11 and have begun receiving low-volume exploratory impressions.
-- The October recovery implementation is committed on codex/search-recovery-2026-10; integrated Gradle verification passed and production release is pending.
+- The October recovery implementation is merged into main and verified in production at runtime commit `47d3942`; all eight focus URLs passed public checks. Measurement and review artifacts are in ops/search-recovery-experiment.json and ops/search-recovery-runbook.md.
 - BackflowPath is tracked as an owner-facing utility-first compliance product.
 - The public site centers on utility, state, metro, guide, tester, failed-test, provider, and request-help pages.
 - Lead capture remains file-backed and manually reviewed through `/admin`.
@@ -67,7 +69,7 @@
 
 ## Latest decisions
 - Execute the authorized eight-URL recovery experiment; use actual production verification as day zero, preserve local winners, and require commercial evidence separately from source navigation. See ops/search-recovery-runbook.md.
-- October research recommendation: evaluate purchase-adjacent search growth separately from free compliance navigation; do not use the historical average-position-5 traffic model as a forecast. This is a proposed investment rule, not a shipped product change.
+- The authorized October experiment evaluates purchase-adjacent search growth separately from free compliance navigation. The thresholds are investment review gates; the historical average-position-5 traffic model is not a forecast.
 - Do not passively wait on low initial rankings or repeat indexing requests; improve query ownership and visible evidence now, then judge results on a 7-day cadence after deployment.
 - Use 50 impressions per page or 14 elapsed days as the minimum signal before treating a new page's average position as stable enough for a major rewrite decision.
 - Keep the plural repair-kit finder focused on model/size/part lookup, the singular repair-kit decision guide focused on scope selection, and the installation code page focused on authority/approval workflow.
@@ -81,6 +83,7 @@
 - Automated source URL audits can refresh freshness dates only when unresolved URLs are also recorded in `data/ops/broken_links.csv` for follow-up suppression.
 
 ## What changed this session
+- Completed the production release and external GSC measurement setup. Preserved 107 winner URL contracts and recorded runtime provenance, public verification, sitemap submission and the remaining GA4 binding limitation.
 - Implemented the October field references, model compatibility corrections, uncompensated merchant links, shared analytics, persistence-confirmed inquiry conversion, and recovery scorecard/source queue.
 - Added the 2026-10-12 salvage research report, original GSC evidence, derived CSVs, public HTML snapshots, and verified traffic chart. Confirmed that external-link events currently mix merchant/provider and official/manufacturer destinations, and form-submit events do not establish accepted or paid leads.
 - Added homepage links to the three priority national pages, tightened exact portal-family titles, and separated portal lookup from portal-verification intent.
@@ -153,14 +156,13 @@
 - Strengthened `/backflow-reporting-portals` as a lookup database by adding a portal family matrix for BSI, WEIRS, SwiftComply, VEPO, Aqua/TrackMyBackflow, Tokay, and SpryBackflow searches.
 
 ## Next recommended tasks
-1. Finish integrated tests, release through the existing deployment pipeline, and record the actual verified deployment date and commit in the experiment manifest.
-2. Link properties/531520200 to sc-domain:backflowpath.com in GSC Wizard's Analytics page; verify lead_form_success in GA4 and register needed event dimensions.
-3. Review equal settled 28-day GSC windows weekly with scripts/recovery_scorecard.py, then apply the day-60/day-90 gates with commercial evidence and seasonality judgment.
-4. Work the semantic utility source-refresh queue, prioritizing existing click winners. Preserve older dates until the full record is reverified; do not confuse bot-blocked fetches with dead links.
-5. Retain local/portal query ownership while watching source navigation separately from commercial intent. Add affiliate tracking only after a real agreement and exact fit check.
+1. Link properties/531520200 to sc-domain:backflowpath.com in GSC Wizard's Analytics page; verify lead_form_success in GA4 and register needed event dimensions. Binding cannot be changed through the exposed API.
+2. Review equal settled 28-day GSC windows weekly with scripts/recovery_scorecard.py, then apply the December 11 / January 10 gates with commercial evidence and seasonality judgment.
+3. Work the semantic utility source-refresh queue, prioritizing existing click winners. Preserve older dates until the full record is reverified; do not confuse bot-blocked fetches with dead links.
+4. Retain local/portal query ownership while watching source navigation separately from commercial intent. Add affiliate tracking only after a real agreement and exact fit check.
 
 ## Open questions
-- Whether current approved/paid leads exist, which GA4 property is authoritative for all production routes, and whether installation/leak/model improvements can increase purchase-adjacent organic landings under the proposed 60–90-day experiment.
+- Whether current approved/paid leads exist, whether the available backflow GA4 property captures all production routes correctly after binding/DebugView verification, and whether the released installation/leak/model improvements increase purchase-adjacent organic landings over 60–90 days.
 - Whether the repair-kit finder needs additional model cohorts before the current ten model passports accumulate enough exact-query impressions.
 - Whether installation demand separates into a national detail page and local installation pages after the next 14-day sample, or remains best consolidated in the current national decision page plus utility overlay.
 - Whether legacy internal provider-status fields should be renamed in code and data files after the public cleanup is complete.
