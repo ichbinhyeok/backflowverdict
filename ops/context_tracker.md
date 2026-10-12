@@ -1,5 +1,13 @@
 # Context Tracker
 
+## 2026-10-12 — diagram and leak evidence expansion
+
+- User requested the installation-style source expansion and production deployment for diagram/leak pages. Scoped four existing focus URLs: diagram, general leak, PVB/vacuum-breaker leak and double-check leak. Preserved canonical/query ownership and 107 winner contracts.
+- Added original DCVA/PVB observation maps, exact-model FEBCO 825Y/765, Watts 007 and Wilkins 350XL PDF references, five native questions per page, observation/service evidence and local closeout paths.
+- Added an attributed measured replacement project, a manufacturer RPZ flood-prevention project, and two explicitly historical EPA-compiled incidents. Prevention is not labeled a repaired leak; the historical AVB is not represented as a modern PVB case. No field experience, project photos, transferable ROI or remote diagnosis is fabricated.
+- Shared cases/questions now support non-installation guides while retaining installation anchors. EPA case clicks are official-source events; manufacturer references retain their own event category.
+- Local validation passed: 92 Gradle tests, 11 Chromium contracts and additional browser checks on all four pages plus installation, including keyboard/no-JavaScript answers, mobile fit, source-event separation and screenshot inspection. Release/public verification pending.
+
 ## 2026-10-12 — installation evidence expansion
 
 - User requested stronger installation search content using actual cases and manufacturer material. Kept the existing canonical installation URL and query ownership; no new indexed route was created.
@@ -65,6 +73,7 @@
 - Deployment now runs the full test suite and no longer uses destructive `rsync --delete` for project data.
 
 ## Current status
+- Diagram and three leak focus pages are source-enriched and locally verified, awaiting this session's authorized production release; evidence is in ops/diagram-leaks-evidence-2026-10-12.md.
 - Installation evidence expansion is merged and verified in production at runtime `e9a169d`. Search effects remain unmeasured because available GSC data ends October 9, before either October 12 intervention.
 - As of 2026-10-12, live research supports a small retained search asset but does not establish a scalable diagnostic-content or revenue engine; see the October salvage report. The three inspected core URLs are indexed with matching canonicals.
 - The three manually requested BackflowVerdict launch URLs are indexed as of 2026-08-11 and have begun receiving low-volume exploratory impressions.
@@ -77,6 +86,7 @@
 - `/readyz` must stay `ready` as long as utility pages are explicitly published and not blocked, even when freshness warnings exist.
 
 ## Latest decisions
+- Extend inspectable model evidence and attributed cases to the four existing diagram/leak focus URLs; preserve the October 12 baseline and original review gates. Keep historical incidents and prevention projects distinct from leak repair outcomes.
 - Strengthen installation detail intent on the existing URL with inspectable manufacturer documents and attributed real projects. Keep code/approval and cost intent on their existing routes; no further topic expansion is needed for this change.
 - Record the installation expansion as a second October 12 intervention; retain the original 28-day baseline and December/January review dates.
 - Execute the authorized eight-URL recovery experiment; use actual production verification as day zero, preserve local winners, and require commercial evidence separately from source navigation. See ops/search-recovery-runbook.md.
@@ -94,6 +104,7 @@
 - Automated source URL audits can refresh freshness dates only when unresolved URLs are also recorded in `data/ops/broken_links.csv` for follow-up suppression.
 
 ## What changed this session
+- Expanded the diagram and three leak pages, added original observation maps, generalized native case/question rendering and verified source-event classification plus full local regressions.
 - Added installation case reports, model drawing deep links, an original site schematic, a quote/observation brief and accessible questions; verified full regression suites and the new browser behavior.
 - Completed installation production verification and saved a GSC release annotation. All five contents anchors, two project reports and six native questions passed browser checks, including keyboard and no-JavaScript behavior.
 - Completed the production release and external GSC measurement setup. Preserved 107 winner URL contracts and recorded runtime provenance, public verification, sitemap submission and the remaining GA4 binding limitation.
@@ -169,12 +180,14 @@
 - Strengthened `/backflow-reporting-portals` as a lookup database by adding a portal family matrix for BSI, WEIRS, SwiftComply, VEPO, Aqua/TrackMyBackflow, Tokay, and SpryBackflow searches.
 
 ## Next recommended tasks
+0. Complete the authorized diagram/leak deployment, verify public HTML/browser behavior and record the intervention without resetting the experiment baseline.
 1. Link properties/531520200 to sc-domain:backflowpath.com in GSC Wizard's Analytics page; verify lead_form_success in GA4 and register needed event dimensions. Binding cannot be changed through the exposed API.
 2. Review equal settled 28-day GSC windows weekly with scripts/recovery_scorecard.py, then apply the December 11 / January 10 gates with commercial evidence and seasonality judgment.
 3. Work the semantic utility source-refresh queue, prioritizing existing click winners. Preserve older dates until the full record is reverified; do not confuse bot-blocked fetches with dead links.
 4. Retain local/portal query ownership while watching source navigation separately from commercial intent. Add affiliate tracking only after a real agreement and exact fit check.
 
 ## Open questions
+- Whether the diagram and symptom-specific improvements attract more qualified search landings after recrawl; publication and passing QA alone do not establish growth or revenue.
 - Whether installation/detail search visibility and qualified next-step behavior improve after recrawl; the current small, pre-release query sample cannot establish impact.
 - Whether the installation page needs additional first-hand field documentation after its present manufacturer-sourced comparison accumulates enough settled search data.
 - Whether current approved/paid leads exist, whether the available backflow GA4 property captures all production routes correctly after binding/DebugView verification, and whether the released installation/leak/model improvements increase purchase-adjacent organic landings over 60–90 days.

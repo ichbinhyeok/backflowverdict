@@ -491,5 +491,5 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .bv-question-list summary { font-weight: 700; font-size: 1.15rem; line-height: 1.4; cursor: pointer; }
 .bv-question-list p { margin: 16px 0 0; line-height: 1.65; }
 .bv-page-contents a:focus-visible, .bv-question-list summary:focus-visible { outline: 3px solid var(--bv-action); outline-offset: 5px; }
-[id="model-installation-details"], [id="installation-cases"], [id="installation-detail"], [id="installation-questions"], [id="utility-check"] { scroll-margin-top: 100px; }
+.bv-field-section, [data-documented-cases], [data-decision-questions], [id="installation-detail"], [id="safe-checks"], [id="utility-check"] { scroll-margin-top: 100px; }
 @media (max-width: 680px) { .bv-project { grid-template-columns: 1fr; gap: 20px; padding-block: 32px; } .bv-page-contents { gap: 16px 24px; } .bv-page-contents > span { width: 100%; } }

@@ -34,6 +34,10 @@
             <nav class="bv-shell bv-page-contents" aria-label="Installation page contents">
                 <span>On this page</span><a href="#model-installation-details">Model drawings</a><a href="#installation-cases">Documented installations</a><a href="#installation-detail">Installer brief</a><a href="#installation-questions">Common questions</a><a href="#utility-check">Local approval</a>
             </nav>
+        @elseif (!guide.questions().isEmpty())
+            <nav class="bv-shell bv-page-contents" aria-label="Page contents">
+                <span>On this page</span>@for (var section : guide.fieldSections())<a href="#${section.id()}">${section.firstColumn()}</a>@endfor<a href="#documented-cases">Documented cases</a><a href="#field-questions">Common questions</a><a href="#safe-checks">Observation checklist</a><a href="#utility-check">Local requirements</a>
+            </nav>
         @endif
 
         @if (guide.toolType() == null || guide.toolType().isBlank())
@@ -115,14 +119,14 @@
         @template.components.field-sections(sections = guide.fieldSections())
 
         @if (!guide.caseStudies().isEmpty())
-            <section class="bv-section bv-section--paper" id="installation-cases" data-installation-cases>
+            <section class="bv-section bv-section--paper" id="${guide.slug().equals("backflow-preventer-installation") ? "installation-cases" : "documented-cases"}" data-documented-cases>
                 <div class="bv-shell">
-                    <header class="bv-section-heading"><p class="bv-kicker">Documented projects</p><h2>Real installations: what changed the plan?</h2><p>These are manufacturer-published projects, not work performed or independently inspected by BackflowVerdict. The planning lessons below are our interpretation; each source documents its own project.</p></header>
+                    <header class="bv-section-heading"><p class="bv-kicker">Documented cases</p><h2>${guide.slug().equals("backflow-preventer-installation") ? "Real installations: what changed the plan?" : "What the published cases establish."}</h2><p>These are attributed manufacturer project reports or historical incidents compiled by EPA. BackflowVerdict did not perform or independently inspect this work. The takeaway is our interpretation; a case does not diagnose your assembly.</p></header>
                     <div class="bv-projects">
                         @for (var study : guide.caseStudies())
                             <article class="bv-project">
                                 <header><p class="bv-kicker">${study.setting()}</p><h3>${study.title()}</h3></header>
-                                <div><dl><div><dt>Site constraint</dt><dd>${study.constraint()}</dd></div><div><dt>What the source reports</dt><dd>${study.documentedAction()}</dd></div><div><dt>Planning lesson</dt><dd>${study.planningLesson()}</dd></div></dl><p class="bv-project-source">${study.publisher()} · <a href="${study.sourceUrl()}" data-link-kind="manufacturer" rel="noopener noreferrer">${study.sourceTitle()} &rarr;</a></p></div>
+                                <div><dl><div><dt>Context</dt><dd>${study.constraint()}</dd></div><div><dt>What the source reports</dt><dd>${study.documentedAction()}</dd></div><div><dt>Takeaway and limits</dt><dd>${study.planningLesson()}</dd></div></dl><p class="bv-project-source">${study.publisher()} · <a href="${study.sourceUrl()}" data-link-kind="${study.publisher().equals("EPA") ? "official" : "manufacturer"}" rel="noopener noreferrer">${study.sourceTitle()} &rarr;</a></p></div>
                             </article>
                         @endfor
                     </div>
@@ -173,9 +177,9 @@
         @endif
 
         @if (!guide.questions().isEmpty())
-            <section class="bv-section" id="installation-questions" data-installation-questions>
+            <section class="bv-section" id="${guide.slug().equals("backflow-preventer-installation") ? "installation-questions" : "field-questions"}" data-decision-questions>
                 <div class="bv-shell bv-document-grid">
-                    <header><p class="bv-kicker">Before ordering</p><h2>Backflow installation questions.</h2><p>Read these with the linked model drawings. Local approval controls the final installation.</p></header>
+                    <header><p class="bv-kicker">Common questions</p><h2>${guide.slug().equals("backflow-preventer-installation") ? "Backflow installation questions." : guide.slug().equals("backflow-preventer-diagram") ? "Reading the diagram." : "Interpreting a leak."}</h2><p>Read these with the linked model documents. Confirm service and testing requirements with the governing authority.</p></header>
                     <div class="bv-question-list">@for (var question : guide.questions())<details><summary>${question.question()}</summary><p>${question.answer()}</p></details>@endfor</div>
                 </div>
             </section>

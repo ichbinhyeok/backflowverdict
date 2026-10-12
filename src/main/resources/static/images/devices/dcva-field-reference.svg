@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 460" role="img" aria-labelledby="title desc">
+  <title id="title">Double-check assembly observation points</title>
+  <desc id="desc">Conceptual single-cover double-check assembly. Water flows from inlet isolation through two internal checks to outlet isolation. A cover seal and selected test connections are labeled. Internal checks are dashed and are not externally visible. There is no RPZ relief outlet. This is not a parts or installation drawing.</desc>
+  <defs><marker id="flow-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#285f8f"/></marker></defs>
+  <rect width="1000" height="460" fill="#fcfbf7"/>
+  <g font-family="sans-serif" fill="#17201d">
+    <text x="30" y="35" font-size="16" letter-spacing="2">CONCEPTUAL FIELD REFERENCE · DOUBLE CHECK</text>
+    <g stroke="#17201d" stroke-width="4" fill="#f4f1e8">
+      <path d="M55 235H160V195H240V235H290V190H710V235H760V195H840V235H945V285H840V320H760V285H710V315H290V285H240V320H160V285H55Z"/>
+      <path d="M300 185H700V205H300Z"/>
+      <path d="M200 195V145M800 195V145M175 145H225M775 145H825" fill="none"/>
+      <path d="M270 235V215M350 190V150M650 190V150M730 235V215" fill="none"/>
+      <path d="M260 215H280M340 150H360M640 150H660M720 215H740"/>
+    </g>
+    <g stroke="#5c675e" stroke-width="3" stroke-dasharray="6 5" fill="none"><rect x="365" y="220" width="70" height="75"/><rect x="565" y="220" width="70" height="75"/></g>
+    <path d="M75 260H920" stroke="#285f8f" stroke-width="4" marker-end="url(#flow-arrow)"/>
+    <path d="M305 207H695" stroke="#c64e32" stroke-width="4"/>
+    <g font-size="20" text-anchor="middle"><text x="200" y="100">Inlet isolation</text><text x="800" y="100">Outlet isolation</text><text x="500" y="100">One service cover</text><text x="400" y="353">Internal check 1</text><text x="600" y="353">Internal check 2</text><text x="500" y="425">NO RPZ RELIEF OUTLET</text></g>
+    <g stroke="#5c675e" stroke-width="1.5" fill="none"><path d="M500 108V180M400 301V329M600 301V329M330 207L210 370M650 148L680 126"/></g>
+    <text x="35" y="393" font-size="18">Cover seal / external wet boundary</text>
+    <text x="570" y="123" font-size="17">Test connections</text>
+    <text x="30" y="63" font-size="17">Selected ports shown. Confirm model, size and actual port layout.</text>
+  </g>
+</svg>

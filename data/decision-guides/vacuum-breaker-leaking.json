@@ -157,6 +157,89 @@
       "diagram": null,
       "diagramAlt": null,
       "caption": null
+    },
+    {
+      "id": "pvb-manufacturer-checks",
+      "title": "FEBCO 765: minor leakage and major discharge are different clues.",
+      "introduction": "Page 6 of the FEBCO 765 manual separates the observations below. Pressure testing and disassembly belong to qualified personnel; the owner’s task is to document location, timing and device identity.",
+      "firstColumn": "PVB manufacturer checks",
+      "secondColumn": "What the manual lists",
+      "thirdColumn": "Next decision",
+      "rows": [
+        {
+          "observation": "Minor leakage through the air vent",
+          "meaning": "Possible seal damage, a damaged poppet or bonnet, or debris on the sealing surface.",
+          "nextStep": "Record the exact wet opening and obtain a model-specific assessment.",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/630725-source/rp-is-f-fz-765#page=6"
+        },
+        {
+          "observation": "Significant air-vent discharge",
+          "meaning": "Possible poppet guidance or seal failure, low downstream pressure, or inadequate inlet volume.",
+          "nextStep": "Ask the technician to evaluate system conditions as well as parts; do not improvise valve throttling.",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/630725-source/rp-is-f-fz-765#page=6"
+        },
+        {
+          "observation": "Leaks again after a bonnet/poppet change",
+          "meaning": "A changed part does not establish the cause or a passing test. FEBCO also publishes a warning about visually similar replacement parts.",
+          "nextStep": "Confirm exact model/size, approved part identity, and post-service test rather than ordering another guessed kit.",
+          "href": "https://www.watts.com/resources/references-tools/beware-unapproved-repair-parts"
+        },
+        {
+          "observation": "Hose-end attachment after faucet shutdown",
+          "meaning": "A hose-bib vacuum breaker has a different construction and service path from a testable irrigation PVB.",
+          "nextStep": "Use the hose-bib guide and the attachment manufacturer’s instructions.",
+          "href": "/hose-bib-vacuum-breaker/"
+        }
+      ],
+      "sources": [
+        {
+          "eyebrow": "Manufacturer",
+          "title": "FEBCO 765 troubleshooting · PDF p. 6",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/630725-source/rp-is-f-fz-765#page=6"
+        },
+        {
+          "eyebrow": "Manufacturer",
+          "title": "FEBCO advisory on unapproved replacement parts",
+          "href": "https://www.watts.com/resources/references-tools/beware-unapproved-repair-parts"
+        }
+      ],
+      "diagram": "pvb-field-reference",
+      "diagramAlt": "Conceptual PVB observation points showing atmospheric air inlet and bonnet above one check, with shutoffs and test access",
+      "caption": "Original conceptual PVB path. A canopy, bonnet, poppet and body are distinct parts; confirm their locations in the exact manufacturer drawing."
+    }
+  ],
+  "caseStudies": [
+    {
+      "title": "Michigan, 1991: a vacuum-breaker failure",
+      "setting": "Historical incident · EPA compilation, Exhibit 5.1",
+      "constraint": "An atmospheric vacuum breaker protected an irrigation connection to a public supply.",
+      "documentedAction": "EPA’s 2002 review, citing AWWA PNWS, records a malfunction that allowed irrigation water into the public system.",
+      "planningLesson": "Identify the protection type and verify operation after service. This was an AVB incident, not an 800M4 or FEBCO 765 PVB repair case; the summary supplies no model-specific repair outcome.",
+      "publisher": "EPA",
+      "sourceTitle": "Historical irrigation incident · PDF p. 18",
+      "sourceUrl": "https://www.epa.gov/sites/default/files/2015-09/documents/2007_05_18_disinfection_tcr_issuepaper_tcr_crossconnection-backflow.pdf#page=18"
+    }
+  ],
+  "questions": [
+    {
+      "question": "Is a vacuum breaker supposed to leak when irrigation starts?",
+      "answer": "The Watts 800M4 manual describes spillage while the air inlet is still open during pressurization. Record whether it ends once steady operation begins. Continuous discharge, damage or recurring unusual behavior needs assessment; no fixed “normal duration” applies to every model."
+    },
+    {
+      "question": "Why is my FEBCO 765 leaking from the top?",
+      "answer": "The 765 manual lists several different conditions for minor air-vent leakage and significant discharge. Parts damage, debris and system pressure/volume can require different work. The top location alone does not confirm that a bonnet kit is the remedy."
+    },
+    {
+      "question": "Why does it still leak after replacing the bonnet and poppet?",
+      "answer": "Have the repairer verify parts identity, fit, sealing surfaces and operating conditions against the exact manual, then test after service. The symptom can persist when the original cause was not the replaced component."
+    },
+    {
+      "question": "Are a hose-bib vacuum breaker and a PVB repaired the same way?",
+      "answer": "They are different devices. Identify the attachment or testable assembly by its label and construction. Do not transfer an irrigation PVB repair procedure to a hose-end device."
+    },
+    {
+      "question": "Does a freeze sensor or freeze-resistant label eliminate winterization?",
+      "answer": "Use the exact model’s freeze instructions. An alert sensor reports conditions and needs the required connection/activation; it does not itself prevent freezing. Freeze protection and seasonal service remain model- and site-specific."
     }
   ]
 }

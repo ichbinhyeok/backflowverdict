@@ -366,7 +366,8 @@
         "lastVerified": "2026-10-12",
         "snapshotPath": "storage/snapshots/installation-2026-10-12/source-review.md",
         "guideSlugs": [
-            "backflow-preventer-installation"
+            "backflow-preventer-installation",
+            "backflow-preventer-diagram"
         ]
     },
     {
@@ -379,6 +380,94 @@
         "snapshotPath": "storage/snapshots/installation-2026-10-12/source-review.md",
         "guideSlugs": [
             "backflow-preventer-installation"
+        ]
+    },
+    {
+        "claimId": "LEAK-825Y-20261012",
+        "publisher": "FEBCO / Watts",
+        "title": "825Y / LF825Y installation and service manual",
+        "url": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/34403-source/638766311000000000/rp-is-f-825y-2405.pdf",
+        "use": "Continuous/intermittent relief-discharge possibilities, not a remote diagnosis.",
+        "lastVerified": "2026-10-12",
+        "snapshotPath": "storage/snapshots/diagram-leaks-2026-10-12/source-review.md",
+        "guideSlugs": [
+            "backflow-preventer-leaking"
+        ]
+    },
+    {
+        "claimId": "LEAK-765-20261012",
+        "publisher": "FEBCO / Watts",
+        "title": "765 parts and troubleshooting manual",
+        "url": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/630725-source/rp-is-f-fz-765",
+        "use": "English PDF pages 5–6: separate parts, minor leakage and significant discharge.",
+        "lastVerified": "2026-10-12",
+        "snapshotPath": "storage/snapshots/diagram-leaks-2026-10-12/source-review.md",
+        "guideSlugs": [
+            "backflow-preventer-diagram",
+            "vacuum-breaker-leaking"
+        ]
+    },
+    {
+        "claimId": "LEAK-007-20261012",
+        "publisher": "Watts",
+        "title": "007 / LF007 service and troubleshooting manual",
+        "url": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/633411-source/638762888320000000/rp-is-007s-2409.pdf",
+        "use": "English PDF pages 3–4: cover versus check scope, limited interchangeability and post-service testing.",
+        "lastVerified": "2026-10-12",
+        "snapshotPath": "storage/snapshots/diagram-leaks-2026-10-12/source-review.md",
+        "guideSlugs": [
+            "backflow-preventer-diagram",
+            "double-check-valve-leaking"
+        ]
+    },
+    {
+        "claimId": "DIAGRAM-350XL-20261012",
+        "publisher": "Zurn Wilkins",
+        "title": "350 / 350XL 3/4 and 1 inch parts sheet",
+        "url": "https://files.zurn.com/repair-parts/350xl-34-1.pdf",
+        "use": "Size-specific housing and check-component distinction; not extended to other sizes.",
+        "lastVerified": "2026-10-12",
+        "snapshotPath": "storage/snapshots/diagram-leaks-2026-10-12/source-review.md",
+        "guideSlugs": [
+            "backflow-preventer-diagram",
+            "double-check-valve-leaking"
+        ]
+    },
+    {
+        "claimId": "LEAK-UMASS-20261012",
+        "publisher": "Watts",
+        "title": "UMass Life Sciences flood-protection project",
+        "url": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/26310-source/637805499170000000/s-watts-umass",
+        "use": "Manufacturer-reported prevention project, not a leak repair outcome or transferable design.",
+        "lastVerified": "2026-10-12",
+        "snapshotPath": "storage/snapshots/diagram-leaks-2026-10-12/source-review.md",
+        "guideSlugs": [
+            "backflow-preventer-leaking"
+        ]
+    },
+    {
+        "claimId": "LEAK-EPA-HISTORY-20261012",
+        "publisher": "EPA",
+        "title": "Historical cross-connection incidents, Exhibit 5.1",
+        "url": "https://www.epa.gov/sites/default/files/2015-09/documents/2007_05_18_disinfection_tcr_issuepaper_tcr_crossconnection-backflow.pdf",
+        "use": "2002 compilation citing other reports: 1991 Michigan AVB and 1995 California double-check cases; historical context, no current model diagnosis.",
+        "lastVerified": "2026-10-12",
+        "snapshotPath": "storage/snapshots/diagram-leaks-2026-10-12/source-review.md",
+        "guideSlugs": [
+            "vacuum-breaker-leaking",
+            "double-check-valve-leaking"
+        ]
+    },
+    {
+        "claimId": "LEAK-765-PARTS-20261012",
+        "publisher": "FEBCO / Watts",
+        "title": "Advisory on unapproved FEBCO replacement parts",
+        "url": "https://www.watts.com/resources/references-tools/beware-unapproved-repair-parts",
+        "use": "Manufacturer warning: physical resemblance or threaded fit alone does not establish authorized replacement scope.",
+        "lastVerified": "2026-10-12",
+        "snapshotPath": "storage/snapshots/diagram-leaks-2026-10-12/source-review.md",
+        "guideSlugs": [
+            "vacuum-breaker-leaking"
         ]
     }
 ]
