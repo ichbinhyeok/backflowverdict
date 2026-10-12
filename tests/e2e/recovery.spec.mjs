@@ -50,3 +50,23 @@ test('eight recovery URLs stay indexable and fit a mobile viewport', async ({ pa
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
 });
+
+test('legacy authority redirects stay separate from providers and query text is excluded', async ({ page }) => {
+  await page.route('**/analytics-contract', route => route.fulfill({ contentType: 'text/html', body: `
+    <script>window.__events=[];window.gtag=(...args)=>window.__events.push(args);</script>
+    <script defer src="/analytics.js?v=20261012"></script>
+    <a id="official" href="/r/cta?ctaType=authority-source&next=https%3A%2F%2Fauthority.example%2Fprogram%3Fprivate%3Dtest">Authority source</a>
+    <a id="provider" href="/r/cta?ctaType=provider-website&next=https%3A%2F%2Fprovider.example%2Fcontact%3Fprivate%3Dtest">Open provider</a>
+    <a id="route" href="/states/texas/approved-backflow-testers">Official testers</a>
+  ` }));
+  await page.goto('/analytics-contract');
+  await page.evaluate(() => document.addEventListener('click', e => e.preventDefault()));
+  await page.locator('#official').click();
+  await page.locator('#provider').click();
+  await page.locator('#route').click();
+  const events = await page.evaluate(() => window.__events);
+  expect(events.filter(e => e[1] === 'official_source_click')).toHaveLength(1);
+  expect(events.filter(e => e[1] === 'provider_website_click')).toHaveLength(1);
+  expect(events.filter(e => e[1] === 'tester_route_click')).toHaveLength(1);
+  expect(JSON.stringify(events)).not.toContain('private');
+});

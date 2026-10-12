@@ -3,6 +3,10 @@
 .gradle
 build
 output
+analysis
+node_modules
+test-results
+playwright-report
 .playwright-cli
 storage/leads
 storage/logs

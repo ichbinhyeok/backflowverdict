@@ -40,7 +40,8 @@
             track('official_source_click', params);
         } else if (internal && url.pathname === '/r/cta') {
             var target = destination(url.searchParams.get('next'));
-            if (target) track('provider_website_click', target);
+            var ctaType = url.searchParams.get('ctaType');
+            if (target) track(ctaType === 'authority-source' ? 'official_source_click' : ctaType === 'provider-website' ? 'provider_website_click' : 'reference_outbound_click', target);
         } else if (kind === 'provider') {
             track('provider_website_click', params);
         } else if (internal && /^\/(get-help\/?|leads\/new)$/.test(url.pathname)) {

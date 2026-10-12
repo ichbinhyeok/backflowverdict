@@ -6,7 +6,7 @@
 - Added source-backed field tables and a conceptual RPZ schematic, corrected 975XL kit scope and reviewed size coverage, and added three explicitly uncompensated retailer links after manufacturer matching.
 - Unified analytics across layouts; source, official, provider and merchant actions are separate. Saved-inquiry success uses a server persistence flash flag; attempts, spam and rejected requests do not count as completed inquiries.
 - OAuth GA4 can enumerate the backflow property, but GSC Wizard reports no property binding. Historical conversions/revenue remain unverified; no binding tool is exposed and no new browser sign-in/terms acceptance was attempted.
-- Full pre-merge Gradle suite passed (92 tests) and browser contracts passed (10/10). The remote August SEO commits were discovered and merged, preserving their homepage/portal ownership changes. Final integrated verification and deployment are pending.
+- Full pre-merge Gradle suite passed (92 tests) and browser contracts passed (10/10). The remote August SEO commits were discovered and merged, preserving their homepage/portal ownership changes. Integrated Gradle verification passed (92 tests); production release is pending.
 - The source queue contains 96 overdue utility records; no bulk verification-date reset was made. New national source reviews are documented separately.
 
 ## 2026-10-12 — search growth and monetization salvage research
@@ -56,7 +56,7 @@
 ## Current status
 - As of 2026-10-12, live research supports a small retained search asset but does not establish a scalable diagnostic-content or revenue engine; see the October salvage report. The three inspected core URLs are indexed with matching canonicals.
 - The three manually requested BackflowVerdict launch URLs are indexed as of 2026-08-11 and have begun receiving low-volume exploratory impressions.
-- The October recovery implementation is committed on codex/search-recovery-2026-10; final integrated verification and production release are pending.
+- The October recovery implementation is committed on codex/search-recovery-2026-10; integrated Gradle verification passed and production release is pending.
 - BackflowPath is tracked as an owner-facing utility-first compliance product.
 - The public site centers on utility, state, metro, guide, tester, failed-test, provider, and request-help pages.
 - Lead capture remains file-backed and manually reviewed through `/admin`.
