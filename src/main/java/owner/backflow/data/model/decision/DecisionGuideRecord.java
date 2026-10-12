@@ -27,9 +27,13 @@ public record DecisionGuideRecord(
         boolean published,
         boolean indexable,
         String toolType,
-        List<DecisionFieldSection> fieldSections
+        List<DecisionFieldSection> fieldSections,
+        List<DecisionCaseStudy> caseStudies,
+        List<DecisionQuestion> questions
 ) {
     public DecisionGuideRecord {
         fieldSections = fieldSections == null ? List.of() : List.copyOf(fieldSections);
+        caseStudies = caseStudies == null ? List.of() : List.copyOf(caseStudies);
+        questions = questions == null ? List.of() : List.copyOf(questions);
     }
 }

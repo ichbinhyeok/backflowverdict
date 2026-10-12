@@ -21,7 +21,7 @@
                 </div>
                 <figure class="bv-diagram bv-reveal" style="--delay: 90ms">
                     <img src="/images/devices/${guide.diagram()}.svg" alt="${guide.diagramAlt()}">
-                    <figcaption><span>FIELD VIEW</span> Use the shape as a clue. Confirm the model label before service.</figcaption>
+                    <figcaption><span>FIELD VIEW</span> ${guide.slug().equals("backflow-preventer-installation") ? "Conceptual site brief, not an approved plan. Confirm the exact model drawing and local requirements." : "Use the shape as a clue. Confirm the model label before service."}</figcaption>
                 </figure>
             </div>
         </header>
@@ -29,6 +29,12 @@
         <section class="bv-alert" aria-label="Safety note">
             <div class="bv-shell"><strong>Before you act</strong><p>${guide.urgency()}</p></div>
         </section>
+
+        @if (guide.slug().equals("backflow-preventer-installation"))
+            <nav class="bv-shell bv-page-contents" aria-label="Installation page contents">
+                <span>On this page</span><a href="#model-installation-details">Model drawings</a><a href="#installation-cases">Documented installations</a><a href="#installation-detail">Installer brief</a><a href="#installation-questions">Common questions</a><a href="#utility-check">Local approval</a>
+            </nav>
+        @endif
 
         @if (guide.toolType() == null || guide.toolType().isBlank())
             <section class="bv-section" id="decision">
@@ -108,6 +114,22 @@
 
         @template.components.field-sections(sections = guide.fieldSections())
 
+        @if (!guide.caseStudies().isEmpty())
+            <section class="bv-section bv-section--paper" id="installation-cases" data-installation-cases>
+                <div class="bv-shell">
+                    <header class="bv-section-heading"><p class="bv-kicker">Documented projects</p><h2>Real installations: what changed the plan?</h2><p>These are manufacturer-published projects, not work performed or independently inspected by BackflowVerdict. The planning lessons below are our interpretation; each source documents its own project.</p></header>
+                    <div class="bv-projects">
+                        @for (var study : guide.caseStudies())
+                            <article class="bv-project">
+                                <header><p class="bv-kicker">${study.setting()}</p><h3>${study.title()}</h3></header>
+                                <div><dl><div><dt>Site constraint</dt><dd>${study.constraint()}</dd></div><div><dt>What the source reports</dt><dd>${study.documentedAction()}</dd></div><div><dt>Planning lesson</dt><dd>${study.planningLesson()}</dd></div></dl><p class="bv-project-source">${study.publisher()} · <a href="${study.sourceUrl()}" data-link-kind="manufacturer" rel="noopener noreferrer">${study.sourceTitle()} &rarr;</a></p></div>
+                            </article>
+                        @endfor
+                    </div>
+                </div>
+            </section>
+        @endif
+
         <section class="bv-section bv-section--ink" id="workflow">
             <div class="bv-shell">
                 <div class="bv-section-heading"><p class="bv-kicker">Evidence sequence</p><h2>Move in this order</h2></div>
@@ -142,10 +164,19 @@
                 </div>
             </section>
 
-            <section class="bv-section" data-installation-detail>
+            <section class="bv-section" id="installation-detail" data-installation-detail>
                 <div class="bv-shell bv-safety-grid">
-                    <div><p class="bv-kicker">Field detail</p><h2>Installation detail checklist.</h2><ul class="bv-check-list"><li>Property and water account tied to the governing utility</li><li>Protected system: irrigation, domestic, fire, process, or combined</li><li>Existing and proposed manufacturer, model, size, flow direction, and orientation</li><li>Upstream and downstream isolation plus service-interruption plan</li><li>Relief discharge, drain capacity, enclosure, heat, and freeze protection</li><li>Test access, maintenance clearance, permit, initial test, and report owner</li></ul></div>
+                    <div><p class="bv-kicker">Field detail</p><h2>Installation detail checklist.</h2><p>Prepare these observations for the installer before requesting a quote. Photograph accessible labels and the surrounding space; leave opening, measuring live pressure, shutdowns, and commissioning to qualified personnel.</p><ul class="bv-check-list"><li><strong>Identify:</strong> property utility, protected system, existing model, nominal size, and flow arrow</li><li><strong>Show the space:</strong> wide site photo, accessible model plate, proposed location, and obstructions around covers and test ports</li><li><strong>Record the height reference:</strong> RPZ relief outlet to floor/grade; PVB to the highest downstream piping in the named manual</li><li><strong>Document water discharge:</strong> open relief path, receiving drain, nearby equipment, and possible flood or freeze exposure</li><li><strong>Plan service:</strong> isolation, access for testing and cover removal, and a coordinated shutdown</li><li><strong>Agree on closeout:</strong> permit/approval owner, initial certified test where required, report filer, and acceptance proof</li></ul></div>
                     <div><p class="bv-kicker">Device comparison</p><h2>Choose from the required protection, not the price.</h2><ul class="bv-fact-lines"><li><a href="/rpz-vs-dcva/"><strong>RPZ vs DCVA:</strong> compare hazard protection, relief discharge, access, and testability.</a></li><li><a href="/rpz-vs-pvb/"><strong>RPZ vs PVB:</strong> compare system use, elevation, backsiphonage limits, and local acceptance.</a></li><li><a href="/backflow-preventer-installation-cost/"><strong>Installation cost scope:</strong> compare device, piping, drainage, permit, testing, and filing as separate quote lines.</a></li></ul></div>
+                </div>
+            </section>
+        @endif
+
+        @if (!guide.questions().isEmpty())
+            <section class="bv-section" id="installation-questions" data-installation-questions>
+                <div class="bv-shell bv-document-grid">
+                    <header><p class="bv-kicker">Before ordering</p><h2>Backflow installation questions.</h2><p>Read these with the linked model drawings. Local approval controls the final installation.</p></header>
+                    <div class="bv-question-list">@for (var question : guide.questions())<details><summary>${question.question()}</summary><p>${question.answer()}</p></details>@endfor</div>
                 </div>
             </section>
         @endif
@@ -172,7 +203,7 @@
             </section>
         @endif
 
-        <section class="bv-section bv-local">
+        <section class="bv-section bv-local" id="utility-check">
             <div class="bv-shell bv-local__grid">
                 <div><p class="bv-kicker">Official local layer</p><h2>Your utility sets the rule</h2><p>${guide.evidenceNote()}</p></div>
                 <form action="${guide.canonicalPath()}" method="get" class="bv-lookup bv-utility-picker" data-utility-picker>

@@ -3,13 +3,13 @@
   "pageType": "installation-decision",
   "canonicalPath": "/backflow-preventer-installation/",
   "eyebrow": "Installation decision",
-  "title": "Backflow preventer installation requirements and detail checklist",
-  "description": "Compare RPZ and PVB installation details, drainage, elevation, access, and initial testing. Open model-specific drawings and confirm local approval before work.",
+  "title": "Backflow preventer installation: diagrams & requirements",
+  "description": "Compare RPZ and PVB installation drawings, model-specific clearances, drainage and freeze protection. See documented projects and build an installer checklist.",
   "prompt": "What system is the installation protecting?",
-  "answer": "A complete installation is defined by the required protection level, approved assembly, field placement details, qualified work, initial test, and accepted utility closeout—not pipe size alone.",
+  "answer": "Start with the required protection and exact model. An RPZ needs a safe relief-discharge route; a PVB needs the elevation and system conditions in its manual. Then confirm local approval, testing, and report acceptance.",
   "urgency": "Never bypass an existing assembly or place an RPZ where relief discharge can flood, damage equipment, or create an unsafe condition. Fire and commercial systems need qualified design review.",
-  "diagram": "rpz",
-  "diagramAlt": "Reduced pressure backflow assembly with shutoffs, test ports, check modules, and relief discharge",
+  "diagram": "installation-site-reference",
+  "diagramAlt": "Conceptual RPZ installation showing flow direction, testing and service space, an open relief outlet, and a receiving drain",
   "aliases": [
     "backflow preventer installation",
     "install a backflow preventer",
@@ -123,29 +123,35 @@
   "fieldSections": [
     {
       "id": "model-installation-details",
-      "title": "Installation details depend on the exact assembly.",
-      "introduction": "Use these manufacturer examples to prepare an installer brief. Dimensions belong to the named model and document; the governing authority must accept the proposed installation.",
-      "firstColumn": "Observation",
-      "secondColumn": "What it establishes",
-      "thirdColumn": "Next step",
+      "title": "RPZ and PVB installation details: read the height reference.",
+      "introduction": "A dimension without its measurement points is incomplete. These are examples from named model documents, not a universal national installation detail. Open the cited page and confirm the assembly, size and local approval.",
+      "firstColumn": "Model and document",
+      "secondColumn": "Installation detail",
+      "thirdColumn": "Check before work",
       "rows": [
         {
-          "observation": "FEBCO LF825Y, 3/4–2 in",
-          "meaning": "Its specification calls for at least 12 inches between the relief discharge and floor or grade, drainage, service access, and freeze protection.",
-          "nextStep": "Open the typical installation drawing on page 3; verify local orientation and clearance rules.",
-          "href": ""
+          "observation": "FEBCO LF825Y RPZ · 3/4–2 in · specification p. 3",
+          "meaning": "Minimum 12-inch clearance from the relief discharge port to floor or grade. Discharge must drain away; testing and maintenance access and freeze protection are required.",
+          "nextStep": "Review the typical-installation figure and the note that local codes may prohibit vertical installation.",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/34439-source#page=3"
         },
         {
-          "observation": "Watts 800M4 / LF800M4 PVB, 1/2–2 in",
-          "meaning": "The manual requires a bonnet-up installation 12 inches above the highest downstream piping and prohibits locations subject to backpressure.",
-          "nextStep": "Open page 2 of the manual. A PVB elevation measurement is different from RPZ relief clearance.",
-          "href": ""
+          "observation": "Watts 800M4 / LF800M4 PVB · 1/2–2 in · manual p. 2",
+          "meaning": "Install bonnet-up, 12 inches above the highest downstream piping. This model must not be placed where backpressure can occur.",
+          "nextStep": "Identify the downstream high point. Measuring only from the ground does not establish the required elevation.",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/630139-source/rp-is-800m4-2409#page=2"
         },
         {
-          "observation": "Any regulated assembly",
-          "meaning": "A correct-looking layout does not establish hazard approval, a passed initial test, or accepted filing.",
-          "nextStep": "Identify the utility, permit owner, qualified installer, tester, and reporting route.",
-          "href": "/notice-finder"
+          "observation": "Indoor RPZ or an enclosure",
+          "meaning": "The relief outlet must remain able to discharge. A floor drain, enclosure, or flood alarm by itself does not establish adequate protection.",
+          "nextStep": "Have the designer confirm the model’s discharge path, drain capacity, air-gap arrangement, service access, and freeze protection.",
+          "href": "/rpz-backflow-preventer/"
+        },
+        {
+          "observation": "Replacement in existing piping",
+          "meaning": "Nominal pipe size does not establish the new assembly’s overall length or service envelope.",
+          "nextStep": "Compare exact-model dimensions with the measured space; allow access to test ports and removable covers.",
+          "href": "/backflow-preventer-installation/#installation-cases"
         }
       ],
       "sources": [
@@ -163,6 +169,54 @@
       "diagram": "rpz-field-reference",
       "diagramAlt": "Conceptual RPZ flow path, check covers, relief outlet and test access",
       "caption": "Concept only, not an approved installation plan. Use the linked drawing for the exact model, size, drainage, and authority requirements."
+    }
+  ],
+  "caseStudies": [
+    {
+      "title": "Brenham Hospital: measure the replacement envelope",
+      "setting": "Brenham, Texas · Healthcare",
+      "constraint": "A confined mechanical room restricted replacement choices.",
+      "documentedAction": "Watts reports that field measurements informed the selection of a 957 RPZ for the existing piping.",
+      "planningLesson": "Include the service envelope in the site brief. A compact body still needs testing and maintenance access.",
+      "publisher": "Watts",
+      "sourceTitle": "Brenham Hospital project",
+      "sourceUrl": "https://www.watts.com/resources/case-studies/aging-backflow-preventer-swapped-out-at-brenham-hospital-despite-space-constraints"
+    },
+    {
+      "title": "Arroyo Seco Junior High: plan for future maintenance",
+      "setting": "Valencia, California · Education",
+      "constraint": "Repeated corrosion complicated valve service.",
+      "documentedAction": "Watts documents a 2019 installation of a coated 4-inch LF909 and a later inspection of its condition.",
+      "planningLesson": "Compare future service needs alongside installation scope. The manufacturer’s account does not establish savings for another property.",
+      "publisher": "Watts",
+      "sourceTitle": "School water-system maintenance project",
+      "sourceUrl": "https://www.watts.com/resources/case-studies/reducing-maintenance-costs-for-school-water-system"
+    }
+  ],
+  "questions": [
+    {
+      "question": "How high should a backflow preventer be installed?",
+      "answer": "Use the exact assembly’s measurement points. The LF825Y specification gives a 12-inch minimum from the RPZ relief discharge to floor or grade. The 800M4 PVB manual measures 12 inches above the highest downstream piping. These are different references; confirm the complete drawing and local requirements."
+    },
+    {
+      "question": "Can an RPZ backflow preventer be installed indoors?",
+      "answer": "Have a qualified designer check the exact model and location. The relief outlet needs a safe, open discharge route and an appropriate air-gap/drain arrangement. Ask how the drain handles discharge and protects nearby equipment; a flood sensor does not replace drainage."
+    },
+    {
+      "question": "Can a PVB replace an RPZ on an irrigation system?",
+      "answer": "Only after the governing authority accepts the protection and the model’s operating conditions are satisfied. The 800M4 manual prohibits backpressure and sets a downstream-piping elevation requirement. Similar pipe size or a lower purchase price does not establish suitability."
+    },
+    {
+      "question": "Can a backflow preventer be installed vertically?",
+      "answer": "Do not assume that a horizontal drawing can be rotated. Check the exact model’s instructions, approval, and local rule. The LF825Y specification explicitly notes that some codes may prohibit vertical installation."
+    },
+    {
+      "question": "What should a backflow installation quote include?",
+      "answer": "Ask for the approved model and size, fittings, access work, drainage or enclosure, freeze protection, shutdown coordination, permits and inspections, and the initial test/report scope where required. Identify who obtains approval and who provides acceptance confirmation."
+    },
+    {
+      "question": "Is a new installation complete once water is flowing?",
+      "answer": "Water flow does not establish compliance. Confirm the authority’s installation inspection, certified test, reporting route, and acceptance requirements. Keep the model/serial record, test report, and filing confirmation where required."
     }
   ]
 }

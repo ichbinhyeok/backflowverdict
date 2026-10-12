@@ -1,4 +1,4 @@
-﻿[
+[
     {
         "claimId":  "EPA-CCC-001",
         "publisher":  "U.S. EPA",
@@ -355,6 +355,30 @@
         "guideSlugs": [
             "backflow-preventer-diagram",
             "double-check-valve-leaking"
+        ]
+    },
+    {
+        "claimId": "INSTALL-BRENHAM-20261012",
+        "publisher": "Watts",
+        "title": "Brenham Hospital project",
+        "url": "https://www.watts.com/resources/case-studies/aging-backflow-preventer-swapped-out-at-brenham-hospital-despite-space-constraints",
+        "use": "Manufacturer-published project context; planning interpretation is explicitly separate from documented actions. No independent inspection or transferable ROI claim.",
+        "lastVerified": "2026-10-12",
+        "snapshotPath": "storage/snapshots/installation-2026-10-12/source-review.md",
+        "guideSlugs": [
+            "backflow-preventer-installation"
+        ]
+    },
+    {
+        "claimId": "INSTALL-ARROYO-20261012",
+        "publisher": "Watts",
+        "title": "School water-system maintenance project",
+        "url": "https://www.watts.com/resources/case-studies/reducing-maintenance-costs-for-school-water-system",
+        "use": "Manufacturer-published project context; planning interpretation is explicitly separate from documented actions. No independent inspection or transferable ROI claim.",
+        "lastVerified": "2026-10-12",
+        "snapshotPath": "storage/snapshots/installation-2026-10-12/source-review.md",
+        "guideSlugs": [
+            "backflow-preventer-installation"
         ]
     }
 ]
