@@ -449,7 +449,7 @@ public class SiteController {
     public String aboutPage(Model model) {
         model.addAttribute("page", page(
                 "About BackflowVerdict | BackflowVerdict",
-                "How BackflowVerdict organizes utility-specific backflow compliance guidance without mixing authority rules and provider routing.",
+                "Identify backflow devices, describe leaks, match manufacturer repair references, and find the governing utility for testing and reporting.",
                 "/about",
                 breadcrumbStructuredData(List.of(
                         new BreadcrumbItem("Home", canonical("/")),

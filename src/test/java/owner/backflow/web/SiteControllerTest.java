@@ -75,7 +75,7 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("gtag/js?id=G\\-TEST123")))
                 .andExpect(content().string(containsString("window.dataLayer = window.dataLayer || [];")))
                 .andExpect(content().string(containsString("function gtag(){dataLayer.push(arguments);}")))
-                .andExpect(content().string(containsString("src=\"/verdict.js?v=20260802c\"")))
+                .andExpect(content().string(containsString("src=\"/verdict.js?v=20261012\"")))
                 .andExpect(content().string(containsString("href=\"/submit-backflow-report\"")))
                 .andExpect(content().string(containsString("href=\"/about\"")))
                 .andExpect(content().string(containsString("href=\"/methodology\"")))
@@ -314,7 +314,7 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("name=\"twitter:card\" content=\"summary_large_image\"")))
                 .andExpect(content().string(containsString("name=\"twitter:image:alt\" content=\"Dallas backflow reports | SwiftComply | BackflowVerdict\"")))
                 .andExpect(content().string(containsString("gtag/js?id=G\\-TEST123")))
-                .andExpect(content().string(containsString("src=\"/verdict.js?v=20260802c\"")));
+                .andExpect(content().string(containsString("src=\"/verdict.js?v=20261012\"")));
     }
 
     @Test
@@ -1843,7 +1843,7 @@ class SiteControllerTest {
                 .andExpect(content().string(containsString("Send to owner")))
                 .andExpect(content().string(containsString("/notice-finder?q=Dallas%20SwiftComply%20annual%20notice&amp;ref=dallas-testers")))
                 .andExpect(content().string(containsString("notice_share_native")))
-                .andExpect(content().string(containsString("referral_code")))
+                .andExpect(content().string(containsString("/analytics.js?v=20261012")))
                 .andExpect(content().string(containsString("<meta name=\"robots\" content=\"noindex,follow\">")))
                 .andExpect(content().string(containsString("<link rel=\"canonical\" href=\"https://backflowpath.com/notice-finder\">")))
                 .andExpect(header().string("X-Robots-Tag", "noindex,follow"));

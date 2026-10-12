@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" role="img" aria-labelledby="title desc">
+  <title id="title">RPZ assembly observation points</title><desc id="desc">Conceptual water path from inlet isolation through first check, reduced pressure zone, second check and outlet isolation. Relief outlet points down into an open drainage space. Test cocks and service access are labeled. This is not an installation drawing.</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#176b5b"/></marker></defs>
+  <rect width="1000" height="440" fill="#fcfbf7"/>
+  <g font-family="sans-serif" fill="#17201d"><text x="30" y="35" font-size="15" letter-spacing="2">CONCEPTUAL FIELD REFERENCE · RPZ FAMILY</text>
+  <g stroke="#17201d" stroke-width="4" fill="#f4f1e8"><path d="M55 200H165V158H250V200H750V158H835V200H945V250H835V290H750V250H250V290H165V250H55Z"/>
+  <rect x="300" y="152" width="100" height="110" rx="8"/><rect x="600" y="152" width="100" height="110" rx="8"/>
+  <path d="M460 250V300H540V250"/><path d="M480 300V334H520V300"/><path d="M330 152V124H355M630 152V124H655" fill="none"/>
+  </g><path d="M75 225H920" stroke="#176b5b" stroke-width="4" marker-end="url(#arrow)"/><path d="M500 275V375" stroke="#c64e32" stroke-width="3" stroke-dasharray="6 6"/>
+  <g font-size="18" text-anchor="middle"><text x="207" y="100">Inlet isolation</text><text x="350" y="80">Check 1</text><text x="650" y="80">Check 2</text><text x="793" y="100">Outlet isolation</text><text x="500" y="147">Reduced</text><text x="500" y="171">pressure zone</text><text x="500" y="410">Open relief outlet / drainage space</text></g>
+  <g stroke="#5c675e" stroke-width="1.5"><path d="M207 110V155M350 87V148M650 87V148M793 110V155M344 124L410 100M650 124L710 105"/></g>
+  <text x="410" y="98" font-size="15">Test cocks: qualified tester access</text><text x="35" y="360" font-size="16">Confirm label, size, flow arrow</text><text x="35" y="385" font-size="16">and model-specific clearances.</text><text x="700" y="360" font-size="16">Keep relief outlet open.</text><text x="700" y="385" font-size="16">Never cap or submerge it.</text></g>
+</svg>

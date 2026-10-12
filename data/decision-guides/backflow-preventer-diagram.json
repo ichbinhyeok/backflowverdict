@@ -1,1 +1,195 @@
-﻿{"slug":"backflow-preventer-diagram","pageType":"diagnostic","canonicalPath":"/backflow-preventer-diagram/","eyebrow":"Device identification","title":"Backflow preventer diagram: use the layout to ask better service questions","description":"A diagram helps label visible zones such as shutoffs, test cocks, checks, relief or vent paths, and unions.","prompt":"What can the assembly layout tell me without becoming a remote diagnosis?","answer":"A diagram helps label visible zones such as shutoffs, test cocks, checks, relief or vent paths, and unions. It does not establish the model, hazard classification, part compatibility, or repair method.","urgency":"Use diagrams only for observation and communication. Escalate any active discharge, damage, failed test, or uncertain device identity.","diagram":"rpz","diagramAlt":"Backflow assembly diagnostic reference","aliases":["backflow preventer diagram","backflow valve diagram","backflow assembly diagram"],"identifiers":["The manufacturer label identifies the product; the diagram only describes a device family.","Visible ports and covers can help communicate a leak location to a technician.","System use and local requirements cannot be inferred from a simplified drawing."],"choices":[{"label":"I know the model and size","detail":"Use model-specific sources before ordering parts or accepting a repair scope.","href":"/backflow-preventer-repair-kits/","tone":"action"},{"label":"The assembly is leaking or failed","detail":"Document the location and obtain a qualified diagnosis before repair.","href":"/backflow-preventer-repair/","tone":"warning"},{"label":"The body may be damaged","detail":"Compare repair with a complete replacement and retest scope.","href":"/backflow-repair-or-replace/","tone":"urgent"}],"steps":[{"label":"01","title":"Observe and identify","body":"Take a full-device photo and identify visible components without disassembly."},{"label":"02","title":"Match the verified path","body":"Use the diagram to describe where a symptom appears, then confirm the actual model."},{"label":"03","title":"Close the risk loop","body":"Route to model-specific service, testing, or installation requirements based on verified identity."}],"safeChecks":["Do not use a drawing to select a repair kit.","Do not adjust screws or test ports based on a diagram.","Keep safety and access boundaries visible in photos."],"stopConditions":["The actual device does not match the assumed family.","The diagram is being used to justify unverified service work."],"notThisDevice":["A product-family name alone does not establish component compatibility.","A generic online part listing is not a repair diagnosis.","This page does not replace a qualified on-site assessment."],"related":[{"eyebrow":"Parts","title":"Find model-specific repair kits","href":"/backflow-preventer-repair-kits/"},{"eyebrow":"Repair","title":"Define repair scope","href":"/backflow-preventer-repair/"},{"eyebrow":"Decision","title":"Repair or replace","href":"/backflow-repair-or-replace/"}],"evidenceNote":"Use exact manufacturer literature and the governing utility or authority record to validate the device, service path, and compliance closeout.","lastReviewed":"2026-08-02","published":true,"indexable":true,"toolType":"identifier"}
+{
+  "slug": "backflow-preventer-diagram",
+  "pageType": "diagnostic",
+  "canonicalPath": "/backflow-preventer-diagram/",
+  "eyebrow": "Device identification",
+  "title": "Backflow preventer diagram: RPZ, double check, and PVB parts",
+  "description": "Read labeled backflow assembly diagrams, compare RPZ, double-check and PVB features, and open official model drawings before selecting parts.",
+  "prompt": "What can the assembly layout tell me without becoming a remote diagnosis?",
+  "answer": "A diagram helps label visible zones such as shutoffs, test cocks, checks, relief or vent paths, and unions. It does not establish the model, hazard classification, part compatibility, or repair method.",
+  "urgency": "Use diagrams only for observation and communication. Escalate any active discharge, damage, failed test, or uncertain device identity.",
+  "diagram": "rpz",
+  "diagramAlt": "Backflow assembly diagnostic reference",
+  "aliases": [
+    "backflow preventer diagram",
+    "backflow valve diagram",
+    "backflow assembly diagram"
+  ],
+  "identifiers": [
+    "The manufacturer label identifies the product; the diagram only describes a device family.",
+    "Visible ports and covers can help communicate a leak location to a technician.",
+    "System use and local requirements cannot be inferred from a simplified drawing."
+  ],
+  "choices": [
+    {
+      "label": "I know the model and size",
+      "detail": "Use model-specific sources before ordering parts or accepting a repair scope.",
+      "href": "/backflow-preventer-repair-kits/",
+      "tone": "action"
+    },
+    {
+      "label": "The assembly is leaking or failed",
+      "detail": "Document the location and obtain a qualified diagnosis before repair.",
+      "href": "/backflow-preventer-repair/",
+      "tone": "warning"
+    },
+    {
+      "label": "The body may be damaged",
+      "detail": "Compare repair with a complete replacement and retest scope.",
+      "href": "/backflow-repair-or-replace/",
+      "tone": "urgent"
+    }
+  ],
+  "steps": [
+    {
+      "label": "01",
+      "title": "Observe and identify",
+      "body": "Take a full-device photo and identify visible components without disassembly."
+    },
+    {
+      "label": "02",
+      "title": "Match the verified path",
+      "body": "Use the diagram to describe where a symptom appears, then confirm the actual model."
+    },
+    {
+      "label": "03",
+      "title": "Close the risk loop",
+      "body": "Route to model-specific service, testing, or installation requirements based on verified identity."
+    }
+  ],
+  "safeChecks": [
+    "Do not use a drawing to select a repair kit.",
+    "Do not adjust screws or test ports based on a diagram.",
+    "Keep safety and access boundaries visible in photos."
+  ],
+  "stopConditions": [
+    "The actual device does not match the assumed family.",
+    "The diagram is being used to justify unverified service work."
+  ],
+  "notThisDevice": [
+    "A product-family name alone does not establish component compatibility.",
+    "A generic online part listing is not a repair diagnosis.",
+    "This page does not replace a qualified on-site assessment."
+  ],
+  "related": [
+    {
+      "eyebrow": "Parts",
+      "title": "Find model-specific repair kits",
+      "href": "/backflow-preventer-repair-kits/"
+    },
+    {
+      "eyebrow": "Repair",
+      "title": "Define repair scope",
+      "href": "/backflow-preventer-repair/"
+    },
+    {
+      "eyebrow": "Decision",
+      "title": "Repair or replace",
+      "href": "/backflow-repair-or-replace/"
+    }
+  ],
+  "evidenceNote": "Use exact manufacturer literature and the governing utility or authority record to validate the device, service path, and compliance closeout.",
+  "lastReviewed": "2026-10-12",
+  "published": true,
+  "indexable": true,
+  "toolType": "identifier",
+  "fieldSections": [
+    {
+      "id": "read-the-diagram",
+      "title": "Read the parts before choosing a service path.",
+      "introduction": "These sketches describe device families. Record the actual label and photograph the complete assembly plus the suspected leak point.",
+      "firstColumn": "Observation",
+      "secondColumn": "What it establishes",
+      "thirdColumn": "Next step",
+      "rows": [
+        {
+          "observation": "Inlet and outlet isolation valves",
+          "meaning": "They isolate the assembly for qualified service; their position does not prove the checks pass.",
+          "nextStep": "Keep shutoff access clear and record flow direction.",
+          "href": ""
+        },
+        {
+          "observation": "Check covers and test cocks",
+          "meaning": "Covers provide service access; test cocks support field testing. External wetness and an internal failed check are different evidence.",
+          "nextStep": "Give the technician the exact wet location and failed-test report.",
+          "href": "/double-check-valve-leaking/"
+        },
+        {
+          "observation": "RPZ relief outlet",
+          "meaning": "The relief path distinguishes an RPZ from a double-check assembly. Discharge needs investigation and a suitable drainage route.",
+          "nextStep": "Keep the outlet open; use the RPZ leak path.",
+          "href": "/backflow-preventer-leaking-from-vent/"
+        },
+        {
+          "observation": "PVB bonnet and air inlet",
+          "meaning": "A PVB has an atmospheric air inlet and a different installation and leakage pattern.",
+          "nextStep": "Compare timing and device identity.",
+          "href": "/vacuum-breaker-leaking/"
+        }
+      ],
+      "sources": [
+        {
+          "eyebrow": "Manufacturer",
+          "title": "LF825Y official drawing",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/34439-source"
+        },
+        {
+          "eyebrow": "Manufacturer",
+          "title": "Watts 007 double-check specification",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/20186-source/es-007-2409.pdf"
+        },
+        {
+          "eyebrow": "Manufacturer",
+          "title": "800M4 PVB manual",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/630139-source/rp-is-800m4-2409"
+        }
+      ],
+      "diagram": "rpz-field-reference",
+      "diagramAlt": "RPZ schematic showing inlet, two checks, test cocks and open relief drainage",
+      "caption": "Original conceptual schematic. It is not to scale and contains no universal installation dimensions."
+    },
+    {
+      "id": "compare-device-drawings",
+      "title": "Find the matching family drawing.",
+      "introduction": "Two check valves alone do not make an assembly an RPZ. Match the relief or air-inlet features, then confirm the model.",
+      "firstColumn": "Device family",
+      "secondColumn": "Visible distinction",
+      "thirdColumn": "Model-specific reference",
+      "rows": [
+        {
+          "observation": "RPZ / reduced pressure assembly",
+          "meaning": "Two checks with a reduced-pressure zone and relief outlet.",
+          "nextStep": "Compare the 975XL / XL2 official exploded drawing, page 2.",
+          "href": "/models/wilkins-975xl/"
+        },
+        {
+          "observation": "Double-check assembly",
+          "meaning": "Two independent checks, without the RPZ atmospheric relief valve.",
+          "nextStep": "Open the Watts 007 drawing and compare the cast model label.",
+          "href": "/rpz-vs-dcva/"
+        },
+        {
+          "observation": "Pressure vacuum breaker",
+          "meaning": "A check and atmospheric air inlet; different from a hose-end attachment.",
+          "nextStep": "Use the 800M4 model record for its specific parts.",
+          "href": "/models/watts-800m4/"
+        }
+      ],
+      "sources": [
+        {
+          "eyebrow": "Manufacturer",
+          "title": "Zurn 975XL / XL2 parts drawing (PDF)",
+          "href": "https://files.zurn.com/repair-parts/975xl-repair-parts.pdf"
+        },
+        {
+          "eyebrow": "Manufacturer",
+          "title": "Watts 007 family drawing (PDF)",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/20186-source/es-007-2409.pdf"
+        }
+      ],
+      "diagram": null,
+      "diagramAlt": null,
+      "caption": null
+    }
+  ]
+}

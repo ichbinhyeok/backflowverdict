@@ -6,6 +6,10 @@ public record ModelKitRecord(
         String partNumber,
         String kitName,
         String contents,
-        String compatibility
+        String compatibility,
+        java.util.List<ModelMerchantLink> merchants
 ) {
+    public ModelKitRecord {
+        merchants = merchants == null ? java.util.List.of() : java.util.List.copyOf(merchants);
+    }
 }

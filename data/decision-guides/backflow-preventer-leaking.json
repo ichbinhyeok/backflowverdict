@@ -1,4 +1,162 @@
 {
-  "slug":"backflow-preventer-leaking","pageType":"problem","canonicalPath":"/backflow-preventer-leaking/","eyebrow":"Problem path 01","title":"Why is the backflow preventer leaking? Start with the exit point.","description":"Use leak location, timing, weather, and recent work to choose the next safe step without pretending to diagnose a sealed assembly from a photo.","prompt":"Where is the water coming from?","answer":"A brief release can be different from continuous discharge. The useful clues are the exact opening, whether flow stops, recent freezing or service, and visible body damage.","urgency":"Continuous discharge, flooding, freezing, or a cracked body needs prompt professional attention. Never plug a relief or vent opening.","diagram":"rpz-leak","diagramAlt":"RPZ diagram marking the lower relief vent and body joints as observation points","aliases":["RPZ leaking","backflow valve dripping","backflow device dumping water"],"identifiers":["Relief opening: water exits an intentional opening below the assembly.","Body or joint: water appears at a crack, fitting, test cock, or cover.","Downstream drain-down: a short release happens around irrigation start or shutdown."],"choices":[{"label":"From the relief vent, continuously","detail":"Possible fouling, pressure condition, or internal failure; do not cap the opening.","href":"/get-help/?issueType=failed-test-repair&source=/backflow-preventer-leaking/","tone":"urgent"},{"label":"From a crack or split body","detail":"Freeze or impact damage can make replacement more likely.","href":"/backflow-repair-or-replace/","tone":"urgent"},{"label":"Only briefly during a cycle","detail":"Record duration and frequency before deciding it is normal or faulty.","href":"#safe-checks","tone":"action"},{"label":"From a threaded fitting or test cock","detail":"A localized external leak still needs the correct isolation and service procedure.","href":"/get-help/?issueType=failed-test-repair&source=/backflow-preventer-leaking/","tone":"warning"}],"steps":[{"label":"01","title":"Mark the exit point","body":"Take a short video that includes the full device and the exact point where water begins."},{"label":"02","title":"Record the timing","body":"Note continuous, intermittent, irrigation start, shutdown, overnight, or freeze/thaw behavior."},{"label":"03","title":"Check the compliance consequence","body":"Repair or replacement may need a passing retest and accepted report before the utility record closes."}],"safeChecks":["Keep the relief opening unobstructed.","Check for visible cracks and ice without touching a pressurized assembly.","Record recent valve work, water shutoffs, irrigation changes, or freezing weather.","If you know the correct upstream shutoff and can operate it safely, follow the property emergency procedure."],"stopConditions":["Flow is forceful or cannot be contained","Water can reach electrical equipment or create ice","The body is cracked","The device serves fire protection or a critical commercial process"],"notThisDevice":["Water from a pressure-regulator bell or adjustment screw is a different problem.","Water at a hose faucet may come from a hose-bib vacuum breaker.","Wastewater backup is a sewer backwater problem."],"related":[{"eyebrow":"Decision","title":"Repair or replace the assembly","href":"/backflow-repair-or-replace/"},{"eyebrow":"Process","title":"What happens after a failed test","href":"/failed-backflow-test/"},{"eyebrow":"Identify","title":"Confirm the device family","href":"/backflow-preventer/"}],"evidenceNote":"Likely causes are presented as possibilities, not remote diagnoses. Manufacturer instructions and a qualified local professional control service work.","lastReviewed":"2026-08-02","published": true, "indexable": true
-,"toolType":"diagnostic"
+  "slug": "backflow-preventer-leaking",
+  "pageType": "problem",
+  "canonicalPath": "/backflow-preventer-leaking/",
+  "eyebrow": "Problem path 01",
+  "title": "Backflow preventer leaking: locate the water, then choose the route",
+  "description": "Identify whether water is leaving an RPZ relief outlet, PVB bonnet, double-check cover, or hose attachment. Use leak location and timing to choose the next check.",
+  "prompt": "Where is the water coming from?",
+  "answer": "A brief release can be different from continuous discharge. The useful clues are the exact opening, whether flow stops, recent freezing or service, and visible body damage.",
+  "urgency": "Continuous discharge, flooding, freezing, or a cracked body needs prompt professional attention. Never plug a relief or vent opening.",
+  "diagram": "rpz-leak",
+  "diagramAlt": "RPZ diagram marking the lower relief vent and body joints as observation points",
+  "aliases": [
+    "RPZ leaking",
+    "backflow valve dripping",
+    "backflow device dumping water"
+  ],
+  "identifiers": [
+    "Relief opening: water exits an intentional opening below the assembly.",
+    "Body or joint: water appears at a crack, fitting, test cock, or cover.",
+    "Downstream drain-down: a short release happens around irrigation start or shutdown."
+  ],
+  "choices": [
+    {
+      "label": "From the relief vent, continuously",
+      "detail": "Possible fouling, pressure condition, or internal failure; do not cap the opening.",
+      "href": "/get-help/?issueType=failed-test-repair&source=/backflow-preventer-leaking/",
+      "tone": "urgent"
+    },
+    {
+      "label": "From a crack or split body",
+      "detail": "Freeze or impact damage can make replacement more likely.",
+      "href": "/backflow-repair-or-replace/",
+      "tone": "urgent"
+    },
+    {
+      "label": "Only briefly during a cycle",
+      "detail": "Record duration and frequency before deciding it is normal or faulty.",
+      "href": "#safe-checks",
+      "tone": "action"
+    },
+    {
+      "label": "From a threaded fitting or test cock",
+      "detail": "A localized external leak still needs the correct isolation and service procedure.",
+      "href": "/get-help/?issueType=failed-test-repair&source=/backflow-preventer-leaking/",
+      "tone": "warning"
+    }
+  ],
+  "steps": [
+    {
+      "label": "01",
+      "title": "Mark the exit point",
+      "body": "Take a short video that includes the full device and the exact point where water begins."
+    },
+    {
+      "label": "02",
+      "title": "Record the timing",
+      "body": "Note continuous, intermittent, irrigation start, shutdown, overnight, or freeze/thaw behavior."
+    },
+    {
+      "label": "03",
+      "title": "Check the compliance consequence",
+      "body": "Repair or replacement may need a passing retest and accepted report before the utility record closes."
+    }
+  ],
+  "safeChecks": [
+    "Keep the relief opening unobstructed.",
+    "Check for visible cracks and ice without touching a pressurized assembly.",
+    "Record recent valve work, water shutoffs, irrigation changes, or freezing weather.",
+    "If you know the correct upstream shutoff and can operate it safely, follow the property emergency procedure."
+  ],
+  "stopConditions": [
+    "Flow is forceful or cannot be contained",
+    "Water can reach electrical equipment or create ice",
+    "The body is cracked",
+    "The device serves fire protection or a critical commercial process"
+  ],
+  "notThisDevice": [
+    "Water from a pressure-regulator bell or adjustment screw is a different problem.",
+    "Water at a hose faucet may come from a hose-bib vacuum breaker.",
+    "Wastewater backup is a sewer backwater problem."
+  ],
+  "related": [
+    {
+      "eyebrow": "Decision",
+      "title": "Repair or replace the assembly",
+      "href": "/backflow-repair-or-replace/"
+    },
+    {
+      "eyebrow": "Process",
+      "title": "What happens after a failed test",
+      "href": "/failed-backflow-test/"
+    },
+    {
+      "eyebrow": "Identify",
+      "title": "Confirm the device family",
+      "href": "/backflow-preventer/"
+    }
+  ],
+  "evidenceNote": "Likely causes are presented as possibilities, not remote diagnoses. Manufacturer instructions and a qualified local professional control service work.",
+  "lastReviewed": "2026-10-12",
+  "published": true,
+  "indexable": true,
+  "toolType": "diagnostic",
+  "fieldSections": [
+    {
+      "id": "choose-leak-family",
+      "title": "Start with the outlet, not a guessed repair kit.",
+      "introduction": "Use the visible location to choose a narrower guide. A working description helps a technician; it does not establish a remote diagnosis.",
+      "firstColumn": "Observation",
+      "secondColumn": "What it establishes",
+      "thirdColumn": "Next step",
+      "rows": [
+        {
+          "observation": "Below an inline RPZ body",
+          "meaning": "Possible relief discharge; observe whether it is brief, intermittent, or continuous.",
+          "nextStep": "Use the relief-discharge guide and preserve drainage.",
+          "href": "/backflow-preventer-leaking-from-vent/"
+        },
+        {
+          "observation": "Top of an irrigation PVB",
+          "meaning": "The air inlet, bonnet, and startup sequence need a different check from RPZ discharge.",
+          "nextStep": "Record timing through one irrigation cycle.",
+          "href": "/vacuum-breaker-leaking/"
+        },
+        {
+          "observation": "Double-check cover, test port, or shutoff",
+          "meaning": "Locate the external wet point separately from any failed internal check.",
+          "nextStep": "Use the DCVA location table.",
+          "href": "/double-check-valve-leaking/"
+        },
+        {
+          "observation": "At the outdoor faucet attachment",
+          "meaning": "A hose-end vacuum breaker is a different product family.",
+          "nextStep": "Confirm the attachment label and vent location.",
+          "href": "/hose-bib-vacuum-breaker/"
+        },
+        {
+          "observation": "Cracked body, flooding, or unknown isolation",
+          "meaning": "The immediate priority is containing damage through a known safe procedure.",
+          "nextStep": "Get qualified local help; include the device photo and system use.",
+          "href": "/get-help/?issueType=leak&source=/backflow-preventer-leaking/"
+        }
+      ],
+      "sources": [
+        {
+          "eyebrow": "Manufacturer",
+          "title": "LF825Y relief operation and drainage",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/34439-source"
+        },
+        {
+          "eyebrow": "Manufacturer",
+          "title": "800M4 PVB startup and maintenance",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/630139-source/rp-is-800m4-2409"
+        }
+      ],
+      "diagram": "rpz-field-reference",
+      "diagramAlt": "Conceptual RPZ observation points with relief outlet and check covers",
+      "caption": "For an RPZ only. Compare the PVB and double-check paths when these features do not match."
+    }
+  ]
 }

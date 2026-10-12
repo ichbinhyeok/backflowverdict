@@ -60,6 +60,23 @@ class DecisionGuideControllerTest {
     }
 
     @Test
+    void priorityGuidesOwnTheObservedInstallationAndRpzComparisonQueries() throws Exception {
+        mockMvc.perform(get("/backflow-preventer-installation/"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Backflow preventer installation requirements")))
+                .andExpect(content().string(containsString("Installation detail checklist")))
+                .andExpect(content().string(containsString("data-installation-requirements")))
+                .andExpect(content().string(containsString("href=\"/rpz-vs-dcva/\"")))
+                .andExpect(content().string(containsString("href=\"/rpz-vs-pvb/\"")));
+
+        mockMvc.perform(get("/backflow-preventer/"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Is an RPZ different from a backflow preventer?")))
+                .andExpect(content().string(containsString("data-rpz-comparison")))
+                .andExpect(content().string(containsString("Find repair kits by exact model and size")));
+    }
+
+    @Test
     void slashlessGuideRedirectsToTheCanonicalPath() throws Exception {
         mockMvc.perform(get("/backflow-preventer"))
                 .andExpect(status().isMovedPermanently())

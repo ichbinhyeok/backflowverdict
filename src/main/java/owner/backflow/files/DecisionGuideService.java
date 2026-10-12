@@ -84,6 +84,7 @@ public class DecisionGuideService {
     }
 
     private void validate(DecisionGuideRecord record, Path file) {
+        FieldReferenceValidator.validate(record.fieldSections(), file);
         if (record.slug() == null || record.slug().isBlank()
                 || record.canonicalPath() == null || record.canonicalPath().isBlank()
                 || record.title() == null || record.title().isBlank()

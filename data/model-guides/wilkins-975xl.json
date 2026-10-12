@@ -3,39 +3,168 @@
   "canonicalPath": "/models/wilkins-975xl/",
   "manufacturer": "Zurn Wilkins",
   "model": "975XL / 975XL2",
-  "aliases": ["Wilkins 975 XL", "Wilkins 975XL2", "Zurn 975XL", "Zurn Wilkins 975XL"],
+  "aliases": [
+    "Wilkins 975 XL",
+    "Wilkins 975XL2",
+    "Zurn 975XL",
+    "Zurn Wilkins 975XL"
+  ],
   "deviceType": "Reduced pressure principle assembly",
   "title": "Wilkins 975XL repair kits, sizes, and model identification",
   "description": "Identify a Zurn Wilkins 975XL or 975XL2, select its size band, and open the official repair-kit family without creating a separate page for every pipe size.",
-  "summary": "The 975XL and 975XL2 share repair-kit families, but the part-number prefix changes by size band. Confirm the body label and nominal size before selecting a kit.",
+  "summary": "Match the complete 975XL or 975XL2 label and nominal size. This reviewed map covers 3/4–2 inches; the current parts breakdown separates standard, complete, rubber, and seat kits.",
   "status": "Current and legacy variants",
-  "statusNote": "Zurn marks the 1/4–1/2 inch 975XL product page as discontinued while continuing to publish official repair parts. Verify the exact body label and current replacement status.",
+  "statusNote": "The smaller 1/4–1/2 inch legacy family is outside this reviewed kit map. Do not substitute 975XL3 references or infer compatibility from a retailer title.",
   "diagram": "rpz",
   "diagramAlt": "Reduced pressure backflow assembly showing two check covers and the relief valve zone",
-  "sizes": ["1/4–1/2 in", "3/4–1 in", "1 1/4–2 in"],
+  "sizes": [
+    "3/4–1 in",
+    "1 1/4–2 in"
+  ],
   "identifiers": [
     "The model marking may read 975XL or 975XL2; do not substitute 975XL3 data.",
     "Two check covers sit above the reduced-pressure zone and relief assembly.",
-    "Kit prefixes RK14, RK34, and RK114 correspond to the published size bands, not a universal kit."
+    "RK34 and RK114 denote different size bands. A complete XLC kit and a separate seat SK kit are different service scopes."
   ],
   "kits": [
-    {"sizeBand":"1/4–1/2 in","task":"Total service","partNumber":"RK14-975XL","kitName":"Total repair kit","contents":"Check and relief-valve service components listed in the official parts breakdown.","compatibility":"For the published 1/4–1/2 inch 975XL/975XL2 family; verify the body label."},
-    {"sizeBand":"1/4–1/2 in","task":"Poppets, springs, and seats","partNumber":"RK14-975XLC","kitName":"Complete internal kit","contents":"Poppets, springs, seats, seals, and related O-rings shown by Zurn.","compatibility":"Not a substitute for a cover-only or ball-valve part."},
-    {"sizeBand":"1/4–1/2 in","task":"Rubber components","partNumber":"RK14-975XLR","kitName":"Rubber repair kit","contents":"Published rubber sealing components for the model family.","compatibility":"Confirm whether hard parts are also damaged before choosing a rubber-only kit."},
-    {"sizeBand":"3/4–1 in","task":"Total service","partNumber":"RK34-975XL","kitName":"Total repair kit","contents":"Check and relief-valve internal components for the 3/4 and 1 inch band.","compatibility":"Use the exact nominal size and confirm 975XL/975XL2 rather than 975XL3."},
-    {"sizeBand":"3/4–1 in","task":"Poppets, springs, and seats","partNumber":"RK34-975XLC","kitName":"Complete internal kit","contents":"Poppets, springs, seats, seals, and O-rings in the official component matrix.","compatibility":"The XLC kit scope differs from the rubber-only XLR kit."},
-    {"sizeBand":"3/4–1 in","task":"Rubber components","partNumber":"RK34-975XLR","kitName":"Rubber repair kit","contents":"Rubber seals and O-rings identified in the official repair-parts guide.","compatibility":"Inspect seats, poppets, springs, and covers before ordering rubber parts alone."},
-    {"sizeBand":"3/4–1 in","task":"Seat service","partNumber":"RK34-975XLSK","kitName":"Seat repair kit","contents":"Published check and relief-valve seat service components.","compatibility":"Use the official component matrix to distinguish seat service from full internal service."},
-    {"sizeBand":"1 1/4–2 in","task":"Total service","partNumber":"RK114-975XL","kitName":"Total repair kit","contents":"Check and relief-valve internal components for the 1 1/4 through 2 inch band.","compatibility":"The RK114 prefix covers the published larger-size band; confirm exact assembly."},
-    {"sizeBand":"1 1/4–2 in","task":"Poppets, springs, and seats","partNumber":"RK114-975XLC","kitName":"Complete internal kit","contents":"Poppets, springs, seats, seals, and O-rings in the official component matrix.","compatibility":"Confirm cover and relief-valve condition before choosing the kit scope."},
-    {"sizeBand":"1 1/4–2 in","task":"Rubber components","partNumber":"RK114-975XLR","kitName":"Rubber repair kit","contents":"Rubber sealing components identified by Zurn for this size band.","compatibility":"Rubber-only service does not address damaged metal or spring components."}
+    {
+      "sizeBand": "3/4–1 in",
+      "task": "Standard service",
+      "partNumber": "RK34-975XL",
+      "kitName": "Standard repair kit",
+      "contents": "Standard service components; use the manufacturer component matrix for exact inclusions.",
+      "compatibility": "Published 975XL / 975XL2 size band only; standard does not mean every internal part.",
+      "merchants": [
+        {
+          "seller": "SupplyHouse",
+          "url": "https://www.supplyhouse.com/Zurn-RK34-975XL-Series-975XL-Repair-Kit-Rubber-Springs",
+          "lastVerified": "2026-10-12"
+        }
+      ]
+    },
+    {
+      "sizeBand": "3/4–1 in",
+      "task": "Complete internal service",
+      "partNumber": "RK34-975XLC",
+      "kitName": "Complete repair kit",
+      "contents": "Complete kit as designated by Zurn. Seat service is separately listed; do not assume seats are included.",
+      "compatibility": "Match the size prefix and confirm the component matrix. A retailer title mentioning seats does not override the manufacturer.",
+      "merchants": [
+        {
+          "seller": "SupplyHouse",
+          "url": "https://www.supplyhouse.com/Zurn-RK34-975XLC-Series-975XL-Model-3-4-1-Repair-Kit",
+          "lastVerified": "2026-10-12"
+        }
+      ]
+    },
+    {
+      "sizeBand": "3/4–1 in",
+      "task": "Rubber components",
+      "partNumber": "RK34-975XLR",
+      "kitName": "Rubber repair kit",
+      "contents": "Rubber repair kit; confirm the component matrix for exact seals and O-rings.",
+      "compatibility": "Inspect seats, poppets, springs, and covers before ordering rubber parts alone."
+    },
+    {
+      "sizeBand": "3/4–1 in",
+      "task": "Seat service",
+      "partNumber": "RK34-975XLSK",
+      "kitName": "Seat repair kit",
+      "contents": "Seat repair kit; confirm the seat locations and components in the official matrix.",
+      "compatibility": "Use the official component matrix to distinguish seat service from full internal service."
+    },
+    {
+      "sizeBand": "1 1/4–2 in",
+      "task": "Standard service",
+      "partNumber": "RK114-975XL",
+      "kitName": "Standard repair kit",
+      "contents": "Standard service components; use the manufacturer component matrix for exact inclusions.",
+      "compatibility": "Published 975XL / 975XL2 size band only; standard does not mean every internal part."
+    },
+    {
+      "sizeBand": "1 1/4–2 in",
+      "task": "Complete internal service",
+      "partNumber": "RK114-975XLC",
+      "kitName": "Complete repair kit",
+      "contents": "Complete kit as designated by Zurn. Seat service is separately listed; do not assume seats are included.",
+      "compatibility": "Match the size prefix and confirm the component matrix. A retailer title mentioning seats does not override the manufacturer."
+    },
+    {
+      "sizeBand": "1 1/4–2 in",
+      "task": "Rubber components",
+      "partNumber": "RK114-975XLR",
+      "kitName": "Rubber repair kit",
+      "contents": "Rubber repair kit; confirm the component matrix for exact seals and O-rings.",
+      "compatibility": "Rubber-only service does not address damaged metal or spring components."
+    }
   ],
   "sources": [
-    {"title":"MODEL 975XL2 and 975XL repair-parts breakdown","url":"https://files.zurn.com/repair-parts/975xl-repair-parts.pdf","publisher":"Zurn","lastVerified":"2026-08-02"},
-    {"title":"Zurn Wilkins Repair Kits Guide","url":"https://www.zurn.com/content/dam/zurnv49/resources/replacement-repair-part-information/480-023_repair_kits_guide.pdf","publisher":"Zurn","lastVerified":"2026-08-02"},
-    {"title":"975XL 1/4–1/2 inch discontinued product record","url":"https://www.zurn.com/products/water-control/backflow-preventers/975xl-14-12","publisher":"Zurn","lastVerified":"2026-08-02"}
+    {
+      "title": "MODEL 975XL2 and 975XL repair-parts breakdown",
+      "url": "https://files.zurn.com/repair-parts/975xl-repair-parts.pdf",
+      "publisher": "Zurn",
+      "lastVerified": "2026-10-12"
+    },
+    {
+      "title": "Zurn Wilkins Repair Kits Guide",
+      "url": "https://www.zurn.com/content/dam/zurnv49/resources/replacement-repair-part-information/480-023_repair_kits_guide.pdf",
+      "publisher": "Zurn",
+      "lastVerified": "2026-08-02"
+    },
+    {
+      "title": "975XL 1/4–1/2 inch discontinued product record",
+      "url": "https://www.zurn.com/products/water-control/backflow-preventers/975xl-14-12",
+      "publisher": "Zurn",
+      "lastVerified": "2026-08-02"
+    }
   ],
-  "lastReviewed": "2026-08-02",
+  "lastReviewed": "2026-10-12",
   "published": true,
-  "indexable": true
+  "indexable": true,
+  "fieldSections": [
+    {
+      "id": "975xl-kit-scope",
+      "title": "975XL kit scope: read past the word “complete”.",
+      "introduction": "Use the Zurn breakdown on page 1 and exploded drawing on page 2 together. The published names distinguish a standard kit, a complete kit, rubber service, and seat service.",
+      "firstColumn": "Observation",
+      "secondColumn": "What it establishes",
+      "thirdColumn": "Next step",
+      "rows": [
+        {
+          "observation": "Model suffix",
+          "meaning": "975XL / XL2 is the family in the linked document.",
+          "nextStep": "A 975XL3 listing needs its own documentation.",
+          "href": ""
+        },
+        {
+          "observation": "Nominal size",
+          "meaning": "3/4–1 inch uses RK34; 1 1/4–2 inch uses RK114.",
+          "nextStep": "Read the body marking, not the nearby pipe outside diameter.",
+          "href": ""
+        },
+        {
+          "observation": "Seats versus other internals",
+          "meaning": "XLC and XLSK have separate references; do not presume a seat is included.",
+          "nextStep": "Match the diagnosed component against the parts matrix.",
+          "href": ""
+        },
+        {
+          "observation": "Damaged body or failed test",
+          "meaning": "Buying a matching reference does not establish a repairable body or passed assembly.",
+          "nextStep": "Include diagnosis, retest, and required filing.",
+          "href": "/failed-backflow-test/"
+        }
+      ],
+      "sources": [
+        {
+          "eyebrow": "Manufacturer",
+          "title": "975XL / 975XL2 component matrix and exploded drawing",
+          "href": "https://files.zurn.com/repair-parts/975xl-repair-parts.pdf"
+        }
+      ],
+      "diagram": null,
+      "diagramAlt": null,
+      "caption": null
+    }
+  ]
 }

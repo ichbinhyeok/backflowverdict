@@ -3,30 +3,73 @@
   "pageType": "installation-decision",
   "canonicalPath": "/backflow-preventer-installation/",
   "eyebrow": "Installation decision",
-  "title": "Backflow preventer installation starts with the hazard and utility rule",
-  "description": "Choose the required assembly, placement, approval, test, and report path before comparing installation quotes.",
+  "title": "Backflow preventer installation requirements and detail checklist",
+  "description": "Compare RPZ and PVB installation details, drainage, elevation, access, and initial testing. Open model-specific drawings and confirm local approval before work.",
   "prompt": "What system is the installation protecting?",
-  "answer": "Do not select a device from pipe size alone. The hazard, system use, local approved-device rules, placement constraints, and post-installation test determine the job.",
+  "answer": "A complete installation is defined by the required protection level, approved assembly, field placement details, qualified work, initial test, and accepted utility closeout—not pipe size alone.",
   "urgency": "Never bypass an existing assembly or place an RPZ where relief discharge can flood, damage equipment, or create an unsafe condition. Fire and commercial systems need qualified design review.",
   "diagram": "rpz",
   "diagramAlt": "Reduced pressure backflow assembly with shutoffs, test ports, check modules, and relief discharge",
-  "aliases": ["backflow preventer installation", "install a backflow preventer", "backflow device installation requirements", "backflow preventer installer"],
+  "aliases": [
+    "backflow preventer installation",
+    "install a backflow preventer",
+    "backflow device installation requirements",
+    "backflow preventer installation requirements",
+    "backflow preventer installation detail",
+    "backflow preventer installer"
+  ],
   "identifiers": [
     "Record the service type: irrigation, domestic, fire, process, or combined.",
     "Photograph the existing pipe, meter direction, drainage, clearance, and model plate.",
     "Ask the governing utility which assembly type and approval list apply before purchase."
   ],
   "choices": [
-    {"label": "Irrigation connection", "detail": "Confirm whether the local rule accepts a PVB or requires a testable higher-protection assembly.", "href": "/irrigation-backflow-preventer/", "tone": "action"},
-    {"label": "Commercial or process connection", "detail": "Have the hazard classification and approved assembly confirmed before the quote is finalized.", "href": "/notice-finder", "tone": "warning"},
-    {"label": "Fire protection connection", "detail": "Coordinate fire authority, utility, approved assembly, drainage, alarm, and testing requirements.", "href": "/get-help/?issueType=installation&source=/backflow-preventer-installation/", "tone": "urgent"},
-    {"label": "Unknown device or notice", "detail": "Identify the assembly and governing utility first.", "href": "/backflow-preventer/", "tone": "neutral"}
+    {
+      "label": "Irrigation connection",
+      "detail": "Confirm whether the local rule accepts a PVB or requires a testable higher-protection assembly.",
+      "href": "/irrigation-backflow-preventer/",
+      "tone": "action"
+    },
+    {
+      "label": "Commercial or process connection",
+      "detail": "Have the hazard classification and approved assembly confirmed before the quote is finalized.",
+      "href": "/notice-finder",
+      "tone": "warning"
+    },
+    {
+      "label": "Fire protection connection",
+      "detail": "Coordinate fire authority, utility, approved assembly, drainage, alarm, and testing requirements.",
+      "href": "/get-help/?issueType=installation&source=/backflow-preventer-installation/",
+      "tone": "urgent"
+    },
+    {
+      "label": "Unknown device or notice",
+      "detail": "Identify the assembly and governing utility first.",
+      "href": "/backflow-preventer/",
+      "tone": "neutral"
+    }
   ],
   "steps": [
-    {"label": "01", "title": "Confirm the governing rule", "body": "Use the property utility, not a generic city assumption, to confirm the hazard category, accepted assembly type, tester requirements, and submission route."},
-    {"label": "02", "title": "Scope the physical installation", "body": "Document size, direction, access, freeze exposure, drainage, clearances, shutdown coordination, and whether permits or fire review apply."},
-    {"label": "03", "title": "Make quotes comparable", "body": "Require separate scope for the approved assembly, fittings, labor, drainage or enclosure, permit work, initial test, and report filing."},
-    {"label": "04", "title": "Close the compliance loop", "body": "Keep the passing test record and submission confirmation. Installation is not complete merely because water is flowing."}
+    {
+      "label": "01",
+      "title": "Confirm the governing rule",
+      "body": "Use the property utility, not a generic city assumption, to confirm the hazard category, accepted assembly type, tester requirements, and submission route."
+    },
+    {
+      "label": "02",
+      "title": "Scope the physical installation",
+      "body": "Document size, direction, access, freeze exposure, drainage, clearances, shutdown coordination, and whether permits or fire review apply."
+    },
+    {
+      "label": "03",
+      "title": "Make quotes comparable",
+      "body": "Require separate scope for the approved assembly, fittings, labor, drainage or enclosure, permit work, initial test, and report filing."
+    },
+    {
+      "label": "04",
+      "title": "Close the compliance loop",
+      "body": "Keep the passing test record and submission confirmation. Installation is not complete merely because water is flowing."
+    }
   ],
   "safeChecks": [
     "Read the utility notice and meter account name.",
@@ -46,13 +89,80 @@
     "A hose-bib vacuum breaker does not replace a testable premise assembly when one is required."
   ],
   "related": [
-    {"eyebrow": "Identify", "title": "Identify the backflow preventer", "href": "/backflow-preventer/"},
-    {"eyebrow": "Verify", "title": "Find the governing utility", "href": "/notice-finder"},
-    {"eyebrow": "Closeout", "title": "Understand the backflow test", "href": "/backflow-test/"}
+    {
+      "eyebrow": "Identify",
+      "title": "Identify the backflow preventer",
+      "href": "/backflow-preventer/"
+    },
+    {
+      "eyebrow": "Compare",
+      "title": "RPZ versus DCVA",
+      "href": "/rpz-vs-dcva/"
+    },
+    {
+      "eyebrow": "Compare",
+      "title": "RPZ versus PVB",
+      "href": "/rpz-vs-pvb/"
+    },
+    {
+      "eyebrow": "Verify",
+      "title": "Find the governing utility",
+      "href": "/notice-finder"
+    },
+    {
+      "eyebrow": "Closeout",
+      "title": "Understand the backflow test",
+      "href": "/backflow-test/"
+    }
   ],
   "evidenceNote": "This page scopes decisions and quote line items; it does not prescribe a universal assembly. The governing utility, adopted code, manufacturer instructions, and qualified installer control the final design.",
-  "lastReviewed": "2026-08-02",
+  "lastReviewed": "2026-10-12",
   "published": true,
   "indexable": true,
-  "toolType": ""
+  "toolType": "",
+  "fieldSections": [
+    {
+      "id": "model-installation-details",
+      "title": "Installation details depend on the exact assembly.",
+      "introduction": "Use these manufacturer examples to prepare an installer brief. Dimensions belong to the named model and document; the governing authority must accept the proposed installation.",
+      "firstColumn": "Observation",
+      "secondColumn": "What it establishes",
+      "thirdColumn": "Next step",
+      "rows": [
+        {
+          "observation": "FEBCO LF825Y, 3/4–2 in",
+          "meaning": "Its specification calls for at least 12 inches between the relief discharge and floor or grade, drainage, service access, and freeze protection.",
+          "nextStep": "Open the typical installation drawing on page 3; verify local orientation and clearance rules.",
+          "href": ""
+        },
+        {
+          "observation": "Watts 800M4 / LF800M4 PVB, 1/2–2 in",
+          "meaning": "The manual requires a bonnet-up installation 12 inches above the highest downstream piping and prohibits locations subject to backpressure.",
+          "nextStep": "Open page 2 of the manual. A PVB elevation measurement is different from RPZ relief clearance.",
+          "href": ""
+        },
+        {
+          "observation": "Any regulated assembly",
+          "meaning": "A correct-looking layout does not establish hazard approval, a passed initial test, or accepted filing.",
+          "nextStep": "Identify the utility, permit owner, qualified installer, tester, and reporting route.",
+          "href": "/notice-finder"
+        }
+      ],
+      "sources": [
+        {
+          "eyebrow": "Manufacturer",
+          "title": "LF825Y specification and installation drawing (PDF)",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/34439-source"
+        },
+        {
+          "eyebrow": "Manufacturer",
+          "title": "800M4 installation and maintenance manual (PDF)",
+          "href": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/630139-source/rp-is-800m4-2409"
+        }
+      ],
+      "diagram": "rpz-field-reference",
+      "diagramAlt": "Conceptual RPZ flow path, check covers, relief outlet and test access",
+      "caption": "Concept only, not an approved installation plan. Use the linked drawing for the exact model, size, drainage, and authority requirements."
+    }
+  ]
 }

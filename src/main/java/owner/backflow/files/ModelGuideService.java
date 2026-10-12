@@ -80,6 +80,7 @@ public class ModelGuideService {
     }
 
     private void validate(ModelGuideRecord record, Path file) {
+        FieldReferenceValidator.validate(record.fieldSections(), file);
         if (record.slug() == null || record.slug().isBlank()
                 || record.canonicalPath() == null || !record.canonicalPath().equals("/models/" + record.slug() + "/")
                 || record.manufacturer() == null || record.manufacturer().isBlank()
@@ -95,6 +96,16 @@ public class ModelGuideService {
         }
         if (record.indexable() && !record.published()) {
             throw new IllegalStateException("An indexable model guide must be published: " + file);
+        }
+        for (var kit : record.kits()) {
+            if (!record.sizes().contains(kit.sizeBand())) throw new IllegalStateException("Unknown kit size: " + file);
+            for (var merchant : kit.merchants()) {
+                if (merchant.seller() == null || merchant.seller().isBlank() || merchant.url() == null
+                        || !merchant.url().startsWith("https://") || merchant.lastVerified() == null
+                        || java.time.LocalDate.parse(merchant.lastVerified()).isAfter(java.time.LocalDate.now())) {
+                    throw new IllegalStateException("Invalid merchant listing: " + file);
+                }
+            }
         }
     }
 }

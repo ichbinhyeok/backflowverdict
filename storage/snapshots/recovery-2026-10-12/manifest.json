@@ -1,0 +1,46 @@
+{
+  "retrievedAt": "2026-10-12",
+  "note": "Retrieval is not itself semantic verification. See source-review.md for reviewed claims.",
+  "sources": [
+    {
+      "file": "lf825y-spec.pdf",
+      "url": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/34439-source",
+      "status": "needs-review",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "file": "800m4-manual.pdf",
+      "url": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/630139-source/rp-is-800m4-2409",
+      "status": "needs-review",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "file": "007-spec.pdf",
+      "url": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/20186-source/es-007-2409.pdf",
+      "finalUrl": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/20186-source/es-007-2409.pdf",
+      "status": "retrieved",
+      "bytes": 863678,
+      "sha256": "635b9271fcf85ec54768ede7e28d03dff265e3cf89463046dde4fab1c322a703"
+    },
+    {
+      "file": "975xl-parts.pdf",
+      "url": "https://files.zurn.com/repair-parts/975xl-repair-parts.pdf",
+      "finalUrl": "https://files.zurn.com/repair-parts/975xl-repair-parts.pdf",
+      "status": "retrieved",
+      "bytes": 201079,
+      "sha256": "7a8a9bf8b9a6516cb3e0d554134d2832fb5bb33caa4b9476bbe467e7434f4079"
+    },
+    {
+      "file": "fort-worth-backflow.html",
+      "url": "https://www.fortworthtexas.gov/departments/water/backflow",
+      "status": "needs-review",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "file": "arlington-backflow.pdf",
+      "url": "https://www.arlingtontx.gov/files/assets/city/v/2/city-secretary/documents/city-code-of-ordinances/backflow-prevention-chapter.pdf",
+      "status": "needs-review",
+      "error": "HTTP Error 403: Forbidden"
+    }
+  ]
+}

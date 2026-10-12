@@ -36,6 +36,7 @@ class ModelGuideControllerTest {
                     .andExpect(content().string(containsString(guide.kits().get(0).partNumber())))
                     .andExpect(content().string(containsString("Official source ledger")))
                     .andExpect(content().string(containsString("\"@type\":\"TechArticle\"")))
+                    .andExpect(content().string(org.hamcrest.Matchers.not(containsString("\"@type\":\"Product\""))))
                     .andExpect(content().string(containsString("href=\"https://backflowpath.com" + guide.canonicalPath() + "\"")));
         }
     }
@@ -45,6 +46,11 @@ class ModelGuideControllerTest {
         mockMvc.perform(get("/backflow-preventer-repair-kits/"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("data-global-kit-tool")))
+                .andExpect(content().string(containsString("Backflow preventer repair kits by model and size")))
+                .andExpect(content().string(containsString("How to match a backflow preventer repair kit")))
+                .andExpect(content().string(containsString("RK34-975XL")))
+                .andExpect(content().string(containsString("\"@type\":\"CollectionPage\"")))
+                .andExpect(content().string(containsString("\"@type\":\"FAQPage\"")))
                 .andExpect(content().string(containsString("Zurn Wilkins 975XL / 975XL2")))
                 .andExpect(content().string(containsString("FEBCO 765")))
                 .andExpect(content().string(containsString("Watts 800M4")));
@@ -54,6 +60,16 @@ class ModelGuideControllerTest {
         mockMvc.perform(get("/models/febco-765"))
                 .andExpect(status().isMovedPermanently())
                 .andExpect(header().string("Location", "/models/febco-765/"));
+    }
+
+    @Test
+    void everyModelPassportLinksBackToTheCompleteRepairKitIndex() throws Exception {
+        for (var guide : service.listPublished()) {
+            mockMvc.perform(get(guide.canonicalPath()))
+                    .andExpect(status().isOk())
+                    .andExpect(content().string(containsString("Compare another model in the complete repair-kit index")))
+                    .andExpect(content().string(containsString("href=\"/backflow-preventer-repair-kits/\"")));
+        }
     }
 
     @Test

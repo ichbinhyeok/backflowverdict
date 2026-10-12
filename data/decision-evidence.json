@@ -314,5 +314,47 @@
                            "fire-sprinkler-backflow-installation",
                            "fire-sprinkler-backflow-test"
                        ]
+    },
+    {
+        "claimId": "RECOVERY-LF825Y-20261012",
+        "publisher": "Watts / FEBCO",
+        "title": "LF825Y engineering specification and typical installation",
+        "url": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/34439-source",
+        "use": "Model-specific RPZ diagram, installation and drainage example.",
+        "lastVerified": "2026-10-12",
+        "snapshotPath": "storage/snapshots/recovery-2026-10-12/source-review.md",
+        "guideSlugs": [
+            "backflow-preventer-installation",
+            "backflow-preventer-diagram",
+            "backflow-preventer-leaking"
+        ]
+    },
+    {
+        "claimId": "RECOVERY-800M4-20261012",
+        "publisher": "Watts",
+        "title": "800M4 / LF800M4 installation, maintenance and repair manual",
+        "url": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/630139-source/rp-is-800m4-2409",
+        "use": "PVB installation example, startup spillage and qualified service.",
+        "lastVerified": "2026-10-12",
+        "snapshotPath": "storage/snapshots/recovery-2026-10-12/source-review.md",
+        "guideSlugs": [
+            "backflow-preventer-installation",
+            "backflow-preventer-diagram",
+            "vacuum-breaker-leaking",
+            "backflow-preventer-leaking"
+        ]
+    },
+    {
+        "claimId": "RECOVERY-007-20261012",
+        "publisher": "Watts",
+        "title": "007 double-check assembly specification",
+        "url": "https://www.watts.com/dfsmedia/0533dbba17714b1ab581ab07a4cbb521/20186-source/es-007-2409.pdf",
+        "use": "Device-family distinction and component identification.",
+        "lastVerified": "2026-10-12",
+        "snapshotPath": "storage/snapshots/recovery-2026-10-12/007-spec.pdf",
+        "guideSlugs": [
+            "backflow-preventer-diagram",
+            "double-check-valve-leaking"
+        ]
     }
 ]

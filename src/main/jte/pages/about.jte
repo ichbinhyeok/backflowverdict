@@ -7,7 +7,7 @@
             <div class="hero__copy">
                 <span class="eyebrow kicker-rule">About</span>
                 <h1>What BackflowVerdict is built to do</h1>
-                <p class="lede">BackflowVerdict organizes backflow compliance by utility so a property owner, facility manager, HOA, contractor, or service coordinator can find the governing authority, the testing cadence, the submission path, and the right next action without confusing that workflow with provider marketing.</p>
+                <p class="lede">BackflowVerdict helps property owners and service coordinators identify backflow devices, describe leaks, match manufacturer repair references, and find the governing utility for testing and report submission. Manufacturer instructions govern device details; the local authority governs compliance.</p>
                 <div class="hero__actions">
                     <a class="button button--primary" href="/methodology">Read the methodology</a>
                     <a class="button button--secondary" href="/editorial-standards">Read editorial standards</a>
@@ -31,8 +31,8 @@
 
             <article class="detail-card">
                 <span class="eyebrow">Support layers</span>
-                <h2>State, metro, guide, and provider pages</h2>
-                <p>State guides, metro pages, and support guides exist to narrow down the correct utility workflow. Provider pages exist to make public directory information inspectable, not to imply utility approval where none is published.</p>
+                <h2>Device guidance and local discovery</h2>
+                <p>The <a href="/backflow-library/">decision library</a> covers device identification, leakage, installation scope, and repair decisions. The <a href="/backflow-preventer-repair-kits/">repair-kit index</a> connects exact models and size bands to cited manufacturer records. Local utility, state, and city pages connect those decisions to testing and reporting. Public provider records do not imply utility approval.</p>
             </article>
 
             <article class="detail-card">
