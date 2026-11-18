@@ -12,6 +12,7 @@ import owner.backflow.files.BackflowRegistryService;
 import owner.backflow.files.DecisionEvidenceService;
 import owner.backflow.files.DecisionGuideService;
 import owner.backflow.files.ModelGuideService;
+import owner.backflow.service.LeadRoutingService;
 import org.springframework.stereotype.Controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
@@ -97,8 +98,10 @@ public class DecisionGuideController {
                 base + guide.canonicalPath(),
                 !guide.indexable(),
                 structuredData(guide, evidenceSources, base)
-        ).withDateModified(java.time.LocalDate.parse(guide.lastReviewed())));
+        ).withDateModified(java.time.LocalDate.parse(guide.lastReviewed()))
+                .withRequestHelpPath(LeadRoutingService.requestHelpPath("", guide.canonicalPath(), "", "decision-guide")));
         model.addAttribute("guide", guide);
+        model.addAttribute("modelGuides", modelGuideService.listPublished());
         model.addAttribute("evidenceSources", evidenceSources);
         var utilities = registryService.listPublishedUtilities();
         var selectedUtility = Optional.ofNullable(utilityId)

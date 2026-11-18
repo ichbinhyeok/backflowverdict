@@ -20,6 +20,7 @@
                     <label>03 / Repair scope<select data-global-task disabled><option value="">Choose size first</option></select></label>
                 </div>
                 <div class="bv-kit-desk__status" data-global-status aria-live="polite"><span>START HERE</span><p>Read the complete body label. Do not identify a kit from appearance alone.</p></div>
+                <p><a class="fv-text-link" data-library-help href="${page.requestHelpPathOrDefault()}&issueType=parts-check">Model missing, scope unclear, or no retailer link? Request a parts check ↗</a></p>
                 <div class="bv-kit-results bv-kit-results--global">
                     @for (var guide : modelGuides)
                         @for (var kit : guide.kits())
@@ -31,6 +32,7 @@
                         @endfor
                     @endfor
                 </div>
+                <div class="fv-result-help"><strong>Keep the model, size and part reference together.</strong><p>If you need help checking a published match, your selection can travel with the request.</p><a class="fv-primary" data-library-help href="${page.requestHelpPathOrDefault()}&issueType=parts-check">Request a parts check <span>↗</span></a></div>
             </div>
         </section>
 

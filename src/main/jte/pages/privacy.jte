@@ -27,6 +27,8 @@
                 <h2>Stored request data</h2>
                 <ul class="detail-list">
                     <li>Name, phone, email, city, property type, issue type, and notes from the form.</li>
+                    <li>Optional device photos, converted to private JPEG copies. Original filenames and embedded metadata are not retained. Photos are available only through the protected review workspace and are not added to the public site or analytics.</li>
+                    <li>Reference review drafts written by the operator. Stored photos can be removed by the operator; contact BackflowVerdict through the contact page to request removal of your submission.</li>
                     <li>Trusted utility routing fields when BackflowVerdict can validate the request against a server-issued routing context.</li>
                     <li>Submitted utility ID, utility name, page family, source page, and referring page when the browser sends them.</li>
                     <li>Assignment records when the team manually matches a request to a public provider profile.</li>

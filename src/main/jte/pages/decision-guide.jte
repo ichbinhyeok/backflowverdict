@@ -2,14 +2,19 @@
 @import owner.backflow.data.model.UtilityRecord
 @import owner.backflow.data.model.decision.DecisionGuideRecord
 @import owner.backflow.data.model.decision.DecisionEvidenceSource
+@import owner.backflow.data.model.product.ModelGuideRecord
 @param PageMeta page
 @param DecisionGuideRecord guide
 @param java.util.List<UtilityRecord> utilities = java.util.List.of()
 @param UtilityRecord selectedUtility = null
 @param java.util.List<DecisionEvidenceSource> evidenceSources = java.util.List.of()
+@param java.util.List<ModelGuideRecord> modelGuides = java.util.List.of()
 
 @template.layouts.verdict(page = page, content = @`
-    <article class="bv-case" data-guide-type="${guide.pageType()}" data-guide-slug="${guide.slug()}">
+    <article class="bv-case ${guide.slug().equals("backflow-preventer-diagram") || guide.slug().equals("backflow-preventer-installation") ? "bv-case--workbench" : ""}" data-guide-type="${guide.pageType()}" data-guide-slug="${guide.slug()}">
+        @if (guide.slug().equals("backflow-preventer-diagram") || guide.slug().equals("backflow-preventer-installation"))
+            @template.components.field-workbench(page = page, guide = guide, modelGuides = modelGuides)
+        @else
         <header class="bv-case-hero">
             <div class="bv-shell bv-case-hero__grid">
                 <div class="bv-case-hero__copy bv-reveal">
@@ -25,6 +30,7 @@
                 </figure>
             </div>
         </header>
+        @endif
 
         <section class="bv-alert" aria-label="Safety note">
             <div class="bv-shell"><strong>Before you act</strong><p>${guide.urgency()}</p></div>
@@ -40,7 +46,7 @@
             </nav>
         @endif
 
-        @if (guide.toolType() == null || guide.toolType().isBlank())
+        @if (!guide.slug().equals("backflow-preventer-installation") && (guide.toolType() == null || guide.toolType().isBlank()))
             <section class="bv-section" id="decision">
                 <div class="bv-shell bv-document-grid">
                     <div class="bv-section-heading"><p class="bv-kicker">Choose the closest evidence</p><h2>${guide.prompt()}</h2><p>These are routing choices, not remote diagnoses.</p></div>
@@ -57,7 +63,7 @@
             </section>
         @endif
 
-        @if (guide.toolType() != null && !guide.toolType().isBlank())
+        @if (!guide.slug().equals("backflow-preventer-diagram") && guide.toolType() != null && !guide.toolType().isBlank())
             <section class="bv-section bv-workstation" id="decision-tool" data-decision-tool="${guide.toolType()}">
                 <div class="bv-shell bv-workstation__grid">
                     <div class="bv-workstation__intro">
@@ -134,6 +140,7 @@
             </section>
         @endif
 
+        @if (!guide.slug().equals("backflow-preventer-diagram") && !guide.slug().equals("backflow-preventer-installation"))
         <section class="bv-section bv-section--ink" id="workflow">
             <div class="bv-shell">
                 <div class="bv-section-heading"><p class="bv-kicker">Evidence sequence</p><h2>Move in this order</h2></div>
@@ -144,8 +151,9 @@
                 </ol>
             </div>
         </section>
+        @endif
 
-        @if (!guide.identifiers().isEmpty())
+        @if (!guide.identifiers().isEmpty() && !guide.slug().equals("backflow-preventer-diagram") && !guide.slug().equals("backflow-preventer-installation"))
             <section class="bv-section">
                 <div class="bv-shell bv-document-grid">
                     <div class="bv-section-heading"><p class="bv-kicker">Identification notes</p><h2>What to look for</h2></div>
@@ -197,11 +205,11 @@
         <section class="bv-section bv-section--paper" id="safe-checks">
             <div class="bv-shell bv-safety-grid">
                 <div><p class="bv-kicker">Safe observations</p><h2>What you can check without taking it apart</h2><ul class="bv-check-list">@for (var item : guide.safeChecks())<li>${item}</li>@endfor</ul></div>
-                <div class="bv-stop"><p class="bv-kicker">Stop conditions</p><h2>Move to qualified help when</h2><ul>@for (var item : guide.stopConditions())<li>${item}</li>@endfor</ul><a class="bv-button" href="/get-help/?source=${guide.canonicalPath()}">Get help with this next step</a></div>
+                <div class="bv-stop"><p class="bv-kicker">Stop conditions</p><h2>Move to qualified help when</h2><ul>@for (var item : guide.stopConditions())<li>${item}</li>@endfor</ul><a class="bv-button" href="${page.requestHelpPathOrDefault()}">Get help with this next step</a></div>
             </div>
         </section>
 
-        @if (!guide.notThisDevice().isEmpty())
+        @if (!guide.notThisDevice().isEmpty() && !guide.slug().equals("backflow-preventer-diagram") && !guide.slug().equals("backflow-preventer-installation"))
             <section class="bv-section">
                 <div class="bv-shell bv-not-this"><div><p class="bv-kicker">Boundary check</p><h2>Do not confuse this path with</h2></div><ul>@for (var item : guide.notThisDevice())<li>${item}</li>@endfor</ul></div>
             </section>

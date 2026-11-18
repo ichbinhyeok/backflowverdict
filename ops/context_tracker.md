@@ -79,6 +79,10 @@
 - Deployment now runs the full test suite and no longer uses destructive `rsync --delete` for project data.
 
 ## Current status
+- 2026-11-18: owner explicitly requested production deployment. Preparing the complete field desk/photo-review release with an nginx upload-limit updater, backups/restore and production host-routing checks. Release completion remains pending actual CI, deployment and public verification.
+- Second November pass is also implemented locally: model-specific manufacturer documents, unknown-model nameplate/photo guide, private photo uploads and an authenticated four-part review/reply-draft workspace. Full Java suite 100 passing; Chromium 17/17; actual browser photo submission and operator draft save/update/download verified. See `ops/field-desk-second-pass-2026-11-18.md`. Still not deployed.
+- 2026-11-18 local implementation: diagram and installation now have a photorealistic illustrated reference, direct in-page 10-model parts lookup, installer-brief builder, contextual review handoff, and email-or-phone contact. Public production is still the October release; this work is not deployed. Implementation and commercial next steps: `ops/field-desk-2026-11-18.md`.
+- Fresh GSC review: 2026-10-19–11-15 property clicks 114 vs September baseline 91; eight-page cohort 33 vs 8. Diagram/installation contribute 18/12. This is search improvement, not verified revenue. Live `/readyz` reports 96/96 utility records stale. GA4 commercial outcomes remain unverified.
 - Post-expansion sitemap submissions and all five manual indexing requests are accepted; new-content recrawl remains unconfirmed. See ops/search-submission-2026-10-12.md.
 - Diagram and three leak focus pages are merged and verified in production at runtime `79a0659`; evidence and release provenance are in ops/diagram-leaks-evidence-2026-10-12.md. Search/revenue effects remain unmeasured.
 - Installation evidence expansion is merged and verified in production at runtime `e9a169d`. Search effects remain unmeasured because available GSC data ends October 9, before either October 12 intervention.
@@ -93,6 +97,8 @@
 - `/readyz` must stay `ready` as long as utility pages are explicitly published and not blocked, even when freshness warnings exist.
 
 ## Latest decisions
+- The owner authorized a stronger second pass after the first design review. Give unknown-model users a photo route and make the manual review deliverable concrete and operable. New FEBCO retailer matches use exact manufacturer ordering codes; generic seller search results do not establish compatibility.
+- 2026-11-18: the owner requested more aggressive growth and rejected the current UX/UI. Implement the concrete task inside the two winning search entrances: exact-model part selection and a usable installer brief, followed by a specific manual-review request. Keep official approval and diagnosis boundaries; do not claim a booked installer, approved parts purchase or earned commission.
 - Submit the five materially updated guides once after release, then evaluate recrawl and settled performance; do not interpret request receipts as updated indexing or repeatedly request the same unchanged URL.
 - Extend inspectable model evidence and attributed cases to the four existing diagram/leak focus URLs; preserve the October 12 baseline and original review gates. Keep historical incidents and prevention projects distinct from leak repair outcomes.
 - Strengthen installation detail intent on the existing URL with inspectable manufacturer documents and attributed real projects. Keep code/approval and cost intent on their existing routes; no further topic expansion is needed for this change.
@@ -112,6 +118,8 @@
 - Automated source URL audits can refresh freshness dates only when unresolved URLs are also recorded in `data/ops/broken_links.csv` for follow-up suppression.
 
 ## What changed this session
+- Added private normalized photo storage, EXIF handling, upload limits and real-HTTP multipart coverage; fixed the pinned Tomcat 10-part default for the complete form. Added a CSRF-protected private review editor/download and removed analytics from that private page. Added two manufacturer-matched, uncompensated FEBCO 765 retailer routes. Updated privacy and the nginx reference for the new upload flow.
+- Built the November local field desk, image asset, model index, brief copy/print, browser-local context carryover, task-specific review form and consistent confirmation screen. Corrected the missing installation form option and unsigned guide CTA context; allow email-only review requests with server contact validation. Existing source ledgers, winner URLs, indexing policy and October experiment dates are preserved.
 - Completed three sitemap submissions, five URL inspections and five actual manual UI indexing requests; saved their distinct receipts and preserved the existing recovery experiment.
 - Expanded and deployed the diagram and three leak pages, added original observation maps, generalized native case/question rendering and verified source-event classification plus full local regressions. Public checks and production browser QA passed; saved the additional GSC annotation without resetting the recovery experiment.
 - Added installation case reports, model drawing deep links, an original site schematic, a quote/observation brief and accessible questions; verified full regression suites and the new browser behavior.
@@ -189,6 +197,8 @@
 - Strengthened `/backflow-reporting-portals` as a lookup database by adding a portal family matrix for BSI, WEIRS, SwiftComply, VEPO, Aqua/TrackMyBackflow, Tokay, and SpryBackflow searches.
 
 ## Next recommended tasks
+- Review/release the complete second pass within authorized deployment scope, including the nginx upload limit and production storage/admin checks. Then use the private review workspace to handle real requests and measure relevant completed requests separately from generated briefs, merchant navigation and actual money.
+- Review the local November implementation and release it only within authorized deployment scope. Then verify real model selections, merchant clicks, brief creation and persisted review requests. Evaluate accepted useful requests and money separately. See `ops/field-desk-2026-11-18.md` for the focused growth plan and known operating gaps.
 Check the post-release crawl dates for the five guides and pending sitemap downloads at the next review; compare settled performance after recrawl without resetting day zero.
 1. Link properties/531520200 to sc-domain:backflowpath.com in GSC Wizard's Analytics page; verify lead_form_success in GA4 and register needed event dimensions. Binding cannot be changed through the exposed API.
 2. Review equal settled 28-day GSC windows weekly with scripts/recovery_scorecard.py, then apply the December 11 / January 10 gates with commercial evidence and seasonality judgment.
@@ -196,6 +206,8 @@ Check the post-release crawl dates for the five guides and pending sitemap downl
 4. Retain local/portal query ownership while watching source navigation separately from commercial intent. Add affiliate tracking only after a real agreement and exact fit check.
 
 ## Open questions
+- Whether real users send readable model/size photos and whether the operator can turn the four-part reference review into useful follow-up. Photo submission and draft preparation are verified locally; customer delivery, partner acceptance and revenue remain unverified.
+- Whether the owner can reliably review parts/scope requests and which actual retailer or local partner can accept matched demand. A manual queue exists; an automated notification, guaranteed reply time or provider booking is not established. GA4 collection/reporting still needs trustworthy property/hostname verification.
 - When Google will recrawl the five updated guides and reflect the new content; the manual requests confirmed queue acceptance only.
 - Whether the diagram and symptom-specific improvements attract more qualified search landings after recrawl; publication and passing QA alone do not establish growth or revenue.
 - Whether installation/detail search visibility and qualified next-step behavior improve after recrawl; the current small, pre-release query sample cannot establish impact.

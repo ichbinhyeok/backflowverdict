@@ -32,6 +32,9 @@ jobs:
       - name: Run the full test suite
         run: ./gradlew test --no-daemon
 
+      - name: Verify scoped nginx upload configuration updater
+        run: python3 -m unittest discover -s ops/nginx -p 'test_*.py'
+
       - name: Set up Node for browser contracts
         uses: actions/setup-node@v4
         with:
@@ -71,7 +74,7 @@ jobs:
           host: ${{ secrets.OCI_HOST }}
           username: ${{ secrets.OCI_USERNAME }}
           key: ${{ secrets.OCI_KEY }}
-          source: "docker-compose.yml,data,storage/snapshots"
+          source: "docker-compose.yml,data,storage/snapshots,ops/nginx/apply-upload-limit.py"
           target: "~/deploy/backflowpath/release"
           overwrite: true
 
@@ -93,6 +96,9 @@ jobs:
               echo "Deployment failed; restoring the previous image and data snapshot."
               set +e
               cd "$APP_DIR"
+              if [ -f "$BACKUP_DIR/nginx/manifest.json" ]; then
+                sudo -n python3 "$RELEASE_DIR/ops/nginx/apply-upload-limit.py" --restore --backup-dir "$BACKUP_DIR/nginx"
+              fi
               docker compose down
               if [ -d "$BACKUP_DIR/data" ]; then
                 mv "$APP_DIR/data" "$BACKUP_DIR/failed-data"
@@ -104,6 +110,7 @@ jobs:
               fi
               if [ -f "$BACKUP_DIR/.env" ]; then
                 cp "$BACKUP_DIR/.env" "$APP_DIR/.env"
+                if [ -f "$BACKUP_DIR/docker-compose.yml" ]; then cp "$BACKUP_DIR/docker-compose.yml" "$APP_DIR/docker-compose.yml"; fi
                 docker compose pull
                 docker compose up -d --remove-orphans
               fi
@@ -116,6 +123,7 @@ jobs:
             cp -a "$APP_DIR/data" "$BACKUP_DIR/data"
             cp -a "$APP_DIR/storage/snapshots" "$BACKUP_DIR/snapshots"
             if [ -f "$APP_DIR/.env" ]; then cp "$APP_DIR/.env" "$BACKUP_DIR/.env"; fi
+            if [ -f "$APP_DIR/docker-compose.yml" ]; then cp "$APP_DIR/docker-compose.yml" "$BACKUP_DIR/docker-compose.yml"; fi
 
             if command -v rsync >/dev/null 2>&1; then
               rsync -a "$RELEASE_DIR/data/" "$APP_DIR/data/"
@@ -144,6 +152,11 @@ jobs:
             docker compose pull
             docker compose up -d --remove-orphans
             docker compose ps
+
+            docker compose exec -T app sh -c 'test -n "$APP_ADMIN_USERNAME" && test -n "$APP_ADMIN_PASSWORD" && test -n "$APP_OPS_VERIFICATION_TOKEN" && test -w /app/leads'
+            echo "Admin, signing configuration and persistent lead storage are configured."
+
+            sudo -n python3 "$RELEASE_DIR/ops/nginx/apply-upload-limit.py" --backup-dir "$BACKUP_DIR/nginx"
 
             for attempt in $(seq 1 24); do
               if curl -fsS "http://127.0.0.1:8093/healthz"; then
@@ -177,6 +190,11 @@ jobs:
 
             smoke_path "/" "BackflowVerdict"
             smoke_path "/backflow-preventer-installation/" "backflow preventer installation"
+            smoke_path "/backflow-preventer-installation/" "Build my installer brief"
+            smoke_path "/backflow-preventer-diagram/" "Request a model check"
+            smoke_path "/get-help/?issueType=model-identification" 'enctype="multipart/form-data"'
+            smoke_path "/field-desk.js?v=20261118-reference-review" "request_photo_selection"
+            smoke_path "/images/devices/nameplate-guide.svg" "How to read a device label"
             smoke_path "/backflow-preventer-installation/" "Brenham Hospital: measure the replacement envelope"
             smoke_path "/images/devices/installation-site-reference.svg" "RPZ installation site reference"
             smoke_path "/backflow-preventer-diagram/" "Double-check diagram: two checks do not mean two covers."
@@ -213,6 +231,11 @@ jobs:
               exit 1
             fi
             rm -f "$sitemap_body" "$canonical_body"
+
+            host_body="$(mktemp)"
+            curl -fsS -H 'Host: backflowpath.com' http://127.0.0.1/backflow-preventer-diagram/ -o "$host_body"
+            grep -Fq "Request a model check" "$host_body"
+            rm -f "$host_body"
 
             trap - ERR
             echo "Release $RELEASE_SHA passed health, route, canonical, robots, sitemap, and winner smoke checks."

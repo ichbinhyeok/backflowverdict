@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest(properties = {
         "app.leads.root=build/test-data/lead-conversion",
         "app.leads.submission-rate-limit-max-attempts=1",
+        "app.ops.verification-token=lead-conversion-test-only",
         "app.ops.write-freshness-report-on-startup=false"
 })
 @AutoConfigureMockMvc
@@ -52,6 +53,31 @@ class LeadConversionTest {
         var limited = mvc.perform(post("/leads").param("fullName", "Limit test").param("phone", "555-0100")
                 .param("consentToRouting", "yes")).andExpect(status().is3xxRedirection()).andReturn();
         assertFalse(limited.getFlashMap().containsKey("leadSaved"));
+        assertEquals(before, leads.leadCount());
+    }
+
+    @Test void emailOnlyReviewRequestPersistsWithoutRequiringAPhoneOrName() throws Exception {
+        int before = leads.leadCount();
+        mvc.perform(post("/leads").param("email", "review@example.com")
+                        .param("issueType", "parts-check").param("notes", "975XL / 3/4–1 in / RK34-975XLC")
+                        .param("sourcePage", "/backflow-preventer-diagram/").param("pageFamily", "decision-guide")
+                        .param("rt", owner.backflow.service.LeadRoutingService.issueToken("", "/backflow-preventer-diagram/", "decision-guide"))
+                        .param("consentToRouting", "yes"))
+                .andExpect(redirectedUrl("/leads/thanks"))
+                .andExpect(flash().attribute("leadSaved", true));
+        assertEquals(before + 1, leads.leadCount());
+        assertTrue(leads.listLeads().stream().anyMatch(lead -> "review@example.com".equals(lead.email()) && "parts-check".equals(lead.issueType())
+                && "VERIFIED_PAGE_CONTEXT".equals(lead.routingStatus()) && "/backflow-preventer-diagram/".equals(lead.sourcePage())));
+    }
+
+    @Test void missingOrInvalidContactDoesNotPersistOrSignalSuccess() throws Exception {
+        int before = leads.leadCount();
+        for (String email : new String[]{"", "not-an-email"}) {
+            var result = mvc.perform(post("/leads").param("email", email).param("consentToRouting", "yes"))
+                    .andExpect(status().is3xxRedirection()).andReturn();
+            assertTrue(result.getResponse().getRedirectedUrl().contains("error=contact"));
+            assertFalse(result.getFlashMap().containsKey("leadSaved"));
+        }
         assertEquals(before, leads.leadCount());
     }
 }
