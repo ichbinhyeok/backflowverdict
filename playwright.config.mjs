@@ -16,7 +16,7 @@ export default defineConfig({
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } }
   ],
   webServer: {
-    command: isWindows ? '.\\gradlew.bat bootRun --no-daemon --args="--server.port=18080"' : './gradlew bootRun --no-daemon --args="--server.port=18080"',
+    command: isWindows ? '.\\gradlew.bat bootRun --no-daemon --args="--server.port=18080 --app.ops.verification-token=e2e-only --app.leads.root=build/e2e-leads --app.delivery.email-enabled=false --app.site.ga-measurement-id="' : './gradlew bootRun --no-daemon --args="--server.port=18080 --app.ops.verification-token=e2e-only --app.leads.root=build/e2e-leads --app.delivery.email-enabled=false --app.site.ga-measurement-id="',
     url: 'http://127.0.0.1:18080/healthz',
     reuseExistingServer: !process.env.CI,
     timeout: 120000

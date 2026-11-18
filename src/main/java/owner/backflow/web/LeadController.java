@@ -3,6 +3,10 @@ package owner.backflow.web;
 import jakarta.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import owner.backflow.service.LeadPhotoService;
 import owner.backflow.files.BackflowRegistryService;
 import owner.backflow.service.LeadAdminService;
 import owner.backflow.service.LeadRoutingContext;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class LeadController {
@@ -23,17 +28,20 @@ public class LeadController {
     private final BackflowRegistryService registryService;
     private final LeadSubmissionGuardService leadSubmissionGuardService;
     private final LeadRoutingService leadRoutingService;
+    private final LeadPhotoService leadPhotoService;
 
     public LeadController(
             LeadAdminService leadAdminService,
             BackflowRegistryService registryService,
             LeadSubmissionGuardService leadSubmissionGuardService,
-            LeadRoutingService leadRoutingService
+            LeadRoutingService leadRoutingService,
+            LeadPhotoService leadPhotoService
     ) {
         this.leadAdminService = leadAdminService;
         this.registryService = registryService;
         this.leadSubmissionGuardService = leadSubmissionGuardService;
         this.leadRoutingService = leadRoutingService;
+        this.leadPhotoService = leadPhotoService;
     }
 
     @GetMapping({"/leads/new", "/get-help", "/get-help/"})
@@ -71,14 +79,14 @@ public class LeadController {
         model.addAttribute("selectedIssueType", normalize(issueType));
         model.addAttribute("pageFamily", normalizedPageFamily);
         model.addAttribute("routingToken", trustedContext.sourceContextVerified() ? normalize(routingToken) : "");
-        model.addAttribute("formError", formError(normalize(error)));
+        model.addAttribute("formError", model.containsAttribute("uploadError") ? model.getAttribute("uploadError") : formError(normalize(error)));
         return "pages/lead-capture";
     }
 
     @PostMapping("/leads")
     public String createLead(
-            @RequestParam String fullName,
-            @RequestParam String phone,
+            @RequestParam(required = false) String fullName,
+            @RequestParam(required = false) String phone,
             @RequestParam(required = false) String email,
             @RequestParam(required = false) String city,
             @RequestParam(required = false) String utilityId,
@@ -91,6 +99,8 @@ public class LeadController {
             @RequestParam(value = "rt", required = false) String routingToken,
             @RequestParam(required = false) String consentToRouting,
             @RequestParam(required = false) String companyWebsite,
+            @RequestParam(value = "photos", required = false) List<MultipartFile> photos,
+            @RequestParam Map<String, String> fields,
             HttpServletRequest request,
             RedirectAttributes redirectAttributes
     ) {
@@ -98,9 +108,23 @@ public class LeadController {
             return "redirect:/leads/thanks";
         }
         if (!"yes".equalsIgnoreCase(normalize(consentToRouting))) {
+            preserveInput(fields, redirectAttributes);
             return "redirect:" + leadFormRedirect(utilityId, sourcePage, issueType, pageFamily, routingToken, "consent");
         }
+        if ((normalize(phone).isBlank() && normalize(email).isBlank())
+                || normalize(email).length() > 254
+                || (!normalize(email).isBlank() && !normalize(email).matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"))) {
+            preserveInput(fields, redirectAttributes);
+            return "redirect:" + leadFormRedirect(utilityId, sourcePage, issueType, pageFamily, routingToken, "contact");
+        }
+        if (normalize(fullName).length() > 150 || normalize(phone).length() > 80 || normalize(city).length() > 200
+                || normalize(notes).length() > 10000 || normalize(utilityId).length() > 200 || normalize(utilityName).length() > 500
+                || normalize(issueType).length() > 80 || normalize(pageFamily).length() > 80 || normalize(sourcePage).length() > 2000) {
+            preserveInput(fields, redirectAttributes);
+            return "redirect:" + leadFormRedirect("", "", "", "", "", "length");
+        }
         if (!leadSubmissionGuardService.tryAcquire(request.getRemoteAddr())) {
+            preserveInput(fields, redirectAttributes);
             return "redirect:" + leadFormRedirect(utilityId, sourcePage, issueType, pageFamily, routingToken, "rate-limit");
         }
         LeadRoutingContext trustedContext = leadRoutingService.resolveTrustedContext(
@@ -109,8 +133,18 @@ public class LeadController {
                 normalize(pageFamily),
                 normalize(routingToken)
         );
+        List<byte[]> preparedPhotos;
+        try { preparedPhotos = leadPhotoService.prepare(photos); }
+        catch (IllegalArgumentException exception) {
+            preserveInput(fields, redirectAttributes);
+            redirectAttributes.addFlashAttribute("uploadError", exception.getMessage());
+            return "redirect:" + leadFormRedirect(utilityId, sourcePage, issueType, pageFamily, routingToken, "photos");
+        }
+        String leadId = UUID.randomUUID().toString();
+        leadPhotoService.save(leadId, preparedPhotos);
+        try {
         leadAdminService.record(new LeadRecord(
-                null,
+                leadId,
                 LocalDateTime.now(),
                 fullName,
                 phone,
@@ -131,7 +165,9 @@ public class LeadController {
                 trustedContext.routingStatus(),
                 trustedContext.routingReason()
         ));
+        } catch (RuntimeException exception) { leadPhotoService.deleteAll(leadId); throw exception; }
         redirectAttributes.addFlashAttribute("leadSaved", true);
+        redirectAttributes.addFlashAttribute("photoCount", preparedPhotos.size());
         return "redirect:/leads/thanks";
     }
 
@@ -150,8 +186,19 @@ public class LeadController {
         return value == null ? "" : value.trim();
     }
 
+    private void preserveInput(Map<String, String> fields, RedirectAttributes redirectAttributes) {
+        Map<String, String> values = new java.util.HashMap<>();
+        for (String key : List.of("fullName", "phone", "email", "city", "propertyType", "notes")) {
+            String value = normalize(fields.get(key));
+            values.put(key, value.substring(0, Math.min(value.length(), 10000)));
+        }
+        redirectAttributes.addFlashAttribute("formValues", values);
+    }
+
     private String formError(String errorCode) {
         return switch (errorCode) {
+            case "contact" -> "Enter a valid email address or phone number so we can reply.";
+            case "length" -> "Keep the notes within 10,000 characters and shorten the contact or location fields before sending again.";
             case "consent" -> "Consent is required before BackflowVerdict can store and review your request.";
             case "rate-limit" -> "Too many requests came from this network in a short window. Please wait a few minutes and try again.";
             default -> "";

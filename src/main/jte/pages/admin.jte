@@ -599,7 +599,7 @@
                                                 <div class="detail-meta">${item.lead().referrer()}</div>
                                             @endif
                                         </td>
-                                        <td>${item.lead().notes()}</td>
+                                        <td>${item.lead().notes()}<p><a href="/admin/reviews/${item.lead().leadId()}">Photos & reference review →</a></p></td>
                                     </tr>
                                 @endfor
                                 </tbody>

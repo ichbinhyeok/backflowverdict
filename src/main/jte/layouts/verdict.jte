@@ -32,9 +32,13 @@
     @endif
     <meta name="twitter:card" content="${page.twitterCard()}">
     <link rel="stylesheet" href="/verdict.css?v=20261012-diagram-leaks">
-    <script defer src="/analytics.js?v=20261012"></script>
+    <link rel="stylesheet" href="/field-desk.css?v=20261118-reference-review">
+    @if (!page.canonicalUrl().contains("/admin/reviews/"))
+        <script defer src="/analytics.js?v=20261012"></script>
+    @endif
     <script defer src="/verdict.js?v=20261012"></script>
-    @if (SiteRuntimeConfig.googleAnalyticsMeasurementId() != null && !SiteRuntimeConfig.googleAnalyticsMeasurementId().isBlank())
+    <script defer src="/field-desk.js?v=20261118-reference-review"></script>
+    @if (!page.canonicalUrl().contains("/admin/reviews/") && SiteRuntimeConfig.googleAnalyticsMeasurementId() != null && !SiteRuntimeConfig.googleAnalyticsMeasurementId().isBlank())
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

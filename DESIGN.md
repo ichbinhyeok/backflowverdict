@@ -69,6 +69,8 @@
 ## Decisions Log
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| 2026-11-18 | Add a nameplate/photo route for unknown models and show the actual review format | Give beginners an achievable first action and make the outcome of a manual request concrete. Keep instructional examples visibly illustrative and private photos out of public pages. |
+| 2026-11-18 | Give diagram and installation entrances an illustrated product reference and an in-page field desk | Make model/size lookup and a copyable installer brief the primary interactions. Generated imagery is clearly an illustrative family view; manufacturer documents remain the technical authority. |
 | 2026-08-02 | Rebuild as a decision product, not a directory | GSC winners are task/portal/failed-test routes; page-count expansion diluted impressions. |
 | 2026-08-02 | Preserve existing winner URLs and official data | Search equity and verified utility evidence are the asset being salvaged. |
 | 2026-08-02 | Use diagrams instead of generic hero photography | Device identification requires shape and fault-location evidence, not atmosphere. |
