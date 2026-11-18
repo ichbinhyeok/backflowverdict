@@ -2,7 +2,7 @@
 
 Local implementation scope authorized by the owner on 2026-11-18. No production deployment or external messages are part of this pass.
 
-Subsequent instruction: the owner explicitly requested production deployment. The release is now being prepared through the existing OCI workflow; final production evidence will be recorded separately. This supersedes the earlier local-only deployment boundary without authorizing external customer messages.
+Subsequent instruction: the owner explicitly requested production deployment. The complete release is now deployed at runtime `0c40225` and publicly verified. See [production release evidence](field-desk-release-2026-11-18.md). This supersedes the earlier local-only deployment boundary without authorizing external customer messages.
 
 Visual thesis: a precise equipment reference with the working document beside the selection, and a clear photographic route when the label is unknown.
 
@@ -32,9 +32,9 @@ Screenshots: output/playwright/conversion-v3-identify-desktop.png, conversion-v3
 
 ## Deployment and operating boundary
 
-This remains a local, uncommitted implementation. The public October release is unchanged. Local runtime uses build/review-leads, disabled email/GA4 and disposable local-only admin credentials.
+The implementation was first verified locally with build/review-leads, disabled email/GA4 and disposable local-only admin credentials. It was subsequently committed and deployed through PR #7; the public November release is verified in the linked release record. Local QA records and credentials were excluded.
 
-Before a production release, apply/reload the nginx 16 MB limit from ops/nginx/backflowpath.conf, verify the production admin/signing configuration and persistent lead volume, and repeat a controlled production verification within the authorized release scope. The configured volume ./leads:/app/leads persists the new photos and review subfolders.
+The production release applied/reloaded the nginx 16 MB limit, verified the admin/signing configuration and persistent lead volume, and completed controlled public verification. The configured volume ./leads:/app/leads persists the new photos and review subfolders.
 
 The operator must inspect the manual queue and decide which requests are actionable. No response-time guarantee, automated identification, paid review, affiliate agreement, dispatch, customer reply or earned revenue is established by this work. Specific reply drafts can now be prepared from the evidence; sending remains a separate external action.
 

@@ -1,6 +1,6 @@
 # Field desk redesign and conversion work — 2026-11-18
 
-Status: **implemented and verified locally; not deployed**. Local preview runs at http://127.0.0.1:18080. Production remains the October release.
+Status: **released and verified on 2026-11-18**, together with the second pass. See [production release evidence](field-desk-release-2026-11-18.md). The implementation-time audit and local validation below are retained as history.
 
 ## What the live audit found
 
